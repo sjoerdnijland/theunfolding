@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>The Wiki — The Unfolding</title>
+<meta name="description" content="A reader's wiki for The Unfolding: Mairee. Browse characters, ships, locations, items, factions, lore and timeline."/>
+<link rel="icon" href="favicon.ico" sizes="any"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="favicon-180.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="wiki.css"/>
+
+</head>
+<body class="grain">
+
+<!-- ── NAV ─────────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="dot"></span>
+    <span>THE UNFOLDING</span>
+  </a>
+  <div class="nav-links">
+    <a href="map.html" style="font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);transition:color .2s;" onmouseover="this.style.color='var(--ivory)'" onmouseout="this.style.color='var(--muted)'">◉ Map</a>
+    <a href="index.html" class="nav-back-link">
+      <span class="nav-back-arrow">←</span> Back to the book
+    </a>
+    <a href="index.html#buy" class="nav-buy-btn always-show">Buy the Book</a>
+  </div>
+</nav>
+
+<!-- ── WIKI ──────────────────────────────────────────────── -->
+<div class="wiki-page">
+  <header class="wp-header">
+    <div class="container">
+      <span class="mono-label">The Wiki · Volume I</span>
+      <h1 class="wp-title">A Reader's Wiki</h1>
+      <p class="wp-sub"><em>A companion for the void.</em> Browse the people, ships, places, items, factions, and lore of Mairee. Light spoilers only.</p>
+      <div class="wp-stats">
+        <span id="entry-count">— entries</span>
+        <span class="dot"></span>
+        <span>7 categories</span>
+        <span class="dot"></span>
+        <span>Last tended 2 clicks ago</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container wiki-body-wrap">
+
+    <!-- Spoiler bar -->
+    <div class="spoiler-bar">
+      <label>I'm on</label>
+      <div class="chapter-pills" id="chapter-pills"></div>
+      <span class="spoiler-hint" id="spoiler-hint"></span>
+      <button class="image-toggle-btn" id="image-toggle-btn" onclick="toggleImages()">
+        <span class="img-toggle-icon">◈</span> Images off
+      </button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="wiki-tabs">
+      <button class="wiki-tab" data-tab="characters" onclick="switchTab('characters')">Characters</button>
+      <button class="wiki-tab" data-tab="ships"      onclick="switchTab('ships')">Ships</button>
+      <button class="wiki-tab" data-tab="locations"  onclick="switchTab('locations')">Locations</button>
+      <button class="wiki-tab" data-tab="items"      onclick="switchTab('items')">Items &amp; Tech</button>
+      <button class="wiki-tab" data-tab="factions"   onclick="switchTab('factions')">Factions &amp; Orgs</button>
+      <button class="wiki-tab" data-tab="biology"    onclick="switchTab('biology')">Biology</button>
+      <button class="wiki-tab" data-tab="lore"       onclick="switchTab('lore')">Lore &amp; Concepts</button>
+      <button class="wiki-tab" data-tab="timeline"   onclick="switchTab('timeline')">Timeline</button>
+    </div>
+
+    <!-- Search -->
+    <div class="wiki-search-bar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="text" id="wiki-search-input" placeholder="Search the wiki…" oninput="handleSearch()"/>
+    </div>
+
+    <!-- Sections — content injected by wiki.js -->
+    <div id="characters" class="wiki-section">
+      <div class="card-grid" id="char-grid"></div>
+    </div>
+    <div id="ships" class="wiki-section">
+      <div class="card-grid" id="ship-grid"></div>
+    </div>
+    <div id="locations" class="wiki-section">
+      <div class="card-grid" id="loc-grid"></div>
+    </div>
+    <div id="items" class="wiki-section">
+      <div class="card-grid" id="item-grid"></div>
+    </div>
+    <div id="factions" class="wiki-section">
+      <div class="card-grid" id="fac-grid"></div>
+    </div>
+    <div id="biology" class="wiki-section">
+      <div class="card-grid" id="bio-grid"></div>
+    </div>
+    <div id="lore" class="wiki-section">
+      <div class="lore-list" id="lore-list"></div>
+    </div>
+    <div id="timeline" class="wiki-section">
+      <div class="timeline" id="timeline-list"></div>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- ── DETAIL MODAL ───────────────────────────────────────── -->
+<div class="detail-overlay" id="detail-overlay">
+  <button class="modal-close" onclick="closeModal()">✕</button>
+  <div class="detail-modal">
+    <div id="modal-content"></div>
+  </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<div id="site-footer"></div>
+
+<script src="wiki.js"></script>
+<script src="footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tactical Map — The Unfolding</title>
+<link rel="icon" href="favicon.ico" sizes="any"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="favicon-180.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#061619; --ink-2:#0b2227; --ink-3:#0f2c33;
+  --teal:#2d5b66; --teal-s:#3b7682; --teal-b:#6ecfde;
+  --rose:#e94a7c; --ivory:#f4ead9; --ivory-2:#c8bea8;
+  --muted:#5a7a82; --amber:#d4a843; --danger:#cc3333;
+  --green:#4a8a5a;
+  --line:rgba(74,154,170,0.16); --line-s:rgba(74,154,170,0.35);
+  /* colour roles */
+  --c-star:#f5d060;      /* stars */
+  --c-planet:#4a8a9a;    /* planets */
+  --c-moon:#6a8090;      /* moons */
+  --c-ship:#4a9aaa;      /* ships en-route */
+  --c-station:#7ab0b8;   /* orbital stations */
+  --c-landed:#d4a843;    /* landed assets */
+  --c-dead:#5a7a82;      /* offline */
+  --c-lost:#cc3333;      /* lost/severed */
+  --c-special:#e94a7c;   /* Mairee / active */
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --serif:'Cormorant Garamond',Georgia,serif;
+}
+html,body{background:var(--ink);color:var(--ivory);font-family:var(--mono);font-size:13px;line-height:1.5;min-height:100vh;}
+/* CRT */
+body::before{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.05) 2px,rgba(0,0,0,.05) 4px);}
+body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");}
+
+/* ── Topbar ── */
+.tb{position:sticky;top:0;z-index:200;height:48px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;background:rgba(6,22,25,.97);border-bottom:1px solid var(--line-s);backdrop-filter:blur(8px);}
+.tb-logo{font-family:var(--serif);font-size:.95rem;letter-spacing:.1em;color:var(--ivory);text-decoration:none;display:flex;align-items:center;gap:7px;}
+.fd{width:9px;height:9px;border-radius:50%;background:var(--rose);box-shadow:0 0 9px var(--rose);flex-shrink:0;}
+.tb-title{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--teal-b);padding-left:14px;border-left:1px solid var(--line-s);}
+.tb-r{display:flex;align-items:center;gap:12px;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+.sd{display:inline-block;width:5px;height:5px;border-radius:50%;margin-right:4px;}
+.sd.a{background:var(--amber);animation:bl 2s step-end infinite;}
+.sd.g{background:#4caf50;}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
+.back{color:var(--muted);text-decoration:none;transition:color .2s;}
+.back:hover{color:var(--ivory);}
+
+/* ── Page ── */
+.page{display:flex;min-height:calc(100vh - 48px);}
+
+/* ── Sidebar ── */
+.sb{
+  width:340px;flex-shrink:0;background:var(--ink-2);border-right:1px solid var(--line-s);
+  display:flex;flex-direction:column;
+  position:sticky;top:48px;height:calc(100vh - 48px);overflow:hidden;
+}
+@media(max-width:700px){.sb{display:none;}}
+.sb-hdr{padding:14px 18px 11px;border-bottom:1px solid var(--line);flex-shrink:0;}
+.ut{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);display:flex;align-items:center;gap:6px;margin-bottom:6px;}
+.ut::before{content:'';width:16px;height:1px;background:var(--rose);}
+.ui{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--ivory-2);line-height:1.5;}
+
+/* Toggles */
+.toggles{padding:10px 18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0;}
+.tog{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:6px 12px;border:1px solid var(--line-s);border-radius:2px;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  cursor:pointer;transition:all .2s;user-select:none;background:transparent;
+}
+.tog.on{background:rgba(74,154,170,.12);border-color:var(--teal-b);color:var(--ivory);}
+.tog-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+.sb-scroll{overflow-y:auto;flex:1;}
+.sb-scroll::-webkit-scrollbar{width:3px;}
+.sb-scroll::-webkit-scrollbar-track{background:var(--ink);}
+.sb-scroll::-webkit-scrollbar-thumb{background:var(--teal);}
+
+/* Sections */
+.sec{border-bottom:1px solid var(--line);}
+.sec-hdr{padding:11px 18px 8px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;transition:background .15s;}
+.sec-hdr:hover{background:rgba(74,154,170,.05);}
+.sec-sys{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-b);font-weight:700;}
+.sec-sub{font-family:var(--serif);font-size:16px;font-style:italic;color:var(--muted);margin-top:2px;}
+.sec-tog{color:var(--teal-b);font-size:13px;}
+.sec-body{padding:0 18px 10px;}
+.sec-copy{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--ivory-2);line-height:1.55;padding:6px 0 9px;border-bottom:1px dashed var(--line);margin-bottom:2px;}
+
+/* Asset entries */
+.ae{
+  padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer;
+  transition:background .15s;margin:0 -18px;padding-left:18px;padding-right:14px;
+}
+.ae:hover{background:rgba(74,154,170,.06);}
+.ae:last-child{border-bottom:none;}
+/* selected state */
+.ae.on{
+  background:rgba(233,74,124,.1);
+  border-left:3px solid var(--rose);
+  padding-left:15px;
+  padding-top:14px;padding-bottom:14px;
+}
+.ae.on .ae-name{color:var(--rose);font-size:13px;}
+.ae.on .ae-desc{display:block;}
+.ae-h{display:flex;align-items:center;gap:7px;margin-bottom:3px;}
+.ae-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.ae-name{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ivory);font-weight:500;}
+.ae-role{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-left:15px;margin-bottom:3px;}
+.ae-desc{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--ivory-2);line-height:1.55;padding-left:15px;display:none;margin-top:5px;}
+.ae-wiki{display:inline-block;margin-top:7px;margin-left:15px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-b);text-decoration:none;border-bottom:1px solid rgba(110,207,222,.3);transition:color .2s;}
+.ae-wiki:hover{color:var(--ivory);}
+/* straggler / hauler children */
+.ae-child{padding:8px 0 8px 28px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s;display:none;margin:0 -18px;padding-right:14px;}
+.ae-child.vis{display:block;animation:fin .3s ease both;}
+.ae-child:hover{background:rgba(74,154,170,.05);}
+.ae-child.on{background:rgba(233,74,124,.07);}
+.ae-cn{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:5px;}
+.ae-cn::before{content:'└';opacity:.35;font-size:.8em;}
+.ae-cd{font-family:var(--serif);font-size:17px;font-style:italic;color:var(--ivory-2);line-height:1.45;margin-top:3px;}
+
+/* Legend */
+.leg-wrap{padding:10px 18px;border-top:1px solid var(--line);background:rgba(6,22,25,.5);flex-shrink:0;display:flex;flex-wrap:wrap;gap:7px 14px;}
+.leg{display:flex;align-items:center;gap:5px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.ld{width:6px;height:6px;border-radius:50%;}
+
+/* ── Ship tooltip (SVG hover label) ── */
+.ship-tooltip{
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .15s;
+}
+.node:hover .ship-tooltip{ opacity:1; }
+.ship-tooltip rect{fill:rgba(6,22,25,.92);stroke:var(--teal-s);stroke-width:.6;}
+.ship-tooltip text{font-family:'JetBrains Mono',monospace;font-size:7px;fill:var(--ivory);letter-spacing:.1em;text-transform:uppercase;}
+
+/* ── Map column ── */
+.map-col{flex:1;min-width:0;}
+.map-wrap{position:relative;}
+#map-svg{width:100%;display:block;}
+
+/* Zoom controls */
+.zbtns{position:fixed;bottom:20px;right:20px;z-index:100;display:flex;flex-direction:column;gap:4px;}
+.zbtn{width:30px;height:30px;background:rgba(11,34,39,.9);border:1px solid var(--line-s);color:var(--ivory-2);font-family:var(--mono);font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.zbtn:hover{background:var(--teal);color:var(--ivory);}
+.zbtn.fit{font-size:.52rem;letter-spacing:.08em;}
+
+@keyframes fin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:.1}}
+@keyframes flow{to{stroke-dashoffset:-24}}
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<header class="tb">
+  <div style="display:flex;align-items:center;gap:14px">
+    <a href="index.html" class="tb-logo"><span class="fd"></span>THE UNFOLDING</a>
+    <span class="tb-title">◉ Uplink · Mission Assets</span>
+  </div>
+  <div class="tb-r">
+    <span><span class="sd a"></span>Fold: Severed</span>
+    <span><span class="sd g"></span>Mairee: Online</span>
+    <a href="index.html" class="back">← Back</a>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sb" id="sidebar">
+    <div class="sb-hdr">
+      <div class="ut">◉ Uplink · Eyes Only</div>
+      <p class="ui">Memorize it. There is nothing else coming. Two systems. One severed connection. A funeral inventory.</p>
+    </div>
+
+    <!-- Layer toggles -->
+    <div class="toggles">
+      <button class="tog on" id="tog-fleet" onclick="toggleLayer('fleet',this)"><span class="tog-dot" style="background:var(--c-ship)"></span>Fleet</button>
+      <button class="tog on" id="tog-stations" onclick="toggleLayer('stations',this)"><span class="tog-dot" style="background:var(--c-station)"></span>Stations</button>
+      <button class="tog" id="tog-planets" onclick="toggleLayer('planets',this)"><span class="tog-dot" style="background:var(--c-planet)"></span>Planets</button>
+    </div>
+
+    <div class="sb-scroll">
+
+      <!-- SOL -->
+      <div class="sec">
+        <div class="sec-hdr" onclick="toggleSec(this)"><div><div class="sec-sys">Sol System</div><div class="sec-sub">Where we started. What we lost.</div></div><span class="sec-tog">▾</span></div>
+        <div class="sec-body">
+          <p class="sec-copy">Irrelevant now. But you should know the shape of the wound.</p>
+          <div class="ae" id="e-solbay" onclick="flyTo('solbay')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--c-dead)"></span><span class="ae-name">Solbay & Solac</span></div>
+            <div class="ae-role">Harbor · Academy · Origin</div>
+            <div class="ae-desc">The harbor and the school. Where they taught you to dream of the stars before kicking you into the void. Irrelevant.</div>
+            <a class="ae-wiki" href="wiki.html?entry=solbay" data-wiki-id="solbay" onclick="openWiki('solbay',event)">→ Wiki</a>
+          </div>
+          <div class="ae" id="e-kepler" onclick="flyTo('kepler')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--c-dead)"></span><span class="ae-name">Kepler Array</span></div>
+            <div class="ae-role">Fold-Proximate Relay · Sol Side · Severed</div>
+            <div class="ae-desc">Positioned near the Sol mouth of the Fold for maximum range. The phone lines home. Severed. Dead.</div>
+            <a class="ae-wiki" href="wiki.html?entry=kepler-array" data-wiki-id="kepler" onclick="openWiki('kepler',event)">→ Wiki</a>
+          </div>
+          <div class="ae" id="e-stragglers" onclick="toggleStragglers()">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--c-lost)"></span><span class="ae-name" id="strag-lbl">The Stragglers ▸</span></div>
+            <div class="ae-role">FNS Mimir · Alsvin · Muninn · Hugin</div>
+            <div class="ae-desc">Four ships caught on the wrong side when the Fold closed. Useless. But not forgotten.</div>
+          </div>
+          <div class="ae-child" id="e-mimir" onclick="flyTo('mimir')"><div class="ae-cn" style="color:var(--c-lost)">FNS Mimir</div><div class="ae-cd">Freighter. Muro's son Mo is aboard. Beyond the Fold, unreachable.</div><a class="ae-wiki" href="wiki.html?entry=fns-mimir" data-wiki-id="mimir" onclick="openWiki('mimir',event)">→ Wiki</a></div>
+          <div class="ae-child" id="e-alsvin" onclick="flyTo('alsvin')"><div class="ae-cn" style="color:var(--c-lost)">FNS Alsvin</div><div class="ae-cd">Fabrication ship. Oliver's mother Laura Savannen commands her.</div><a class="ae-wiki" href="wiki.html?entry=fns-alsvin" data-wiki-id="alsvin" onclick="openWiki('alsvin',event)">→ Wiki</a></div>
+          <div class="ae-child" id="e-muninn" onclick="flyTo('muninn')"><div class="ae-cn" style="color:var(--c-lost)">FNS Muninn</div><div class="ae-cd">Science vessel. Without it, the colony is blind to Mairee's weather.</div><a class="ae-wiki" href="wiki.html?entry=fns-muninn" data-wiki-id="muninn" onclick="openWiki('muninn',event)">→ Wiki</a></div>
+          <div class="ae-child" id="e-hugin" onclick="flyTo('hugin')"><div class="ae-cn" style="color:var(--c-lost)">FNS Hugin</div><div class="ae-cd">Second science vessel. Its loss compounds the colony's atmospheric blindness.</div><a class="ae-wiki" href="wiki.html?entry=fns-hugin" data-wiki-id="hugin" onclick="openWiki('hugin',event)">→ Wiki</a></div>
+        </div>
+      </div>
+
+      <!-- FOLD -->
+      <div class="sec">
+        <div class="sec-hdr" onclick="toggleSec(this)"><div><div class="sec-sys">The Zaytsev Fold</div><div class="sec-sub">Severed. Error 410.</div></div><span class="sec-tog">▾</span></div>
+        <div class="sec-body">
+          <div class="ae" id="e-fold" onclick="flyTo('fold')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--c-lost)"></span><span class="ae-name">Fold Aperture — Closed</span></div>
+            <div class="ae-role">Interdimensional Transit · Permanently Severed</div>
+            <div class="ae-desc">The only passage between Sol and Yreus. Psychedelic and fractal in transit. Collapsed after the Brisinger passed through. Permanent. Irreversible.</div>
+            <a class="ae-wiki" href="wiki.html?entry=the-zaytsev-aperture-fold" data-wiki-id="fold" onclick="openWiki('fold',event)">→ Wiki</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EN ROUTE -->
+      <div class="sec">
+        <div class="sec-hdr" onclick="toggleSec(this)"><div><div class="sec-sys">En Route · Yreus System</div><div class="sec-sub">Moving. Coming.</div></div><span class="sec-tog">▾</span></div>
+        <div class="sec-body">
+          <div class="ae" id="e-brisinger" onclick="flyTo('brisinger')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--danger)"></span><span class="ae-name">FNS Brisinger</span></div>
+            <div class="ae-role">Freighter · The Problem Child · Further Out</div>
+            <div class="ae-desc">Last ship through the Fold. Hull covered in things that glow. Do not board it. Whoever gives you that order is lying to you.</div>
+            <a class="ae-wiki" href="wiki.html?entry=fns-brisinger" data-wiki-id="brisinger" onclick="openWiki('brisinger',event)">→ Wiki</a>
+          </div>
+          <div class="ae" id="e-dainn" onclick="flyTo('dainn')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--c-ship)"></span><span class="ae-name">FNS Dáinn</span></div>
+            <div class="ae-role">Industrial Freighter · Critical Supply · Closer</div>
+            <div class="ae-desc">Our machines. Ore processors, reactor parts, seed banks. She is not optional.</div>
+            <a class="ae-wiki" href="wiki.html?entry=fns-d%C3%A1inn" data-wiki-id="dainn" onclick="openWiki('dainn',event)">→ Wiki</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- YREUS OUTER -->
+      <div class="sec">
+        <div class="sec-hdr" onclick="toggleSec(this)"><div><div class="sec-sys">Yreus — Outer System</div><div class="sec-sub">What barely keeps us alive.</div></div><span class="sec-tog">▾</span></div>
+        <div class="sec-body">
+          <div class="ae" id="e-yreus-array" onclick="flyTo('yreus-array')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--c-dead)"></span><span class="ae-name">Yreus Array</span></div>
+            <div class="ae-role">Fold-Proximate Relay · Yreus Side · Offline</div>
+            <div class="ae-desc">Positioned to relay from the Yreus mouth of the Fold inward. Can't connect us to Sol anymore. Decorative.</div>
+            <a class="ae-wiki" href="wiki.html?entry=yreus-array" data-wiki-id="yreus-array" onclick="openWiki('yreus-array',event)">→ Wiki</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORBITAL -->
+      <div class="sec">
+        <div class="sec-hdr" onclick="toggleSec(this)"><div><div class="sec-sys">Mairee Orbital Network</div><div class="sec-sub">The ceiling. What keeps the roof on.</div></div><span class="sec-tog">▾</span></div>
+        <div class="sec-body">
+          <div class="ae" id="e-orbital-command" onclick="toggleHaulers()">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--c-station)"></span><span class="ae-name" id="oc-lbl">Orbital Command ▾</span></div>
+            <div class="ae-role">Wide Orbit · FNS Yggdrasil (Repurposed) · The Brain</div>
+            <div class="ae-desc">Full system visibility. Decides what moves where via the Corridor.</div>
+            <a class="ae-wiki" href="wiki.html?entry=orbital-command" data-wiki-id="orbital-command" onclick="openWiki('orbital-command',event)">→ Wiki</a>
+          </div>
+          <div class="ae-child vis" id="e-haulers-b" onclick="flyTo('haulers')"><div class="ae-cn" style="color:var(--c-station)">FNS Bygul</div><div class="ae-cd">Heavy hauler. Two million tons. Circling Mairee, waiting to be sucked dry.</div><a class="ae-wiki" href="wiki.html?entry=fns-bygul" data-wiki-id="bygul" onclick="openWiki('bygul',event)">→ Wiki</a></div>
+          <div class="ae-child vis" id="e-haulers-t" onclick="flyTo('haulers')"><div class="ae-cn" style="color:var(--c-station)">FNS Trjegul</div><div class="ae-cd">Heavy hauler. Captain Mei Chezin. Advocates loudly. Two million tons of patience.</div><a class="ae-wiki" href="wiki.html?entry=fns-trjegul" data-wiki-id="trjegul" onclick="openWiki('trjegul',event)">→ Wiki</a></div>
+          <div class="ae" id="e-orbit-one" onclick="flyTo('orbit-one')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--c-station)"></span><span class="ae-name">Orbit One "The Eyes"</span></div>
+            <div class="ae-role">Close Orbit · Surveillance · Spore Storm Detection</div>
+            <div class="ae-desc">The Peeping Tom. Watches the weather and alerts us to the psychedelic spore storms. Maybe watches you too.</div>
+            <a class="ae-wiki" href="wiki.html?entry=orbital-command" data-wiki-id="orbit-one" onclick="openWiki('orbit-one',event)">→ Wiki</a>
+          </div>
+          <div class="ae" id="e-orbit-two" onclick="flyTo('orbit-two')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--c-station)"></span><span class="ae-name">Orbit Two "The Lungs"</span></div>
+            <div class="ae-role">Close Orbit · Atmospheric Processing · Life Support</div>
+            <div class="ae-desc">Strips oxygen, nitrogen, and other special stardust. We need it for life support up here.</div>
+            <a class="ae-wiki" href="wiki.html?entry=orbital-command" data-wiki-id="orbit-two" onclick="openWiki('orbit-two',event)">→ Wiki</a>
+          </div>
+          <div class="ae" id="e-orbit-three" onclick="flyTo('orbit-three')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--teal-b)"></span><span class="ae-name">Orbit Three "The Ears"</span></div>
+            <div class="ae-role">Close Orbit · Comms Relay · Muro's Station</div>
+            <div class="ae-desc">Muro's man cave. Mostly listens to static now. Enough to drive anyone mad.</div>
+            <a class="ae-wiki" href="wiki.html?entry=orbital-three-the-ears" data-wiki-id="orbit-three" onclick="openWiki('orbit-three',event)">→ Wiki</a>
+            <a class="ae-wiki" href="wiki.html?entry=frank-muro" data-wiki-id="muro" onclick="openWiki('muro',event)" style="margin-left:8px">→ Muro</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SURFACE -->
+      <div class="sec">
+        <div class="sec-hdr" onclick="toggleSec(this)"><div><div class="sec-sys">Mairee — Surface</div><div class="sec-sub">Ships that don't fly anymore.</div></div><span class="sec-tog">▾</span></div>
+        <div class="sec-body">
+          <p class="sec-copy">Landed. Repurposed. They will never leave. Neither will we.</p>
+          <div class="ae" id="e-mairee" onclick="flyTo('mairee')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--rose)"></span><span class="ae-name">Mairee</span></div>
+            <div class="ae-role">Planet · Yreus System · Second Home · The Lie</div>
+            <div class="ae-desc">From space it looks like a jewel. Too bad we are the infection. And she knows it.</div>
+            <a class="ae-wiki" href="wiki.html?entry=mairee" data-wiki-id="mairee" onclick="openWiki('mairee',event)">→ Wiki</a>
+          </div>
+          <div class="ae" id="e-freya" onclick="flyTo('freya')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--c-landed)"></span><span class="ae-name">FNS Freya · The Homestead</span></div>
+            <div class="ae-role">Surface · The Sickle · Landed Flagship</div>
+            <div class="ae-desc">Now a village. Three thousand people call it home. Nobody chose it.</div>
+            <a class="ae-wiki" href="wiki.html?entry=fns-freya" data-wiki-id="freya" onclick="openWiki('freya',event)">→ Wiki</a>
+          </div>
+          <div class="ae" id="e-ivaldi" onclick="flyTo('ivaldi')">
+            <div class="ae-h"><span class="ae-dot" style="background:#c4621a"></span><span class="ae-name">FNS Ivaldi · The Plateau</span></div>
+            <div class="ae-role">Surface · The Plateau · Industry</div>
+            <div class="ae-desc">A dropped brick. Smelters, fabricators, repair bays — inside what used to fly.</div>
+            <a class="ae-wiki" href="wiki.html?entry=fns-ivaldi" data-wiki-id="ivaldi" onclick="openWiki('ivaldi',event)">→ Wiki</a>
+          </div>
+          <div class="ae" id="e-delta" onclick="flyTo('delta')">
+            <div class="ae-h"><span class="ae-dot" style="background:var(--green)"></span><span class="ae-name">The Delta</span></div>
+            <div class="ae-role">Surface · Jungle · DROP Stations · Camps</div>
+            <div class="ae-desc">A churning petri dish. Crops that bite back. We call the water somewhat drinkable.</div>
+            <a class="ae-wiki" href="wiki.html?entry=the-delta" data-wiki-id="delta" onclick="openWiki('delta',event)">→ Wiki</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /scroll -->
+
+    <div class="leg-wrap">
+      <div class="leg"><span class="ld" style="background:var(--c-star)"></span>Star</div>
+      <div class="leg"><span class="ld" style="background:var(--c-planet)"></span>Planet</div>
+      <div class="leg"><span class="ld" style="background:var(--c-moon)"></span>Moon</div>
+      <div class="leg"><span class="ld" style="background:var(--c-ship)"></span>Ship</div>
+      <div class="leg"><span class="ld" style="background:var(--c-station)"></span>Station</div>
+      <div class="leg"><span class="ld" style="background:var(--c-landed)"></span>Landed</div>
+      <div class="leg"><span class="ld" style="background:var(--c-dead)"></span>Offline</div>
+      <div class="leg"><span class="ld" style="background:var(--c-lost)"></span>Lost</div>
+    </div>
+  </aside>
+
+  <!-- MAP COLUMN -->
+  <div class="map-col">
+    <div class="map-wrap">
+      <svg id="map-svg" viewBox="0 0 700 2200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Glows -->
+          <radialGradient id="gSol" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f5d060" stop-opacity=".32"/><stop offset="100%" stop-color="#f5d060" stop-opacity="0"/></radialGradient>
+          <radialGradient id="gYra" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f0b040" stop-opacity=".28"/><stop offset="100%" stop-color="#f0b040" stop-opacity="0"/></radialGradient>
+          <radialGradient id="gMairee" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#e94a7c" stop-opacity=".3"/><stop offset="100%" stop-color="#e94a7c" stop-opacity="0"/></radialGradient>
+          <filter id="gl"><feGaussianBlur stdDeviation="2.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="gsm"><feGaussianBlur stdDeviation="1.3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <marker id="at" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#4a9aaa" opacity=".7"/></marker>
+          <marker id="ar" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#cc3333" opacity=".5"/></marker>
+        </defs>
+
+        <!-- Stars background -->
+        <g id="stars"></g>
+
+        <!-- ════════════════════════════════════
+             SOL SYSTEM  (top, y≈200)
+        ════════════════════════════════════ -->
+        <text x="350" y="40" font-family="'JetBrains Mono',monospace" font-size="13" fill="#4a9aaa" letter-spacing=".28em" font-weight="700" text-anchor="middle" opacity=".8">SOL SYSTEM</text>
+
+        <!-- Sol glow + star -->
+        <circle cx="350" cy="170" r="130" fill="url(#gSol)"/>
+        <g filter="url(#gl)">
+          <circle cx="350" cy="170" r="22" fill="#f5d060" opacity=".95"/>
+          <circle cx="350" cy="170" r="13" fill="#fff8c0"/>
+        </g>
+        <text x="350" y="200" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#f5d060" letter-spacing=".2em" text-anchor="middle" opacity=".7">SOL</text>
+
+        <!-- ── Sol planets layer (hidden by default) ── -->
+        <!-- Orbit rings -->
+        <g id="layer-sol-planets" style="display:none">
+          <!-- Mercury r=34 -->
+          <circle cx="350" cy="170" r="34" fill="none" stroke="#f5d060" stroke-width=".35" stroke-dasharray="2 7" opacity=".18"/>
+          <circle cx="350" cy="136" r="3" fill="#a08060" opacity=".85"/>
+          <text x="356" y="133" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#907050">MERCURY</text>
+          <!-- Venus r=52 -->
+          <circle cx="350" cy="170" r="52" fill="none" stroke="#f5d060" stroke-width=".35" stroke-dasharray="2 7" opacity=".14"/>
+          <circle cx="298" cy="170" r="4.5" fill="#c8a050" opacity=".85"/>
+          <text x="260" y="170" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#b89040" text-anchor="end">VENUS</text>
+          <!-- Earth r=72 -->
+          <circle cx="350" cy="170" r="72" fill="none" stroke="#3b7682" stroke-width=".4" stroke-dasharray="3 6" opacity=".22"/>
+          <circle cx="350" cy="98" r="5.5" fill="#1a4a6a" stroke="#3b7682" stroke-width=".8" opacity=".88"/>
+          <text x="350" y="87" font-family="'JetBrains Mono',monospace" font-size="6" fill="#4a7a8a" text-anchor="middle">EARTH</text>
+          <!-- Luna -->
+          <circle cx="356" cy="92" r="2.2" fill="#606070" stroke="#808090" stroke-width=".5" opacity=".72"/>
+          <text x="363" y="90" font-family="'JetBrains Mono',monospace" font-size="5" fill="#606070">LUNA</text>
+          <!-- Mars r=94 -->
+          <circle cx="350" cy="170" r="94" fill="none" stroke="#f5d060" stroke-width=".35" stroke-dasharray="2 7" opacity=".13"/>
+          <circle cx="444" cy="170" r="4" fill="#a04030" opacity=".82"/>
+          <text x="450" y="168" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#903828">MARS</text>
+          <!-- Asteroid belt r≈112 -->
+          <circle cx="350" cy="170" r="113" fill="none" stroke="#a08060" stroke-width="3.5" stroke-dasharray="1 3" opacity=".1"/>
+          <!-- Jupiter r=140 -->
+          <circle cx="350" cy="170" r="140" fill="none" stroke="#f5d060" stroke-width=".35" stroke-dasharray="2 7" opacity=".11"/>
+          <circle cx="350" cy="30" r="8" fill="#c8a878" stroke="#b8986a" stroke-width=".7" opacity=".85"/>
+          <text x="350" y="18" font-family="'JetBrains Mono',monospace" font-size="6" fill="#b8986a" text-anchor="middle">JUPITER</text>
+          <!-- Saturn r=180, but constrained — show label at edge -->
+          <circle cx="350" cy="170" r="178" fill="none" stroke="#f5d060" stroke-width=".35" stroke-dasharray="2 7" opacity=".09"/>
+          <!-- Saturn clips off right edge — place left -->
+          <circle cx="172" cy="170" r="7" fill="#c8b880" stroke="#b0a068" stroke-width=".7" opacity=".82"/>
+          <ellipse cx="172" cy="170" rx="14" ry="3.5" fill="none" stroke="#a09058" stroke-width="1.5" opacity=".45"/>
+          <text x="150" y="168" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#a09058" text-anchor="end">SATURN</text>
+          <!-- Uranus r=220+ — show partially, top -->
+          <circle cx="350" cy="170" r="218" fill="none" stroke="#f5d060" stroke-width=".3" stroke-dasharray="2 8" opacity=".07"/>
+          <!-- clips top — indicate with label only -->
+          <text x="580" y="148" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#60a0b0" opacity=".55" text-anchor="end">URANUS ↑</text>
+          <!-- Neptune — indicate only -->
+          <text x="580" y="160" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#3060a0" opacity=".45" text-anchor="end">NEPTUNE ↑</text>
+        </g>
+
+        <!-- Solbay near Earth (fleet layer) -->
+        <g id="layer-fleet-solbay">
+          <g class="node" id="n-solbay" onclick="flyTo('solbay')">
+            <circle cx="428" cy="98" r="5.5" fill="#0b2227" stroke="#5a7a82" stroke-width="1" opacity=".85"/>
+            <text x="428" y="101.5" font-family="'JetBrains Mono',monospace" font-size="5" fill="#5a7a82" text-anchor="middle" font-weight="700">SB</text>
+          </g>
+          <text x="438" y="96" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#5a7a82">SOLBAY</text>
+        </g>
+
+        <!-- Kepler Array (station layer) -->
+        <g id="layer-station-kepler">
+          <line x1="370" y1="170" x2="500" y2="260" stroke="#5a7a82" stroke-width=".4" stroke-dasharray="3 6" opacity=".22"/>
+          <g class="node" id="n-kepler" onclick="flyTo('kepler')">
+            <rect x="496" y="256" width="16" height="10" rx="1" fill="#0b2227" stroke="#5a7a82" stroke-width=".9" opacity=".85"/>
+            <text x="504" y="263.5" font-family="'JetBrains Mono',monospace" font-size="5" fill="#5a7a82" text-anchor="middle" font-weight="700">KA</text>
+          </g>
+          <text x="516" y="263" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#5a7a82">KEPLER ARRAY</text>
+        </g>
+
+        <!-- ── STRAGGLERS (fleet layer, Sol side of Fold) ── -->
+        <g id="layer-fleet-stragglers">
+          <g class="node" id="n-stragglers" onclick="toggleStragglers()">
+            <circle cx="510" cy="310" r="10" fill="#200a0a" stroke="#cc3333" stroke-width="1.1"/>
+            <text x="510" y="314" font-family="'JetBrains Mono',monospace" font-size="7" fill="#cc3333" text-anchor="middle" font-weight="700">×4</text>
+          </g>
+          <text x="510" y="330" font-family="'JetBrains Mono',monospace" font-size="7" fill="#cc3333" text-anchor="middle">STRAGGLERS</text>
+          <!-- Web (hidden) -->
+          <g id="strag-web" style="opacity:0;pointer-events:none;transition:opacity .4s">
+            <line x1="510" y1="310" x2="468" y2="358" stroke="#cc3333" stroke-width=".6" opacity=".4"/>
+            <line x1="510" y1="310" x2="498" y2="365" stroke="#cc3333" stroke-width=".6" opacity=".4"/>
+            <line x1="510" y1="310" x2="522" y2="365" stroke="#cc3333" stroke-width=".6" opacity=".4"/>
+            <line x1="510" y1="310" x2="552" y2="358" stroke="#cc3333" stroke-width=".6" opacity=".4"/>
+            <g class="node" onclick="flyTo('mimir')"><ellipse cx="468" cy="358" rx="13" ry="7" fill="#200a0a" stroke="#cc3333" stroke-width=".9"/><text x="468" y="361.2" font-family="'JetBrains Mono',monospace" font-size="7" fill="#cc3333" text-anchor="middle" font-weight="700">MIM</text><g class="ship-tooltip"><rect x="432" y="366" width="72" height="12" rx="1"/><text x="468" y="375" text-anchor="middle">FNS MIMIR</text></g></g>
+            <text x="468" y="373" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#cc3333" text-anchor="middle">MIMIR</text>
+            <g class="node" onclick="flyTo('alsvin')"><ellipse cx="498" cy="365" rx="13" ry="7" fill="#200a0a" stroke="#cc3333" stroke-width=".9"/><text x="498" y="368.2" font-family="'JetBrains Mono',monospace" font-size="7" fill="#cc3333" text-anchor="middle" font-weight="700">ALS</text><g class="ship-tooltip"><rect x="460" y="373" width="76" height="12" rx="1"/><text x="498" y="382" text-anchor="middle">FNS ALSVIN</text></g></g>
+            <text x="498" y="380" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#cc3333" text-anchor="middle">ALSVIN</text>
+            <g class="node" onclick="flyTo('muninn')"><ellipse cx="522" cy="365" rx="14" ry="7" fill="#200a0a" stroke="#cc3333" stroke-width=".9"/><text x="522" y="368.2" font-family="'JetBrains Mono',monospace" font-size="7" fill="#cc3333" text-anchor="middle" font-weight="700">MUN</text><g class="ship-tooltip"><rect x="482" y="373" width="80" height="12" rx="1"/><text x="522" y="382" text-anchor="middle">FNS MUNINN</text></g></g>
+            <text x="522" y="380" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#cc3333" text-anchor="middle">MUNINN</text>
+            <g class="node" onclick="flyTo('hugin')"><ellipse cx="552" cy="358" rx="13" ry="7" fill="#200a0a" stroke="#cc3333" stroke-width=".9"/><text x="552" y="361.2" font-family="'JetBrains Mono',monospace" font-size="7" fill="#cc3333" text-anchor="middle" font-weight="700">HUG</text><g class="ship-tooltip"><rect x="514" y="366" width="76" height="12" rx="1"/><text x="552" y="375" text-anchor="middle">FNS HUGIN</text></g></g>
+            <text x="552" y="373" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#cc3333" text-anchor="middle">HUGIN</text>
+          </g>
+        </g>
+
+        <!-- ════════════════════════════════════
+             FOLD  (y≈460)
+        ════════════════════════════════════ -->
+        <!-- Vertical fold line -->
+        <line x1="350" y1="340" x2="350" y2="430" stroke="#cc3333" stroke-width="1.2" stroke-dasharray="5 5" opacity=".4"/>
+        <!-- Rupture -->
+        <g transform="translate(350,460)">
+          <line x1="-10" y1="-10" x2="10" y2="10" stroke="#cc3333" stroke-width="2.2" opacity=".88"/>
+          <line x1="10"  y1="-10" x2="-10" y2="10" stroke="#cc3333" stroke-width="2.2" opacity=".88"/>
+          <circle r="16" fill="none" stroke="#cc3333" stroke-width=".8" opacity=".32" stroke-dasharray="2 3"/>
+        </g>
+        <text x="350" y="444" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#cc3333" letter-spacing=".16em" text-anchor="middle">ZAYTSEV FOLD · SEVERED</text>
+        <text x="350" y="488" font-family="'JetBrains Mono',monospace" font-size="6" fill="#cc3333" letter-spacing=".1em" text-anchor="middle" opacity=".5">ERROR 410 · APERTURE DISSIPATED</text>
+        <line x1="350" y1="495" x2="350" y2="550" stroke="#cc3333" stroke-width="1.2" stroke-dasharray="5 5" opacity=".4"/>
+
+        <!-- ════════════════════════════════════
+             YREUS SYSTEM  (bottom, y≈1200)
+        ════════════════════════════════════ -->
+        <text x="350" y="590" font-family="'JetBrains Mono',monospace" font-size="13" fill="#4a9aaa" letter-spacing=".28em" font-weight="700" text-anchor="middle" opacity=".8">YREUS SYSTEM</text>
+
+        <!-- Yreus Array (station layer) — near Fold Yreus mouth -->
+        <g id="layer-station-yarray">
+          <g class="node" id="n-yreus-array" onclick="flyTo('yreus-array')">
+            <rect x="286" y="618" width="16" height="10" rx="1" fill="#0b2227" stroke="#5a7a82" stroke-width=".9" opacity=".85"/>
+            <text x="294" y="625.5" font-family="'JetBrains Mono',monospace" font-size="5" fill="#5a7a82" text-anchor="middle" font-weight="700">YA</text>
+          </g>
+          <text x="280" y="618" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#5a7a82" text-anchor="end">YREUS ARRAY</text>
+        </g>
+
+        <!-- Brisinger (fleet layer) — further from Mairee, RED -->
+        <g id="layer-fleet-brisinger">
+          <line x1="350" y1="655" x2="350" y2="672" stroke="#cc3333" stroke-width=".8" opacity=".5" marker-end="url(#ar)"/>
+          <g class="node" id="n-brisinger" onclick="flyTo('brisinger')">
+            <ellipse cx="350" cy="688" rx="18" ry="8" fill="#200a0a" stroke="#cc3333" stroke-width="1.2" filter="url(#gsm)"/>
+            <text x="350" y="691.2" font-family="'JetBrains Mono',monospace" font-size="7" fill="#cc3333" text-anchor="middle" font-weight="700">BRS</text>
+            <!-- hover tooltip -->
+            <g class="ship-tooltip">
+              <rect x="310" y="697" width="80" height="12" rx="1"/>
+              <text x="350" y="706" text-anchor="middle">FNS BRISINGER</text>
+            </g>
+          </g>
+          <text x="376" y="686" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#5a7a82">EN ROUTE</text>
+        </g>
+
+        <!-- Dáinn (fleet layer) — closer to Mairee -->
+        <g id="layer-fleet-dainn">
+          <line x1="350" y1="715" x2="350" y2="732" stroke="#4a9aaa" stroke-width=".8" opacity=".5" marker-end="url(#at)"/>
+          <g class="node" id="n-dainn" onclick="flyTo('dainn')">
+            <ellipse cx="350" cy="748" rx="15" ry="8" fill="#0d1a20" stroke="#4a9aaa" stroke-width="1.1" filter="url(#gsm)"/>
+            <text x="350" y="751.2" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4a9aaa" text-anchor="middle" font-weight="700">DÁN</text>
+            <!-- hover tooltip -->
+            <g class="ship-tooltip">
+              <rect x="316" y="757" width="68" height="12" rx="1"/>
+              <text x="350" y="766" text-anchor="middle">FNS DÁINN</text>
+            </g>
+          </g>
+          <text x="373" y="746" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#5a7a82">EN ROUTE</text>
+        </g>
+
+        <!-- ── YRA STAR ── -->
+        <circle cx="350" cy="1150" r="160" fill="url(#gYra)"/>
+        <g filter="url(#gl)">
+          <circle cx="350" cy="1150" r="18" fill="#f0b040" opacity=".95"/>
+          <circle cx="350" cy="1150" r="10" fill="#ffe090"/>
+        </g>
+        <text x="350" y="1177" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#f0b040" letter-spacing=".2em" text-anchor="middle" opacity=".7">YRA</text>
+        <text x="350" y="1190" font-family="'JetBrains Mono',monospace" font-size="6" fill="#f0b040" letter-spacing=".1em" text-anchor="middle" opacity=".45">G-TYPE · SLIGHTLY SMALLER THAN SOL</text>
+
+        <!-- ── YREUS PLANETS (hidden by default) ── -->
+        <g id="layer-yreus-planets" style="display:none">
+          <circle cx="350" cy="1150" r="60" fill="none" stroke="#f0b040" stroke-width=".4" stroke-dasharray="2 7" opacity=".15"/>
+          <g class="node" onclick="openWiki('muspel',{preventDefault:()=>{},stopPropagation:()=>{}})">
+            <circle cx="350" cy="1090" r="5.5" fill="#8a4030" stroke="#a06040" stroke-width=".8" opacity=".8"/>
+            <text x="358" y="1088" font-family="'JetBrains Mono',monospace" font-size="6" fill="#8a5040">MUSPEL</text>
+            <text x="358" y="1096" font-family="'JetBrains Mono',monospace" font-size="5" fill="#6a4030" opacity=".7">Scorched · Iron-rich</text>
+            <g class="ship-tooltip"><rect x="346" y="1099" width="44" height="10" rx="1"/><text x="368" y="1107" text-anchor="middle" font-size="6">→ WIKI</text></g>
+          </g>
+          <!-- Mairee orbit ring -->
+          <circle cx="350" cy="1150" r="110" fill="none" stroke="#e94a7c" stroke-width=".5" stroke-dasharray="3 6" opacity=".2"/>
+          <!-- Ysk orbit -->
+          <circle cx="350" cy="1150" r="180" fill="none" stroke="#4a7a8a" stroke-width=".4" stroke-dasharray="2 7" opacity=".15"/>
+          <g class="node" onclick="openWiki('ysk',{preventDefault:()=>{},stopPropagation:()=>{}})">
+            <circle cx="182" cy="1108" r="5.5" fill="#2a4a5a" stroke="#3a6a7a" stroke-width=".8" opacity=".8"/>
+            <text x="170" y="1106" font-family="'JetBrains Mono',monospace" font-size="6" fill="#3a6a7a" text-anchor="end">YSK</text>
+            <text x="170" y="1114" font-family="'JetBrains Mono',monospace" font-size="5" fill="#2a5060" text-anchor="end" opacity=".7">Cold Desert · CO₂</text>
+            <g class="ship-tooltip"><rect x="125" y="1117" width="44" height="10" rx="1"/><text x="147" y="1125" text-anchor="middle" font-size="6">→ WIKI</text></g>
+          </g>
+          <!-- Ginnunga Gap (asteroid belt) -->
+          <circle cx="350" cy="1150" r="240" fill="none" stroke="#a08060" stroke-width="4" stroke-dasharray="1 4" opacity=".12"/>
+          <g class="node" onclick="openWiki('ginnunga-gap',{preventDefault:()=>{},stopPropagation:()=>{}})">
+            <text x="350" y="903" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#a08060" letter-spacing=".15em" text-anchor="middle" opacity=".55">GINNUNGA GAP · ASTEROID BELT</text>
+            <text x="350" y="913" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#a08060" text-anchor="middle" opacity=".4">→ WIKI</text>
+          </g>
+          <!-- Ymir -->
+          <circle cx="350" cy="1150" r="330" fill="none" stroke="#606070" stroke-width=".4" stroke-dasharray="2 7" opacity=".13"/>
+          <g class="node" onclick="openWiki('ymir',{preventDefault:()=>{},stopPropagation:()=>{}})">
+            <circle cx="680" cy="1150" r="9" fill="#2a2a35" stroke="#505060" stroke-width=".9" opacity=".85"/>
+            <ellipse cx="680" cy="1150" rx="17" ry="5" fill="none" stroke="#484858" stroke-width="1.8" opacity=".5"/>
+            <text x="700" y="1148" font-family="'JetBrains Mono',monospace" font-size="6" fill="#505060">YMIR</text>
+            <text x="700" y="1156" font-family="'JetBrains Mono',monospace" font-size="5" fill="#404050" opacity=".7">Charcoal Rings</text>
+            <g class="ship-tooltip"><rect x="698" y="1159" width="44" height="10" rx="1"/><text x="720" y="1167" text-anchor="middle" font-size="6">→ WIKI</text></g>
+          </g>
+          <!-- Nefir -->
+          <circle cx="350" cy="1150" r="430" fill="none" stroke="#3060a0" stroke-width=".4" stroke-dasharray="2 7" opacity=".12"/>
+          <g class="node" onclick="openWiki('nefir',{preventDefault:()=>{},stopPropagation:()=>{}})">
+            <circle cx="20" cy="1150" r="7.5" fill="#1a3060" stroke="#2a50a0" stroke-width=".9" opacity=".85"/>
+            <text x="30" y="1148" font-family="'JetBrains Mono',monospace" font-size="6" fill="#2a50a0">NEFIR</text>
+            <text x="30" y="1156" font-family="'JetBrains Mono',monospace" font-size="5" fill="#1a3070" opacity=".7">Ice Giant · Deep Blue</text>
+            <g class="ship-tooltip"><rect x="28" y="1159" width="44" height="10" rx="1"/><text x="50" y="1167" text-anchor="middle" font-size="6">→ WIKI</text></g>
+          </g>
+        </g>
+
+        <!-- ── MAIREE ── -->
+        <circle cx="350" cy="950" r="80" fill="url(#gMairee)"/>
+        <!-- Wide orbit ring: OC + Haulers -->
+        <circle cx="350" cy="950" r="100" fill="none" stroke="#3b7682" stroke-width=".7" stroke-dasharray="3 6" opacity=".3"/>
+        <!-- Close orbit ring: Eyes/Lungs/Ears -->
+        <circle cx="350" cy="950" r="64" fill="none" stroke="#3b7682" stroke-width=".6" stroke-dasharray="2 4" opacity=".38"/>
+        <!-- Planet body -->
+        <g class="node" id="n-mairee" onclick="flyTo('mairee')">
+          <circle cx="350" cy="950" r="32" fill="#1a3d2a" stroke="#e94a7c" stroke-width="1.4" filter="url(#gl)" opacity=".96"/>
+          <circle cx="350" cy="950" r="22" fill="#234d35"/>
+          <circle cx="350" cy="950" r="34" fill="none" stroke="#e94a7c" stroke-width=".7" opacity=".28" stroke-dasharray="2 3"/>
+        </g>
+        <circle cx="350" cy="950" r="32" fill="none" stroke="#e94a7c" stroke-width=".8" opacity=".4" style="animation:pulse 3s ease-in-out infinite"/>
+        <text x="350" y="996" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#e94a7c" letter-spacing=".2em" text-anchor="middle">MAIREE</text>
+
+        <!-- ── MAIREE MOONS (planet layer) ── -->
+        <g id="layer-mairee-moons" style="display:none">
+          <g class="node" onclick="openWiki('skuld',{preventDefault:()=>{},stopPropagation:()=>{}})">
+            <circle cx="318" cy="922" r="4" fill="#1a2f35" stroke="#3b7682" stroke-width=".8" opacity=".78"/>
+            <text x="310" y="916" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#4a6a72" text-anchor="middle">SKULD</text>
+            <g class="ship-tooltip"><rect x="288" y="917" width="44" height="10" rx="1"/><text x="310" y="925" text-anchor="middle" font-size="6">→ WIKI</text></g>
+          </g>
+          <g class="node" onclick="openWiki('verdandi',{preventDefault:()=>{},stopPropagation:()=>{}})">
+            <circle cx="386" cy="924" r="3.5" fill="#1a2f35" stroke="#3b7682" stroke-width=".7" opacity=".78"/>
+            <text x="396" y="919" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#4a6a72">VERDANDI</text>
+            <g class="ship-tooltip"><rect x="394" y="920" width="44" height="10" rx="1"/><text x="416" y="928" text-anchor="middle" font-size="6">→ WIKI</text></g>
+          </g>
+          <g class="node" onclick="openWiki('urdra',{preventDefault:()=>{},stopPropagation:()=>{}})">
+            <circle cx="372" cy="980" r="3" fill="#1a2f35" stroke="#3b7682" stroke-width=".7" opacity=".7"/>
+            <text x="382" y="987" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#4a6a72">URDRA</text>
+            <g class="ship-tooltip"><rect x="380" y="988" width="44" height="10" rx="1"/><text x="402" y="996" text-anchor="middle" font-size="6">→ WIKI</text></g>
+          </g>
+        </g>
+
+        <!-- ── SURFACE ASSETS — dots on Mairee ── -->
+        <g id="layer-fleet-surface">
+          <g class="node" id="n-freya" onclick="flyTo('freya')">
+            <circle cx="337" cy="938" r="5.5" fill="#d4a843" opacity=".95" filter="url(#gsm)"/>
+          </g>
+          <text x="323" y="934" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#d4a843" text-anchor="middle">FREYA</text>
+          <g class="node" id="n-ivaldi" onclick="flyTo('ivaldi')">
+            <circle cx="335" cy="956" r="5.5" fill="#c4621a" opacity=".95" filter="url(#gsm)"/>
+          </g>
+          <text x="320" y="962" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#c4621a" text-anchor="middle">IVALDI</text>
+          <g class="node" id="n-delta" onclick="flyTo('delta')">
+            <circle cx="362" cy="958" r="5.5" fill="#4a8a5a" opacity=".95" filter="url(#gsm)"/>
+          </g>
+          <text x="376" y="963" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#4a8a5a">DELTA</text>
+        </g>
+
+        <!-- ── CLOSE ORBIT STATIONS (station layer) ── -->
+        <g id="layer-stations-close">
+          <!-- The Eyes — top -->
+          <g class="node" id="n-orbit-one" onclick="flyTo('orbit-one')">
+            <rect x="342" y="879" width="16" height="10" rx="1" fill="#0b2227" stroke="#3b7682" stroke-width="1"/>
+            <text x="350" y="886.5" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#3b7682" text-anchor="middle" font-weight="700">O1</text>
+          </g>
+          <text x="350" y="872" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#3b7682" text-anchor="middle">THE EYES</text>
+          <!-- The Lungs — right -->
+          <g class="node" id="n-orbit-two" onclick="flyTo('orbit-two')">
+            <rect x="406" y="945" width="16" height="10" rx="1" fill="#0b2227" stroke="#3b7682" stroke-width="1"/>
+            <text x="414" y="952.5" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#3b7682" text-anchor="middle" font-weight="700">O2</text>
+          </g>
+          <text x="428" y="950" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#3b7682">THE LUNGS</text>
+          <!-- The Ears — bottom (active) -->
+          <g class="node" id="n-orbit-three" onclick="flyTo('orbit-three')">
+            <rect x="342" y="1011" width="16" height="10" rx="1" fill="#0b2227" stroke="#4a9aaa" stroke-width="1.1" filter="url(#gsm)"/>
+            <text x="350" y="1018.5" font-family="'JetBrains Mono',monospace" font-size="5.5" fill="#4a9aaa" text-anchor="middle" font-weight="700">O3</text>
+          </g>
+          <text x="350" y="1032" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#4a9aaa" text-anchor="middle">THE EARS</text>
+        </g>
+
+        <!-- ── WIDE ORBIT: OC + Haulers (station layer) ── -->
+        <g id="layer-stations-wide">
+          <!-- Orbital Command — top wide orbit -->
+          <g class="node" id="n-orbital-command" onclick="toggleHaulers()">
+            <rect x="332" y="843" width="36" height="12" rx="1" fill="#0b2227" stroke="#3b7682" stroke-width="1.1" filter="url(#gsm)"/>
+            <text x="350" y="851.5" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#3b7682" text-anchor="middle" font-weight="700">OC</text>
+          </g>
+          <text x="350" y="836" font-family="'JetBrains Mono',monospace" font-size="7" fill="#3b7682" text-anchor="middle">ORBITAL CMD</text>
+          <!-- Corridor -->
+          <line x1="350" y1="855" x2="350" y2="879" stroke="#4a9aaa" stroke-width=".9" stroke-dasharray="4 3" opacity=".35" style="animation:flow 4s linear infinite" marker-end="url(#at)"/>
+          <!-- Haulers web (visible by default) -->
+          <g id="hauler-web" style="opacity:1;pointer-events:all;transition:opacity .4s">
+            <line x1="350" y1="849" x2="240" y2="866" stroke="#3b7682" stroke-width=".6" opacity=".4"/>
+            <line x1="350" y1="849" x2="460" y2="866" stroke="#3b7682" stroke-width=".6" opacity=".4"/>
+            <g class="node" id="n-haulers" onclick="flyTo('haulers')">
+              <ellipse cx="232" cy="875" rx="14" ry="7" fill="#0b2227" stroke="#3b7682" stroke-width="1"/>
+              <text x="232" y="878.2" font-family="'JetBrains Mono',monospace" font-size="7" fill="#3b7682" text-anchor="middle" font-weight="700">BYG</text>
+              <g class="ship-tooltip">
+                <rect x="196" y="883" width="72" height="12" rx="1"/>
+                <text x="232" y="892" text-anchor="middle">FNS BYGUL</text>
+              </g>
+            </g>
+            <g class="node" id="n-haulers-t" onclick="flyTo('haulers')">
+              <ellipse cx="468" cy="875" rx="14" ry="7" fill="#0b2227" stroke="#3b7682" stroke-width="1"/>
+              <text x="468" y="878.2" font-family="'JetBrains Mono',monospace" font-size="7" fill="#3b7682" text-anchor="middle" font-weight="700">TRJ</text>
+              <g class="ship-tooltip">
+                <rect x="430" y="883" width="76" height="12" rx="1"/>
+                <text x="468" y="892" text-anchor="middle">FNS TRJEGUL</text>
+              </g>
+            </g>
+          </g>
+        </g>
+
+        <!-- Timestamp -->
+        <text x="350" y="2185" font-family="'JetBrains Mono',monospace" font-size="6.5" fill="#3b7682" letter-spacing=".13em" text-anchor="middle" opacity=".45">TRANSMISSION · CLICK 33 · CLASSIFICATION: EYES ONLY</text>
+      </svg>
+    </div><!-- /map-wrap -->
+  </div><!-- /map-col -->
+</div><!-- /page -->
+
+<!-- Zoom buttons (fixed) -->
+<div class="zbtns" id="zbtns">
+  <button class="zbtn" onclick="svgZoom(0.77)">+</button>
+  <button class="zbtn" onclick="svgZoom(1.3)">−</button>
+  <button class="zbtn fit" onclick="svgReset()">FIT</button>
+</div>
+
+<script>
+// ── Starfield ──────────────────────────────────────────────
+(function(){
+  const sf=document.getElementById('stars'), r=(a,b)=>Math.random()*(b-a)+a;
+  for(let i=0;i<320;i++){
+    const x=r(0,700), y=r(0,2200);
+    // avoid system centres
+    if(Math.hypot(x-350,y-170)<60||Math.hypot(x-350,y-1150)<70) continue;
+    const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx',x); c.setAttribute('cy',y);
+    c.setAttribute('r',r(.25,1.5)); c.setAttribute('fill','#f4ead9');
+    c.setAttribute('opacity',r(.08,.55)); sf.appendChild(c);
+  }
+})();
+
+// ── Layer toggles ──────────────────────────────────────────
+const LAYERS = {
+  fleet:    ['layer-fleet-solbay','layer-fleet-stragglers','layer-fleet-brisinger','layer-fleet-dainn','layer-fleet-surface'],
+  stations: ['layer-station-kepler','layer-station-yarray','layer-stations-close','layer-stations-wide'],
+  planets:  ['layer-sol-planets','layer-yreus-planets','layer-mairee-moons'],
+};
+function toggleLayer(name, btn){
+  btn.classList.toggle('on');
+  const on = btn.classList.contains('on');
+  LAYERS[name].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.style.display=on?'':'none';
+  });
+}
+// Apply initial states
+LAYERS.fleet.forEach(id=>{ const el=document.getElementById(id); if(el) el.style.display=''; });
+LAYERS.stations.forEach(id=>{ const el=document.getElementById(id); if(el) el.style.display=''; });
+LAYERS.planets.forEach(id=>{ const el=document.getElementById(id); if(el) el.style.display='none'; });
+
+// ── SVG pan/zoom on scroll ─────────────────────────────────
+const svg=document.getElementById('map-svg');
+const BASE={x:0,y:0,w:700,h:2200};
+let vb={...BASE}, drag=false, lx=0, ly=0;
+function setVB(){ svg.setAttribute('viewBox',`${vb.x} ${vb.y} ${vb.w} ${vb.h}`); }
+function clamp(){
+  vb.w=Math.min(3000,Math.max(150,vb.w));
+  vb.h=Math.min(9000,Math.max(150,vb.h));
+}
+svg.addEventListener('wheel',e=>{
+  e.preventDefault();
+  const f=e.deltaY<0?.82:1.22, rect=svg.getBoundingClientRect();
+  const mx=(e.clientX-rect.left)/rect.width*vb.w+vb.x, my=(e.clientY-rect.top)/rect.height*vb.h+vb.y;
+  vb.x=mx-(mx-vb.x)*f; vb.y=my-(my-vb.y)*f; vb.w*=f; vb.h*=f; clamp(); setVB();
+},{passive:false});
+svg.addEventListener('mousedown',e=>{if(e.button!==0)return;drag=true;lx=e.clientX;ly=e.clientY;});
+window.addEventListener('mouseup',()=>drag=false);
+window.addEventListener('mousemove',e=>{
+  if(!drag)return;
+  const rect=svg.getBoundingClientRect();
+  vb.x-=(e.clientX-lx)*vb.w/rect.width; vb.y-=(e.clientY-ly)*vb.h/rect.height;
+  lx=e.clientX; ly=e.clientY; setVB();
+});
+function svgZoom(f){ const cx=vb.x+vb.w/2,cy=vb.y+vb.h/2; vb.w*=f; vb.h*=f; clamp(); vb.x=cx-vb.w/2; vb.y=cy-vb.h/2; setVB(); }
+function svgReset(){ vb={...BASE}; setVB(); }
+
+// ── Fly-to (smooth animated zoom) ─────────────────────────
+// [svgX, svgY, viewWidth]
+const POS={
+  // [centerX, centerY, viewportWidth]  — coordinates match SVG elements exactly
+  solbay:            [428,  98, 360],
+  kepler:            [504, 261, 340],
+  stragglers:        [510, 335, 440],
+  mimir:             [468, 362, 260],
+  alsvin:            [498, 368, 260],
+  muninn:            [522, 368, 260],
+  hugin:             [552, 362, 260],
+  fold:              [350, 460, 480],
+  'yreus-array':     [294, 623, 340],
+  brisinger:         [350, 688, 340],
+  dainn:             [350, 748, 320],
+  mairee:            [350, 950, 340],
+  freya:             [337, 938, 180],
+  ivaldi:            [335, 956, 180],
+  delta:             [362, 958, 180],
+  'orbital-command': [350, 849, 360],
+  haulers:           [350, 878, 440],
+  'orbit-one':       [350, 884, 280],
+  'orbit-two':       [414, 950, 280],
+  'orbit-three':     [350,1016, 280],
+};
+let raf=null, curEntry=null;
+function flyTo(id){
+  const p=POS[id]; if(!p) return;
+  highlight(id);
+  const [tx,ty,tw]=p;
+  // th: show a region tall enough to give context; use same width as tw
+  const th = tw;
+  const targetX = tx - tw/2;
+  const targetY = ty - th/2;
+  const sx=vb.x, sy=vb.y, sw=vb.w, sh=vb.h;
+  const t0=performance.now();
+  if(raf) cancelAnimationFrame(raf);
+  function step(t){
+    const pr=Math.min(1,(t-t0)/640), e=pr<.5?2*pr*pr:-1+(4-2*pr)*pr;
+    vb.w = sw + (tw - sw)*e;
+    vb.h = sh + (th - sh)*e;
+    vb.x = sx + (targetX - sx)*e;
+    vb.y = sy + (targetY - sy)*e;
+    setVB(); if(pr<1) raf=requestAnimationFrame(step);
+  }
+  raf=requestAnimationFrame(step);
+}
+
+// ── Highlight & expand sidebar entry ──────────────────────
+function highlight(id){
+  if(curEntry){
+    const p=document.getElementById('e-'+curEntry);
+    if(p){ p.classList.remove('on'); const d=p.querySelector('.ae-desc'); if(d) d.style.display='none'; }
+  }
+  curEntry=id;
+  const el=document.getElementById('e-'+id);
+  if(el){
+    el.classList.add('on');
+    const d=el.querySelector('.ae-desc');
+    if(d) d.style.display='block';
+    el.scrollIntoView({behavior:'smooth',block:'nearest'});
+    const body=el.closest('.sec-body');
+    if(body&&body.style.display==='none') toggleSec(body.previousElementSibling);
+  }
+}
+
+// ── Section toggle ─────────────────────────────────────────
+function toggleSec(hdr){
+  const b=hdr.nextElementSibling, t=hdr.querySelector('.sec-tog'), open=b.style.display!=='none';
+  b.style.display=open?'none':''; if(t) t.textContent=open?'▸':'▾';
+}
+
+// ── Stragglers web ─────────────────────────────────────────
+let stOpen=false;
+function toggleStragglers(){
+  stOpen=!stOpen;
+  const w=document.getElementById('strag-web');
+  w.style.opacity=stOpen?'1':'0'; w.style.pointerEvents=stOpen?'all':'none';
+  document.querySelectorAll('.ae-child').forEach((c,i)=>{ if(i<4) c.classList.toggle('vis',stOpen); });
+  document.getElementById('strag-lbl').textContent=stOpen?'The Stragglers ▾':'The Stragglers ▸';
+  highlight('stragglers');
+  if(stOpen) flyTo('stragglers');
+}
+
+// ── Haulers web ────────────────────────────────────────────
+let hOpen=true;
+// Show haulers open by default
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('oc-lbl').textContent='Orbital Command ▾';
+  document.querySelectorAll('.ae-child').forEach((c,i)=>{
+    // children 4 and 5 are haulers (after the 4 straggler children)
+    if(i===4||i===5) c.classList.add('vis');
+  });
+});
+function toggleHaulers(){
+  hOpen=!hOpen;
+  const w=document.getElementById('hauler-web');
+  w.style.opacity=hOpen?'1':'0'; w.style.pointerEvents=hOpen?'all':'none';
+  // toggle hauler children
+  const children=[document.getElementById('e-haulers-b'),document.getElementById('e-haulers-t')];
+  children.forEach(c=>{ if(c) c.classList.toggle('vis',hOpen); });
+  document.getElementById('oc-lbl').textContent=hOpen?'Orbital Command ▾':'Orbital Command ▸';
+  highlight('orbital-command');
+  flyTo('orbital-command');
+}
+
+// ── Wiki deep-link ─────────────────────────────────────────
+// Maps asset id to wiki.js data id so we can open wiki.html
+// and trigger that entry (wiki.js reads ?entry= on load)
+const WIKI_IDS = {
+  brisinger:         'fns-brisinger',
+  dainn:             'fns-dáinn',
+  freya:             'fns-freya',
+  ivaldi:            'fns-ivaldi',
+  mimir:             'fns-mimir',
+  alsvin:            'fns-alsvin',
+  muninn:            'fns-muninn',
+  hugin:             'fns-hugin',
+  bygul:             'fns-bygul',
+  trjegul:           'fns-trjegul',
+  muro:              'frank-muro',
+  mairee:            'mairee',
+  delta:             'the-delta',
+  fold:              'the-zaytsev-aperture-fold',
+  solbay:            'solbay',
+  kepler:            'kepler-array',
+  'yreus-array':     'yreus-array',
+  'orbital-command': 'orbital-command',
+  'orbit-one':       'orbit-one-the-eyes',
+  'orbit-two':       'orbit-two-the-lungs',
+  'orbit-three':     'orbital-three-the-ears',
+  muspel:            'muspel',
+  ysk:               'ysk',
+  'ginnunga-gap':    'ginnunga-gap',
+  ymir:              'ymir',
+  nefir:             'nefir',
+  skuld:             'skuld',
+  verdandi:          'verdandi',
+  urdra:             'urdra',
+};
+
+let wikiTab = null;
+
+function wikiUrl(id) {
+  const wikiId = WIKI_IDS[id] || id;
+  return 'wiki.html?entry=' + encodeURIComponent(wikiId);
+}
+
+function openWiki(mapId, e) {
+  e.preventDefault();
+  e.stopPropagation();
+  const wikiId = WIKI_IDS[mapId] || mapId;
+  const url = 'wiki.html?entry=' + encodeURIComponent(wikiId);
+
+  if (wikiTab && !wikiTab.closed) {
+    let done = false;
+    // Listen for acknowledgement from the wiki tab
+    function onAck(ev) {
+      if (ev.data?.type === 'entry-opened' && ev.data.entryId === wikiId) {
+        done = true;
+        window.removeEventListener('message', onAck);
+      }
+    }
+    window.addEventListener('message', onAck);
+    // Navigate to the correct URL (handles case where wiki tab is on wrong entry)
+    wikiTab.location.href = url;
+    // Retry sending the message until acknowledged (max 10 attempts × 200ms = 2s)
+    let attempts = 0;
+    function send() {
+      if (done || attempts++ >= 10 || !wikiTab || wikiTab.closed) return;
+      try { wikiTab.postMessage({ type: 'open-entry', entryId: wikiId }, '*'); } catch(e){}
+      setTimeout(send, 200);
+    }
+    setTimeout(send, 300); // small delay for page to start loading
+    wikiTab.focus();
+  } else {
+    wikiTab = window.open(url, 'unfolding-wiki');
+  }
+}
+
+// Stamp correct href on all wiki links so they work even without JS
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.ae-wiki[data-wiki-id]').forEach(a => {
+    const id = a.dataset.wikiId;
+    a.href = wikiUrl(id);
+  });
+});
+</script>
+</body>
+</html>

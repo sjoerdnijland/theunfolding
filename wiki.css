@@ -1,0 +1,654 @@
+/* ============================================================
+   THE UNFOLDING — wiki.html page styles
+   ============================================================ */
+
+.wiki-page { padding-top: 100px; min-height: 100vh; }
+
+/* Back navigation on wiki page */
+.nav-back-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+  opacity: 1 !important;
+}
+.nav-back-link:hover { color: var(--rose) !important; }
+.nav-back-arrow {
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+.nav-back-link:hover .nav-back-arrow { transform: translateX(-3px); }
+
+/* ── Header ─────────────────────────────────────────────── */
+.wp-header {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(6,22,25,0.85), rgba(6,22,25,1)),
+              url("assets/still-pool.webp") center/cover;
+}
+.wp-title { font-size: clamp(3rem, 6vw, 5rem); margin: 14px 0 20px; }
+.wp-sub { font-family: var(--serif); font-size: 1.25rem; color: var(--ivory-2); max-width: 620px; margin: 0 0 20px; font-weight: 300; line-height: 1.5; }
+.wp-sub em { color: var(--rose); }
+.wp-stats { display: flex; gap: 14px; align-items: center; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; }
+.wp-stats .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); }
+
+/* ── Spoiler bar ─────────────────────────────────────────── */
+.spoiler-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  border: 1px solid var(--line);
+  background: rgba(11,34,39,0.7);
+  flex-wrap: wrap;
+}
+.spoiler-bar label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.chapter-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.chapter-pill {
+  padding: 5px 12px;
+  font-family: var(--mono); font-size: 0.66rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border: 1px solid var(--line-strong); border-radius: 2px;
+  background: transparent; color: var(--muted);
+  cursor: pointer; transition: all 0.15s;
+}
+.chapter-pill:hover { border-color: var(--rose); color: var(--rose); }
+.chapter-pill.active { background: var(--rose); border-color: var(--rose); color: var(--ink); }
+.spoiler-hint {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.spoiler-hint em { color: var(--rose-soft); font-style: normal; }
+
+/* Image toggle button */
+.image-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: auto;
+  padding: 8px 16px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.image-toggle-btn:hover {
+  border-color: var(--ivory);
+  color: var(--ivory);
+}
+.image-toggle-btn.on {
+  background: rgba(244,234,217,0.08);
+  border-color: var(--ivory-2);
+  color: var(--ivory);
+}
+.img-toggle-icon {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* ── Body wrap ───────────────────────────────────────────── */
+.wiki-body-wrap { padding: 48px 32px 120px; }
+
+/* ── Tabs ────────────────────────────────────────────────── */
+.wiki-tabs {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.wiki-tab {
+  padding: 8px 16px;
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  border: 1px solid var(--line-strong); border-radius: 2px;
+  background: transparent; color: var(--muted);
+  cursor: pointer; transition: all 0.2s;
+}
+.wiki-tab:hover { border-color: var(--rose); color: var(--rose); }
+.wiki-tab.active { background: var(--ivory); color: var(--ink); border-color: var(--ivory); }
+
+/* ── Search ──────────────────────────────────────────────── */
+.wiki-search-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px; margin-bottom: 28px;
+  border: 1px solid var(--line-strong);
+  background: rgba(11,34,39,0.5); color: var(--muted);
+  transition: border-color 0.2s;
+}
+.wiki-search-bar:focus-within { border-color: var(--rose); color: var(--ivory); }
+.wiki-search-bar input {
+  flex: 1; background: transparent; border: 0;
+  color: var(--ivory); font-family: var(--serif); font-size: 1.05rem;
+}
+.wiki-search-bar input:focus { outline: 0; }
+.wiki-search-bar input::placeholder { color: var(--muted); font-style: italic; }
+
+/* ── Sections ────────────────────────────────────────────── */
+.wiki-section { display: none; }
+.wiki-section.active { display: block; }
+
+/* ── Card grid ───────────────────────────────────────────── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.wiki-card {
+  background: rgba(11,34,39,0.6);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.wiki-card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+.wiki-card.is-spoiler { cursor: default; }
+.wiki-card.is-spoiler:hover { transform: none; border-color: var(--line); }
+
+/* Background image — faded behind card content */
+.wiki-card.has-image::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: var(--card-bg);
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.18;
+  filter: saturate(0.4) contrast(1.1);
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.wiki-card.has-image:hover::before { opacity: 0.28; }
+.wiki-card.is-spoiler.has-image::before { opacity: 0.08; }
+
+.card-inner {
+  position: relative;
+  z-index: 1;
+  padding: 24px 22px;
+}
+
+.card-tag {
+  display: inline-block;
+  font-family: var(--mono); font-size: 0.6rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 2px;
+  margin-bottom: 10px; font-weight: 600;
+  border: 1px solid currentColor;
+}
+.tag-char    { color: var(--rose); }
+.tag-ship    { color: #74e1c4; }
+.tag-loc     { color: #f4ce74; }
+.tag-item    { color: #c4a6ff; }
+.tag-ai      { color: #88c3cd; }
+.tag-org     { color: var(--teal-soft); }
+.tag-biology { color: #7ec87e; }
+
+.wiki-card h3 {
+  font-family: var(--serif); font-size: 1.3rem;
+  font-weight: 400; color: var(--ivory); margin-bottom: 6px;
+}
+.wiki-card .card-preview {
+  font-family: var(--serif); font-size: 0.95rem;
+  color: var(--ivory-2); line-height: 1.5; margin: 0 0 10px;
+}
+.wiki-card .card-meta {
+  font-family: var(--mono); font-size: 0.68rem;
+  letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;
+}
+
+/* ── Spoiler scramble state ──────────────────────────────── */
+.spoiler-chapter-badge {
+  position: absolute; top: 12px; right: 12px;
+  font-family: var(--mono); font-size: 0.6rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); opacity: 0.7;
+}
+.scrambled-text {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  user-select: none;
+  filter: blur(2px);
+  opacity: 0.5;
+  transition: filter 0.3s;
+}
+.wiki-card.is-spoiler:hover .scrambled-text {
+  filter: blur(3px);
+  opacity: 0.4;
+}
+/* Timeline headings need colour overrides when scrambled */
+.t-event.is-spoiler h4.scrambled-text {
+  color: var(--ink-3);
+}
+.t-event.is-spoiler .t-time.scrambled-text {
+  color: var(--ink-3);
+}
+.spoiler-lock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-family: var(--mono); font-size: 0.68rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted);
+}
+.spoiler-lock-icon { color: var(--rose); opacity: 0.7; font-size: 0.8rem; }
+
+/* ── Lore blocks ─────────────────────────────────────────── */
+.lore-list { display: flex; flex-direction: column; gap: 16px; }
+.lore-block {
+  padding: 28px;
+  background: rgba(11,34,39,0.5);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  position: relative;
+}
+.lore-block.is-spoiler { cursor: default; }
+.lore-block h3 {
+  font-family: var(--serif); font-size: 1.4rem;
+  font-weight: 400; color: var(--ivory); margin-bottom: 10px;
+}
+.lore-block p {
+  font-family: var(--serif); font-size: 1.05rem;
+  color: var(--ivory-2); line-height: 1.7; margin: 0;
+}
+.lore-block .spoiler-chapter-badge { top: 16px; right: 16px; }
+
+/* ── Timeline ────────────────────────────────────────────── */
+.timeline {
+  border-left: 1px solid var(--line-strong);
+  padding-left: 32px;
+  margin-top: 8px;
+  display: flex; flex-direction: column; gap: 0;
+}
+.t-event { position: relative; padding: 0 0 36px; }
+.t-event::before {
+  content: '';
+  position: absolute; left: -37px; top: 6px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--ink-2); border: 2px solid var(--teal-soft);
+}
+.t-event:first-child::before { border-color: var(--rose); background: rgba(233,74,124,0.2); }
+.t-event.is-spoiler::before { border-color: var(--muted); }
+.t-time {
+  font-family: var(--mono); font-size: 0.68rem;
+  letter-spacing: 0.14em; color: var(--rose);
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.t-event.is-spoiler .t-time { color: var(--muted); }
+.t-event h4 {
+  font-family: var(--serif); font-size: 1.2rem;
+  font-weight: 400; color: var(--ivory); margin-bottom: 6px;
+}
+.t-event p {
+  font-family: var(--serif); font-size: 1rem;
+  color: var(--ivory-2); line-height: 1.6; margin: 0;
+}
+
+/* ── Modal ───────────────────────────────────────────────── */
+.detail-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(6,22,25,0.85); z-index: 200;
+  align-items: center; justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.detail-overlay.open { display: flex; }
+.detail-modal {
+  background: var(--ink-2);
+  border: 1px solid var(--line-strong);
+  padding: 0;
+  max-width: 600px; width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  animation: fadeDown 0.2s ease;
+}
+.modal-scroll {
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 0;
+}
+#modal-content {
+  padding: 0;
+}
+.modal-close {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: rgba(6,22,25,0.75);
+  border: 1px solid var(--line-strong);
+  color: var(--ivory);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1;
+  z-index: 300;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.modal-close:hover {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: var(--ink);
+}
+.modal-body {
+  padding: 28px 40px 40px;
+  position: relative;
+  z-index: 1;
+}
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(6,22,25,0.55);
+  border: 1px solid var(--line-strong);
+  color: var(--ivory);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1;
+  z-index: 20;
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.modal-close:hover {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: var(--ink);
+}
+
+/* Hero image — flush to all edges, bleeds into content below */
+.modal-img-hero {
+  display: block;
+  width: 100%;
+  height: 300px;
+  margin: 0 0 -100px;
+  background-size: cover;
+  background-position: center center;
+  filter: saturate(0.4) contrast(1.05) brightness(0.75);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black            0%,
+    black            40%,
+    rgba(0,0,0,0.8)  58%,
+    rgba(0,0,0,0.4)  72%,
+    rgba(0,0,0,0.1)  85%,
+    transparent      100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black            0%,
+    black            40%,
+    rgba(0,0,0,0.8)  58%,
+    rgba(0,0,0,0.4)  72%,
+    rgba(0,0,0,0.1)  85%,
+    transparent      100%
+  );
+  position: relative;
+  z-index: 0;
+}
+
+/* Modal body carries all padding */
+.modal-body {
+  padding: 28px 40px 40px;
+}
+
+.modal-title {
+  font-family: var(--serif); font-size: 2rem;
+  font-weight: 400; color: var(--ivory); margin: 10px 0 20px;
+}
+.modal-dl {
+  display: grid; grid-template-columns: 110px 1fr;
+  gap: 8px 16px; font-size: 0.9rem; margin-bottom: 20px;
+}
+.modal-dl dt {
+  font-family: var(--mono); font-size: 0.68rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); padding-top: 2px;
+}
+.modal-dl dd {
+  font-family: var(--serif); font-size: 1rem;
+  color: var(--ivory-2); line-height: 1.5;
+}
+
+/* Appearance block */
+.modal-appearance {
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  background: rgba(45,91,102,0.12);
+  border-left: 2px solid var(--teal-soft);
+}
+.modal-section-label {
+  display: block;
+  font-family: var(--mono); font-size: 0.68rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--teal-soft); margin-bottom: 8px;
+}
+.modal-appearance p {
+  font-family: var(--serif); font-size: 1rem;
+  color: var(--ivory-2); line-height: 1.65; margin: 0;
+  font-style: italic;
+}
+
+.modal-desc {
+  font-family: var(--serif); font-size: 1.05rem;
+  line-height: 1.75; color: var(--ivory-2);
+  padding-top: 20px; padding-bottom: 40px;
+  border-top: 1px solid var(--line);
+}
+/* Modal spoiler state */
+.modal-spoiler-notice {
+  padding: 20px;
+  background: rgba(233,74,124,0.05);
+  border: 1px solid rgba(233,74,124,0.2);
+  border-radius: 2px;
+  font-family: var(--serif); font-size: 1rem;
+  color: var(--muted); font-style: italic; line-height: 1.6;
+}
+.modal-spoiler-notice strong {
+  display: block; margin-bottom: 8px;
+  font-family: var(--mono); font-size: 0.7rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--rose); font-style: normal;
+}
+
+/* ── Empty state ─────────────────────────────────────────── */
+.wiki-empty {
+  padding: 60px 20px; text-align: center;
+  color: var(--muted); font-family: var(--serif); font-size: 1.15rem;
+}
+.wiki-empty em { color: var(--rose); }
+.wiki-empty .dim { font-size: 0.95rem; font-style: italic; margin-top: 8px; }
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 820px) {
+  .wiki-body-wrap { padding: 32px 20px 80px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .modal-dl { grid-template-columns: 1fr; }
+  .detail-modal { padding: 0; }
+  .modal-body { padding: 20px 24px 32px; }
+  .modal-img-hero { height: 220px; margin: 0 0 -70px; }
+  .modal-close { top: 16px; right: 16px; }
+  .timeline { padding-left: 20px; }
+  .t-event::before { left: -25px; }
+  .spoiler-bar { gap: 12px; }
+}
+
+/* ── Time System Visual Layout ───────────────────────────── */
+.lore-time-system { border-left: 2px solid var(--rose); }
+
+.ts-intro {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--ivory-2);
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+
+.ts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.ts-header {
+  display: grid;
+  grid-template-columns: 36px 1fr 90px 110px 110px 1fr;
+  gap: 0 12px;
+  padding: 8px 16px;
+  background: rgba(74,154,170,0.08);
+  border-bottom: 1px solid var(--line-strong);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal-bright);
+}
+
+.ts-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 90px 110px 110px 1fr;
+  gap: 0 12px;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+  transition: background 0.15s;
+}
+.ts-row:last-child { border-bottom: none; }
+.ts-row:hover { background: rgba(74,154,170,0.05); }
+
+/* Alternating subtle tint for Maya/Cycle (larger units) */
+.ts-row:nth-child(n+6) { background: rgba(233,74,124,0.03); }
+.ts-row:nth-child(n+6):hover { background: rgba(233,74,124,0.07); }
+
+.ts-symbol {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--teal-bright);
+  opacity: 0.7;
+}
+.ts-header .ts-symbol { color: var(--teal-bright); opacity: 1; }
+
+.ts-bar-wrap {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.ts-bar {
+  height: 3px;
+  background: linear-gradient(to right, var(--teal-soft), var(--rose));
+  border-radius: 2px;
+  opacity: 0.7;
+  min-width: 3px;
+}
+
+.ts-name {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ivory);
+  font-weight: 500;
+}
+
+.ts-duration {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--amber);
+  letter-spacing: 0.04em;
+}
+
+.ts-ratio {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.ts-note {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--ivory-2);
+  opacity: 0.75;
+}
+
+@media (max-width: 820px) {
+  .ts-header { display: none; }
+  .ts-row {
+    grid-template-columns: 36px 1fr 80px;
+    grid-template-rows: auto auto;
+  }
+  .ts-bar-wrap { display: none; }
+  .ts-name { grid-column: 2; grid-row: 1; }
+  .ts-duration { grid-column: 3; grid-row: 1; text-align: right; }
+  .ts-ratio { grid-column: 2; grid-row: 2; font-size: 0.62rem; }
+  .ts-note { grid-column: 3; grid-row: 2; font-size: 0.8rem; text-align: right; }
+}
+
+/* ── Lore link button ─────────────────────────────────────── */
+.lore-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 9px 18px;
+  border: 1px solid var(--teal-soft);
+  color: var(--teal-bright, #4a9aaa);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.lore-link-btn:hover {
+  background: var(--teal-soft);
+  color: var(--ink);
+  border-color: var(--teal-soft);
+}
