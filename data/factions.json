@@ -1,0 +1,74 @@
+[
+  {
+    "name": "The Directorate",
+    "tag": "org",
+    "role": "Colonial government",
+    "affil": "Ulre Corbin",
+    "aliases": "Directorate",
+    "desc": "The emergency governing body established by Corbin under the Emergency Suppression Protocol. Controls all food, water, medicine, and shelter through the Grid. Employs the Guardian corps and the Eyewyn surveillance network. Opposed by Westhoff, Vilde, and the Caldera resistance.",
+    "chapter": 2,
+    "image": "/assets/char/ulre_corbin.png",
+    "mj_prompt": "A Directorate command briefing — uniformed figures around a holographic colony map, every hab unit monitored, guardian patrol routes displayed in red, the architecture of total control made visible, cold blue light, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "the-directorate"
+  },
+  {
+    "name": "The Seiðr",
+    "tag": "org",
+    "role": "Extradimensional collective",
+    "affil": "Æzal, Gabræl",
+    "aliases": "The entities, the visitors",
+    "desc": "Entities from another dimension who traveled through the Fold along with the Brisinger crew. They exist as consciousness currents and integrate with biological hosts. Not a unified faction — Æzal (colonizer) and Gabræl (conservationist) conflict.",
+    "chapter": 8,
+    "image": "/assets/char/raj_gupta.png",
+    "mj_prompt": "Abstract: two vast luminous entities of different character — one expansive and reaching outward like a tide, one curling inward like a guardian — visible as shifting aurora light deep in an alien subterranean space, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "the-seiðr"
+  },
+  {
+    "name": "Guild of Masons & Order of Magicians",
+    "tag": "org",
+    "role": "Secret fraternal order",
+    "affil": "Ivaldi Base / Heston",
+    "aliases": "Masons, Magicians, the Guild",
+    "desc": "A secret society within the Ivaldi mining crew. Members are Masons (workers) and Magicians (leaders). They maintain a hidden ritual chamber and hold genuine political power on the Plateau.",
+    "chapter": 10,
+    "image": "/assets/factions/masons.png",
+    "mj_prompt": "A ritual confrontation in a secret underground chamber — three miners in sub-zero thermal suits with Masonic Aprons in a ceremonial star chamber with a the checkerboard floor, genuine power in a theatrical frame, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "guild-of-masons-order-of-magicians"
+  },
+  {
+    "name": "SMILE",
+    "tag": "org",
+    "role": "Resistance network",
+    "affil": "Westhoff / Gail / Omar / Martel",
+    "aliases": "Sovereign Mind Initiative, SMILE",
+    "desc": "Sovereign Mind Initiative. A humanist organization dedicated to keeping humans human — resisting Seiðr integration. Founded at the Westhoff Institute. Opposes both Corbin's totalitarianism and Seiðr takeover.",
+    "chapter": 9,
+    "image": "/assets/factions/SMILE.png",
+    "mj_prompt": "A covert meeting in a ship galley after hours — five very different crew members leaning in around a single table light, faces half in shadow, the intimacy and danger of conspiracy, a handshake sealing something irreversible, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "smile"
+  },
+  {
+    "name": "The Caldera Resistance",
+    "tag": "org",
+    "role": "Deserter community",
+    "affil": "Marco Thieman / Sarah Farley",
+    "aliases": "Thieman's group, the deserters",
+    "desc": "A community of colonists who have deserted the Directorate regime and established themselves in a hidden volcanic caldera valley.",
+    "chapter": 9,
+    "image": "/assets/locations/caldera.png",
+    "mj_prompt": "A small community of colony deserters gathered around fires in a volcanic caldera at night, tents and shelters made from salvaged materials, alien jungle walls surrounding them, the stars of Mairee's sky above, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "the-caldera-resistance"
+  },
+  {
+    "name": "Orbital Command",
+    "tag": "org",
+    "role": "Orbital authority",
+    "affil": "Eva Bellamy",
+    "aliases": "OC",
+    "desc": "The command structure overseeing all orbital assets — the Corridor, Vanguard patrol ships, relay stations, and the haulers. Effectively under Bellamy, who supports Corbin's system for pragmatic reasons.",
+    "chapter": 3,
+    "image": "/assets/char/eva_bellamy.png",
+    "mj_prompt": "The central command deck of an orbital station, multiple screens showing ship positions and Corridor traffic above Mairee, a lone controller watching it all from the raised command chair, the planet below through panoramic viewports, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "orbital-command"
+  }
+]

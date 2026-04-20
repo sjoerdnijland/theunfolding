@@ -1,0 +1,171 @@
+[
+  {
+    "time": "54 Cycles before Unfolding (~8 Earth years prior)",
+    "title": "Mairee Prospects Final Review",
+    "desc": "Commander Vilde, General Reed, and Professor Adrian Farley finalize the 'Freya' mission plan, selecting the Sickle for the Homestead and the Plateau for industry.",
+    "chapter": 1,
+    "image": "",
+    "mj_prompt": "",
+    "id": "mairee-prospects-review"
+  },
+  {
+    "time": "2 Cycles and 42 Clicks before Unfolding",
+    "title": "The Departure from Solbay",
+    "desc": "The Freya Fleet assembles at Solbay Station. Oliver Savannen says goodbye to his mother, Laura, as the ships prepare to breach the Fold.",
+    "chapter": 7,
+    "image": "",
+    "mj_prompt": "",
+    "id": "solbay-departure"
+  },
+  {
+    "time": "1 Pulse before Unfolding",
+    "title": "Laura's Secret Log",
+    "desc": "Aboard the FNS Alsvin, Laura Savannen records a final log for Oliver, revealing the true purpose of the COG: to help humanity survive first contact.",
+    "chapter": 24,
+    "image": "",
+    "mj_prompt": "",
+    "id": "laura-alsvin-log"
+  },
+  {
+    "time": "0 Clicks: THE UNFOLDING",
+    "title": "The Severing",
+    "desc": "The station hum changes as contact with Sol is severed. Vilde addresses the settlers at Homestead Dome before a gravitic suppressor field is activated by the Directorate.",
+    "chapter": 1,
+    "image": "",
+    "mj_prompt": "",
+    "id": "unfolding-severing"
+  },
+  {
+    "time": "4 Clicks Post-Unfolding",
+    "title": "The Fold Dissipates",
+    "desc": "Lieutenant Frank Muro confirms the Fold is gone. His CIX, Gary, begins exhibiting 'syntactic decay,' claiming the state of the universe is now 'cleaner.'",
+    "chapter": 3,
+    "image": "",
+    "mj_prompt": "",
+    "id": "muro-fold-confirmation"
+  },
+  {
+    "time": "5 Clicks Post-Unfolding",
+    "title": "The Dáinn Intercepts",
+    "desc": "Captain Westhoff defies Directorate orders to return to orbit, setting an intercept course for the unresponsive FNS Brisinger.",
+    "chapter": 3,
+    "id": "westhoff-defiance"
+  },
+  {
+    "time": "7 Clicks Post-Unfolding",
+    "title": "The Grid Intervenes",
+    "desc": "Susana Perera suffers a violent seizure. The local Grid interface detects the event and automatically sedates her with neuro-regulators.",
+    "chapter": 4,
+    "image": "",
+    "mj_prompt": "",
+    "id": "susana-seizure"
+  },
+  {
+    "time": "8 Clicks Post-Unfolding",
+    "title": "Corbin's Ultimatum",
+    "desc": "The Dáinn is plagued by artificial gravity waves. Corbin threatens to cut Commander Vilde’s life support unless Westhoff reverses course. The Brisinger sends an 'S' signal.",
+    "chapter": 5,
+    "image": "",
+    "mj_prompt": "",
+    "id": "corbin-hostage-threat"
+  },
+  {
+    "time": "12 Clicks Post-Unfolding",
+    "title": "Assignment to the Delta",
+    "desc": "Centurion Jax assigns Kirsten Strand to secure a survey team in the Delta, a move designed to remove a political rival.",
+    "chapter": 6,
+    "image": "",
+    "mj_prompt": "",
+    "id": "jax-strand-assignment"
+  },
+  {
+    "time": "13 Clicks Post-Unfolding",
+    "title": "The Stingray Enters",
+    "desc": "Hale and Kiran board the derelict Brisinger via a maintenance shaft. Meanwhile, at the Homestead, Ian Perera helps Oliver bypass the Grid to play Mechdroid.",
+    "chapter": 7,
+    "image": "",
+    "mj_prompt": "",
+    "id": "stingray-boarding"
+  },
+  {
+    "time": "14 Clicks Post-Unfolding",
+    "title": "Grief at The Leaf",
+    "desc": "After losing recruit Ahmed Nasr to the bog, Kirsten Strand and Sarah Farley clash over the survival of the survey team in the hostile Delta.",
+    "chapter": 10,
+    "image": "",
+    "mj_prompt": "",
+    "id": "nasr-loss"
+  },
+  {
+    "time": "16 Clicks Post-Unfolding",
+    "title": "Cymatics and Voices",
+    "desc": "Muro realizes the planet is using the station’s power grid as an antenna. Gary the CIX begins speaking with Muro's own voice and speech patterns.",
+    "chapter": 12,
+    "image": "",
+    "mj_prompt": "",
+    "id": "muro-cymatics"
+  },
+  {
+    "time": "17 Clicks Post-Unfolding",
+    "title": "The Masonic Ritual",
+    "desc": "Ulre Corbin is ambushed by the 'Masons' at Ivaldi Base and forced to witness a vision of the city Væra in the Star Chamber.",
+    "chapter": 13,
+    "image": "",
+    "mj_prompt": "",
+    "id": "corbin-star-chamber"
+  },
+  {
+    "time": "18 Clicks Post-Unfolding",
+    "title": "Strand’s Last Stand",
+    "desc": "As DROP Seven is evacuated, Kirsten Strand is left behind and overwhelmed by a Dartswarm. She is seemingly carried away by an angelic figure.",
+    "chapter": 15,
+    "image": "",
+    "mj_prompt": "",
+    "id": "strand-death"
+  },
+  {
+    "time": "19 Clicks Post-Unfolding",
+    "title": "It's Raining Below",
+    "desc": "Sarah Farley finds the downed Hopper but is forced into a confrontation with Centurion Jax, leading to her being shot down and labeled rogue.",
+    "chapter": 17,
+    "image": "",
+    "mj_prompt": "",
+    "id": "sarah-farley-rogue"
+  },
+  {
+    "time": "29 Clicks Post-Unfolding",
+    "title": "Jensen's Awakening",
+    "desc": "Joana examines Jensen, a ranger who returned changed from the Delta. He dies after warning that 'the soil is waking up.'",
+    "chapter": 18,
+    "image": "",
+    "mj_prompt": "",
+    "id": "jensen-death"
+  },
+  {
+    "time": "31 Clicks Post-Unfolding",
+    "title": "The Handover",
+    "desc": "Captain Westhoff surrenders the Dáinn to Corbin and is reassigned to the Plateau. Ionie Jia is promoted to Captain and told to find the 'Captain's Log.'",
+    "chapter": 19,
+    "image": "",
+    "mj_prompt": "",
+    "id": "dainn-surrender"
+  },
+  {
+    "time": "32 Clicks Post-Unfolding",
+    "title": "The Edge of Everything",
+    "desc": "Alistair and Stacey calibrate the Stingray and share a moment of intimacy before the Brisinger begins its hot descent to Freya Port.",
+    "chapter": 20,
+    "image": "",
+    "mj_prompt": "",
+    "id": "stingray-calibration"
+  },
+  {
+    "time": "33 Clicks Post-Unfolding",
+    "title": "The Endstart",
+    "desc": "The Brisinger crashes. Oliver retrieves the COG Egg and meets Læsa.",
+    "chapter": 24,
+    "image": "",
+    "mj_prompt": "",
+    "id": "brisinger-groundfall"
+  }
+]

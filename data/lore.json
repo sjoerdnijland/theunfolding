@@ -1,0 +1,113 @@
+[
+  {
+    "title": "Fleet Time System",
+    "content": "Fleet time is felt through ship gravity cyclers tuned to Mairee-time. Time on Mairee is not read — it is felt. The cyclers in every ship and hab pulse in sync with the planet, so even those who never touch the surface know its rhythm in their bones.",
+    "chapter": 1,
+    "image": "",
+    "mj_prompt": "A holographic time display in a colony hab showing Mairee's alien time units — Pulse, Beat, Thud, Click, Cycle — overlaid on a view of Mairee's three moons in different phases, the strangeness of a new calendar, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "time-system",
+    "units": [
+      {
+        "name": "Pulse",
+        "symbol": "P",
+        "duration": "2 min",
+        "ratio": "—",
+        "note": "A hitch in the hum"
+      },
+      {
+        "name": "Beat",
+        "symbol": "B",
+        "duration": "12 min",
+        "ratio": "6 Pulses",
+        "note": "A skipped heartbeat"
+      },
+      {
+        "name": "Thud",
+        "symbol": "T",
+        "duration": "72 min",
+        "ratio": "6 Beats",
+        "note": "Deck plates shudder"
+      },
+      {
+        "name": "Click",
+        "symbol": "CL",
+        "duration": "21.6 hrs",
+        "ratio": "18 Thuds",
+        "note": "A bolt slamming home"
+      },
+      {
+        "name": "Emwic",
+        "symbol": "EW",
+        "duration": "5.4 Earth days",
+        "ratio": "6 Clicks",
+        "note": "The Mairee week"
+      },
+      {
+        "name": "Maryon",
+        "symbol": "MR",
+        "duration": "27 Earth days",
+        "ratio": "5 Emwics",
+        "note": "Half a Cycle"
+      },
+      {
+        "name": "Cycle",
+        "symbol": "CY",
+        "duration": "54 Earth days",
+        "ratio": "60 Clicks",
+        "note": "Shipwide zero-g turnover"
+      },
+      {
+        "name": "Maya",
+        "symbol": "MY",
+        "duration": "324 Earth days",
+        "ratio": "6 Cycles",
+        "note": "The Mairee year"
+      }
+    ]
+  },
+
+  {
+    "title": "The Myco-Rhizomic System (MRS)",
+    "content": "A planet-wide fungal network beneath Mairee's surface. Creates a steady bio-electric field. Connects every organism on the planet. The Seiðr use it as their body. Communicates via vibration and chemical signals. Colonists who spend time in the Delta begin receiving its signals.",
+    "chapter": 5,
+    "image": "",
+    "mj_prompt": "A cross-section view of Mairee's subsurface — vast white mycelium networks connecting every root system, tree, and organism on the planet, bio-electric pulses moving through it like thoughts, the planet's true nervous system, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "the-myco-rhizomic-system-mrs"
+  },
+
+  {
+    "id": "smashout",
+    "title": "Smashout",
+    "content": "A fast-paced racket game played on a three-dimensional grid of glowing panels. The aim is to smash out a full row on the opponent's back wall.",
+    "chapter": 1,
+    "image": "",
+    "mj_prompt": "",
+    "link": "/smashout/smashout.html",
+    "linkLabel": "⚡ SMASHOUT DEMO"
+  },
+
+  {
+    "title": "Planetary Acclimatization Syndrome (PAS)",
+    "content": "Neurological condition affecting colonists exposed to Mairee's MRS signal. Symptoms: tinnitus, visual static, migraines, seizures. The Grid suppresses symptoms but prevents natural adaptation.",
+    "chapter": 6,
+    "image": "",
+    "mj_prompt": "A neurologist studying brain scan holographics of a child patient with PAS — fractal alien signal patterns visible in the scan as geometric interference, the doctor's expression of awed dread at what she is seeing, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "planetary-acclimatization-syndrome-pas"
+  },
+  {
+    "title": "The COG: From Health Tool to Suppressor",
+    "content": "Kaspar Savannen designed the COG as a health matrix. Corbin repurposed it as social control and PAS suppression.",
+    "chapter": 3,
+    "image": "",
+    "mj_prompt": "A dual-panel schematic: left shows the COG as a benevolent health monitoring web over a colony map; right shows the same web in red as a control and suppression system, the same architecture, two intentions, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "the-cog-from-health-tool-to-suppressor"
+  },
+  {
+    "title": "Galley Draw Tradition",
+    "content": "A tradition aboard the Dáinn: each Voweday, a lottery selects 5 random crew members to cook and eat together. A communion ritual for fighting loneliness and building trust across rank divides.",
+    "chapter": 5,
+    "image": "",
+    "mj_prompt": "Five deeply different crew members sharing a meal they cooked together in a ship galley, fists hitting the table in unison, laughter, bread passing hand to hand, the warmth of involuntary community in deep space, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "galley-draw-tradition"
+  }
+]

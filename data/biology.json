@@ -1,0 +1,99 @@
+[
+  {
+    "id": "shimmercat",
+    "name": "Shimmercat",
+    "tag": "biology",
+    "role": "Fauna · Mammalian predator",
+    "affil": "Delta / Sickle biome",
+    "aliases": "Ghost-cat",
+    "desc": "A sleek, low-slung quadruped roughly the size of a large domestic cat. Bioluminescent patches along the spine pulse faintly in cool blues and greens, particularly when hunting or distressed. Its fur is fine and dark, absorbing ambient light. ",
+    "chapter": 3,
+    "image": "/assets/bio/shimmercat.png",
+    "mj_prompt": "A sleek low-slung alien quadruped with bioluminescent blue-green patches along its spine, crouched motionless in dense alien jungle undergrowth, its eyes reflecting faint light, barely visible, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7"
+  },
+  {
+    "id": "clackers",
+    "name": "Clackers",
+    "tag": "biology",
+    "role": "Fauna · Colonial insectoid",
+    "affil": "Delta biome",
+    "aliases": "Rack-beetles, Drum-bugs",
+    "desc": "A two-meter-long, semi-aquatic predator native to the Mairee Delta. Protected by a blunt carapace and propelled by paddle-shaped limbs, the Clacker is defined by a colossal beak capable of crushing giant shellfish and shearing through metal building foundations. They hunt in packs and are a primary threat to water extraction outposts, though they can be repelled by high-frequency sonic emitters..",
+    "chapter": 4,
+    "image": "/assets/bio/clacker.png",
+    "mj_prompt": "A two-meter-long, semi-aquatic predator native to the Mairee Delta. Protected by a blunt carapace and propelled by paddle-shaped limbs, the Clacker is defined by a colossal beak capable of crushing giant shellfish and shearing through metal building foundations. They hunt in packs and are a primary threat to water extraction outposts, though they can be repelled by high-frequency sonic emitters, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7"
+  },
+  {
+    "id": "dartswarm",
+    "name": "Dartswarm",
+    "tag": "biology",
+    "role": "Fauna · Aerial colonial organism",
+    "affil": "Plateau / upper Delta",
+    "aliases": "Darts, the Thread",
+    "desc": "A swarm of hand-sized, dragonfly-like insects native to the Mairee Delta. Defined by saw-edged razor wings and a hard chitinous shell, the Dartswarm is a relentless predator that attacks in massive, high-speed clusters. They are capable of stripping flesh in seconds. Their attacks are venomous and accompanied by a high-pitched shrieking.",
+    "chapter": 5,
+    "image": "/assets/bio/dart.png",
+    "mj_prompt": "Thousands of needle-thin silver filaments moving in a coherent cloud formation against a pink alien sky, shimmering like liquid metal, simultaneously beautiful and threatening, viewed from below, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7"
+  },
+  {
+    "id": "vurnshaft",
+    "name": "Vurnshaft",
+    "tag": "biology",
+    "role": "Subterranean passageways",
+    "affil": "Delta",
+    "aliases": "",
+    "desc": "A Vurnshaft is a living subterranean tunnel system carved by the Talpochelys serpentina. Characterized by rubbery, pulsing walls and sugarcane-blue bioluminescence, the network is deeply integrated into the planet's Myco-Rhizomic System. While they offer a \"highway\" beneath the hostile surface of Mairee, the tunnels are biologically active, capable of hardening to stone or liquefying in response to stimuli, and contain massive geothermal hatcheries known as Vurn nodes.",
+    "chapter": 7,
+    "image": "/assets/bio/vurnshaft.png",
+    "mj_prompt": "A vast blind segmented alien worm revealed in cross-section through a tunnel wall, its skin pale and translucent, its interior glowing faintly with bioluminescence, workers with lights staring in silence, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7"
+  },
+
+  {
+    "id": "vurn",
+    "name": "Vurn (Talpochelys serpentina)",
+    "tag": "biology",
+    "role": "Large subterranean burrower",
+    "affil": "Plateau / deep substrate",
+    "aliases": "Vurn",
+    "desc": "A massive subterranean predator scientifically classified as Talpochelys serpentina. This \"part turtle, part serpent\" creature is defined by its obsidian-tipped claws and a beak that splits open to reveal a whip-like sensory tongue. The Vurn is responsible for creating the vast network of vurnshafts (tunnels) beneath the Mairee Delta. It is an apex threat capable of destroying armored shuttles and is deeply integrated into the planet's living fungal network.,\n  ",
+    "chapter": 7,
+    "image": "/assets/bio/vurn.png",
+    "mj_prompt": "A vast blind segmented alien worm revealed in cross-section through a tunnel wall, its skin pale and translucent, its interior glowing faintly with bioluminescence, workers with lights staring in silence, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7"
+  },
+  {
+    "id": "spore-storms",
+    "name": "Spore Storms",
+    "tag": "biology",
+    "role": "Fauna/Flora · Atmospheric event organism",
+    "affil": "Upper atmosphere / Delta",
+    "aliases": "The Blooms, Drift-spores, Fog-heads",
+    "desc": "A psychedelic atmospheric event triggered by the planet's world-spanning fungal network. Spore Storms are defined by shimmering, pearly particulates that create a colorful vortex in the sky. These storms are a major threat to human settlers, causing auditory hallucinations, blurred vision, and technical sensor failure. Survival requires specialized filtration masks to clear the air. ",
+    "chapter": 3,
+    "image": "",
+    "mj_prompt": "Vast amber-gold clouds of alien spores drifting through a pink alien sky at dusk, catching the light like living dust, a colony settlement visible far below in the haze, the sky made of breath, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7"
+  },
+  {
+    "id": "burr-vine",
+    "name": "Burr-vine",
+    "tag": "biology",
+    "role": "Flora · Aggressive climbing plant",
+    "affil": "Delta",
+    "aliases": "Grip-twig",
+    "desc": "A deceptively delicate, feathery plant native to the moist soils of the Mairee Delta. The Burr-vine is a significant environmental hazard defined by seed pods with microscopic barbs that latch onto clothing and skin. Once attached, the barbs burrow into the flesh, causing intense irritation and lethal infections.",
+    "chapter": 2,
+    "image": "/assets/bio/burr-vine.png",
+    "mj_prompt": "A massive grounded colony ship overwhelmed by densely barbed alien vines, the vines' hooks embedded deep into hull plating, growing faster than crews can cut them back, alien jungle pressing in, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7"
+  },
+  {
+    "id": "gramophone-plant",
+    "name": "Gramophone Plant",
+    "tag": "biology",
+    "role": "Flora · Acoustic trap plant",
+    "affil": "Deep Delta",
+    "aliases": "Shrieker",
+    "desc": "A huge, funnel-shaped plant native to the Mairee Delta that resembles an antique gramophone. Capable of emitting sounds ranging from melancholic moans to piercing shrieks, the plant is a significant source of auditory disorientation. It often serves as a biological amplifier for wind and spore clouds, and under the influence of the planet’s consciousness, it can even produce strange, alien music.",
+    "chapter": 6,
+    "image": "/assets/bio/shrieker.png",
+    "mj_prompt": "A vast metre-wide funnel-shaped alien flower in deep jungle, its interior cavity dark and resonant, smaller organisms drawn toward the opening, faint sound-waves emanating from it as visible air distortion, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7"
+  }
+]
