@@ -41,7 +41,7 @@ function Synopsis() {
               <div className="aside-block"><span className="mono-label muted">Genre</span><p>Psychedelic space opera</p></div>
               <div className="aside-block"><span className="mono-label muted">Audience</span><p>Young Adult / Adult · 14+</p></div>
               <div className="aside-block"><span className="mono-label muted">Length</span><p>Book I of the saga. 275 pages.</p></div>
-              <div className="aside-block"><span className="mono-label muted">Comparable</span><p>LOST · Station Eleven · Annihilation</p></div>
+              <div className="aside-block"><span className="mono-label muted">Comparable</span><p>LOST · Station Eleven · Annihilation · Battlestar Galactica</p></div>
             </aside>
           </div>
 
