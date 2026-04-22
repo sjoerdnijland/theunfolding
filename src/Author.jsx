@@ -6,7 +6,7 @@ function Author() {
         <div className="author-grid">
           <div className="author-portrait">
             <div className="portrait-frame">
-              <img src="assets/author-nyland.png" alt="Stuart Nyland" className="portrait-img" />
+              <img src="assets/author-sjoerd.webp" alt="Stuart Nyland" className="portrait-img" />
               <span className="pp-caption">Stuart Nyland</span>
             </div>
           </div>
@@ -22,6 +22,21 @@ function Author() {
               the thing nobody is saying. Before this book, he worked in (and occasionally
               against) technology.
             </p>
+
+            <div className="editors">
+              <span className="mono-label muted">Editorial by</span>
+              <p className="editors-line">
+                <a className="editor-link" href="https://reedsy.com/laura-josephsen" target="_blank" rel="noopener">
+                  <span className="ed-name">Laura Josephsen</span>
+                  <span className="ed-role">Principal Editor</span>
+                </a>
+                <span className="ed-sep">·</span>
+                <a className="editor-link" href="https://www.linkedin.com/in/james-allan-lloyd/" target="_blank" rel="noopener">
+                  <span className="ed-name">James Allan Lloyd</span>
+                  <span className="ed-role">Contributing Editor</span>
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -103,6 +118,16 @@ function Author() {
         }
         .auth-link:hover { color: var(--rose); border-color: var(--rose); padding-left: 8px; }
         .auth-link-k { color: var(--rose); }
+
+        .editors { margin-top: 24px; padding-top: 24px; border-top: 1px dashed var(--line); }
+        .editors .mono-label { display: block; margin-bottom: 14px; opacity: 0.7; }
+        .editors-line { display: flex; flex-wrap: wrap; gap: 14px 18px; align-items: baseline; margin: 0; font-family: var(--serif); }
+        .editor-link { display: inline-flex; flex-direction: column; gap: 2px; padding: 4px 0; border-bottom: 1px solid transparent; transition: all 0.2s; }
+        .editor-link:hover { border-color: var(--rose); }
+        .editor-link:hover .ed-name { color: var(--rose); }
+        .ed-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ivory); font-style: italic; font-weight: 400; letter-spacing: 0.01em; transition: color 0.2s; }
+        .ed-role { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
+        .ed-sep { color: var(--line-strong); font-family: var(--serif); font-size: 1.2rem; align-self: center; }
 
         .newsletter {
           display: grid;
