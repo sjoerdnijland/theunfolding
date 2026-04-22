@@ -5,8 +5,8 @@ function Author() {
       <div className="container">
         <div className="author-grid">
           <div className="author-portrait">
-            <div className="portrait-frame">
-              <img src="assets/author-sjoerd.webp" alt="Stuart Nyland" className="portrait-img" />
+            <div className="portrait-frame">ny
+              <img src="assets/author-nyland.png" alt="Stuart Nyland" className="portrait-img" />
               <span className="pp-caption">Stuart Nyland</span>
             </div>
           </div>
