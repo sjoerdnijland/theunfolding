@@ -916,7 +916,16 @@ async function narrationGoTo(index) {
   }
 
   const scene = getSceneForPara(pid);
+  const prevScene = index > 0 ? getSceneForPara(narrationParaIds[index - 1]) : scene;
   startAmbient(currentChapter, scene);
+
+  // Pause between scene changes (2.5s silence)
+  if (index > 0 && scene !== prevScene) {
+    const textEl = document.getElementById('narration-text');
+    textEl.innerHTML = `<span class="narration-loading" style="opacity:0.2">✦</span>`;
+    await new Promise(r => setTimeout(r, 2500));
+    if (narrationIndex !== index) return; // user navigated away during pause
+  }
 
   // Show comment hint if paragraph has threads
   const count = commentCounts[pid] || 0;
@@ -1356,6 +1365,7 @@ function renderChapter(ch) {
 
     // ── Uplink interlude ──
     if (sec.type === 'uplink') {
+      sceneIndex++; // uplinks count as scene breaks for audio purposes
       const isTemporalOrientation = (sec.heading || '').toLowerCase().includes('temporal');
       const isAssets = sec.subtype === 'assets';
       const labelHtml = isTemporalOrientation
