@@ -782,7 +782,8 @@ let narrationAudio     = null;
 let narrationPlaying   = false;
 let narrationAlignment = null;
 let narrationRAF       = null;
-let narrationCache     = {}; // pid → { audio, alignment }
+let narrationCache     = {};
+let narrationLocked    = false; // prevents overlapping goTo calls
 
 // ── Ambient music ────────────────────────────────────────
 let ambientAudio   = null;
@@ -918,8 +919,19 @@ function stopNarration() {
 }
 
 async function narrationGoTo(index) {
+  // Hard-stop any currently playing audio immediately
+  if (narrationAudio) {
+    narrationAudio.pause();
+    narrationAudio = null;
+  }
+  cancelAnimationFrame(narrationRAF);
+
+  // Lock — prevent re-entry
+  if (narrationLocked) return;
+  narrationLocked = true;
+
   narrationIndex = index;
-  if (index >= narrationParaIds.length) { stopNarration(); return; }
+  if (index >= narrationParaIds.length) { narrationLocked = false; stopNarration(); return; }
 
   const pid = narrationParaIds[index];
   const total = narrationParaIds.length;
@@ -951,7 +963,7 @@ async function narrationGoTo(index) {
     const textEl = document.getElementById('narration-text');
     textEl.innerHTML = `<span class="narration-loading" style="opacity:0.2">✦</span>`;
     await new Promise(r => setTimeout(r, index === 0 ? 1800 : 2500));
-    if (narrationIndex !== index) return;
+    if (narrationIndex !== index) { narrationLocked = false; return; }
   }
 
   // Show comment hint if paragraph has threads
@@ -962,7 +974,7 @@ async function narrationGoTo(index) {
 
   // Get plain text for this paragraph
   const text = getParaText(pid);
-  if (!text) { await narrationGoTo(index + 1); return; }
+  if (!text) { narrationLocked = false; await narrationGoTo(index + 1); return; }
 
   // Show loading
   const textEl = document.getElementById('narration-text');
@@ -990,6 +1002,7 @@ async function narrationGoTo(index) {
       narrationCache[pid] = data;
     } catch(e) {
       textEl.innerHTML = `<span class="narration-loading">Could not load audio — ${e.message}</span>`;
+      narrationLocked = false;
       return;
     }
   }
@@ -1076,6 +1089,7 @@ async function narrationGoTo(index) {
   prefetchNext(index + 1);
 
   // Start playback + karaoke sync
+  narrationLocked = false; // unlock — audio is playing, navigation is safe again
   narrationAudio.play();
   narrationAudio.addEventListener('ended', () => {
     cancelAnimationFrame(narrationRAF);
@@ -1132,10 +1146,12 @@ function narrationTogglePlay() {
 }
 
 function narrationPrev() {
+  if (narrationLocked) return;
   if (narrationIndex > 0) narrationGoTo(narrationIndex - 1);
 }
 
 function narrationNext() {
+  if (narrationLocked) return;
   narrationGoTo(narrationIndex + 1);
 }
 
@@ -1443,7 +1459,8 @@ function renderChapter(ch) {
   const el = document.getElementById('chapter-content');
 
   let paraIndex = 0;
-  let sceneIndex = 1; // increments on each scene-break
+  let sceneIndex = 1;
+  let prevSecType = null; // track previous section type for scene transitions
   let html = `
     <div class="ch-eyebrow">Chapter ${currentChapter}</div>
     <h1 class="ch-title">${ch.title}</h1>
@@ -1517,6 +1534,7 @@ function renderChapter(ch) {
         ${headingPara}
         ${parasHtml}
       </div>`;
+      prevSecType = 'uplink';
       return;
     }
 
@@ -1524,6 +1542,7 @@ function renderChapter(ch) {
     if (sec.type === 'scene-break') {
       html += `<div class="scene-break"><span>✦</span><span>✦</span><span>✦</span></div>`;
       sceneIndex++;
+      prevSecType = 'scene-break';
       return;
     }
     if (sec.type === 'epigraph') {
@@ -1548,11 +1567,17 @@ function renderChapter(ch) {
           </p>`;
       }).join('');
       html += `<div class="epigraph-block">${parasHtml}</div>`;
-      sceneIndex++; // epigraph is its own scene
+      sceneIndex++;
+      prevSecType = 'epigraph';
       return;
     }
 
     // ── Normal section ──
+    // If coming from an uplink or epigraph, this is a new scene
+    if (prevSecType === 'uplink' || prevSecType === 'epigraph') {
+      sceneIndex++;
+    }
+    prevSecType = 'prose';
     if (sec.heading) {
       const isLocation = sec.heading.includes('·') || /[A-Z]{2,}/.test(sec.heading);
       html += isLocation
