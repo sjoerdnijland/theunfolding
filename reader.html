@@ -133,12 +133,23 @@
 }
 
 /* ── Wiki link highlights ──────────────────────────────── */
+/* Hidden by default — shown only on active para or when hints are on */
 .wiki-link {
-  border-bottom: 1px dotted var(--teal-soft);
+  border-bottom: 1px dotted transparent;
   color: inherit; cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
 }
-.wiki-link:hover { border-bottom-color: var(--rose); color: var(--rose-soft); }
+/* Show on active paragraph */
+.para.active .wiki-link {
+  border-bottom-color: var(--teal-soft);
+}
+.para.active .wiki-link:hover { border-bottom-color: var(--rose); color: var(--rose-soft); }
+/* Show always when hints-on class is on body */
+body.wiki-hints-on .wiki-link {
+  border-bottom-color: var(--teal-soft);
+  opacity: 0.8;
+}
+body.wiki-hints-on .wiki-link:hover { border-bottom-color: var(--rose); color: var(--rose-soft); opacity: 1; }
 
 .ch-section-head {
   font-family: var(--serif); font-weight: 300; color: var(--muted);
@@ -203,11 +214,15 @@
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
-.epigraph-para {
-  font-family: var(--serif); font-style: italic;
-  font-size: 1.05rem; line-height: 1.8; color: var(--muted);
-  margin: 0;
+/* .para.epigraph-para inherits all .para interactivity;
+   these rules only override the visual treatment */
+.epigraph-block .para {
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 0.8em;
 }
+.epigraph-block .para:last-child { margin-bottom: 0; }
+.epigraph-block .para:hover { background: rgba(233,74,124,0.04); }
 .para.drop-cap::first-letter {
   font-family: var(--serif);
   font-size: 4.2em; float: left; line-height: 0.82;
@@ -422,6 +437,7 @@
       <button class="fs-btn" onclick="changeFontSize(-1)" title="Decrease font size">A−</button>
       <button class="fs-btn" onclick="changeFontSize(+1)" title="Increase font size">A+</button>
     </div>
+    <button class="fs-btn" id="hints-btn" onclick="toggleWikiHints()" title="Toggle wiki hints">◈ Hints</button>
     <div id="auth-area" style="display:flex;align-items:center;gap:10px;"></div>
   </div>
 </header>
@@ -622,9 +638,25 @@ function renderChapter(ch) {
       return;
     }
     if (sec.type === 'epigraph') {
-      html += `<div class="epigraph-block">
-        ${sec.paragraphs.map(p => `<p class="epigraph-para">${p}</p>`).join('')}
-      </div>`;
+      const parasHtml = sec.paragraphs.map(text => {
+        const pid   = `ch${currentChapter}-p${paraIndex}`;
+        const count = commentCounts[pid] || 0;
+        const linked = autoLink(text);
+        paraIndex++;
+        return `
+          <p class="para epigraph-para${count > 0 ? ' has-comments' : ''}"
+             id="${pid}"
+             data-para-id="${pid}"
+             data-comment-count="${count}"
+             onclick="selectPara('${pid}', this)">
+            <span class="para-toolbar">
+              <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
+              <button class="pt-btn" onclick="event.stopPropagation();openThread('${pid}')">💬 Thread${count > 0 ? ` (${count})` : ''}</button>
+            </span>
+            ${linked}
+          </p>`;
+      }).join('');
+      html += `<div class="epigraph-block">${parasHtml}</div>`;
       return;
     }
 
@@ -913,6 +945,25 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+// ── Wiki hints toggle ────────────────────────────────────
+let wikiHintsOn = localStorage.getItem('wikiHints') === 'on';
+
+function applyWikiHints() {
+  document.body.classList.toggle('wiki-hints-on', wikiHintsOn);
+  const btn = document.getElementById('hints-btn');
+  if (btn) {
+    btn.textContent = wikiHintsOn ? '◈ Hints on' : '◈ Hints';
+    btn.style.color = wikiHintsOn ? 'var(--teal-bright, #4a9aaa)' : '';
+    btn.style.borderColor = wikiHintsOn ? 'var(--teal-soft)' : '';
+  }
+}
+
+function toggleWikiHints() {
+  wikiHintsOn = !wikiHintsOn;
+  localStorage.setItem('wikiHints', wikiHintsOn ? 'on' : 'off');
+  applyWikiHints();
+}
+
 // ── Font size ────────────────────────────────────────────
 const FONT_SIZES = [0.95, 1.05, 1.18, 1.32, 1.48]; // rem steps
 let fontSizeIdx = parseInt(localStorage.getItem('readerFontSize') ?? '2', 10);
@@ -956,6 +1007,7 @@ function toast(msg, duration = 3000) {
 
 // ── Init ─────────────────────────────────────────────────
 async function init() {
+  applyWikiHints();
   await Promise.all([buildWikiIndex(), initAuth()]);
   await loadChapter(1);
 }
