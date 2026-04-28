@@ -570,10 +570,27 @@ async function initAuth() {
   currentUser = session?.user ?? null;
   renderAuthArea();
 
-  db.auth.onAuthStateChange((_event, session) => {
+  db.auth.onAuthStateChange(async (_event, session) => {
     currentUser = session?.user ?? null;
     renderAuthArea();
     if (currentParaId) renderCommentForm();
+
+    // Auto-join Discord server on sign-in
+    if (_event === 'SIGNED_IN' && session?.provider_token) {
+      try {
+        await fetch('https://sscpikfblqtmcefegrpv.supabase.co/functions/v1/discord-join', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${session.access_token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ provider_token: session.provider_token }),
+        });
+      } catch(e) {
+        // Silent fail — joining server is best-effort
+        console.warn('Discord join failed:', e);
+      }
+    }
   });
 }
 
