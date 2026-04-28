@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Read — The Unfolding</title>
+<link rel="icon" href="favicon.ico" sizes="any"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+/* ── Layout ────────────────────────────────────────────── */
+.reader-wrap {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  min-height: 100vh;
+  padding-top: 64px;
+}
+.reader-main   { overflow-y: auto; }
+.reader-sidebar {
+  border-left: 1px solid var(--line);
+  background: var(--ink-2);
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Chapter selector ──────────────────────────────────── */
+.chapter-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px;
+  background: rgba(6,22,25,0.97);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; gap: 20px;
+}
+.chapter-bar-left { display: flex; align-items: center; gap: 20px; }
+.cb-logo {
+  font-family: var(--serif); font-size: 1rem; letter-spacing: 0.1em;
+  display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ivory);
+}
+.cb-logo .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--rose); box-shadow: 0 0 10px var(--rose); }
+.chapter-pills { display: flex; gap: 6px; }
+.cp-btn {
+  padding: 5px 14px;
+  border: 1px solid var(--line);
+  background: transparent; color: var(--muted);
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  cursor: pointer; border-radius: 2px; transition: all 0.15s;
+}
+.cp-btn:hover { border-color: var(--rose); color: var(--rose); }
+.cp-btn.active { background: var(--rose); border-color: var(--rose); color: var(--ink); }
+.chapter-bar-right { display: flex; align-items: center; gap: 14px; }
+.auth-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border: 1px solid var(--line-strong);
+  background: transparent; color: var(--ivory);
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer; border-radius: 2px; transition: all 0.15s;
+}
+.auth-btn:hover { border-color: var(--rose); color: var(--rose); }
+.auth-avatar { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line-strong); }
+.auth-name { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--ivory-2); }
+
+/* ── Chapter content ───────────────────────────────────── */
+.chapter-content {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 72px 48px 120px;
+}
+.ch-eyebrow {
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--rose); margin-bottom: 12px;
+}
+.ch-title {
+  font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300; color: var(--ivory); margin-bottom: 8px; line-height: 1.1;
+}
+.ch-subtitle {
+  font-family: var(--serif); font-style: italic; color: var(--muted);
+  font-size: 1.1rem; margin-bottom: 56px;
+}
+.ch-divider {
+  width: 48px; height: 1px; background: var(--rose); opacity: 0.5;
+  margin: 48px 0;
+}
+
+/* ── Paragraphs ────────────────────────────────────────── */
+.para {
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  line-height: 1.85;
+  color: var(--ivory-2);
+  margin-bottom: 1.6em;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px 10px;
+  margin-left: -10px;
+  transition: background 0.15s;
+  position: relative;
+}
+.para:hover { background: rgba(233,74,124,0.05); }
+.para.active {
+  background: rgba(233,74,124,0.08);
+  border-left: 2px solid var(--rose);
+  padding-left: 16px;
+  margin-left: -18px;
+}
+.para.has-comments::after {
+  content: attr(data-comment-count);
+  position: absolute; right: -28px; top: 8px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--teal); color: var(--ivory);
+  font-family: var(--mono); font-size: 0.58rem;
+  display: flex; align-items: center; justify-content: center;
+  line-height: 1;
+}
+
+/* ── Wiki link highlights ──────────────────────────────── */
+.wiki-link {
+  border-bottom: 1px dotted var(--teal-soft);
+  color: inherit; cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.wiki-link:hover { border-bottom-color: var(--rose); color: var(--rose-soft); }
+
+/* ── Drop cap ──────────────────────────────────────────── */
+.para.drop-cap::first-letter {
+  font-family: var(--serif);
+  font-size: 4.2em; float: left; line-height: 0.82;
+  padding: 0.1em 0.1em 0 0; color: var(--rose); font-weight: 500;
+}
+
+/* ── Paragraph toolbar ─────────────────────────────────── */
+.para-toolbar {
+  display: none;
+  position: absolute; right: 0; top: -36px;
+  background: var(--ink-2); border: 1px solid var(--line-strong);
+  border-radius: 3px; padding: 4px;
+  gap: 2px; z-index: 10;
+}
+.para.active .para-toolbar { display: flex; }
+.pt-btn {
+  padding: 5px 10px;
+  background: transparent; border: none; color: var(--muted);
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; border-radius: 2px; transition: all 0.12s; white-space: nowrap;
+}
+.pt-btn:hover { background: rgba(233,74,124,0.12); color: var(--rose); }
+
+/* ── Sidebar panels ────────────────────────────────────── */
+.sb-empty {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px; opacity: 0.35; padding: 32px;
+  font-family: var(--serif); font-style: italic;
+  font-size: 1rem; color: var(--muted); text-align: center;
+}
+.sb-empty svg { opacity: 0.4; }
+
+.sb-panel { display: none; flex-direction: column; height: 100%; }
+.sb-panel.visible { display: flex; }
+
+.sb-head {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+}
+.sb-head-left { flex: 1; min-width: 0; }
+.sb-para-preview {
+  font-family: var(--serif); font-style: italic; font-size: 0.82rem;
+  color: var(--muted); line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; margin-top: 4px;
+}
+.sb-close {
+  background: transparent; border: none; color: var(--muted);
+  font-size: 1rem; cursor: pointer; padding: 2px 6px; flex-shrink: 0;
+  transition: color 0.15s;
+}
+.sb-close:hover { color: var(--ivory); }
+
+/* Comments list */
+.comments-list {
+  flex: 1; overflow-y: auto; padding: 16px 20px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.comment-item {
+  background: rgba(6,22,25,0.5); border: 1px solid var(--line);
+  border-radius: 4px; padding: 12px 14px;
+  animation: fadeUp 0.2s ease both;
+}
+@keyframes fadeUp { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform:none; } }
+.comment-head {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+}
+.c-avatar { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; flex-shrink: 0; background: var(--teal); }
+.c-name { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--ivory); }
+.c-time { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); margin-left: auto; }
+.c-body { font-family: var(--serif); font-size: 0.9rem; color: var(--ivory-2); line-height: 1.55; }
+.c-delete { background: transparent; border: none; color: var(--muted); font-size: 0.7rem; cursor: pointer; padding: 0; margin-left: 6px; transition: color 0.15s; }
+.c-delete:hover { color: var(--rose); }
+.no-comments {
+  font-family: var(--serif); font-style: italic; font-size: 0.9rem;
+  color: var(--muted); text-align: center; padding: 24px 0;
+}
+
+/* Comment form */
+.comment-form {
+  padding: 14px 20px;
+  border-top: 1px solid var(--line);
+  background: rgba(6,22,25,0.4);
+}
+.cf-login {
+  font-family: var(--serif); font-style: italic;
+  font-size: 0.9rem; color: var(--muted); text-align: center;
+  padding: 8px 0; display: flex; flex-direction: column; gap: 10px; align-items: center;
+}
+.cf-textarea {
+  width: 100%; background: rgba(6,22,25,0.6);
+  border: 1px solid var(--line-strong); color: var(--ivory);
+  font-family: var(--serif); font-size: 0.95rem; line-height: 1.5;
+  padding: 10px 12px; border-radius: 3px; resize: vertical; min-height: 80px;
+  transition: border-color 0.15s;
+}
+.cf-textarea:focus { outline: none; border-color: var(--rose); }
+.cf-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+.cf-hint { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); letter-spacing: 0.1em; }
+.cf-submit {
+  padding: 7px 16px; background: var(--rose); border: none; color: var(--ink);
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer; border-radius: 2px; transition: background 0.15s;
+}
+.cf-submit:hover { background: var(--rose-deep); color: var(--ivory); }
+.cf-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Wiki popup ────────────────────────────────────────── */
+.wiki-popup-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(6,22,25,0.7); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.wiki-popup-overlay.open { display: flex; }
+.wiki-popup {
+  background: var(--ink-2); border: 1px solid var(--line-strong);
+  border-radius: 4px; max-width: 560px; width: 100%;
+  max-height: 80vh; overflow-y: auto;
+  animation: fadeUp 0.2s ease both;
+}
+.wp-head {
+  padding: 20px 24px 14px;
+  border-bottom: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.wp-tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose); margin-bottom: 4px; }
+.wp-title { font-family: var(--serif); font-size: 1.5rem; color: var(--ivory); }
+.wp-role { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); margin-top: 4px; letter-spacing: 0.12em; }
+.wp-close { background: transparent; border: none; color: var(--muted); font-size: 1.2rem; cursor: pointer; transition: color 0.15s; padding: 0; }
+.wp-close:hover { color: var(--ivory); }
+.wp-body { padding: 20px 24px; }
+.wp-desc { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ivory-2); line-height: 1.7; }
+.wp-meta { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.wp-chip {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 10px; border: 1px solid var(--line); color: var(--muted); border-radius: 2px;
+}
+.wp-full-link {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 18px;
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--teal-soft); border-bottom: 1px solid var(--teal);
+  transition: color 0.15s;
+}
+.wp-full-link:hover { color: var(--ivory); }
+
+/* ── Word lookup popup ─────────────────────────────────── */
+.lookup-popup {
+  position: fixed; z-index: 600;
+  background: var(--ink-2); border: 1px solid var(--line-strong);
+  border-radius: 4px; padding: 14px 18px;
+  max-width: 320px; min-width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  display: none;
+  animation: fadeUp 0.15s ease both;
+}
+.lookup-popup.open { display: block; }
+.lp-word { font-family: var(--serif); font-size: 1.1rem; color: var(--ivory); margin-bottom: 10px; }
+.lp-actions { display: flex; flex-direction: column; gap: 6px; }
+.lp-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 12px; background: transparent;
+  border: 1px solid var(--line); color: var(--muted);
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  cursor: pointer; border-radius: 2px; transition: all 0.12s; text-decoration: none;
+}
+.lp-btn:hover { border-color: var(--rose); color: var(--rose); }
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+.reader-sidebar::-webkit-scrollbar,
+.comments-list::-webkit-scrollbar,
+.wiki-popup::-webkit-scrollbar { width: 4px; }
+.reader-sidebar::-webkit-scrollbar-track,
+.comments-list::-webkit-scrollbar-track,
+.wiki-popup::-webkit-scrollbar-track { background: var(--ink); }
+.reader-sidebar::-webkit-scrollbar-thumb,
+.comments-list::-webkit-scrollbar-thumb,
+.wiki-popup::-webkit-scrollbar-thumb { background: var(--teal); }
+
+/* ── Toast ─────────────────────────────────────────────── */
+.toast {
+  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+  background: var(--ink-2); border: 1px solid var(--line-strong);
+  padding: 10px 20px; border-radius: 3px;
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em;
+  color: var(--ivory); z-index: 9000;
+  transition: opacity 0.3s; pointer-events: none;
+}
+.toast.hidden { opacity: 0; }
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .reader-wrap { grid-template-columns: 1fr; }
+  .reader-sidebar { position: fixed; right: 0; top: 64px; width: 320px; height: calc(100vh - 64px); transform: translateX(100%); transition: transform 0.3s; z-index: 150; }
+  .reader-sidebar.open { transform: none; }
+  .chapter-content { padding: 48px 24px 80px; }
+}
+</style>
+</head>
+<body class="grain">
+
+<!-- ── CHAPTER BAR ──────────────────────────────────────── -->
+<header class="chapter-bar">
+  <div class="chapter-bar-left">
+    <a href="index.html" class="cb-logo"><span class="dot"></span> THE UNFOLDING</a>
+    <div class="chapter-pills" id="chapter-pills"></div>
+  </div>
+  <div class="chapter-bar-right" id="auth-area"></div>
+</header>
+
+<!-- ── READER ───────────────────────────────────────────── -->
+<div class="reader-wrap">
+
+  <!-- Main text -->
+  <main class="reader-main">
+    <div class="chapter-content" id="chapter-content">
+      <div style="display:flex;align-items:center;justify-content:center;height:50vh;font-family:var(--serif);font-style:italic;color:var(--muted)">
+        Loading…
+      </div>
+    </div>
+  </main>
+
+  <!-- Sidebar -->
+  <aside class="reader-sidebar" id="reader-sidebar">
+    <div class="sb-empty" id="sb-empty">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <span>Click any paragraph<br/>to read or leave a thread</span>
+    </div>
+    <div class="sb-panel" id="sb-panel">
+      <div class="sb-head">
+        <div class="sb-head-left">
+          <div class="mono-label" style="font-size:0.58rem">Thread</div>
+          <div class="sb-para-preview" id="sb-para-preview"></div>
+        </div>
+        <button class="sb-close" onclick="closeSidebar()">✕</button>
+      </div>
+      <div class="comments-list" id="comments-list"></div>
+      <div class="comment-form" id="comment-form"></div>
+    </div>
+  </aside>
+</div>
+
+<!-- ── WIKI POPUP ───────────────────────────────────────── -->
+<div class="wiki-popup-overlay" id="wiki-overlay" onclick="closeWikiPopup(event)">
+  <div class="wiki-popup" id="wiki-popup"></div>
+</div>
+
+<!-- ── WORD LOOKUP POPUP ────────────────────────────────── -->
+<div class="lookup-popup" id="lookup-popup"></div>
+
+<!-- ── TOAST ────────────────────────────────────────────── -->
+<div class="toast hidden" id="toast"></div>
+
+<script>
+// ── Config ───────────────────────────────────────────────
+const SUPA_URL = 'https://sscpikfblqtmcefegrpv.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
+const { createClient } = supabase;
+const db = createClient(SUPA_URL, SUPA_KEY);
+
+// ── State ────────────────────────────────────────────────
+let currentChapter   = 1;
+let currentParaId    = null;
+let currentUser      = null;
+let wikiIndex        = {};   // name/alias → entry
+let commentCounts    = {};   // paragraphId → count
+
+// ── Chapters data ────────────────────────────────────────
+const CHAPTERS = {
+  1: {
+    title:    "The Fold Closes",
+    subtitle: "Click 1, Freya Local Time",
+    sections: [
+      {
+        paragraphs: [
+          "The last thing the Zaytsev Fold did before it died was make a sound. Not the roar Oliver had expected — no tearing, no explosion, nothing that matched the weight of what was happening. It was a soft, definitive click, like a jar being sealed from the outside. Then the aperture was gone. And with it, everything that had come before.",
+          "He watched it close from the observation deck of the Freya — still docked, still technically a ship, though everyone had stopped pretending it would ever leave. The Fold had been a bruise of light for as long as Oliver could remember: a purple-pink shimmer at the edge of the Yreus system, two million kilometres from Mairee's orbit. Now there was only dark.",
+          "He was sixteen. He had never been to Sol. He did not grieve the Fold the way the adults did — with that particular silence that fell over the Hearth dome when the announcement came through, the kind of silence that was actually a held breath, a whole colony inhaling at once and not letting go. What Oliver felt was different. He felt the shape of it. The geometry of the thing that had just closed.",
+          "Somewhere behind him, the Hearth dome was filling with people. He could hear the distant echo of Commander Vilde's voice beginning to carry — clear, measured, the voice of someone who had practised delivering impossible news. Oliver did not turn around. He pressed his forehead against the cold viewport glass and watched the place where the Fold had been.",
+        ]
+      },
+      {
+        heading: "I.",
+        paragraphs: [
+          "The Freya had been a colony ship once — the flagship of the Fleet, a vessel designed to carry three thousand people across the void and deliver them, intact, to a new world. Now it was a settlement. The lower decks had been unsealed eighteen months ago, the hull breached in three places to allow for expansion, corridors repurposed as streets, the cargo bays converted into workshops and hydroponic rows.",
+          "Oliver lived in cabin seven of what had been Crew Deck B. His mother had moved out eight months ago — or rather, had stopped coming back — and the cabin now held mostly his things: component boards, stripped actuator housings, two broken environment suits he was slowly cannibalising for parts, and a stack of mission logs he had not yet returned to the archive. He slept on the floor when the bunk felt too large.",
+          "The morning after the Fold closed, he was back at his workbench by 0400. He had not slept. There was a Grid terminal he had been rebuilding for the past three weeks — a Mark IV relay unit, older than he was, pulled from a conduit that had flooded during the last wet season — and he worked at it with the focused, slightly manic attention that his supervisor Ian Perera called 'Oliver's way of being frightened.' Ian was probably right. Oliver did not argue.",
+          "By 0600 the terminal was responding to handshake requests. By 0630 it was pulling signal. By 0700 Oliver had confirmed what everyone on the colony was waking up to: the Yreus Array was dark. No signal from Sol. No handshake from the relay network. The Fold had not just closed — it had taken the communication infrastructure with it, cleanly, as if the whole apparatus had been designed to fail together.",
+          "He sat with that information for a long time. Then he made himself a cup of something that was called coffee on the official ration manifest and probably wasn't, and went to find Ian.",
+        ]
+      }
+    ]
+  },
+  2: {
+    title:    "The Directorate",
+    subtitle: "Click 4, Freya Local Time",
+    sections: [
+      {
+        paragraphs: [
+          "The Emergency Suppression Protocol was invoked on the morning of Click 4. Oliver heard about it from Sena Valk, who heard it from a corridor announcement that she had intercepted on a modified comms unit she kept in her jacket pocket. Sena collected information the way other people collected tools — compulsively, and with the sense that someday the right piece would save her life.",
+          "Director Corbin had been Head of Logistics since the transit. He was a compact, bald man who wore immaculate black uniforms and had a habit of pulling his gloves tighter, one finger at a time, before he spoke. Oliver had seen him at colony briefings maybe a dozen times. He had never once seen him smile. He had seen him, on two separate occasions, reduce grown adults to silence with a single sentence.",
+          "The announcement was brief. The Fold's closure constituted an existential threat to colony stability. Commander Vilde's charter-based governance structure was being superseded by the Directorate pending a full resource audit. All personnel were to report to their assigned stations. Curfew would be enforced at 2200 local time. Violations would be processed under emergency statute.",
+          "Oliver listened to Sena read it back from her device and tried to parse what it meant. Vilde had been their anchor. She had delivered the eulogies for the people who hadn't survived the transit. She had sat in the Hearth dome for three nights after the Fold closed, meeting with anyone who wanted to talk. Oliver had not gone, but he had known she was there, and that had been something.",
+          "Now she was being superseded. The word sat in his chest like a stone.",
+        ]
+      },
+      {
+        heading: "II.",
+        paragraphs: [
+          "Ian Perera found him in the workshop at noon. Ian was forty-one, a structural engineer by training and a fixer by temperament — the kind of person who arrived at a problem and immediately started looking for the load-bearing element. He had been Oliver's supervisor for fourteen months, which meant he had known Oliver for approximately the same length of time he had known Mairee, and he treated both with the same wary, careful respect.",
+          "He set two ration packs on the workbench without comment. Oliver did not stop working. Ian sat down on an upturned crate and ate his ration pack with the methodical patience of a man who had learned not to rush anything that did not need rushing.",
+          "After a while Ian said, 'You heard about Vilde.'",
+          "'Yes,' Oliver said.",
+          "'What do you think?'",
+          "Oliver set down the circuit board he was holding. He thought about the shape of the Fold closing. He thought about the colony's three thousand people waking up to an announcement about curfew. He thought about Director Corbin's gloves.",
+          "'I think,' he said carefully, 'that I'm going to need to understand the Grid better than I do right now.'",
+          "Ian looked at him for a long moment. Then he nodded once, picked up Oliver's untouched ration pack, and set it closer to his hand.",
+          "'Then we'd better start,' Ian said.",
+        ]
+      }
+    ]
+  },
+  3: {
+    title:    "Below the Canopy",
+    subtitle: "Click 9, The Delta",
+    sections: [
+      {
+        paragraphs: [
+          "The Delta began where the Freya's perimeter fencing ended and the burr-vine took over. The vine had reached the third fence post by the time Oliver first came here with the survey team — a dense, barbed carpet that crept across everything with the patient confidence of something that had been here long before the colonists arrived and fully intended to be here long after.",
+          "He had been assigned to the team as a technical observer, which meant he carried the sensor unit and kept his mouth shut and tried not to touch anything that had not been identified. The survey team leader was a woman named Dr. Cassel who wore a modified environment suit that had been repaired so many times it was difficult to identify the original material, and who spoke about the Delta with the particular intensity of someone who had stopped being afraid of it.",
+          "The canopy closed over them within fifty metres of the perimeter. It was not dark exactly — the light came through in greenish shafts, diffused and strange, the colour of shallow water — but it was a different order of visibility than the open plateau. Sounds changed. The constant low hum of the Freya's reactor, which Oliver had lived with his entire life, was replaced by something that was not silence but was close to it: the deep, layered quiet of a system that was doing a great deal of work very slowly.",
+          "Dr. Cassel stopped at a cluster of tendril roots and crouched beside them. Oliver crouched too. The roots lay across the soil surface in a fine pale net, the individual strands barely thicker than thread. He had read the survey notes. He knew, technically, what they were. But reading about the Myco-Rhizomic System and being three centimetres away from the part of it you could see were two different things.",
+          "'Don't touch,' Dr. Cassel said, not unkindly.",
+          "Oliver didn't. But he held his sensor unit over the root network and watched the readings climb.",
+        ]
+      },
+      {
+        heading: "III.",
+        paragraphs: [
+          "The dartswarm found them on the way back. Oliver had been warned about dartswarms in the pre-excursion briefing, in the same careful tone that the briefing covered everything: clinically, with the implication that the information was useful but insufficient. What the briefing had not conveyed was the sound.",
+          "It was a high, faint keening — almost musical, almost not — that arrived maybe thirty seconds before the swarm itself. Dr. Cassel heard it first. She stopped walking and held up one hand, and the entire team stopped with the immediate obedience of people who had learned that Dr. Cassel's instincts were worth obeying.",
+          "The swarm came through the canopy in a silver ribbon that caught the filtered light and turned it into something briefly, painfully beautiful. Oliver watched it move. It was coherent — that was the thing that his briefing notes hadn't prepared him for, the way the thousands of individual filaments moved as a single body, bending and folding through the air with a kind of slow, considered grace.",
+          "They stood still. The swarm passed maybe four metres above their heads. The keening faded. The canopy re-settled. Oliver let out the breath he had not known he was holding.",
+          "Dr. Cassel lowered her hand. She looked at Oliver.",
+          "'Welcome to the Delta,' she said.",
+          "Oliver looked up at the canopy, still shifting faintly from the swarm's passage. He thought about the tendril roots and their readings. He thought about the gramophone plants he had not yet heard but had been told about — the ones that collected sound and played it back, days later, in wrong contexts.",
+          "He thought: this place is already listening.",
+          "He wrote that down when he got back. He did not put it in the official survey report.",
+        ]
+      }
+    ]
+  }
+};
+
+// ── Wiki index builder ───────────────────────────────────
+const DATA_FILES = [
+  'data/characters.json','data/ships.json','data/locations.json',
+  'data/items.json','data/factions.json','data/biology.json','data/lore.json'
+];
+
+async function buildWikiIndex() {
+  const all = await Promise.all(DATA_FILES.map(f => fetch(f).then(r => r.json()).catch(() => [])));
+  all.flat().forEach(entry => {
+    const names = [entry.name || entry.title];
+    if (entry.aliases) names.push(...entry.aliases.split(',').map(a => a.trim()));
+    names.filter(Boolean).forEach(n => {
+      wikiIndex[n.toLowerCase()] = entry;
+    });
+  });
+}
+
+// ── Auth ─────────────────────────────────────────────────
+async function initAuth() {
+  const { data: { session } } = await db.auth.getSession();
+  currentUser = session?.user ?? null;
+  renderAuthArea();
+
+  db.auth.onAuthStateChange((_event, session) => {
+    currentUser = session?.user ?? null;
+    renderAuthArea();
+    if (currentParaId) renderCommentForm();
+  });
+}
+
+function renderAuthArea() {
+  const el = document.getElementById('auth-area');
+  if (currentUser) {
+    const meta = currentUser.user_metadata;
+    el.innerHTML = `
+      <img class="auth-avatar" src="${meta.avatar_url || ''}" alt="${meta.full_name || 'User'}"/>
+      <span class="auth-name">${meta.full_name || 'Reader'}</span>
+      <button class="auth-btn" onclick="signOut()">Sign out</button>`;
+  } else {
+    el.innerHTML = `<button class="auth-btn" onclick="signIn()">◎ Sign in with Discord</button>`;
+  }
+}
+
+async function signIn() {
+  await db.auth.signInWithOAuth({
+    provider: 'discord',
+    options: { redirectTo: window.location.href }
+  });
+}
+
+async function signOut() {
+  await db.auth.signOut();
+}
+
+// ── Chapter rendering ────────────────────────────────────
+function renderChapterPills() {
+  const el = document.getElementById('chapter-pills');
+  el.innerHTML = Object.keys(CHAPTERS).map(n => `
+    <button class="cp-btn ${n == currentChapter ? 'active' : ''}" onclick="loadChapter(${n})">
+      Ch. ${n}
+    </button>`).join('');
+}
+
+async function loadChapter(n) {
+  currentChapter = n;
+  currentParaId  = null;
+  renderChapterPills();
+  closeSidebar();
+  await loadCommentCounts(n);
+  renderChapter();
+}
+
+function renderChapter() {
+  const ch  = CHAPTERS[currentChapter];
+  const el  = document.getElementById('chapter-content');
+
+  let paraIndex = 0;
+  let html = `
+    <div class="ch-eyebrow">Chapter ${currentChapter}</div>
+    <h1 class="ch-title">${ch.title}</h1>
+    <p class="ch-subtitle">${ch.subtitle}</p>`;
+
+  ch.sections.forEach((sec, si) => {
+    if (sec.heading) html += `<div class="ch-divider"></div><h3 style="font-family:var(--serif);font-weight:300;color:var(--muted);font-size:1.1rem;margin-bottom:28px">${sec.heading}</h3>`;
+    sec.paragraphs.forEach((text, pi) => {
+      const pid   = `ch${currentChapter}-p${paraIndex}`;
+      const count = commentCounts[pid] || 0;
+      const isFirst = si === 0 && pi === 0;
+      const linked  = autoLink(text);
+      paraIndex++;
+      html += `
+        <p class="para${isFirst ? ' drop-cap' : ''}${count > 0 ? ' has-comments' : ''}"
+           id="${pid}"
+           data-para-id="${pid}"
+           data-comment-count="${count}"
+           onclick="selectPara('${pid}', this)">
+          <span class="para-toolbar">
+            <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
+            <button class="pt-btn" onclick="event.stopPropagation();openThread('${pid}')">💬 Thread${count > 0 ? ` (${count})` : ''}</button>
+          </span>
+          ${linked}
+        </p>`;
+    });
+  });
+
+  el.innerHTML = html;
+}
+
+// ── Auto wiki linking ────────────────────────────────────
+function autoLink(text) {
+  // Sort by length descending so longer names match first
+  const names = Object.keys(wikiIndex).sort((a, b) => b.length - a.length);
+  let result  = text;
+  const placeholders = [];
+
+  names.forEach(name => {
+    if (name.length < 4) return; // skip very short words
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp(`(?<![\\w-])(${escaped})(?![\\w-])`, 'gi');
+    result = result.replace(re, (match) => {
+      const idx = placeholders.length;
+      placeholders.push(`<span class="wiki-link" onclick="event.stopPropagation();openWikiPopup('${encodeURIComponent(name)}')" title="Wiki: ${match}">${match}</span>`);
+      return `\x00${idx}\x00`;
+    });
+  });
+
+  // Restore placeholders
+  result = result.replace(/\x00(\d+)\x00/g, (_, i) => placeholders[+i]);
+  return result;
+}
+
+// ── Para selection ───────────────────────────────────────
+function selectPara(pid, el) {
+  // Deactivate previous
+  document.querySelectorAll('.para.active').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  currentParaId = pid;
+  openThread(pid);
+}
+
+function openThread(pid) {
+  currentParaId = pid;
+  document.getElementById('sb-empty').style.display = 'none';
+  document.getElementById('sb-panel').classList.add('visible');
+
+  // Preview text
+  const paraEl = document.getElementById(pid);
+  const raw    = paraEl ? paraEl.innerText.slice(0, 120) + '…' : '';
+  document.getElementById('sb-para-preview').textContent = raw;
+
+  loadComments(pid);
+  renderCommentForm();
+
+  // Mobile: open sidebar
+  document.getElementById('reader-sidebar').classList.add('open');
+}
+
+function closeSidebar() {
+  document.getElementById('sb-empty').style.display = '';
+  document.getElementById('sb-panel').classList.remove('visible');
+  document.getElementById('reader-sidebar').classList.remove('open');
+  document.querySelectorAll('.para.active').forEach(p => p.classList.remove('active'));
+  currentParaId = null;
+}
+
+// ── Comments ─────────────────────────────────────────────
+async function loadCommentCounts(chapter) {
+  const { data } = await db.from('comments')
+    .select('paragraph_id')
+    .eq('chapter', chapter);
+  commentCounts = {};
+  (data || []).forEach(r => {
+    commentCounts[r.paragraph_id] = (commentCounts[r.paragraph_id] || 0) + 1;
+  });
+}
+
+async function loadComments(pid) {
+  const list = document.getElementById('comments-list');
+  list.innerHTML = `<div style="font-family:var(--mono);font-size:0.62rem;color:var(--muted);text-align:center;padding:20px">Loading…</div>`;
+
+  const { data, error } = await db.from('comments')
+    .select('*')
+    .eq('chapter', currentChapter)
+    .eq('paragraph_id', pid)
+    .order('created_at', { ascending: true });
+
+  if (error || !data?.length) {
+    list.innerHTML = `<div class="no-comments">No threads yet.<br/>Be the first to leave a note.</div>`;
+    return;
+  }
+
+  list.innerHTML = data.map(c => `
+    <div class="comment-item" id="c-${c.id}">
+      <div class="comment-head">
+        <img class="c-avatar" src="${c.avatar_url || ''}" alt="${c.display_name || 'Reader'}"
+          onerror="this.style.display='none'"/>
+        <span class="c-name">${c.display_name || 'Anonymous'}</span>
+        <span class="c-time">${timeAgo(c.created_at)}</span>
+        ${currentUser?.id === c.user_id ? `<button class="c-delete" onclick="deleteComment('${c.id}','${pid}')" title="Delete">✕</button>` : ''}
+      </div>
+      <div class="c-body">${escHtml(c.body)}</div>
+    </div>`).join('');
+
+  list.scrollTop = list.scrollHeight;
+}
+
+function renderCommentForm() {
+  const el = document.getElementById('comment-form');
+  if (!currentParaId) { el.innerHTML = ''; return; }
+
+  if (!currentUser) {
+    el.innerHTML = `
+      <div class="cf-login">
+        <span>Sign in to join the thread</span>
+        <button class="auth-btn" onclick="signIn()">◎ Sign in with Discord</button>
+      </div>`;
+    return;
+  }
+
+  el.innerHTML = `
+    <textarea class="cf-textarea" id="cf-text" placeholder="Add a note to this paragraph…" maxlength="2000"></textarea>
+    <div class="cf-footer">
+      <span class="cf-hint">Max 2000 chars</span>
+      <button class="cf-submit" id="cf-btn" onclick="submitComment()">Post</button>
+    </div>`;
+}
+
+async function submitComment() {
+  const textarea = document.getElementById('cf-text');
+  const btn      = document.getElementById('cf-btn');
+  const body     = textarea.value.trim();
+  if (!body || !currentUser || !currentParaId) return;
+
+  btn.disabled   = true;
+  btn.textContent = 'Posting…';
+
+  const meta = currentUser.user_metadata;
+  const { error } = await db.from('comments').insert({
+    chapter:      currentChapter,
+    paragraph_id: currentParaId,
+    user_id:      currentUser.id,
+    display_name: meta.full_name || 'Reader',
+    avatar_url:   meta.avatar_url || '',
+    body
+  });
+
+  if (error) {
+    toast('Error posting comment. Try again.');
+    btn.disabled = false; btn.textContent = 'Post';
+    return;
+  }
+
+  textarea.value = '';
+  btn.disabled = false; btn.textContent = 'Post';
+  commentCounts[currentParaId] = (commentCounts[currentParaId] || 0) + 1;
+
+  // Update bubble on paragraph
+  const paraEl = document.getElementById(currentParaId);
+  if (paraEl) {
+    paraEl.classList.add('has-comments');
+    paraEl.dataset.commentCount = commentCounts[currentParaId];
+    // Refresh thread button label
+    const tBtn = paraEl.querySelector('.pt-btn:last-child');
+    if (tBtn) tBtn.textContent = `💬 Thread (${commentCounts[currentParaId]})`;
+  }
+
+  loadComments(currentParaId);
+}
+
+async function deleteComment(id, pid) {
+  await db.from('comments').delete().eq('id', id);
+  commentCounts[pid] = Math.max(0, (commentCounts[pid] || 1) - 1);
+  const paraEl = document.getElementById(pid);
+  if (paraEl) {
+    paraEl.dataset.commentCount = commentCounts[pid];
+    if (commentCounts[pid] === 0) paraEl.classList.remove('has-comments');
+  }
+  loadComments(pid);
+}
+
+// ── Wiki popup ───────────────────────────────────────────
+function openWikiPopup(encodedName) {
+  const name  = decodeURIComponent(encodedName).toLowerCase();
+  const entry = wikiIndex[name];
+  if (!entry) return;
+
+  const TAG_LABELS = { char:'Character', ship:'Ship', loc:'Location', item:'Item / Tech', ai:'AI', org:'Faction / Org', biology:'Biology', lore:'Lore' };
+  const popup = document.getElementById('wiki-popup');
+  popup.innerHTML = `
+    <div class="wp-head">
+      <div>
+        <div class="wp-tag">${TAG_LABELS[entry.tag] || entry.tag || 'Entry'}</div>
+        <div class="wp-title">${entry.name || entry.title}</div>
+        ${entry.role ? `<div class="wp-role">${entry.role}</div>` : ''}
+      </div>
+      <button class="wp-close" onclick="closeWikiPopup()">✕</button>
+    </div>
+    <div class="wp-body">
+      <p class="wp-desc">${entry.desc || entry.content || ''}</p>
+      <div class="wp-meta">
+        ${entry.affil ? `<span class="wp-chip">${entry.affil}</span>` : ''}
+        ${entry.aliases ? `<span class="wp-chip">aka ${entry.aliases}</span>` : ''}
+      </div>
+      ${entry.id ? `<a class="wp-full-link" href="wiki.html?entry=${entry.id}" target="_blank">Full entry in wiki →</a>` : ''}
+    </div>`;
+
+  document.getElementById('wiki-overlay').classList.add('open');
+}
+
+function closeWikiPopup(e) {
+  if (e && e.target !== document.getElementById('wiki-overlay')) return;
+  document.getElementById('wiki-overlay').classList.remove('open');
+}
+
+// ── Word lookup ──────────────────────────────────────────
+function lookupSelection(pid) {
+  const selection = window.getSelection()?.toString().trim();
+  const word = selection || (document.getElementById(pid)?.innerText.slice(0, 20).split(' ')[0] || '');
+  if (!word) return;
+  showLookupPopup(word);
+}
+
+function showLookupPopup(word) {
+  const popup = document.getElementById('lookup-popup');
+  const clean = word.replace(/[^a-zA-Z0-9\s\-']/g, '');
+  popup.innerHTML = `
+    <div class="lp-word">"${clean}"</div>
+    <div class="lp-actions">
+      <a class="lp-btn" href="https://www.merriam-webster.com/dictionary/${encodeURIComponent(clean)}" target="_blank" rel="noopener">📖 Merriam-Webster</a>
+      <a class="lp-btn" href="https://translate.google.com/?sl=en&text=${encodeURIComponent(clean)}" target="_blank" rel="noopener">🌍 Google Translate</a>
+      <a class="lp-btn" href="https://www.deepl.com/translator#en/nl/${encodeURIComponent(clean)}" target="_blank" rel="noopener">🔵 DeepL</a>
+      <button class="lp-btn" onclick="closeLookup()">✕ Close</button>
+    </div>`;
+
+  // Position near centre
+  popup.style.top  = '50%';
+  popup.style.left = '50%';
+  popup.style.transform = 'translate(-50%, -50%)';
+  popup.classList.add('open');
+}
+
+function closeLookup() {
+  document.getElementById('lookup-popup').classList.remove('open');
+}
+
+// Click outside to close lookup
+document.addEventListener('click', (e) => {
+  const popup = document.getElementById('lookup-popup');
+  if (popup.classList.contains('open') && !popup.contains(e.target)) closeLookup();
+});
+
+// Keyboard: Escape closes popups
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeWikiPopup();
+    closeLookup();
+    closeSidebar();
+  }
+});
+
+// ── Utilities ────────────────────────────────────────────
+function timeAgo(iso) {
+  const diff = Date.now() - new Date(iso).getTime();
+  const m = Math.floor(diff / 60000);
+  if (m < 1)  return 'just now';
+  if (m < 60) return `${m}m ago`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${h}h ago`;
+  return `${Math.floor(h/24)}d ago`;
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function toast(msg, duration = 3000) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.remove('hidden');
+  setTimeout(() => el.classList.add('hidden'), duration);
+}
+
+// ── Init ─────────────────────────────────────────────────
+async function init() {
+  await Promise.all([buildWikiIndex(), initAuth()]);
+  await loadChapter(1);
+}
+
+init();
+</script>
+</body>
+</html>
