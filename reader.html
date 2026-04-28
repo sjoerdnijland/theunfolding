@@ -1488,7 +1488,7 @@ function renderChapter(ch) {
            data-para-id="${headingPid}"
            data-comment-count="0"
            data-scene="${sceneIndex}"
-           data-raw="${escAttr(text)}"
+           data-raw="${escAttr(headingText)}"
            onclick="selectPara('${headingPid}', this)">
           <span class="para-toolbar">
             <button class="pt-btn" onclick="event.stopPropagation();openThread('${headingPid}')">💬 Thread</button>
