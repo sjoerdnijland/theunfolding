@@ -181,6 +181,21 @@
   border-left-color: var(--teal-soft);
 }
 
+/* ── Scene break ───────────────────────────────────────── */
+.scene-break {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 64px 0;
+  opacity: 0.45;
+}
+.scene-break span {
+  color: var(--rose);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
 /* ── Epigraph ──────────────────────────────────────────── */
 .epigraph-block {
   margin: 0 0 56px;
@@ -471,7 +486,7 @@ let wikiIndex        = {};   // name/alias → entry
 let commentCounts    = {};   // paragraphId → count
 
 // ── Chapters — loaded from data/chapters/chapter-N.json ──
-const CHAPTER_COUNT = 1; // increment as you add files
+const CHAPTER_COUNT = 2; // increment as you add files
 
 async function loadChapter(n) {
   currentChapter = n;
@@ -601,7 +616,11 @@ function renderChapter(ch) {
       return;
     }
 
-    // ── Epigraph ──
+    // ── Scene break ──
+    if (sec.type === 'scene-break') {
+      html += `<div class="scene-break"><span>✦</span><span>✦</span><span>✦</span></div>`;
+      return;
+    }
     if (sec.type === 'epigraph') {
       html += `<div class="epigraph-block">
         ${sec.paragraphs.map(p => `<p class="epigraph-para">${p}</p>`).join('')}
