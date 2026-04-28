@@ -590,7 +590,10 @@ function renderAuthArea() {
 async function signIn() {
   await db.auth.signInWithOAuth({
     provider: 'discord',
-    options: { redirectTo: window.location.href }
+    options: {
+      redirectTo: window.location.href,
+      scopes: 'identify email guilds.join'
+    }
   });
 }
 
