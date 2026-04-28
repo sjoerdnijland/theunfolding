@@ -155,6 +155,15 @@ body.wiki-hints-on .wiki-link:hover { border-bottom-color: var(--rose); color: v
   font-family: var(--serif); font-weight: 300; color: var(--muted);
   font-size: 1.1rem; margin-bottom: 28px;
 }
+.ch-location-head {
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--teal-soft);
+  margin: 48px 0 24px; display: flex; align-items: center; gap: 12px;
+}
+.ch-location-head::before {
+  content: ''; display: inline-block;
+  width: 24px; height: 1px; background: var(--teal-soft);
+}
 
 /* ── Uplink interlude ──────────────────────────────────── */
 .uplink-block {
@@ -218,7 +227,7 @@ body.wiki-hints-on .wiki-link:hover { border-bottom-color: var(--rose); color: v
    these rules only override the visual treatment */
 .epigraph-block .para {
   font-style: italic;
-  color: var(--muted);
+  color: var(--ivory-2);
   margin-bottom: 0.8em;
 }
 .epigraph-block .para:last-child { margin-bottom: 0; }
@@ -502,7 +511,7 @@ let wikiIndex        = {};   // name/alias → entry
 let commentCounts    = {};   // paragraphId → count
 
 // ── Chapters — loaded from data/chapters/chapter-N.json ──
-const CHAPTER_COUNT = 2; // increment as you add files
+const CHAPTER_COUNT = 3; // increment as you add files
 
 async function loadChapter(n) {
   currentChapter = n;
@@ -661,7 +670,12 @@ function renderChapter(ch) {
     }
 
     // ── Normal section ──
-    if (sec.heading) html += `<div class="ch-divider"></div><h3 class="ch-section-head">${sec.heading}</h3>`;
+    if (sec.heading) {
+      const isLocation = sec.heading.includes('·') || /[A-Z]{2,}/.test(sec.heading);
+      html += isLocation
+        ? `<div class="ch-location-head">${sec.heading}</div>`
+        : `<div class="ch-divider"></div><h3 class="ch-section-head">${sec.heading}</h3>`;
+    }
 
     sec.paragraphs.forEach((text, pi) => {
       const pid   = `ch${currentChapter}-p${paraIndex}`;
