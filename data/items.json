@@ -7,7 +7,7 @@
     "aliases": "The Egg",
     "desc": "A black, mussel-shell-shaped device engineered by Kaspar Savannen. Curved, smooth, warm to the touch — seemingly with its own heartbeat. When connected to the Grid network, it can rewrite personal data, create ghost copies, and render someone untraceable. Eventually used by Next to shut down the Grid.",
     "chapter": 3,
-    "image": "assets/items/egg.png",
+    "image": "",
     "mj_prompt": "A palm-sized matte-black mussel-shell shaped device resting in the open palm of a teenage boy's hand, its surface warm and faintly pulsing with its own internal light, dim colony corridor behind it, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "cog-egg"
   },
@@ -28,10 +28,10 @@
     "tag": "ai",
     "role": "Sandboxed AI",
     "affil": "Various",
-    "aliases": "CIX, Gary, Weaver, Next",
+    "aliases": "CIX, Gary, Weaver",
     "desc": "A sandboxed AI unit — smart but legally 'lobotomized.' Cannot access external networks. Units include Gary (Muro's), Weaver (Astrid's planning CIX), and Next (Strand's uploaded consciousness).",
     "chapter": 2,
-    "image": "assets/items/CIX.png",
+    "image": "",
     "mj_prompt": "Several matte-black CIX cube units of different sizes arranged on a shelf in a ship cabin, each with a single status light of a different colour, small speakers, no screens, the AI lives in the box, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "cix-contained-intelligence-executor"
   },
@@ -43,7 +43,7 @@
     "aliases": "Eyewyns",
     "desc": "Small floating camera orbs with dilating lenses. Used for broadcasts and surveillance. Deployed by Directorate guardians. Multiple orbs orbit a speaker to project their face across the colony.",
     "chapter": 1,
-    "image": "assets/items/eyewyn.png",
+    "image": "",
     "mj_prompt": "A cluster of small floating surveillance orbs with dilating camera lenses drifting at head height in a colony assembly hall, projecting a commander's face onto the dome wall above thousands of colonists, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "eyewyn-orbs"
   },
@@ -55,7 +55,7 @@
     "aliases": "Scitter",
     "desc": "A Frisbee-shaped drone that zigzags ahead of survey teams in the Delta, mapping terrain and warning of hazards. 'Only speaks when it must.'",
     "chapter": 5,
-    "image": "assets/items/scitter.png",
+    "image": "",
     "mj_prompt": "A small frisbee-shaped scout drone hovering at knee-height in an alien jungle, its sensors scanning the undergrowth ahead, a survey team visible behind it in the mist, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "scitter"
   },
@@ -67,7 +67,7 @@
     "aliases": "Coffin",
     "desc": "A survival-engineering exosuit for extreme sub-zero environments. Nicknamed 'Coffin' by miners. 'Köldur chills the cold.' Failure in one means death.",
     "chapter": 4,
-    "image": "assets/items/koldur.png",
+    "image": "",
     "mj_prompt": "A bulky articulated thermal exosuit standing upright against a frozen Plateau rock face, its thermal lattice glowing faint orange against -60°C air, a miner just visible through the polarised visor, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "köldur-exosuit"
   },
@@ -96,6 +96,18 @@
     "id": "gravitic-suppressor"
   },
   {
+    "name": "Smashout",
+    "tag": "item",
+    "role": "Sport",
+    "affil": "Various ships",
+    "aliases": "Smashout",
+    "desc": "A fast-paced racket game played on a three-dimensional grid of glowing panels. The aim is to smash out a full row on the opponent's back wall.",
+    "chapter": 7,
+    "image": "",
+    "mj_prompt": "Two people playing an intense three-dimensional racket game on a glowing panel grid in a ship recreation bay, a ball of light ricocheting between surfaces, both players in mid-air, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "smashout"
+  },
+  {
     "name": "Nutrient paste (Nutripaste)",
     "tag": "item",
     "role": "Staple food",
@@ -115,7 +127,7 @@
     "aliases": "Hopper",
     "desc": "A flying flatbed transport — five metres square, powered by gravitic thrusters. No hull, only a console and cargo nets. Designed for emergency jumps between outposts. Notoriously unstable.",
     "chapter": 6,
-    "image": "assets/items/hopper.png",
+    "image": "",
     "mj_prompt": "An open flying flatbed platform skimming the alien jungle canopy at speed, cargo nets straining, no hull, just a console and gravitic thrusters, riders holding on through turbulence, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "hopper"
   },
@@ -127,7 +139,7 @@
     "aliases": "LyWyn",
     "desc": "A canopy drone using needle-sharp LIDAR for aerial survey. Beams fizzle when grazing loamy ground, making it ineffective for subsurface mapping.",
     "chapter": 6,
-    "image": "assets/items/lywyn.png",
+    "image": "",
     "mj_prompt": "A LIDAR canopy survey drone threading through the upper layers of an alien jungle canopy, its needle beams illuminating cross-sections of dense alien vegetation, mapping what no ground crew can reach, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "lywyn"
   },
@@ -139,7 +151,7 @@
     "aliases": "Shuvs",
     "desc": "Heated shovels that cut into soil like hot ice cream scoops. Used to dig into vurnshafts.",
     "chapter": 9,
-    "image": "assets/items/shuv.png",
+    "image": "",
     "mj_prompt": "A pair of heated excavation shovels glowing orange at the blade edge cutting through dense alien rootwork at the entry to a vurnshaft tunnel, steam rising, jungle floor, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "shuvs"
   },
@@ -151,7 +163,7 @@
     "aliases": "The Board",
     "desc": "A large rectangular slab of dark glass with glowing constellations and geometries inside. Displays visions when touched — surfacing the inner truth and deepest yearning of whoever places their palm on it.",
     "chapter": 10,
-    "image": "assets/items/thresleboard.png",
+    "image": "",
     "mj_prompt": "A large rectangular slab of dark glass in a ritual chamber, glowing constellations and sacred geometry moving within it, a hand placed flat on its surface, a vision of a beautiful city bleeding up through the glass, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "trestle-board"
   },
@@ -163,7 +175,7 @@
     "aliases": "Magrope",
     "desc": "Magnetic rescue rope used for EVA extractions. Used to pull Muro from Orbital Three into the Stingray.",
     "chapter": 11,
-    "image": "assets/items/magrope.png",
+    "image": "",
     "mj_prompt": "A magnetic rescue rope extending from the open hatch of a black shuttle through vacuum toward a tumbling suited figure from an orbital station, Mairee filling the background, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "mag-rope"
   }
