@@ -306,6 +306,8 @@ body.wiki-hints-on .para.active .wiki-link {
   cursor: pointer; border-radius: 2px; transition: all 0.12s; white-space: nowrap;
 }
 .pt-btn:hover { background: rgba(233,74,124,0.12); color: var(--rose); }
+.pt-btn.pt-narrate { border-color: rgba(233,74,124,0.3); color: var(--rose-soft); }
+.pt-btn.pt-narrate:hover { background: rgba(233,74,124,0.18); color: var(--rose); }
 
 /* ── Sidebar panels ────────────────────────────────────── */
 .sb-empty {
@@ -454,7 +456,55 @@ body.wiki-hints-on .para.active .wiki-link {
 }
 .lp-btn:hover { border-color: var(--rose); color: var(--rose); }
 
-/* ── Narration mode ────────────────────────────────────── */
+/* ── Narrate hero button ───────────────────────────────── */
+.narrate-hero-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 18px;
+  border: 1px solid var(--rose);
+  background: rgba(233,74,124,0.12);
+  color: var(--rose);
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.18em;
+  text-transform: uppercase; cursor: pointer; border-radius: 2px;
+  transition: all 0.2s;
+  box-shadow: 0 0 12px rgba(233,74,124,0.2);
+}
+.narrate-hero-btn:hover {
+  background: var(--rose); color: var(--ink);
+  box-shadow: 0 0 20px rgba(233,74,124,0.45);
+}
+.narrate-hero-icon { font-size: 0.8rem; }
+
+/* ── Narration thread sidebar ──────────────────────────── */
+.narration-thread {
+  position: fixed; right: 0; top: 64px; bottom: 0; z-index: 310;
+  width: 340px;
+  background: var(--ink-2);
+  border-left: 1px solid var(--line-strong);
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+.narration-thread.open { transform: none; }
+.nt-head {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nt-title { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-bright); }
+.nt-close {
+  background: transparent; border: none; color: var(--muted);
+  font-size: 1.1rem; cursor: pointer; transition: color 0.15s;
+}
+.nt-close:hover { color: var(--ivory); }
+.nt-preview {
+  font-family: var(--serif); font-style: italic; font-size: 0.88rem;
+  color: var(--muted); padding: 10px 20px 0; line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.nt-comments { flex: 1; overflow-y: auto; padding: 14px 20px; display: flex; flex-direction: column; gap: 12px; }
+.nt-comments::-webkit-scrollbar { width: 4px; }
+.nt-comments::-webkit-scrollbar-thumb { background: var(--teal); }
+.nt-form { padding: 14px 20px; border-top: 1px solid var(--line); background: rgba(6,22,25,0.4); }
 .narration-overlay {
   display: none;
   position: fixed; inset: 0; z-index: 300;
@@ -613,7 +663,9 @@ body.wiki-hints-on .para.active .wiki-link {
     </div>
     <button class="fs-btn" id="hints-btn" onclick="toggleWikiHints()" title="Toggle wiki hints">◈ Hints</button>
     <a href="map.html" target="unfolding-map" rel="noopener" class="fs-btn" style="text-decoration:none" title="Open tactical map">◉ Map</a>
-    <button class="fs-btn" onclick="startNarration()" title="Narration mode" id="narrate-btn">▶ Narrate</button>
+    <button class="narrate-hero-btn" onclick="startNarration()" id="narrate-btn" title="Listen to Charlotte narrate the story">
+      <span class="narrate-hero-icon">▶</span> Narrate
+    </button>
     <div id="auth-area" style="display:flex;align-items:center;gap:10px;"></div>
   </div>
 </header>
@@ -672,7 +724,7 @@ body.wiki-hints-on .para.active .wiki-link {
   <div class="narration-comment-hint" id="narration-comment-hint">
     <div class="nch-count" id="nch-count">0</div>
     <div class="nch-label">threads</div>
-    <button class="nch-btn" onclick="narrationOpenThread()">Read →</button>
+    <button class="nch-btn" onclick="narrationToggleThread()">💬 Thread</button>
   </div>
 </div>
 
@@ -684,9 +736,20 @@ body.wiki-hints-on .para.active .wiki-link {
   <button class="nc-btn" onclick="narrationPrev()">← Prev</button>
   <button class="nc-btn primary" id="nc-play-btn" onclick="narrationTogglePlay()">⏸ Pause</button>
   <button class="nc-btn" onclick="narrationNext()">Next →</button>
-  <button class="nc-btn" onclick="narrationOpenThread()">💬 Thread</button>
+  <button class="nc-btn" id="nc-thread-btn" onclick="narrationToggleThread()">💬 Thread</button>
   <button class="nc-btn" onclick="stopNarration()">✕ Exit</button>
 </div>
+
+<!-- ── NARRATION THREAD SIDEBAR ──────────────────────────── -->
+<aside class="narration-thread" id="narration-thread">
+  <div class="nt-head">
+    <span class="nt-title">💬 Thread</span>
+    <button class="nt-close" onclick="narrationToggleThread()">✕</button>
+  </div>
+  <div class="nt-preview" id="nt-preview"></div>
+  <div class="nt-comments" id="nt-comments"></div>
+  <div class="nt-form" id="nt-form"></div>
+</aside>
 
 <script>
 // ── Narration state ──────────────────────────────────────
@@ -732,6 +795,8 @@ function stopNarration() {
   document.getElementById('narration-overlay').classList.remove('active');
   document.getElementById('narration-progress').style.display = 'none';
   document.getElementById('narration-controls').style.display = 'none';
+  document.getElementById('narration-thread').classList.remove('open');
+  narrationThreadOpen = false;
   document.body.style.overflow = '';
   document.getElementById('narration-comment-hint').classList.remove('visible');
 }
@@ -746,6 +811,12 @@ async function narrationGoTo(index) {
   // Counter
   document.getElementById('narration-counter').textContent =
     `${index + 1} / ${total}`;
+
+  // Refresh thread sidebar if open
+  if (narrationThreadOpen) {
+    document.getElementById('nt-preview').textContent = getParaText(narrationParaIds[index] || '').slice(0, 120) + '…';
+    if (narrationParaIds[index]) loadNarrationComments(narrationParaIds[index]);
+  }
 
   // Show comment hint if paragraph has threads
   const count = commentCounts[pid] || 0;
@@ -772,7 +843,10 @@ async function narrationGoTo(index) {
     try {
       const res = await fetch(NARRATE_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${SUPA_KEY}`,
+        },
         body: JSON.stringify({ text })
       });
       data = await res.json();
@@ -868,18 +942,99 @@ function narrationNext() {
   narrationGoTo(narrationIndex + 1);
 }
 
-function narrationOpenThread() {
-  const pid = narrationParaIds[narrationIndex];
-  if (!pid) return;
-  // Pause narration, open thread in sidebar
-  if (narrationAudio) narrationAudio.pause();
-  narrationPlaying = false;
-  cancelAnimationFrame(narrationRAF);
-  document.getElementById('nc-play-btn').textContent = '▶ Play';
-  stopNarration();
-  // Select the paragraph and open its thread
-  const el = document.getElementById(pid);
-  if (el) selectPara(pid, el);
+async function startNarrationFrom(pid) {
+  narrationParaIds = getNarrableParagraphs();
+  const idx = narrationParaIds.indexOf(pid);
+  narrationIndex = idx >= 0 ? idx : 0;
+  narrationActive = true;
+
+  document.getElementById('narration-overlay').classList.add('active');
+  document.getElementById('narration-progress').style.display = 'block';
+  document.getElementById('narration-controls').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  await narrationGoTo(narrationIndex);
+}
+
+let narrationThreadOpen = false;
+
+function narrationToggleThread() {
+  narrationThreadOpen = !narrationThreadOpen;
+  const sidebar = document.getElementById('narration-thread');
+  const btn     = document.getElementById('nc-thread-btn');
+  sidebar.classList.toggle('open', narrationThreadOpen);
+  if (btn) btn.style.color = narrationThreadOpen ? 'var(--teal-bright)' : '';
+
+  if (narrationThreadOpen) {
+    const pid = narrationParaIds[narrationIndex];
+    if (!pid) return;
+    // Show preview
+    document.getElementById('nt-preview').textContent = getParaText(pid).slice(0, 120) + '…';
+    // Load comments into narration sidebar
+    loadNarrationComments(pid);
+  }
+}
+
+async function loadNarrationComments(pid) {
+  const list = document.getElementById('nt-comments');
+  const form = document.getElementById('nt-form');
+  list.innerHTML = `<div style="font-family:var(--mono);font-size:0.72rem;color:var(--muted);text-align:center;padding:20px">Loading…</div>`;
+
+  const { data } = await db.from('comments')
+    .select('*')
+    .eq('chapter', currentChapter)
+    .eq('paragraph_id', pid)
+    .order('created_at', { ascending: true });
+
+  if (!data?.length) {
+    list.innerHTML = `<div class="no-comments">No threads yet.<br/>Be the first to leave a note.</div>`;
+  } else {
+    list.innerHTML = data.map(c => {
+      const avatarUrl = (c.avatar_url && c.avatar_url.startsWith('http')) ? c.avatar_url : '';
+      return `<div class="comment-item">
+        <div class="comment-head">
+          <img class="c-avatar" src="${avatarUrl}" onerror="this.style.display='none'" alt="${c.display_name || ''}"/>
+          <span class="c-name">${c.display_name || 'Anonymous'}</span>
+          <span class="c-time">${timeAgo(c.created_at)}</span>
+        </div>
+        <div class="c-body">${escHtml(c.body)}</div>
+      </div>`;
+    }).join('');
+    list.scrollTop = list.scrollHeight;
+  }
+
+  // Comment form
+  if (!currentUser) {
+    form.innerHTML = `<div class="cf-login"><span>Sign in to comment</span>
+      <button class="auth-btn" onclick="signIn()">◎ Sign in with Discord</button></div>`;
+  } else {
+    form.innerHTML = `
+      <textarea class="cf-textarea" id="nt-text" placeholder="Add a note…" maxlength="2000" style="min-height:64px"></textarea>
+      <div class="cf-footer">
+        <span class="cf-hint">Max 2000 chars</span>
+        <button class="cf-submit" onclick="submitNarrationComment('${pid}')">Post</button>
+      </div>`;
+  }
+}
+
+async function submitNarrationComment(pid) {
+  const textarea = document.getElementById('nt-text');
+  const body = textarea?.value.trim();
+  if (!body || !currentUser) return;
+  const meta = currentUser.user_metadata;
+  const displayName = meta?.custom_claims?.global_name || meta?.full_name || meta?.name || 'Reader';
+  const { error } = await db.from('comments').insert({
+    chapter: currentChapter, paragraph_id: pid,
+    user_id: currentUser.id, display_name: displayName,
+    avatar_url: getAvatarUrl(meta), body
+  });
+  if (!error) {
+    commentCounts[pid] = (commentCounts[pid] || 0) + 1;
+    loadNarrationComments(pid);
+    // Update comment hint bubble
+    document.getElementById('nch-count').textContent = commentCounts[pid];
+    document.getElementById('narration-comment-hint').classList.add('visible');
+  }
 }
 
 async function prefetchNext(index) {
@@ -891,7 +1046,10 @@ async function prefetchNext(index) {
   try {
     const res = await fetch(NARRATE_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${SUPA_KEY}`,
+      },
       body: JSON.stringify({ text })
     });
     const data = await res.json();
@@ -1125,6 +1283,7 @@ function renderChapter(ch) {
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
               <button class="pt-btn" onclick="event.stopPropagation();openThread('${pid}')">💬 Thread${count > 0 ? ` (${count})` : ''}</button>
+              <button class="pt-btn pt-narrate" onclick="event.stopPropagation();startNarrationFrom('${pid}')">▶ Narrate</button>
             </span>
             ${linked}
           </p>`;
@@ -1157,6 +1316,7 @@ function renderChapter(ch) {
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
               <button class="pt-btn" onclick="event.stopPropagation();openThread('${pid}')">💬 Thread${count > 0 ? ` (${count})` : ''}</button>
+              <button class="pt-btn pt-narrate" onclick="event.stopPropagation();startNarrationFrom('${pid}')">▶ Narrate</button>
             </span>
             ${linked}
           </p>`;
@@ -1188,6 +1348,7 @@ function renderChapter(ch) {
           <span class="para-toolbar">
             <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
             <button class="pt-btn" onclick="event.stopPropagation();openThread('${pid}')">💬 Thread${count > 0 ? ` (${count})` : ''}</button>
+              <button class="pt-btn pt-narrate" onclick="event.stopPropagation();startNarrationFrom('${pid}')">▶ Narrate</button>
           </span>
           ${linked}
         </p>`;
