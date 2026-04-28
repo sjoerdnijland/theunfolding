@@ -252,10 +252,18 @@ body::before {
   </div>
 
   <!-- Generate -->
-  <button class="generate-btn" id="generate-btn" onclick="generatePodcast()">
-    <span class="gen-icon">◎</span>
-    Generate episode
-  </button>
+  <div style="display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap;align-items:center">
+    <button class="generate-btn" id="generate-btn" onclick="generatePodcast()" style="margin-bottom:0">
+      <span class="gen-icon">◎</span>
+      Generate episode
+    </button>
+    <button class="generate-btn" onclick="loadScript()" style="margin-bottom:0;border-color:var(--teal-b);color:var(--teal-b);background:rgba(74,154,170,0.08);box-shadow:none">
+      📂 Load JSON
+    </button>
+    <button class="generate-btn" id="save-btn" onclick="saveScript()" style="display:none;margin-bottom:0;border-color:var(--amber);color:var(--amber);background:rgba(212,168,67,0.08);box-shadow:none">
+      ⬇ Save script
+    </button>
+  </div>
 
   <!-- Status -->
   <div class="status-bar" id="status-bar">
@@ -300,12 +308,11 @@ body::before {
 
 <script>
 // ── Config ───────────────────────────────────────────────
-const SUPA_URL   = 'https://sscpikfblqtmcefegrpv.supabase.co';
-const SUPA_KEY   = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
-const NARRATE_URL = `${SUPA_URL}/functions/v1/narrate`;
+const SUPA_URL    = 'https://sscpikfblqtmcefegrpv.supabase.co';
+const SUPA_KEY    = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
 const SCRIPT_URL  = `${SUPA_URL}/functions/v1/podcast-script`;
+const TTS_URL     = `${SUPA_URL}/functions/v1/podcast-tts`;
 
-// Voice IDs — Charlotte = Vera, second voice = Milo (set below)
 const VOICES = {
   VERA: 'aRlmTYIQo6Tlg5SlulGC', // Charlotte
   MILO: 'ljX1ZrXuDIIRVcmiVSyR', // Michael
@@ -416,6 +423,7 @@ async function generatePodcast() {
   setStatus('', false);
   btn.disabled = false;
   document.getElementById('player-wrap').classList.add('visible');
+  document.getElementById('save-btn').style.display = 'flex';
   goToLine(0);
   startPlay();
 }
@@ -426,13 +434,10 @@ async function generateLineAudio(index) {
   if (line.audio) return;
 
   try {
-    const res = await fetch(NARRATE_URL, {
+    const res = await fetch(TTS_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
-      body: JSON.stringify({
-        text:    line.text,
-        voiceId: VOICES[line.host], // pass voice override
-      })
+      body: JSON.stringify({ text: line.text, voiceId: VOICES[line.host] })
     });
     const data = await res.json();
     if (data.audio) {
@@ -442,6 +447,59 @@ async function generateLineAudio(index) {
   } catch(e) {
     console.warn('Audio gen failed for line', index, e);
   }
+}
+
+// ── Save / Load script ───────────────────────────────────
+function saveScript() {
+  const ch = selectedChapter;
+  const payload = {
+    chapter: ch,
+    title: CHAPTERS[ch].title,
+    generated: new Date().toISOString(),
+    lines: scriptLines.map(l => ({ host: l.host, text: l.text }))
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `chapter-${ch}-podcast.json`;
+  a.click();
+  toast(`Saved chapter-${ch}-podcast.json`);
+}
+
+function loadScript() {
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = '.json';
+  input.onchange = async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const data = JSON.parse(text);
+      if (!data.lines?.length) { toast('Invalid podcast JSON'); return; }
+      // Match chapter if possible
+      if (data.chapter) {
+        selectedChapter = data.chapter;
+        document.querySelectorAll('.ch-pill').forEach((p, i) => {
+          p.classList.toggle('active', i + 1 === data.chapter);
+        });
+      }
+      scriptLines = data.lines.map(l => ({ ...l, audio: null }));
+      renderTranscript();
+      document.getElementById('player-wrap').classList.add('visible');
+      document.getElementById('save-btn').style.display = 'flex';
+      setStatus('', false);
+      // Generate first line audio then play
+      setStatus('Generating audio…', true);
+      await generateLineAudio(0);
+      setStatus('', false);
+      goToLine(0);
+      startPlay();
+      toast(`Loaded: ${file.name}`);
+    } catch(err) {
+      toast('Error loading file: ' + err.message);
+    }
+  };
+  input.click();
 }
 
 // ── Playback ─────────────────────────────────────────────
