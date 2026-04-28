@@ -1285,17 +1285,20 @@ async function loadComments(pid) {
     return;
   }
 
-  list.innerHTML = data.map(c => `
+  list.innerHTML = data.map(c => {
+    const avatarUrl = (c.avatar_url && c.avatar_url.startsWith('http')) ? c.avatar_url : '';
+    return `
     <div class="comment-item" id="c-${c.id}">
       <div class="comment-head">
-        <img class="c-avatar" src="${c.avatar_url || ''}" alt="${c.display_name || 'Reader'}"
+        <img class="c-avatar" src="${avatarUrl}" alt="${c.display_name || 'Reader'}"
           onerror="this.style.display='none'"/>
         <span class="c-name">${c.display_name || 'Anonymous'}</span>
         <span class="c-time">${timeAgo(c.created_at)}</span>
         ${currentUser?.id === c.user_id ? `<button class="c-delete" onclick="deleteComment('${c.id}','${pid}')" title="Delete">✕</button>` : ''}
       </div>
       <div class="c-body">${escHtml(c.body)}</div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 
   list.scrollTop = list.scrollHeight;
 }
