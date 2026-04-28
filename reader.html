@@ -916,15 +916,15 @@ async function narrationGoTo(index) {
   }
 
   const scene = getSceneForPara(pid);
-  const prevScene = index > 0 ? getSceneForPara(narrationParaIds[index - 1]) : scene;
+  const prevScene = index > 0 ? getSceneForPara(narrationParaIds[index - 1]) : -1;
   startAmbient(currentChapter, scene);
 
-  // Pause between scene changes (2.5s silence)
-  if (index > 0 && scene !== prevScene) {
+  // Pause on scene changes — including the very first scene
+  if (scene !== prevScene) {
     const textEl = document.getElementById('narration-text');
     textEl.innerHTML = `<span class="narration-loading" style="opacity:0.2">✦</span>`;
-    await new Promise(r => setTimeout(r, 2500));
-    if (narrationIndex !== index) return; // user navigated away during pause
+    await new Promise(r => setTimeout(r, index === 0 ? 1800 : 2500));
+    if (narrationIndex !== index) return;
   }
 
   // Show comment hint if paragraph has threads
@@ -939,7 +939,7 @@ async function narrationGoTo(index) {
 
   // Show loading
   const textEl = document.getElementById('narration-text');
-  textEl.innerHTML = `<span class="narration-loading">Charlotte is listening…</span>`;
+  textEl.innerHTML = `<span class="narration-loading">the stone is listening…</span>`;
 
   // Stop previous audio
   if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
@@ -1443,6 +1443,7 @@ function renderChapter(ch) {
           </p>`;
       }).join('');
       html += `<div class="epigraph-block">${parasHtml}</div>`;
+      sceneIndex++; // epigraph is its own scene
       return;
     }
 
