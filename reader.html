@@ -764,7 +764,39 @@ let narrationAlignment = null;
 let narrationRAF       = null;
 let narrationCache     = {}; // pid → { audio, alignment }
 
-function getNarrableParagraphs() {
+// ── Ambient music ────────────────────────────────────────
+let ambientAudio = null;
+
+function startAmbient() {
+  if (ambientAudio) return;
+  ambientAudio = new Audio('assets/narration-ambient.mp3');
+  ambientAudio.loop   = true;
+  ambientAudio.volume = 0;
+  ambientAudio.play().catch(() => {}); // silent fail if no file
+  // Fade in
+  let v = 0;
+  const fade = setInterval(() => {
+    v = Math.min(0.18, v + 0.01);
+    if (ambientAudio) ambientAudio.volume = v;
+    if (v >= 0.18) clearInterval(fade);
+  }, 80);
+}
+
+function stopAmbient() {
+  if (!ambientAudio) return;
+  const audio = ambientAudio;
+  ambientAudio = null;
+  // Fade out
+  const fade = setInterval(() => {
+    audio.volume = Math.max(0, audio.volume - 0.015);
+    if (audio.volume <= 0) { audio.pause(); clearInterval(fade); }
+  }, 80);
+}
+
+function isEpigraphPara(pid) {
+  const el = document.getElementById(pid);
+  return el ? !!el.closest('.epigraph-block') : false;
+}
   // All .para elements in current chapter, in order
   return Array.from(document.querySelectorAll('#chapter-content .para'))
     .map(el => el.dataset.paraId)
@@ -782,6 +814,7 @@ async function startNarration() {
   document.getElementById('narration-progress').style.display = 'block';
   document.getElementById('narration-controls').style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  startAmbient();
 
   await narrationGoTo(0);
 }
@@ -798,6 +831,7 @@ function stopNarration() {
   document.getElementById('narration-thread').classList.remove('open');
   narrationThreadOpen = false;
   document.body.style.overflow = '';
+  stopAmbient();
   document.getElementById('narration-comment-hint').classList.remove('visible');
 }
 
@@ -847,7 +881,7 @@ async function narrationGoTo(index) {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${SUPA_KEY}`,
         },
-        body: JSON.stringify({ text })
+        body: JSON.stringify({ text, isEpigraph: isEpigraphPara(pid) })
       });
       data = await res.json();
       if (data.error) throw new Error(data.error);
@@ -952,6 +986,7 @@ async function startNarrationFrom(pid) {
   document.getElementById('narration-progress').style.display = 'block';
   document.getElementById('narration-controls').style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  startAmbient();
 
   await narrationGoTo(narrationIndex);
 }
@@ -1050,7 +1085,7 @@ async function prefetchNext(index) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${SUPA_KEY}`,
       },
-      body: JSON.stringify({ text })
+      body: JSON.stringify({ text, isEpigraph: isEpigraphPara(narrationParaIds[index + 1]) })
     });
     const data = await res.json();
     if (!data.error) narrationCache[pid] = data;
