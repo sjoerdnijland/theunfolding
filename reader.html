@@ -454,7 +454,120 @@ body.wiki-hints-on .para.active .wiki-link {
 }
 .lp-btn:hover { border-color: var(--rose); color: var(--rose); }
 
-/* ── Scrollbar ─────────────────────────────────────────── */
+/* ── Narration mode ────────────────────────────────────── */
+.narration-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(6,22,25,0.97);
+  backdrop-filter: blur(12px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 48px 120px;
+}
+.narration-overlay.active { display: flex; }
+
+.narration-text {
+  max-width: 760px;
+  width: 100%;
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+  line-height: 2;
+  letter-spacing: 0.015em;
+  color: rgba(244,234,217,0.3);
+  text-align: center;
+  position: relative;
+  transition: color 0.3s;
+}
+
+/* Each word is a span */
+.nw {
+  display: inline;
+  transition: color 0.08s, text-shadow 0.08s;
+  color: rgba(244,234,217,0.3);
+}
+.nw.spoken {
+  color: rgba(244,234,217,0.55);
+}
+.nw.current {
+  color: var(--ivory);
+  text-shadow: 0 0 32px rgba(233,74,124,0.5);
+}
+
+/* Progress bar */
+.narration-progress {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 2px;
+  background: rgba(74,154,170,0.15);
+  z-index: 301;
+}
+.narration-progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, var(--teal-soft), var(--rose));
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* Controls */
+.narration-controls {
+  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 12px; z-index: 302;
+}
+.nc-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border: 1px solid var(--line-strong);
+  background: rgba(11,34,39,0.9); color: var(--ivory);
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.15em;
+  text-transform: uppercase; cursor: pointer; border-radius: 2px;
+  transition: all 0.15s; backdrop-filter: blur(8px);
+}
+.nc-btn:hover { border-color: var(--rose); color: var(--rose); }
+.nc-btn.primary { background: var(--rose); border-color: var(--rose); color: var(--ink); }
+.nc-btn.primary:hover { background: #c72f63; border-color: #c72f63; color: var(--ivory); }
+
+/* Para counter */
+.narration-counter {
+  font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em;
+  color: var(--muted); text-align: center; margin-bottom: 32px;
+}
+
+/* Comment indicator in narration mode */
+.narration-comment-hint {
+  position: fixed; right: 32px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  z-index: 302; opacity: 0; transition: opacity 0.3s;
+}
+.narration-comment-hint.visible { opacity: 1; }
+.nch-count {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--teal); color: var(--ivory);
+  font-family: var(--mono); font-size: 0.68rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 12px rgba(74,154,170,0.5);
+}
+.nch-label {
+  font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--muted);
+}
+.nch-btn {
+  padding: 5px 12px; border: 1px solid var(--teal-soft);
+  background: transparent; color: var(--teal-bright);
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
+  text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: all 0.15s;
+}
+.nch-btn:hover { background: rgba(74,154,170,0.1); }
+
+/* Loading state */
+.narration-loading {
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted); text-align: center;
+  animation: nPulse 1.5s ease-in-out infinite;
+}
+@keyframes nPulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+@media (max-width: 900px) {
+  .narration-overlay { padding: 80px 24px 100px; }
+  .narration-text { font-size: 1.2rem; }
+}
 .reader-sidebar::-webkit-scrollbar,
 .comments-list::-webkit-scrollbar,
 .wiki-popup::-webkit-scrollbar { width: 4px; }
@@ -500,6 +613,7 @@ body.wiki-hints-on .para.active .wiki-link {
     </div>
     <button class="fs-btn" id="hints-btn" onclick="toggleWikiHints()" title="Toggle wiki hints">◈ Hints</button>
     <a href="map.html" target="unfolding-map" rel="noopener" class="fs-btn" style="text-decoration:none" title="Open tactical map">◉ Map</a>
+    <button class="fs-btn" onclick="startNarration()" title="Narration mode" id="narrate-btn">▶ Narrate</button>
     <div id="auth-area" style="display:flex;align-items:center;gap:10px;"></div>
   </div>
 </header>
@@ -549,8 +663,277 @@ body.wiki-hints-on .para.active .wiki-link {
 <!-- ── TOAST ────────────────────────────────────────────── -->
 <div class="toast hidden" id="toast"></div>
 
+<!-- ── NARRATION OVERLAY ─────────────────────────────────── -->
+<div class="narration-overlay" id="narration-overlay">
+  <div class="narration-counter" id="narration-counter"></div>
+  <div class="narration-text" id="narration-text">
+    <span class="narration-loading" id="narration-loading">Preparing narration…</span>
+  </div>
+  <div class="narration-comment-hint" id="narration-comment-hint">
+    <div class="nch-count" id="nch-count">0</div>
+    <div class="nch-label">threads</div>
+    <button class="nch-btn" onclick="narrationOpenThread()">Read →</button>
+  </div>
+</div>
+
+<div class="narration-progress" id="narration-progress" style="display:none">
+  <div class="narration-progress-bar" id="narration-progress-bar"></div>
+</div>
+
+<div class="narration-controls" id="narration-controls" style="display:none">
+  <button class="nc-btn" onclick="narrationPrev()">← Prev</button>
+  <button class="nc-btn primary" id="nc-play-btn" onclick="narrationTogglePlay()">⏸ Pause</button>
+  <button class="nc-btn" onclick="narrationNext()">Next →</button>
+  <button class="nc-btn" onclick="narrationOpenThread()">💬 Thread</button>
+  <button class="nc-btn" onclick="stopNarration()">✕ Exit</button>
+</div>
+
 <script>
-// ── Config ───────────────────────────────────────────────
+// ── Narration state ──────────────────────────────────────
+const NARRATE_URL = 'https://sscpikfblqtmcefegrpv.supabase.co/functions/v1/narrate';
+
+let narrationActive    = false;
+let narrationParaIds   = [];
+let narrationIndex     = 0;
+let narrationAudio     = null;
+let narrationPlaying   = false;
+let narrationAlignment = null;
+let narrationRAF       = null;
+let narrationCache     = {}; // pid → { audio, alignment }
+
+function getNarrableParagraphs() {
+  // All .para elements in current chapter, in order
+  return Array.from(document.querySelectorAll('#chapter-content .para'))
+    .map(el => el.dataset.paraId)
+    .filter(Boolean);
+}
+
+async function startNarration() {
+  narrationParaIds = getNarrableParagraphs();
+  if (!narrationParaIds.length) return;
+
+  narrationActive  = true;
+  narrationIndex   = 0;
+
+  document.getElementById('narration-overlay').classList.add('active');
+  document.getElementById('narration-progress').style.display = 'block';
+  document.getElementById('narration-controls').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  await narrationGoTo(0);
+}
+
+function stopNarration() {
+  narrationActive  = false;
+  narrationPlaying = false;
+  if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
+  cancelAnimationFrame(narrationRAF);
+
+  document.getElementById('narration-overlay').classList.remove('active');
+  document.getElementById('narration-progress').style.display = 'none';
+  document.getElementById('narration-controls').style.display = 'none';
+  document.body.style.overflow = '';
+  document.getElementById('narration-comment-hint').classList.remove('visible');
+}
+
+async function narrationGoTo(index) {
+  narrationIndex = index;
+  if (index >= narrationParaIds.length) { stopNarration(); return; }
+
+  const pid = narrationParaIds[index];
+  const total = narrationParaIds.length;
+
+  // Counter
+  document.getElementById('narration-counter').textContent =
+    `${index + 1} / ${total}`;
+
+  // Show comment hint if paragraph has threads
+  const count = commentCounts[pid] || 0;
+  const hint  = document.getElementById('narration-comment-hint');
+  document.getElementById('nch-count').textContent = count;
+  hint.classList.toggle('visible', count > 0);
+
+  // Get plain text for this paragraph
+  const text = getParaText(pid);
+  if (!text) { await narrationGoTo(index + 1); return; }
+
+  // Show loading
+  const textEl = document.getElementById('narration-text');
+  textEl.innerHTML = `<span class="narration-loading">Charlotte is listening…</span>`;
+
+  // Stop previous audio
+  if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
+  cancelAnimationFrame(narrationRAF);
+  narrationPlaying = false;
+
+  // Fetch (or use cache)
+  let data = narrationCache[pid];
+  if (!data) {
+    try {
+      const res = await fetch(NARRATE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+      data = await res.json();
+      if (data.error) throw new Error(data.error);
+      narrationCache[pid] = data;
+    } catch(e) {
+      textEl.innerHTML = `<span class="narration-loading">Could not load audio — ${e.message}</span>`;
+      return;
+    }
+  }
+
+  narrationAlignment = data.alignment;
+
+  // Build word spans from alignment
+  // ElevenLabs alignment is character-level; group into words
+  const words = buildWordTimings(text, data.alignment);
+  textEl.innerHTML = words.map((w, i) =>
+    `<span class="nw" id="nw-${i}">${escHtml(w.text)}</span>${w.space ? ' ' : ''}`
+  ).join('');
+
+  // Create audio from base64
+  const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
+  const audioUrl  = URL.createObjectURL(audioBlob);
+  narrationAudio  = new Audio(audioUrl);
+  narrationPlaying = true;
+
+  document.getElementById('nc-play-btn').textContent = '⏸ Pause';
+
+  // Prefetch next paragraph quietly
+  prefetchNext(index + 1);
+
+  // Start playback + karaoke sync
+  narrationAudio.play();
+  narrationAudio.addEventListener('ended', () => {
+    cancelAnimationFrame(narrationRAF);
+    narrationGoTo(index + 1);
+  });
+
+  function syncWords() {
+    if (!narrationAudio || narrationAudio.paused) return;
+    const t = narrationAudio.currentTime;
+
+    // Update progress bar
+    const pct = narrationAudio.duration ? (t / narrationAudio.duration) * 100 : 0;
+    document.getElementById('narration-progress-bar').style.width = pct + '%';
+
+    // Highlight current word
+    words.forEach((w, i) => {
+      const el = document.getElementById('nw-' + i);
+      if (!el) return;
+      if (t >= w.end) {
+        el.className = 'nw spoken';
+      } else if (t >= w.start) {
+        el.className = 'nw current';
+        // Scroll into view if needed
+        el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      } else {
+        el.className = 'nw';
+      }
+    });
+
+    narrationRAF = requestAnimationFrame(syncWords);
+  }
+  narrationRAF = requestAnimationFrame(syncWords);
+}
+
+function narrationTogglePlay() {
+  if (!narrationAudio) return;
+  if (narrationAudio.paused) {
+    narrationAudio.play();
+    narrationPlaying = true;
+    narrationRAF = requestAnimationFrame(function sync() {
+      if (!narrationAudio || narrationAudio.paused) return;
+      const t = narrationAudio.currentTime;
+      const words = Array.from(document.querySelectorAll('.nw'));
+      // re-sync handled inside narrationGoTo's closure — just restart RAF
+      narrationRAF = requestAnimationFrame(sync);
+    });
+    document.getElementById('nc-play-btn').textContent = '⏸ Pause';
+  } else {
+    narrationAudio.pause();
+    narrationPlaying = false;
+    cancelAnimationFrame(narrationRAF);
+    document.getElementById('nc-play-btn').textContent = '▶ Play';
+  }
+}
+
+function narrationPrev() {
+  if (narrationIndex > 0) narrationGoTo(narrationIndex - 1);
+}
+
+function narrationNext() {
+  narrationGoTo(narrationIndex + 1);
+}
+
+function narrationOpenThread() {
+  const pid = narrationParaIds[narrationIndex];
+  if (!pid) return;
+  // Pause narration, open thread in sidebar
+  if (narrationAudio) narrationAudio.pause();
+  narrationPlaying = false;
+  cancelAnimationFrame(narrationRAF);
+  document.getElementById('nc-play-btn').textContent = '▶ Play';
+  stopNarration();
+  // Select the paragraph and open its thread
+  const el = document.getElementById(pid);
+  if (el) selectPara(pid, el);
+}
+
+async function prefetchNext(index) {
+  if (index >= narrationParaIds.length) return;
+  const pid = narrationParaIds[index];
+  if (narrationCache[pid]) return;
+  const text = getParaText(pid);
+  if (!text) return;
+  try {
+    const res = await fetch(NARRATE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text })
+    });
+    const data = await res.json();
+    if (!data.error) narrationCache[pid] = data;
+  } catch(_) {}
+}
+
+// ── Helpers ──────────────────────────────────────────────
+function buildWordTimings(text, alignment) {
+  // ElevenLabs returns character-level timings
+  // Group consecutive non-space characters into words
+  const chars      = alignment.characters || [];
+  const startTimes = alignment.character_start_times_seconds || [];
+  const endTimes   = alignment.character_end_times_seconds   || [];
+
+  const words = [];
+  let word = '', wordStart = 0, wordEnd = 0;
+
+  for (let i = 0; i < chars.length; i++) {
+    const c = chars[i];
+    if (c === ' ' || c === '\n') {
+      if (word) {
+        words.push({ text: word, start: wordStart, end: wordEnd, space: true });
+        word = '';
+      }
+    } else {
+      if (!word) wordStart = startTimes[i] || 0;
+      word   += c;
+      wordEnd = endTimes[i]   || 0;
+    }
+  }
+  if (word) words.push({ text: word, start: wordStart, end: wordEnd, space: false });
+  return words;
+}
+
+function base64ToBlob(base64, mimeType) {
+  const binary = atob(base64);
+  const bytes  = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new Blob([bytes], { type: mimeType });
+}
+</script>
 const SUPA_URL = 'https://sscpikfblqtmcefegrpv.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
 const { createClient } = supabase;
