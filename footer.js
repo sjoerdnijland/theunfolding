@@ -27,7 +27,7 @@
             <h4>Community</h4>
             <a href="wiki.html">Wiki</a>
             <a href="reader.html" target="_blank" rel="noopener">Read</a>
-            <a href="https://discord.gg/45bwdn8J" target="_blank" rel="noopener">Discord</a>
+            <a href="https://discord.gg/MWejqk8a" target="_blank" rel="noopener">Discord</a>
           </div>
 
         </div>
