@@ -935,15 +935,16 @@ function getSceneForPara(pid) {
 }
 
 async function resolveAmbientTrack(chapter, scene) {
-  // Try most specific first, fall back to chapter, then default
   const candidates = [
     `assets/audio/chapter-${chapter}-scene-${scene}.mp3`,
     `assets/audio/chapter-${chapter}.mp3`,
     `assets/audio/narration-ambient.mp3`,
   ];
   for (const src of candidates) {
-    const ok = await fetch(src, { method: 'HEAD' }).then(r => r.ok).catch(() => false);
-    if (ok) return src;
+    try {
+      const res = await fetch(src, { method: 'HEAD' });
+      if (res.ok) { console.log('[ambient] resolved:', src); return src; }
+    } catch(_) {}
   }
   return null;
 }
