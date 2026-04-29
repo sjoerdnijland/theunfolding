@@ -1212,14 +1212,7 @@ async function narrationGoTo(index) {
   // Get plain text for TTS, raw markup text for italic/bold display
   const text    = getParaText(pid);
   const rawText = getRawText(pid) || text;
-  console.log('[narration pid]', pid);
-  console.log('[text]', text.slice(0, 80));
-  console.log('[rawText]', rawText.slice(0, 80));
   if (!text) { narrationLocked = false; await narrationGoTo(index + 1); return; }
-
-  // Show loading
-  const textEl = document.getElementById('narration-text');
-  textEl.innerHTML = `<span class="narration-loading">the stone is listening…</span>`;
 
   // Stop previous audio
   if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
@@ -1230,6 +1223,9 @@ async function narrationGoTo(index) {
   const cacheKey = pid + '|' + text.slice(0, 40);
   let data = narrationCache[cacheKey];
   if (!data) {
+    // Only show loading message when we actually need to fetch
+    const textEl = document.getElementById('narration-text');
+    textEl.innerHTML = `<span class="narration-loading">the stone is listening…</span>`;
     try {
       const res = await fetch(NARRATE_URL, {
         method: 'POST',
@@ -1296,9 +1292,9 @@ async function narrationGoTo(index) {
     : buildDisplayTokens(rawText, words);
   narrationCurrentWords   = displayTokens.filter(t => t.type === 'word');
 
-  // For code blocks: show the full raw transmission text above the word highlights
+  // For code blocks: show TRANSMISSION label above word highlights
   if (isCode) {
-    textEl.innerHTML = `<div style="font-family:var(--mono);font-size:0.9rem;letter-spacing:0.12em;color:rgba(74,154,170,0.5);margin-bottom:28px;text-align:center">${escHtml(rawText)}</div>`
+    textEl.innerHTML = `<div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.35em;color:var(--teal-soft);margin-bottom:28px;text-align:center;opacity:0.7">◉ TRANSMISSION</div>`
       + displayTokens.map(t => `<span class="nw" id="nw-${t.idx}">${escHtml(t.text)}</span> `).join('');
   } else {
     textEl.innerHTML = displayTokens.map(t => {
@@ -1328,11 +1324,15 @@ async function narrationGoTo(index) {
   });
 
   // Fix words with end:0 (last word ElevenLabs quirk) — use audio duration as end time
-  narrationCurrentWords.forEach((w, i) => {
-    if (!w.end || w.end === 0) {
-      // Will be patched once audio metadata loads
-      w.end = 9999;
-    }
+  narrationCurrentWords.forEach(w => {
+    if (!w.end || w.end === 0) w.end = 9999;
+  });
+
+  narrationAudio.addEventListener('loadedmetadata', () => {
+    const dur = narrationAudio.duration;
+    narrationCurrentWords.forEach(w => {
+      if (w.end === 9999) w.end = dur;
+    });
   });
 
   function syncWords() {
@@ -1348,8 +1348,7 @@ async function narrationGoTo(index) {
     narrationCurrentWords.forEach(w => {
       const el = document.getElementById('nw-' + w.idx);
       if (!el) return;
-      const end = (w.end === 9999) ? dur : w.end;
-      if (t >= end) {
+      if (t >= w.end) {
         el.className = `nw ${w.fmt || ''} spoken`;
       } else if (t >= w.start) {
         el.className = `nw ${w.fmt || ''} current`;
