@@ -1361,8 +1361,11 @@ async function narrationGoTo(index) {
 
   const textEl = document.getElementById('narration-text');
 
-  // Cache key = pid + text hash to prevent stale audio mismatches
-  const cacheKey = pid + '|' + text.slice(0, 40);
+  // Detect speaker voice — look for dialogue attribution in paragraph
+  const speakerVoiceId = detectSpeakerVoice(rawText);
+
+  // Cache key includes voice so same text with different speaker doesn't collide
+  const cacheKey = pid + '|' + (speakerVoiceId || 'default') + '|' + text.slice(0, 40);
   let data = narrationCache[cacheKey];
   if (!data) {
     // Only show loading message when we actually need to fetch
@@ -1374,7 +1377,7 @@ async function narrationGoTo(index) {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${SUPA_KEY}`,
         },
-        body: JSON.stringify({ text })
+        body: JSON.stringify({ text, ...(speakerVoiceId ? { voiceId: speakerVoiceId } : {}) })
       });
       data = await res.json();
       if (data.error) throw new Error(data.error);
@@ -1648,19 +1651,18 @@ async function submitNarrationComment(pid) {
 
 async function prefetchNext(index) {
   if (index >= narrationParaIds.length) return;
-  const pid  = narrationParaIds[index];
-  const text = getParaText(pid);
+  const pid     = narrationParaIds[index];
+  const text    = getParaText(pid);
+  const rawText = getRawText(pid) || text;
   if (!text) return;
-  const cacheKey = pid + '|' + text.slice(0, 40);
-  if (narrationCache[cacheKey]) return; // already cached
+  const speakerVoiceId = detectSpeakerVoice(rawText);
+  const cacheKey = pid + '|' + (speakerVoiceId || 'default') + '|' + text.slice(0, 40);
+  if (narrationCache[cacheKey]) return;
   try {
     const res = await fetch(NARRATE_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${SUPA_KEY}`,
-      },
-      body: JSON.stringify({ text })
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
+      body: JSON.stringify({ text, ...(speakerVoiceId ? { voiceId: speakerVoiceId } : {}) })
     });
     const data = await res.json();
     if (!data.error) narrationCache[cacheKey] = data;
@@ -2281,7 +2283,35 @@ function closeWikiPopup(e) {
   document.getElementById('wiki-overlay').classList.remove('open');
 }
 
-function getParaText(pid) {
+function detectSpeakerVoice(text) {
+  if (!text) return null;
+
+  // Patterns that indicate who is speaking:
+  // 1. "dialogue," Name said/asked/replied/whispered/called/snapped etc
+  // 2. Name said: at start of paragraph
+  // 3. "dialogue." Name + verb (at end)
+  const saidVerbs = 'said|asked|replied|whispered|called|snapped|muttered|shouted|added|answered|continued|growled|breathed|laughed|hissed|barked|pleaded|ordered|announced';
+  const patterns = [
+    new RegExp(`[""].*?[""][,.]\\s+([A-Z][a-z]+(?:\\s+[A-Z][a-z]+)?)\\s+(?:${saidVerbs})`, 'i'),
+    new RegExp(`^([A-Z][a-z]+(?:\\s+[A-Z][a-z]+)?)\\s+(?:${saidVerbs})\\b`, 'i'),
+    new RegExp(`(?:${saidVerbs})\\s+([A-Z][a-z]+(?:\\s+[A-Z][a-z]+)?)`, 'i'),
+  ];
+
+  for (const pat of patterns) {
+    const m = text.match(pat);
+    if (m) {
+      const name = m[1].trim().toLowerCase();
+      // Look up in wiki index
+      const entry = wikiIndex[name];
+      if (entry?.voice_id) return entry.voice_id;
+      // Try last name only
+      const lastName = name.split(' ').pop();
+      const entryByLast = wikiIndex[lastName];
+      if (entryByLast?.voice_id) return entryByLast.voice_id;
+    }
+  }
+  return null; // use default Charlotte voice
+}
   const el = document.getElementById(pid);
   if (!el) return '';
   const clone = el.cloneNode(true);
