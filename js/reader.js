@@ -308,6 +308,7 @@ async function narrationGoTo(index) {
   if (!data) {
     // Only show loading message when we actually need to fetch
     textEl.innerHTML = `<span class="narration-loading">the stone is listening…</span>`;
+    console.log('[fetch] sending voiceId:', speakerVoiceId || 'default (Charlotte)');
     try {
       const res = await fetch(NARRATE_URL, {
         method: 'POST',
@@ -318,6 +319,7 @@ async function narrationGoTo(index) {
         body: JSON.stringify({ text, ...(speakerVoiceId ? { voiceId: speakerVoiceId } : {}) })
       });
       data = await res.json();
+      console.log('[fetch] response:', data.error || ('audio:' + (data.audio ? 'yes' : 'no') + ' alignment:' + (data.alignment ? 'yes' : 'no')));
       if (data.error) throw new Error(data.error);
       narrationCache[cacheKey] = data;
     } catch(e) {
