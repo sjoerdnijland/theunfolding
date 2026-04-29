@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Speaker Detection Test</title>
+<style>
+  body { font-family: monospace; background: #0a1a1f; color: #c8d8dc; padding: 32px; font-size: 14px; }
+  h1 { color: #4a9aaa; margin-bottom: 24px; }
+  .test { margin-bottom: 12px; padding: 10px 14px; border-radius: 3px; }
+  .match    { background: rgba(74,154,170,0.15); border-left: 3px solid #4a9aaa; }
+  .no-match { background: rgba(200,190,168,0.06); border-left: 3px solid #3a4a50; }
+  .speaker  { color: #e94a7c; font-weight: bold; }
+  .voice    { color: #4a9aaa; }
+  .text     { color: #888; font-size: 0.85em; margin-top: 4px; }
+  textarea  { width: 100%; height: 80px; background: #0c1e24; color: #c8d8dc; border: 1px solid #2d5b66; padding: 10px; font-family: monospace; font-size: 13px; margin-bottom: 8px; }
+  button    { padding: 8px 20px; background: #e94a7c; border: none; color: #060810; font-family: monospace; font-size: 13px; cursor: pointer; border-radius: 2px; margin-bottom: 24px; }
+  #results  { margin-top: 24px; }
+  .section-title { color: #d4a843; font-size: 0.85em; letter-spacing: 0.2em; text-transform: uppercase; margin: 20px 0 8px; }
+</style>
+</head>
+<body>
+<h1>◉ Speaker Detection Test</h1>
+
+<div class="section-title">Test a custom paragraph</div>
+<textarea id="custom-input" placeholder='Paste a paragraph here, e.g. "Come on, Gary, lad, wake up," Muro said.'></textarea>
+<button onclick="testCustom()">Test detection</button>
+<div id="custom-result"></div>
+
+<div class="section-title">Built-in test cases</div>
+<div id="results"></div>
+
+<script>
+// ── Paste your characters data here or load from JSON ──
+let wikiIndex = {};
+
+const TEST_CASES = [
+  `"Come on, Gary, lad, wake up," Muro said, shaking the terminal.`,
+  `Muro scratched his temple. "Nothing, Commander. Total blackout."`,
+  `"Nothing," said Muro, floating back.`,
+  `He said nothing. Muro turned away.`,
+  `Corbin leaned forward. "That's not your call to make."`,
+  `"I need more time," Westhoff replied, his voice tight.`,
+  `Vilde crossed her arms. "Then make it your call."`,
+  `The stone is listening. It always has been.`,
+  `"CIX: Weaver online," the terminal announced.`,
+  `"I still feel you." The words came from the speaker above.`,
+  `Oliver looked at the wiring. It wasn't supposed to spark.`,
+  `"Are you sure about this?" asked Bellamy.`,
+];
+
+const saidVerbs = 'said|asked|replied|whispered|called|snapped|muttered|shouted|added|answered|continued|growled|breathed|laughed|hissed|barked|pleaded|ordered|announced|shrugged|nodded|sighed|coughed|warned';
+
+function clean(w) {
+  return w.toLowerCase().replace(/[^a-z0-9''\-]/g, '');
+}
+
+function detectSpeaker(text) {
+  if (!text) return null;
+
+  const patterns = [
+    // "dialogue," Name verb
+    new RegExp(`[""'"].*?[""'"][,.]\\s+([A-Z][a-záéíóúàèìòùñ]+(?:[-\\s][A-Z][a-z]+)?)\\s+(?:${saidVerbs})`, 'i'),
+    // Name verb at start
+    new RegExp(`^([A-Z][a-záéíóúàèìòùñ]+(?:[-\\s][A-Z][a-z]+)?)\\s+(?:${saidVerbs})\\b`, 'i'),
+    // "dialogue" + Name verb (end of sentence pattern)
+    new RegExp(`[""'"]\\s*([A-Z][a-záéíóúàèìòùñ]+(?:[-\\s][A-Z][a-z]+)?)\\s+(?:${saidVerbs})`, 'i'),
+    // asked/said Name (inverted)
+    new RegExp(`(?:${saidVerbs})\\s+([A-Z][a-záéíóúàèìòùñ]+(?:[-\\s][A-Z][a-z]+)?)`, 'i'),
+  ];
+
+  for (const pat of patterns) {
+    const m = text.match(pat);
+    if (m) {
+      const name = m[1].trim();
+      const nameLower = name.toLowerCase();
+      // Check wiki index
+      const entry = wikiIndex[nameLower];
+      if (entry) return { name, entry, matched: true };
+      // Try last name
+      const lastName = nameLower.split(/\s+/).pop();
+      const entryByLast = wikiIndex[lastName];
+      if (entryByLast) return { name, entry: entryByLast, matched: true };
+      // Name found but no wiki entry
+      return { name, entry: null, matched: false };
+    }
+  }
+  return null;
+}
+
+async function loadCharacters() {
+  try {
+    const res = await fetch('data/characters.json');
+    const chars = await res.json();
+    chars.forEach(c => {
+      if (c.name) wikiIndex[c.name.toLowerCase()] = c;
+      if (c.aliases) c.aliases.split(',').forEach(a => {
+        wikiIndex[a.trim().toLowerCase()] = c;
+      });
+    });
+    console.log('Wiki index loaded:', Object.keys(wikiIndex).length, 'entries');
+    runTests();
+  } catch(e) {
+    console.error('Could not load characters.json:', e);
+    runTests(); // run with empty index
+  }
+}
+
+function renderResult(text, result, container) {
+  const div = document.createElement('div');
+  div.className = result ? (result.entry?.voice_id ? 'test match' : 'test no-match') : 'test no-match';
+
+  if (result) {
+    div.innerHTML = `
+      <span class="speaker">▶ ${result.name}</span>
+      ${result.entry?.voice_id
+        ? `<span class="voice"> → voice: ${result.entry.voice_id}</span>`
+        : `<span style="color:#d4a843"> → found but no voice_id in characters.json</span>`
+      }
+      <div class="text">${text}</div>`;
+  } else {
+    div.innerHTML = `
+      <span style="color:#5a6a7a">— no speaker detected</span>
+      <div class="text">${text}</div>`;
+  }
+  container.appendChild(div);
+}
+
+function runTests() {
+  const container = document.getElementById('results');
+  container.innerHTML = '';
+  TEST_CASES.forEach(text => renderResult(text, detectSpeaker(text), container));
+}
+
+function testCustom() {
+  const text = document.getElementById('custom-input').value.trim();
+  if (!text) return;
+  const container = document.getElementById('custom-result');
+  container.innerHTML = '';
+  renderResult(text, detectSpeaker(text), container);
+}
+
+loadCharacters();
+</script>
+</body>
+</html>
