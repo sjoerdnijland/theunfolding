@@ -1275,53 +1275,50 @@ function closeWikiPopup(e) {
 }
 
 function stitchSegments(results) {
-  // Check for errors
   for (const r of results) if (r.error) return { error: r.error };
 
-  // Stitch base64 audio by decoding, concatenating bytes, re-encoding
   let allBytes = [];
   const stitchedAlignment = { characters: [], character_start_times_seconds: [], character_end_times_seconds: [] };
   let timeOffset = 0;
 
   for (const r of results) {
     if (!r.audio) continue;
-    // Decode base64 audio
     const binary = atob(r.audio);
-    for (let i = 0; i < binary.length; i++) allBytes.push(binary.charCodeAt(i));
+    const byteCount = binary.length;
+    for (let i = 0; i < byteCount; i++) allBytes.push(binary.charCodeAt(i));
 
-    // Offset and append alignment
     const chars  = r.alignment?.characters || [];
     const starts = r.alignment?.character_start_times_seconds || [];
-    const ends   = r.alignment?.character_end_times_seconds || [];
-    // Estimate duration from last end time + small gap
-    const segDuration = (ends[ends.length - 1] || 0) + 0.3;
+    const ends   = r.alignment?.character_end_times_seconds   || [];
+
+    // Estimate segment duration from alignment end times
+    // Use max end time rather than last (more reliable)
+    let maxEnd = 0;
+    ends.forEach(e => { if (e > maxEnd) maxEnd = e; });
+    const segDuration = maxEnd > 0 ? maxEnd + 0.15 : (byteCount / 16000); // fallback: ~128kbps mp3
 
     chars.forEach((c, i) => {
       stitchedAlignment.characters.push(c);
       stitchedAlignment.character_start_times_seconds.push((starts[i] || 0) + timeOffset);
-      stitchedAlignment.character_end_times_seconds.push((ends[i] || 0) + timeOffset);
+      stitchedAlignment.character_end_times_seconds.push((ends[i]   || 0) + timeOffset);
     });
     timeOffset += segDuration;
   }
 
-  // Re-encode to base64
   let binary = '';
   const chunkSize = 8192;
   for (let i = 0; i < allBytes.length; i += chunkSize) {
     binary += String.fromCharCode(...allBytes.slice(i, i + chunkSize));
   }
 
-  return {
-    audio:     btoa(binary),
-    alignment: stitchedAlignment,
-  };
+  return { audio: btoa(binary), alignment: stitchedAlignment };
 }
 
 function detectSpeakerVoice(text) {
   if (!text) return null;
 
   const SAID = 'said|asked|replied|whispered|called|snapped|muttered|shouted|added|answered|continued|growled|breathed|laughed|hissed|barked|pleaded|ordered|announced|warned|began|finished|interrupted|noted|insisted|admitted|confirmed|agreed|protested|scoffed|relayed|stated|explained|pressed|urged|offered|suggested|demanded|declared|echoed|conceded|countered|managed|spat|drawled|murmured|responded|cut in|bit out';
-  const ACT  = 'scratched|leaned|crossed|turned|looked|nodded|shook|stepped|stood|sat|walked|ran|opened|closed|grabbed|pulled|pushed|reached|glanced|stared|smiled|frowned|sighed|paused|hesitated|squinted|raised|lowered|gripped|tapped|stretched|cleared|narrowed|rubbed';
+  const ACT  = 'scratched|leaned|crossed|turned|looked|nodded|shook|stepped|stood|sat|walked|ran|opened|closed|grabbed|pulled|pushed|reached|glanced|stared|smiled|frowned|sighed|paused|hesitated|squinted|raised|lowered|gripped|tapped|stretched|cleared|narrowed|rubbed|twitched|flinched|shrugged|jerked|spun|swallowed|blinked|stiffened|staggered';
 
   if (!/["\u201c\u201d]/.test(text)) return null;
 
@@ -1354,8 +1351,8 @@ function detectSpeakerVoice(text) {
     if (!m) continue;
     const raw   = m[1].trim();
     const lower = raw.toLowerCase();
-    // Skip pronoun matches here — handled by context in narrationGoTo
-    if (lower === 'she' || lower === 'he' || lower === 'her' || lower === 'him') continue;
+    // Skip pronouns and multi-word pronoun phrases like "she finally"
+    if (/^(she|he|her|him|they|it)(\s|$)/i.test(lower)) continue;
     const entry = wikiIndex[lower];
     if (entry && entry.voice_id) return entry.voice_id;
     const last   = lower.split(/\s+/).pop();
