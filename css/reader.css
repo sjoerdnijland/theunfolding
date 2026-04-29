@@ -912,16 +912,24 @@ body.wiki-hints-on .para.active .wiki-link {
     margin-bottom: 20px;
   }
   .narration-controls {
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 0 12px;
+    padding: 0 8px;
   }
   .nc-btn {
-    padding: 8px 14px;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
+    padding: 7px 11px;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
   }
+  /* Keep prev/next/exit short on mobile */
+  #nc-play-btn { order: -1; }
+
+@media (max-width: 390px) {
+  /* On very small phones hide secondary button labels */
+  .nc-btn[onclick*="toggleAmbient"] .btn-label,
+  .nc-btn[onclick*="toggleMultiVoice"] .btn-label { display: none; }
+}
 
   /* Narration thread sidebar */
   .narration-thread {
