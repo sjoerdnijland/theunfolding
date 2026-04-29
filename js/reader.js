@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v14';
+const READER_VERSION = 'v15';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -443,8 +443,15 @@ async function narrationGoTo(index) {
 
   narrationAlignment = data.alignment;
 
-  // Build word spans from alignment
-  const words = buildWordTimings(text, data.alignment);
+  // For stitched paragraphs, build word timings using per-segment alignment
+  // Narrator segments use their own accurate timestamps
+  // Character segments don't need timing (they use position-based range highlighting)
+  let words;
+  if (isStitched && data.segmentMeta?.length) {
+    words = buildWordTimingsFromSegments(text, segments, data.segmentMeta);
+  } else {
+    words = buildWordTimings(text, data.alignment);
+  }
 
   function clean(w) {
     return w.toLowerCase().replace(/[^a-z0-9''\-]/g, '');
@@ -870,6 +877,29 @@ async function prefetchNext(index) {
 }
 
 // ── Helpers ──────────────────────────────────────────────
+function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
+  // For each segment, build word timings using that segment's own alignment + timeOffset
+  // This gives narrator segments accurate timing regardless of stitching drift
+  const allWords = [];
+
+  segments.forEach((seg, si) => {
+    const meta = segmentMeta[si];
+    if (!meta) return;
+    const segWords = buildWordTimings(seg.text, meta.alignment);
+    // Offset each word's start time by this segment's timeOffset
+    segWords.forEach(w => {
+      allWords.push({
+        ...w,
+        start: w.start + meta.timeOffset,
+        end:   w.end   + meta.timeOffset,
+        segVoice: seg.voiceId || null,
+      });
+    });
+  });
+
+  return allWords;
+}
+
 function buildWordTimings(text, alignment) {
   const chars      = alignment.characters || [];
   const startTimes = alignment.character_start_times_seconds || [];
@@ -1513,11 +1543,13 @@ function stitchSegments(results) {
 
   let allBytes = [];
   const stitchedAlignment = { characters: [], character_start_times_seconds: [], character_end_times_seconds: [] };
+  const segmentMeta = []; // per-segment: { timeOffset, byteStart, byteEnd, alignment }
   let timeOffset = 0;
+  let byteStart  = 0;
 
   for (const r of results) {
     if (!r.audio) continue;
-    const binary = atob(r.audio);
+    const binary    = atob(r.audio);
     const byteCount = binary.length;
     for (let i = 0; i < byteCount; i++) allBytes.push(binary.charCodeAt(i));
 
@@ -1525,11 +1557,11 @@ function stitchSegments(results) {
     const starts = r.alignment?.character_start_times_seconds || [];
     const ends   = r.alignment?.character_end_times_seconds   || [];
 
-    // Estimate segment duration from alignment end times
-    // Use max end time rather than last (more reliable)
-    let maxEnd = 0;
-    ends.forEach(e => { if (e > maxEnd) maxEnd = e; });
-    const segDuration = maxEnd > 0 ? maxEnd + 0.15 : (byteCount / 16000); // fallback: ~128kbps mp3
+    // Byte-based duration is more reliable than alignment maxEnd + padding
+    // 128kbps MP3 = 16000 bytes/sec
+    const segDuration = byteCount / 16000;
+
+    segmentMeta.push({ timeOffset, byteStart, byteEnd: byteStart + byteCount, alignment: r.alignment });
 
     chars.forEach((c, i) => {
       stitchedAlignment.characters.push(c);
@@ -1537,6 +1569,7 @@ function stitchSegments(results) {
       stitchedAlignment.character_end_times_seconds.push((ends[i]   || 0) + timeOffset);
     });
     timeOffset += segDuration;
+    byteStart  += byteCount;
   }
 
   let binary = '';
@@ -1545,7 +1578,7 @@ function stitchSegments(results) {
     binary += String.fromCharCode(...allBytes.slice(i, i + chunkSize));
   }
 
-  return { audio: btoa(binary), alignment: stitchedAlignment };
+  return { audio: btoa(binary), alignment: stitchedAlignment, segmentMeta };
 }
 
 function detectSpeakerVoice(text) {
