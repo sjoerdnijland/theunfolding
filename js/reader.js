@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v3';
+const READER_VERSION = 'v4';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -1031,7 +1031,9 @@ function renderChapter(ch) {
         : `<div class="ch-divider"></div><h3 class="ch-section-head">${sec.heading}</h3>`;
     }
 
-    sec.paragraphs.forEach((text, pi) => {
+    sec.paragraphs.forEach((paraItem, pi) => {
+      const text = typeof paraItem === 'string' ? paraItem : paraItem.text;
+      const speakerTag = typeof paraItem === 'object' ? (paraItem.speaker || '') : '';
       const pid   = `ch${currentChapter}-p${paraIndex}`;
       const count = commentCounts[pid] || 0;
       const isFirst = paraIndex === 0;
