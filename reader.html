@@ -989,13 +989,33 @@ async function resolveAmbientTrack(chapter, scene) {
   return null;
 }
 
+let ambientResolving = false;
+let ambientPending   = null; // {chapter, scene} of next track to load
+
 async function startAmbient(chapter, scene) {
   if (!ambientEnabled) return;
 
+  // If already resolving, just queue the latest request
+  if (ambientResolving) {
+    ambientPending = { chapter, scene };
+    return;
+  }
+
+  ambientResolving = true;
   const src = await resolveAmbientTrack(chapter || currentChapter, scene || 1);
+  ambientResolving = false;
+
+  // If a newer request came in while we were resolving, honour that instead
+  if (ambientPending) {
+    const next = ambientPending;
+    ambientPending = null;
+    startAmbient(next.chapter, next.scene);
+    return;
+  }
+
   if (!src) return;
 
-  // If same track already playing, don't restart
+  // Same track already playing — nothing to do
   if (ambientAudio && ambientAudio._src === src) return;
 
   // Cross-fade: fade out old, fade in new
@@ -1009,7 +1029,7 @@ async function startAmbient(chapter, scene) {
   }
 
   const audio = new Audio(src);
-  audio._src  = src;
+  audio._src   = src;
   audio.loop   = true;
   audio.volume = 0;
   ambientAudio = audio;
@@ -1183,59 +1203,55 @@ async function narrationGoTo(index) {
   // so we can apply them to the karaoke display
   function getMarkupRanges(src) {
     const ranges = [];
-    const patterns = [
-      { re: /\*\*(.+?)\*\*/g,  cls: 'nw-bold' },
-      { re: /~~(.+?)~~/g,      cls: 'nw-smcaps' },
-      { re: /\*([^*]+?)\*/g,   cls: 'nw-italic' },
-    ];
-    // Work on plain text (strip tags) to get char positions
-    // We strip markup markers progressively to map to plain positions
-    patterns.forEach(({ re, cls }) => {
-      let m;
-      // Clone and strip already-processed markers to get clean positions
-      const stripped = src
-        .replace(/\*\*(.+?)\*\*/g, (_, t) => '\x00'.repeat(2) + t + '\x00'.repeat(2))
-        .replace(/~~(.+?)~~/g,     (_, t) => '\x00'.repeat(2) + t + '\x00'.repeat(2))
-        .replace(/\*([^*]+?)\*/g,  (_, t) => '\x00' + t + '\x00');
-      // Find ranges in stripped (marker chars have zero display width concept)
-      // Simpler: just find word-level italic by checking if word appears in italic context
-    });
-    // Simple approach: find italic spans in original text, map their plain-text words
-    const italicRe = /\*\*?([^*]+?)\*\*?/g;
+
+    // Bold: **text**
+    const boldRe = /\*\*([^*]+?)\*\*/g;
     let m;
-    while ((m = italicRe.exec(src)) !== null) {
-      const isBold = src[m.index + 1] === '*';
-      ranges.push({
-        words: m[1].trim().toLowerCase().split(/\s+/),
-        cls: isBold ? 'nw-bold' : 'nw-italic'
-      });
+    while ((m = boldRe.exec(src)) !== null) {
+      const words = m[1].trim().split(/\s+/).map(w => clean(w)).filter(Boolean);
+      if (words.length) ranges.push({ words, cls: 'nw-bold' });
     }
+
+    // Italic: *text* (only single asterisks, not bold)
+    // Strip bold first to avoid matching inner parts of **text**
+    const srcNoBold = src.replace(/\*\*[^*]+?\*\*/g, s => ' '.repeat(s.length));
+    const italicRe  = /\*([^*]+?)\*/g;
+    while ((m = italicRe.exec(srcNoBold)) !== null) {
+      const words = m[1].trim().split(/\s+/).map(w => clean(w)).filter(Boolean);
+      if (words.length) ranges.push({ words, cls: 'nw-italic' });
+    }
+
+    // Small caps: ~~text~~
     const smRe = /~~(.+?)~~/g;
     while ((m = smRe.exec(src)) !== null) {
-      ranges.push({ words: m[1].trim().toLowerCase().split(/\s+/), cls: 'nw-smcaps' });
+      const words = m[1].trim().split(/\s+/).map(w => clean(w)).filter(Boolean);
+      if (words.length) ranges.push({ words, cls: 'nw-smcaps' });
     }
+
     return ranges;
+  }
+
+  function clean(w) {
+    return w.toLowerCase().replace(/[^a-z0-9''\-]/g, '');
   }
 
   const markupRanges = getMarkupRanges(rawText);
 
-  // Tag each word with its formatting class if it appears in a markup range
-  // Match by building sliding windows of words
   function tagWords(words, ranges) {
     const tagged = words.map(w => ({ ...w, fmt: '' }));
     ranges.forEach(({ words: mw, cls }) => {
       if (!mw.length) return;
       for (let i = 0; i <= tagged.length - mw.length; i++) {
-        const match = mw.every((mword, j) =>
-          tagged[i + j].text.toLowerCase().replace(/[^a-z0-9']/g, '') ===
-          mword.replace(/[^a-z0-9']/g, '')
-        );
+        const match = mw.every((mword, j) => clean(tagged[i + j].text) === mword);
         if (match) {
-          for (let j = 0; j < mw.length; j++) tagged[i + j].fmt = cls;
+          for (let j = 0; j < mw.length; j++) {
+            if (!tagged[i + j].fmt) tagged[i + j].fmt = cls; // don't override bold with italic
+          }
         }
       }
     });
     return tagged;
+  }
   }
 
   const taggedWords = tagWords(words, markupRanges);
