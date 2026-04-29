@@ -1236,6 +1236,7 @@ async function narrationGoTo(index) {
   }
 
   const markupRanges = getMarkupRanges(rawText);
+  if (markupRanges.length) console.log('[markup ranges]', markupRanges.map(r => r.cls + ':' + r.words.join(' ')));
 
   function tagWords(words, ranges) {
     const tagged = words.map(w => ({ ...w, fmt: '' }));
@@ -1255,20 +1256,35 @@ async function narrationGoTo(index) {
 
   const taggedWords0 = tagWords(words, markupRanges);
 
-  // Mark line breaks using rawText newline positions
+  // Mark line breaks by matching cumulative character positions against \n positions in plain text
   function markLineBreaks(ws, raw) {
+    // Get plain text (strip markup) and find \n positions
     const plain = raw
       .replace(/\*\*([^*]+?)\*\*/g, '$1')
       .replace(/\*([^*]+?)\*/g, '$1')
       .replace(/~~([^~]+?)~~/g, '$1');
-    const lines = plain.split('\n').map(l => l.trim()).filter(Boolean);
-    if (lines.length <= 1) return ws;
-    const lineWords = lines.map(l => l.split(/\s+/).map(w => clean(w)).filter(Boolean));
-    let wi = 0;
-    lineWords.forEach((lw, li) => {
-      if (li === 0) { wi += lw.length; return; }
-      if (wi < ws.length) ws[wi].lineBreak = true;
-      wi += lw.length;
+
+    const breakPositions = [];
+    for (let i = 0; i < plain.length; i++) {
+      if (plain[i] === '\n') breakPositions.push(i);
+    }
+    if (!breakPositions.length) return ws;
+
+    // Build cumulative char count per word in plain text
+    // by joining words and tracking positions
+    let pos = 0;
+    let breakIdx = 0;
+    ws.forEach((w, i) => {
+      // Skip to next non-space position
+      while (pos < plain.length && (plain[pos] === ' ' || plain[pos] === '\n')) {
+        if (plain[pos] === '\n' && breakIdx < breakPositions.length) {
+          // Mark the next word as having a line break before it
+          if (i < ws.length) ws[i].lineBreak = true;
+          breakIdx++;
+        }
+        pos++;
+      }
+      pos += w.text.length;
     });
     return ws;
   }
