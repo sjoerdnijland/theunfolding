@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v7';
+const READER_VERSION = 'v8';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -456,38 +456,27 @@ async function narrationGoTo(index) {
   narrationCurrentWords   = displayTokens.filter(t => t.type === 'word');
   const isStitched = segments.length > 1;
 
-  // Precompute sentence groups for stitched audio (done once, not per frame)
-  // Each group: { wordIndices: [i,...], isCharacter: bool }
-  let sentenceGroups = [];
+  // Precompute which word indices belong to a character voice segment
+  // Done from text structure, not from timing — timing is unreliable after stitching
+  // charWordRanges: [{start, end, voice}] — word index ranges per character segment
+  const charWordRanges = [];
   if (isStitched) {
-    // Map word index → which segment it belongs to (by text position)
-    // Build a flat list of words with their segment voice
-    const segWords = [];
-    let segOffset = 0;
+    // Walk through segments, count how many words each contains in the plain text
+    let wordCursor = 0;
     for (const seg of segments) {
-      const segTokens = seg.text.split(/\s+/).filter(Boolean);
-      for (const tok of segTokens) {
-        segWords.push({ voice: seg.voiceId || null });
+      const segWordCount = seg.text.split(/\s+/).filter(Boolean).length;
+      if (seg.voiceId) {
+        charWordRanges.push({ start: wordCursor, end: wordCursor + segWordCount - 1, voice: seg.voiceId });
       }
-      segOffset += segTokens.length;
+      wordCursor += segWordCount;
     }
+  }
 
-    // Group narrationCurrentWords into sentences by punctuation
-    let group = { indices: [], voice: null };
-    narrationCurrentWords.forEach((w, i) => {
-      const segVoice = segWords[i]?.voice || null;
-      if (group.voice === null) group.voice = segVoice;
-      group.indices.push(i);
-      // End sentence on punctuation or voice change
-      const endsLine = /[.!?…\u201d"']$/.test(w.text.trim());
-      const voiceChange = i + 1 < narrationCurrentWords.length &&
-        (segWords[i + 1]?.voice || null) !== (segWords[i]?.voice || null);
-      if (endsLine || voiceChange) {
-        if (group.indices.length) sentenceGroups.push({ ...group });
-        group = { indices: [], voice: segWords[i + 1]?.voice || null };
-      }
-    });
-    if (group.indices.length) sentenceGroups.push({ ...group });
+  function getCharVoiceForWord(idx) {
+    for (const r of charWordRanges) {
+      if (idx >= r.start && idx <= r.end) return r.voice;
+    }
+    return null;
   }
 
   // Character label element — shows who's speaking during character voice
@@ -551,52 +540,57 @@ async function narrationGoTo(index) {
       else break;
     }
 
-    if (isStitched && sentenceGroups.length) {
-      // Find which sentence group contains currentIdx
-      let currentGroup = null;
-      let groupPos = 0; // how many complete groups before current
-      for (let g = 0; g < sentenceGroups.length; g++) {
-        if (sentenceGroups[g].indices.includes(currentIdx)) {
-          currentGroup = sentenceGroups[g];
-          break;
-        }
-        if (sentenceGroups[g].indices[sentenceGroups[g].indices.length - 1] < currentIdx) {
-          groupPos = g + 1;
-        }
-      }
+    if (isStitched && charWordRanges.length) {
+      // Mixed narrator/character paragraph:
+      // - Narrator words: word-level karaoke (precise timing from first segment)
+      // - Character words: entire segment lit as one block when first word reached
+      // Find which char range is currently active (first word of range has been passed)
+      const activeCharVoice = getCharVoiceForWord(currentIdx);
 
       // Update character label
-      if (currentGroup?.voice) {
-        const entry = Object.values(wikiById).find(e => e.voice_id === currentGroup.voice);
+      if (activeCharVoice) {
+        const entry = Object.values(wikiById).find(e => e.voice_id === activeCharVoice);
         if (entry) {
-          charLabel.textContent = '◉ ' + (entry.name.split(' ')[0]);
+          charLabel.textContent = '◉ ' + entry.name.split(' ')[0];
           charLabel.style.opacity = '1';
         }
       } else {
         charLabel.style.opacity = '0';
       }
 
-      // Highlight: spoken groups → all spoken, current group → current, future → unlit
-      const currentGroupIndices = new Set(currentGroup?.indices || []);
-      const spokenIndices = new Set(
-        sentenceGroups.slice(0, groupPos).flatMap(g => g.indices)
-      );
-
       narrationCurrentWords.forEach((w, i) => {
         const el = document.getElementById('nw-' + w.idx);
         if (!el) return;
-        const isChar = currentGroup?.voice != null;
-        if (spokenIndices.has(i)) {
-          el.className = `nw ${w.fmt || ''} spoken`;
-        } else if (currentGroupIndices.has(i)) {
-          el.className = `nw ${w.fmt || ''} current${isChar ? ' char-voice' : ''}`;
+        const wordVoice = getCharVoiceForWord(i);
+
+        if (wordVoice) {
+          // Character word — find its range
+          const range = charWordRanges.find(r => i >= r.start && i <= r.end);
+          const rangeStartPassed = currentIdx >= range.start;
+          const rangeEndPassed   = currentIdx > range.end;
+          if (rangeEndPassed) {
+            el.className = `nw ${w.fmt || ''} spoken`;
+          } else if (rangeStartPassed) {
+            // Whole character segment lit at once
+            el.className = `nw ${w.fmt || ''} current char-voice`;
+          } else {
+            el.className = `nw ${w.fmt || ''}`;
+          }
         } else {
-          el.className = `nw ${w.fmt || ''}`;
+          // Narrator word — precise word-level karaoke
+          if (i < currentIdx) {
+            el.className = `nw ${w.fmt || ''} spoken`;
+          } else if (i === currentIdx) {
+            el.className = `nw ${w.fmt || ''} current`;
+            if (window.innerWidth > 768) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          } else {
+            el.className = `nw ${w.fmt || ''}`;
+          }
         }
       });
 
     } else {
-      // Word-level highlighting for single-voice (narrator only)
+      // Pure narrator — word-level karaoke throughout
       charLabel.style.opacity = '0';
       narrationCurrentWords.forEach((w, i) => {
         const el = document.getElementById('nw-' + w.idx);
