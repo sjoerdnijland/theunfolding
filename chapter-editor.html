@@ -186,14 +186,34 @@ html, body {
   font-size: 0.55rem; color: var(--muted); padding-top: 8px;
   min-width: 20px; text-align: right; flex-shrink: 0; opacity: 0.5;
 }
+.para-main { flex: 1; min-width: 0; }
 .para-textarea {
-  flex: 1; background: transparent; border: none; resize: none;
+  width: 100%; background: transparent; border: none; resize: none;
   color: var(--ivory-2); font-family: var(--serif); font-size: 1rem;
   line-height: 1.65; padding: 6px 0; min-height: 52px;
   overflow: hidden;
 }
 .para-textarea:focus { outline: none; color: var(--ivory); }
 .para-textarea::placeholder { color: var(--muted); opacity: 0.4; font-style: italic; }
+
+.para-meta {
+  display: flex; align-items: center; gap: 6px;
+  padding: 2px 0 6px; opacity: 0;
+  transition: opacity 0.15s;
+}
+.para-row:focus-within .para-meta,
+.para-row:hover .para-meta { opacity: 1; }
+.speaker-label { font-size: 0.7rem; color: var(--muted); flex-shrink: 0; }
+.speaker-select {
+  font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em;
+  background: var(--ink-2); border: 1px solid var(--line);
+  color: var(--ivory-2); padding: 2px 6px; border-radius: 2px;
+  cursor: pointer; max-width: 220px;
+}
+.speaker-select:focus { outline: none; border-color: var(--teal); }
+/* Highlight rows that have a speaker set */
+.para-row.has-speaker .para-meta { opacity: 1; }
+.para-row.has-speaker .speaker-select { border-color: var(--teal-soft); color: var(--teal); }
 
 .para-del {
   padding: 6px 4px; border: none; background: transparent;
@@ -480,36 +500,85 @@ function renderSection(sec, si, container) {
   body.appendChild(addBtn);
 }
 
-function addParaRow(body, sec, pi, text) {
+function addParaRow(body, sec, pi, paraItem) {
+  const text    = typeof paraItem === 'string' ? paraItem : (paraItem.text || '');
+  const speaker = typeof paraItem === 'object' ? (paraItem.speaker || '') : '';
+
   const row = document.createElement('div');
   row.className = 'para-row';
+
+  // Build speaker options
+  const speakerOpts = buildSpeakerOptions(speaker);
+
   row.innerHTML = `
     <span class="para-num">${pi + 1}</span>
-    <textarea class="para-textarea" rows="2"
-      placeholder="Paragraph text… use *italic*, **bold**, ~~small caps~~"
-      oninput="updatePara('${sec.id}', ${pi}, this.value); autoResize(this)"
-      onfocus="lastFocusedTextarea = this"
-    >${escHtml(text)}</textarea>
+    <div class="para-main">
+      <textarea class="para-textarea" rows="2"
+        placeholder="Paragraph text… use *italic*, **bold**, ~~small caps~~"
+        oninput="updateParaText('${sec.id}', ${pi}, this.value); autoResize(this)"
+        onfocus="lastFocusedTextarea = this"
+      >${escHtml(text)}</textarea>
+      <div class="para-meta">
+        <label class="speaker-label">🎙</label>
+        <select class="speaker-select" onchange="updateParaSpeaker('${sec.id}', ${pi}, this.value)" title="Speaker voice">
+          ${speakerOpts}
+        </select>
+      </div>
+    </div>
     <button class="para-del" onclick="deletePara('${sec.id}', ${pi})" title="Delete paragraph">✕</button>`;
   body.appendChild(row);
-  // Auto-resize on render
+  if (speaker) row.classList.add('has-speaker');
   const ta = row.querySelector('textarea');
   requestAnimationFrame(() => autoResize(ta));
 }
+
+function buildSpeakerOptions(current) {
+  const chars = Object.values(wikiDataForEditor || {});
+  let opts = `<option value="">— narrator —</option>`;
+  chars.forEach(c => {
+    if (!c.voice_id) return;
+    const sel = current === c.id ? 'selected' : '';
+    opts += `<option value="${c.id}" ${sel}>${c.name}</option>`;
+  });
+  return opts;
+}
+
+// Load character data for editor speaker picker
+let wikiDataForEditor = {};
+fetch('data/characters.json').then(r => r.json()).then(chars => {
+  chars.forEach(c => { if (c.id) wikiDataForEditor[c.id] = c; });
+}).catch(() => {});
 
 function autoResize(ta) {
   ta.style.height = 'auto';
   ta.style.height = ta.scrollHeight + 'px';
 }
 
-function updateHeading(id, val) {
+function updateParaText(id, pi, val) {
   const sec = sections.find(s => s.id === id);
-  if (sec) { sec.heading = val; refreshPreview(); }
+  if (!sec) return;
+  const current = sec.paragraphs[pi];
+  if (typeof current === 'object') current.text = val;
+  else sec.paragraphs[pi] = val;
+  refreshPreview();
 }
 
-function updatePara(id, pi, val) {
+function updateParaSpeaker(id, pi, speakerId) {
   const sec = sections.find(s => s.id === id);
-  if (sec) { sec.paragraphs[pi] = val; refreshPreview(); }
+  if (!sec) return;
+  const current = sec.paragraphs[pi];
+  if (typeof current === 'string') {
+    sec.paragraphs[pi] = speakerId ? { text: current, speaker: speakerId } : current;
+  } else {
+    if (speakerId) current.speaker = speakerId;
+    else delete current.speaker;
+  }
+  // Update has-speaker class
+  const select = document.querySelector(`[onchange="updateParaSpeaker('${id}', ${pi}, this.value)"]`);
+  const row = select?.closest('.para-row');
+  if (row) row.classList.toggle('has-speaker', !!speakerId);
+  refreshPreview();
+  toast(speakerId ? `Speaker set` : 'Speaker cleared');
 }
 
 function deletePara(id, pi) {
@@ -651,7 +720,12 @@ function buildJSON() {
       if (sec.type === 'prose' && !out.type) delete out.type;
       if ((sec.type === 'prose' || sec.type === 'uplink') && sec.heading)
         out.heading = sec.heading;
-      out.paragraphs = sec.paragraphs;
+      // Output: plain string if no speaker, {text, speaker} if tagged
+      out.paragraphs = sec.paragraphs.map(p => {
+        if (typeof p === 'string') return p;
+        if (p.speaker) return { text: p.text, speaker: p.speaker };
+        return p.text; // object with no speaker → plain string
+      });
       return out;
     }).filter(Boolean)
   };
