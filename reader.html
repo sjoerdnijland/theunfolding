@@ -2108,7 +2108,9 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ── Wiki hints toggle ────────────────────────────────────
-let wikiHintsOn = localStorage.getItem('wikiHints') === 'on';
+let wikiHintsOn = false;
+document.body.classList.remove('wiki-hints-on');
+localStorage.removeItem('wikiHints');
 
 function applyWikiHints() {
   document.body.classList.toggle('wiki-hints-on', wikiHintsOn);
