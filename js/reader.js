@@ -393,8 +393,9 @@ async function narrationGoTo(index) {
   } // end multiVoiceEnabled
 
   // ── Segment-based fetch: narrator for prose, character for quoted dialogue ──
-  const segments = buildSegments(text, speakerVoiceId, innerVoiceId);
-  const cacheKey = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
+  const segments   = buildSegments(text, speakerVoiceId, innerVoiceId);
+  const isStitched = segments.length > 1;
+  const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
 
   let data = narrationCache[cacheKey];
   if (!data) {
@@ -494,7 +495,6 @@ async function narrationGoTo(index) {
     ? words.map((w, i) => ({ type: 'word', text: w.text, fmt: '', start: w.start, end: w.end, idx: i }))
     : buildDisplayTokens(rawText, words);
   narrationCurrentWords   = displayTokens.filter(t => t.type === 'word');
-  const isStitched = segments.length > 1;
 
   // Precompute which word indices (in narrationCurrentWords) belong to character segments
   // Key insight: normalise BOTH sides identically — strip all quote chars via norm()
