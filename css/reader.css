@@ -699,6 +699,11 @@ body.wiki-hints-on .para.active .wiki-link {
   color: var(--ivory);
   text-shadow: 0 0 32px rgba(233,74,124,0.5);
 }
+/* Character voice sentence highlight — rose-tinted, slightly warmer */
+.nw.current.char-voice {
+  color: var(--rose-soft) !important;
+  text-shadow: 0 0 28px rgba(233,74,124,0.45), 0 0 8px rgba(233,74,124,0.2);
+}
 .nw.nw-italic  { font-style: italic; }
 .nw.nw-bold    { font-weight: 600; }
 .nw.nw-smcaps  { font-variant: small-caps; letter-spacing: 0.06em; }
