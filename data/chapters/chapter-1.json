@@ -5,21 +5,16 @@
     {
       "type": "epigraph",
       "paragraphs": [
-        {
-          "text": "There is a song in the stone. And if you listen, you can hear the math starting to fail. To unfold. You weren't there. But you're next. I'm uplinking this to you because if I don't, only the stone will remember. It just sits there, waiting for you, before it can get back to being a rock. And if you were going to look away, don't. If you turn your head now, you'll miss the moment it decides to notice you. My name doesn't matter. Where we start does. Not Earth. Not Paradise. You're on the planet Mairee, the moment the hum of the station changed."
-        }
+        "There is a song in the stone. And if you listen, you can hear the math starting to fail. To unfold. You weren't there. But you're next. I'm uplinking this to you because if I don't, only the stone will remember. It just sits there, waiting for you, before it can get back to being a rock. And if you were going to look away, don't. If you turn your head now, you'll miss the moment it decides to notice you. My name doesn't matter. Where we start does. Not Earth. Not Paradise. You're on the planet Mairee, the moment the hum of the station changed."
       ]
     },
     {
       "paragraphs": [
+        "The Comms-Bay, usually a hive of digital chatter, was silent. All eyes were on the Mission Commander, Astrid Vilde. And that silence was the loudest scream she had ever heard. She knew it was bad when she heard her own blood rushing in her ears. *Whoosh. Whoosh. Whoosh*. A pump desperately trying to keep the pressure up.",
+        "She brought her hand to her quivering lip, as if to hold back the words she didn't yet dare to speak. She rested her open palm on the edge of the comms console, which normally felt warm. Now it was as though she were touching a corpse. She'd often reminded her staff that fear and courage walked the same corridor. Now she reminded herself, hoping it would help her steady her hand.",
         {
-          "text": "The Comms-Bay, usually a hive of digital chatter, was silent. All eyes were on the Mission Commander, Astrid Vilde. And that silence was the loudest scream she had ever heard. She knew it was bad when she heard her own blood rushing in her ears. *Whoosh. Whoosh. Whoosh*. A pump desperately trying to keep the pressure up."
-        },
-        {
-          "text": "She brought her hand to her quivering lip, as if to hold back the words she didn't yet dare to speak. She rested her open palm on the edge of the comms console, which normally felt warm. Now it was as though she were touching a corpse. She'd often reminded her staff that fear and courage walked the same corridor. Now she reminded herself, hoping it would help her steady her hand."
-        },
-        {
-          "text": "\"Muro, what do you hear?\" she finally said. She crossed to the holoscreen. It rendered the lieutenant, floating weightless in Orbital Three. His thinning sandy hair was sweaty, clinging to his forehead."
+          "text": "\"Muro, what do you hear?\" she finally said. She crossed to the holoscreen. It rendered the lieutenant, floating weightless in Orbital Three. His thinning sandy hair was sweaty, clinging to his forehead.",
+          "speaker": "astrid-vilde"
         },
         {
           "text": "Muro scratched his temple. \"Nothing, Commander. Total blackout.\" In his nervousness, Muro's brogue accent took over. \"It's like the Fold got flushed. Gone. But the *Brisinger*… she's still there. Sort of.\"",
@@ -38,17 +33,15 @@
           "speaker": "astrid-vilde"
         },
         {
-          "text": "\"It's… well, listen.\""
+          "text": "\"It's… well, listen.\"",
+          "speaker": "frank-muro"
         },
+        "A jagged waveform appeared in the air. \"We are b-being… The c-crew—\" The sound cut off in a high-pitched whine like a dental drill biting straight into nerve. In the bay, everyone stopped breathing as if collectively deciding to save oxygen. An ensign froze above the keys. Across the room, a technician lowered his slate. An officer stopped mid-step.",
         {
-          "text": "A jagged waveform appeared in the air. \"We are b-being… The c-crew—\" The sound cut off in a high-pitched whine like a dental drill biting straight into nerve. In the bay, everyone stopped breathing as if collectively deciding to save oxygen. An ensign froze above the keys. Across the room, a technician lowered his slate. An officer stopped mid-step."
+          "text": "Astrid gripped the console. She pushed down until the tremor in her hands ceased. She forced a breath deep into her lungs, holding it to slow her hammering heart. She turned to her staff, exhaling deeply. \"Breathe, dammit,\" she said. \"We'll figure this out. Keep listening.\"",
+          "speaker": "astrid-vilde"
         },
-        {
-          "text": "Astrid gripped the console. She pushed down until the tremor in her hands ceased. She forced a breath deep into her lungs, holding it to slow her hammering heart. She turned to her staff, exhaling deeply. \"Breathe, dammit,\" she said. \"We'll figure this out. Keep listening.\""
-        },
-        {
-          "text": "And with that, the bay remembered to breathe again."
-        }
+        "And with that, the bay remembered to breathe again."
       ]
     },
     {
@@ -56,9 +49,7 @@
     },
     {
       "paragraphs": [
-        {
-          "text": "Two beats passed. The composite door hissed open. Ulre Corbin, Head of Logistics, stepped inside the doorway. He noticed the waste of a dead console still drawing power. His black uniform blended into the dim light. He pulled his gloves tighter, finger by finger. The sound of leather against leather was crisp and methodical, as if he were preparing to take the situation into a choke hold."
-        },
+        "Two beats passed. The composite door hissed open. Ulre Corbin, Head of Logistics, stepped inside the doorway. He noticed the waste of a dead console still drawing power. His black uniform blended into the dim light. He pulled his gloves tighter, finger by finger. The sound of leather against leather was crisp and methodical, as if he were preparing to take the situation into a choke hold.",
         {
           "text": "\"Orbital Command agrees,\" Ulre relayed. \"We initiate the ESP.\"",
           "speaker": "ulre-corbin"
@@ -76,17 +67,20 @@
           "speaker": "astrid-vilde"
         },
         {
-          "text": "She caught the defiance in his eyes. She wanted to reach the man behind the uniform. \"Ulre,\" she said, meeting his cold stare. \"You mistake my contemplation for inaction. My judgment accounts for the trust among the settlers, which keeps three thousand souls together across the void.\""
+          "text": "She caught the defiance in his eyes. She wanted to reach the man behind the uniform. \"Ulre,\" she said, meeting his cold stare. \"You mistake my contemplation for inaction. My judgment accounts for the trust among the settlers, which keeps three thousand souls together across the void.\"",
+          "speaker": "astrid-vilde"
         },
         {
-          "text": "Astrid turned her eyes to her staff, then back to Corbin. The tension in his frame hadn't loosened by a millimeter. His gaze didn't drop in deference. Instead, it slid past her, fixing on the dead consoles. He was calculating. Astrid knew the confrontation wasn't over. He was bypassing her entirely. But continuing this argument in front of the crew would only drain her authority. So she whispered to him, \"This debate is over. Are we clear?\""
+          "text": "Astrid turned her eyes to her staff, then back to Corbin. The tension in his frame hadn't loosened by a millimeter. His gaze didn't drop in deference. Instead, it slid past her, fixing on the dead consoles. He was calculating. Astrid knew the confrontation wasn't over. He was bypassing her entirely. But continuing this argument in front of the crew would only drain her authority. So she whispered to him, \"This debate is over. Are we clear?\"",
+          "speaker": "astrid-vilde"
         },
         {
           "text": "\"Clear,\" Ulre bit out. He turned and left, the squeal of his pivoting boots lingering in her ears.",
           "speaker": "ulre-corbin"
         },
         {
-          "text": "She gave a short nod to her comms chief. \"Call an assembly. Homestead Dome.\""
+          "text": "She gave a short nod to her comms chief. \"Call an assembly. Homestead Dome.\"",
+          "speaker": "astrid-vilde"
         }
       ]
     },
@@ -94,142 +88,70 @@
       "type": "uplink",
       "heading": "UPLINK · TEMPORAL ORIENTATION",
       "paragraphs": [
-        {
-          "text": "Forget looking at your watch. Time aboard the fleet is something you feel. Here, the crew acclimates to the rhythms of a ship's gravity cyclers, tuned to Mairee-time."
-        },
-        {
-          "text": "**Pulse** — 120 seconds. A hitch in the hum."
-        },
-        {
-          "text": "**Beat** — 6 pulses · 12 minutes. A skipped heartbeat of the ship. Long enough to make you wonder if the engines died."
-        },
-        {
-          "text": "**Thud** — 6 beats · 72 minutes. The entire ship shudders. A deep vibration that pulls through the deck plates."
-        },
-        {
-          "text": "**Click** — 18 thuds · 21.6 hours. The sound of a bolt slamming home in a prison door. Inner cycler changeover."
-        },
-        {
-          "text": "**Cycle **— 60 clicks · 54 Earth days. Shipwide zero-g cycle turnover. Make sure you're strapped in."
-        },
-        {
-          "text": "**Maya **(Mairee Year) — 6 cycles · 324 Earth days."
-        },
-        {
-          "text": "**Emwic** (Mairee Week) — 6 clicks · 5.4 Earth days."
-        },
-        {
-          "text": "**Maryon** (Maireean Month) — ½ cycle (30 clicks) · 27 Earth days."
-        }
+        "Forget looking at your watch. Time aboard the fleet is something you feel. Here, the crew acclimates to the rhythms of a ship's gravity cyclers, tuned to Mairee-time.",
+        "**Pulse** — 120 seconds. A hitch in the hum.",
+        "**Beat** — 6 pulses · 12 minutes. A skipped heartbeat of the ship. Long enough to make you wonder if the engines died.",
+        "**Thud** — 6 beats · 72 minutes. The entire ship shudders. A deep vibration that pulls through the deck plates.",
+        "**Click** — 18 thuds · 21.6 hours. The sound of a bolt slamming home in a prison door. Inner cycler changeover.",
+        "**Cycle **— 60 clicks · 54 Earth days. Shipwide zero-g cycle turnover. Make sure you're strapped in.",
+        "**Maya **(Mairee Year) — 6 cycles · 324 Earth days.",
+        "**Emwic** (Mairee Week) — 6 clicks · 5.4 Earth days.",
+        "**Maryon** (Maireean Month) — ½ cycle (30 clicks) · 27 Earth days."
       ]
     },
     {
       "paragraphs": [
+        "Next thud, Commander Astrid Vilde walked the central corridor to the Hearth of the Homestead. As she entered the dome, anxious voices carried to her. She marched past the speaker stand, stopping at the edge of the platform. Below her, a sea of faces upturned. Tiny Eyewyn orbs drifted around her head like mosquitoes, their lenses dilating and contracting, beaming her face to every soul on the planet. She raised a hand, and the murmuring ceased.",
         {
-          "text": "Next thud, Commander Astrid Vilde walked the central corridor to the Hearth of the Homestead. As she entered the dome, anxious voices carried to her. She marched past the speaker stand, stopping at the edge of the platform. Below her, a sea of faces upturned. Tiny Eyewyn orbs drifted around her head like mosquitoes, their lenses dilating and contracting, beaming her face to every soul on the planet. She raised a hand, and the murmuring ceased."
+          "text": "\"Our connection with Sol is severed,\" she stated. She didn't shout. She let the acoustics of the dome carry her words. Her voice, honed by years of command, reached the farthest corners of the dome. \"The Fold is silent. We've lost contact with Mimir, Alsvin, Muninn, and Hugin. The *Brisinger* breached the Fold, but we're struggling to re-establish communication with her. We do not yet know why or for how long. We only know this: for now, Mairee is a secluded island.\"",
+          "speaker": "astrid-vilde"
+        },
+        "The truth settled. She reminded them of the years in transit, moving from dry, recycled air to the first inhale of Maireean atmosphere. She spoke of the work that made them one people. Her gaze trawled the crowd and snagged on a boy near the front. He was the son of a man for whom she had delivered a eulogy shortly after the first transit cycle. She remembered being in the freezing hangar where the boy's father's body had lain in state. Colder still had been the look in the young man's clear gray eyes. Her hand had rested on the boy's shoulder while his father rested in a closed cryo-bag behind glass. She remembered the promise she had made him then. It sat in her gut like a stone: that no life given to the void would be forgotten by those who arrived.",
+        "The void cannot claim what the heart holds.",
+        {
+          "text": "\"Our journey is not over,\" she continued, forcing the stone in her gut to become fuel for a clarion call. \"It has begun. We are prepared. Your pads will receive rationing protocols. Read them. Respect them. And look at the people next to you. They are not your competitors. They are your survival. Our strength is not in our stockpiles. It is in these hands.\" She held hers up. \"Our hands, our minds, and our hearts are what makes us strong. As a first step, share your water with those who have less, and check on your neighbors to ensure no one is without essentials.\"",
+          "speaker": "astrid-vilde"
         },
         {
-          "text": "\"Our connection with Sol is severed,\" she stated. She didn't shout. She let the acoustics of the dome carry her words. Her voice, honed by years of command, reached the farthest corners of the dome. \"The Fold is silent. We've lost contact with Mimir, Alsvin, Muninn, and Hugin. The *Brisinger* breached the Fold, but we're struggling to re-establish communication with her. We do not yet know why or for how long. We only know this: for now, Mairee is a secluded island.\""
+          "text": "When she met the boy's eyes again, that same icy draft brushed along her spine. His gaze hooked into her flesh. She knew her next words would land differently with him. \"Many of you landed here a cycle ago. But now is the moment when we truly come together. And the rest of the fleet will follow soon. I promise.\"",
+          "speaker": "astrid-vilde"
         },
+        "She lingered on her promise. A lie? False hope? It didn't matter. It was necessary.",
         {
-          "text": "The truth settled. She reminded them of the years in transit, moving from dry, recycled air to the first inhale of Maireean atmosphere. She spoke of the work that made them one people. Her gaze trawled the crowd and snagged on a boy near the front. He was the son of a man for whom she had delivered a eulogy shortly after the first transit cycle. She remembered being in the freezing hangar where the boy's father's body had lain in state. Colder still had been the look in the young man's clear gray eyes. Her hand had rested on the boy's shoulder while his father rested in a closed cryo-bag behind glass. She remembered the promise she had made him then. It sat in her gut like a stone: that no life given to the void would be forgotten by those who arrived."
+          "text": "\"We arrived. They will come. And we will thrive here. Together.\"",
+          "speaker": "astrid-vilde"
         },
-        {
-          "text": "The void cannot claim what the heart holds."
-        },
-        {
-          "text": "\"Our journey is not over,\" she continued, forcing the stone in her gut to become fuel for a clarion call. \"It has begun. We are prepared. Your pads will receive rationing protocols. Read them. Respect them. And look at the people next to you. They are not your competitors. They are your survival. Our strength is not in our stockpiles. It is in these hands.\" She held hers up. \"Our hands, our minds, and our hearts are what makes us strong. As a first step, share your water with those who have less, and check on your neighbors to ensure no one is without essentials.\""
-        },
-        {
-          "text": "When she met the boy's eyes again, that same icy draft brushed along her spine. His gaze hooked into her flesh. She knew her next words would land differently with him. \"Many of you landed here a cycle ago. But now is the moment when we truly come together. And the rest of the fleet will follow soon. I promise.\""
-        },
-        {
-          "text": "She lingered on her promise. A lie? False hope? It didn't matter. It was necessary."
-        },
-        {
-          "text": "\"We arrived. They will come. And we will thrive here. Together.\""
-        },
-        {
-          "text": "A single voice from the back called out, cracking with hesitation. \"Together.\""
-        },
-        {
-          "text": "Another voice joined. Then ten. Then a hundred. The sound swelled into a wave that vibrated through the floorboards."
-        },
-        {
-          "text": "She raised her fist. The chanting stopped at once as the dome went black. The Eyewyns fell abruptly to the floor. A momentary flicker of ruby light slashed across the dome, the telltale discharge of a heavy-grade gravitic suppressor. The field locked in, making the air thick. An invisible pressure pinned Astrid. Her muscles and throat constricted. Her vision blurred with black and red from the suppressor's flash. Through the haze, she saw heavy boots advancing in silent rhythm."
-        },
-        {
-          "text": "Guardians."
-        }
+        "A single voice from the back called out, cracking with hesitation. \"Together.\"",
+        "Another voice joined. Then ten. Then a hundred. The sound swelled into a wave that vibrated through the floorboards.",
+        "She raised her fist. The chanting stopped at once as the dome went black. The Eyewyns fell abruptly to the floor. A momentary flicker of ruby light slashed across the dome, the telltale discharge of a heavy-grade gravitic suppressor. The field locked in, making the air thick. An invisible pressure pinned Astrid. Her muscles and throat constricted. Her vision blurred with black and red from the suppressor's flash. Through the haze, she saw heavy boots advancing in silent rhythm.",
+        "Guardians."
       ]
     },
     {
       "type": "uplink",
       "heading": "UPLINK · MISSION ASSETS",
       "paragraphs": [
-        {
-          "text": "**SOL SYSTEM**"
-        },
-        {
-          "text": "**Solbay & Solac** — The harbor and the school. Where they taught you to dream of the stars before kicking you into the void. *Irrelevant.*"
-        },
-        {
-          "text": "**Kepler & Sol-Cetus Arrays** — The phone lines home. *Severed. Dead.*"
-        },
-        {
-          "text": "**The Stragglers** (Mimir, Alsvin, Muninn, Hugin) — Freighters and labs on the wrong side of the Fold when it closed. *Useless. But not forgotten.*"
-        },
-        {
-          "text": "**YREUS SYSTEM**"
-        },
-        {
-          "text": "**Yreus Array** — Can't connect us to Sol anymore. A piece of space junk. *Decorative.*"
-        },
-        {
-          "text": "**MAIREE**"
-        },
-        {
-          "text": "Our second home. The promise. The lie. From space, it looks like a jewel. Too bad we are the infection. *And she knows it.*"
-        },
-        {
-          "text": "**En Route to Mairee**"
-        },
-        {
-          "text": "**FNS Brisinger** — The problem child. The last ship to breach the Fold. Dragging itself quietly forward. *Do not board it.*"
-        },
-        {
-          "text": "**FNS Dáinn** — Our machines. Without her, we return to the Stone Age."
-        },
-        {
-          "text": "**In Orbit**"
-        },
-        {
-          "text": "**FNS Bygul & FNS Trjegul** — Beasts of burden. Two million tons each, circling Mairee, waiting to be sucked dry."
-        },
-        {
-          "text": "**FNS Yggdrasil · Orbital Command** — Split apart to prop up the ceiling. The brain. Here, they decide what moves where via the Corridor."
-        },
-        {
-          "text": "**Orbital One 'The Eyes'** — The Peeping Tom. Watches the weather and alerts us to the spore storms."
-        },
-        {
-          "text": "**Orbital Two 'The Lungs'** — Strips usable particles from the atmosphere. We need it for life support up here."
-        },
-        {
-          "text": "**Orbital Three 'The Ears'** — Muro's man cave. Mostly listens to static now."
-        },
-        {
-          "text": "**The Landed**"
-        },
-        {
-          "text": "**FNS Freya** — The flagship. Now a village containing the Homestead and the Harbor. Three thousand people call it home. *Nobody chose it.*"
-        },
-        {
-          "text": "**FNS Ivaldi** — A dropped brick, anchored into the rocks of the Plateau. Smelters, fabricators, repair bays."
-        },
-        {
-          "text": "**The Delta Camps** — A churning petri dish. The perfect place to plant a garden — *if you like crops that bite back.*"
-        }
+        "**SOL SYSTEM**",
+        "**Solbay & Solac** — The harbor and the school. Where they taught you to dream of the stars before kicking you into the void. *Irrelevant.*",
+        "**Kepler & Sol-Cetus Arrays** — The phone lines home. *Severed. Dead.*",
+        "**The Stragglers** (Mimir, Alsvin, Muninn, Hugin) — Freighters and labs on the wrong side of the Fold when it closed. *Useless. But not forgotten.*",
+        "**YREUS SYSTEM**",
+        "**Yreus Array** — Can't connect us to Sol anymore. A piece of space junk. *Decorative.*",
+        "**MAIREE**",
+        "Our second home. The promise. The lie. From space, it looks like a jewel. Too bad we are the infection. *And she knows it.*",
+        "**En Route to Mairee**",
+        "**FNS Brisinger** — The problem child. The last ship to breach the Fold. Dragging itself quietly forward. *Do not board it.*",
+        "**FNS Dáinn** — Our machines. Without her, we return to the Stone Age.",
+        "**In Orbit**",
+        "**FNS Bygul & FNS Trjegul** — Beasts of burden. Two million tons each, circling Mairee, waiting to be sucked dry.",
+        "**FNS Yggdrasil · Orbital Command** — Split apart to prop up the ceiling. The brain. Here, they decide what moves where via the Corridor.",
+        "**Orbital One 'The Eyes'** — The Peeping Tom. Watches the weather and alerts us to the spore storms.",
+        "**Orbital Two 'The Lungs'** — Strips usable particles from the atmosphere. We need it for life support up here.",
+        "**Orbital Three 'The Ears'** — Muro's man cave. Mostly listens to static now.",
+        "**The Landed**",
+        "**FNS Freya** — The flagship. Now a village containing the Homestead and the Harbor. Three thousand people call it home. *Nobody chose it.*",
+        "**FNS Ivaldi** — A dropped brick, anchored into the rocks of the Plateau. Smelters, fabricators, repair bays.",
+        "**The Delta Camps** — A churning petri dish. The perfect place to plant a garden — *if you like crops that bite back.*"
       ]
     }
   ]
