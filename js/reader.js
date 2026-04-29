@@ -20,11 +20,18 @@ function toggleMultiVoice() {
   multiVoiceEnabled = !multiVoiceEnabled;
   localStorage.setItem('multiVoice', multiVoiceEnabled ? 'on' : 'off');
   applyMultiVoiceBtn();
-  // Clear cache so next paragraph re-fetches with correct voice
+  // Clear cache and re-fetch current paragraph with new voice setting
   narrationCache = {};
   narrationLastSpeaker = null;
   narrationLastMaleSpeaker = null;
   narrationLastFemaleSpeaker = null;
+  // Re-narrate from current position so the voice change takes effect immediately
+  if (narrationActive) {
+    if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
+    cancelAnimationFrame(narrationRAF);
+    narrationLocked = false;
+    narrationGoTo(narrationIndex);
+  }
 }
 
 function applyMultiVoiceBtn() {
@@ -195,6 +202,26 @@ function stopNarration() {
   document.getElementById('narration-comment-hint').classList.remove('visible');
 }
 
+function buildSegments(plainText, charVoiceId) {
+  if (!charVoiceId || !multiVoiceEnabled) return [{ text: plainText, voiceId: null }];
+  const parts = plainText.split(/([""\u201c\u201d][^""\u201c\u201d]*[""\u201c\u201d])/);
+  const segs = [];
+  parts.forEach(p => {
+    if (!p) return;
+    const isQuote = /^[""\u201c\u201d]/.test(p) && /[""\u201c\u201d]$/.test(p);
+    const clean   = p.trim();
+    if (!clean) return;
+    segs.push({ text: clean, voiceId: isQuote ? charVoiceId : null });
+  });
+  const merged = [];
+  for (const seg of segs) {
+    const last = merged[merged.length - 1];
+    if (last && last.voiceId === seg.voiceId) last.text += ' ' + seg.text;
+    else merged.push({ ...seg });
+  }
+  return merged.filter(s => s.text.trim());
+}
+
 async function narrationGoTo(index) {
   // Hard-stop any currently playing audio immediately
   if (narrationAudio) {
@@ -302,25 +329,37 @@ async function narrationGoTo(index) {
     }
   } // end multiVoiceEnabled
 
-  // Cache key includes voice so same text with different speaker doesn't collide
-  const cacheKey = pid + '|' + (speakerVoiceId || 'default') + '|' + text.slice(0, 40);
+  // ── Segment-based fetch: narrator for prose, character for quoted dialogue ──
+  const segments = buildSegments(text, speakerVoiceId);
+  const cacheKey = pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
+
   let data = narrationCache[cacheKey];
   if (!data) {
-    // Only show loading message when we actually need to fetch
     textEl.innerHTML = `<span class="narration-loading">the stone is listening…</span>`;
-    console.log('[fetch] sending voiceId:', speakerVoiceId || 'default (Charlotte)');
     try {
-      const res = await fetch(NARRATE_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${SUPA_KEY}`,
-        },
-        body: JSON.stringify({ text, ...(speakerVoiceId ? { voiceId: speakerVoiceId } : {}) })
-      });
-      data = await res.json();
-      console.log('[fetch] response:', data.error || ('audio:' + (data.audio ? 'yes' : 'no') + ' alignment:' + (data.alignment ? 'yes' : 'no')));
-      if (data.error) throw new Error(data.error);
+      if (segments.length === 1) {
+        // Single segment — normal fetch
+        const seg = segments[0];
+        const res = await fetch(NARRATE_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
+          body: JSON.stringify({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) })
+        });
+        data = await res.json();
+        if (data.error) throw new Error(data.error);
+      } else {
+        // Multiple segments — fetch each and stitch alignment
+        const results = await Promise.all(segments.map(seg =>
+          fetch(NARRATE_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
+            body: JSON.stringify({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) })
+          }).then(r => r.json())
+        ));
+        // Stitch audio and alignment
+        data = stitchSegments(results);
+        if (data.error) throw new Error(data.error);
+      }
       narrationCache[cacheKey] = data;
     } catch(e) {
       textEl.innerHTML = `<span class="narration-loading">Could not load audio — ${e.message}</span>`;
@@ -586,20 +625,34 @@ async function submitNarrationComment(pid) {
 
 async function prefetchNext(index) {
   if (index >= narrationParaIds.length) return;
-  const pid          = narrationParaIds[index];
-  const text         = getParaText(pid);
-  const rawText      = getRawText(pid) || text;
+  const pid     = narrationParaIds[index];
+  const text    = getParaText(pid);
+  const rawText = getRawText(pid) || text;
   if (!text) return;
-  const speakerVoiceId = multiVoiceEnabled ? detectSpeakerVoice(rawText) : null;
-  const cacheKey = pid + '|' + (speakerVoiceId || 'default') + '|' + text.slice(0, 40);
+  const charVoice  = multiVoiceEnabled ? detectSpeakerVoice(rawText) : null;
+  const segments   = buildSegments(text, charVoice);
+  const cacheKey   = pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
   if (narrationCache[cacheKey]) return;
   try {
-    const res = await fetch(NARRATE_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
-      body: JSON.stringify({ text, ...(speakerVoiceId ? { voiceId: speakerVoiceId } : {}) })
-    });
-    const data = await res.json();
+    let data;
+    if (segments.length === 1) {
+      const seg = segments[0];
+      const res = await fetch(NARRATE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
+        body: JSON.stringify({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) })
+      });
+      data = await res.json();
+    } else {
+      const results = await Promise.all(segments.map(seg =>
+        fetch(NARRATE_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
+          body: JSON.stringify({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) })
+        }).then(r => r.json())
+      ));
+      data = stitchSegments(results);
+    }
     if (!data.error) narrationCache[cacheKey] = data;
   } catch(_) {}
 }
@@ -1221,7 +1274,48 @@ function closeWikiPopup(e) {
   document.getElementById('wiki-overlay').classList.remove('open');
 }
 
-function detectSpeakerVoice(text) {
+function stitchSegments(results) {
+  // Check for errors
+  for (const r of results) if (r.error) return { error: r.error };
+
+  // Stitch base64 audio by decoding, concatenating bytes, re-encoding
+  let allBytes = [];
+  const stitchedAlignment = { characters: [], character_start_times_seconds: [], character_end_times_seconds: [] };
+  let timeOffset = 0;
+
+  for (const r of results) {
+    if (!r.audio) continue;
+    // Decode base64 audio
+    const binary = atob(r.audio);
+    for (let i = 0; i < binary.length; i++) allBytes.push(binary.charCodeAt(i));
+
+    // Offset and append alignment
+    const chars  = r.alignment?.characters || [];
+    const starts = r.alignment?.character_start_times_seconds || [];
+    const ends   = r.alignment?.character_end_times_seconds || [];
+    // Estimate duration from last end time + small gap
+    const segDuration = (ends[ends.length - 1] || 0) + 0.3;
+
+    chars.forEach((c, i) => {
+      stitchedAlignment.characters.push(c);
+      stitchedAlignment.character_start_times_seconds.push((starts[i] || 0) + timeOffset);
+      stitchedAlignment.character_end_times_seconds.push((ends[i] || 0) + timeOffset);
+    });
+    timeOffset += segDuration;
+  }
+
+  // Re-encode to base64
+  let binary = '';
+  const chunkSize = 8192;
+  for (let i = 0; i < allBytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...allBytes.slice(i, i + chunkSize));
+  }
+
+  return {
+    audio:     btoa(binary),
+    alignment: stitchedAlignment,
+  };
+}
   if (!text) return null;
 
   const SAID = 'said|asked|replied|whispered|called|snapped|muttered|shouted|added|answered|continued|growled|breathed|laughed|hissed|barked|pleaded|ordered|announced|warned|began|finished|interrupted|noted|insisted|admitted|confirmed|agreed|protested|scoffed|relayed|stated|explained|pressed|urged|offered|suggested|demanded|declared|echoed|conceded|countered|managed|spat|drawled|murmured|responded|cut in|bit out';
