@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v10';
+const READER_VERSION = 'v11';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -488,51 +488,50 @@ function cacheClear() {
   const isStitched = segments.length > 1;
 
   // Precompute which word indices (in narrationCurrentWords) belong to character segments
-  // Strategy: strip all markup/quotes from both display words and segment text, then match
+  // Match by finding segment words in display word list — handles markup differences
   const charWordRanges = [];
   if (isStitched && narrationCurrentWords.length) {
-    // Flatten all display words to plain text for matching
-    const displayWords = narrationCurrentWords.map(w =>
-      w.text.replace(/[^a-z0-9''\u00e0-\u00ff]/gi, '').toLowerCase()
-    );
+    // Normalise a word for matching — keep apostrophes, strip only punctuation/quotes
+    const norm = w => w.replace(/["""'\u201c\u201d]/g, '').replace(/[^a-z0-9''\u00e0-\u00ff]/gi, '').toLowerCase();
+
+    const displayWords = narrationCurrentWords.map(w => norm(w.text));
 
     let searchFrom = 0;
     for (const seg of segments) {
-      // Strip quotes, asterisks, markup from segment text to get matchable words
+      // Strip only outer quote chars, NOT apostrophes
       const segPlain = seg.text
-        .replace(/[""'\u201c\u201d*_~]/g, '')
+        .replace(/^["""'\u201c\u201d]+|["""'\u201c\u201d]+$/g, '') // strip leading/trailing quotes only
         .replace(/\s+/g, ' ').trim();
-      const segWords = segPlain.split(/\s+/).filter(Boolean)
-        .map(w => w.replace(/[^a-z0-9''\u00e0-\u00ff]/gi, '').toLowerCase())
-        .filter(Boolean);
+      const segWords = segPlain.split(/\s+/).filter(Boolean).map(norm).filter(Boolean);
 
       if (!segWords.length) continue;
 
-      // Find where this segment's first word appears in displayWords (from searchFrom)
+      // Find where this segment starts in display words
       let matchStart = -1;
-      for (let i = searchFrom; i < displayWords.length; i++) {
+      outer: for (let i = searchFrom; i < displayWords.length; i++) {
         if (displayWords[i] === segWords[0]) {
-          // Verify next few words also match
-          let ok = true;
-          for (let j = 1; j < Math.min(3, segWords.length); j++) {
-            if (displayWords[i + j] !== segWords[j]) { ok = false; break; }
+          // Verify up to 3 following words
+          for (let j = 1; j < Math.min(4, segWords.length); j++) {
+            if ((displayWords[i + j] || '') !== segWords[j]) continue outer;
           }
-          if (ok) { matchStart = i; break; }
+          matchStart = i;
+          break;
         }
       }
 
       if (matchStart === -1) {
-        // Fallback: advance cursor by word count
+        // No match — advance by segment word count as fallback
         if (seg.voiceId) {
-          charWordRanges.push({ start: searchFrom, end: searchFrom + segWords.length - 1, voice: seg.voiceId });
+          const fallbackEnd = Math.min(searchFrom + segWords.length - 1, narrationCurrentWords.length - 1);
+          charWordRanges.push({ start: searchFrom, end: fallbackEnd, voice: seg.voiceId });
         }
         searchFrom += segWords.length;
         continue;
       }
 
-      const matchEnd = matchStart + segWords.length - 1;
+      const matchEnd = Math.min(matchStart + segWords.length - 1, narrationCurrentWords.length - 1);
       if (seg.voiceId) {
-        charWordRanges.push({ start: matchStart, end: Math.min(matchEnd, narrationCurrentWords.length - 1), voice: seg.voiceId });
+        charWordRanges.push({ start: matchStart, end: matchEnd, voice: seg.voiceId });
       }
       searchFrom = matchEnd + 1;
     }
@@ -1119,10 +1118,10 @@ function renderChapter(ch) {
         const isLevel2 = isAssets && !isLevel1 && /^\*\*[A-Z][a-zA-Z\s'·]+\*\*$/.test(trimmed);
 
         if (isLevel1) {
-          return `<div class="uplink-section-divider uplink-s1" id="${pid}" data-para-id="${pid}" data-comment-count="${count}">${parseMarkup(text)}</div>`;
+          return `<div class="uplink-section-divider uplink-s1" id="${pid}" data-para-id="${pid}" data-raw="${escAttr(text)}" data-speaker="${speakerTag||''}" data-comment-count="${count}">${parseMarkup(text)}</div>`;
         }
         if (isLevel2) {
-          return `<div class="uplink-section-divider uplink-s2" id="${pid}" data-para-id="${pid}" data-comment-count="${count}">${parseMarkup(text)}</div>`;
+          return `<div class="uplink-section-divider uplink-s2" id="${pid}" data-para-id="${pid}" data-raw="${escAttr(text)}" data-speaker="${speakerTag||''}" data-comment-count="${count}">${parseMarkup(text)}</div>`;
         }
 
         return `
