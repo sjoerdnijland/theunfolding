@@ -946,15 +946,18 @@ body.wiki-hints-on .para.active .wiki-link {
     font-size: 0.6rem;
     letter-spacing: 0.07em;
   }
-  /* Primary actions in first row */
-  #nc-play-btn  { order: 1; flex: 1 0 auto; min-width: 90px; }
-  button.nc-btn[onclick="narrationPrev()"] { order: 2; }
-  button.nc-btn[onclick="narrationNext()"] { order: 3; }
-  /* Secondary row */
-  #nc-thread-btn  { order: 4; }
-  #nc-voices-btn  { order: 5; }
-  #nc-music-btn   { order: 6; }
-  button.nc-btn[onclick="stopNarration()"] { order: 7; }
+  /* Row 1: the three core transport controls — always visible, never wrap */
+  .narration-controls { max-width: 100vw; padding: 0 6px; }
+  button.nc-btn[onclick="narrationPrev()"]  { order: 1; flex: 1 1 auto; }
+  #nc-play-btn                              { order: 2; flex: 2 1 auto; min-width: 80px; }
+  button.nc-btn[onclick="narrationNext()"]  { order: 3; flex: 1 1 auto; }
+  /* Row 2: secondary controls */
+  #nc-thread-btn                            { order: 4; flex: 1 1 auto; }
+  #nc-voices-btn                            { order: 5; flex: 1 1 auto; }
+  #nc-music-btn                             { order: 6; flex: 1 1 auto; }
+  button.nc-btn[onclick="stopNarration()"]  { order: 7; flex: 1 1 auto; }
+  /* .nc-row-break is a zero-height full-width flex child that forces a row break */
+  .nc-row-break { flex-basis: 100%; height: 0; order: 35; }
   /* Comment hint: hide on mobile (thread button in controls is enough) */
   .narration-comment-hint { display: none; }
 
