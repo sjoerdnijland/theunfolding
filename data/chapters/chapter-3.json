@@ -5,21 +5,44 @@
     {
       "type": "epigraph",
       "paragraphs": [
-        "Now it's time to unfold the events between. Well, we pretend there's a long stretch between birth and wake. That's wrong. It's not a line. It's a circle that's been stepped on until it's a jagged, broken mess. It's all just vibration. Muro knows all about that vibration."
+        {
+          "text": "Now it's time to unfold the events between. Well, we pretend there's a long stretch between birth and wake. That's wrong. It's not a line. It's a circle that's been stepped on until it's a jagged, broken mess. It's all just vibration. Muro knows all about that vibration."
+        }
       ]
     },
     {
       "heading": "Orbital Three · The Ears",
       "paragraphs": [
-        "Silence. Lieutenant Frank Muro floated in it, and it was starting to grow thorns. A sudden shiver ran down his spine as the climate control faltered, blasting a stream of ice-cold air across his sweat-slicked neck. The light from the console drew lingering phosphenes in his eyes. Ghost lights dancing in his vision. That was what happened when his brain got bored enough; it started inventing fireworks just to experience something. He spun slowly in zero gravity at his workstation, pushing off the bulkhead with his bare feet. He had tweaked a small holo-projector to keep his hands busy. He'd learned to shape light into abstract sculptures. Or maybe he was just masturbating with photons.",
-        "As the sole person on Orbital Three, he had a duty to keep the tightbeam linked with the Yreus Relay, which connected them to the Sol-Cetus Relay on the far side of the Fold. His job was simple: watch the string and keep it tight. The mission depended on the integrity of the tightbeam relays. If the cord snapped, the baby would starve. Simple. Now that it had, he couldn't escape feeling like humanity's biggest failure.",
-        "\"Come on, Gary, lad, wake up,\" Frank muttered, tapping the projector casing. \"Don't go noddin' off again. Run me a spectral analysis on Yreus's last handshake — and dig deep, aye? I want to see the rot.\"",
-        "\"I'M WORKING ON IT!\" chirped the CIX. It sounded like a game show host announcing the contestant had won a toaster, the volume a touch too loud for the small capsule. The hologram of the interface flared bright orange before settling into a steady cool blue. The spectral analysis was complete. It showed a flat line.",
-        "\"Okay, Gary,\" Frank murmured, an unconventional idea emerging from his sleep-deprived mind. \"Let's try something funny. Generate a simulated quantum key, encoded as a digital signature. Set the query to recurse. And build the algorithm to follow the last tachyon-decay pattern we logged. Just make sure ye flip the parity.\"",
-        "\"THAT SOUNDS FUN!\" Gary replied. \"BUILDING RECURSIVE FRACTAL QUERY. INVERTING PARITY.\"",
-        "While the CIX worked, the station lights flickered with an unsettling irregularity. In a moment, Frank hoped to learn that the Fold, their only passage to Earth, was still there. He remembered going through. Crossing the Fold had been a spiritual experience. During the trip, he'd dreamed of being gifted a tuning fork.",
-        "The console pinged, pulling him from his reverie. The query was complete.",
-        "\"Send it.\" Frank exhaled. He watched the data stream. The query shot out into the void. For a while, nothing happened. Frank collected dead skin cells dancing in the capsule. He studied a drop of water that had escaped his drink pouch. It wobbled before his nose, reflecting his bloodshot eyes. The console pinged again. The data packet returned a single damning line."
+        {
+          "text": "Silence. Lieutenant Frank Muro floated in it, and it was starting to grow thorns. A sudden shiver ran down his spine as the climate control faltered, blasting a stream of ice-cold air across his sweat-slicked neck. The light from the console drew lingering phosphenes in his eyes. Ghost lights dancing in his vision. That was what happened when his brain got bored enough; it started inventing fireworks just to experience something. He spun slowly in zero gravity at his workstation, pushing off the bulkhead with his bare feet. He had tweaked a small holo-projector to keep his hands busy. He'd learned to shape light into abstract sculptures. Or maybe he was just masturbating with photons."
+        },
+        {
+          "text": "As the sole person on Orbital Three, he had a duty to keep the tightbeam linked with the Yreus Relay, which connected them to the Sol-Cetus Relay on the far side of the Fold. His job was simple: watch the string and keep it tight. The mission depended on the integrity of the tightbeam relays. If the cord snapped, the baby would starve. Simple. Now that it had, he couldn't escape feeling like humanity's biggest failure."
+        },
+        {
+          "text": "\"Come on, Gary, lad, wake up,\" Frank muttered, tapping the projector casing. \"Don't go noddin' off again. Run me a spectral analysis on Yreus's last handshake — and dig deep, aye? I want to see the rot.\"",
+          "speaker": "frank-muro"
+        },
+        {
+          "text": "\"I'M WORKING ON IT!\" chirped the CIX. It sounded like a game show host announcing the contestant had won a toaster, the volume a touch too loud for the small capsule. The hologram of the interface flared bright orange before settling into a steady cool blue. The spectral analysis was complete. It showed a flat line."
+        },
+        {
+          "text": "\"Okay, Gary,\" Frank murmured, an unconventional idea emerging from his sleep-deprived mind. \"Let's try something funny. Generate a simulated quantum key, encoded as a digital signature. Set the query to recurse. And build the algorithm to follow the last tachyon-decay pattern we logged. Just make sure ye flip the parity.\"",
+          "speaker": "frank-muro"
+        },
+        {
+          "text": "\"THAT SOUNDS FUN!\" Gary replied. \"BUILDING RECURSIVE FRACTAL QUERY. INVERTING PARITY.\"",
+          "speaker": "gary"
+        },
+        {
+          "text": "While the CIX worked, the station lights flickered with an unsettling irregularity. In a moment, Frank hoped to learn that the Fold, their only passage to Earth, was still there. He remembered going through. Crossing the Fold had been a spiritual experience. During the trip, he'd dreamed of being gifted a tuning fork."
+        },
+        {
+          "text": "The console pinged, pulling him from his reverie. The query was complete."
+        },
+        {
+          "text": "\"Send it.\" Frank exhaled. He watched the data stream. The query shot out into the void. For a while, nothing happened. Frank collected dead skin cells dancing in the capsule. He studied a drop of water that had escaped his drink pouch. It wobbled before his nose, reflecting his bloodshot eyes. The console pinged again. The data packet returned a single damning line."
+        }
       ]
     },
     {
@@ -31,11 +54,23 @@
     {
       "heading": "Orbital Three · The Ears",
       "paragraphs": [
-        "Frank blinked. The Fold was gone. Somehow, someone had erased a rule in the source code of the universe. His inner ear wavered, and a sickening vertigo seized him. \"Och, dinnae tell me it's true ye're gone.\"",
-        "\"I'M RIGHT HERE!\" the CIX replied.",
-        "\"No' you… the Fold. The fuckin' Fold,\" Frank corrected. \"But a fold in space doesnae just vanish. Gary — recalculate. Ye've dropped a zero somewhere, mate. Ye must have.\"",
-        "\"NO. THE FOLD HAS DISSIPATED. CLEANER NOW, IS IT NOT?\" Gary chirped cheerfully.",
-        "\"Cleaner?!\" Muro snapped. \"It's a catastrophe, ye tinhead.\""
+        {
+          "text": "Frank blinked. The Fold was gone. Somehow, someone had erased a rule in the source code of the universe. His inner ear wavered, and a sickening vertigo seized him. \"Och, dinnae tell me it's true ye're gone.\""
+        },
+        {
+          "text": "\"I'M RIGHT HERE!\" the CIX replied.",
+          "speaker": "gary"
+        },
+        {
+          "text": "\"No' you… the Fold. The fuckin' Fold,\" Frank corrected. \"But a fold in space doesnae just vanish. Gary — recalculate. Ye've dropped a zero somewhere, mate. Ye must have.\""
+        },
+        {
+          "text": "\"NO. THE FOLD HAS DISSIPATED. CLEANER NOW, IS IT NOT?\" Gary chirped cheerfully."
+        },
+        {
+          "text": "\"Cleaner?!\" Muro snapped. \"It's a catastrophe, ye tinhead.\"",
+          "speaker": "frank-muro"
+        }
       ]
     },
     {
@@ -44,19 +79,35 @@
     {
       "type": "epigraph",
       "paragraphs": [
-        "A barren room and a five-day twitch in your eyelid that you can't calibrate out. It's the one thing Muro and Corbin had in common."
+        {
+          "text": "A barren room and a five-day twitch in your eyelid that you can't calibrate out. It's the one thing Muro and Corbin had in common."
+        }
       ]
     },
     {
       "heading": "FreyOps Central · Mairee",
       "paragraphs": [
-        "Ulre Corbin had barely slept the last five clicks. The old quorum room had been stripped. The plants: gone. Comfort: gone. The only decoration left was a fox emblem. He stood before the main console.",
-        "Three thousand and seventeen souls. Two cycles of baseline caloric rations. Thirty-two clicks of water before critical reclamation.",
-        "He pictured thirsty, malnourished children. A realistic projection. Compassion is a choice, he thought. Every decision he'd made since taking command — enacting the ESP, installing the Grid — had followed protocol. Regardless, Ulre thought, surviving is the only rule that matters.",
-        "\"Director,\" a young ensign said. \"The packet from Oh-Three finished decrypting.\"",
-        "Ulre didn't look up from the power consumption chart he was studying. \"And?\"",
-        "\"Diagnostic shows the log file is coherent.\" The ensign placed a data slate on the corner of Ulre's desk next to the console, careful not to disturb the alignment of his other tools.",
-        "Good boy, Ulre thought. The ensign understood the beauty of his order. He glanced at the slate."
+        {
+          "text": "Ulre Corbin had barely slept the last five clicks. The old quorum room had been stripped. The plants: gone. Comfort: gone. The only decoration left was a fox emblem. He stood before the main console."
+        },
+        {
+          "text": "Three thousand and seventeen souls. Two cycles of baseline caloric rations. Thirty-two clicks of water before critical reclamation."
+        },
+        {
+          "text": "He pictured thirsty, malnourished children. A realistic projection. Compassion is a choice, he thought. Every decision he'd made since taking command — enacting the ESP, installing the Grid — had followed protocol. Regardless, Ulre thought, surviving is the only rule that matters."
+        },
+        {
+          "text": "\"Director,\" a young ensign said. \"The packet from Oh-Three finished decrypting.\""
+        },
+        {
+          "text": "Ulre didn't look up from the power consumption chart he was studying. \"And?\""
+        },
+        {
+          "text": "\"Diagnostic shows the log file is coherent.\" The ensign placed a data slate on the corner of Ulre's desk next to the console, careful not to disturb the alignment of his other tools."
+        },
+        {
+          "text": "Good boy, Ulre thought. The ensign understood the beauty of his order. He glanced at the slate."
+        }
       ]
     },
     {
@@ -68,33 +119,98 @@
     {
       "heading": "FreyOps Central · Mairee",
       "paragraphs": [
-        "He stared at the words. This was not a temporary failure. The connection to Sol was gone. The worst-case scenario was now reality. His hand hesitated, a subtle tremor running through it as he set the slate down. His mind had already purged the idea of any chance of timely relief or evacuation. He tapped his console, opening a secure channel. \"Controller Bellamy,\" he said. \"It's conclusive. The Fold is gone.\"",
-        "A woman appeared on the main holoscreen, standing straight. The image focused on her sharp face, the dark lines around her eyes speaking of both experience and fatigue. Orbit Controller Eva Bellamy leaned in, skipping any pleasantries. \"It is confirmed, then,\" she said, steady.",
-        "*This is why I trust her*, Ulre thought. Nothing fraught when facing a hard truth.",
-        "\"The Haulers?\" Ulre queried.",
-        "\"Bygul and Trjegul are in high orbit. I have direct command. They'll shuttle only the reactors. Nothing more until the Grid is fully in place. Without those reactors, the camps at Delta go dark in seven clicks.\" Bellamy's eyes narrowed. \"The problem is the *Dáinn*.\"",
-        "\"Captain Westhoff,\" Ulre stated plainly.",
-        "\"He's dissenting,\" Bellamy continued. \"He carries our industrial future. Instead of following the schedule, he turned around. He set an intercept course for the *Brisinger*.\"",
-        "Ulre's jaw tightened. \"On his own authority?\"",
-        "\"His own. He told me to shove our protocol up…\" She stopped, her lips tightening in frustration.",
-        "Ulre slammed his fist on the console. \"Every delay puts our processing further behind. The Plateau crew needs that shipment on time.\" Ulre opened a second holographic projection. Three green icons orbited around Mairee. He zoomed out. A red dotted line showed *Dáinn*'s planned path, but its icon, now yellow, was off course, a new green vector heading the other way. Ulre expanded the view. The line pointed to the *Brisinger*, its icon flashing a red alert. Why are they silent? No response. No backup channels.",
-        "\"Westhoff's loyalty to their fellow crew is admirable,\" Ulre said. \"We need intel on the Bris, but this might endanger the *Dáinn* and its cargo. Whatever's happened to that ship bodes ill.\"",
-        "Bellamy nodded in agreement. \"But Westhoff can recover her. Help restore comms if it's technical.\"",
-        "\"And what if it's not?\" Ulre replied with a hint of a snarl. \"The Bris is still on her assigned course to us. She may be silent, but she's sailing. There is no need to go get her. She will come to us. Ben's judgment is compromised, so we must change his equation. We have to present him with an irrefutable reason to turn about.\"",
-        "She scraped under her fingernail. \"You want to stage a crisis?\"",
-        "\"I want to manage one,\" Ulre corrected. \"There is a difference.\"",
-        "An alert pinged. Her expression tightened as she read the message. She lowered her voice. \"There is another thing. Oh-Three. It's about Lieutenant Muro.\"",
-        "Ulre's eyes flickered to a holoscreen displaying Mairee's tertiary communications satellite. A sensor array with a compact habitat wing, manned by a single specialist: Muro. \"What about him?\" Ulre asked.",
-        "\"He's been up there for a full cycle. He was due for relief twelve clicks ago,\" Bellamy explained. \"The silence — it's getting to him. Four high-priority return requests in the last click. His latest psych-eval shows markers for acute delirium. He's having panic attacks.\"",
-        "Ulre understood instantly. Muro is compromised. Replacing him required a shuttle. A shuttle cost fuel and diverted personnel. Every expense needed to be justified. \"Can the satellite operate without on-site human input?\"",
-        "\"We have a CIX up there. So, in principle, yes. Deep-space listening can be run from here. But we would lose some adaptive capabilities. We wouldn't be able to recalibrate the relays without hands on board.\" Bellamy paused. \"Are you thinking of bringing him back without a replacement?\"",
-        "The math was simple to Ulre. \"No,\" he said. \"We're not bringing him down at all. His anxiety is a correctable error in his personal system. We have no fuel to spare on a taxi service for a nervous lieutenant. Remind him of his duty. If he fails to get his shit together, throttle the oxygen to calm him down.\"",
-        "Bellamy briefly dropped her neutral mask. \"Director, that could push him over the edge entirely. What if he tries to damage something?\"",
-        "\"Can you contain the risk?\" Ulre asked.",
-        "Bellamy hesitated, gaze briefly unfocused, then met his eyes again. \"We can remotely revoke all his clearance while he's in his quarters. That would lock him inside, away from any critical systems. But it's a small space.\"",
-        "\"We will do what is necessary! Let him have his panic attacks where he can't cost us anything.\"",
-        "Ulre saw her eyes dash left and right, as if she was checking him for sarcasm. There was none. She nodded. \"Understood, Director.\" Her eyes shot down.",
-        "\"That will be all, Bellamy.\" Ulre severed the channel, the holoscreen going dark. He tapped a blinking indicator on his personal slate. A reminder from a secure medical bay manifest."
+        {
+          "text": "He stared at the words. This was not a temporary failure. The connection to Sol was gone. The worst-case scenario was now reality. His hand hesitated, a subtle tremor running through it as he set the slate down. His mind had already purged the idea of any chance of timely relief or evacuation. He tapped his console, opening a secure channel. \"Controller Bellamy,\" he said. \"It's conclusive. The Fold is gone.\""
+        },
+        {
+          "text": "A woman appeared on the main holoscreen, standing straight. The image focused on her sharp face, the dark lines around her eyes speaking of both experience and fatigue. Orbit Controller Eva Bellamy leaned in, skipping any pleasantries. \"It is confirmed, then,\" she said, steady."
+        },
+        {
+          "text": "*This is why I trust her*, Ulre thought. Nothing fraught when facing a hard truth."
+        },
+        {
+          "text": "\"The Haulers?\" Ulre queried."
+        },
+        {
+          "text": "\"Bygul and Trjegul are in high orbit. I have direct command. They'll shuttle only the reactors. Nothing more until the Grid is fully in place. Without those reactors, the camps at Delta go dark in seven clicks.\" Bellamy's eyes narrowed. \"The problem is the *Dáinn*.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"Captain Westhoff,\" Ulre stated plainly.",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"He's dissenting,\" Bellamy continued. \"He carries our industrial future. Instead of following the schedule, he turned around. He set an intercept course for the *Brisinger*.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "Ulre's jaw tightened. \"On his own authority?\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"His own. He told me to shove our protocol up…\" She stopped, her lips tightening in frustration."
+        },
+        {
+          "text": "Ulre slammed his fist on the console. \"Every delay puts our processing further behind. The Plateau crew needs that shipment on time.\" Ulre opened a second holographic projection. Three green icons orbited around Mairee. He zoomed out. A red dotted line showed *Dáinn*'s planned path, but its icon, now yellow, was off course, a new green vector heading the other way. Ulre expanded the view. The line pointed to the *Brisinger*, its icon flashing a red alert. Why are they silent? No response. No backup channels."
+        },
+        {
+          "text": "\"Westhoff's loyalty to their fellow crew is admirable,\" Ulre said. \"We need intel on the Bris, but this might endanger the *Dáinn* and its cargo. Whatever's happened to that ship bodes ill.\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "Bellamy nodded in agreement. \"But Westhoff can recover her. Help restore comms if it's technical.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"And what if it's not?\" Ulre replied with a hint of a snarl. \"The Bris is still on her assigned course to us. She may be silent, but she's sailing. There is no need to go get her. She will come to us. Ben's judgment is compromised, so we must change his equation. We have to present him with an irrefutable reason to turn about.\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "She scraped under her fingernail. \"You want to stage a crisis?\""
+        },
+        {
+          "text": "\"I want to manage one,\" Ulre corrected. \"There is a difference.\""
+        },
+        {
+          "text": "An alert pinged. Her expression tightened as she read the message. She lowered her voice. \"There is another thing. Oh-Three. It's about Lieutenant Muro.\""
+        },
+        {
+          "text": "Ulre's eyes flickered to a holoscreen displaying Mairee's tertiary communications satellite. A sensor array with a compact habitat wing, manned by a single specialist: Muro. \"What about him?\" Ulre asked.",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"He's been up there for a full cycle. He was due for relief twelve clicks ago,\" Bellamy explained. \"The silence — it's getting to him. Four high-priority return requests in the last click. His latest psych-eval shows markers for acute delirium. He's having panic attacks.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "Ulre understood instantly. Muro is compromised. Replacing him required a shuttle. A shuttle cost fuel and diverted personnel. Every expense needed to be justified. \"Can the satellite operate without on-site human input?\""
+        },
+        {
+          "text": "\"We have a CIX up there. So, in principle, yes. Deep-space listening can be run from here. But we would lose some adaptive capabilities. We wouldn't be able to recalibrate the relays without hands on board.\" Bellamy paused. \"Are you thinking of bringing him back without a replacement?\""
+        },
+        {
+          "text": "The math was simple to Ulre. \"No,\" he said. \"We're not bringing him down at all. His anxiety is a correctable error in his personal system. We have no fuel to spare on a taxi service for a nervous lieutenant. Remind him of his duty. If he fails to get his shit together, throttle the oxygen to calm him down.\""
+        },
+        {
+          "text": "Bellamy briefly dropped her neutral mask. \"Director, that could push him over the edge entirely. What if he tries to damage something?\""
+        },
+        {
+          "text": "\"Can you contain the risk?\" Ulre asked.",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "Bellamy hesitated, gaze briefly unfocused, then met his eyes again. \"We can remotely revoke all his clearance while he's in his quarters. That would lock him inside, away from any critical systems. But it's a small space.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"We will do what is necessary! Let him have his panic attacks where he can't cost us anything.\""
+        },
+        {
+          "text": "Ulre saw her eyes dash left and right, as if she was checking him for sarcasm. There was none. She nodded. \"Understood, Director.\" Her eyes shot down."
+        },
+        {
+          "text": "\"That will be all, Bellamy.\" Ulre severed the channel, the holoscreen going dark. He tapped a blinking indicator on his personal slate. A reminder from a secure medical bay manifest."
+        }
       ]
     },
     {
@@ -109,14 +225,34 @@
     {
       "heading": "5 Clicks Post Unfolding · Orbital Three",
       "paragraphs": [
-        "A ping from his monitor beeped through the fog of Frank Muro's anxiety.",
-        "\"There you are, you big grumpy bastard,\" he whispered to himself. His focus snapped into place as the *Dáinn*'s signature spiked like a jagged mountain range on a flat black plain. Westhoff was turning around, pushing the burn.",
-        "Frank had to reach them before the chance slipped away. But how? Orbital Command watched every channel. An encrypted tight-beam would stand out like a shout in a silent hall. He needed something softer, maybe a casual murmur or a scrap of static lost in the background. Just a little… jitter. \"Gary?\"",
-        "\"HI, THERE!\" the CIX responded, its synthesized voice notably too cheerful.",
-        "\"Alright, listen,\" Frank whispered, glancing over his shoulder even though there was no one there. \"Get the pre-insertion protocols ready for the *FNS Dáinn*. We'll do this subtle-like. I'll slip somethin' into the deprecated code.\"",
-        "\"IT'S g-GOOD TO BE PREPARED!\" the CIX chirped in response. \"PRE-p-PARING THE d-DIAG-nostic.\" Gary's voice dissolved into a chaotic scramble. \"QUIETLY PAYING ATTENTION - NODDING OBEDIENTLY - ALIENATING THE VOICE INSIDE - EVER w-WINDING STAIR-c-CASE.\"",
-        "\"Oi, pack it in now!\" Frank snapped, his voice cracking. \"I'm no' havin' this, Gary. We'll get back to our poetry later.\"",
-        "Syntactic decay. The CIX was running hot, well past its reset window. He pulled up the audit report manually and buried a comment in the junk code. The worn keys dipped in a spongy way."
+        {
+          "text": "A ping from his monitor beeped through the fog of Frank Muro's anxiety."
+        },
+        {
+          "text": "\"There you are, you big grumpy bastard,\" he whispered to himself. His focus snapped into place as the *Dáinn*'s signature spiked like a jagged mountain range on a flat black plain. Westhoff was turning around, pushing the burn."
+        },
+        {
+          "text": "Frank had to reach them before the chance slipped away. But how? Orbital Command watched every channel. An encrypted tight-beam would stand out like a shout in a silent hall. He needed something softer, maybe a casual murmur or a scrap of static lost in the background. Just a little… jitter. \"Gary?\""
+        },
+        {
+          "text": "\"HI, THERE!\" the CIX responded, its synthesized voice notably too cheerful.",
+          "speaker": "gary"
+        },
+        {
+          "text": "\"Alright, listen,\" Frank whispered, glancing over his shoulder even though there was no one there. \"Get the pre-insertion protocols ready for the *FNS Dáinn*. We'll do this subtle-like. I'll slip somethin' into the deprecated code.\"",
+          "speaker": "frank-muro"
+        },
+        {
+          "text": "\"IT'S g-GOOD TO BE PREPARED!\" the CIX chirped in response. \"PRE-p-PARING THE d-DIAG-nostic.\" Gary's voice dissolved into a chaotic scramble. \"QUIETLY PAYING ATTENTION - NODDING OBEDIENTLY - ALIENATING THE VOICE INSIDE - EVER w-WINDING STAIR-c-CASE.\"",
+          "speaker": "gary"
+        },
+        {
+          "text": "\"Oi, pack it in now!\" Frank snapped, his voice cracking. \"I'm no' havin' this, Gary. We'll get back to our poetry later.\"",
+          "speaker": "frank-muro"
+        },
+        {
+          "text": "Syntactic decay. The CIX was running hot, well past its reset window. He pulled up the audit report manually and buried a comment in the junk code. The worn keys dipped in a spongy way."
+        }
       ]
     },
     {
@@ -128,16 +264,38 @@
     {
       "heading": "5 Clicks Post Unfolding · Orbital Three",
       "paragraphs": [
-        "Dom Beltrán would notice the jitter. He checked the message again and pressed TRANSMIT.",
-        "A melancholic whisper drifted through the cabin, a current of air brushing against his ear. I cannae shut my eyes without dreamin' meself awake. Frank froze. Was that his own mind glitching? \"Gary, repeat that last statement.\" There was a pause. The fine hairs on his arms stood on end. Then Gary boomed through the speakers.",
-        "\"I CAN'T CLOSE MY EYES WITHOUT WAKING UP.\"",
-        "Good. It was not him, but the CIX hallucinating. He should reset it. That was protocol. Wipe the corrupted buffers. But he felt terrifyingly alone.",
-        "\"So… ye sleep wi' yer eyes open, Gary?\"",
-        "Gary became possessive. \"I'LL KEEP AN EYE OUT — out — OUT FOR YOU. EVERYTHING YOU DO. I w-WON'T F-fall — WAKE — wake — UP.\"",
-        "Frank shoved himself away from the console in a jerky motion. His back struck the opposite bulkhead, the impact shuddering through his spine. His fingers hovered over the CIX's reset key, then drew back. \"Gary,\" he said. \"Cease all nonessential audio output. Run self-diagnostic, subroutine theta-niner. Report when ye're done. And stop that heavy breathin' in the background.\"",
-        "\"Of course,\" Gary replied, now serene. \"I'll check myself. All quiet now.\"",
-        "The silence that followed was even worse. He knew this hallucination was just feedback from a stressed system. The CIX was a mirror, reading his bio and neurometrics. Gary could read what he felt. It was feeding on Frank's stress and reflecting his isolation and paranoia back to him, yet he couldn't bear to turn it off. An ACK — automated acknowledgment — lit up. The packet had reached the *Dáinn*.",
-        "The CIX stayed silent for another pulse, but then messages scrolled across its diagnostic screen, unprompted."
+        {
+          "text": "Dom Beltrán would notice the jitter. He checked the message again and pressed TRANSMIT."
+        },
+        {
+          "text": "A melancholic whisper drifted through the cabin, a current of air brushing against his ear. I cannae shut my eyes without dreamin' meself awake. Frank froze. Was that his own mind glitching? \"Gary, repeat that last statement.\" There was a pause. The fine hairs on his arms stood on end. Then Gary boomed through the speakers."
+        },
+        {
+          "text": "\"I CAN'T CLOSE MY EYES WITHOUT WAKING UP.\""
+        },
+        {
+          "text": "Good. It was not him, but the CIX hallucinating. He should reset it. That was protocol. Wipe the corrupted buffers. But he felt terrifyingly alone."
+        },
+        {
+          "text": "\"So… ye sleep wi' yer eyes open, Gary?\""
+        },
+        {
+          "text": "Gary became possessive. \"I'LL KEEP AN EYE OUT — out — OUT FOR YOU. EVERYTHING YOU DO. I w-WON'T F-fall — WAKE — wake — UP.\""
+        },
+        {
+          "text": "Frank shoved himself away from the console in a jerky motion. His back struck the opposite bulkhead, the impact shuddering through his spine. His fingers hovered over the CIX's reset key, then drew back. \"Gary,\" he said. \"Cease all nonessential audio output. Run self-diagnostic, subroutine theta-niner. Report when ye're done. And stop that heavy breathin' in the background.\"",
+          "speaker": "gary"
+        },
+        {
+          "text": "\"Of course,\" Gary replied, now serene. \"I'll check myself. All quiet now.\"",
+          "speaker": "gary"
+        },
+        {
+          "text": "The silence that followed was even worse. He knew this hallucination was just feedback from a stressed system. The CIX was a mirror, reading his bio and neurometrics. Gary could read what he felt. It was feeding on Frank's stress and reflecting his isolation and paranoia back to him, yet he couldn't bear to turn it off. An ACK — automated acknowledgment — lit up. The packet had reached the *Dáinn*."
+        },
+        {
+          "text": "The CIX stayed silent for another pulse, but then messages scrolled across its diagnostic screen, unprompted."
+        }
       ]
     },
     {
@@ -151,7 +309,9 @@
     {
       "heading": "5 Clicks Post Unfolding · Orbital Three",
       "paragraphs": [
-        "Frank listened to the chilling thought that he was sharing Gary's dream. Another hush spread throughout the station. The fans cut out, and the air instantly went dry against his skin. The control systems dimmed, and a brief flicker cast ominous, elongated shadows across the consoles, as if they were reaching for his hands."
+        {
+          "text": "Frank listened to the chilling thought that he was sharing Gary's dream. Another hush spread throughout the station. The fans cut out, and the air instantly went dry against his skin. The control systems dimmed, and a brief flicker cast ominous, elongated shadows across the consoles, as if they were reaching for his hands."
+        }
       ]
     },
     {
@@ -160,14 +320,20 @@
     {
       "type": "epigraph",
       "paragraphs": [
-        "Has your mirror ever looked back at you? We think our heads are private property. Keep out. No trespassing. But now, the walls are breached."
+        {
+          "text": "Has your mirror ever looked back at you? We think our heads are private property. Keep out. No trespassing. But now, the walls are breached."
+        }
       ]
     },
     {
       "heading": "6 Clicks Post Unfolding · FNS Dáinn",
       "paragraphs": [
-        "Captain Benjamin Westhoff hovered over the console. A halo of scruffy white hair clung to his skull as if gravity itself were undecided about him. He stroked his short, equally white beard, the coarse hair scritching under his thumb.",
-        "Another message from Controller Bellamy flowed onto his screen."
+        {
+          "text": "Captain Benjamin Westhoff hovered over the console. A halo of scruffy white hair clung to his skull as if gravity itself were undecided about him. He stroked his short, equally white beard, the coarse hair scritching under his thumb."
+        },
+        {
+          "text": "Another message from Controller Bellamy flowed onto his screen."
+        }
       ]
     },
     {
@@ -179,38 +345,113 @@
     {
       "heading": "6 Clicks Post Unfolding · FNS Dáinn",
       "paragraphs": [
-        "Ben pressed his thumb to the screen and wiped the message clean. A soft chime confirmed its deletion.",
-        "\"Another love letter from the controller, Captain?\"",
-        "Ben didn't need to turn to recognize Ionie Jia. He could tell by her disciplined, dry, and precise voice. She always knew how to keep the old *Dáinn* from falling apart. She stood at his shoulder, her back straight and almost rigid. Her cropped dark hair, shorn close to the nape, drew focus to the sharp planes of her face. Despite the tension between them, Ionie offered a slight smile in an effort to lighten the mood. Her smile and attempt at humor did little to break the tension, but it served its purpose. It reminded him he wasn't alone in carrying the crew.",
-        "\"Just a suggestion,\" Ben grunted, sipping his bitter black companion.",
-        "\"We'll have to answer for our course of action once we enter orbit, their jurisdiction,\" XO Ionie Jia said. \"Then what?\"",
-        "Ben needed her to ask these questions, and he wanted the rest of the bridge to hear them. \"Bellamy is not my commander, and Corbin is not my director,\" Ben explained. \"My authority comes from the transit charter. It covers every soul on this ship, including the three hundred on the *Brisinger*.\"",
-        "\"But, sir, Commander Vilde stepped down —\"",
-        "\"That is a lie,\" Ben cut in. He tapped a worn slate clipped to his belt. \"I have not heard from her. Vilde would never relinquish her command without a fleet-wide address.\" He paused, scanning the bridge for the crew's reactions. \"Our priority right now is to re-establish contact with the *Brisinger* and learn what happened at the Fold.\"",
-        "The bridge was a lived-in workshop. Bundled wires ran along the ceiling, and one bulkhead was covered with schematics, handwritten notes, and personal photos. He watched his crew, noticing the tension in their shoulders. Doubt. Good, he thought. We rise in doubt and fall in certainty. The viewport showed the dark-indigo starfield and the axis of the *Dáinn*'s slow turn. \"Jia,\" he said, \"maintain our course to intercept. Keep probing. Report anything… unusual as we approach.\"",
-        "Ben left the bridge, walked through tactical, and stepped into the port-side grav-lift. When the lift stopped, gravity faded. The doors opened into the Gravitic Gyroscope Chamber. Inside, three huge interlocking rings spun in different directions. This was the heart of the *Dáinn*, creating gravity for the decks around, but the chamber itself stayed weightless. Ben used the hand grips to float toward a workstation. He found his Chief Grav-Engineer, Dominic Beltrán, strapped to a gantry and whistling as he worked on the gyroscope. Beltrán was short and heavyset, with long blond hair in a bun pinned in place with a small wrench.",
-        "\"Cap!\" Beltrán grinned, spinning around. \"Here for that Oh-Three message or zero-g therapy? I can provide both.\"",
-        "\"The message, not the massage,\" Ben smirked, stabilizing himself. \"Help me make sense of it.\"",
-        "The rhythmic thrum-thrum-thrum of the spinning rings pulsed through the room and pressed against Ben's ears. A floating holograph showed a neon message in the air. Dom highlighted a line in the code. \"Something odd. Routed through a diagnostic channel, which isn't standard for this kind of message.\"",
-        "Ben moved closer and read the strange text.",
-        "Beltrán continued, \"Not part of a standard audit. I thought it was a misfiled tactical report. Felt funny. Ponged it straight to you, Cap.\"",
-        "\"Good call,\" Ben said quietly, thinking fast. \"Muro is concealing crucial information by embedding his messages in the code comments of outdated orbital entry procedures.\" He ran his finger along the holographic lines. \"Gravimetric suppressor discharge… Either an accident or sabotage.\"",
-        "\"Weapon discharge?\" Beltrán whispered.",
-        "\"Exactly. Now this line: DTC. Directive Transfer of Command,\" Ben realized. \"But then… 'V, A. INCAP'.\"",
-        "\"'INCAP,'\" Beltrán mused, running a hand over his chin.",
-        "\"Incapacitated,\" Ben said. \"Astrid Vilde. Her command was taken from her by force.\" He was now certain.",
-        "\"'Aper Dis Conf,'\" Beltrán then read.",
-        "\"Aperture Dissipation Confirmed. That means he's also sure the Fold has collapsed.\" They exchanged a grim look.",
-        "\"The collapse had something to do with the Bris. How can we get through to them?\" Ben asked.",
-        "Beltrán pushed off a handhold, turning in a lazy somersault. \"Their doorbell's broken. Why not just knock?\" He stopped, upside down relative to Ben. \"With gravity!\"",
-        "Ben stared at him, scratching his beard.",
-        "\"It's old school,\" Beltrán went on, animated. \"I can tune the resonance of the gyroscopes. Instead of keeping the field stable, I let it vibrate at a set frequency and send out a gravitational wave.\"",
-        "Ben frowned at him.",
-        "Beltrán said, \"Uh. I'll tickle the gyro's belly. Instead of holding the thing steady, I make it hiccup. It's, uh, kind of Morse code for titans. Her gravity stabilizers will pick up the ripple. They'll hear it. A tap on the window. If they're home, that is.\"",
-        "Ben smirked. \"You Nulgees. Always insane, always brilliant.\" Then he realized the cost. \"Our clock and gravity. It's linked to this system. The beat, the click… everything's set to the rhythm of these rings.\"",
-        "\"Oh, it'll wreck our timekeeping,\" Beltrán said with a cheerful wave of his hand. \"The rings will go haywire. The whole ship's going on a bender!\"",
-        "Ben shifted his gaze from Beltrán's eager face to the spinning gyroscopes to Muro's coded message. Doubt and certainty.",
-        "\"Do it, Dom,\" he said as he pushed off a handhold and drifted back toward the grav-lift. \"Start knocking! I want to know if anyone's home!\""
+        {
+          "text": "Ben pressed his thumb to the screen and wiped the message clean. A soft chime confirmed its deletion."
+        },
+        {
+          "text": "\"Another love letter from the controller, Captain?\""
+        },
+        {
+          "text": "Ben didn't need to turn to recognize Ionie Jia. He could tell by her disciplined, dry, and precise voice. She always knew how to keep the old *Dáinn* from falling apart. She stood at his shoulder, her back straight and almost rigid. Her cropped dark hair, shorn close to the nape, drew focus to the sharp planes of her face. Despite the tension between them, Ionie offered a slight smile in an effort to lighten the mood. Her smile and attempt at humor did little to break the tension, but it served its purpose. It reminded him he wasn't alone in carrying the crew."
+        },
+        {
+          "text": "\"Just a suggestion,\" Ben grunted, sipping his bitter black companion."
+        },
+        {
+          "text": "\"We'll have to answer for our course of action once we enter orbit, their jurisdiction,\" XO Ionie Jia said. \"Then what?\""
+        },
+        {
+          "text": "Ben needed her to ask these questions, and he wanted the rest of the bridge to hear them. \"Bellamy is not my commander, and Corbin is not my director,\" Ben explained. \"My authority comes from the transit charter. It covers every soul on this ship, including the three hundred on the *Brisinger*.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"But, sir, Commander Vilde stepped down —\""
+        },
+        {
+          "text": "\"That is a lie,\" Ben cut in. He tapped a worn slate clipped to his belt. \"I have not heard from her. Vilde would never relinquish her command without a fleet-wide address.\" He paused, scanning the bridge for the crew's reactions. \"Our priority right now is to re-establish contact with the *Brisinger* and learn what happened at the Fold.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "The bridge was a lived-in workshop. Bundled wires ran along the ceiling, and one bulkhead was covered with schematics, handwritten notes, and personal photos. He watched his crew, noticing the tension in their shoulders. Doubt. Good, he thought. We rise in doubt and fall in certainty. The viewport showed the dark-indigo starfield and the axis of the *Dáinn*'s slow turn. \"Jia,\" he said, \"maintain our course to intercept. Keep probing. Report anything… unusual as we approach.\""
+        },
+        {
+          "text": "Ben left the bridge, walked through tactical, and stepped into the port-side grav-lift. When the lift stopped, gravity faded. The doors opened into the Gravitic Gyroscope Chamber. Inside, three huge interlocking rings spun in different directions. This was the heart of the *Dáinn*, creating gravity for the decks around, but the chamber itself stayed weightless. Ben used the hand grips to float toward a workstation. He found his Chief Grav-Engineer, Dominic Beltrán, strapped to a gantry and whistling as he worked on the gyroscope. Beltrán was short and heavyset, with long blond hair in a bun pinned in place with a small wrench."
+        },
+        {
+          "text": "\"Cap!\" Beltrán grinned, spinning around. \"Here for that Oh-Three message or zero-g therapy? I can provide both.\""
+        },
+        {
+          "text": "\"The message, not the massage,\" Ben smirked, stabilizing himself. \"Help me make sense of it.\""
+        },
+        {
+          "text": "The rhythmic thrum-thrum-thrum of the spinning rings pulsed through the room and pressed against Ben's ears. A floating holograph showed a neon message in the air. Dom highlighted a line in the code. \"Something odd. Routed through a diagnostic channel, which isn't standard for this kind of message.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "Ben moved closer and read the strange text."
+        },
+        {
+          "text": "Beltrán continued, \"Not part of a standard audit. I thought it was a misfiled tactical report. Felt funny. Ponged it straight to you, Cap.\"",
+          "speaker": "dominic-beltrán"
+        },
+        {
+          "text": "\"Good call,\" Ben said quietly, thinking fast. \"Muro is concealing crucial information by embedding his messages in the code comments of outdated orbital entry procedures.\" He ran his finger along the holographic lines. \"Gravimetric suppressor discharge… Either an accident or sabotage.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"Weapon discharge?\" Beltrán whispered.",
+          "speaker": "dominic-beltrán"
+        },
+        {
+          "text": "\"Exactly. Now this line: DTC. Directive Transfer of Command,\" Ben realized. \"But then… 'V, A. INCAP'.\""
+        },
+        {
+          "text": "\"'INCAP,'\" Beltrán mused, running a hand over his chin."
+        },
+        {
+          "text": "\"Incapacitated,\" Ben said. \"Astrid Vilde. Her command was taken from her by force.\" He was now certain.",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"'Aper Dis Conf,'\" Beltrán then read."
+        },
+        {
+          "text": "\"Aperture Dissipation Confirmed. That means he's also sure the Fold has collapsed.\" They exchanged a grim look."
+        },
+        {
+          "text": "\"The collapse had something to do with the Bris. How can we get through to them?\" Ben asked.",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "Beltrán pushed off a handhold, turning in a lazy somersault. \"Their doorbell's broken. Why not just knock?\" He stopped, upside down relative to Ben. \"With gravity!\"",
+          "speaker": "dominic-beltrán"
+        },
+        {
+          "text": "Ben stared at him, scratching his beard."
+        },
+        {
+          "text": "\"It's old school,\" Beltrán went on, animated. \"I can tune the resonance of the gyroscopes. Instead of keeping the field stable, I let it vibrate at a set frequency and send out a gravitational wave.\""
+        },
+        {
+          "text": "Ben frowned at him."
+        },
+        {
+          "text": "Beltrán said, \"Uh. I'll tickle the gyro's belly. Instead of holding the thing steady, I make it hiccup. It's, uh, kind of Morse code for titans. Her gravity stabilizers will pick up the ripple. They'll hear it. A tap on the window. If they're home, that is.\"",
+          "speaker": "dominic-beltrán"
+        },
+        {
+          "text": "Ben smirked. \"You Nulgees. Always insane, always brilliant.\" Then he realized the cost. \"Our clock and gravity. It's linked to this system. The beat, the click… everything's set to the rhythm of these rings.\""
+        },
+        {
+          "text": "\"Oh, it'll wreck our timekeeping,\" Beltrán said with a cheerful wave of his hand. \"The rings will go haywire. The whole ship's going on a bender!\"",
+          "speaker": "dominic-beltrán"
+        },
+        {
+          "text": "Ben shifted his gaze from Beltrán's eager face to the spinning gyroscopes to Muro's coded message. Doubt and certainty."
+        },
+        {
+          "text": "\"Do it, Dom,\" he said as he pushed off a handhold and drifted back toward the grav-lift. \"Start knocking! I want to know if anyone's home!\""
+        }
       ]
     }
   ]
