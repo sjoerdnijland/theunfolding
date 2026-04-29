@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v5';
+const READER_VERSION = 'v7';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -206,17 +206,37 @@ function stopNarration() {
   document.getElementById('narration-comment-hint').classList.remove('visible');
 }
 
-function buildSegments(plainText, charVoiceId) {
-  if (!charVoiceId || !multiVoiceEnabled) return [{ text: plainText, voiceId: null }];
-  const parts = plainText.split(/([""\u201c\u201d][^""\u201c\u201d]*[""\u201c\u201d])/);
+function buildSegments(plainText, charVoiceId, innerVoiceId) {
+  if (!multiVoiceEnabled || (!charVoiceId && !innerVoiceId)) {
+    return [{ text: plainText, voiceId: null }];
+  }
+
+  // Split on quoted dialogue AND italic inner-dialogue spans
+  // Quote: "..." or \u201c...\u201d
+  // Inner: *complete sentence* — detected by having a verb or ?/!
+  const parts = plainText.split(/([""\u201c\u201d][^""\u201c\u201d]*[""\u201c\u201d]|\*[^*]+\*)/);
   const segs = [];
+
+  const INNER_RE = /\b(is|are|was|were|have|has|had|do|does|did|will|would|could|should|must|need|want|know|think|see|feel|hear|get|go|come|make|take|put|give|look|seem|appear)\b|[?!]/i;
+
   parts.forEach(p => {
     if (!p) return;
-    const isQuote = /^[""\u201c\u201d]/.test(p) && /[""\u201c\u201d]$/.test(p);
-    const clean   = p.trim();
+    const clean = p.trim();
     if (!clean) return;
-    segs.push({ text: clean, voiceId: isQuote ? charVoiceId : null });
+    const isQuote = /^[""\u201c\u201d]/.test(clean) && /[""\u201c\u201d]$/.test(clean);
+    const isItalic = /^\*[^*]+\*$/.test(clean);
+    const isInnerDialogue = isItalic && innerVoiceId && INNER_RE.test(clean);
+
+    let voice = null;
+    if (isQuote && charVoiceId) voice = charVoiceId;
+    else if (isInnerDialogue) voice = innerVoiceId;
+
+    // Strip italic markers for TTS
+    const ttsText = isItalic ? clean.replace(/^\*|\*$/g, '') : clean;
+    segs.push({ text: ttsText, voiceId: voice });
   });
+
+  // Merge consecutive same-voice segments
   const merged = [];
   for (const seg of segs) {
     const last = merged[merged.length - 1];
@@ -274,9 +294,11 @@ async function narrationGoTo(index) {
   const prevScene = index > 0 ? getSceneForPara(narrationParaIds[index - 1]) : -1;
   startAmbient(currentChapter, scene);
 
+  // Declare textEl here so it's in scope for everything below
+  const textEl = document.getElementById('narration-text');
+
   // Pause on scene changes — including the very first scene
   if (scene !== prevScene) {
-    const textEl = document.getElementById('narration-text');
     textEl.innerHTML = `<span class="narration-loading" style="opacity:0.2">✦</span>`;
     await new Promise(r => setTimeout(r, index === 0 ? 1800 : 2500));
     if (narrationIndex !== index) { narrationLocked = false; return; }
@@ -298,17 +320,23 @@ async function narrationGoTo(index) {
   cancelAnimationFrame(narrationRAF);
   narrationPlaying = false;
 
-  const textEl = document.getElementById('narration-text');
-
   // Detect speaker voice — only when multi-voice mode is on
   let speakerVoiceId = null;
+  let innerVoiceId   = null;
   if (multiVoiceEnabled) {
     // 1. Explicit speaker tag from JSON (most reliable)
     const paraEl = document.getElementById(pid);
     const speakerTag = paraEl?.dataset.speaker;
+    const innerTag   = paraEl?.dataset.innerVoice;
     if (speakerTag) {
       const entry = wikiById[speakerTag];
       if (entry?.voice_id) speakerVoiceId = entry.voice_id;
+    }
+    // Inner voice for italic inner dialogue
+    let innerVoiceId = null;
+    if (innerTag) {
+      const entry = wikiById[innerTag];
+      if (entry?.voice_id) innerVoiceId = entry.voice_id;
     }
     // 2. Pattern detection fallback
     if (!speakerVoiceId) speakerVoiceId = detectSpeakerVoice(rawText);
@@ -342,7 +370,7 @@ async function narrationGoTo(index) {
   } // end multiVoiceEnabled
 
   // ── Segment-based fetch: narrator for prose, character for quoted dialogue ──
-  const segments = buildSegments(text, speakerVoiceId);
+  const segments = buildSegments(text, speakerVoiceId, innerVoiceId);
   const cacheKey = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
 
   let data = narrationCache[cacheKey];
@@ -426,6 +454,56 @@ async function narrationGoTo(index) {
     ? words.map((w, i) => ({ type: 'word', text: w.text, fmt: '', start: w.start, end: w.end, idx: i }))
     : buildDisplayTokens(rawText, words);
   narrationCurrentWords   = displayTokens.filter(t => t.type === 'word');
+  const isStitched = segments.length > 1;
+
+  // Precompute sentence groups for stitched audio (done once, not per frame)
+  // Each group: { wordIndices: [i,...], isCharacter: bool }
+  let sentenceGroups = [];
+  if (isStitched) {
+    // Map word index → which segment it belongs to (by text position)
+    // Build a flat list of words with their segment voice
+    const segWords = [];
+    let segOffset = 0;
+    for (const seg of segments) {
+      const segTokens = seg.text.split(/\s+/).filter(Boolean);
+      for (const tok of segTokens) {
+        segWords.push({ voice: seg.voiceId || null });
+      }
+      segOffset += segTokens.length;
+    }
+
+    // Group narrationCurrentWords into sentences by punctuation
+    let group = { indices: [], voice: null };
+    narrationCurrentWords.forEach((w, i) => {
+      const segVoice = segWords[i]?.voice || null;
+      if (group.voice === null) group.voice = segVoice;
+      group.indices.push(i);
+      // End sentence on punctuation or voice change
+      const endsLine = /[.!?…\u201d"']$/.test(w.text.trim());
+      const voiceChange = i + 1 < narrationCurrentWords.length &&
+        (segWords[i + 1]?.voice || null) !== (segWords[i]?.voice || null);
+      if (endsLine || voiceChange) {
+        if (group.indices.length) sentenceGroups.push({ ...group });
+        group = { indices: [], voice: segWords[i + 1]?.voice || null };
+      }
+    });
+    if (group.indices.length) sentenceGroups.push({ ...group });
+  }
+
+  // Character label element — shows who's speaking during character voice
+  let charLabel = document.getElementById('narration-char-label');
+  if (!charLabel) {
+    charLabel = document.createElement('div');
+    charLabel.id = 'narration-char-label';
+    charLabel.style.cssText = `
+      position:absolute; top: 16px; right: 20px;
+      font-family:var(--mono); font-size:0.6rem; letter-spacing:0.22em;
+      text-transform:uppercase; color:var(--rose); opacity:0;
+      transition:opacity 0.3s; pointer-events:none;
+    `;
+    document.getElementById('narration-overlay').appendChild(charLabel);
+  }
+  charLabel.style.opacity = '0';
 
   // For code blocks: show TRANSMISSION label above word highlights
   if (isCode) {
@@ -463,7 +541,6 @@ async function narrationGoTo(index) {
     const t   = narrationAudio.currentTime;
     const dur = narrationAudio.duration || 9999;
 
-    // Update progress bar
     const pct = dur ? (t / dur) * 100 : 0;
     document.getElementById('narration-progress-bar').style.width = pct + '%';
 
@@ -474,18 +551,66 @@ async function narrationGoTo(index) {
       else break;
     }
 
-    narrationCurrentWords.forEach((w, i) => {
-      const el = document.getElementById('nw-' + w.idx);
-      if (!el) return;
-      if (i < currentIdx) {
-        el.className = `nw ${w.fmt || ''} spoken`;
-      } else if (i === currentIdx) {
-        el.className = `nw ${w.fmt || ''} current`;
-        if (window.innerWidth > 768) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-      } else {
-        el.className = `nw ${w.fmt || ''}`;
+    if (isStitched && sentenceGroups.length) {
+      // Find which sentence group contains currentIdx
+      let currentGroup = null;
+      let groupPos = 0; // how many complete groups before current
+      for (let g = 0; g < sentenceGroups.length; g++) {
+        if (sentenceGroups[g].indices.includes(currentIdx)) {
+          currentGroup = sentenceGroups[g];
+          break;
+        }
+        if (sentenceGroups[g].indices[sentenceGroups[g].indices.length - 1] < currentIdx) {
+          groupPos = g + 1;
+        }
       }
-    });
+
+      // Update character label
+      if (currentGroup?.voice) {
+        const entry = Object.values(wikiById).find(e => e.voice_id === currentGroup.voice);
+        if (entry) {
+          charLabel.textContent = '◉ ' + (entry.name.split(' ')[0]);
+          charLabel.style.opacity = '1';
+        }
+      } else {
+        charLabel.style.opacity = '0';
+      }
+
+      // Highlight: spoken groups → all spoken, current group → current, future → unlit
+      const currentGroupIndices = new Set(currentGroup?.indices || []);
+      const spokenIndices = new Set(
+        sentenceGroups.slice(0, groupPos).flatMap(g => g.indices)
+      );
+
+      narrationCurrentWords.forEach((w, i) => {
+        const el = document.getElementById('nw-' + w.idx);
+        if (!el) return;
+        const isChar = currentGroup?.voice != null;
+        if (spokenIndices.has(i)) {
+          el.className = `nw ${w.fmt || ''} spoken`;
+        } else if (currentGroupIndices.has(i)) {
+          el.className = `nw ${w.fmt || ''} current${isChar ? ' char-voice' : ''}`;
+        } else {
+          el.className = `nw ${w.fmt || ''}`;
+        }
+      });
+
+    } else {
+      // Word-level highlighting for single-voice (narrator only)
+      charLabel.style.opacity = '0';
+      narrationCurrentWords.forEach((w, i) => {
+        const el = document.getElementById('nw-' + w.idx);
+        if (!el) return;
+        if (i < currentIdx) {
+          el.className = `nw ${w.fmt || ''} spoken`;
+        } else if (i === currentIdx) {
+          el.className = `nw ${w.fmt || ''} current`;
+          if (window.innerWidth > 768) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        } else {
+          el.className = `nw ${w.fmt || ''}`;
+        }
+      });
+    }
 
     narrationRAF = requestAnimationFrame(syncWords);
   }
@@ -909,7 +1034,8 @@ function renderChapter(ch) {
 
       const parasHtml = sec.paragraphs.map(paraItem => {
         const text   = typeof paraItem === 'string' ? paraItem : paraItem.text;
-        const speakerTag = typeof paraItem === 'object' ? paraItem.speaker || null : null;
+        const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker    || null : null;
+        const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice || null : null;
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         const linked = autoLink(parseMarkup(text));
@@ -936,6 +1062,7 @@ function renderChapter(ch) {
              data-scene="${sceneIndex}"
              data-raw="${escAttr(text)}"
              data-speaker="${speakerTag || ''}" 
+             data-inner-voice="${innerVoiceTag || ''}" 
              onclick="selectPara('${pid}', this)">
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
@@ -964,7 +1091,8 @@ function renderChapter(ch) {
     if (sec.type === 'epigraph') {
       const parasHtml = sec.paragraphs.map(paraItem => {
         const text   = typeof paraItem === 'string' ? paraItem : paraItem.text;
-        const speakerTag = typeof paraItem === 'object' ? paraItem.speaker || null : null;
+        const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker    || null : null;
+        const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice || null : null;
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         const linked = autoLink(parseMarkup(text));
@@ -977,6 +1105,7 @@ function renderChapter(ch) {
              data-scene="${sceneIndex}"
              data-raw="${escAttr(text)}"
              data-speaker="${speakerTag || ''}" 
+             data-inner-voice="${innerVoiceTag || ''}" 
              onclick="selectPara('${pid}', this)">
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
@@ -996,7 +1125,8 @@ function renderChapter(ch) {
     if (sec.type === 'code') {
       const parasHtml = sec.paragraphs.map(paraItem => {
         const text   = typeof paraItem === 'string' ? paraItem : paraItem.text;
-        const speakerTag = typeof paraItem === 'object' ? paraItem.speaker || null : null;
+        const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker    || null : null;
+        const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice || null : null;
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         paraIndex++;
@@ -1008,6 +1138,7 @@ function renderChapter(ch) {
              data-scene="${sceneIndex}"
              data-raw="${escAttr(text)}"
              data-speaker="${speakerTag || ''}" 
+             data-inner-voice="${innerVoiceTag || ''}" 
              onclick="selectPara('${pid}', this)">
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();openThread('${pid}')">💬 Thread${count > 0 ? ` (${count})` : ''}</button>
@@ -1035,7 +1166,8 @@ function renderChapter(ch) {
 
     sec.paragraphs.forEach((paraItem, pi) => {
       const text = typeof paraItem === 'string' ? paraItem : paraItem.text;
-      const speakerTag = typeof paraItem === 'object' ? (paraItem.speaker || '') : '';
+      const speakerTag   = typeof paraItem === 'object' ? (paraItem.speaker    || '') : '';
+      const innerVoiceTag = typeof paraItem === 'object' ? (paraItem.inner_voice || '') : '';
       const pid   = `ch${currentChapter}-p${paraIndex}`;
       const count = commentCounts[pid] || 0;
       const isFirst = paraIndex === 0;
@@ -1049,6 +1181,7 @@ function renderChapter(ch) {
            data-scene="${sceneIndex}"
            data-raw="${escAttr(text)}"
            data-speaker="${speakerTag || ''}" 
+           data-inner-voice="${innerVoiceTag || ''}" 
            onclick="selectPara('${pid}', this)">
           <span class="para-toolbar">
             <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
