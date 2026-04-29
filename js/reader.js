@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v4';
+const READER_VERSION = 'v5';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -307,7 +307,7 @@ async function narrationGoTo(index) {
     const paraEl = document.getElementById(pid);
     const speakerTag = paraEl?.dataset.speaker;
     if (speakerTag) {
-      const entry = wikiIndex[speakerTag];
+      const entry = wikiById[speakerTag];
       if (entry?.voice_id) speakerVoiceId = entry.voice_id;
     }
     // 2. Pattern detection fallback
@@ -728,6 +728,7 @@ let currentChapter   = 1;
 let currentParaId    = null;
 let currentUser      = null;
 let wikiIndex        = {};   // name/alias → entry
+let wikiById         = {};   // id → entry  (for speaker tag lookups)
 let commentCounts    = {};   // paragraphId → count
 
 // ── Chapters — loaded from data/chapters/chapter-N.json ──
@@ -781,6 +782,7 @@ async function buildWikiIndex() {
     names.filter(Boolean).forEach(n => {
       wikiIndex[n.toLowerCase()] = entry;
     });
+    if (entry.id) wikiById[entry.id] = entry;
   });
 }
 
