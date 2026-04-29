@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v9';
+const READER_VERSION = 'v10';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -25,7 +25,7 @@ function toggleMultiVoice() {
   localStorage.setItem('multiVoice', multiVoiceEnabled ? 'on' : 'off');
   applyMultiVoiceBtn();
   // Clear cache and re-fetch current paragraph with new voice setting
-  narrationCache = {};
+  cacheClear();
   narrationLastSpeaker = null;
   narrationLastMaleSpeaker = null;
   narrationLastFemaleSpeaker = null;
@@ -91,7 +91,7 @@ async function resolveAmbientTrack(chapter, scene) {
   for (const src of candidates) {
     try {
       const res = await fetch(src, { method: 'HEAD' });
-      if (res.ok) { console.log('[ambient] resolved:', src); return src; }
+      if (res.ok) { return src; }
     } catch(_) {}
   }
   return null;
@@ -246,7 +246,29 @@ function buildSegments(plainText, charVoiceId, innerVoiceId) {
   return merged.filter(s => s.text.trim());
 }
 
-async function narrationGoTo(index) {
+// ── Narration audio cache — LRU, max 30 entries ──────────
+// Prevents unbounded memory growth during long sessions
+const CACHE_MAX = 30;
+const narrationCacheKeys = []; // tracks insertion order for LRU eviction
+
+function cacheSet(key, value) {
+  if (narrationCache[key]) {
+    // Refresh position
+    const idx = narrationCacheKeys.indexOf(key);
+    if (idx > -1) narrationCacheKeys.splice(idx, 1);
+  } else if (narrationCacheKeys.length >= CACHE_MAX) {
+    // Evict oldest
+    const evict = narrationCacheKeys.shift();
+    delete narrationCache[evict];
+  }
+  narrationCacheKeys.push(key);
+  narrationCache[key] = value;
+}
+
+function cacheClear() {
+  narrationCache = {};
+  narrationCacheKeys.length = 0;
+}
   // Hard-stop any currently playing audio immediately
   if (narrationAudio) {
     narrationAudio.pause();
@@ -340,7 +362,6 @@ async function narrationGoTo(index) {
     }
     // 2. Pattern detection fallback
     if (!speakerVoiceId) speakerVoiceId = detectSpeakerVoice(rawText);
-    console.log('[voice]', speakerTag ? `tag:${speakerTag}` : 'detected:', speakerVoiceId || 'narrator');
 
     if (!speakerVoiceId && /["\u201c\u201d]/.test(rawText)) {
       const SAID_RE = /\b(?:said|asked|replied|whispered|continued|added|stated|called|announced|noted|insisted|scoffed|relayed|declared|muttered)\b/i;
@@ -394,13 +415,23 @@ async function narrationGoTo(index) {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
             body: JSON.stringify({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) })
-          }).then(r => r.json())
+          }).then(r => r.json()).catch(e => ({ error: e.message }))
         ));
-        // Stitch audio and alignment
-        data = stitchSegments(results);
+        // If any segment failed, fall back to narrator-only for whole paragraph
+        const anyFailed = results.some(r => r.error);
+        if (anyFailed) {
+          const res = await fetch(NARRATE_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
+            body: JSON.stringify({ text })
+          });
+          data = await res.json();
+        } else {
+          data = stitchSegments(results);
+        }
         if (data.error) throw new Error(data.error);
       }
-      narrationCache[cacheKey] = data;
+      cacheSet(cacheKey, data);
     } catch(e) {
       textEl.innerHTML = `<span class="narration-loading">Could not load audio — ${e.message}</span>`;
       narrationLocked = false;
@@ -557,6 +588,11 @@ async function narrationGoTo(index) {
   narrationAudio.play();
   narrationAudio.addEventListener('ended', () => {
     cancelAnimationFrame(narrationRAF);
+    // Mark all words as spoken cleanly on audio end (fixes last-word blip)
+    narrationCurrentWords.forEach(w => {
+      const el = document.getElementById('nw-' + w.idx);
+      if (el) el.className = `nw ${w.fmt || ''} spoken`;
+    });
     setTimeout(() => narrationGoTo(index + 1), 1200);
   });
 
@@ -791,6 +827,8 @@ async function submitNarrationComment(pid) {
   }
 }
 
+const prefetchInFlight = new Set();
+
 async function prefetchNext(index) {
   if (index >= narrationParaIds.length) return;
   const pid     = narrationParaIds[index];
@@ -798,9 +836,10 @@ async function prefetchNext(index) {
   const rawText = getRawText(pid) || text;
   if (!text) return;
   const charVoice  = multiVoiceEnabled ? detectSpeakerVoice(rawText) : null;
-  const segments   = buildSegments(text, charVoice);
+  const segments   = buildSegments(text, charVoice, null);
   const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
-  if (narrationCache[cacheKey]) return;
+  if (narrationCache[cacheKey] || prefetchInFlight.has(cacheKey)) return;
+  prefetchInFlight.add(cacheKey);
   try {
     let data;
     if (segments.length === 1) {
@@ -817,12 +856,13 @@ async function prefetchNext(index) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
           body: JSON.stringify({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) })
-        }).then(r => r.json())
+        }).then(r => r.json()).catch(e => ({ error: e.message }))
       ));
-      data = stitchSegments(results);
+      data = results.some(r => r.error) ? null : stitchSegments(results);
     }
-    if (!data.error) narrationCache[cacheKey] = data;
+    if (data && !data.error) cacheSet(cacheKey, data);
   } catch(_) {}
+  finally { prefetchInFlight.delete(cacheKey); }
 }
 
 // ── Helpers ──────────────────────────────────────────────
@@ -893,7 +933,7 @@ const CHAPTER_COUNT = 3; // increment as you add files
 async function loadChapter(n) {
   currentChapter = n;
   currentParaId  = null;
-  narrationCache = {};
+  cacheClear();
   narrationLastMaleSpeaker   = null;
   narrationLastFemaleSpeaker = null;
   narrationLastSpeaker       = null;
