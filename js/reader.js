@@ -1,3 +1,7 @@
+// ── Version ───────────────────────────────────────────────
+const READER_VERSION = 'v3';
+console.log('[reader.js] loaded', READER_VERSION);
+
 // ── Narration state ──────────────────────────────────────
 const NARRATE_URL = 'https://sscpikfblqtmcefegrpv.supabase.co/functions/v1/narrate';
 
@@ -299,8 +303,16 @@ async function narrationGoTo(index) {
   // Detect speaker voice — only when multi-voice mode is on
   let speakerVoiceId = null;
   if (multiVoiceEnabled) {
-    speakerVoiceId = detectSpeakerVoice(rawText);
-    console.log('[voice] multiVoice ON | rawText:', rawText.slice(0,60), '| detected:', speakerVoiceId);
+    // 1. Explicit speaker tag from JSON (most reliable)
+    const paraEl = document.getElementById(pid);
+    const speakerTag = paraEl?.dataset.speaker;
+    if (speakerTag) {
+      const entry = wikiIndex[speakerTag];
+      if (entry?.voice_id) speakerVoiceId = entry.voice_id;
+    }
+    // 2. Pattern detection fallback
+    if (!speakerVoiceId) speakerVoiceId = detectSpeakerVoice(rawText);
+    console.log('[voice]', speakerTag ? `tag:${speakerTag}` : 'detected:', speakerVoiceId || 'narrator');
 
     if (!speakerVoiceId && /["\u201c\u201d]/.test(rawText)) {
       const SAID_RE = /\b(?:said|asked|replied|whispered|continued|added|stated|called|announced|noted|insisted|scoffed|relayed|declared|muttered)\b/i;
@@ -331,7 +343,7 @@ async function narrationGoTo(index) {
 
   // ── Segment-based fetch: narrator for prose, character for quoted dialogue ──
   const segments = buildSegments(text, speakerVoiceId);
-  const cacheKey = pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
+  const cacheKey = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
 
   let data = narrationCache[cacheKey];
   if (!data) {
@@ -631,7 +643,7 @@ async function prefetchNext(index) {
   if (!text) return;
   const charVoice  = multiVoiceEnabled ? detectSpeakerVoice(rawText) : null;
   const segments   = buildSegments(text, charVoice);
-  const cacheKey   = pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
+  const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
   if (narrationCache[cacheKey]) return;
   try {
     let data;
@@ -893,7 +905,9 @@ function renderChapter(ch) {
           ${labelHtml}
         </p>`;
 
-      const parasHtml = sec.paragraphs.map(text => {
+      const parasHtml = sec.paragraphs.map(paraItem => {
+        const text   = typeof paraItem === 'string' ? paraItem : paraItem.text;
+        const speakerTag = typeof paraItem === 'object' ? paraItem.speaker || null : null;
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         const linked = autoLink(parseMarkup(text));
@@ -919,6 +933,7 @@ function renderChapter(ch) {
              data-comment-count="${count}"
              data-scene="${sceneIndex}"
              data-raw="${escAttr(text)}"
+             data-speaker="${speakerTag || ''}" 
              onclick="selectPara('${pid}', this)">
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
@@ -945,7 +960,9 @@ function renderChapter(ch) {
       return;
     }
     if (sec.type === 'epigraph') {
-      const parasHtml = sec.paragraphs.map(text => {
+      const parasHtml = sec.paragraphs.map(paraItem => {
+        const text   = typeof paraItem === 'string' ? paraItem : paraItem.text;
+        const speakerTag = typeof paraItem === 'object' ? paraItem.speaker || null : null;
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         const linked = autoLink(parseMarkup(text));
@@ -957,6 +974,7 @@ function renderChapter(ch) {
              data-comment-count="${count}"
              data-scene="${sceneIndex}"
              data-raw="${escAttr(text)}"
+             data-speaker="${speakerTag || ''}" 
              onclick="selectPara('${pid}', this)">
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
@@ -974,7 +992,9 @@ function renderChapter(ch) {
 
     // ── Code / transmission block ──
     if (sec.type === 'code') {
-      const parasHtml = sec.paragraphs.map(text => {
+      const parasHtml = sec.paragraphs.map(paraItem => {
+        const text   = typeof paraItem === 'string' ? paraItem : paraItem.text;
+        const speakerTag = typeof paraItem === 'object' ? paraItem.speaker || null : null;
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         paraIndex++;
@@ -985,6 +1005,7 @@ function renderChapter(ch) {
              data-comment-count="${count}"
              data-scene="${sceneIndex}"
              data-raw="${escAttr(text)}"
+             data-speaker="${speakerTag || ''}" 
              onclick="selectPara('${pid}', this)">
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();openThread('${pid}')">💬 Thread${count > 0 ? ` (${count})` : ''}</button>
@@ -1023,6 +1044,7 @@ function renderChapter(ch) {
            data-comment-count="${count}"
            data-scene="${sceneIndex}"
            data-raw="${escAttr(text)}"
+           data-speaker="${speakerTag || ''}" 
            onclick="selectPara('${pid}', this)">
           <span class="para-toolbar">
             <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
