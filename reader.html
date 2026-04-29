@@ -1161,6 +1161,9 @@ async function narrationGoTo(index) {
   // Get plain text for TTS, raw markup text for italic/bold display
   const text    = getParaText(pid);
   const rawText = getRawText(pid) || text;
+  console.log('[narration pid]', pid);
+  console.log('[text]', text.slice(0, 80));
+  console.log('[rawText]', rawText.slice(0, 80));
   if (!text) { narrationLocked = false; await narrationGoTo(index + 1); return; }
 
   // Show loading
