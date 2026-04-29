@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v21';
+const READER_VERSION = 'v23';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -372,9 +372,22 @@ async function narrationGoTo(index) {
   hint.classList.toggle('visible', count > 0);
 
   // Get plain text for TTS, raw markup text for italic/bold display
-  const text    = getParaText(pid);
-  const rawText = getRawText(pid) || text;
+  let text    = getParaText(pid);
+  let rawText = getRawText(pid) || text;
   if (!text) { narrationLocked = false; await narrationGoTo(index + 1); return; }
+
+  // Strip ALL-CAPS SPEAKER: prefix (e.g. "PROFESSOR FARLEY: ", "CIX WEAVER: ")
+  // from both TTS text and display rawText so the character's voice reads only
+  // their speech — the charLabel already shows the speaker name visually.
+  const TRANSCRIPT_PREFIX_RE = /^[A-Z][A-Z0-9 ]+:\s+/;
+  const prefixMatch = text.match(TRANSCRIPT_PREFIX_RE);
+  if (prefixMatch) {
+    const prefixLen = prefixMatch[0].length;
+    text    = text.slice(prefixLen);
+    // Strip from rawText too (rawText may have markup but same prefix is plain)
+    const rawPrefixMatch = rawText.match(TRANSCRIPT_PREFIX_RE);
+    if (rawPrefixMatch) rawText = rawText.slice(rawPrefixMatch[0].length);
+  }
 
   // Stop previous audio
   if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
@@ -966,9 +979,17 @@ const prefetchInFlight = new Set();
 async function prefetchNext(index) {
   if (index >= narrationParaIds.length) return;
   const pid     = narrationParaIds[index];
-  const text    = getParaText(pid);
-  const rawText = getRawText(pid) || text;
+  let text    = getParaText(pid);
+  let rawText = getRawText(pid) || text;
   if (!text) return;
+  // Strip ALL-CAPS SPEAKER: prefix (same as narrationGoTo) for cache key match
+  const _prefixRe = /^[A-Z][A-Z0-9 ]+:\s+/;
+  const _pm = text.match(_prefixRe);
+  if (_pm) {
+    text = text.slice(_pm[0].length);
+    const _rpm = rawText.match(_prefixRe);
+    if (_rpm) rawText = rawText.slice(_rpm[0].length);
+  }
   const charVoice  = multiVoiceEnabled ? detectSpeakerVoice(rawText) : null;
   const segments   = buildSegments(text, charVoice, null);
   const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
@@ -1060,7 +1081,23 @@ function buildWordTimings(text, alignment) {
     }
   }
   if (word) words.push({ text: word, start: wordStart, end: wordEnd, space: false, br: pendingBreak });
-  return words;
+
+  // Merge tokens that start with an apostrophe into the preceding word.
+  // ElevenLabs occasionally splits contractions: ["let", "'s"] or ["don", "'t"].
+  // Merging keeps word count in sync with the display text.
+  const merged = [];
+  for (const w of words) {
+    if (/^['‘’ʼ]/.test(w.text) && merged.length > 0) {
+      const prev = merged[merged.length - 1];
+      prev.text += w.text;
+      prev.end   = w.end;
+      prev.space = w.space;
+      prev.br    = prev.br || w.br;
+    } else {
+      merged.push(w);
+    }
+  }
+  return merged;
 }
 
 function base64ToBlob(base64, mimeType) {
