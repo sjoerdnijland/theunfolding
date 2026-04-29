@@ -626,6 +626,7 @@ body.wiki-hints-on .para.active .wiki-link {
 .decoded-btn:hover .decoded-tooltip { display: block; }
 
 /* ── Narrate hero button ───────────────────────────────── */
+.narrate-hero-btn {
   display: flex; align-items: center; gap: 8px;
   padding: 7px 18px;
   border: 1px solid var(--rose);
@@ -802,6 +803,7 @@ body.wiki-hints-on .para.active .wiki-link {
   font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.35em;
   color: var(--teal-soft); opacity: 0.6; text-transform: uppercase;
 }
+.narration-loading {
   font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em;
   text-transform: uppercase; color: var(--muted); text-align: center;
   animation: nPulse 1.5s ease-in-out infinite;
@@ -908,51 +910,75 @@ body.wiki-hints-on .para.active .wiki-link {
 
   /* Narration overlay — mobile optimised */
   .narration-overlay {
-    padding: 80px 20px 120px;
+    padding: 72px 20px 160px;
     align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+  /* When thread is open, push narration text up */
+  .narration-overlay.thread-open {
+    padding-bottom: 62vh;
   }
   .narration-text {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
     line-height: 1.85;
     text-align: center;
+    max-width: 100%;
+    padding: 0 4px;
   }
   .narration-counter {
-    font-size: 0.6rem;
+    font-size: 0.58rem;
     flex-wrap: wrap;
     justify-content: center;
     gap: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
+  /* Controls: two rows — primary actions on top, secondary on bottom */
   .narration-controls {
     gap: 6px;
     flex-wrap: wrap;
     justify-content: center;
     padding: 0 8px;
+    max-width: 100vw;
   }
   .nc-btn {
-    padding: 7px 11px;
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
+    padding: 8px 12px;
+    font-size: 0.6rem;
+    letter-spacing: 0.07em;
   }
-  /* Keep prev/next/exit short on mobile */
-  #nc-play-btn { order: -1; }
+  /* Primary actions in first row */
+  #nc-play-btn  { order: 1; flex: 1 0 auto; min-width: 90px; }
+  button.nc-btn[onclick="narrationPrev()"] { order: 2; }
+  button.nc-btn[onclick="narrationNext()"] { order: 3; }
+  /* Secondary row */
+  #nc-thread-btn  { order: 4; }
+  #nc-voices-btn  { order: 5; }
+  #nc-music-btn   { order: 6; }
+  button.nc-btn[onclick="stopNarration()"] { order: 7; }
+  /* Comment hint: hide on mobile (thread button in controls is enough) */
+  .narration-comment-hint { display: none; }
 
-@media (max-width: 390px) {
-  /* On very small phones hide secondary button labels */
-  .nc-btn[onclick*="toggleAmbient"] .btn-label,
-  .nc-btn[onclick*="toggleMultiVoice"] .btn-label { display: none; }
-}
-
-  /* Narration thread sidebar */
+  /* Narration thread — full-width bottom sheet */
   .narration-thread {
     width: 100%;
     top: auto; bottom: 0;
-    height: 60vh;
+    height: 58vh;
     transform: translateY(100%);
     border-left: none;
-    border-top: 1px solid var(--line-strong);
+    border-top: 2px solid var(--teal-soft);
+    border-radius: 12px 12px 0 0;
   }
   .narration-thread.open { transform: none; }
+  /* Drag handle visual */
+  .narration-thread::before {
+    content: '';
+    display: block;
+    width: 36px; height: 4px;
+    background: var(--line-strong);
+    border-radius: 2px;
+    margin: 10px auto 0;
+    flex-shrink: 0;
+  }
 
   /* Podcast fab — slightly smaller, stays bottom-left */
   .podcast-fab {
