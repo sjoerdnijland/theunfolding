@@ -1103,7 +1103,7 @@ body.wiki-hints-on .para.active .wiki-link {
   <button class="nc-btn primary" id="nc-play-btn" onclick="narrationTogglePlay()">⏸ Pause</button>
   <button class="nc-btn" onclick="narrationNext()">Next →</button>
   <button class="nc-btn" id="nc-thread-btn" onclick="narrationToggleThread()">💬 Thread</button>
-  <button class="nc-btn" id="nc-voices-btn" onclick="toggleMultiVoice()" title="Switch between single narrator and character voices">◎ Charlotte</button>
+  <button class="nc-btn" id="nc-voices-btn" onclick="toggleMultiVoice()" title="Switch between single narrator and character voices">◎ Narrator</button>
   <button class="nc-btn" id="nc-music-btn" onclick="toggleAmbient()" title="Toggle background music">♪ Music</button>
   <button class="nc-btn" onclick="stopNarration()">✕ Exit</button>
 </div>
@@ -1153,11 +1153,11 @@ function applyMultiVoiceBtn() {
   const btn = document.getElementById('nc-voices-btn');
   if (!btn) return;
   if (multiVoiceEnabled) {
-    btn.textContent = '◉ Characters';
+    btn.textContent = '◉ All voices';
     btn.style.color = 'var(--rose)';
     btn.style.borderColor = 'var(--rose)';
   } else {
-    btn.textContent = '◎ Charlotte';
+    btn.textContent = '◎ Narrator';
     btn.style.color = '';
     btn.style.borderColor = '';
   }
