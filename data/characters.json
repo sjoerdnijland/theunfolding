@@ -12,7 +12,6 @@
     "mj_prompt": "A lean fifteen-year-old boy with curly black hair and intense blue eyes, wearing an oversized grey colony jumpsuit, crouched in a dim industrial corridor surrounded by exposed wiring and faint blue Grid terminal light, expression of quiet grief and fierce focus, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "oliver-savannen",
     "voice_id": "SOYHLrjzK2X1ezoPC6cr"
-
   },
   {
     "name": "Astrid Vilde",
@@ -123,7 +122,8 @@
     "chapter": 6,
     "image": "/assets/char/alistair_hale.png",
     "mj_prompt": "A athletic cruffy-haired man (that he frequently runs his hair through) in a black flight suit settled low in a sleek shuttle cockpit, grinning as he threads the craft through teal-lit docking infrastructure, the dark hull of the Brisinger filling the viewport ahead, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "alistair-hale"
+    "id": "alistair-hale",
+    "voice_id": "TxGEqnHWrfWFTfGW9XjX"
   },
   {
     "name": "Stacey Kiran",
@@ -136,7 +136,8 @@
     "chapter": 6,
     "image": "/assets/char/stacey_kiran.png",
     "mj_prompt": "A composed brown-eyed woman in a black Stingray crew jacket at a communications console inside the bioluminescent-lit corridors of the Brisinger, pressed close to a cracked screen, decoding alien signal patterns, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "stacey-kiran"
+    "id": "stacey-kiran",
+    "voice_id": "EXAVITQu4vr4xnSDxMaL"
   },
   {
     "name": "Rajendra Gupta",
@@ -149,7 +150,8 @@
     "chapter": 8,
     "image": "/assets/char/raj_gupta.png",
     "mj_prompt": "An Indian man in an immaculate fleet captain's uniform standing at the centre of a ship bridge whose walls are covered in luminous fractal murals painted by hand, his eyes lit from within with alien light, bioluminescent vines threading the bulkheads, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "rajendra-gupta"
+    "id": "rajendra-gupta",
+    "voice_id": "pNInz6obpgDQGcFmaJgB"
   },
   {
     "name": "Eva Bellamy",
@@ -176,7 +178,8 @@
     "chapter": 6,
     "image": "/assets/char/sarah_farley.png",
     "mj_prompt": "",
-    "id": "sarah-farley"
+    "id": "sarah-farley",
+    "voice_id": "AZnzlk1XvdvUeBnXmlld"
   },
   {
     "name": "Kirsten Strand",
@@ -217,7 +220,8 @@
     "chapter": 10,
     "image": "/assets/char/lysanne_sutherland.png",
     "mj_prompt": "A red-haired woman at the wheel of a colony transporter vehicle speeding through a dimly lit underground cargo corridor, knuckles white, an amber alarm flashing behind her, expression of total committed resolve, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "lysanne-sutherland"
+    "id": "lysanne-sutherland",
+    "voice_id": "21m00Tcm4TlvDq8ikWAM"
   },
   {
     "name": "Læsa",
@@ -230,7 +234,8 @@
     "chapter": 11,
     "image": "assets/char/læsa.png",
     "mj_prompt": "A luminous young woman with unearthly sugarcane-blue hair standing at the edge of a bioluminescent jungle clearing at night, skin faintly glowing, expression of serene inhuman calm, alien flowers turning toward her, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "læsa"
+    "id": "læsa",
+    "voice_id": "jsCqWAovK2LkecY7zXl4"
   },
   {
     "name": "Lena Hague",
@@ -257,7 +262,8 @@
     "chapter": 8,
     "image": "assets/char/marcus_carlson.png",
     "mj_prompt": "A solidly built XO in a ship uniform standing in a Brisinger corridor overgrown with bioluminescent vines, his eyes slightly unfocused as if hearing a voice no one else can, a half-second pause before he turns to face the camera, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "marcus-carlson"
+    "id": "marcus-carlson",
+    "voice_id": "onwK4e9ZLuTAKqWW03F9"
   },
   {
     "name": "Dominic Beltrán",
@@ -270,7 +276,8 @@
     "chapter": 4,
     "image": "assets/char/dom_beltran.png",
     "mj_prompt": "A rotund cheerful engineer with nimble hands working at a grav-tech console in the bowels of an industrial freighter, surrounded by gyroscopic equipment, a grin of sudden breakthrough on his face, warm amber workshop light, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "dominic-beltrán"
+    "id": "dominic-beltrán",
+    "voice_id": "yoZ06aMxZJJ28mfd3POQ"
   },
   {
     "name": "Steven Gail",
@@ -283,7 +290,8 @@
     "chapter": 5,
     "image": "assets/char/steven_gail.png",
     "mj_prompt": "A lean sardonic man in a quartermaster's uniform leaning against a cargo manifest display on a freighter bridge, arms folded, watching events unfold with the calm of someone who has already planned three moves ahead, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "steven-gail"
+    "id": "steven-gail",
+    "voice_id": "t0jbNlBVZ17f02VDIeMI"
   },
   {
     "name": "Centurion Jax",
@@ -338,7 +346,8 @@
     "chapter": 5,
     "image": "assets/char/chef_omar.png",
     "mj_prompt": "A large warm-faced man in a chef's apron in a deep-space galley kitchen, placing food on a table around which a crew of five very different people are sitting and laughing, steam rising, the most human moment on a cold metal ship, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "omar-newton"
+    "id": "omar-newton",
+    "voice_id": "ErXwobaYiN019PkySvjV"
   },
   {
     "name": "Ines Martel",
@@ -365,7 +374,8 @@
     "chapter": 9,
     "image": "assets/char/sachin_juyal.png",
     "mj_prompt": "A young dark-eyed engineer sitting alone in a ship therapy room called the Tank, staring at a small metal shim in the palm of his hand, emergency lighting outside the viewport, the weight of witnessed death on his face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "sachin-juyal"
+    "id": "sachin-juyal",
+    "voice_id": "ErXwobaYiN019PkySvjV"
   },
   {
     "name": "Jason Galindo",
@@ -378,7 +388,8 @@
     "chapter": 8,
     "image": "assets/char/jason_galindo.png",
     "mj_prompt": "A young man walking a ship corridor with bioluminescent flowering plants growing from his shoulders and the back of his skull, arms spread wide in quiet ecstasy, his body a living garden, the ship around him equally overgrown and glowing, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "jason-galindo"
+    "id": "jason-galindo",
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr"
   },
   {
     "name": "Mateo Heston",
@@ -391,7 +402,8 @@
     "chapter": 10,
     "image": "assets/char/mateo_heston.png",
     "mj_prompt": "A massive grease-stained industrial foreman in a heavy Köldur cold-weather coat standing in a sub-zero mining base hangar, arms crossed, waiting with absolute unreadable patience, ore machinery the size of buildings behind him, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "mateo-heston"
+    "id": "mateo-heston",
+    "voice_id": "VR6AewLTigWG4xSOukaG"
   },
   {
     "name": "Nabiha Al-Fahim",
@@ -404,7 +416,8 @@
     "chapter": 7,
     "image": "assets/char/nabiha_al_fahim.png",
     "mj_prompt": "A dark-haired woman pilot in a light colony flight suit at the controls of a small shuttle flying into a wall of alien spores over the Delta jungle, pink sky turning grey ahead, her face illuminated by instrument light, a decision already made, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "nabiha-al-fahim"
+    "id": "nabiha-al-fahim",
+    "voice_id": "oWsMkiLFnCGzEeq1MHLK"
   },
   {
     "name": "Leon Wittler",
@@ -417,7 +430,8 @@
     "chapter": 7,
     "image": "assets/char/leon_wittler.png",
     "mj_prompt": "A lanky mud-caked technician in a colony suit operating a sonic emitter array in a jungle clearing at dusk, alien clacker creatures circling at the treeline, fear and determination in equal measure on his earnest face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "leon-wittler"
+    "id": "leon-wittler",
+    "voice_id": "bVMeCyTHy58xNoL34h4d"
   },
   {
     "name": "Jordan Axel",
@@ -430,7 +444,8 @@
     "chapter": 7,
     "image": "assets/char/jordan_axel.png",
     "mj_prompt": "A grey-templed veteran guardian in worn field armour covering a retreat through alien jungle undergrowth, moving with the complete economy of an old soldier, not looking back, face set and unafraid, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
-    "id": "jordan-axel"
+    "id": "jordan-axel",
+    "voice_id": "Zlb1dXrM653N07WRdFW3"
   },
   {
     "name": "Gary",
