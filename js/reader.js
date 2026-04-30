@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v47';
+const READER_VERSION = 'v48';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -1477,13 +1477,12 @@ function renderChapter(ch) {
       <h1 class="ch-title">${ch.title}</h1>
       <p class="ch-subtitle">${ch.subtitle}</p>
       <div class="ch-narrate-wrap">
-        <button class="ch-narrate-btn" onclick="startNarration()" id="ch-narrate-btn" aria-label="Start narration">
+        <button class="ch-narrate-btn ch-narrate-btn--icon" onclick="startNarration()" id="ch-narrate-btn" aria-label="Start narration">
           <span class="ch-narrate-ring"></span>
           <span class="ch-narrate-ring ch-narrate-ring--2"></span>
           <span class="ch-narrate-icon">▶</span>
-          <span class="ch-narrate-label">Listen</span>
         </button>
-        <p class="ch-narrate-hint">Immersive · Full cast · Karaoke sync</p>
+        <p class="ch-narrate-hint">Immersive · Full cast</p>
       </div>
     </div>`;
 
