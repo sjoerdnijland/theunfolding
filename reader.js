@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v23';
+const READER_VERSION = 'v33';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -18,6 +18,31 @@ let narrationCurrentWords = [];
 let narrationLastMaleSpeaker   = null;
 let narrationLastFemaleSpeaker = null;
 let narrationLastSpeaker       = null; // last named speaker regardless of gender
+
+// ── SFX overlay state ─────────────────────────────────────
+const SFX_BASE_URL = 'assets/sfx/';
+const sfxCache     = {};
+const sfxPreflight = new Set();
+let sfxTriggers    = [];
+let sfxFired       = new Set();
+let sfxVolume      = 0.75;
+
+function sfxLoad(tag) {
+  if (sfxCache[tag] || sfxPreflight.has(tag)) return;
+  sfxPreflight.add(tag);
+  const a = new Audio(SFX_BASE_URL + tag + '.mp3');
+  a.preload = 'auto';
+  a.addEventListener('canplaythrough', () => { sfxCache[tag] = a; sfxPreflight.delete(tag); }, { once: true });
+  a.addEventListener('error', () => { sfxPreflight.delete(tag); console.warn('[SFX] could not load: ' + tag + '.mp3'); }, { once: true });
+}
+
+function sfxPlay(tag) {
+  const cached = sfxCache[tag];
+  if (!cached) { console.warn('[SFX] not ready: ' + tag); return; }
+  const clone = cached.cloneNode();
+  clone.volume = sfxVolume;
+  clone.play().catch(function(e) { console.warn('[SFX] play failed:', e); });
+}
 let multiVoiceEnabled          = localStorage.getItem('multiVoice') !== 'off'; // default ON
 
 function toggleMultiVoice() {
@@ -235,6 +260,7 @@ function stopNarration() {
   document.getElementById('narration-overlay').classList.remove('thread-open');
   narrationThreadOpen = false;
   document.body.style.overflow = '';
+  sfxTriggers = []; sfxFired = new Set();
   stopAmbientNow();
   document.getElementById('narration-comment-hint').classList.remove('visible');
 }
@@ -376,17 +402,59 @@ async function narrationGoTo(index) {
   let rawText = getRawText(pid) || text;
   if (!text) { narrationLocked = false; await narrationGoTo(index + 1); return; }
 
-  // Strip ALL-CAPS SPEAKER: prefix (e.g. "PROFESSOR FARLEY: ", "CIX WEAVER: ")
-  // from both TTS text and display rawText so the character's voice reads only
-  // their speech — the charLabel already shows the speaker name visually.
-  const TRANSCRIPT_PREFIX_RE = /^[A-Z][A-Z0-9 ]+:\s+/;
-  const prefixMatch = text.match(TRANSCRIPT_PREFIX_RE);
-  if (prefixMatch) {
-    const prefixLen = prefixMatch[0].length;
-    text    = text.slice(prefixLen);
-    // Strip from rawText too (rawText may have markup but same prefix is plain)
+  // Declare isTranscriptPara early — used by SFX parser and prefix strip below
+  const paraEl2 = document.getElementById(pid);
+  const isTranscriptPara = paraEl2?.dataset.transcript === 'true';
+
+  // ── Parse and strip SFX tags [#tag-name] ─────────────────
+  // Record position (afterWordIdx) and remove from both text and rawText
+  // so the narrator never speaks the tag text.
+  const SFX_TAG_RE = /\[#([a-z0-9_-]+)\]/g;
+  sfxTriggers = [];
+  sfxFired    = new Set();
+
+  function parseSfxTags(str) {
+    const triggers = [];
+    let wordCount = 0, lastIdx = 0, out = '';
+    for (const m of str.matchAll(SFX_TAG_RE)) {
+      const before = str.slice(lastIdx, m.index);
+      out += before;
+      wordCount += before.trim().split(/\s+/).filter(Boolean).length;
+      triggers.push({ afterWordIdx: wordCount - 1, tag: m[1] });
+      sfxLoad(m[1]); // preload immediately
+      lastIdx = m.index + m[0].length;
+    }
+    out += str.slice(lastIdx);
+    return { out: out.trim(), triggers };
+  }
+
+  const sfxParsed = parseSfxTags(text);
+  text    = sfxParsed.out;
+  sfxTriggers = sfxParsed.triggers;
+  // Strip tags from rawText too (keep same word positions)
+  rawText = rawText.replace(SFX_TAG_RE, '').trim();
+
+  // Strip ALL-CAPS SPEAKER: prefix ONLY for transcript-flagged paragraphs.
+  // Gated on isTranscriptPara to avoid stripping headings like PARTICIPANTS:
+  // which are not speaker labels but structural headings.
+  // Uses space (not \s) after colon to avoid matching colon+newline.
+  const TRANSCRIPT_PREFIX_RE = /^[A-Z][A-Z0-9 ·]+: /;
+  if (isTranscriptPara) {
     const rawPrefixMatch = rawText.match(TRANSCRIPT_PREFIX_RE);
     if (rawPrefixMatch) rawText = rawText.slice(rawPrefixMatch[0].length);
+    const textPrefixMatch = text.match(TRANSCRIPT_PREFIX_RE);
+    if (textPrefixMatch) text = text.slice(textPrefixMatch[0].length);
+  }
+
+  // For transcript paragraphs, extract and preserve the speaker label
+  // so it can be shown above the karaoke text in the narration overlay.
+  let transcriptSpeakerLabel = '';
+  if (isTranscriptPara) {
+    // Extract the prefix from the original data-raw before stripping
+    const TPRE2 = /^([A-Z][A-Z0-9 ·]+):\s+/;
+    const rawOrig = paraEl2?.dataset.raw || '';
+    const tm = rawOrig.match(TPRE2);
+    if (tm) transcriptSpeakerLabel = tm[1];
   }
 
   // Stop previous audio
@@ -442,7 +510,14 @@ async function narrationGoTo(index) {
   } // end multiVoiceEnabled
 
   // ── Segment-based fetch: narrator for prose, character for quoted dialogue ──
-  const segments   = buildSegments(text, speakerVoiceId, innerVoiceId);
+  // For transcript paragraphs the entire text is the character's speech —
+  // force a single segment with their voice, bypassing quote detection.
+  let segments;
+  if (isTranscriptPara && speakerVoiceId) {
+    segments = [{ text, voiceId: speakerVoiceId }];
+  } else {
+    segments = buildSegments(text, speakerVoiceId, innerVoiceId);
+  }
   const isStitched = segments.length > 1;
   const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
 
@@ -580,11 +655,37 @@ async function narrationGoTo(index) {
       .replace(/~~([^~]+?)~~/g, '$1');
     let wordIdx = 0;
 
+    // Normalise a word for matching against timingWords
+    const normWord = s => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const PUNCT_ONLY = /^[^\p{L}\p{N}]+$/u;
+
     const pushWord = () => {
       if (!word) return;
       const timing = timingWords[wordIdx] || { start: 0, end: 0 };
+
+      // If this display word is pure punctuation (e.g. em-dash —, ellipsis …)
+      // and the current timingWord doesn't match it (ElevenLabs omitted it from
+      // alignment), reuse the previous word's end time and do NOT advance wordIdx.
+      // This prevents a 1-word drift per omitted punctuation token.
+      let usedIdx = wordIdx;
+      if (PUNCT_ONLY.test(word)) {
+        const twNorm = normWord(timing.text || '');
+        const wNorm  = normWord(word);
+        if (twNorm !== wNorm) {
+          // timing slot belongs to the next real word — borrow timing, don't consume
+          const prevTiming = tokens.filter(t => t.type === 'word').slice(-1)[0];
+          const punctTiming = prevTiming
+            ? { start: prevTiming.end, end: prevTiming.end }
+            : { start: timing.start, end: timing.start };
+          tokens.push({ type: 'word', text: word, fmt: getFmt(wordStart, wordStart + word.length),
+                        start: punctTiming.start, end: punctTiming.end, idx: wordIdx });
+          word = ''; wordStart = -1;
+          return; // do NOT increment wordIdx
+        }
+      }
+
       tokens.push({ type: 'word', text: word, fmt: getFmt(wordStart, wordStart + word.length),
-                    start: timing.start, end: timing.end, idx: wordIdx });
+                    start: timing.start, end: timing.end, idx: usedIdx });
       wordIdx++;
       word = ''; wordStart = -1;
     };
@@ -693,11 +794,24 @@ async function narrationGoTo(index) {
   charLabel.style.opacity = '0';
 
   // For code blocks: show TRANSMISSION label above word highlights
+  // Transcript speaker label shown above karaoke text in narration overlay
+  const transcriptLabelHtml = transcriptSpeakerLabel
+    ? `<div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.32em;text-transform:uppercase;color:#6ecfde;margin-bottom:24px;text-align:center;display:flex;align-items:center;justify-content:center;gap:12px">
+        <span style="display:inline-block;width:28px;height:1px;background:#4a9aaa;opacity:0.6"></span>
+        <span style="display:inline-flex;align-items:center;gap:7px">
+          <span class="tx-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#6ecfde;box-shadow:0 0 8px #6ecfde;animation:txPulse 1.4s ease-in-out infinite"></span>
+          ${escHtml(transcriptSpeakerLabel)}
+        </span>
+        <span style="display:inline-block;width:28px;height:1px;background:#4a9aaa;opacity:0.6"></span>
+      </div>
+      <style>.tx-dot{} @keyframes txPulse{0%,100%{opacity:0.4;transform:scale(0.85)}50%{opacity:1;transform:scale(1.2)}}</style>`
+    : '';
+
   if (isCode) {
     textEl.innerHTML = `<div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.35em;color:var(--teal-soft);margin-bottom:28px;text-align:center;opacity:0.7">◉ TRANSMISSION</div>`
       + displayTokens.map(t => `<span class="nw" id="nw-${t.idx}">${escHtml(t.text)}</span> `).join('');
   } else {
-    textEl.innerHTML = displayTokens.map(t => {
+    textEl.innerHTML = transcriptLabelHtml + displayTokens.map(t => {
       if (t.type === 'br')    return '<br>';
       if (t.type === 'space') return ' ';
       return `<span class="nw ${t.fmt}" id="nw-${t.idx}">${escHtml(t.text)}</span>`;
@@ -756,6 +870,15 @@ async function narrationGoTo(index) {
       else break;
     }
 
+    // Fire SFX triggers — after the trigger word has been passed
+    for (const trigger of sfxTriggers) {
+      const key = trigger.afterWordIdx + ':' + trigger.tag;
+      if (!sfxFired.has(key) && currentIdx > trigger.afterWordIdx) {
+        sfxFired.add(key);
+        sfxPlay(trigger.tag);
+      }
+    }
+
     if (isStitched && charWordRanges.length) {
       // Mixed narrator/character paragraph:
       // - Narrator words: word-level karaoke (precise timing from first segment)
@@ -778,46 +901,44 @@ async function narrationGoTo(index) {
         const el = document.getElementById('nw-' + w.idx);
         if (!el) return;
         const wordVoice = getCharVoiceForWord(i);
+        const isChar    = !!wordVoice;
 
-        if (wordVoice) {
-          // Character word — find its range
-          const range = charWordRanges.find(r => i >= r.start && i <= r.end);
-          const rangeStartPassed = currentIdx >= range.start;
-          const rangeEndPassed   = currentIdx > range.end;
-          if (rangeEndPassed) {
-            el.className = `nw ${w.fmt || ''} spoken`;
-          } else if (rangeStartPassed) {
-            // Whole character segment lit at once
-            el.className = `nw ${w.fmt || ''} current char-voice`;
-          } else {
-            el.className = `nw ${w.fmt || ''}`;
-          }
+        // Word-level karaoke for both narrator and character words.
+        // Character words get 'char-voice' class for teal colour.
+        if (i < currentIdx) {
+          el.className = `nw ${w.fmt || ''} spoken${isChar ? ' char-voice' : ''}`;
+        } else if (i === currentIdx) {
+          el.className = `nw ${w.fmt || ''} current${isChar ? ' char-voice' : ''}`;
+          if (window.innerWidth > 768) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         } else {
-          // Narrator word — precise word-level karaoke
-          if (i < currentIdx) {
-            el.className = `nw ${w.fmt || ''} spoken`;
-          } else if (i === currentIdx) {
-            el.className = `nw ${w.fmt || ''} current`;
-            if (window.innerWidth > 768) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-          } else {
-            el.className = `nw ${w.fmt || ''}`;
-          }
+          el.className = `nw ${w.fmt || ''}${isChar ? ' char-voice' : ''}`;
         }
       });
 
     } else {
-      // Pure narrator — word-level karaoke throughout
-      charLabel.style.opacity = '0';
+      // Single-voice paragraph (narrator or single character).
+      // If it's a character voice, show label + char-voice colour throughout.
+      const singleVoice = segments.length === 1 ? segments[0].voiceId : null;
+      if (singleVoice) {
+        const entry = Object.values(wikiById).find(e => e.voice_id === singleVoice);
+        if (entry) {
+          charLabel.textContent = '◉ ' + entry.name.split(' ')[0];
+          charLabel.style.opacity = '1';
+        }
+      } else {
+        charLabel.style.opacity = '0';
+      }
       narrationCurrentWords.forEach((w, i) => {
         const el = document.getElementById('nw-' + w.idx);
         if (!el) return;
+        const isChar = !!singleVoice;
         if (i < currentIdx) {
-          el.className = `nw ${w.fmt || ''} spoken`;
+          el.className = `nw ${w.fmt || ''} spoken${isChar ? ' char-voice' : ''}`;
         } else if (i === currentIdx) {
-          el.className = `nw ${w.fmt || ''} current`;
+          el.className = `nw ${w.fmt || ''} current${isChar ? ' char-voice' : ''}`;
           if (window.innerWidth > 768) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         } else {
-          el.className = `nw ${w.fmt || ''}`;
+          el.className = `nw ${w.fmt || ''}${isChar ? ' char-voice' : ''}`;
         }
       });
     }
@@ -981,6 +1102,9 @@ async function prefetchNext(index) {
   let text    = getParaText(pid);
   let rawText = getRawText(pid) || text;
   if (!text) return;
+  // Strip SFX tags for cache key consistency with narrationGoTo
+  text    = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
+  rawText = rawText.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
   // Strip ALL-CAPS SPEAKER: prefix (same as narrationGoTo) for cache key match
   const _prefixRe = /^[A-Z][A-Z0-9 ]+:\s+/;
   const _pm = text.match(_prefixRe);
@@ -1096,6 +1220,7 @@ function buildWordTimings(text, alignment) {
       merged.push(w);
     }
   }
+
   return merged;
 }
 
@@ -1327,8 +1452,23 @@ function renderChapter(ch) {
           return `<div class="uplink-section-divider uplink-s2" id="${pid}" data-para-id="${pid}" data-raw="${escAttr(text)}" data-speaker="${speakerTag||''}" data-comment-count="${count}">${parseMarkup(text)}</div>`;
         }
 
+        // Transcript paragraphs: extract SPEAKER: prefix and show as styled label
+        const isTranscript = typeof paraItem === 'object' && paraItem.transcript === true;
+        const TPRE = /^([A-Z][A-Z0-9 ·]+):\s+/;
+        let displayHtml = linked;
+        let transcriptLabel = '';
+        if (isTranscript) {
+          const m = text.match(TPRE);
+          if (m) {
+            transcriptLabel = `<span class="transcript-speaker">${m[1]}</span>`;
+            // Display text without the prefix
+            const speechText = text.slice(m[0].length);
+            displayHtml = autoLink(parseMarkup(speechText));
+          }
+        }
+
         return `
-          <p class="para${count > 0 ? ' has-comments' : ''}"
+          <p class="para${count > 0 ? ' has-comments' : ''}${isTranscript ? ' transcript-para' : ''}"
              id="${pid}"
              data-para-id="${pid}"
              data-comment-count="${count}"
@@ -1336,13 +1476,14 @@ function renderChapter(ch) {
              data-raw="${escAttr(text)}"
              data-speaker="${speakerTag || ''}" 
              data-inner-voice="${innerVoiceTag || ''}" 
+             data-transcript="${isTranscript ? 'true' : ''}"
              onclick="selectPara('${pid}', this)">
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
               <button class="pt-btn" onclick="event.stopPropagation();openThread('${pid}')">💬 Thread${count > 0 ? ` (${count})` : ''}</button>
               <button class="pt-btn pt-narrate" onclick="event.stopPropagation();startNarrationFrom('${pid}')">▶ Narrate</button>
             </span>
-            ${linked}
+            ${transcriptLabel}${displayHtml}
           </p>`;
       }).join('');
 
@@ -1807,7 +1948,12 @@ function getParaText(pid) {
   const clone = el.cloneNode(true);
   const toolbar = clone.querySelector('.para-toolbar');
   if (toolbar) toolbar.remove();
+  // Remove transcript speaker label — it's display-only, not part of TTS text
+  const txLabel = clone.querySelector('.transcript-speaker');
+  if (txLabel) txLabel.remove();
   let text = clone.innerText.trim();
+  // Strip SFX tags — narrator should never speak [#tag-name]
+  text = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
   // Strip transmission wrapper chars for TTS — < YREUS | ERROR /> → YREUS ERROR
   if (el.closest('.code-block')) {
     text = text
