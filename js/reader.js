@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v64';
+const READER_VERSION = 'v66';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -237,10 +237,12 @@ let persistentAudio = null;    // single Audio element reused for all paragraphs
 
 function unlockAudio() {
   if (audioUnlocked) return;
-  // Create ONE persistent Audio element during the user gesture.
-  // iOS maintains trust on this same element for the entire session.
-  // We never create a new Audio() after this — just change src and play().
+  // Create a silent looping keepalive Audio element during the user gesture.
+  // This keeps the iOS audio session active for the entire narration session.
+  // Any new Audio().play() call is trusted while this session is alive.
   persistentAudio = new Audio(SILENT_MP3);
+  persistentAudio.loop = true;  // loop silently to keep session alive
+  persistentAudio.volume = 0;   // completely silent
   persistentAudio.play().then(() => {
     audioUnlocked = true;
   }).catch(() => {});
@@ -253,8 +255,12 @@ async function startNarration() {
   narrationLocked  = false;
   if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
   cancelAnimationFrame(narrationRAF);
-  // Re-unlock audio on each startNarration call (gesture is fresh)
-  if (!persistentAudio) unlockAudio();
+  // Ensure keepalive is running (restart if paused from stopNarration)
+  if (!persistentAudio) {
+    unlockAudio();
+  } else if (persistentAudio.paused) {
+    persistentAudio.play().catch(() => {});
+  }
 
   narrationParaIds = getNarrableParagraphs();
   if (!narrationParaIds.length) return;
@@ -279,11 +285,12 @@ function stopNarration() {
   narrationLocked  = false; // always reset — prevents stuck state on re-open
   if (narrationAudio) {
     narrationAudio.pause();
-    if (narrationAudio._blobUrl) {
-      URL.revokeObjectURL(narrationAudio._blobUrl);
-      narrationAudio._blobUrl = null;
-    }
     narrationAudio = null;
+  }
+  // Stop the silent keepalive when narration session ends
+  if (persistentAudio) {
+    persistentAudio.pause();
+    // Don't null it — reuse on next startNarration
   }
   cancelAnimationFrame(narrationRAF);
 
@@ -900,22 +907,11 @@ async function narrationGoTo(index) {
   const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
   const audioUrl  = URL.createObjectURL(audioBlob);
 
-  // Use the persistent Audio element created during the original user gesture.
-  // iOS maintains trust on the same element throughout the session.
-  // Simply change src and play() — no new Audio() creation needed.
-  if (persistentAudio) {
-    narrationAudio = persistentAudio;
-  } else {
-    // Fallback for desktop or if unlockAudio wasn't called
-    narrationAudio = new Audio(audioUrl);
-  }
-  // Revoke previous blob URL if any
-  if (narrationAudio._blobUrl) {
-    URL.revokeObjectURL(narrationAudio._blobUrl);
-    narrationAudio._blobUrl = null;
-  }
-  narrationAudio.src = audioUrl;
-  narrationAudio._blobUrl = audioUrl; // track for cleanup
+  // Create fresh Audio element per paragraph.
+  // iOS trusts play() on new elements while the silent keepalive (persistentAudio)
+  // maintains the audio session — no need to reuse the same element.
+  // This avoids src-change events firing 'ended' prematurely on iOS.
+  narrationAudio = new Audio(audioUrl);
   narrationPlaying = true;
 
   document.getElementById('nc-play-btn').innerHTML = '<span class="nc-icon">⏸</span><span class="nc-lbl">Pause</span>';
@@ -963,23 +959,20 @@ async function narrationGoTo(index) {
   });
 
   // ended fires once — remove listener to avoid duplicate on src change
-  function onEnded() {
-    narrationAudio.removeEventListener('ended', onEnded);
+  narrationAudio.addEventListener('ended', () => {
     clearTimeout(watchdogTimer);
     cancelAnimationFrame(narrationRAF);
-    // Revoke blob URL — audio element src will be replaced next paragraph
-    if (narrationAudio._blobUrl) {
-      URL.revokeObjectURL(narrationAudio._blobUrl);
-      narrationAudio._blobUrl = null;
-    }
-    // Mark all words as spoken cleanly
+    URL.revokeObjectURL(audioUrl);
     narrationCurrentWords.forEach(w => {
       const el = document.getElementById('nw-' + w.idx);
       if (el) el.className = `nw ${w.fmt || ''} spoken`;
     });
+    // Re-prime if needed (belt and suspenders for older iOS)
+    if (audioUnlocked && persistentAudio && persistentAudio.paused) {
+      persistentAudio.play().catch(() => {});
+    }
     setTimeout(() => narrationGoTo(index + 1), 250);
-  }
-  narrationAudio.addEventListener('ended', onEnded);
+  });
 
   // Also listen for stall/error events on the audio element
   narrationAudio.addEventListener('stalled', () => {
@@ -2047,9 +2040,14 @@ function stitchSegments(results) {
     const starts = r.alignment?.character_start_times_seconds || [];
     const ends   = r.alignment?.character_end_times_seconds   || [];
 
-    // Byte-based duration is more reliable than alignment maxEnd + padding
-    // 128kbps MP3 = 16000 bytes/sec
-    const segDuration = byteCount / 16000;
+    // Use actual audio duration from alignment timestamps — more accurate than
+    // byte-based estimation which assumes fixed bitrate (ElevenLabs varies).
+    // Fall back to byte estimate only if alignment is empty.
+    const segEnds = r.alignment?.character_end_times_seconds || [];
+    const alignDuration = segEnds.length > 0 ? Math.max(...segEnds) : 0;
+    const byteDuration   = byteCount / 16000; // 128kbps fallback
+    // Add small padding (80ms) to ensure no overlap at segment boundary
+    const segDuration = (alignDuration > 0 ? alignDuration : byteDuration) + 0.08;
 
     segmentMeta.push({ timeOffset, byteStart, byteEnd: byteStart + byteCount, alignment: r.alignment });
 
