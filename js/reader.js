@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v39';
+const READER_VERSION = 'v40';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -1283,7 +1283,6 @@ async function loadChapter(n) {
   narrationLastFemaleSpeaker = null;
   narrationLastSpeaker       = null;
   renderChapterPills();
-  preloadChapterSfx(ch);
   closeSidebar();
 
   const el = document.getElementById('chapter-content');
@@ -1299,6 +1298,7 @@ async function loadChapter(n) {
   }
 
   await loadCommentCounts(n);
+  preloadChapterSfx(ch);
   renderChapter(ch);
 }
 
