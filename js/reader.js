@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v49';
+const READER_VERSION = 'v50';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -891,7 +891,7 @@ async function narrationGoTo(index) {
   }
   narrationPlaying = true;
 
-  document.getElementById('nc-play-btn').textContent = '⏸ Pause';
+  document.getElementById('nc-play-btn').innerHTML = '<span class="nc-icon">⏸</span><span class="nc-lbl">Pause</span>';
 
   // Prefetch next paragraph quietly
   prefetchNext(index + 1);
@@ -1010,7 +1010,7 @@ function narrationTogglePlay() {
   if (narrationAudio.paused) {
     narrationAudio.play().catch(e => console.warn('Audio resume failed:', e));
     narrationPlaying = true;
-    document.getElementById('nc-play-btn').textContent = '⏸ Pause';
+    document.getElementById('nc-play-btn').innerHTML = '<span class="nc-icon">⏸</span><span class="nc-lbl">Pause</span>';
     // Resume karaoke sync using stored word timings
     function resumeSync() {
       if (!narrationAudio || narrationAudio.paused) return;
@@ -1038,7 +1038,7 @@ function narrationTogglePlay() {
     narrationAudio.pause();
     narrationPlaying = false;
     cancelAnimationFrame(narrationRAF);
-    document.getElementById('nc-play-btn').textContent = '▶ Play';
+    document.getElementById('nc-play-btn').innerHTML = '<span class="nc-icon">▶</span><span class="nc-lbl">Play</span>';
   }
 }
 
