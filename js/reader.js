@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v62';
+const READER_VERSION = 'v64';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -232,17 +232,18 @@ function getNarrableParagraphs() {
 const SILENT_MP3 = 'data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjMyLjEwNAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAADhgCenp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6e////////////////////////////////////////////////////////////////AAAAAExhdmM1OC41NAAAAAAAAAAAAAAAACQAAAAAAAAAAw4g3QAAAAAAAAAAAAAAAAAA//tQxAADwAABpAAAACAAADSAAAAETEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV';
 let audioUnlocked = false;
 
-let primedAudio = null; // iOS-unlocked Audio element, reused for first para
+let primedAudio = null;         // kept for backwards compat
+let persistentAudio = null;    // single Audio element reused for all paragraphs (iOS trust)
 
 function unlockAudio() {
   if (audioUnlocked) return;
-  const a = new Audio(SILENT_MP3);
-  a.play().then(() => {
+  // Create ONE persistent Audio element during the user gesture.
+  // iOS maintains trust on this same element for the entire session.
+  // We never create a new Audio() after this — just change src and play().
+  persistentAudio = new Audio(SILENT_MP3);
+  persistentAudio.play().then(() => {
     audioUnlocked = true;
   }).catch(() => {});
-  // Keep a reference — we'll reuse this element for the first real paragraph
-  // so iOS doesn't revoke playback permission across await boundaries
-  primedAudio = a;
 }
 
 async function startNarration() {
@@ -252,6 +253,8 @@ async function startNarration() {
   narrationLocked  = false;
   if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
   cancelAnimationFrame(narrationRAF);
+  // Re-unlock audio on each startNarration call (gesture is fresh)
+  if (!persistentAudio) unlockAudio();
 
   narrationParaIds = getNarrableParagraphs();
   if (!narrationParaIds.length) return;
@@ -274,7 +277,14 @@ function stopNarration() {
   narrationActive  = false;
   narrationPlaying = false;
   narrationLocked  = false; // always reset — prevents stuck state on re-open
-  if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
+  if (narrationAudio) {
+    narrationAudio.pause();
+    if (narrationAudio._blobUrl) {
+      URL.revokeObjectURL(narrationAudio._blobUrl);
+      narrationAudio._blobUrl = null;
+    }
+    narrationAudio = null;
+  }
   cancelAnimationFrame(narrationRAF);
 
   document.getElementById('narration-overlay').classList.remove('active');
@@ -890,17 +900,22 @@ async function narrationGoTo(index) {
   const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
   const audioUrl  = URL.createObjectURL(audioBlob);
 
-  // iOS fix: use primedAudio to establish playback permission, then
-  // always create a fresh Audio element for the actual content.
-  // Reusing primedAudio with .load() causes iOS to stall on stitched blobs.
-  if (primedAudio) {
-    // Play the silent primer to re-establish iOS gesture trust.
-    // Do NOT call pause() after — that creates an AbortError which voids
-    // the trust. Let it play the short silent mp3 naturally (inaudible).
-    primedAudio.play().catch(() => {});
-    primedAudio = null;
+  // Use the persistent Audio element created during the original user gesture.
+  // iOS maintains trust on the same element throughout the session.
+  // Simply change src and play() — no new Audio() creation needed.
+  if (persistentAudio) {
+    narrationAudio = persistentAudio;
+  } else {
+    // Fallback for desktop or if unlockAudio wasn't called
+    narrationAudio = new Audio(audioUrl);
   }
-  narrationAudio = new Audio(audioUrl);
+  // Revoke previous blob URL if any
+  if (narrationAudio._blobUrl) {
+    URL.revokeObjectURL(narrationAudio._blobUrl);
+    narrationAudio._blobUrl = null;
+  }
+  narrationAudio.src = audioUrl;
+  narrationAudio._blobUrl = audioUrl; // track for cleanup
   narrationPlaying = true;
 
   document.getElementById('nc-play-btn').innerHTML = '<span class="nc-icon">⏸</span><span class="nc-lbl">Pause</span>';
@@ -925,26 +940,14 @@ async function narrationGoTo(index) {
         // Resume failed — re-prime and advance
         console.warn('[watchdog] resume failed, advancing');
         clearTimeout(watchdogTimer);
-        if (audioUnlocked) {
-          const next = new Audio(SILENT_MP3);
-          next.play().then(() => { primedAudio = next; narrationGoTo(index + 1); })
-              .catch(() => { narrationGoTo(index + 1); });
-        } else {
-          narrationGoTo(index + 1);
-        }
+        narrationGoTo(index + 1);
       });
     } else if (ct === watchdogLastTime && !narrationAudio.paused) {
       // currentTime frozen while not paused — stalled decode or iOS suspend
       console.warn('[watchdog] audio frozen at', ct, '— advancing');
       clearTimeout(watchdogTimer);
       // Re-prime before advancing so next play() has iOS permission
-      if (audioUnlocked) {
-        const next = new Audio(SILENT_MP3);
-        next.play().then(() => { primedAudio = next; narrationGoTo(index + 1); })
-            .catch(() => { narrationGoTo(index + 1); });
-      } else {
-        narrationGoTo(index + 1);
-      }
+      narrationGoTo(index + 1);
       return;
     }
     watchdogLastTime = ct;
@@ -959,24 +962,24 @@ async function narrationGoTo(index) {
     setTimeout(() => { if (narrationActive) narrationGoTo(index + 1); }, 800);
   });
 
-  narrationAudio.addEventListener('ended', () => {
+  // ended fires once — remove listener to avoid duplicate on src change
+  function onEnded() {
+    narrationAudio.removeEventListener('ended', onEnded);
     clearTimeout(watchdogTimer);
     cancelAnimationFrame(narrationRAF);
-    URL.revokeObjectURL(audioUrl); // free blob memory
-    // Mark all words as spoken cleanly on audio end (fixes last-word blip)
+    // Revoke blob URL — audio element src will be replaced next paragraph
+    if (narrationAudio._blobUrl) {
+      URL.revokeObjectURL(narrationAudio._blobUrl);
+      narrationAudio._blobUrl = null;
+    }
+    // Mark all words as spoken cleanly
     narrationCurrentWords.forEach(w => {
       const el = document.getElementById('nw-' + w.idx);
       if (el) el.className = `nw ${w.fmt || ''} spoken`;
     });
-    // iOS: audio ended events ARE trusted — create next primedAudio here
-    // so it's ready before the next narrationGoTo awaits the fetch.
-    // This is the only reliable way to chain playback on iOS Safari.
-    if (audioUnlocked) {
-      const next = new Audio(SILENT_MP3);
-      next.play().then(() => { primedAudio = next; }).catch(() => {});
-    }
     setTimeout(() => narrationGoTo(index + 1), 250);
-  });
+  }
+  narrationAudio.addEventListener('ended', onEnded);
 
   // Also listen for stall/error events on the audio element
   narrationAudio.addEventListener('stalled', () => {
