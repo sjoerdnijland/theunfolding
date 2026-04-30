@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v67';
+const READER_VERSION = 'v68';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -1081,13 +1081,11 @@ async function narrationGoTo(index) {
       });
     }
 
-    narrationRAF = requestAnimationFrame(syncWords);
   }
   function syncWords() {
+    if (!narrationAudio || !narrationActive) return;
     updateKaraoke();
-    if (narrationAudio && narrationActive) {
-      narrationRAF = requestAnimationFrame(syncWords);
-    }
+    narrationRAF = requestAnimationFrame(syncWords);
   }
   narrationRAF = requestAnimationFrame(syncWords);
 }
