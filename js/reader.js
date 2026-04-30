@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v28';
+const READER_VERSION = 'v29';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -1094,6 +1094,23 @@ function buildWordTimings(text, alignment) {
       merged.push(w);
     }
   }
+
+  // Fix em-dash / pure-punctuation timing lag:
+  // ElevenLabs gives near-zero duration to separators like — · … when surrounded
+  // by spaces. The karaoke advances through them instantly then stalls on the
+  // next word. Fix: if a word is purely non-alphanumeric AND its duration is
+  // under 60ms, donate its start time to the NEXT word so the highlight
+  // arrives on time. Keep the word in the array (display needs it).
+  const PUNCT_RE = /^[^\p{L}\p{N}]+$/u;
+  for (let i = 0; i < merged.length - 1; i++) {
+    const w = merged[i];
+    const duration = w.end - w.start;
+    if (PUNCT_RE.test(w.text) && duration < 0.06) {
+      // Give this word the next word's start time so it highlights then immediately
+      // passes — the next word is already at the right time.
+      merged[i + 1].start = Math.min(merged[i + 1].start, w.start);
+    }
+  }
   return merged;
 }
 
@@ -1821,6 +1838,9 @@ function getParaText(pid) {
   const clone = el.cloneNode(true);
   const toolbar = clone.querySelector('.para-toolbar');
   if (toolbar) toolbar.remove();
+  // Remove transcript speaker label — it's display-only, not part of TTS text
+  const txLabel = clone.querySelector('.transcript-speaker');
+  if (txLabel) txLabel.remove();
   let text = clone.innerText.trim();
   // Strip transmission wrapper chars for TTS — < YREUS | ERROR /> → YREUS ERROR
   if (el.closest('.code-block')) {
