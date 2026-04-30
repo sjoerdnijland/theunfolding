@@ -81,135 +81,168 @@
         "PARTICIPANTS:\n**Commander Astrid Vilde** — Mission Command\n**General Dennis Reed** — Mission Strategist\n**Professor Adrian Farley** — Chief Exo-Planetologist\n**CIX: Weaver**",
         {
           "text": "PROFESSOR FARLEY: So, now let's conclude this review. Long-term defensibility, resource vectors, and geological stability. Based on these parameters, the analysts have narrowed it down to two candidates: the Delta and the Plateau.",
-          "speaker": "adrian-farley"
+          "speaker": "adrian-farley",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: Vocal analysis indicates General Reed is eager to reach a conclusion. Body language: open posture. The raising of his eyebrows and shift in tone when referencing \"the Plateau\" hints at a preference over \"the Delta.\"",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "GENERAL REED: Professor, Mairee appeared to be a paradise. How is it that we are left choosing between a treacherous diva and a cold brute?",
-          "speaker": "dennis-reed"
+          "speaker": "dennis-reed",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: General Reed employs metaphorical language, anthropomorphizing the two locations. This suggests a worldview that perceives the locations as conscious, potentially hostile entities.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "PROFESSOR FARLEY: The Delta is a paradise, sure. Water, biomass, and a fairly stable climate. Open-field agriculture could supersede hydroponics within a decade.",
-          "speaker": "adrian-farley"
+          "speaker": "adrian-farley",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: \"Paradise.\" High biomass and abundant liquid H2O. However, the projection of \"within a decade\" is optimistic by a factor of three. Risk analysis reveals multiple high-threat variables: Competitive Pollination — at least 1,200 species of flora with hyper-aggressive airborne pollen analogs, predicting 97% contamination of Earth-native crops. Mimic Predation — fauna exhibiting chameleonic properties, including a predatory organism designated \"Shimmercat.\" Symbiotic Host Dependence — most abundant flora are obligate symbionts with the Myco-Rhizomic System; removal triggers neurotoxin release. Conclusion: The Delta is not a paradise. It is a complex and lethally integrated ecosystem.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "PROFESSOR FARLEY: Yes, it is also a metabolic trap, biochemical war on a microscopic level. The soil is a planetwide symbiotic matrix that constantly breaks down and rebuilds matter with terrifying efficiency. The water is clogged with complex prions that are difficult to filter out. To settle in the Delta is to build our home atop an enzymatic bonfire. It will welcome us, then it will devour us.",
-          "speaker": "adrian-farley"
+          "speaker": "adrian-farley",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: Confirmed. M.R.S. dominates Mairee's biology. Standard filtration is 61.3% effective. Professor Farley's statement is accurate, while poetic.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "COMMANDER VILDE: And the Plateau, Adrian?",
-          "speaker": "astrid-vilde"
+          "speaker": "astrid-vilde",
+          "transcript": true
         },
         {
           "text": "PROFESSOR FARLEY: The Plateau is geologically ancient. Stable. The air is thinner; the weather is colder. The native life is sparse. The challenges there are wind, cold, and radiation. We can shield against those, but it'll never be a resort — even with Köldur. We can extract heat from volcanic sources. Mining will be brutal.",
-          "speaker": "adrian-farley"
+          "speaker": "adrian-farley",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: Confirmed. Beta 2 geology is primarily basaltic shield, over 3.2 billion years old. Atmospheric pressure eight percent lower than Alpha 7. Temperatures range between minus 60 and 18 degrees Celcius. Life-forms are predominantly lithophilic, psychrophilic, and radiotrophic.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "COMMANDER VILDE: The Plateau offers a brutal existence. And we cannot eat rocks, Professor.",
-          "speaker": "astrid-vilde"
+          "speaker": "astrid-vilde",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: Significant emotional inflection detected. Commander Vilde is shifting the debate from abstract risk to the lived experience. She is weighing the possibility of psychological collapse.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "PROFESSOR FARLEY: With respect, Commander, a brutal existence is the only one Mairee offers. The planet looks like a bounty, but it's indeed deceptive. I prefer choosing the honesty of the Plateau's brutality over the treachery of the Delta. It is frozen rock or poison. Or no mission.",
-          "speaker": "adrian-farley"
+          "speaker": "adrian-farley",
+          "transcript": true
         },
         {
           "text": "GENERAL REED: Perhaps we are thinking about the foothold too statically. What if we don't build a single settlement, but a networked one?",
-          "speaker": "dennis-reed"
+          "speaker": "dennis-reed",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: A decentralized networked settlement. Instead of a single point of failure, it creates adaptive, interdependent nodes.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "GENERAL REED: We base our main mining and industrial operations on the Plateau. But our homestead… There is a location on the leeward side of this sickled mountain range. Shielded from the worst of the spore-winds. We'd still need to farm and forage the jungles and delta for biomass and water.",
-          "speaker": "dennis-reed"
+          "speaker": "dennis-reed",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: General Reed refers to Site Prospect Gamma-3 (Geo-Hash M-1.g3.m45), a geologically stable basin shielded by a semi-circular mountain range.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "PROFESSOR FARLEY: The Sickle as a homestead. It'll have a phenomenal panorama. The atmospheric models suggest it would be tenable, but only for a limited time. The Sickle doesn't have a stable climate — we can expect extreme shifts every four to five mayas.",
-          "speaker": "adrian-farley"
+          "speaker": "adrian-farley",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: Professor Farley's analysis is correct: transforming a static, multi-site settlement into a dynamic, migratory civilization. The logistical complexity has increased by an order of magnitude, but the long-term viability has hypothetically done the same.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "COMMANDER VILDE: Imagine a nomadic home, foraging a dangerous jungle, and mining resources in a frozen, radioactive wasteland. A society that can thrive but can never truly settle. If that's where we're headed, we have our work cut out for us.",
-          "speaker": "astrid-vilde"
+          "speaker": "astrid-vilde",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: Commander Vilde is no longer speaking directly to anyone. She is visualizing.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "GENERAL REED: Then we'd better call it. Let's not waste another click.",
-          "speaker": "dennis-reed"
+          "speaker": "dennis-reed",
+          "transcript": true
         },
         {
           "text": "PROFESSOR FARLEY: I can't wait to start working on PRECO with this beauty. It's a magnificent challenge, Commander, General.",
-          "speaker": "adrian-farley"
+          "speaker": "adrian-farley",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: 'PRECO.' Predictive Ecology. Even with infinite clicks, they would not be able to compute a reliable predictive model that ensures long-term defensibility. Both Reed and Farley display heightened engagement. A delay is detected in Commander Vilde's response, 4.8 seconds longer than her baseline.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "COMMANDER VILDE: It'll be an operational nightmare. It will require convoys along a Sickle–Delta–Plateau corridor to move energy cells, biofuel, food, and processed ore. Ulre Corbin — ",
-          "speaker": "astrid-vilde"
+          "speaker": "astrid-vilde",
+          "transcript": true
         },
         {
           "text": "GENERAL REED: He'll object. Strenuously.",
-          "speaker": "dennis-reed"
+          "speaker": "dennis-reed",
+          "transcript": true
         },
         {
           "text": "COMMANDER VILDE: Yes. It is also the ultimate stage for his particular… talent.",
-          "speaker": "astrid-vilde"
+          "speaker": "astrid-vilde",
+          "transcript": true
         },
         {
           "text": "GENERAL REED: Frame it as an equation only he can solve.",
-          "speaker": "dennis-reed"
+          "speaker": "dennis-reed",
+          "transcript": true
         },
         {
           "text": "PROFESSOR FARLEY: An equation with a million variables, all of them alive and actively hostile to any type of order.",
-          "speaker": "adrian-farley"
+          "speaker": "adrian-farley",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: Querying profile — Ulre Corbin, Head of Operations, Logistics Command. Unparalleled efficiency in resource allocation and supply chain optimization. Psychological Profile: High preference for order, predictability, and centralized control. Low tolerance for ambiguity. Conclusion: Commander Vilde's choice presents a paradox. The success of this decentralized strategy is critically dependent on Corbin's logistical resourcefulness — but it will require him to embrace responsiveness.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         {
           "text": "COMMANDER VILDE: His doctrine will be what keeps us sharp and alive. We will establish the Homestead at the Sickle, build industry at the Plateau, and gather resources from the Delta. That brings us to the last backlog item for this committee: naming the mission. The votes are in. *Freya*. With that, I am closing the review.",
-          "speaker": "astrid-vilde"
+          "speaker": "astrid-vilde",
+          "transcript": true
         },
         {
           "text": "CIX WEAVER: '*Freya*.' From Freyja, the Norse goddess of fertility, prosperity, and life. A traveler, riding a chariot and wearing a cloak of falcon feathers. Also a goddess of struggle and fate. This duality mirrors the nature of Mairee itself.",
-          "speaker": "gary"
+          "speaker": "gary",
+          "transcript": true
         },
         "EXECUTIVE DECISION: The quorum reaches consensus to ratify Mairee's societal model: a dynamic, multi-node migratory civilization. Establishment of Homestead 'Freya' at M-1.g3.m45 (The Sickle), foraging expeditions at M-1.a7.i23 (The Delta), industrial operations at M-1.b2.h88 (The Plateau), and establishing a supply corridor between them with orbital oversight."
       ]
