@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v48';
+const READER_VERSION = 'v49';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -258,7 +258,9 @@ async function startNarration() {
   narrationActive  = true;
   narrationIndex   = 0;
 
-  document.getElementById('narration-overlay').classList.add('active');
+  const overlayEl = document.getElementById('narration-overlay');
+  overlayEl.style.display = ''; // clear inline style set in HTML
+  overlayEl.classList.add('active');
   document.getElementById('narration-progress').style.display = 'block';
   document.getElementById('narration-controls').style.display = 'flex';
   document.body.style.overflow = 'hidden';
@@ -1058,7 +1060,9 @@ async function startNarrationFrom(pid) {
   narrationIndex = idx >= 0 ? idx : 0;
   narrationActive = true;
 
-  document.getElementById('narration-overlay').classList.add('active');
+  const overlayEl2 = document.getElementById('narration-overlay');
+  overlayEl2.style.display = ''; // clear inline style
+  overlayEl2.classList.add('active');
   document.getElementById('narration-progress').style.display = 'block';
   document.getElementById('narration-controls').style.display = 'flex';
   document.body.style.overflow = 'hidden';
