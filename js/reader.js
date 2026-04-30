@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v41';
+const READER_VERSION = 'v43';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -359,9 +359,8 @@ async function narrationGoTo(index) {
   narrationIndex = index;
   if (index >= narrationParaIds.length) {
     narrationLocked = false;
-    stopNarration();
-    // Chapter finished naturally — invite to podcast
-    setTimeout(() => showNarrationEndPrompt(), 800);
+    // Chapter finished — show end card INSIDE the overlay, don't close it
+    showNarrationChapterEnd();
     return;
   }
 
@@ -402,6 +401,13 @@ async function narrationGoTo(index) {
     const isCached = Object.keys(narrationCache).some(k => k.startsWith(nextCacheKey));
     const pauseMs = index === 0 ? 1200 : (isCached ? 800 : 1800);
     textEl.innerHTML = `<span class="narration-loading" style="opacity:0.25">✦</span>`;
+    // iOS fix: create a new primed Audio element BEFORE the await.
+    // Each await boundary can revoke iOS playback permission.
+    // We re-prime here so the next play() call has a gesture-unlocked element.
+    if (audioUnlocked && !primedAudio) {
+      const primer = new Audio(SILENT_MP3);
+      primer.play().then(() => { primedAudio = primer; }).catch(() => {});
+    }
     await new Promise(r => setTimeout(r, pauseMs));
     if (narrationIndex !== index) { narrationLocked = false; return; }
   }
@@ -2100,20 +2106,76 @@ function closePodcastPanel() {
   document.getElementById('podcast-panel').classList.remove('open');
 }
 
+function showNarrationChapterEnd() {
+  // Keep the narration overlay open — show end card inside it
+  const overlay  = document.getElementById('narration-overlay');
+  const textEl   = document.getElementById('narration-text');
+  const ctrlEl   = document.getElementById('narration-controls');
+  const progEl   = document.getElementById('narration-progress');
+  const countEl  = document.getElementById('narration-counter');
+  const hintEl   = document.getElementById('narration-comment-hint');
+
+  // Hide controls and progress bar
+  if (ctrlEl)  ctrlEl.style.display = 'none';
+  if (progEl)  progEl.style.display = 'none';
+  if (hintEl)  hintEl.classList.remove('visible');
+  if (countEl) countEl.innerHTML = '';
+
+  // Stop ambient music gracefully
+  stopAmbient();
+
+  const hasNext     = currentChapter < CHAPTER_COUNT;
+  const chName      = chapterNames[currentChapter] || ('Chapter ' + currentChapter);
+  const nextChNum   = currentChapter + 1;
+  const nextChName  = chapterNames[nextChNum]  || ('Chapter ' + nextChNum);
+
+  textEl.innerHTML = `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:28px;animation:nFadeIn 0.8s ease both">
+      <div style="font-family:var(--mono);font-size:0.55rem;letter-spacing:0.35em;color:var(--muted);text-transform:uppercase">
+        Chapter ${currentChapter} Complete
+      </div>
+      <div style="font-family:var(--serif);font-size:clamp(2rem,5vw,3.2rem);font-weight:300;color:var(--ivory);line-height:1.1;text-align:center">
+        ${escHtml(chName)}
+      </div>
+      <div style="font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--muted)">
+        Vera and Milo are ready to discuss it.
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+        <button onclick="narrationOpenPodcast()"
+          style="padding:12px 24px;border:1px solid var(--teal-soft);background:transparent;color:var(--teal-bright);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s"
+          onmouseover="this.style.background='rgba(74,154,170,0.12)'" onmouseout="this.style.background='transparent'">
+          🎙 Decoded — AI Podcast Review
+        </button>
+        ${hasNext ? `<button onclick="narrationContinueNext()"
+          style="padding:12px 24px;border:1px solid var(--rose);background:var(--rose);color:#060810;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s;font-weight:600"
+          onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+          Continue to Chapter ${nextChNum} →
+        </button>` : `
+        <button onclick="stopNarration()"
+          style="padding:12px 24px;border:1px solid var(--line-strong);background:transparent;color:var(--ivory-2);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px">
+          ✕ Close
+        </button>`}
+      </div>
+    </div>`;
+}
+
+function narrationOpenPodcast() {
+  stopNarration();
+  openPodcastPanel();
+}
+
+async function narrationContinueNext() {
+  const next = currentChapter + 1;
+  // Close overlay cleanly, load chapter, then auto-start narration
+  stopNarration();
+  await loadChapter(next);
+  // Small delay to let chapter render
+  setTimeout(() => startNarration(), 400);
+}
+
+// Keep old name as alias for toast-based usage (e.g. from chapter-end-card)
 function showNarrationEndPrompt() {
-  const el = document.getElementById('toast');
-  const hasNext = currentChapter < CHAPTER_COUNT;
-  el.innerHTML = `Chapter complete.`
-    + ` <button onclick="openPodcastPanel()" style="background:transparent;border:none;color:var(--teal-bright);font-family:var(--mono);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0;margin-left:4px">🎙 Decoded →</button>`
-    + (hasNext ? ` <button onclick="loadChapter(${currentChapter + 1})" style="background:transparent;border:none;color:var(--rose);font-family:var(--mono);font-size:inherit;cursor:pointer;text-decoration:underline;padding:0;margin-left:8px">Ch. ${currentChapter + 1} →</button>` : '');
-  el.classList.remove('hidden');
-  el.style.pointerEvents = 'auto';
-  clearTimeout(el._podcastTimer);
-  el._podcastTimer = setTimeout(() => {
-    el.classList.add('hidden');
-    el.style.pointerEvents = '';
-    el.innerHTML = '';
-  }, 10000);
+  showNarrationChapterEnd();
 }
 
 // Close panel on Escape (add to existing keydown handler)
