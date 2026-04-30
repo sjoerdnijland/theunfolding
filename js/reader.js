@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v40';
+const READER_VERSION = 'v41';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -541,7 +541,9 @@ async function narrationGoTo(index) {
   if (isTranscriptPara && speakerVoiceId) {
     segments = [{ text, voiceId: speakerVoiceId }];
   } else {
-    segments = buildSegments(text, speakerVoiceId, innerVoiceId);
+    // buildSegments needs rawText (has *asterisks* intact) to detect inner-voice
+    // italic spans. It already strips asterisks from ttsText before sending to TTS.
+    segments = buildSegments(rawText, speakerVoiceId, innerVoiceId);
   }
   const isStitched = segments.length > 1;
   const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
