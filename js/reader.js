@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v30';
+const READER_VERSION = 'v32';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -18,6 +18,37 @@ let narrationCurrentWords = [];
 let narrationLastMaleSpeaker   = null;
 let narrationLastFemaleSpeaker = null;
 let narrationLastSpeaker       = null; // last named speaker regardless of gender
+
+// ── SFX overlay state ─────────────────────────────────────
+const SFX_BASE_URL  = 'assets/sfx/';
+const sfxCache      = {};           // tag → Audio element (preloaded)
+const sfxPreflight  = new Set();    // tags currently loading
+let   sfxTriggers   = [];           // [{afterWordIdx, tag}] for current paragraph
+let   sfxFired      = new Set();    // keys fired this paragraph
+let   sfxVolume     = 0.75;         // independent volume knob
+
+function sfxLoad(tag) {
+  if (sfxCache[tag] || sfxPreflight.has(tag)) return;
+  sfxPreflight.add(tag);
+  const audio = new Audio(`${SFX_BASE_URL}${tag}.mp3`);
+  audio.preload = 'auto';
+  audio.addEventListener('canplaythrough', () => {
+    sfxCache[tag] = audio;
+    sfxPreflight.delete(tag);
+  }, { once: true });
+  audio.addEventListener('error', () => {
+    sfxPreflight.delete(tag);
+    console.warn(`[SFX] could not load: ${tag}.mp3`);
+  }, { once: true });
+}
+
+function sfxPlay(tag) {
+  const cached = sfxCache[tag];
+  if (!cached) { console.warn(`[SFX] not ready: ${tag}`); return; }
+  const clone = cached.cloneNode();   // allow overlapping plays
+  clone.volume = sfxVolume;
+  clone.play().catch(e => console.warn('[SFX] play failed:', e));
+}
 let multiVoiceEnabled          = localStorage.getItem('multiVoice') !== 'off'; // default ON
 
 function toggleMultiVoice() {
@@ -235,6 +266,7 @@ function stopNarration() {
   document.getElementById('narration-overlay').classList.remove('thread-open');
   narrationThreadOpen = false;
   document.body.style.overflow = '';
+  sfxTriggers = []; sfxFired = new Set();
   stopAmbientNow();
   document.getElementById('narration-comment-hint').classList.remove('visible');
 }
@@ -376,17 +408,46 @@ async function narrationGoTo(index) {
   let rawText = getRawText(pid) || text;
   if (!text) { narrationLocked = false; await narrationGoTo(index + 1); return; }
 
+  // ── Parse and strip SFX tags [#tag-name] ─────────────────
+  // Record position (afterWordIdx) and remove from both text and rawText
+  // so the narrator never speaks the tag text.
+  const SFX_TAG_RE = /\[#([a-z0-9_-]+)\]/g;
+  sfxTriggers = [];
+  sfxFired    = new Set();
+
+  function parseSfxTags(str) {
+    const triggers = [];
+    let wordCount = 0, lastIdx = 0, out = '';
+    for (const m of str.matchAll(SFX_TAG_RE)) {
+      const before = str.slice(lastIdx, m.index);
+      out += before;
+      wordCount += before.trim().split(/\s+/).filter(Boolean).length;
+      triggers.push({ afterWordIdx: wordCount - 1, tag: m[1] });
+      sfxLoad(m[1]); // preload immediately
+      lastIdx = m.index + m[0].length;
+    }
+    out += str.slice(lastIdx);
+    return { out: out.trim(), triggers };
+  }
+
+  const sfxParsed = parseSfxTags(text);
+  text    = sfxParsed.out;
+  sfxTriggers = sfxParsed.triggers;
+  // Strip tags from rawText too (keep same word positions)
+  rawText = rawText.replace(SFX_TAG_RE, '').trim();
+
   // Strip ALL-CAPS SPEAKER: prefix (e.g. "PROFESSOR FARLEY: ", "CIX WEAVER: ")
-  // from both TTS text and display rawText so the character's voice reads only
-  // their speech — the charLabel already shows the speaker name visually.
+  // text comes from getParaText which already strips .transcript-speaker span,
+  // so we must strip rawText independently using data-raw which still has the prefix.
   const TRANSCRIPT_PREFIX_RE = /^[A-Z][A-Z0-9 ]+:\s+/;
-  const prefixMatch = text.match(TRANSCRIPT_PREFIX_RE);
-  if (prefixMatch) {
-    const prefixLen = prefixMatch[0].length;
-    text    = text.slice(prefixLen);
-    // Strip from rawText too (rawText may have markup but same prefix is plain)
-    const rawPrefixMatch = rawText.match(TRANSCRIPT_PREFIX_RE);
-    if (rawPrefixMatch) rawText = rawText.slice(rawPrefixMatch[0].length);
+  const rawPrefixMatch = rawText.match(TRANSCRIPT_PREFIX_RE);
+  if (rawPrefixMatch) {
+    rawText = rawText.slice(rawPrefixMatch[0].length);
+  }
+  // Also strip from text in case it came through without the span being removed
+  const textPrefixMatch = text.match(TRANSCRIPT_PREFIX_RE);
+  if (textPrefixMatch) {
+    text = text.slice(textPrefixMatch[0].length);
   }
 
   // For transcript paragraphs, extract and preserve the speaker label
@@ -735,7 +796,7 @@ async function narrationGoTo(index) {
   // For code blocks: show TRANSMISSION label above word highlights
   // Transcript speaker label shown above karaoke text in narration overlay
   const transcriptLabelHtml = transcriptSpeakerLabel
-    ? `<div style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--teal-bright);opacity:0.7;margin-bottom:18px;text-align:center">${escHtml(transcriptSpeakerLabel)}</div>`
+    ? `<div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--teal-bright);opacity:0.75;margin-bottom:22px;text-align:center;display:flex;align-items:center;justify-content:center;gap:10px"><span style="display:inline-block;width:24px;height:1px;background:var(--teal-soft);opacity:0.5"></span>${escHtml(transcriptSpeakerLabel)}<span style="display:inline-block;width:24px;height:1px;background:var(--teal-soft);opacity:0.5"></span></div>`
     : '';
 
   if (isCode) {
@@ -799,6 +860,15 @@ async function narrationGoTo(index) {
     for (let i = 0; i < narrationCurrentWords.length; i++) {
       if (narrationCurrentWords[i].start <= t + LOOKAHEAD) currentIdx = i;
       else break;
+    }
+
+    // Fire SFX triggers — after the trigger word has been passed
+    for (const trigger of sfxTriggers) {
+      const key = trigger.afterWordIdx + ':' + trigger.tag;
+      if (!sfxFired.has(key) && currentIdx > trigger.afterWordIdx) {
+        sfxFired.add(key);
+        sfxPlay(trigger.tag);
+      }
     }
 
     if (isStitched && charWordRanges.length) {
@@ -1024,6 +1094,9 @@ async function prefetchNext(index) {
   let text    = getParaText(pid);
   let rawText = getRawText(pid) || text;
   if (!text) return;
+  // Strip SFX tags for cache key consistency with narrationGoTo
+  text    = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
+  rawText = rawText.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
   // Strip ALL-CAPS SPEAKER: prefix (same as narrationGoTo) for cache key match
   const _prefixRe = /^[A-Z][A-Z0-9 ]+:\s+/;
   const _pm = text.match(_prefixRe);
@@ -1140,22 +1213,6 @@ function buildWordTimings(text, alignment) {
     }
   }
 
-  // Fix em-dash / pure-punctuation timing lag:
-  // ElevenLabs gives near-zero duration to separators like — · … when surrounded
-  // by spaces. The karaoke advances through them instantly then stalls on the
-  // next word. Fix: if a word is purely non-alphanumeric AND its duration is
-  // under 60ms, donate its start time to the NEXT word so the highlight
-  // arrives on time. Keep the word in the array (display needs it).
-  const PUNCT_RE = /^[^\p{L}\p{N}]+$/u;
-  for (let i = 0; i < merged.length - 1; i++) {
-    const w = merged[i];
-    const duration = w.end - w.start;
-    if (PUNCT_RE.test(w.text) && duration < 0.06) {
-      // Give this word the next word's start time so it highlights then immediately
-      // passes — the next word is already at the right time.
-      merged[i + 1].start = Math.min(merged[i + 1].start, w.start);
-    }
-  }
   return merged;
 }
 
@@ -1887,6 +1944,8 @@ function getParaText(pid) {
   const txLabel = clone.querySelector('.transcript-speaker');
   if (txLabel) txLabel.remove();
   let text = clone.innerText.trim();
+  // Strip SFX tags — narrator should never speak [#tag-name]
+  text = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
   // Strip transmission wrapper chars for TTS — < YREUS | ERROR /> → YREUS ERROR
   if (el.closest('.code-block')) {
     text = text
