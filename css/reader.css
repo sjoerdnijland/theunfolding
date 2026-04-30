@@ -78,17 +78,117 @@
   margin: 0 auto;
   padding: 72px 56px 120px;
 }
+.ch-hero {
+  text-align: center;
+  padding: 56px 0 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
 .ch-eyebrow {
   font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--rose); margin-bottom: 12px;
+  text-transform: uppercase; color: var(--rose); margin-bottom: 16px;
 }
 .ch-title {
-  font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 300; color: var(--ivory); margin-bottom: 8px; line-height: 1.1;
+  font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 300; color: var(--ivory); margin-bottom: 10px; line-height: 1.1;
 }
 .ch-subtitle {
   font-family: var(--serif); font-style: italic; color: var(--muted);
-  font-size: 1.1rem; margin-bottom: 56px;
+  font-size: 1.05rem; margin-bottom: 40px;
+}
+
+/* ── Chapter narrate button ─────────────────────────────── */
+.ch-narrate-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.ch-narrate-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 18px 40px 18px 32px;
+  background: rgba(233,74,124,0.08);
+  border: 1px solid rgba(233,74,124,0.45);
+  border-radius: 60px;
+  color: var(--rose);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.15s;
+  box-shadow: 0 0 28px rgba(233,74,124,0.18), inset 0 0 20px rgba(233,74,124,0.04);
+  outline: none;
+}
+
+.ch-narrate-btn:hover,
+.ch-narrate-btn:focus-visible {
+  background: rgba(233,74,124,0.16);
+  border-color: rgba(233,74,124,0.8);
+  box-shadow: 0 0 48px rgba(233,74,124,0.35), 0 0 80px rgba(233,74,124,0.12), inset 0 0 24px rgba(233,74,124,0.08);
+  transform: translateY(-2px);
+}
+
+.ch-narrate-btn:active {
+  transform: scale(0.97) translateY(0);
+  box-shadow: 0 0 20px rgba(233,74,124,0.2);
+}
+
+/* Pulsing ring — idle attention animation */
+.ch-narrate-ring {
+  position: absolute;
+  inset: -1px;
+  border-radius: 60px;
+  border: 1px solid rgba(233,74,124,0.5);
+  animation: chNarrateRing 2.8s ease-out infinite;
+  pointer-events: none;
+}
+.ch-narrate-ring--2 {
+  animation-delay: 1.4s;
+}
+@keyframes chNarrateRing {
+  0%   { transform: scale(1);    opacity: 0.6; }
+  60%  { transform: scale(1.18); opacity: 0; }
+  100% { transform: scale(1.18); opacity: 0; }
+}
+
+/* Stop pulsing on hover — feels intentional */
+.ch-narrate-btn:hover .ch-narrate-ring,
+.ch-narrate-btn:focus-visible .ch-narrate-ring {
+  animation: none;
+  opacity: 0;
+}
+
+.ch-narrate-icon {
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+.ch-narrate-btn:hover .ch-narrate-icon {
+  transform: scale(1.2);
+}
+
+.ch-narrate-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+}
+
+.ch-narrate-hint {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin: 0;
 }
 .ch-divider {
   width: 48px; height: 1px; background: var(--rose); opacity: 0.5;
@@ -905,6 +1005,12 @@ body.wiki-hints-on .para.active .wiki-link {
   /* Chapter content */
   .chapter-content { padding: 32px 20px 100px; }
   .ch-title { font-size: clamp(1.8rem, 6vw, 2.6rem); }
+  .ch-hero { padding: 36px 0 40px; }
+  .ch-narrate-btn {
+    padding: 15px 28px 15px 22px;
+    font-size: 0.72rem;
+  }
+  .ch-narrate-label { letter-spacing: 0.16em; }
 
   /* Paragraph text */
   .para {
