@@ -115,7 +115,7 @@
   justify-content: center;
   width: 72px;
   height: 72px;
-  padding: 0;
+  padding: 0 0 0 4px; /* optical centre: ▶ glyph is slightly left-heavy */
   background: rgba(233,74,124,0.08);
   border: 1px solid rgba(233,74,124,0.45);
   border-radius: 50%;
@@ -1002,10 +1002,11 @@ body.wiki-hints-on .para.active .wiki-link {
   .ch-title { font-size: clamp(1.8rem, 6vw, 2.6rem); }
   .ch-hero { padding: 36px 0 40px; }
   .ch-narrate-btn {
-    padding: 15px 28px 15px 22px;
-    font-size: 0.72rem;
+    width: 60px;
+    height: 60px;
+    padding: 0 0 0 3px;
   }
-  .ch-narrate-label { letter-spacing: 0.16em; }
+  .ch-narrate-icon { font-size: 1.1rem; }
 
   /* Paragraph text */
   .para {
@@ -1072,43 +1073,56 @@ body.wiki-hints-on .para.active .wiki-link {
     margin-bottom: 12px;
   }
 
-  /* Controls: fixed at bottom, two rows */
+  /* Controls: single row of equal icon buttons, fixed at bottom */
   .narration-controls {
     flex-shrink: 0;
     width: 100%;
-    gap: 5px;
-    flex-wrap: wrap;
+    gap: 0;
+    flex-wrap: nowrap;
     justify-content: stretch;
-    padding: 8px 6px 12px;
-    background: rgba(6,22,25,0.97);
+    padding: 0;
+    background: rgba(6,22,25,0.98);
     border-top: 1px solid var(--line-strong);
     box-sizing: border-box;
   }
+  /* All buttons: equal flex, icon-sized, no text overflow */
   .nc-btn {
-    padding: 9px 8px;
-    font-size: 0.58rem;
-    letter-spacing: 0.06em;
+    flex: 1 1 0;
     min-width: 0;
+    padding: 14px 4px;
+    font-size: 0.95rem;      /* icon size */
+    letter-spacing: 0;
+    gap: 0;
+    border-radius: 0;
+    border: none;
+    border-right: 1px solid var(--line);
+    justify-content: center;
+    background: rgba(6,22,25,0.98);
   }
-
-  /* Row 1: Prev · Play · Next — equal thirds, guaranteed single line */
-  button.nc-btn[onclick="narrationPrev()"] {
-    order: 1; flex: 1 1 0; min-width: 0;
-  }
+  .nc-btn:last-child { border-right: none; }
+  /* Hide label, show only icon on mobile */
+  .nc-btn .nc-lbl { display: none; }
+  .nc-btn .nc-icon { font-size: 1.05rem; line-height: 1; }
+  /* Play/Pause: slightly accent colour, not full rose background */
   #nc-play-btn {
-    order: 2; flex: 2 1 0; min-width: 0;
+    order: 2; flex: 1 1 0;
+    color: var(--rose);
+    background: rgba(233,74,124,0.08);
+    border-right: 1px solid var(--line);
   }
-  button.nc-btn[onclick="narrationNext()"] {
-    order: 3; flex: 1 1 0; min-width: 0;
+  #nc-play-btn.primary {
+    background: rgba(233,74,124,0.15);
+    color: var(--rose);
   }
-  /* Force row break between transport and secondary */
-  .nc-row-break { flex-basis: 100%; height: 0; order: 35; margin: 0; }
-
-  /* Row 2: secondary controls — equal width */
-  #nc-thread-btn                           { order: 4; flex: 1 1 0; min-width: 0; }
-  #nc-voices-btn                           { order: 5; flex: 1 1 0; min-width: 0; }
-  #nc-music-btn                            { order: 6; flex: 1 1 0; min-width: 0; }
-  button.nc-btn[onclick="stopNarration()"] { order: 7; flex: 1 1 0; min-width: 0; }
+  /* Transport row order */
+  button.nc-btn[onclick="narrationPrev()"]  { order: 1; }
+  button.nc-btn[onclick="narrationNext()"]  { order: 3; }
+  /* Secondary row — hide the row break, put everything on one line */
+  .nc-row-break                             { display: none; }
+  #nc-thread-btn                            { order: 4; }
+  #nc-voices-btn                            { order: 5; }
+  #nc-music-btn                             { order: 6; }
+  button.nc-btn[onclick="stopNarration()"]  { order: 7; }
 
   /* Comment hint: redundant on mobile */
   .narration-comment-hint { display: none; }
