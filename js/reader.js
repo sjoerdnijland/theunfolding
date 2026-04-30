@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v44';
+const READER_VERSION = 'v45';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -568,35 +568,34 @@ async function narrationGoTo(index) {
       textEl.innerHTML = `<span class="narration-loading">the stone is listening…</span>`;
       loadingShown = true;
     }
+    // Fetch with 25s timeout — prevents iOS Safari from hanging when the
+    // browser is backgrounded or the screen locks mid-fetch.
+    function narrateFetch(body) {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), 25000);
+      return fetch(NARRATE_URL, {
+        method: 'POST', signal: ctrl.signal,
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPA_KEY },
+        body: JSON.stringify(body)
+      }).then(r => r.json()).finally(() => clearTimeout(t));
+    }
+
     try {
       if (segments.length === 1) {
-        // Single segment — normal fetch
         const seg = segments[0];
-        const res = await fetch(NARRATE_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
-          body: JSON.stringify({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) })
-        });
-        data = await res.json();
+        data = await narrateFetch(Object.assign({ text: seg.text }, seg.voiceId ? { voiceId: seg.voiceId } : {}));
         if (data.error) throw new Error(data.error);
       } else {
         // Multiple segments — fetch each and stitch alignment
-        const results = await Promise.all(segments.map(seg =>
-          fetch(NARRATE_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
-            body: JSON.stringify({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) })
-          }).then(r => r.json()).catch(e => ({ error: e.message }))
-        ));
-        // If any segment failed, fall back to narrator-only for whole paragraph
+        const results = await Promise.all(
+          segments.map(seg =>
+            narrateFetch(Object.assign({ text: seg.text }, seg.voiceId ? { voiceId: seg.voiceId } : {}))
+              .catch(e => ({ error: e.message }))
+          )
+        );
         const anyFailed = results.some(r => r.error);
         if (anyFailed) {
-          const res = await fetch(NARRATE_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
-            body: JSON.stringify({ text })
-          });
-          data = await res.json();
+          data = await narrateFetch({ text });
         } else {
           data = stitchSegments(results);
         }
@@ -605,7 +604,12 @@ async function narrationGoTo(index) {
       cacheSet(cacheKey, data);
     } catch(e) {
       if (loadingTimer) clearTimeout(loadingTimer);
-      textEl.innerHTML = `<span class="narration-loading">Could not load audio — ${e.message}</span>`;
+      const isTimeout = e.name === 'AbortError' || e.message.includes('abort');
+      textEl.innerHTML = `<span class="narration-loading" style="color:var(--muted)">${isTimeout ? 'Connection timed out.' : 'Could not load audio.'}</span>
+        <div style="margin-top:16px">
+          <button onclick="narrationGoTo(${index})" style="background:transparent;border:1px solid var(--line-strong);color:var(--ivory);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;padding:8px 18px;cursor:pointer;border-radius:2px">↺ Retry</button>
+          <button onclick="narrationGoTo(${index + 1})" style="background:transparent;border:none;color:var(--muted);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;padding:8px 14px;cursor:pointer">Skip →</button>
+        </div>`;
       narrationLocked = false;
       return;
     }
@@ -1155,21 +1159,24 @@ async function prefetchNext(index) {
   prefetchInFlight.add(cacheKey);
   try {
     let data;
-    if (segments.length === 1) {
-      const seg = segments[0];
+    const pfFetch = async (body) => {
+      const ctrl = new AbortController();
+      setTimeout(() => ctrl.abort(), 20000);
       const res = await fetch(NARRATE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
-        body: JSON.stringify({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) })
+        body: JSON.stringify(body),
+        signal: ctrl.signal,
       });
-      data = await res.json();
+      return res.json();
+    };
+    if (segments.length === 1) {
+      const seg = segments[0];
+      data = await pfFetch({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) });
     } else {
       const results = await Promise.all(segments.map(seg =>
-        fetch(NARRATE_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
-          body: JSON.stringify({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) })
-        }).then(r => r.json()).catch(e => ({ error: e.message }))
+        pfFetch({ text: seg.text, ...(seg.voiceId ? { voiceId: seg.voiceId } : {}) })
+          .catch(e => ({ error: e.message }))
       ));
       data = results.some(r => r.error) ? null : stitchSegments(results);
     }
