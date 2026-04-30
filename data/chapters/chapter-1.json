@@ -49,7 +49,7 @@
     },
     {
       "paragraphs": [
-        "Two beats passed. The composite door hissed open. Ulre Corbin, Head of Logistics, stepped inside the doorway. He noticed the waste of a dead console still drawing power. His black uniform blended into the dim light. He pulled his gloves tighter, finger by finger. The sound of leather against leather was crisp and methodical, as if he were preparing to take the situation into a choke hold.",
+        "Two beats passed. The composite door hissed open. Ulre Corbin, Head of Logistics, stepped inside the doorway. He noticed the waste of a dead console still drawing power. His black uniform blended into the dim light. He pulled his gloves tighter, finger by finger. [#blood-rush-ears] The sound of leather against leather was crisp and methodical, [#blood-rush-ears] as if he were preparing to take the situation into a choke hold.",
         {
           "text": "\"Orbital Command agrees,\" Ulre relayed. \"We initiate the ESP.\"",
           "speaker": "ulre-corbin"
@@ -59,7 +59,7 @@
           "speaker": "astrid-vilde"
         },
         {
-          "text": "\"Irrelevant,\" Ulre scoffed, finally stepping inside. His polished boots creaked. *Crr-eak. Crr-eak.* \"We have to move now, Commander. Thousands of lives. Limited resources. Every beat we wait…\" He stood firm, letting the silence speak for him. \"The protocol, Commander. Only your word is left. The situation calls for it.\"",
+          "text": "\"Irrelevant,\" Ulre scoffed, finally stepping inside. His polished boots creaked. [#double-squeek] *Crr-eak. Crr-eak.* \"We have to move now, Commander. Thousands of lives. Limited resources. Every beat we wait…\" He stood firm, letting the silence speak for him. \"The protocol, Commander. Only your word is left. The situation calls for it.\"",
           "speaker": "ulre-corbin"
         },
         {
@@ -89,11 +89,11 @@
       "heading": "UPLINK · TEMPORAL ORIENTATION",
       "paragraphs": [
         "Forget looking at your watch. Time aboard the fleet is something you feel. Here, the crew acclimates to the rhythms of a ship's gravity cyclers, tuned to Mairee-time.",
-        "**Pulse** — 120 seconds. A hitch in the hum.",
-        "**Beat** — 6 pulses · 12 minutes. A skipped heartbeat of the ship. Long enough to make you wonder if the engines died.",
-        "**Thud** — 6 beats · 72 minutes. The entire ship shudders. A deep vibration that pulls through the deck plates.",
-        "**Click** — 18 thuds · 21.6 hours. The sound of a bolt slamming home in a prison door. Inner cycler changeover.",
-        "**Cycle **— 60 clicks · 54 Earth days. Shipwide zero-g cycle turnover. Make sure you're strapped in.",
+        "[#pulse] **Pulse** — 120 seconds. A hitch in the hum.",
+        "[#beat] **Beat** — 6 pulses · 12 minutes. A skipped heartbeat of the ship. Long enough to make you wonder if the engines died.",
+        "[#thud] **Thud** — 6 beats · 72 minutes. The entire ship shudders. [#thud] A deep vibration that pulls through the deck plates.",
+        "[#click] **Click** — 18 thuds · 21.6 hours. The sound of a bolt slamming home in a prison door. Inner cycler changeover.",
+        "[#cycle] **Cycle **— 60 clicks · 54 Earth days. Shipwide zero-g cycle turnover. Make sure you're strapped in.",
         "**Maya **(Mairee Year) — 6 cycles · 324 Earth days.",
         "**Emwic** (Mairee Week) — 6 clicks · 5.4 Earth days.",
         "**Maryon** (Maireean Month) — ½ cycle (30 clicks) · 27 Earth days."
@@ -101,7 +101,7 @@
     },
     {
       "paragraphs": [
-        "Next thud, Commander Astrid Vilde walked the central corridor to the Hearth of the Homestead. As she entered the dome, anxious voices carried to her. She marched past the speaker stand, stopping at the edge of the platform. Below her, a sea of faces upturned. Tiny Eyewyn orbs drifted around her head like mosquitoes, their lenses dilating and contracting, beaming her face to every soul on the planet. She raised a hand, and the murmuring ceased.",
+        "Next thud, Commander Astrid Vilde walked the central corridor to the Hearth of the Homestead. [#murmers] As she entered the dome, anxious voices carried to her. She marched past the speaker stand, stopping at the edge of the platform. Below her, a sea of faces upturned. Tiny Eyewyn orbs drifted around her head like mosquitoes, their lenses dilating and contracting, beaming her face to every soul on the planet. She raised a hand, and the murmuring ceased.",
         {
           "text": "\"Our connection with Sol is severed,\" she stated. She didn't shout. She let the acoustics of the dome carry her words. Her voice, honed by years of command, reached the farthest corners of the dome. \"The Fold is silent. We've lost contact with Mimir, Alsvin, Muninn, and Hugin. The *Brisinger* breached the Fold, but we're struggling to re-establish communication with her. We do not yet know why or for how long. We only know this: for now, Mairee is a secluded island.\"",
           "speaker": "astrid-vilde"
@@ -123,7 +123,7 @@
         },
         "A single voice from the back called out, cracking with hesitation. \"Together.\"",
         "Another voice joined. Then ten. Then a hundred. The sound swelled into a wave that vibrated through the floorboards.",
-        "She raised her fist. The chanting stopped at once as the dome went black. The Eyewyns fell abruptly to the floor. A momentary flicker of ruby light slashed across the dome, the telltale discharge of a heavy-grade gravitic suppressor. The field locked in, making the air thick. An invisible pressure pinned Astrid. Her muscles and throat constricted. Her vision blurred with black and red from the suppressor's flash. Through the haze, she saw heavy boots advancing in silent rhythm.",
+        "She raised her fist. The chanting stopped at once as the dome went black. The Eyewyns fell abruptly to the floor. [#gravitic-discharge] A momentary flicker of ruby light slashed across the dome, the telltale discharge of a heavy-grade gravitic suppressor. The field locked in, making the air thick. An invisible pressure pinned Astrid. Her muscles and throat constricted. Her vision blurred with black and red from the suppressor's flash. [#marching] Through the haze, she saw heavy boots advancing in silent rhythm.",
         "Guardians."
       ]
     },
