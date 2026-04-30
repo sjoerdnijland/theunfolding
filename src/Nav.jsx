@@ -42,7 +42,7 @@ function Nav({ onOpenTweaks, tweaksOn }) {
         <a href="reader.html" target="_blank" rel="noopener">Read</a>
         <a href="map.html" target="unfolding-map" rel="noopener">Map</a>
         <a href="index.html#author">Author</a>
-        <a href="index.html#buy" className="nav-buy-btn always-show">Available 1 May</a>
+        <a href="index.html#buy" className="nav-buy-btn always-show">Buy Now</a>
       </div>
       <style>{`
         .nav-scrolled {
@@ -92,6 +92,26 @@ function Nav({ onOpenTweaks, tweaksOn }) {
         }
         .nav-logo:hover .flower-svg {
           filter: drop-shadow(0 0 10px rgba(233,74,124,0.95));
+        }
+
+        /* Buy button */
+        .nav-buy-btn {
+          padding: 6px 16px;
+          border: 1px solid var(--rose);
+          background: transparent;
+          color: var(--rose) !important;
+          font-family: var(--mono);
+          font-size: 0.68rem;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          text-decoration: none;
+          border-radius: 2px;
+          transition: background 0.2s, color 0.2s;
+          white-space: nowrap;
+        }
+        .nav-buy-btn:hover {
+          background: var(--rose);
+          color: #060810 !important;
         }
       `}</style>
     </nav>
