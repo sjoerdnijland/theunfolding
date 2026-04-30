@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v58';
+const READER_VERSION = 'v59';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -409,7 +409,7 @@ async function narrationGoTo(index) {
   if (scene !== prevScene) {
     const nextCacheKey = READER_VERSION + '|' + pid + '|'; // prefix check
     const isCached = Object.keys(narrationCache).some(k => k.startsWith(nextCacheKey));
-    const pauseMs = index === 0 ? 1200 : (isCached ? 800 : 1800);
+    const pauseMs = index === 0 ? 800 : (isCached ? 400 : 800);
     textEl.innerHTML = `<span class="narration-loading" style="opacity:0.25">✦</span>`;
     // iOS fix: create a new primed Audio element BEFORE the await.
     // Each await boundary can revoke iOS playback permission.
@@ -921,16 +921,29 @@ async function narrationGoTo(index) {
       // Audio is paused but we think we're playing — try to resume
       console.warn('[watchdog] audio paused unexpectedly, resuming');
       narrationAudio.play().catch(() => {
-        // If resume fails, advance to next paragraph
+        // Resume failed — re-prime and advance
         console.warn('[watchdog] resume failed, advancing');
         clearTimeout(watchdogTimer);
-        narrationGoTo(index + 1);
+        if (audioUnlocked) {
+          const next = new Audio(SILENT_MP3);
+          next.play().then(() => { primedAudio = next; narrationGoTo(index + 1); })
+              .catch(() => { narrationGoTo(index + 1); });
+        } else {
+          narrationGoTo(index + 1);
+        }
       });
     } else if (ct === watchdogLastTime && !narrationAudio.paused) {
       // currentTime frozen while not paused — stalled decode or iOS suspend
       console.warn('[watchdog] audio frozen at', ct, '— advancing');
       clearTimeout(watchdogTimer);
-      narrationGoTo(index + 1);
+      // Re-prime before advancing so next play() has iOS permission
+      if (audioUnlocked) {
+        const next = new Audio(SILENT_MP3);
+        next.play().then(() => { primedAudio = next; narrationGoTo(index + 1); })
+            .catch(() => { narrationGoTo(index + 1); });
+      } else {
+        narrationGoTo(index + 1);
+      }
       return;
     }
     watchdogLastTime = ct;
@@ -954,7 +967,14 @@ async function narrationGoTo(index) {
       const el = document.getElementById('nw-' + w.idx);
       if (el) el.className = `nw ${w.fmt || ''} spoken`;
     });
-    setTimeout(() => narrationGoTo(index + 1), 1200);
+    // iOS: audio ended events ARE trusted — create next primedAudio here
+    // so it's ready before the next narrationGoTo awaits the fetch.
+    // This is the only reliable way to chain playback on iOS Safari.
+    if (audioUnlocked) {
+      const next = new Audio(SILENT_MP3);
+      next.play().then(() => { primedAudio = next; }).catch(() => {});
+    }
+    setTimeout(() => narrationGoTo(index + 1), 250);
   });
 
   // Also listen for stall/error events on the audio element
