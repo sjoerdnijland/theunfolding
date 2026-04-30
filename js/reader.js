@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v66';
+const READER_VERSION = 'v67';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -921,6 +921,9 @@ async function narrationGoTo(index) {
 
   // Start playback + karaoke sync
   narrationLocked = false; // unlock — audio is playing, navigation is safe again
+  // Dual sync: RAF for smooth desktop, timeupdate as iOS fallback
+  // iOS throttles RAF at audio seams — timeupdate fires from audio element itself
+  narrationAudio.addEventListener('timeupdate', updateKaraoke);
 
   // Watchdog: if audio stalls (iOS suspend, play() silent fail, decode hang),
   // force-advance after 4s of no progress. Clears itself when audio ends normally.
@@ -962,6 +965,7 @@ async function narrationGoTo(index) {
   narrationAudio.addEventListener('ended', () => {
     clearTimeout(watchdogTimer);
     cancelAnimationFrame(narrationRAF);
+    narrationAudio.removeEventListener('timeupdate', updateKaraoke);
     URL.revokeObjectURL(audioUrl);
     narrationCurrentWords.forEach(w => {
       const el = document.getElementById('nw-' + w.idx);
@@ -981,16 +985,14 @@ async function narrationGoTo(index) {
   narrationAudio.addEventListener('error', (e) => {
     console.warn('[narrate] audio error:', e);
     clearTimeout(watchdogTimer);
+    narrationAudio.removeEventListener('timeupdate', updateKaraoke);
     // Wait 2s before advancing — transient decode errors often self-resolve
     setTimeout(() => { if (narrationActive) narrationGoTo(index + 1); }, 2000);
   });
 
-  function syncWords() {
-    // Always reschedule RAF — even if paused, so we resume highlighting
-    // as soon as audio unpauses (iOS buffers briefly after play())
-    if (!narrationAudio || !narrationActive) { return; } // only stop if narration ended
-    narrationRAF = requestAnimationFrame(syncWords);
-    if (narrationAudio.paused) return; // skip highlights while paused, but RAF keeps running
+  function updateKaraoke() {
+    if (!narrationAudio || !narrationActive) return;
+    if (narrationAudio.paused) return;
     const t   = narrationAudio.currentTime;
     const dur = narrationAudio.duration || 9999;
 
@@ -1079,7 +1081,13 @@ async function narrationGoTo(index) {
       });
     }
 
-    // RAF rescheduled at top of syncWords
+    narrationRAF = requestAnimationFrame(syncWords);
+  }
+  function syncWords() {
+    updateKaraoke();
+    if (narrationAudio && narrationActive) {
+      narrationRAF = requestAnimationFrame(syncWords);
+    }
   }
   narrationRAF = requestAnimationFrame(syncWords);
 }
