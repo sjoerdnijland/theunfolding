@@ -706,6 +706,12 @@ body.wiki-hints-on .para.active .wiki-link {
 }
 .narration-overlay.active { display: flex; }
 
+/* Chapter end card fade-in */
+@keyframes nFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .narration-text {
   max-width: 760px;
   width: 100%;
@@ -928,57 +934,79 @@ body.wiki-hints-on .para.active .wiki-link {
   }
   .reader-sidebar.open { transform: none; }
 
-  /* Narration overlay — mobile optimised */
+  /* Narration overlay — mobile: fills screen, text scrollable above fixed controls */
   .narration-overlay {
-    padding: 72px 20px 160px;
+    padding: 60px 20px 0;
     align-items: center;
     justify-content: flex-start;
-    overflow-y: auto;
+    overflow: hidden;          /* overlay itself doesn't scroll */
+    display: flex;
+    flex-direction: column;
   }
-  /* When thread is open, push narration text up */
-  .narration-overlay.thread-open {
-    padding-bottom: 62vh;
-  }
+  /* Text area scrolls independently, leaves room for fixed controls */
   .narration-text {
-    font-size: 1.12rem;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 1.08rem;
     line-height: 1.85;
     text-align: center;
     max-width: 100%;
-    padding: 0 4px;
+    padding: 12px 4px 20px;
+    width: 100%;
+  }
+  /* When thread is open, shrink text area */
+  .narration-overlay.thread-open .narration-text {
+    max-height: 38vh;
   }
   .narration-counter {
+    flex-shrink: 0;
     font-size: 0.58rem;
     flex-wrap: wrap;
     justify-content: center;
     gap: 4px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
-  /* Controls: two rows — primary actions on top, secondary on bottom */
+
+  /* Controls: fixed at bottom, two rows */
   .narration-controls {
-    gap: 6px;
+    flex-shrink: 0;
+    width: 100%;
+    gap: 5px;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 0 8px;
-    max-width: 100vw;
+    justify-content: stretch;
+    padding: 8px 6px 12px;
+    background: rgba(6,22,25,0.97);
+    border-top: 1px solid var(--line-strong);
+    box-sizing: border-box;
   }
   .nc-btn {
-    padding: 8px 12px;
-    font-size: 0.6rem;
-    letter-spacing: 0.07em;
+    padding: 9px 8px;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    min-width: 0;
   }
-  /* Row 1: the three core transport controls — always visible, never wrap */
-  .narration-controls { max-width: 100vw; padding: 0 6px; }
-  button.nc-btn[onclick="narrationPrev()"]  { order: 1; flex: 1 1 auto; }
-  #nc-play-btn                              { order: 2; flex: 2 1 auto; min-width: 80px; }
-  button.nc-btn[onclick="narrationNext()"]  { order: 3; flex: 1 1 auto; }
-  /* Row 2: secondary controls */
-  #nc-thread-btn                            { order: 4; flex: 1 1 auto; }
-  #nc-voices-btn                            { order: 5; flex: 1 1 auto; }
-  #nc-music-btn                             { order: 6; flex: 1 1 auto; }
-  button.nc-btn[onclick="stopNarration()"]  { order: 7; flex: 1 1 auto; }
-  /* .nc-row-break is a zero-height full-width flex child that forces a row break */
-  .nc-row-break { flex-basis: 100%; height: 0; order: 35; }
-  /* Comment hint: hide on mobile (thread button in controls is enough) */
+
+  /* Row 1: Prev · Play · Next — equal thirds, guaranteed single line */
+  button.nc-btn[onclick="narrationPrev()"] {
+    order: 1; flex: 1 1 0; min-width: 0;
+  }
+  #nc-play-btn {
+    order: 2; flex: 2 1 0; min-width: 0;
+  }
+  button.nc-btn[onclick="narrationNext()"] {
+    order: 3; flex: 1 1 0; min-width: 0;
+  }
+  /* Force row break between transport and secondary */
+  .nc-row-break { flex-basis: 100%; height: 0; order: 35; margin: 0; }
+
+  /* Row 2: secondary controls — equal width */
+  #nc-thread-btn                           { order: 4; flex: 1 1 0; min-width: 0; }
+  #nc-voices-btn                           { order: 5; flex: 1 1 0; min-width: 0; }
+  #nc-music-btn                            { order: 6; flex: 1 1 0; min-width: 0; }
+  button.nc-btn[onclick="stopNarration()"] { order: 7; flex: 1 1 0; min-width: 0; }
+
+  /* Comment hint: redundant on mobile */
   .narration-comment-hint { display: none; }
 
   /* Narration thread — full-width bottom sheet */
