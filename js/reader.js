@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v70';
+const READER_VERSION = 'v71';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -903,27 +903,20 @@ async function narrationGoTo(index) {
     }).join('');
   }
 
-  // Create audio from base64
-  const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
-  const audioUrl  = URL.createObjectURL(audioBlob);
-  narrationAudio   = new Audio(audioUrl);
-  narrationPlaying = true;
-
-  document.getElementById('nc-play-btn').innerHTML = '<span class="nc-icon">⏸</span><span class="nc-lbl">Pause</span>';
-
   prefetchNext(index + 1);
   narrationLocked = false;
+  narrationPlaying = true;
+  document.getElementById('nc-play-btn').innerHTML = '<span class="nc-icon">\u23f8</span><span class="nc-lbl">Pause</span>';
 
-  // Guard: only ONE advance can happen per paragraph
+  // Guard: only ONE advance per paragraph
   let advanced = false;
-  let watchdogTimer = null; // hoisted so advance() can clearTimeout
+  let watchdogTimer = null;
   function advance() {
     if (advanced) return;
     advanced = true;
     clearTimeout(watchdogTimer);
     cancelAnimationFrame(narrationRAF);
-    narrationAudio.removeEventListener('timeupdate', updateKaraoke);
-    URL.revokeObjectURL(audioUrl);
+    if (narrationAudio) narrationAudio.removeEventListener('timeupdate', updateKaraoke);
     narrationCurrentWords.forEach(w => {
       const el = document.getElementById('nw-' + w.idx);
       if (el) el.className = 'nw ' + (w.fmt || '') + ' spoken';
@@ -931,38 +924,92 @@ async function narrationGoTo(index) {
     setTimeout(() => { if (narrationActive) narrationGoTo(index + 1); }, 250);
   }
 
-  // ONLY the ended event advances normally
-  narrationAudio.addEventListener('ended', advance);
-
-  // Watchdog: retries play() if stalled — does NOT advance
-  // Only advances as last resort after 30s of total silence
-  let watchdogLastTime = -1;
-  let watchdogStallCount = 0;
+  // Watchdog: retry play() only, advance only after 30s truly stuck
+  let watchdogLastTime = -1, watchdogStallCount = 0;
   function watchdogTick() {
     if (!narrationAudio || !narrationActive || advanced) return;
     const ct = narrationAudio.currentTime;
     if (ct === watchdogLastTime) {
       watchdogStallCount++;
-      if (narrationAudio.paused) {
-        narrationAudio.play().catch(() => {});
-      }
-      // Only advance after 6 consecutive stall ticks (30s) — truly stuck
+      if (narrationAudio.paused && narrationPlaying) narrationAudio.play().catch(() => {});
       if (watchdogStallCount >= 6) { advance(); return; }
-    } else {
-      watchdogStallCount = 0;
-    }
+    } else { watchdogStallCount = 0; }
     watchdogLastTime = ct;
     watchdogTimer = setTimeout(watchdogTick, 5000);
   }
   watchdogTimer = setTimeout(watchdogTick, 5000);
 
-  // Dual sync: RAF for desktop smoothness, timeupdate for iOS
-  narrationAudio.addEventListener('timeupdate', updateKaraoke);
+  if (IS_IOS && isStitched && data.segmentMeta && data.segmentMeta.length > 1) {
+    // iOS: play each segment as a separate Audio element to avoid
+    // MP3 frame-boundary currentTime reset in concatenated blobs.
+    const fullBytes = atob(data.audio);
+    const segMeta = data.segmentMeta;
+    let segTimeBase = 0;
 
-  narrationAudio.play().catch(e => {
-    // Log only — keepalive session should handle iOS trust
-    console.warn('[narrate] play() failed:', e.name);
-  });
+    function playSegment(si) {
+      if (!narrationActive || advanced) return;
+      if (si >= segMeta.length) { advance(); return; }
+      const meta = segMeta[si];
+      const bytes = fullBytes.slice(meta.byteStart, meta.byteEnd);
+      const arr = new Uint8Array(bytes.length);
+      for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
+      const url = URL.createObjectURL(new Blob([arr], { type: 'audio/mpeg' }));
+      const audio = new Audio(url);
+      narrationAudio = audio;
+
+      const base = segTimeBase;
+      const lastSegEnds = segMeta[segMeta.length-1].alignment && segMeta[segMeta.length-1].alignment.character_end_times_seconds;
+      const totalDur = segMeta[segMeta.length-1].timeOffset + (lastSegEnds && lastSegEnds.length ? lastSegEnds[lastSegEnds.length-1] : 0);
+
+      function segUpdate() {
+        if (!narrationActive || advanced || narrationAudio !== audio) return;
+        if (audio.paused) return;
+        const t = audio.currentTime + base;
+        document.getElementById('narration-progress-bar').style.width = (totalDur > 0 ? Math.min(100, t/totalDur*100) : 0) + '%';
+        const LOOKAHEAD = 0.08;
+        let ci = -1;
+        for (let i = 0; i < narrationCurrentWords.length; i++) {
+          if (narrationCurrentWords[i].start <= t + LOOKAHEAD) ci = i;
+          else break;
+        }
+        narrationCurrentWords.forEach((w, i) => {
+          const el = document.getElementById('nw-' + w.idx);
+          if (!el) return;
+          const isCh = !!getCharVoiceForWord(i);
+          if (i < ci)       el.className = 'nw '+(w.fmt||'')+' spoken'  +(isCh?' char-voice':'');
+          else if (i === ci) el.className = 'nw '+(w.fmt||'')+' current' +(isCh?' char-voice':'');
+          else               el.className = 'nw '+(w.fmt||'')            +(isCh?' char-voice':'');
+        });
+        const cv = getCharVoiceForWord(ci);
+        if (cv) { const e2 = Object.values(wikiById).find(e => e.voice_id===cv); if(e2){charLabel.textContent='\u25cf '+e2.name.split(' ')[0];charLabel.style.opacity='1';} }
+        else charLabel.style.opacity = '0';
+        for (const tr of sfxTriggers) { const k=tr.afterWordIdx+':'+tr.tag; if(!sfxFired.has(k)&&ci>tr.afterWordIdx){sfxFired.add(k);sfxPlay(tr.tag);} }
+      }
+
+      audio.addEventListener('timeupdate', segUpdate);
+      (function raf() { if (!narrationActive||advanced||narrationAudio!==audio) return; segUpdate(); narrationRAF=requestAnimationFrame(raf); })();
+
+      audio.addEventListener('ended', () => {
+        cancelAnimationFrame(narrationRAF);
+        audio.removeEventListener('timeupdate', segUpdate);
+        URL.revokeObjectURL(url);
+        const se = meta.alignment && meta.alignment.character_end_times_seconds;
+        segTimeBase += se && se.length ? se[se.length-1] : (meta.byteEnd-meta.byteStart)/16000;
+        playSegment(si + 1);
+      });
+      audio.play().catch(e => console.warn('[seg'+si+'] play:', e.name));
+    }
+    playSegment(0);
+
+  } else {
+    // Desktop/single-segment: standard stitched blob
+    const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
+    const audioUrl  = URL.createObjectURL(audioBlob);
+    narrationAudio  = new Audio(audioUrl);
+    narrationAudio.addEventListener('timeupdate', updateKaraoke);
+    narrationAudio.addEventListener('ended', () => { URL.revokeObjectURL(audioUrl); advance(); });
+    narrationAudio.play().catch(e => console.warn('[narrate] play:', e.name));
+  }
 
   function updateKaraoke() {
     if (!narrationAudio || !narrationActive) return;
