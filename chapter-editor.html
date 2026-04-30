@@ -589,6 +589,8 @@ function updateParaInnerVoice(id, pi, voiceId) {
   refreshPreview();
   toast(voiceId ? `Inner voice set` : 'Inner voice cleared');
 }
+
+function updateParaSpeaker(id, pi, speakerId) {
   const sec = sections.find(s => s.id === id);
   if (!sec) return;
   const current = sec.paragraphs[pi];
