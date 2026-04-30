@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v72';
+const READER_VERSION = 'v74';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -912,11 +912,9 @@ async function narrationGoTo(index) {
 
   // Guard: only ONE advance per paragraph
   let advanced = false;
-  let watchdogTimer = null;
   function advance() {
     if (advanced) return;
     advanced = true;
-    clearTimeout(watchdogTimer);
     cancelAnimationFrame(narrationRAF);
     if (narrationAudio) narrationAudio.removeEventListener('timeupdate', updateKaraoke);
     narrationCurrentWords.forEach(w => {
@@ -926,24 +924,10 @@ async function narrationGoTo(index) {
     setTimeout(() => { if (narrationActive) narrationGoTo(index + 1); }, 250);
   }
 
-  // Watchdog: retry play() only, advance only after 30s truly stuck
-  let watchdogLastTime = -1, watchdogStallCount = 0;
-  function watchdogTick() {
-    if (!narrationAudio || !narrationActive || advanced) return;
-    const ct = narrationAudio.currentTime;
-    if (ct === watchdogLastTime) {
-      watchdogStallCount++;
-      if (narrationAudio.paused && narrationPlaying) narrationAudio.play().catch(() => {});
-      if (watchdogStallCount >= 6) { advance(); return; }
-    } else { watchdogStallCount = 0; }
-    watchdogLastTime = ct;
-    watchdogTimer = setTimeout(watchdogTick, 5000);
-  }
-  watchdogTimer = setTimeout(watchdogTick, 5000);
-
   if (IS_IOS && isStitched && data.segmentMeta && data.segmentMeta.length > 1) {
     // iOS: play each segment as a separate Audio element to avoid
     // MP3 frame-boundary currentTime reset in concatenated blobs.
+    console.log('[iOS] sequential segments:', data.segmentMeta.length, 'IS_IOS:', IS_IOS);
     const fullBytes = atob(data.audio);
     const segMeta = data.segmentMeta;
     let segTimeBase = 0;
@@ -1004,7 +988,8 @@ async function narrationGoTo(index) {
     playSegment(0);
 
   } else {
-    // Desktop/single-segment: standard stitched blob
+    // Desktop/single-segment or non-stitched: standard blob playback
+    console.log('[audio] standard path, IS_IOS:', IS_IOS, 'isStitched:', isStitched, 'segMeta:', data.segmentMeta?.length);
     const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
     const audioUrl  = URL.createObjectURL(audioBlob);
     narrationAudio  = new Audio(audioUrl);
