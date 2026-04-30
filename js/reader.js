@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v36';
+const READER_VERSION = 'v37';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -1518,7 +1518,8 @@ function renderChapter(ch) {
         const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice || null : null;
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
-        const linked = autoLink(parseMarkup(text));
+        const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
+        const linked = autoLink(parseMarkup(displayText));
         paraIndex++;
         return `
           <p class="para epigraph-para${count > 0 ? ' has-comments' : ''}"
@@ -1594,7 +1595,8 @@ function renderChapter(ch) {
       const pid   = `ch${currentChapter}-p${paraIndex}`;
       const count = commentCounts[pid] || 0;
       const isFirst = paraIndex === 0;
-      const linked  = autoLink(parseMarkup(text));
+      const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
+      const linked  = autoLink(parseMarkup(displayText));
       paraIndex++;
       html += `
         <p class="para${isFirst ? ' drop-cap' : ''}${count > 0 ? ' has-comments' : ''}"
@@ -1961,8 +1963,8 @@ function getParaText(pid) {
   const txLabel = clone.querySelector('.transcript-speaker');
   if (txLabel) txLabel.remove();
   let text = clone.innerText.trim();
-  // Strip SFX tags — narrator should never speak [#tag-name]
-  text = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
+  // Note: SFX tags [#tag] are NOT stripped here — narrationGoTo needs them
+  // to register triggers before stripping. They are stripped after parseSfxTags.
   // Strip transmission wrapper chars for TTS — < YREUS | ERROR /> → YREUS ERROR
   if (el.closest('.code-block')) {
     text = text
