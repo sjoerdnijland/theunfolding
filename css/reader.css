@@ -113,16 +113,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  padding: 18px 40px 18px 32px;
+  width: 72px;
+  height: 72px;
+  padding: 0;
   background: rgba(233,74,124,0.08);
   border: 1px solid rgba(233,74,124,0.45);
-  border-radius: 60px;
+  border-radius: 50%;
   color: var(--rose);
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
   cursor: pointer;
   transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.15s;
   box-shadow: 0 0 28px rgba(233,74,124,0.18), inset 0 0 20px rgba(233,74,124,0.04);
@@ -168,18 +165,16 @@
 }
 
 .ch-narrate-icon {
-  font-size: 1rem;
+  font-size: 1.3rem;
   line-height: 1;
+  margin-left: 3px; /* optical centre for ▶ */
   transition: transform 0.2s;
 }
 .ch-narrate-btn:hover .ch-narrate-icon {
   transform: scale(1.2);
 }
 
-.ch-narrate-label {
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
-}
+
 
 .ch-narrate-hint {
   font-family: var(--mono);
