@@ -11,7 +11,7 @@
     "image": "/assets/char/oliver_savannen.png",
     "mj_prompt": "A lean fifteen-year-old boy with curly black hair and intense blue eyes, wearing an oversized grey colony jumpsuit, crouched in a dim industrial corridor surrounded by exposed wiring and faint blue Grid terminal light, expression of quiet grief and fierce focus, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "oliver-savannen",
-    "voice_id": "jCxbkArMg3nfWZAmsdkB"
+    "voice_id": "jCxbkArMg3nfWZAmsdkB",
   },
   {
     "name": "Astrid Vilde",
@@ -235,7 +235,7 @@
     "image": "assets/char/læsa.png",
     "mj_prompt": "A luminous young woman with unearthly sugarcane-blue hair standing at the edge of a bioluminescent jungle clearing at night, skin faintly glowing, expression of serene inhuman calm, alien flowers turning toward her, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "læsa",
-    "voice_id": "C5GgjTyGQ2aQx8uMiLh9"
+    "voice_id": "thfYL0Elyru2qqTtNQsE"
   },
   {
     "name": "Lena Hague",
