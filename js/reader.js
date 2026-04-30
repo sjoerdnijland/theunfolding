@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v37';
+const READER_VERSION = 'v38';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -434,11 +434,14 @@ async function narrationGoTo(index) {
     return { out: out.trim(), triggers };
   }
 
-  const sfxParsed = parseSfxTags(text);
-  text    = sfxParsed.out;
+  // Parse SFX tags from rawText (data-raw) — it always has original text.
+  // getParaText reads innerText which no longer has [#tag] since renderChapter strips them.
+  // rawText comes from getRawText(data-raw) which is set before any stripping.
+  const sfxParsed = parseSfxTags(rawText);
   sfxTriggers = sfxParsed.triggers;
-  // Strip tags from rawText too (keep same word positions)
-  rawText = rawText.replace(SFX_TAG_RE, '').trim();
+  // Strip tags from both text and rawText before TTS/display
+  rawText = sfxParsed.out;
+  text    = text.replace(SFX_TAG_RE, '').trim();
 
   // Strip ALL-CAPS SPEAKER: prefix ONLY for transcript-flagged paragraphs.
   // Gated on isTranscriptPara to avoid stripping headings like PARTICIPANTS:
