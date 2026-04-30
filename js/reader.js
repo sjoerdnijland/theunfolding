@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v32';
+const READER_VERSION = 'v33';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -20,34 +20,28 @@ let narrationLastFemaleSpeaker = null;
 let narrationLastSpeaker       = null; // last named speaker regardless of gender
 
 // ── SFX overlay state ─────────────────────────────────────
-const SFX_BASE_URL  = 'assets/sfx/';
-const sfxCache      = {};           // tag → Audio element (preloaded)
-const sfxPreflight  = new Set();    // tags currently loading
-let   sfxTriggers   = [];           // [{afterWordIdx, tag}] for current paragraph
-let   sfxFired      = new Set();    // keys fired this paragraph
-let   sfxVolume     = 0.75;         // independent volume knob
+const SFX_BASE_URL = 'assets/sfx/';
+const sfxCache     = {};
+const sfxPreflight = new Set();
+let sfxTriggers    = [];
+let sfxFired       = new Set();
+let sfxVolume      = 0.75;
 
 function sfxLoad(tag) {
   if (sfxCache[tag] || sfxPreflight.has(tag)) return;
   sfxPreflight.add(tag);
-  const audio = new Audio(`${SFX_BASE_URL}${tag}.mp3`);
-  audio.preload = 'auto';
-  audio.addEventListener('canplaythrough', () => {
-    sfxCache[tag] = audio;
-    sfxPreflight.delete(tag);
-  }, { once: true });
-  audio.addEventListener('error', () => {
-    sfxPreflight.delete(tag);
-    console.warn(`[SFX] could not load: ${tag}.mp3`);
-  }, { once: true });
+  const a = new Audio(SFX_BASE_URL + tag + '.mp3');
+  a.preload = 'auto';
+  a.addEventListener('canplaythrough', () => { sfxCache[tag] = a; sfxPreflight.delete(tag); }, { once: true });
+  a.addEventListener('error', () => { sfxPreflight.delete(tag); console.warn('[SFX] could not load: ' + tag + '.mp3'); }, { once: true });
 }
 
 function sfxPlay(tag) {
   const cached = sfxCache[tag];
-  if (!cached) { console.warn(`[SFX] not ready: ${tag}`); return; }
-  const clone = cached.cloneNode();   // allow overlapping plays
+  if (!cached) { console.warn('[SFX] not ready: ' + tag); return; }
+  const clone = cached.cloneNode();
   clone.volume = sfxVolume;
-  clone.play().catch(e => console.warn('[SFX] play failed:', e));
+  clone.play().catch(function(e) { console.warn('[SFX] play failed:', e); });
 }
 let multiVoiceEnabled          = localStorage.getItem('multiVoice') !== 'off'; // default ON
 
@@ -436,18 +430,16 @@ async function narrationGoTo(index) {
   // Strip tags from rawText too (keep same word positions)
   rawText = rawText.replace(SFX_TAG_RE, '').trim();
 
-  // Strip ALL-CAPS SPEAKER: prefix (e.g. "PROFESSOR FARLEY: ", "CIX WEAVER: ")
-  // text comes from getParaText which already strips .transcript-speaker span,
-  // so we must strip rawText independently using data-raw which still has the prefix.
-  const TRANSCRIPT_PREFIX_RE = /^[A-Z][A-Z0-9 ]+:\s+/;
-  const rawPrefixMatch = rawText.match(TRANSCRIPT_PREFIX_RE);
-  if (rawPrefixMatch) {
-    rawText = rawText.slice(rawPrefixMatch[0].length);
-  }
-  // Also strip from text in case it came through without the span being removed
-  const textPrefixMatch = text.match(TRANSCRIPT_PREFIX_RE);
-  if (textPrefixMatch) {
-    text = text.slice(textPrefixMatch[0].length);
+  // Strip ALL-CAPS SPEAKER: prefix ONLY for transcript-flagged paragraphs.
+  // Gated on isTranscriptPara to avoid stripping headings like PARTICIPANTS:
+  // which are not speaker labels but structural headings.
+  // Uses space (not \s) after colon to avoid matching colon+newline.
+  const TRANSCRIPT_PREFIX_RE = /^[A-Z][A-Z0-9 ·]+: /;
+  if (isTranscriptPara) {
+    const rawPrefixMatch = rawText.match(TRANSCRIPT_PREFIX_RE);
+    if (rawPrefixMatch) rawText = rawText.slice(rawPrefixMatch[0].length);
+    const textPrefixMatch = text.match(TRANSCRIPT_PREFIX_RE);
+    if (textPrefixMatch) text = text.slice(textPrefixMatch[0].length);
   }
 
   // For transcript paragraphs, extract and preserve the speaker label
@@ -517,7 +509,14 @@ async function narrationGoTo(index) {
   } // end multiVoiceEnabled
 
   // ── Segment-based fetch: narrator for prose, character for quoted dialogue ──
-  const segments   = buildSegments(text, speakerVoiceId, innerVoiceId);
+  // For transcript paragraphs the entire text is the character's speech —
+  // force a single segment with their voice, bypassing quote detection.
+  let segments;
+  if (isTranscriptPara && speakerVoiceId) {
+    segments = [{ text, voiceId: speakerVoiceId }];
+  } else {
+    segments = buildSegments(text, speakerVoiceId, innerVoiceId);
+  }
   const isStitched = segments.length > 1;
   const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
 
@@ -796,7 +795,15 @@ async function narrationGoTo(index) {
   // For code blocks: show TRANSMISSION label above word highlights
   // Transcript speaker label shown above karaoke text in narration overlay
   const transcriptLabelHtml = transcriptSpeakerLabel
-    ? `<div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--teal-bright);opacity:0.75;margin-bottom:22px;text-align:center;display:flex;align-items:center;justify-content:center;gap:10px"><span style="display:inline-block;width:24px;height:1px;background:var(--teal-soft);opacity:0.5"></span>${escHtml(transcriptSpeakerLabel)}<span style="display:inline-block;width:24px;height:1px;background:var(--teal-soft);opacity:0.5"></span></div>`
+    ? `<div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.32em;text-transform:uppercase;color:#6ecfde;margin-bottom:24px;text-align:center;display:flex;align-items:center;justify-content:center;gap:12px">
+        <span style="display:inline-block;width:28px;height:1px;background:#4a9aaa;opacity:0.6"></span>
+        <span style="display:inline-flex;align-items:center;gap:7px">
+          <span class="tx-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#6ecfde;box-shadow:0 0 8px #6ecfde;animation:txPulse 1.4s ease-in-out infinite"></span>
+          ${escHtml(transcriptSpeakerLabel)}
+        </span>
+        <span style="display:inline-block;width:28px;height:1px;background:#4a9aaa;opacity:0.6"></span>
+      </div>
+      <style>.tx-dot{} @keyframes txPulse{0%,100%{opacity:0.4;transform:scale(0.85)}50%{opacity:1;transform:scale(1.2)}}</style>`
     : '';
 
   if (isCode) {
