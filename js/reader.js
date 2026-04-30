@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v50';
+const READER_VERSION = 'v52';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -81,11 +81,11 @@ function applyMultiVoiceBtn() {
   const btn = document.getElementById('nc-voices-btn');
   if (!btn) return;
   if (multiVoiceEnabled) {
-    btn.textContent = '◉ All voices';
+    btn.innerHTML = '<span class="nc-icon">◉</span><span class="nc-lbl">All voices</span>';
     btn.style.color = 'var(--rose)';
     btn.style.borderColor = 'var(--rose)';
   } else {
-    btn.textContent = '◎ Narrator';
+    btn.innerHTML = '<span class="nc-icon">◎</span><span class="nc-lbl">Narrator</span>';
     btn.style.color = '';
     btn.style.borderColor = '';
   }
@@ -98,7 +98,8 @@ let ambientEnabled = localStorage.getItem('ambientMusic') !== 'off';
 function applyAmbientBtn() {
   const btn = document.getElementById('nc-music-btn');
   if (!btn) return;
-  btn.textContent = ambientEnabled ? '♪ Music on' : '♪ Music off';
+  const lbl = ambientEnabled ? 'Music on' : 'Music off';
+  btn.innerHTML = '<span class="nc-icon">♪</span><span class="nc-lbl">' + lbl + '</span>';
   btn.style.color = ambientEnabled ? 'var(--teal-bright)' : '';
   btn.style.borderColor = ambientEnabled ? 'var(--teal-soft)' : '';
 }
