@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v45';
+const READER_VERSION = 'v46';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -246,6 +246,12 @@ function unlockAudio() {
 
 async function startNarration() {
   unlockAudio(); // must be called within user gesture, before any await
+
+  // Force-reset any stuck state from a previous attempt (e.g. iOS suspended fetch)
+  narrationLocked  = false;
+  if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
+  cancelAnimationFrame(narrationRAF);
+
   narrationParaIds = getNarrableParagraphs();
   if (!narrationParaIds.length) return;
 
@@ -264,6 +270,7 @@ async function startNarration() {
 function stopNarration() {
   narrationActive  = false;
   narrationPlaying = false;
+  narrationLocked  = false; // always reset — prevents stuck state on re-open
   if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
   cancelAnimationFrame(narrationRAF);
 
@@ -1034,6 +1041,7 @@ function narrationNext() {
 
 async function startNarrationFrom(pid) {
   unlockAudio(); // must be within user gesture
+  narrationLocked = false; // reset any stuck state
   narrationParaIds = getNarrableParagraphs();
   const idx = narrationParaIds.indexOf(pid);
   narrationIndex = idx >= 0 ? idx : 0;
