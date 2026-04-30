@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v76';
+const READER_VERSION = 'v79';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -1079,7 +1079,17 @@ async function narrationGoTo(index) {
         segTimeBase += se && se.length ? se[se.length-1] : (meta.byteEnd-meta.byteStart)/16000;
         playSegment(si + 1);
       });
-      audio.play().catch(e => console.warn('[seg'+si+'] play:', e.name));
+      audio.play().catch(e => {
+        console.warn('[seg'+si+'] play:', e.name);
+        if (IS_IOS && e.name === 'NotAllowedError') showIosTapPrompt();
+      });
+      // Proactive check: if audio hasn't started after 1.5s and user hasn't paused
+      if (IS_IOS) setTimeout(() => {
+        if (!narrationActive || advanced) return;
+        const btn = document.getElementById('nc-play-btn');
+        const showingPause = btn && btn.querySelector('.nc-icon') && btn.querySelector('.nc-icon').textContent === '⏸';
+        if (audio.paused && showingPause) showIosTapPrompt();
+      }, 1500);
     }
     playSegment(0);
 
@@ -1090,7 +1100,24 @@ async function narrationGoTo(index) {
     narrationAudio  = new Audio(audioUrl);
     narrationAudio.addEventListener('timeupdate', updateKaraoke);
     narrationAudio.addEventListener('ended', () => { URL.revokeObjectURL(audioUrl); advance(); });
-    narrationAudio.play().catch(e => console.warn('[narrate] play:', e.name));
+    narrationAudio.addEventListener('pause', () => {
+      if (!narrationPlaying || !narrationActive || advanced) return;
+      setTimeout(() => {
+        if (!narrationPlaying || !narrationActive || advanced) return;
+        if (narrationAudio && narrationAudio.paused) narrationAudio.play().catch(() => {});
+      }, 300);
+    });
+    narrationAudio.play().catch(e => {
+      console.warn('[narrate] play:', e.name);
+      if (IS_IOS && e.name === 'NotAllowedError') showIosTapPrompt();
+    });
+    // Proactive check for iOS: if audio hasn't started after 1.5s and user hasn't paused
+    if (IS_IOS) setTimeout(() => {
+      if (!narrationActive || advanced) return;
+      const btn = document.getElementById('nc-play-btn');
+      const showingPause = btn && btn.querySelector('.nc-icon') && btn.querySelector('.nc-icon').textContent === '⏸';
+      if (narrationAudio && narrationAudio.paused && showingPause) showIosTapPrompt();
+    }, 1500);
   }
 
   function updateKaraoke() {
