@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v88';
+const READER_VERSION = 'v90';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -35,18 +35,24 @@ function sfxLoad(tag) {
 let sfxActive = null; // currently playing SFX element
 
 function sfxPlay(tag) {
-  // Stop any currently playing SFX
   if (sfxActive) { sfxActive.pause(); sfxActive.currentTime = 0; sfxActive = null; }
-
-  // Always create a fresh Audio element at play time.
-  // iOS: pre-created elements predate the audio session and are not trusted.
-  // A fresh new Audio() while persistentAudio is actively playing IS trusted.
-  // Desktop: works fine too — cache is still preloaded for fast network fetch.
-  const audio = new Audio(SFX_BASE_URL + tag + '.mp3');
-  audio.volume = sfxVolume;
-  sfxActive = audio;
-  audio.play().catch(function(e) { console.warn('[SFX] play failed for ' + tag + ':', e); });
-  audio.addEventListener('ended', function() { if (sfxActive === audio) sfxActive = null; }, { once: true });
+  const url = SFX_BASE_URL + tag + '.mp3';
+  if (IS_IOS && sfxAudio) {
+    // iOS: src-swap the persistent trusted element — only reliable method
+    // from non-gesture callbacks (RAF/timeupdate)
+    sfxAudio.src = url;
+    sfxAudio.volume = sfxVolume;
+    sfxAudio.currentTime = 0;
+    sfxActive = sfxAudio;
+    sfxAudio.play().catch(e => console.warn('[SFX] play failed:', tag, e.name));
+    sfxAudio.addEventListener('ended', () => { if (sfxActive === sfxAudio) sfxActive = null; }, { once: true });
+  } else {
+    const audio = new Audio(url);
+    audio.volume = sfxVolume;
+    sfxActive = audio;
+    audio.play().catch(e => console.warn('[SFX] play failed:', tag, e.name));
+    audio.addEventListener('ended', () => { if (sfxActive === audio) sfxActive = null; }, { once: true });
+  }
 }
 
 function sfxStopActive() {
@@ -242,8 +248,11 @@ function unlockAudio() {
   persistentAudio.volume = 0.001; // near-silent but iOS won't suspend as 'background-only'
   persistentAudio.play().then(() => {
     audioUnlocked = true;
-
   }).catch(() => {});
+  // Persistent SFX element — created in same gesture, src-swapped per effect on iOS
+  sfxAudio = new Audio(SILENT_MP3);
+  sfxAudio.volume = sfxVolume;
+  sfxAudio.play().then(() => { sfxAudio.pause(); sfxAudio.currentTime = 0; }).catch(() => {});
 }
 
 async function startNarration() {
@@ -258,6 +267,9 @@ async function startNarration() {
     unlockAudio();
   } else if (persistentAudio.paused) {
     persistentAudio.play().catch(() => {});
+    if (sfxAudio && sfxAudio.paused && !sfxActive) {
+      sfxAudio.play().then(() => { sfxAudio.pause(); }).catch(() => {});
+    }
   }
 
   narrationParaIds = getNarrableParagraphs();
@@ -1493,8 +1505,8 @@ let wikiById         = {};   // id → entry  (for speaker tag lookups)
 let commentCounts    = {};   // paragraphId → count
 
 // ── Chapters — loaded from data/chapters/chapter-N.json ──
-const CHAPTER_COUNT = 3;
-const chapterNames  = { 1:'Assembly', 2:'The Startend', 3:'Doubt and Certainty' }; // increment as you add files
+const CHAPTER_COUNT = 4;
+const chapterNames  = { 1:'Assembly', 2:'The Startend', 3:'Doubt and Certainty', 4:'The Grid' }; // increment as you add files
 
 async function loadChapter(n) {
   currentChapter = n;
