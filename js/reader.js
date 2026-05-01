@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v87';
+const READER_VERSION = 'v88';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -38,12 +38,15 @@ function sfxPlay(tag) {
   // Stop any currently playing SFX
   if (sfxActive) { sfxActive.pause(); sfxActive.currentTime = 0; sfxActive = null; }
 
-  const src = SFX_BASE_URL + tag + '.mp3';
-  const audio = sfxCache[tag] ? sfxCache[tag].cloneNode() : new Audio(src);
+  // Always create a fresh Audio element at play time.
+  // iOS: pre-created elements predate the audio session and are not trusted.
+  // A fresh new Audio() while persistentAudio is actively playing IS trusted.
+  // Desktop: works fine too — cache is still preloaded for fast network fetch.
+  const audio = new Audio(SFX_BASE_URL + tag + '.mp3');
   audio.volume = sfxVolume;
   sfxActive = audio;
   audio.play().catch(function(e) { console.warn('[SFX] play failed for ' + tag + ':', e); });
-  audio.addEventListener('ended', function() { if (sfxActive === audio) sfxActive = null; });
+  audio.addEventListener('ended', function() { if (sfxActive === audio) sfxActive = null; }, { once: true });
 }
 
 function sfxStopActive() {
@@ -239,11 +242,7 @@ function unlockAudio() {
   persistentAudio.volume = 0.001; // near-silent but iOS won't suspend as 'background-only'
   persistentAudio.play().then(() => {
     audioUnlocked = true;
-    // Touch all already-cached SFX elements so iOS grants them session trust
-    Object.values(sfxCache).forEach(a => {
-      a.volume = 0;
-      a.play().then(() => { a.pause(); a.currentTime = 0; a.volume = sfxVolume; }).catch(() => {});
-    });
+
   }).catch(() => {});
 }
 
