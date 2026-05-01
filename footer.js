@@ -29,13 +29,16 @@
             <a href="reader.html" target="_blank" rel="noopener">Read</a>
             <a href="https://discord.gg/MWejqk8a" target="_blank" rel="noopener">Discord</a>
             <span style={{margin: '0 8px', opacity: 0.3}}>·</span>
-            <a href="https://www.instagram.com/theunfoldingbook" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.instagram.com/theunfoldingbook" target="_blank" rel="noopener" style={{display:'inline-flex',alignItems:'center',gap:'5px'}}>
+              <img src="meta/insta.png" width="14" height="14" alt="Instagram" style="border-radius:3px;vertical-align:middle" />
+              Instagram
+            </a>
           </div>
 
         </div>
         <div class="footer-bottom">
           <span>© 2026 STUART NYLAND · ALL RIGHTS, QUIETLY, RESERVED.</span>
-          <span>UNFOLDING.IO</span>
+          <span>THE-UNFOLDING.NET</span>
         </div>
       </div>
     </footer>`;
