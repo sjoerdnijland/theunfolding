@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v81';
+const READER_VERSION = 'v83';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -1572,6 +1572,8 @@ async function loadChapter(n) {
 function injectReaderEndCard(n, chapterTitle) {
   const el = document.getElementById('chapter-content');
   if (!el) return;
+  // Remove any existing end card first (narration may have added one already)
+  el.querySelectorAll('.chapter-end-card').forEach(c => c.remove());
   const hasNext = n < CHAPTER_COUNT;
   const card = document.createElement('div');
   card.className = 'chapter-end-card visible';
@@ -1964,6 +1966,8 @@ function renderChapter(ch) {
       <button class="cec-btn secondary" onclick="openPodcastPanel()">🎙 Decoded — AI podcast review</button>
       ${hasNext ? `<button class="cec-btn primary" onclick="loadChapter(${currentChapter + 1})">Continue to Chapter ${currentChapter + 1} →</button>` : ''}
     </div>`;
+  // Remove any existing reader end card to avoid duplicates
+  document.getElementById('chapter-content')?.querySelectorAll('.chapter-end-card').forEach(c => c.remove());
   el.appendChild(endCard);
 
   // Show the FAB
@@ -2401,74 +2405,15 @@ function closePodcastPanel() {
 }
 
 function showNarrationChapterEnd() {
-  // Keep the narration overlay open — show end card inside it
-  const overlay  = document.getElementById('narration-overlay');
-  const textEl   = document.getElementById('narration-text');
-  const ctrlEl   = document.getElementById('narration-controls');
-  const progEl   = document.getElementById('narration-progress');
-  const countEl  = document.getElementById('narration-counter');
-  const hintEl   = document.getElementById('narration-comment-hint');
-
-  // Hide controls and progress bar
-  if (ctrlEl)  ctrlEl.style.display = 'none';
-  if (progEl)  progEl.style.display = 'none';
-  if (hintEl)  hintEl.classList.remove('visible');
-  if (countEl) countEl.innerHTML = '';
-
-  // Stop ambient music gracefully
-  stopAmbient();
-
-  const hasNext     = currentChapter < CHAPTER_COUNT;
-  const chName      = chapterNames[currentChapter] || ('Chapter ' + currentChapter);
-  const nextChNum   = currentChapter + 1;
-  const nextChName  = chapterNames[nextChNum]  || ('Chapter ' + nextChNum);
-
-  textEl.innerHTML = `
-    <div style="display:flex;flex-direction:column;align-items:center;gap:28px;animation:nFadeIn 0.8s ease both">
-      <div style="font-family:var(--mono);font-size:0.55rem;letter-spacing:0.35em;color:var(--muted);text-transform:uppercase">
-        Chapter ${currentChapter} Complete
-      </div>
-      <div style="font-family:var(--serif);font-size:clamp(2rem,5vw,3.2rem);font-weight:300;color:var(--ivory);line-height:1.1;text-align:center">
-        ${escHtml(chName)}
-      </div>
-      <div style="font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--muted)">
-        Vera and Milo are ready to discuss it.
-      </div>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px">
-        <button onclick="narrationOpenPodcast()"
-          style="padding:12px 24px;border:1px solid var(--teal-soft);background:transparent;color:var(--teal-bright);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s"
-          onmouseover="this.style.background='rgba(74,154,170,0.12)'" onmouseout="this.style.background='transparent'">
-          🎙 Decoded — AI Podcast Review
-        </button>
-        ${hasNext ? `<button onclick="narrationContinueNext()"
-          style="padding:12px 24px;border:1px solid var(--rose);background:var(--rose);color:#060810;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s;font-weight:600"
-          onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-          Continue to Chapter ${nextChNum} →
-        </button>` : `
-        <button onclick="stopNarration()"
-          style="padding:12px 24px;border:1px solid var(--line-strong);background:transparent;color:var(--ivory-2);font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;border-radius:2px">
-          ✕ Close
-        </button>`}
-      </div>
-      ${!hasNext ? `
-      <div style="margin-top:12px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;align-items:center;gap:16px;max-width:460px">
-        <p style="font-family:var(--serif);font-style:italic;color:var(--muted);font-size:0.95rem;text-align:center;margin:0">
-          The story continues. The hardcover arrives June 1st.
-        </p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-          <a href="https://www.kobo.com/ww/en/ebook/the-unfolding-15" target="_blank" rel="noopener"
-            style="padding:10px 20px;border:1px solid var(--rose);background:rgba(233,74,124,0.1);color:var(--rose);font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all 0.2s"
-            onmouseover="this.style.background='rgba(233,74,124,0.2)'" onmouseout="this.style.background='rgba(233,74,124,0.1)'">
-            ◈ Buy the eBook — €12.50
-          </a>
-          <a href="https://www.goodreads.com/book/show/251501817-the-unfolding" target="_blank" rel="noopener"
-            style="padding:10px 20px;border:1px solid var(--line-strong);background:transparent;color:var(--ivory-2);font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all 0.2s"
-            onmouseover="this.style.borderColor='var(--ivory-2)'" onmouseout="this.style.borderColor='var(--line-strong)'">
-            ★ Add on Goodreads
-          </a>
-        </div>
-      </div>` : ''}
-    </div>`;
+  // Delegate to the single reader end card — no duplicate logic needed
+  injectReaderEndCard(currentChapter, chapterNames[currentChapter] || '');
+  // Scroll end card into view
+  setTimeout(() => {
+    const card = document.querySelector('#chapter-content .chapter-end-card');
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 100);
+  // Show the podcast FAB
+  document.getElementById('podcast-fab').classList.add('visible');
 }
 
 function narrationOpenPodcast() {
