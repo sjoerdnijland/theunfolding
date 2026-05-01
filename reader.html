@@ -11,8 +11,8 @@
 <meta property="og:site_name"   content="The Unfolding: Mairee"/>
 <meta property="og:title"       content="The Unfolding: Mairee — Read"/>
 <meta property="og:description" content="An interactive sci-fi novel. Two systems. One severed connection. Read the first chapters — with wiki links, narration, and AI podcast reviews built in."/>
-<meta property="og:image"       content="https://the-unfolding.net/assets/still-fold.jpg"/>
-<meta property="og:image:width" content="1200"/>
+<meta property="og:image"        content="https://the-unfolding.net/meta/theunfolding-out-now.jpg"/>
+<meta property="og:image:width"  content="1200"/>
 <meta property="og:image:height"content="630"/>
 <meta property="og:url"         content="https://the-unfolding.net/reader.html"/>
 
@@ -116,7 +116,7 @@
 </div>
 
 <!-- ── NARRATION OVERLAY ─────────────────────────────────── -->
-<div class="narration-overlay" id="narration-overlay" style="display:none">
+<div class="narration-overlay" id="narration-overlay">
   <div class="narration-counter" id="narration-counter"></div>
   <div class="narration-text" id="narration-text">
     <span class="narration-loading" id="narration-loading">Preparing narration…</span>
@@ -133,14 +133,13 @@
 </div>
 
 <div class="narration-controls" id="narration-controls" style="display:none">
-  <button class="nc-btn" onclick="narrationPrev()"><span class="nc-icon">←</span><span class="nc-lbl">Prev</span></button>
-  <button class="nc-btn primary" id="nc-play-btn" onclick="narrationTogglePlay()"><span class="nc-icon">⏸</span><span class="nc-lbl">Pause</span></button>
-  <button class="nc-btn" onclick="narrationNext()"><span class="nc-icon">→</span><span class="nc-lbl">Next</span></button>
-  <div class="nc-row-break"></div>
-  <button class="nc-btn" id="nc-thread-btn" onclick="narrationToggleThread()"><span class="nc-icon">💬</span><span class="nc-lbl">Thread</span></button>
-  <button class="nc-btn" id="nc-voices-btn" onclick="toggleMultiVoice()" title="Switch between single narrator and character voices"><span class="nc-icon">◎</span><span class="nc-lbl">Voices</span></button>
-  <button class="nc-btn" id="nc-music-btn" onclick="toggleAmbient()" title="Toggle background music"><span class="nc-icon">♪</span><span class="nc-lbl">Music</span></button>
-  <button class="nc-btn" onclick="stopNarration()"><span class="nc-icon">✕</span><span class="nc-lbl">Exit</span></button>
+  <button class="nc-btn" onclick="narrationPrev()">← Prev</button>
+  <button class="nc-btn primary" id="nc-play-btn" onclick="narrationTogglePlay()">⏸ Pause</button>
+  <button class="nc-btn" onclick="narrationNext()">Next →</button>
+  <button class="nc-btn" id="nc-thread-btn" onclick="narrationToggleThread()">💬 Thread</button>
+  <button class="nc-btn" id="nc-voices-btn" onclick="toggleMultiVoice()" title="Switch between single narrator and character voices">◎ Narrator</button>
+  <button class="nc-btn" id="nc-music-btn" onclick="toggleAmbient()" title="Toggle background music">♪ Music</button>
+  <button class="nc-btn" onclick="stopNarration()">✕ Exit</button>
 </div>
 
 <!-- ── NARRATION THREAD SIDEBAR ──────────────────────────── -->
