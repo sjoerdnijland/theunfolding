@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v117';
+const READER_VERSION = 'v119';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -276,15 +276,32 @@ let persistentAudio = null;    // single Audio element reused for all paragraphs
 
 function unlockAudio() {
   if (audioUnlocked) return;
-  // Create a silent looping keepalive Audio element during the user gesture.
-  // This keeps the iOS audio session active for the entire narration session.
-  // Any new Audio().play() call is trusted while this session is alive.
-  persistentAudio = new Audio(SILENT_MP3);
-  persistentAudio.loop = true;  // loop silently to keep session alive
-  persistentAudio.volume = 0.01;  // inaudible but above Bluetooth sleep threshold
-  persistentAudio.play().then(() => {
-    audioUnlocked = true;
-  }).catch(() => {});
+
+  // Web Audio oscillator as dedicated Bluetooth keepalive.
+  // A continuous tone at gain 0.0001 is completely inaudible but keeps the
+  // BT codec active, preventing the Jabra/headset sleep/wake fade cycle.
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (AC) {
+      const btCtx = new AC();
+      const osc   = btCtx.createOscillator();
+      const gain  = btCtx.createGain();
+      gain.gain.value = 0.0001;
+      osc.connect(gain);
+      gain.connect(btCtx.destination);
+      osc.start();
+      btCtx.resume().then(() => { audioUnlocked = true; }).catch(() => {});
+      // Store minimal interface for stopNarration compatibility
+      persistentAudio = { _btCtx: btCtx, pause() {}, play() { return Promise.resolve(); }, paused: false };
+    }
+  } catch(e) {
+    // Fallback: silent looping Audio element
+    persistentAudio = new Audio(SILENT_MP3);
+    persistentAudio.loop = true;
+    persistentAudio.volume = 0.01;
+    persistentAudio.play().then(() => { audioUnlocked = true; }).catch(() => {});
+  }
+
   // Persistent SFX element — created in same gesture, src-swapped per effect on iOS
   sfxAudio = new Audio(SILENT_MP3);
   sfxAudio.volume = sfxVolume;
@@ -298,14 +315,19 @@ async function startNarration() {
   narrationLocked  = false;
   if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
   cancelAnimationFrame(narrationRAF);
-  // Ensure keepalive is running (restart if paused from stopNarration)
+  // Ensure keepalive is running
   if (!persistentAudio) {
     unlockAudio();
+  } else if (persistentAudio._btCtx) {
+    // Oscillator keepalive — resume context if suspended
+    if (persistentAudio._btCtx.state === 'suspended') {
+      persistentAudio._btCtx.resume().catch(() => {});
+    }
   } else if (persistentAudio.paused) {
     persistentAudio.play().catch(() => {});
-    if (sfxAudio && sfxAudio.paused && !sfxActive) {
-      sfxAudio.play().then(() => { sfxAudio.pause(); }).catch(() => {});
-    }
+  }
+  if (sfxAudio && sfxAudio.paused && !sfxActive) {
+    sfxAudio.play().then(() => { sfxAudio.pause(); }).catch(() => {});
   }
 
   narrationParaIds = getNarrableParagraphs();
@@ -720,7 +742,10 @@ async function narrationGoTo(index) {
 
   // pause_before: cinematic pause before this paragraph (set in chapter JSON)
   const pauseBeforeMs = parseInt(document.getElementById(pid)?.dataset.pauseBefore || '0', 10);
-  if (pauseBeforeMs > 0) await new Promise(r => setTimeout(r, pauseBeforeMs));
+  if (pauseBeforeMs > 0) {
+    console.log('[pause_before]', pid, pauseBeforeMs + 'ms');
+    await new Promise(r => setTimeout(r, pauseBeforeMs));
+  }
 
   const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
 
