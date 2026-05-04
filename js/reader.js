@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v104';
+const READER_VERSION = 'v105';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -217,6 +217,11 @@ async function startAmbient(chapter, scene) {
     audio.volume = v;
     if (v >= maxV) clearInterval(fade);
   }, 80);
+}
+
+function setAmbientVolume(v) {
+  window._ambientMaxVol = v;
+  if (ambientAudio) ambientAudio.volume = v;
 }
 
 function stopAmbient() {
