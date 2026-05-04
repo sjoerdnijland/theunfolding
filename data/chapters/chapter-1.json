@@ -5,11 +5,16 @@
     {
       "type": "epigraph",
       "paragraphs": [
-        "There is a song in the stone. And if you listen, you can hear the math starting to fail. To unfold. You weren't there. But you're next. I'm uplinking this to you because if I don't, only the stone will remember. It just sits there, waiting for you, before it can get back to being a rock. And if you were going to look away, don't. If you turn your head now, you'll miss the moment it decides to notice you. My name doesn't matter. Where we start does. Not Earth. Not Paradise. You're on the planet Mairee, the moment the hum of the station changed."
+        "There is a song in the stone.",
+        { "text": "And if you listen, you can hear the math starting to fail. To unfold. ", "pause_before": 1000 },
+        { "text": "You weren't there. But you're next. I'm uplinking this to you because if I don't, only the stone will remember. [#pause]It just sits there, waiting for you, before it can get back to being a rock. ", "pause_before": 1000 },
+        { "text": "And if you were going to look away, don't. If you turn your head now, you'll miss the moment it decides to notice you. ", "pause_before": 1000 },
+        { "text": "My name doesn't matter. Where we start does. [#pause]Not Earth. [#pause]Not Paradise. [#pause]You're on the planet Mairee, [#pause]the moment the hum of the station changed.", "pause_before": 1000 }
       ]
     },
     {
       "paragraphs": [
+
         "The Comms-Bay, usually a hive of digital chatter, was silent. All eyes were on the Mission Commander, Astrid Vilde. And that silence was the loudest scream she had ever heard. She knew it was bad when she heard her own blood rushing in her ears. [#blood-rush-ears] *Whoosh. Whoosh. Whoosh*. A pump desperately trying to keep the pressure up.",
         "She brought her hand to her quivering lip, as if to hold back the words she didn't yet dare to speak. She rested her open palm on the edge of the comms console, which normally felt warm. Now it was as though she were touching a corpse. She'd often reminded her staff that fear and courage walked the same corridor. Now she reminded herself, hoping it would help her steady her hand.",
         {
