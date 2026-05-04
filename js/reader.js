@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v121';
+const READER_VERSION = 'v122';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -415,6 +415,7 @@ if (IS_IOS) {
 function showIosTapPrompt() {
   // Only show if not already visible
   if (document.getElementById('ios-tap-prompt')) return;
+  console.warn('[tapPrompt] called from:', new Error().stack.split('\n')[2]);
   const el = document.createElement('div');
   el.id = 'ios-tap-prompt';
   el.style.cssText = [
@@ -431,8 +432,11 @@ function showIosTapPrompt() {
     el.remove();
     // Re-establish audio session with fresh gesture
     if (persistentAudio) {
-      persistentAudio.volume = 0.01; // above BT sleep threshold
-      persistentAudio.play().catch(() => {});
+      if (persistentAudio._btCtx) {
+        persistentAudio._btCtx.resume().catch(() => {});
+      } else {
+        persistentAudio.play().catch(() => {});
+      }
     }
     // Resume narration audio
     if (narrationAudio && narrationAudio.paused && narrationPlaying) {
