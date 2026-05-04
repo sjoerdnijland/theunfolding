@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v119';
+const READER_VERSION = 'v120';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -743,8 +743,18 @@ async function narrationGoTo(index) {
   // pause_before: cinematic pause before this paragraph (set in chapter JSON)
   const pauseBeforeMs = parseInt(document.getElementById(pid)?.dataset.pauseBefore || '0', 10);
   if (pauseBeforeMs > 0) {
-    console.log('[pause_before]', pid, pauseBeforeMs + 'ms');
+    // Keep BT oscillator alive and ambient playing during the pause
+    if (persistentAudio && persistentAudio._btCtx) {
+      persistentAudio._btCtx.resume().catch(() => {});
+    }
+    if (ambientAudio && ambientAudio.paused && ambientEnabled) {
+      ambientAudio.play().catch(() => {});
+    }
     await new Promise(r => setTimeout(r, pauseBeforeMs));
+    // Re-check ambient after pause in case iOS suspended it
+    if (ambientAudio && ambientAudio.paused && ambientEnabled) {
+      ambientAudio.play().catch(() => {});
+    }
   }
 
   const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
