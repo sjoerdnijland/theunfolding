@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v92';
+const READER_VERSION = 'v93';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -95,6 +95,7 @@ function applyMultiVoiceBtn() {
 
 // ── Ambient music ────────────────────────────────────────
 let ambientAudio   = null;
+let ambientFading  = new Set(); // elements currently fading out
 let ambientEnabled = localStorage.getItem('ambientMusic') !== 'off';
 
 function applyAmbientBtn() {
@@ -172,14 +173,23 @@ async function startAmbient(chapter, scene) {
   // Same track already playing — nothing to do
   if (ambientAudio && ambientAudio._src === src) return;
 
+  // Kill any in-progress fades immediately — prevents multiple tracks playing
+  ambientFading.forEach(a => { a.pause(); a.volume = 0; });
+  ambientFading.clear();
+
   // Cross-fade: fade out old, fade in new
   if (ambientAudio) {
     const old = ambientAudio;
     ambientAudio = null;
+    ambientFading.add(old);
     const fadeOut = setInterval(() => {
-      old.volume = Math.max(0, old.volume - 0.02);
-      if (old.volume <= 0) { old.pause(); clearInterval(fadeOut); }
-    }, 60);
+      old.volume = Math.max(0, old.volume - 0.03);
+      if (old.volume <= 0) {
+        old.pause();
+        clearInterval(fadeOut);
+        ambientFading.delete(old);
+      }
+    }, 50);
   }
 
   const audio = new Audio(src);
