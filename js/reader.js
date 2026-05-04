@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v90';
+const READER_VERSION = 'v92';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -340,11 +340,15 @@ if (IS_IOS) {
       // Page became visible while narration should be playing — session may be suspended
       // Small delay to let iOS settle, then check if audio is actually playing
       setTimeout(() => {
-        if (!narrationActive) return;
+        if (!narrationActive || !narrationPlaying) return;
         const audio = narrationAudio;
         if (!audio || !audio.paused) return; // already playing fine
-        // Show tap-to-continue overlay
-        showIosTapPrompt();
+        // Only show if audio has made no progress (currentTime frozen)
+        const ctBefore = audio.currentTime;
+        setTimeout(() => {
+          if (!narrationActive || !narrationPlaying) return;
+          if (audio.paused && audio.currentTime === ctBefore) showIosTapPrompt();
+        }, 800);
       }, 300);
     }
   });
@@ -554,6 +558,16 @@ async function narrationGoTo(index) {
   // do not reflect, causing karaoke to run ahead on multi-line paragraphs.
   // rawText keeps newlines so buildDisplayTokens still emits br tokens.
   text = text.split('\n').join(' ').replace(/  +/g, ' ').trim();
+
+  // Epigraph: double all pause characters for a slower, more deliberate delivery
+  if (isEpigraphPara(pid)) {
+    text = text
+      .replace(/\.\s/g,  '.   ')
+      .replace(/\?\s/g,  '?   ')
+      .replace(/!\s/g,   '!   ')
+      .replace(/…/g,     '…   ')
+      .replace(/,\s/g,   ',   ');
+  }
 
     // Declare isTranscriptPara early — used by SFX parser and prefix strip below
   const paraEl2 = document.getElementById(pid);
@@ -1050,13 +1064,14 @@ async function narrationGoTo(index) {
         console.warn('[seg'+si+'] play:', e.name);
         if (IS_IOS && e.name === 'NotAllowedError') showIosTapPrompt();
       });
-      // Proactive check: if audio hasn't started after 1.5s and user hasn't paused
+      // Proactive check: only show tap prompt if audio truly never started
+      // (currentTime still 0 after 2s) — avoids false positives mid-paragraph
       if (IS_IOS) setTimeout(() => {
         if (!narrationActive || advanced) return;
-        const btn = document.getElementById('nc-play-btn');
-        const showingPause = btn && btn.querySelector('.nc-icon') && btn.querySelector('.nc-icon').textContent === '⏸';
-        if (audio.paused && showingPause) showIosTapPrompt();
-      }, 1500);
+        if (!narrationPlaying) return; // user paused — don't prompt
+        if (audio !== narrationAudio) return; // segment changed — stale check
+        if (audio.paused && audio.currentTime === 0) showIosTapPrompt();
+      }, 2000);
     }
     playSegment(0);
 
@@ -1092,13 +1107,12 @@ async function narrationGoTo(index) {
       console.warn('[narrate] play:', e.name);
       if (IS_IOS && e.name === 'NotAllowedError') showIosTapPrompt();
     });
-    // Proactive check for iOS: if audio hasn't started after 1.5s and user hasn't paused
+    // Proactive check for iOS: only show if audio truly never started
     if (IS_IOS) setTimeout(() => {
       if (!narrationActive || advanced) return;
-      const btn = document.getElementById('nc-play-btn');
-      const showingPause = btn && btn.querySelector('.nc-icon') && btn.querySelector('.nc-icon').textContent === '⏸';
-      if (narrationAudio && narrationAudio.paused && showingPause) showIosTapPrompt();
-    }, 1500);
+      if (!narrationPlaying) return; // user paused — don't prompt
+      if (narrationAudio && narrationAudio.paused && narrationAudio.currentTime === 0) showIosTapPrompt();
+    }, 2000);
   }
 
   function updateKaraoke() {
@@ -1360,6 +1374,16 @@ async function prefetchNext(index) {
   if (!text) return;
   // Normalise newlines (matches narrationGoTo for cache key consistency)
   text = text.split('\n').join(' ').replace(/  +/g, ' ').trim();
+
+  // Epigraph: double all pause characters for a slower, more deliberate delivery
+  if (isEpigraphPara(pid)) {
+    text = text
+      .replace(/\.\s/g,  '.   ')
+      .replace(/\?\s/g,  '?   ')
+      .replace(/!\s/g,   '!   ')
+      .replace(/…/g,     '…   ')
+      .replace(/,\s/g,   ',   ');
+  }
     // Strip SFX tags for cache key consistency with narrationGoTo
   text    = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
   rawText = rawText.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
