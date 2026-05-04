@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v110';
+const READER_VERSION = 'v111';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -43,13 +43,32 @@ function sfxPlay(tag) {
   // [#pause] [#pause2] [#pause3] [#pause4] — pause narrator, keep background music
   if (SFX_PAUSES[tag] !== undefined) {
     if (narrationAudio && !narrationAudio.paused) {
-      narrationAudio.pause();
-      // Ambient keeps playing — don't touch it
-      setTimeout(() => {
-        if (narrationActive && narrationPlaying && narrationAudio) {
-          narrationAudio.play().catch(() => {});
+      const dur = SFX_PAUSES[tag];
+      // Micro-fade out (8ms) before pause to prevent digital click on waveform cut
+      const FADE = 8;
+      const steps = 4;
+      const stepTime = FADE / steps;
+      let step = 0;
+      const fadeOut = setInterval(() => {
+        step++;
+        narrationAudio.volume = Math.max(0, 1 - (step / steps));
+        if (step >= steps) {
+          clearInterval(fadeOut);
+          narrationAudio.pause();
+          // Resume after pause duration with micro-fade in
+          setTimeout(() => {
+            if (!narrationActive || !narrationPlaying || !narrationAudio) return;
+            narrationAudio.volume = 0;
+            narrationAudio.play().catch(() => {});
+            let si = 0;
+            const fadeIn = setInterval(() => {
+              si++;
+              narrationAudio.volume = Math.min(1, si / steps);
+              if (si >= steps) clearInterval(fadeIn);
+            }, stepTime);
+          }, dur);
         }
-      }, SFX_PAUSES[tag]);
+      }, stepTime);
     }
     return;
   }
