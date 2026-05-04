@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v95';
+const READER_VERSION = 'v96';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -202,9 +202,9 @@ async function startAmbient(chapter, scene) {
   let v = 0;
   const fade = setInterval(() => {
     if (ambientAudio !== audio) { clearInterval(fade); return; }
-    v = Math.min(0.14, v + 0.01);
+    v = Math.min(0.07, v + 0.005);
     audio.volume = v;
-    if (v >= 0.14) clearInterval(fade);
+    if (v >= 0.07) clearInterval(fade);
   }, 80);
 }
 
