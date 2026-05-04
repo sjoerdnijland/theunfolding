@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v102';
+const READER_VERSION = 'v103';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -195,28 +195,13 @@ async function startAmbient(chapter, scene) {
   ambientFading.forEach(a => { a.pause(); a.volume = 0; a.src = ''; });
   ambientFading.clear();
 
-  // Transition old track out
+  // Hard stop old track immediately — prevents overlap on both iOS and desktop.
+  // src='' forces the browser to abort any pending buffer and release the element.
   if (ambientAudio) {
     const old = ambientAudio;
     ambientAudio = null;
-    if (IS_IOS) {
-      // iOS: hard stop immediately — pause() can be deferred on buffering elements,
-      // causing the old track to keep playing. src='' forces immediate release.
-      old.pause();
-      old.src = '';
-    } else {
-      // Desktop: smooth crossfade
-      ambientFading.add(old);
-      const fadeOut = setInterval(() => {
-        old.volume = Math.max(0, old.volume - 0.03);
-        if (old.volume <= 0) {
-          old.pause();
-          old.src = '';
-          clearInterval(fadeOut);
-          ambientFading.delete(old);
-        }
-      }, 50);
-    }
+    old.pause();
+    old.src = '';
   }
 
   const audio = new Audio(src);
