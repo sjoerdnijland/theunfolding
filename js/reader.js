@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v124';
+const READER_VERSION = 'v125';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -1165,7 +1165,7 @@ async function narrationGoTo(index) {
         if (!narrationPlaying || narrationLocked) return;
         if (audio !== narrationAudio) return;
         if (audio.paused && audio.currentTime === 0) showIosTapPrompt();
-      }, 2000);
+      }, (si === 0 ? pauseBeforeMs : 0) + 2500);
     }
     playSegment(0);
 
@@ -1192,9 +1192,13 @@ async function narrationGoTo(index) {
     setTimeout(stallCheck, 1000);
     narrationAudio.addEventListener('pause', () => {
       if (!narrationPlaying || !narrationActive || advanced) return;
+      // Only auto-resume if audio had actually started — not during initial load or play-delay
+      if (!narrationAudio || narrationAudio.currentTime === 0) return;
       setTimeout(() => {
         if (!narrationPlaying || !narrationActive || advanced) return;
-        if (narrationAudio && narrationAudio.paused) narrationAudio.play().catch(() => {});
+        if (narrationAudio && narrationAudio.paused && narrationAudio.currentTime > 0) {
+          narrationAudio.play().catch(() => {});
+        }
       }, 300);
     });
   {
@@ -1210,7 +1214,7 @@ async function narrationGoTo(index) {
       if (!narrationActive || advanced) return;
       if (!narrationPlaying || narrationLocked) return;
       if (narrationAudio && narrationAudio.paused && narrationAudio.currentTime === 0) showIosTapPrompt();
-    }, 2000);
+    }, pauseBeforeMs + 2500);
   }
 
   function updateKaraoke() {
