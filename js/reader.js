@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v99';
+const READER_VERSION = 'v100';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -116,6 +116,8 @@ function toggleAmbient() {
     startAmbient(currentChapter, getSceneForPara(pid));
   } else {
     stopAmbientNow();
+    const slider = document.getElementById('ambient-vol-slider');
+    if (slider) slider.style.display = 'none';
   }
 }
 
@@ -202,9 +204,10 @@ async function startAmbient(chapter, scene) {
   let v = 0;
   const fade = setInterval(() => {
     if (ambientAudio !== audio) { clearInterval(fade); return; }
-    v = Math.min(0.07, v + 0.005);
+    const maxV = (window._ambientMaxVol !== undefined) ? window._ambientMaxVol : 0.07;
+    v = Math.min(maxV, v + 0.005);
     audio.volume = v;
-    if (v >= 0.07) clearInterval(fade);
+    if (v >= maxV) clearInterval(fade);
   }, 80);
 }
 
