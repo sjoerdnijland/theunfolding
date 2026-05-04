@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v125';
+const READER_VERSION = 'v126';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -592,8 +592,9 @@ async function narrationGoTo(index) {
 
   // Declare textEl here so it's in scope for everything below
   const textEl = document.getElementById('narration-text');
-  // Clear immediately — prevents iOS showing old+new paragraph simultaneously
+  // Clear and force reflow — prevents iOS GPU compositing old content behind new
   textEl.innerHTML = '';
+  void textEl.offsetHeight; // forces layout flush, clears iOS composite layer
 
   // Pause on scene changes — atmospheric beat.
   // Shorter if audio is already cached (no real wait needed).
