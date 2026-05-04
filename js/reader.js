@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v96';
+const READER_VERSION = 'v97';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -261,7 +261,7 @@ function unlockAudio() {
   // Any new Audio().play() call is trusted while this session is alive.
   persistentAudio = new Audio(SILENT_MP3);
   persistentAudio.loop = true;  // loop silently to keep session alive
-  persistentAudio.volume = 0.001; // near-silent but iOS won't suspend as 'background-only'
+  persistentAudio.volume = 0.01;  // inaudible but above Bluetooth sleep threshold
   persistentAudio.play().then(() => {
     audioUnlocked = true;
   }).catch(() => {});
@@ -1015,7 +1015,7 @@ async function narrationGoTo(index) {
       const el = document.getElementById('nw-' + w.idx);
       if (el) el.className = 'nw ' + (w.fmt || '') + ' spoken';
     });
-    setTimeout(() => { if (narrationActive) narrationGoTo(index + 1); }, 250);
+    setTimeout(() => { if (narrationActive) narrationGoTo(index + 1); }, 80);
   }
 
   if (IS_IOS && isStitched && data.segmentMeta && data.segmentMeta.length > 1) {
