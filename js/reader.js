@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v94';
+const READER_VERSION = 'v95';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -209,6 +209,9 @@ async function startAmbient(chapter, scene) {
 }
 
 function stopAmbient() {
+  // Kill any lingering fade-out elements
+  ambientFading.forEach(a => { a.pause(); a.volume = 0; });
+  ambientFading.clear();
   if (!ambientAudio) return;
   const audio = ambientAudio;
   ambientAudio = null;
@@ -220,7 +223,10 @@ function stopAmbient() {
 
 // Hard stop: kills ambient immediately, cancels any pending resolve
 function stopAmbientNow() {
-  ambientPending = null; // cancel any queued track
+  ambientPending = null;
+  // Kill all fading elements too
+  ambientFading.forEach(a => { a.pause(); a.src = ''; });
+  ambientFading.clear();
   if (!ambientAudio) return;
   const audio = ambientAudio;
   ambientAudio = null;
