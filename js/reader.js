@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v106';
+const READER_VERSION = 'v107';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -52,11 +52,11 @@ function sfxPlay(tag) {
           if (narrationActive && narrationAudio) narrationAudio.volume = prevVol;
         }, SFX_PAUSES[tag]);
       } else {
-        narrationAudio.pause();
+        // Volume duck — avoids audio stream disruption on desktop too
+        const prevVol = narrationAudio.volume;
+        narrationAudio.volume = 0;
         setTimeout(() => {
-          if (narrationActive && narrationPlaying && narrationAudio) {
-            narrationAudio.play().catch(() => {});
-          }
+          if (narrationActive && narrationAudio) narrationAudio.volume = prevVol;
         }, SFX_PAUSES[tag]);
       }
     }
@@ -710,6 +710,11 @@ async function narrationGoTo(index) {
     segments = buildSegments(rawText, speakerVoiceId, innerVoiceId);
   }
   const isStitched = segments.length > 1;
+
+  // pause_before: cinematic pause before this paragraph (set in chapter JSON)
+  const pauseBeforeMs = parseInt(document.getElementById(pid)?.dataset.pauseBefore || '0', 10);
+  if (pauseBeforeMs > 0) await new Promise(r => setTimeout(r, pauseBeforeMs));
+
   const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
 
   let data = narrationCache[cacheKey];
