@@ -1,6 +1,7 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v100';
+const READER_VERSION = 'v102';
 console.log('[reader.js] loaded', READER_VERSION);
+const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
 // ── Narration state ──────────────────────────────────────
 const NARRATE_URL = 'https://sscpikfblqtmcefegrpv.supabase.co/functions/v1/narrate';
@@ -34,8 +35,23 @@ function sfxLoad(tag) {
 
 let sfxActive = null; // currently playing SFX element
 
+const SFX_PAUSES = { 'pause': 800, 'pause2': 1600, 'pause3': 2500, 'pause4': 3500 };
+
 function sfxPlay(tag) {
   if (sfxActive) { sfxActive.pause(); sfxActive.currentTime = 0; sfxActive = null; }
+
+  // [#pause] [#pause2] [#pause3] [#pause4] — cinematic silence, no audio file needed
+  if (SFX_PAUSES[tag] !== undefined) {
+    if (narrationAudio && !narrationAudio.paused) {
+      narrationAudio.pause();
+      setTimeout(() => {
+        if (narrationActive && narrationPlaying && narrationAudio) {
+          narrationAudio.play().catch(() => {});
+        }
+      }, SFX_PAUSES[tag]);
+    }
+    return;
+  }
   const url = SFX_BASE_URL + tag + '.mp3';
   if (IS_IOS && sfxAudio) {
     // iOS: src-swap the persistent trusted element — only reliable method
@@ -176,22 +192,31 @@ async function startAmbient(chapter, scene) {
   if (ambientAudio && ambientAudio._src === src) return;
 
   // Kill any in-progress fades immediately — prevents multiple tracks playing
-  ambientFading.forEach(a => { a.pause(); a.volume = 0; });
+  ambientFading.forEach(a => { a.pause(); a.volume = 0; a.src = ''; });
   ambientFading.clear();
 
-  // Cross-fade: fade out old, fade in new
+  // Transition old track out
   if (ambientAudio) {
     const old = ambientAudio;
     ambientAudio = null;
-    ambientFading.add(old);
-    const fadeOut = setInterval(() => {
-      old.volume = Math.max(0, old.volume - 0.03);
-      if (old.volume <= 0) {
-        old.pause();
-        clearInterval(fadeOut);
-        ambientFading.delete(old);
-      }
-    }, 50);
+    if (IS_IOS) {
+      // iOS: hard stop immediately — pause() can be deferred on buffering elements,
+      // causing the old track to keep playing. src='' forces immediate release.
+      old.pause();
+      old.src = '';
+    } else {
+      // Desktop: smooth crossfade
+      ambientFading.add(old);
+      const fadeOut = setInterval(() => {
+        old.volume = Math.max(0, old.volume - 0.03);
+        if (old.volume <= 0) {
+          old.pause();
+          old.src = '';
+          clearInterval(fadeOut);
+          ambientFading.delete(old);
+        }
+      }, 50);
+    }
   }
 
   const audio = new Audio(src);
@@ -250,8 +275,6 @@ function getNarrableParagraphs() {
 }
 
 // Silent MP3 to unlock audio on iOS Safari — must be played within a user gesture
-const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
 const SILENT_MP3 = 'data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjMyLjEwNAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAADhgCenp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6enp6e////////////////////////////////////////////////////////////////AAAAAExhdmM1OC41NAAAAAAAAAAAAAAAACQAAAAAAAAAAw4g3QAAAAAAAAAAAAAAAAAA//tQxAADwAABpAAAACAAADSAAAAETEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV';
 let audioUnlocked = false;
 
@@ -1792,8 +1815,9 @@ function renderChapter(ch) {
 
       const parasHtml = sec.paragraphs.map(paraItem => {
         const text   = typeof paraItem === 'string' ? paraItem : paraItem.text;
-        const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker    || null : null;
-        const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice || null : null;
+        const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker     || null : null;
+        const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice  || null : null;
+        const pauseBefore   = typeof paraItem === 'object' ? paraItem.pause_before || 0    : 0;
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
@@ -1838,6 +1862,7 @@ function renderChapter(ch) {
              data-speaker="${speakerTag || ''}" 
              data-inner-voice="${innerVoiceTag || ''}" 
              data-transcript="${isTranscript ? 'true' : ''}"
+             ${pauseBefore ? `data-pause-before="${pauseBefore}"` : ''}
              onclick="selectPara('${pid}', this)">
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
@@ -1866,8 +1891,9 @@ function renderChapter(ch) {
     if (sec.type === 'epigraph') {
       const parasHtml = sec.paragraphs.map(paraItem => {
         const text   = typeof paraItem === 'string' ? paraItem : paraItem.text;
-        const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker    || null : null;
-        const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice || null : null;
+        const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker     || null : null;
+        const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice  || null : null;
+        const pauseBefore   = typeof paraItem === 'object' ? paraItem.pause_before || 0    : 0;
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
@@ -1901,8 +1927,9 @@ function renderChapter(ch) {
     if (sec.type === 'code') {
       const parasHtml = sec.paragraphs.map(paraItem => {
         const text   = typeof paraItem === 'string' ? paraItem : paraItem.text;
-        const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker    || null : null;
-        const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice || null : null;
+        const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker     || null : null;
+        const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice  || null : null;
+        const pauseBefore   = typeof paraItem === 'object' ? paraItem.pause_before || 0    : 0;
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         paraIndex++;
