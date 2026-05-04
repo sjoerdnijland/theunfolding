@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v105';
+const READER_VERSION = 'v106';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -43,12 +43,22 @@ function sfxPlay(tag) {
   // [#pause] [#pause2] [#pause3] [#pause4] — cinematic silence, no audio file needed
   if (SFX_PAUSES[tag] !== undefined) {
     if (narrationAudio && !narrationAudio.paused) {
-      narrationAudio.pause();
-      setTimeout(() => {
-        if (narrationActive && narrationPlaying && narrationAudio) {
-          narrationAudio.play().catch(() => {});
-        }
-      }, SFX_PAUSES[tag]);
+      if (IS_IOS) {
+        // iOS: don't pause/play — it causes BT codec renegotiation (fade in/out).
+        // Instead duck narrator volume to 0 and restore after delay.
+        const prevVol = narrationAudio.volume;
+        narrationAudio.volume = 0;
+        setTimeout(() => {
+          if (narrationActive && narrationAudio) narrationAudio.volume = prevVol;
+        }, SFX_PAUSES[tag]);
+      } else {
+        narrationAudio.pause();
+        setTimeout(() => {
+          if (narrationActive && narrationPlaying && narrationAudio) {
+            narrationAudio.play().catch(() => {});
+          }
+        }, SFX_PAUSES[tag]);
+      }
     }
     return;
   }
@@ -193,13 +203,15 @@ async function startAmbient(chapter, scene) {
   ambientFading.forEach(a => { a.pause(); a.volume = 0; a.src = ''; });
   ambientFading.clear();
 
-  // Hard stop old track immediately — prevents overlap on both iOS and desktop.
-  // src='' forces the browser to abort any pending buffer and release the element.
+  // Stop old track immediately
   if (ambientAudio) {
     const old = ambientAudio;
     ambientAudio = null;
     old.pause();
-    old.src = '';
+    old.volume = 0;
+    // Note: don't set src='' on iOS — it can disrupt the active audio session
+    // and cause narrationAudio to fade in/out. Just pause at volume 0.
+    if (!IS_IOS) old.src = '';
   }
 
   const audio = new Audio(src);
@@ -241,13 +253,14 @@ function stopAmbient() {
 function stopAmbientNow() {
   ambientPending = null;
   // Kill all fading elements too
-  ambientFading.forEach(a => { a.pause(); a.src = ''; });
+  ambientFading.forEach(a => { a.pause(); a.volume = 0; if (!IS_IOS) a.src = ''; });
   ambientFading.clear();
   if (!ambientAudio) return;
   const audio = ambientAudio;
   ambientAudio = null;
   audio.pause();
-  audio.src = '';
+  audio.volume = 0;
+  if (!IS_IOS) audio.src = '';
 }
 
 function isEpigraphPara(pid) {
