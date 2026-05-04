@@ -5,8 +5,8 @@
     {
       "type": "epigraph",
       "paragraphs": [
-        { "text": "[#pause2]There is a song in the stone.", "pause_before": 3000 },
-        { "text": "And if you listen, you can hear the math starting to fail. ", "pause_before": 3000 },
+        { "text": "[#pause2]There is a song in the stone.", "pause_before": 2000 },
+        { "text": "And if you listen, you can hear the math starting to fail. ", "pause_before": 1000 },
         { "text": "To unfold. ", "pause_before": 1000 },
         { "text": "You weren't there. But you're next. I'm uplinking this to you because if I don't, only the stone will remember.[#pause2] It just sits there, waiting for you, before it can get back to being a rock. ", "pause_before": 2000 },
         { "text": "And if you were going to look away, don't.[#pause] If you turn your head now, you'll miss the moment it decides to notice you. ", "pause_before": 2000 },
@@ -16,7 +16,8 @@
     {
       "paragraphs": [
 
-        "The Comms-Bay, usually a hive of digital chatter, was silent. All eyes were on the Mission Commander, Astrid Vilde. And that silence was the loudest scream she had ever heard. She knew it was bad when she heard her own blood rushing in her ears. [#blood-rush-ears] *Whoosh. Whoosh. Whoosh*. A pump desperately trying to keep the pressure up.",
+        { "text": "The Comms-Bay, usually a hive of digital chatter, was silent. All eyes were on the Mission Commander, Astrid Vilde. And that silence was the loudest scream she had ever heard. She knew it was bad when she heard her own blood rushing in her ears. [#blood-rush-ears] *Whoosh. Whoosh. Whoosh*. A pump desperately trying to keep the pressure up.",
+         "pause_before": 2000 },
         "She brought her hand to her quivering lip, as if to hold back the words she didn't yet dare to speak. She rested her open palm on the edge of the comms console, which normally felt warm. Now it was as though she were touching a corpse. She'd often reminded her staff that fear and courage walked the same corridor. Now she reminded herself, hoping it would help her steady her hand.",
         {
           "text": "\"Muro, what do you hear?\" she finally said. She crossed to the holoscreen. It rendered the lieutenant, floating weightless in Orbital Three. His thinning sandy hair was sweaty, clinging to his forehead.",
