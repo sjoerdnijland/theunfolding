@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v112';
+const READER_VERSION = 'v114';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -628,6 +628,14 @@ async function narrationGoTo(index) {
   // do not reflect, causing karaoke to run ahead on multi-line paragraphs.
   // rawText keeps newlines so buildDisplayTokens still emits br tokens.
   text = text.split('\n').join(' ').replace(/  +/g, ' ').trim();
+
+  // Convert [#pause] in rawText to ellipses for TTS — generates real silence.
+  // getParaText (innerText) already strips [#tags], so we work on rawText here.
+  rawText = rawText
+    .replace(/\[#pause4\]/g, ' .............. ')
+    .replace(/\[#pause3\]/g, ' .......... ')
+    .replace(/\[#pause2\]/g, ' ...... ')
+    .replace(/\[#pause\]/g,  ' ... ');
 
   // Epigraph: double all pause characters for a slower, more deliberate delivery
   if (isEpigraphPara(pid)) {
@@ -1454,6 +1462,14 @@ async function prefetchNext(index) {
   // Normalise newlines (matches narrationGoTo for cache key consistency)
   text = text.split('\n').join(' ').replace(/  +/g, ' ').trim();
 
+  // Convert [#pause] in rawText to ellipses for TTS — generates real silence.
+  // getParaText (innerText) already strips [#tags], so we work on rawText here.
+  rawText = rawText
+    .replace(/\[#pause4\]/g, ' .............. ')
+    .replace(/\[#pause3\]/g, ' .......... ')
+    .replace(/\[#pause2\]/g, ' ...... ')
+    .replace(/\[#pause\]/g,  ' ... ');
+
   // Epigraph: double all pause characters for a slower, more deliberate delivery
   if (isEpigraphPara(pid)) {
     text = text
@@ -1463,7 +1479,15 @@ async function prefetchNext(index) {
       .replace(/…/g,     '…   ')
       .replace(/,\s/g,   ',   ');
   }
-    // Strip SFX tags for cache key consistency with narrationGoTo
+    // Convert [#pause] tags to ellipses in TTS text — generates real silence in audio.
+  // ElevenLabs produces actual silent audio for dots, so karaoke stays in sync.
+  // Display text already strips all [#tag] via renderChapter — reader sees nothing.
+  text = text
+    .replace(/\[#pause4\]/g, ' .............. ')
+    .replace(/\[#pause3\]/g, ' .......... ')
+    .replace(/\[#pause2\]/g, ' ...... ')
+    .replace(/\[#pause\]/g,  ' ... ');
+  // Strip remaining SFX tags from TTS text
   text    = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
   rawText = rawText.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
   // Strip ALL-CAPS SPEAKER: prefix (same as narrationGoTo) for cache key match
