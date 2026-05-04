@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v97';
+const READER_VERSION = 'v98';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -1033,7 +1033,9 @@ async function narrationGoTo(index) {
       const arr = new Uint8Array(bytes.length);
       for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
       const url = URL.createObjectURL(new Blob([arr], { type: 'audio/mpeg' }));
-      const audio = new Audio(url);
+      // Reuse singleNarAudio to prevent Bluetooth codec renegotiation
+      const audio = singleNarAudio || new Audio(url);
+      if (singleNarAudio) { singleNarAudio.src = url; }
       narrationAudio = audio;
 
       const base = segTimeBase;
@@ -1095,7 +1097,13 @@ async function narrationGoTo(index) {
     // Desktop/single-segment or non-stitched: standard blob playback
     const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
     const audioUrl  = URL.createObjectURL(audioBlob);
-    narrationAudio  = new Audio(audioUrl);
+    // Reuse singleNarAudio to prevent Bluetooth codec renegotiation
+    if (singleNarAudio) {
+      narrationAudio = singleNarAudio;
+      narrationAudio.src = audioUrl;
+    } else {
+      narrationAudio = new Audio(audioUrl);
+    }
     narrationAudio.addEventListener('timeupdate', updateKaraoke);
     narrationAudio.addEventListener('ended', () => { URL.revokeObjectURL(audioUrl); advance(); });
 
