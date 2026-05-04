@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v107';
+const READER_VERSION = 'v109';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -40,25 +40,16 @@ const SFX_PAUSES = { 'pause': 800, 'pause2': 1600, 'pause3': 2500, 'pause4': 350
 function sfxPlay(tag) {
   if (sfxActive) { sfxActive.pause(); sfxActive.currentTime = 0; sfxActive = null; }
 
-  // [#pause] [#pause2] [#pause3] [#pause4] — cinematic silence, no audio file needed
+  // [#pause] [#pause2] [#pause3] [#pause4] — pause narrator, keep background music
   if (SFX_PAUSES[tag] !== undefined) {
     if (narrationAudio && !narrationAudio.paused) {
-      if (IS_IOS) {
-        // iOS: don't pause/play — it causes BT codec renegotiation (fade in/out).
-        // Instead duck narrator volume to 0 and restore after delay.
-        const prevVol = narrationAudio.volume;
-        narrationAudio.volume = 0;
-        setTimeout(() => {
-          if (narrationActive && narrationAudio) narrationAudio.volume = prevVol;
-        }, SFX_PAUSES[tag]);
-      } else {
-        // Volume duck — avoids audio stream disruption on desktop too
-        const prevVol = narrationAudio.volume;
-        narrationAudio.volume = 0;
-        setTimeout(() => {
-          if (narrationActive && narrationAudio) narrationAudio.volume = prevVol;
-        }, SFX_PAUSES[tag]);
-      }
+      narrationAudio.pause();
+      // Ambient keeps playing — don't touch it
+      setTimeout(() => {
+        if (narrationActive && narrationPlaying && narrationAudio) {
+          narrationAudio.play().catch(() => {});
+        }
+      }, SFX_PAUSES[tag]);
     }
     return;
   }
@@ -1269,6 +1260,8 @@ function narrationTogglePlay() {
     narrationAudio.play().catch(e => console.warn('Audio resume failed:', e));
     narrationPlaying = true;
     document.getElementById('nc-play-btn').innerHTML = '<span class="nc-icon">⏸</span><span class="nc-lbl">Pause</span>';
+    // Also resume background music from where it was
+    if (ambientEnabled && ambientAudio && ambientAudio.paused) ambientAudio.play().catch(() => {});
     // Resume karaoke sync using stored word timings
     function resumeSync() {
       if (!narrationAudio || narrationAudio.paused) return;
@@ -1297,6 +1290,8 @@ function narrationTogglePlay() {
     narrationPlaying = false;
     cancelAnimationFrame(narrationRAF);
     document.getElementById('nc-play-btn').innerHTML = '<span class="nc-icon">▶</span><span class="nc-lbl">Play</span>';
+    // Also pause background music at current position
+    if (ambientAudio && !ambientAudio.paused) ambientAudio.pause();
   }
 }
 
