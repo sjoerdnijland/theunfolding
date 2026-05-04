@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v98';
+const READER_VERSION = 'v99';
 console.log('[reader.js] loaded', READER_VERSION);
 
 // ── Narration state ──────────────────────────────────────
@@ -389,7 +389,7 @@ function showIosTapPrompt() {
     el.remove();
     // Re-establish audio session with fresh gesture
     if (persistentAudio) {
-      persistentAudio.volume = 0.001;
+      persistentAudio.volume = 0.01; // above BT sleep threshold
       persistentAudio.play().catch(() => {});
     }
     // Resume narration audio
@@ -1033,9 +1033,7 @@ async function narrationGoTo(index) {
       const arr = new Uint8Array(bytes.length);
       for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
       const url = URL.createObjectURL(new Blob([arr], { type: 'audio/mpeg' }));
-      // Reuse singleNarAudio to prevent Bluetooth codec renegotiation
-      const audio = singleNarAudio || new Audio(url);
-      if (singleNarAudio) { singleNarAudio.src = url; }
+      const audio = new Audio(url);
       narrationAudio = audio;
 
       const base = segTimeBase;
@@ -1097,13 +1095,7 @@ async function narrationGoTo(index) {
     // Desktop/single-segment or non-stitched: standard blob playback
     const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
     const audioUrl  = URL.createObjectURL(audioBlob);
-    // Reuse singleNarAudio to prevent Bluetooth codec renegotiation
-    if (singleNarAudio) {
-      narrationAudio = singleNarAudio;
-      narrationAudio.src = audioUrl;
-    } else {
-      narrationAudio = new Audio(audioUrl);
-    }
+    narrationAudio  = new Audio(audioUrl);
     narrationAudio.addEventListener('timeupdate', updateKaraoke);
     narrationAudio.addEventListener('ended', () => { URL.revokeObjectURL(audioUrl); advance(); });
 
