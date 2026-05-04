@@ -33,7 +33,9 @@
 
   <style>
     /* Mobile controls — icon-only below 600px */
+    #ambient-vol-slider { flex-shrink: 0; }
     @media (max-width: 600px) {
+      #ambient-vol-slider { width: 44px !important; }
       .narration-controls {
         gap: 3px !important;
         padding: 6px 3px !important;
@@ -158,6 +160,10 @@
   <button class="nc-btn" id="nc-thread-btn" onclick="narrationToggleThread()"><span class="nc-icon">💬</span><span class="nc-lbl"> Thread</span></button>
   <button class="nc-btn" id="nc-voices-btn" onclick="toggleMultiVoice()" title="Switch between narrator and character voices"><span class="nc-icon">◎</span><span class="nc-lbl"> Narrator</span></button>
   <button class="nc-btn" id="nc-music-btn" onclick="toggleAmbient()" title="Toggle background music"><span class="nc-icon">♪</span><span class="nc-lbl"> Music</span></button>
+  <input type="range" id="ambient-vol-slider" min="0" max="100" value="7"
+    title="Music volume"
+    oninput="setAmbientVolume(this.value / 100)"
+    style="display:none;width:60px;height:3px;accent-color:var(--pink);cursor:pointer;margin:0 4px;vertical-align:middle" />
   <button class="nc-btn" onclick="stopNarration()"><span class="nc-icon">✕</span><span class="nc-lbl"> Exit</span></button>
 </div>
 
