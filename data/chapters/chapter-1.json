@@ -108,23 +108,27 @@
       "paragraphs": [
         "Next thud, Commander Astrid Vilde walked the central corridor to the Hearth of the Homestead. [#murmers] As she entered the dome, anxious voices carried to her. She marched past the speaker stand, stopping at the edge of the platform. Below her, a sea of faces upturned. Tiny Eyewyn orbs drifted around her head like mosquitoes, their lenses dilating and contracting, beaming her face to every soul on the planet. She raised a hand, and the murmuring ceased.",
         {
-          "text": "\"Our connection with Sol is severed,\" she stated. She didn't shout. She let the acoustics of the dome carry her words. Her voice, honed by years of command, reached the farthest corners of the dome. \"The Fold is silent. We've lost contact with Mimir, Alsvin, Muninn, and Hugin. The *Brisinger* breached the Fold, but we're struggling to re-establish communication with her. We do not yet know why or for how long. We only know this: for now, Mairee is a secluded island.\"",
-          "speaker": "astrid-vilde"
+          "text": "\"Our connection with Sol is severed,\"[#pause2] she stated. She didn't shout. She let the acoustics of the dome carry her words. Her voice, honed by years of command, reached the farthest corners of the dome.[#pause2] \"The Fold is silent.[#pause] We've lost contact with Mimir, Alsvin, Muninn, and Hugin.[#pause] The *Brisinger* breached the Fold, but we're struggling to re-establish communication with her.[#pause] We do not yet know why or for how long.[#pause2] We only know this:[#pause] for now, Mairee is a secluded island.\"",
+          "speaker": "astrid-vilde",
+          "pause_before": 2000
         },
         "The truth settled. She reminded them of the years in transit, moving from dry, recycled air to the first inhale of Maireean atmosphere. She spoke of the work that made them one people. Her gaze trawled the crowd and snagged on a boy near the front. He was the son of a man for whom she had delivered a eulogy shortly after the first transit cycle. She remembered being in the freezing hangar where the boy's father's body had lain in state. Colder still had been the look in the young man's clear gray eyes. Her hand had rested on the boy's shoulder while his father rested in a closed cryo-bag behind glass. She remembered the promise she had made him then. It sat in her gut like a stone: that no life given to the void would be forgotten by those who arrived.",
         "The void cannot claim what the heart holds.",
         {
-          "text": "\"Our journey is not over,\" she continued, forcing the stone in her gut to become fuel for a clarion call. \"It has begun. We are prepared. Your pads will receive rationing protocols. Read them. Respect them. And look at the people next to you. They are not your competitors. They are your survival. Our strength is not in our stockpiles. It is in these hands.\" She held hers up. \"Our hands, our minds, and our hearts are what makes us strong. As a first step, share your water with those who have less, and check on your neighbors to ensure no one is without essentials.\"",
-          "speaker": "astrid-vilde"
+          "text": "\"Our journey is not over,\" she continued, forcing the stone in her gut to become fuel for a clarion call.[#pause2] \"It has begun.[#pause] We are prepared.[#pause] Your pads will receive rationing protocols. Read them. Respect them. And look at the people next to you.[#pause] They are not your competitors.[#pause] They are your survival.[#pause] Our strength is not in our stockpiles. It is in these hands.[#pause]\" She held hers up.[#pause] \"Our hands, our minds, and our hearts are what makes us strong.[#pause] As a first step, share your water with those who have less, and check on your neighbors to ensure no one is without essentials.\"",
+          "speaker": "astrid-vilde",
+          "pause_before": 2000
         },
         {
-          "text": "When she met the boy's eyes again, that same icy draft brushed along her spine. His gaze hooked into her flesh. She knew her next words would land differently with him. \"Many of you landed here a cycle ago. But now is the moment when we truly come together. And the rest of the fleet will follow soon. I promise.\"",
-          "speaker": "astrid-vilde"
+          "text": "When she met the boy's eyes again, that same icy draft brushed along her spine. His gaze hooked into her flesh. She knew her next words would land differently with him.[#pause2] \"Many of you landed here a cycle ago. But now is the moment when we truly come together.[#pause] And the rest of the fleet will follow soon.[#pause2] I promise.\"",
+          "speaker": "astrid-vilde",
+          "pause_before": 2000
         },
         "She lingered on her promise. A lie? False hope? It didn't matter. It was necessary.",
         {
-          "text": "\"We arrived. They will come. And we will thrive here. Together.\"",
-          "speaker": "astrid-vilde"
+          "text": "\"We arrived. They will come.[#pause] And we will thrive here.[#pause2] Together.\"",
+          "speaker": "astrid-vilde",
+          "pause_before": 2000
         },
         "A single voice from the back called out, cracking with hesitation. \"Together.\"",
         "Another voice joined. Then ten. Then a hundred. The sound swelled into a wave that vibrated through the floorboards.",
