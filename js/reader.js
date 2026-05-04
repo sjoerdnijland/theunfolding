@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v109';
+const READER_VERSION = 'v110';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -210,6 +210,19 @@ async function startAmbient(chapter, scene) {
   audio.loop   = true;
   audio.volume = 0;
   ambientAudio = audio;
+
+  // Route through Web Audio GainNode — only way to control volume on iOS
+  // (iOS ignores audio.volume — it's read-only on WebKit)
+  const { ac, gain } = getAmbientAC();
+  if (ac && gain) {
+    try {
+      const source = ac.createMediaElementSource(audio);
+      source.connect(gain);
+      const maxV = window._ambientMaxVol !== undefined ? window._ambientMaxVol : 0.07;
+      gain.gain.setValueAtTime(0, ac.currentTime);
+    } catch(e) {}
+  }
+
   audio.play().catch(() => {});
 
   let v = 0;
@@ -217,14 +230,38 @@ async function startAmbient(chapter, scene) {
     if (ambientAudio !== audio) { clearInterval(fade); return; }
     const maxV = (window._ambientMaxVol !== undefined) ? window._ambientMaxVol : 0.07;
     v = Math.min(maxV, v + 0.005);
-    audio.volume = v;
+    if (ambientGain && ambientAC) {
+      ambientGain.gain.setValueAtTime(v, ambientAC.currentTime);
+    } else {
+      audio.volume = v;
+    }
     if (v >= maxV) clearInterval(fade);
   }, 80);
 }
 
+function getAmbientAC() {
+  if (!ambientAC) {
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) {
+        ambientAC   = new AC();
+        ambientGain = ambientAC.createGain();
+        ambientGain.connect(ambientAC.destination);
+      }
+    } catch(e) {}
+  }
+  if (ambientAC && ambientAC.state === 'suspended') ambientAC.resume().catch(() => {});
+  return { ac: ambientAC, gain: ambientGain };
+}
+
 function setAmbientVolume(v) {
   window._ambientMaxVol = v;
-  if (ambientAudio) ambientAudio.volume = v;
+  // GainNode works on iOS; audio.volume is read-only on iOS WebKit
+  if (ambientGain && ambientAC) {
+    ambientGain.gain.setTargetAtTime(v, ambientAC.currentTime, 0.05);
+  } else if (ambientAudio) {
+    ambientAudio.volume = v;
+  }
 }
 
 function stopAmbient() {
