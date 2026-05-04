@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v122';
+const READER_VERSION = 'v124';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -592,6 +592,8 @@ async function narrationGoTo(index) {
 
   // Declare textEl here so it's in scope for everything below
   const textEl = document.getElementById('narration-text');
+  // Clear immediately — prevents iOS showing old+new paragraph simultaneously
+  textEl.innerHTML = '';
 
   // Pause on scene changes — atmospheric beat.
   // Shorter if audio is already cached (no real wait needed).
@@ -746,19 +748,11 @@ async function narrationGoTo(index) {
 
   // pause_before: cinematic pause before this paragraph (set in chapter JSON)
   const pauseBeforeMs = parseInt(document.getElementById(pid)?.dataset.pauseBefore || '0', 10);
-  if (pauseBeforeMs > 0) {
-    // Keep BT oscillator alive and ambient playing during the pause
-    if (persistentAudio && persistentAudio._btCtx) {
-      persistentAudio._btCtx.resume().catch(() => {});
-    }
-    if (ambientAudio && ambientAudio.paused && ambientEnabled) {
-      ambientAudio.play().catch(() => {});
-    }
+  // On iOS: don't await — it orphans the audio session causing tap prompts.
+  // Instead we pass the delay to the audio playback start (play-delay approach).
+  // On desktop: await is fine.
+  if (!IS_IOS && pauseBeforeMs > 0) {
     await new Promise(r => setTimeout(r, pauseBeforeMs));
-    // Re-check ambient after pause in case iOS suspended it
-    if (ambientAudio && ambientAudio.paused && ambientEnabled) {
-      ambientAudio.play().catch(() => {});
-    }
   }
 
   const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
@@ -1156,10 +1150,14 @@ async function narrationGoTo(index) {
         segTimeBase += se && se.length ? se[se.length-1] : (meta.byteEnd-meta.byteStart)/16000;
         playSegment(si + 1);
       });
-      audio.play().catch(e => {
-        console.warn('[seg'+si+'] play:', e.name);
-        if (IS_IOS && e.name === 'NotAllowedError') showIosTapPrompt();
-      });
+    {
+        const iosDelay = (si === 0) ? pauseBeforeMs : 0;
+        const doSegPlay = () => audio.play().catch(e => {
+          console.warn('[seg'+si+'] play:', e.name);
+          if (IS_IOS && e.name === 'NotAllowedError') showIosTapPrompt();
+        });
+        if (iosDelay > 0) setTimeout(doSegPlay, iosDelay); else doSegPlay();
+      }
       // Proactive check: only show tap prompt if audio truly never started
       // (currentTime still 0 after 2s) — avoids false positives mid-paragraph
       if (IS_IOS) probeTimer = setTimeout(() => {
@@ -1199,10 +1197,14 @@ async function narrationGoTo(index) {
         if (narrationAudio && narrationAudio.paused) narrationAudio.play().catch(() => {});
       }, 300);
     });
-    narrationAudio.play().catch(e => {
+  {
+    const iosDelay = IS_IOS ? pauseBeforeMs : 0;
+    const doPlay = () => narrationAudio.play().catch(e => {
       console.warn('[narrate] play:', e.name);
       if (IS_IOS && e.name === 'NotAllowedError') showIosTapPrompt();
     });
+    if (iosDelay > 0) setTimeout(doPlay, iosDelay); else doPlay();
+  }
     // Proactive check for iOS: only show if audio truly never started
     if (IS_IOS) probeTimer = setTimeout(() => {
       if (!narrationActive || advanced) return;
