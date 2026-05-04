@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v114';
+const READER_VERSION = 'v116';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -210,18 +210,6 @@ async function startAmbient(chapter, scene) {
   audio.volume = 0;
   ambientAudio = audio;
 
-  // Route through Web Audio GainNode — only way to control volume on iOS
-  // (iOS ignores audio.volume — it's read-only on WebKit)
-  const { ac, gain } = getAmbientAC();
-  if (ac && gain) {
-    try {
-      const source = ac.createMediaElementSource(audio);
-      source.connect(gain);
-      const maxV = window._ambientMaxVol !== undefined ? window._ambientMaxVol : 0.07;
-      gain.gain.setValueAtTime(0, ac.currentTime);
-    } catch(e) {}
-  }
-
   audio.play().catch(() => {});
 
   let v = 0;
@@ -229,38 +217,14 @@ async function startAmbient(chapter, scene) {
     if (ambientAudio !== audio) { clearInterval(fade); return; }
     const maxV = (window._ambientMaxVol !== undefined) ? window._ambientMaxVol : 0.07;
     v = Math.min(maxV, v + 0.005);
-    if (ambientGain && ambientAC) {
-      ambientGain.gain.setValueAtTime(v, ambientAC.currentTime);
-    } else {
-      audio.volume = v;
-    }
+    audio.volume = v;
     if (v >= maxV) clearInterval(fade);
   }, 80);
 }
 
-function getAmbientAC() {
-  if (!ambientAC) {
-    try {
-      const AC = window.AudioContext || window.webkitAudioContext;
-      if (AC) {
-        ambientAC   = new AC();
-        ambientGain = ambientAC.createGain();
-        ambientGain.connect(ambientAC.destination);
-      }
-    } catch(e) {}
-  }
-  if (ambientAC && ambientAC.state === 'suspended') ambientAC.resume().catch(() => {});
-  return { ac: ambientAC, gain: ambientGain };
-}
-
 function setAmbientVolume(v) {
   window._ambientMaxVol = v;
-  // GainNode works on iOS; audio.volume is read-only on iOS WebKit
-  if (ambientGain && ambientAC) {
-    ambientGain.gain.setTargetAtTime(v, ambientAC.currentTime, 0.05);
-  } else if (ambientAudio) {
-    ambientAudio.volume = v;
-  }
+  if (ambientAudio) ambientAudio.volume = v;
 }
 
 function stopAmbient() {
@@ -629,13 +593,19 @@ async function narrationGoTo(index) {
   // rawText keeps newlines so buildDisplayTokens still emits br tokens.
   text = text.split('\n').join(' ').replace(/  +/g, ' ').trim();
 
-  // Convert [#pause] in rawText to ellipses for TTS — generates real silence.
-  // getParaText (innerText) already strips [#tags], so we work on rawText here.
+  // Convert [#pause] tags: strip from rawText (display), convert in text (TTS).
+  // rawText drives karaoke display — pause tags must be removed, not replaced.
   rawText = rawText
-    .replace(/\[#pause4\]/g, ' .............. ')
-    .replace(/\[#pause3\]/g, ' .......... ')
-    .replace(/\[#pause2\]/g, ' ...... ')
-    .replace(/\[#pause\]/g,  ' ... ');
+    .replace(/\[#pause4\]/g, ' ')
+    .replace(/\[#pause3\]/g, ' ')
+    .replace(/\[#pause2\]/g, ' ')
+    .replace(/\[#pause\]/g,  ' ');
+  // text drives TTS — inject silence via comma sequences (more reliable than dots)
+  text = text
+    .replace(/\[#pause4\]/g, ',,,, ')
+    .replace(/\[#pause3\]/g, ',,, ')
+    .replace(/\[#pause2\]/g, ',, ')
+    .replace(/\[#pause\]/g,  ', ');
 
   // Epigraph: double all pause characters for a slower, more deliberate delivery
   if (isEpigraphPara(pid)) {
@@ -1462,13 +1432,19 @@ async function prefetchNext(index) {
   // Normalise newlines (matches narrationGoTo for cache key consistency)
   text = text.split('\n').join(' ').replace(/  +/g, ' ').trim();
 
-  // Convert [#pause] in rawText to ellipses for TTS — generates real silence.
-  // getParaText (innerText) already strips [#tags], so we work on rawText here.
+  // Convert [#pause] tags: strip from rawText (display), convert in text (TTS).
+  // rawText drives karaoke display — pause tags must be removed, not replaced.
   rawText = rawText
-    .replace(/\[#pause4\]/g, ' .............. ')
-    .replace(/\[#pause3\]/g, ' .......... ')
-    .replace(/\[#pause2\]/g, ' ...... ')
-    .replace(/\[#pause\]/g,  ' ... ');
+    .replace(/\[#pause4\]/g, ' ')
+    .replace(/\[#pause3\]/g, ' ')
+    .replace(/\[#pause2\]/g, ' ')
+    .replace(/\[#pause\]/g,  ' ');
+  // text drives TTS — inject silence via comma sequences (more reliable than dots)
+  text = text
+    .replace(/\[#pause4\]/g, ',,,, ')
+    .replace(/\[#pause3\]/g, ',,, ')
+    .replace(/\[#pause2\]/g, ',, ')
+    .replace(/\[#pause\]/g,  ', ');
 
   // Epigraph: double all pause characters for a slower, more deliberate delivery
   if (isEpigraphPara(pid)) {
@@ -1479,15 +1455,13 @@ async function prefetchNext(index) {
       .replace(/…/g,     '…   ')
       .replace(/,\s/g,   ',   ');
   }
-    // Convert [#pause] tags to ellipses in TTS text — generates real silence in audio.
-  // ElevenLabs produces actual silent audio for dots, so karaoke stays in sync.
-  // Display text already strips all [#tag] via renderChapter — reader sees nothing.
+    // Convert [#pause] tags: comma sequences in TTS text (silence), stripped from rawText
   text = text
-    .replace(/\[#pause4\]/g, ' .............. ')
-    .replace(/\[#pause3\]/g, ' .......... ')
-    .replace(/\[#pause2\]/g, ' ...... ')
-    .replace(/\[#pause\]/g,  ' ... ');
-  // Strip remaining SFX tags from TTS text
+    .replace(/\[#pause4\]/g, ',,,, ')
+    .replace(/\[#pause3\]/g, ',,, ')
+    .replace(/\[#pause2\]/g, ',, ')
+    .replace(/\[#pause\]/g,  ', ');
+  // Strip all SFX tags
   text    = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
   rawText = rawText.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
   // Strip ALL-CAPS SPEAKER: prefix (same as narrationGoTo) for cache key match
