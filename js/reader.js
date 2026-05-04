@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v126';
+const READER_VERSION = 'v127';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -390,24 +390,22 @@ function showIosTapToContinue() {
 }
 
 // ── iOS visibility resume ────────────────────────────────
-// When screen locks/page backgrounds mid-narration, iOS suspends the audio session.
-// On return, we show a tap-to-continue prompt to re-establish the session via user gesture.
+// When screen locks/page backgrounds, try to resume audio on return.
+// Tap prompt only shown if play() explicitly fails with NotAllowedError.
 if (IS_IOS) {
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden && narrationActive && narrationPlaying) {
-      // Page became visible while narration should be playing — session may be suspended
-      // Small delay to let iOS settle, then check if audio is actually playing
       setTimeout(() => {
         if (!narrationActive || !narrationPlaying) return;
-        const audio = narrationAudio;
-        if (!audio || !audio.paused) return; // already playing fine
-        // Only show if audio has made no progress (currentTime frozen)
-        const ctBefore = audio.currentTime;
-        setTimeout(() => {
-          if (!narrationActive || !narrationPlaying) return;
-          if (audio.paused && audio.currentTime === ctBefore) showIosTapPrompt();
-        }, 800);
-      }, 300);
+        if (ambientAudio && ambientAudio.paused && ambientEnabled) {
+          ambientAudio.play().catch(() => {});
+        }
+        if (narrationAudio && narrationAudio.paused) {
+          narrationAudio.play().catch(e => {
+            if (e.name === 'NotAllowedError') showIosTapPrompt();
+          });
+        }
+      }, 500);
     }
   });
 }
@@ -1079,11 +1077,9 @@ async function narrationGoTo(index) {
 
   // Guard: only ONE advance per paragraph
   let advanced = false;
-  let probeTimer = null; // proactive tap-prompt timer — cancelled on advance
   function advance() {
     if (advanced) return;
     advanced = true;
-    if (probeTimer) { clearTimeout(probeTimer); probeTimer = null; }
     cancelAnimationFrame(narrationRAF);
     if (narrationAudio) narrationAudio.removeEventListener('timeupdate', updateKaraoke);
     narrationCurrentWords.forEach(w => {
@@ -1161,12 +1157,7 @@ async function narrationGoTo(index) {
       }
       // Proactive check: only show tap prompt if audio truly never started
       // (currentTime still 0 after 2s) — avoids false positives mid-paragraph
-      if (IS_IOS) probeTimer = setTimeout(() => {
-        if (!narrationActive || advanced) return;
-        if (!narrationPlaying || narrationLocked) return;
-        if (audio !== narrationAudio) return;
-        if (audio.paused && audio.currentTime === 0) showIosTapPrompt();
-      }, (si === 0 ? pauseBeforeMs : 0) + 2500);
+      // Proactive check removed — only play() NotAllowedError triggers tap prompt
     }
     playSegment(0);
 
@@ -1211,11 +1202,7 @@ async function narrationGoTo(index) {
     if (iosDelay > 0) setTimeout(doPlay, iosDelay); else doPlay();
   }
     // Proactive check for iOS: only show if audio truly never started
-    if (IS_IOS) probeTimer = setTimeout(() => {
-      if (!narrationActive || advanced) return;
-      if (!narrationPlaying || narrationLocked) return;
-      if (narrationAudio && narrationAudio.paused && narrationAudio.currentTime === 0) showIosTapPrompt();
-    }, pauseBeforeMs + 2500);
+    // Proactive check removed — only play() NotAllowedError triggers tap prompt
   }
 
   function updateKaraoke() {
