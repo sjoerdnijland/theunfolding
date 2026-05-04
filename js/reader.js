@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v116';
+const READER_VERSION = 'v117';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -23,6 +23,8 @@ const sfxPreflight = new Set();
 let sfxTriggers    = [];
 let sfxFired       = new Set();
 let sfxVolume      = 0.60;
+// Desktop ambient default: 0.18 (was reduced to 0.07 for iOS — iOS ignores audio.volume anyway)
+const AMBIENT_VOL_DEFAULT = IS_IOS ? 0.07 : 0.18;
 
 function sfxLoad(tag) {
   if (sfxCache[tag] || sfxPreflight.has(tag)) return;
@@ -215,7 +217,7 @@ async function startAmbient(chapter, scene) {
   let v = 0;
   const fade = setInterval(() => {
     if (ambientAudio !== audio) { clearInterval(fade); return; }
-    const maxV = (window._ambientMaxVol !== undefined) ? window._ambientMaxVol : 0.07;
+    const maxV = (window._ambientMaxVol !== undefined) ? window._ambientMaxVol : AMBIENT_VOL_DEFAULT;
     v = Math.min(maxV, v + 0.005);
     audio.volume = v;
     if (v >= maxV) clearInterval(fade);
@@ -1942,7 +1944,8 @@ function renderChapter(ch) {
              data-scene="${sceneIndex}"
              data-raw="${escAttr(text)}"
              data-speaker="${speakerTag || ''}" 
-             data-inner-voice="${innerVoiceTag || ''}" 
+             data-inner-voice="${innerVoiceTag || ''}"
+             ${pauseBefore ? `data-pause-before="${pauseBefore}"` : ''}
              onclick="selectPara('${pid}', this)">
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
