@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v103';
+const READER_VERSION = 'v104';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -132,8 +132,6 @@ function toggleAmbient() {
     startAmbient(currentChapter, getSceneForPara(pid));
   } else {
     stopAmbientNow();
-    const slider = document.getElementById('ambient-vol-slider');
-    if (slider) slider.style.display = 'none';
   }
 }
 
