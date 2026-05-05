@@ -312,20 +312,19 @@ const SUPA_URL = 'https://sscpikfblqtmcefegrpv.supabase.co';
 const NARRATE_URL = `${SUPA_URL}/functions/v1/narrate`;
 
 const CAST = [
-  // Narrator
-  { name: 'Narrator',        role: 'Charlotte — default narrator', id: 'narrator', voiceId: null,                     model: 'turbo' },
-  // Characters
-  { name: 'Astrid Vilde',    role: 'Commander',                    id: 'astrid',   voiceId: 'PLACEHOLDER_VETERAN_MATRIARCH', model: 'v3', note: 'Add to My Voices first' },
-  { name: 'Frank Muro',      role: 'Lt. Communications',           id: 'frank',    voiceId: 'eVKQybPTL0poBPxBa8L6',  model: 'turbo' },
-  { name: 'Oliver Savannen', role: 'Colony Director',              id: 'oliver',   voiceId: 'C5GgjTyGQ2aQx8uMiLh9',  model: 'turbo' },
-  { name: 'Ulre Corbin',     role: 'Security Chief',               id: 'ulre',     voiceId: 'PLACEHOLDER_WEATHERED_DETECTIVE', model: 'v3', note: 'Add to My Voices first' },
-  { name: 'Eva Bellamy',     role: 'Navigation Officer',           id: 'eva',      voiceId: 'G4Wh6MqJNTzYtuAeMqv5',  model: 'turbo' },
-  { name: 'Dennis Reed',     role: 'Engineer',                     id: 'dennis',   voiceId: 'Zlb1dXrM653N07WRdFW3',  model: 'turbo' },
-  { name: 'Ionie Jia',       role: 'Medical Officer',              id: 'ionie',    voiceId: 'mrDMz4sYNCz18XYFpmyV',  model: 'turbo' },
-  { name: 'Benjamin Westhoff',role: 'Chief of Staff',              id: 'westhoff', voiceId: 'Tw2LVqLUUWkxqrCfFOpw',  model: 'turbo' },
-  { name: 'Gary / CIX',      role: 'Weaver AI',                    id: 'gary',     voiceId: 'keLVje3aBMuRpxuu0bqO',  model: 'turbo' },
-  { name: 'Joana Perera',    role: 'Neuroscientist',               id: 'joana',    voiceId: 'rCmVtv8cYU60uhlsOo1M',  model: 'v3' },
-  { name: 'Ines Martel',     role: 'The Elegant Minimalist',       id: 'ines',     voiceId: 'PLACEHOLDER_INES_MARTEL', model: 'v3', note: 'Add to My Voices first' },
+  { name: 'Narrator',         role: 'Charlotte — default narrator', id: 'narrator', voiceId: null,                    model: 'turbo' },
+  { name: 'Astrid Vilde',     role: 'Commander',                    id: 'astrid',   voiceId: 'wGcFBfKz5yUQqhqr0mVy', model: 'v3'   },
+  { name: 'Frank Muro',       role: 'Lt. Communications',           id: 'frank',    voiceId: 'eVKQybPTL0poBPxBa8L6', model: 'turbo' },
+  { name: 'Oliver Savannen',  role: 'Colony Director',              id: 'oliver',   voiceId: 'C5GgjTyGQ2aQx8uMiLh9', model: 'turbo' },
+  { name: 'Ulre Corbin',      role: 'Security Chief',               id: 'ulre',     voiceId: 'A9evEp8yGjv4c3WsIKuY', model: 'v3'   },
+  { name: 'Eva Bellamy',      role: 'Navigation Officer',           id: 'eva',      voiceId: 'G4Wh6MqJNTzYtuAeMqv5', model: 'turbo' },
+  { name: 'Dennis Reed',      role: 'Engineer',                     id: 'dennis',   voiceId: 'Zlb1dXrM653N07WRdFW3', model: 'turbo' },
+  { name: 'Ionie Jia',        role: 'Medical Officer',              id: 'ionie',    voiceId: 'mrDMz4sYNCz18XYFpmyV', model: 'turbo' },
+  { name: 'Benjamin Westhoff',role: 'Chief of Staff',               id: 'westhoff', voiceId: 'Tw2LVqLUUWkxqrCfFOpw', model: 'turbo' },
+  { name: 'Gary / CIX',       role: 'Weaver AI',                    id: 'gary',     voiceId: 'keLVje3aBMuRpxuu0bqO', model: 'turbo' },
+  { name: 'Joana Perera',     role: 'Neuroscientist',               id: 'joana',    voiceId: 'rCmVtv8cYU60uhlsOo1M', model: 'v3'   },
+  { name: 'Ian Perera',       role: 'Grid Engineer',                id: 'ian',      voiceId: 'jXkeB46JcPXXUSxzn3MD', model: 'v3'   },
+  { name: 'Ines Martel',      role: 'The Elegant Minimalist',       id: 'ines',     voiceId: 'PLACEHOLDER_INES_MARTEL', model: 'v3', note: 'Add to My Voices first' },
 ];
 
 let selectedChar = null;
