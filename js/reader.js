@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v129';
+const READER_VERSION = 'v132';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -622,6 +622,10 @@ async function narrationGoTo(index) {
   // do not reflect, causing karaoke to run ahead on multi-line paragraphs.
   // rawText keeps newlines so buildDisplayTokens still emits br tokens.
   text = text.split('\n').join(' ').replace(/  +/g, ' ').trim();
+
+  // Strip v3 emotion tags from display text (e.g. [sigh], [whispers], [excited])
+  // These are processed by ElevenLabs v3 but should not appear to the reader.
+  rawText = rawText.replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
 
   // Convert [#pause] tags: strip from rawText (display), convert in text (TTS).
   // rawText drives karaoke display — pause tags must be removed, not replaced.
@@ -1470,6 +1474,10 @@ async function prefetchNext(index) {
   // Normalise newlines (matches narrationGoTo for cache key consistency)
   text = text.split('\n').join(' ').replace(/  +/g, ' ').trim();
 
+  // Strip v3 emotion tags from display text (e.g. [sigh], [whispers], [excited])
+  // These are processed by ElevenLabs v3 but should not appear to the reader.
+  rawText = rawText.replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
+
   // Convert [#pause] tags: strip from rawText (display), convert in text (TTS).
   // rawText drives karaoke display — pause tags must be removed, not replaced.
   rawText = rawText
@@ -1493,7 +1501,10 @@ async function prefetchNext(index) {
       .replace(/…/g,     '…   ')
       .replace(/,\s/g,   ',   ');
   }
-    // Convert [#pause] tags: comma sequences in TTS text (silence), stripped from rawText
+    // Strip v3 emotion tags from display (rawText) — keep in TTS text for v3 voices
+  rawText = rawText.replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
+
+  // Convert [#pause] tags: comma sequences in TTS text (silence), stripped from rawText
   text = text
     .replace(/\[#pause4\]/g, ',,,, ')
     .replace(/\[#pause3\]/g, ',,, ')
@@ -1568,6 +1579,11 @@ function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
 }
 
 function buildWordTimings(text, alignment) {
+  // v3 plain endpoint returns no alignment — highlight entire block as one unit.
+  // The full text lights up when the segment starts, clears when it ends.
+  if (!alignment || !alignment.characters) {
+    return [{ text: text, start: 0, end: 9999 }];
+  }
   const chars      = alignment.characters || [];
   const startTimes = alignment.character_start_times_seconds || [];
   const endTimes   = alignment.character_end_times_seconds   || [];
