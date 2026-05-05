@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v132';
+const READER_VERSION = 'v133';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -1579,10 +1579,10 @@ function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
 }
 
 function buildWordTimings(text, alignment) {
-  // v3 plain endpoint returns no alignment — highlight entire block as one unit.
-  // The full text lights up when the segment starts, clears when it ends.
+  // v3 plain endpoint returns no alignment — highlight all words simultaneously.
+  // Every word gets start:0 so they all light up at once when the segment plays.
   if (!alignment || !alignment.characters) {
-    return [{ text: text, start: 0, end: 9999 }];
+    return text.split(/\s+/).filter(Boolean).map(w => ({ text: w, start: 0, end: 9999 }));
   }
   const chars      = alignment.characters || [];
   const startTimes = alignment.character_start_times_seconds || [];
