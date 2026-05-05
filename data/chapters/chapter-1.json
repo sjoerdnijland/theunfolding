@@ -5,12 +5,12 @@
     {
       "type": "epigraph",
       "paragraphs": [
-        { "text": "[#pause2]There is a song in the stone.", "pause_before": 2000 },
+        { "text": "There is a song in the stone."},
         { "text": "And if you listen, you can hear the math starting to fail. ", "pause_before": 1000 },
         { "text": "To unfold. ", "pause_before": 1000 },
-        { "text": "You weren't there. But you're next. I'm uplinking this to you because if I don't, only the stone will remember.[#pause2] It just sits there, waiting for you, before it can get back to being a rock. ", "pause_before": 2000 },
-        { "text": "And if you were going to look away, don't.[#pause] If you turn your head now, you'll miss the moment it decides to notice you. ", "pause_before": 2000 },
-        { "text": "My name doesn't matter. Where we start does.[#pause] Not Earth.[#pause2] Not Paradise.[#pause2] You're on the planet Mairee,[#pause] the moment the hum of the station changed.", "pause_before": 2000 }
+        { "text": "You weren't there. But you're next. I'm uplinking this to you because if I don't, only the stone will remember.[#pause2] It just sits there, waiting for you, before it can get back to being a rock. ", "pause_before": 1000 },
+        { "text": "And if you were going to look away, don't.[#pause] If you turn your head now, you'll miss the moment it decides to notice you. ", "pause_before": 1000 },
+        { "text": "My name doesn't matter. Where we start does.[#pause] Not Earth.[#pause2] Not Paradise.[#pause2] You're on the planet Mairee,[#pause] the moment the hum of the station changed.", "pause_before": 1000 }
       ]
     },
     {
@@ -117,7 +117,7 @@
         "The truth settled. She reminded them of the years in transit, moving from dry, recycled air to the first inhale of Maireean atmosphere. She spoke of the work that made them one people. Her gaze trawled the crowd and snagged on a boy near the front. He was the son of a man for whom she had delivered a eulogy shortly after the first transit cycle. She remembered being in the freezing hangar where the boy's father's body had lain in state. Colder still had been the look in the young man's clear gray eyes. Her hand had rested on the boy's shoulder while his father rested in a closed cryo-bag behind glass. She remembered the promise she had made him then. It sat in her gut like a stone: that no life given to the void would be forgotten by those who arrived.",
         "The void cannot claim what the heart holds.",
         {
-          "text": "\"Our journey is not over,\" she continued, forcing the stone in her gut to become fuel for a clarion call.[#pause2] \"It has begun.[#pause] We are prepared.[#pause] Your pads will receive rationing protocols. Read them. Respect them. And look at the people next to you.[#pause] They are not your competitors.[#pause] They are your survival.[#pause] Our strength is not in our stockpiles. It is in these hands.[#pause]\" She held hers up.[#pause] \"Our hands, our minds, and our hearts are what makes us strong.[#pause] As a first step, share your water with those who have less, and check on your neighbors to ensure no one is without essentials.\"",
+          "text": "\"Our journey is not over,\" she continued, forcing the stone in her gut to become fuel for a clarion call.[#pause2] \"It has begun.[#pause] We are prepared.[#pause] Your pads will receive rationing protocols. Read them. Respect them. And look at the people next to you.[#pause] They are not your competitors.[#pause] They are your survival.[#pause] Our strength is not in our stockpiles. It is in these hands.\"[#pause] She held hers up.[#pause] \"Our hands, our minds, and our hearts are what makes us strong.[#pause] As a first step, share your water with those who have less, and check on your neighbors to ensure no one is without essentials.\"",
           "speaker": "astrid-vilde",
           "pause_before": 2000
         },
