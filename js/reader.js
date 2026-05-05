@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v133';
+const READER_VERSION = 'v134';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -1255,15 +1255,26 @@ async function narrationGoTo(index) {
         charLabel.style.opacity = '0';
       }
 
+      // Check if current word is a v3 block-highlight word (end===9999 = no alignment)
+      // If so, find the full contiguous block and mark all of them current
+      const isBlockWord = currentIdx >= 0 && narrationCurrentWords[currentIdx]?.end === 9999;
+      let blockStart = currentIdx, blockEnd = currentIdx;
+      if (isBlockWord) {
+        while (blockStart > 0 && narrationCurrentWords[blockStart - 1]?.end === 9999) blockStart--;
+        while (blockEnd < narrationCurrentWords.length - 1 && narrationCurrentWords[blockEnd + 1]?.end === 9999) blockEnd++;
+      }
+
       narrationCurrentWords.forEach((w, i) => {
         const el = document.getElementById('nw-' + w.idx);
         if (!el) return;
         const wordVoice = getCharVoiceForWord(i);
         const isChar    = !!wordVoice;
 
-        // Word-level karaoke for both narrator and character words.
-        // Character words get 'char-voice' class for teal colour.
-        if (i < currentIdx) {
+        if (isBlockWord && i >= blockStart && i <= blockEnd) {
+          // Entire v3 block lit as current
+          el.className = `nw ${w.fmt || ''} current${isChar ? ' char-voice' : ''}`;
+          if (i === blockStart && window.innerWidth > 768) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        } else if (i < currentIdx) {
           el.className = `nw ${w.fmt || ''} spoken${isChar ? ' char-voice' : ''}`;
         } else if (i === currentIdx) {
           el.className = `nw ${w.fmt || ''} current${isChar ? ' char-voice' : ''}`;
@@ -1286,11 +1297,14 @@ async function narrationGoTo(index) {
       } else {
         charLabel.style.opacity = '0';
       }
+      const isBlockSingle = currentIdx >= 0 && narrationCurrentWords[currentIdx]?.end === 9999;
       narrationCurrentWords.forEach((w, i) => {
         const el = document.getElementById('nw-' + w.idx);
         if (!el) return;
         const isChar = !!singleVoice;
-        if (i < currentIdx) {
+        if (isBlockSingle && w.end === 9999) {
+          el.className = `nw ${w.fmt || ''} current${isChar ? ' char-voice' : ''}`;
+        } else if (i < currentIdx) {
           el.className = `nw ${w.fmt || ''} spoken${isChar ? ' char-voice' : ''}`;
         } else if (i === currentIdx) {
           el.className = `nw ${w.fmt || ''} current${isChar ? ' char-voice' : ''}`;
