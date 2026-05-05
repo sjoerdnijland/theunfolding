@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v148';
+const READER_VERSION = 'v150';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -786,11 +786,12 @@ async function narrationGoTo(index) {
     await new Promise(r => setTimeout(r, pauseBeforeMs));
   }
 
-  const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
-
   // Check for narrator model override (e.g. "v3" for narrator v3 paragraphs)
   const narratorModelOverride = document.getElementById(pid)?.dataset.narratorModel || null;
   console.log('[narrator-model] pid:', pid, 'override:', narratorModelOverride);
+
+  const modelSuffix = narratorModelOverride ? '|' + narratorModelOverride : '';
+  const cacheKey   = READER_VERSION + '|' + pid + modelSuffix + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
 
   let data = narrationCache[cacheKey];
   if (!data) {
@@ -1574,7 +1575,8 @@ async function prefetchNext(index) {
   }
   const charVoice  = multiVoiceEnabled ? detectSpeakerVoice(rawText) : null;
   const segments   = buildSegments(text, charVoice, null);
-  const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
+  const modelSuffix = narratorModelOverride ? '|' + narratorModelOverride : '';
+  const cacheKey   = READER_VERSION + '|' + pid + modelSuffix + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
   if (narrationCache[cacheKey] || prefetchInFlight.has(cacheKey)) return;
   prefetchInFlight.add(cacheKey);
   try {
