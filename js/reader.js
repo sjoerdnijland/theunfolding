@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v150';
+const READER_VERSION = 'v151';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -1642,11 +1642,34 @@ function buildWordTimings(text, alignment) {
   // V3_WORD_MODE: 'estimate' = per-word estimated timing (default), 'block' = whole segment
   if (!alignment || !alignment.characters) {
     if (window.V3_WORD_MODE === 'estimate') {
+      const PAUSE_DURS = { 'pause': 0.6, 'pause2': 1.2, 'pause3': 2.0, 'pause4': 3.0 };
+      const totalDur = alignment?._audioDur || 0;
+
+      // Split on [#pause] tags to account for silence in timing
+      const parts = text.split(/(\[#pause\d*\])/);
+      const wordEntries = [];
+      let pendingPause = 0;
+      parts.forEach(part => {
+        const m = part.match(/\[#(pause\d*)\]/);
+        if (m) {
+          pendingPause += PAUSE_DURS[m[1]] || 0.6;
+        } else {
+          part.split(/\s+/).filter(Boolean).forEach((w, i) => {
+            wordEntries.push({ text: w, extraBefore: i === 0 ? pendingPause : 0 });
+            pendingPause = 0;
+          });
+        }
+      });
+
+      const totalPauseDur = wordEntries.reduce((s, w) => s + w.extraBefore, 0);
+      const speechDur = Math.max((totalDur || wordEntries.length * 0.35) - totalPauseDur, wordEntries.length * 0.22);
+      const durPerWord = speechDur / Math.max(wordEntries.length, 1);
+
       let t = 0;
-      return text.split(/\s+/).filter(Boolean).map(w => {
-        const dur = 0.28 + Math.min(w.length * 0.03, 0.25);
-        const entry = { text: w, start: t, end: t + dur };
-        t += dur;
+      return wordEntries.map(w => {
+        t += w.extraBefore;
+        const entry = { text: w.text, start: t, end: t + durPerWord };
+        t += durPerWord;
         return entry;
       });
     }
