@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v142';
+const READER_VERSION = 'v143';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -997,9 +997,6 @@ async function narrationGoTo(index) {
     ? words.map((w, i) => ({ type: 'word', text: w.text, fmt: '', start: w.start, end: w.end, idx: i, blockHighlight: w.blockHighlight || false }))
     : buildDisplayTokens(rawText, words);
   narrationCurrentWords   = displayTokens.filter(t => t.type === 'word');
-  if (window.V3_WORD_MODE === 'estimate') {
-    console.log('[v3-estimate] words:', narrationCurrentWords.slice(0,5).map(w => ({t:w.text, s:w.start?.toFixed(2), bh:w.blockHighlight})));
-  }
 
   // Precompute which word indices (in narrationCurrentWords) belong to character segments
   // Key insight: normalise BOTH sides identically — strip all quote chars via norm()
@@ -1612,13 +1609,15 @@ function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
       ? { _audioDur: (meta.byteEnd - meta.byteStart) / 16000 }
       : meta.alignment;
     const segWords = buildWordTimings(seg.text, alignWithHint);
+    // In estimate mode, use real spread timing (no blockHighlight)
+    const useBlock = isBlock && window.V3_WORD_MODE !== 'estimate';
     segWords.forEach(w => {
       allWords.push({
         ...w,
-        start:          isBlock ? w.start + meta.timeOffset : w.start + meta.timeOffset,
-        end:            isBlock ? 9999 : w.end + meta.timeOffset,
+        start:          w.start + meta.timeOffset,
+        end:            useBlock ? 9999 : w.end + meta.timeOffset,
         segVoice:       seg.voiceId || null,
-        blockHighlight: isBlock,
+        blockHighlight: useBlock,
       });
     });
   });
