@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v147';
+const READER_VERSION = 'v148';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -828,7 +828,10 @@ async function narrationGoTo(index) {
     try {
       if (segments.length === 1) {
         const seg = segments[0];
-        data = await narrateFetch(Object.assign({ text: seg.text }, seg.voiceId ? { voiceId: seg.voiceId } : {}));
+        const modelOverride = !seg.voiceId && narratorModelOverride
+          ? { model: narratorModelOverride === 'v3' ? 'eleven_v3' : 'eleven_turbo_v2_5' }
+          : {};
+        data = await narrateFetch(Object.assign({ text: seg.text }, seg.voiceId ? { voiceId: seg.voiceId } : {}, modelOverride));
         if (data.error) throw new Error(data.error);
       } else {
         // Multiple segments — fetch each and stitch alignment
