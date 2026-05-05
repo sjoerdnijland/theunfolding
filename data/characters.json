@@ -25,7 +25,7 @@
     "image": "/assets/char/astrid_vilde.png",
     "mj_prompt": "A commanding woman in her fifties in a worn fleet uniform with mission insignia, standing at a holographic comms console in a dim colony command room, expression of controlled authority masking grief, amber emergency lighting casting hard shadows, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "astrid-vilde",
-    "voice_id": "KoVIHoyLDrQyd4pGalbs"
+    "voice_id": "wGcFBfKz5yUQqhqr0mVy"
   },
   {
     "name": "Ulre Corbin",
@@ -95,7 +95,7 @@
     "image": "/assets/char/joana_perera.png",
     "mj_prompt": "A dark-eyed woman in her late thirties in a colonial medical coat studying neural scan data on a holographic display, expression of focused dread, a sleeping child visible behind glass in the room beyond, dim colony hab lighting, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "joana-perera",
-    "voice_id": "rCmVtv8cYU60uhlsOo1M"
+    "voice_id": "kdmDKE6EkgrWrrykO9Qt"
   },
   {
     "name": "Ian Perera",
