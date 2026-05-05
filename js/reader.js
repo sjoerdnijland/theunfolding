@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v134';
+const READER_VERSION = 'v137';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -222,6 +222,24 @@ async function startAmbient(chapter, scene) {
     audio.volume = v;
     if (v >= maxV) clearInterval(fade);
   }, 80);
+}
+
+function toggleV3Mode() {
+  const isEstimate = window.V3_WORD_MODE === 'estimate';
+  window.V3_WORD_MODE = isEstimate ? 'block' : 'estimate';
+  const btn = document.getElementById('nc-v3mode-btn');
+  if (btn) {
+    btn.querySelector('.nc-lbl').textContent = isEstimate ? ' Block' : ' Words';
+    btn.querySelector('.nc-icon').textContent = isEstimate ? '✦' : '≋';
+  }
+  // Clear cache so next v3 paragraph re-renders with new mode
+  cacheClear();
+}
+
+// Show V3 mode button when multiVoiceEnabled and v3 characters exist
+function updateV3ModeBtn() {
+  const btn = document.getElementById('nc-v3mode-btn');
+  if (btn) btn.style.display = multiVoiceEnabled ? 'flex' : 'none';
 }
 
 function setAmbientVolume(v) {
@@ -1257,11 +1275,11 @@ async function narrationGoTo(index) {
 
       // Check if current word is a v3 block-highlight word (end===9999 = no alignment)
       // If so, find the full contiguous block and mark all of them current
-      const isBlockWord = currentIdx >= 0 && narrationCurrentWords[currentIdx]?.end === 9999;
+      const isBlockWord = currentIdx >= 0 && !!narrationCurrentWords[currentIdx]?.blockHighlight;
       let blockStart = currentIdx, blockEnd = currentIdx;
       if (isBlockWord) {
-        while (blockStart > 0 && narrationCurrentWords[blockStart - 1]?.end === 9999) blockStart--;
-        while (blockEnd < narrationCurrentWords.length - 1 && narrationCurrentWords[blockEnd + 1]?.end === 9999) blockEnd++;
+        while (blockStart > 0 && narrationCurrentWords[blockStart - 1]?.blockHighlight) blockStart--;
+        while (blockEnd < narrationCurrentWords.length - 1 && narrationCurrentWords[blockEnd + 1]?.blockHighlight) blockEnd++;
       }
 
       narrationCurrentWords.forEach((w, i) => {
@@ -1297,12 +1315,12 @@ async function narrationGoTo(index) {
       } else {
         charLabel.style.opacity = '0';
       }
-      const isBlockSingle = currentIdx >= 0 && narrationCurrentWords[currentIdx]?.end === 9999;
+      const isBlockSingle = currentIdx >= 0 && !!narrationCurrentWords[currentIdx]?.blockHighlight;
       narrationCurrentWords.forEach((w, i) => {
         const el = document.getElementById('nw-' + w.idx);
         if (!el) return;
         const isChar = !!singleVoice;
-        if (isBlockSingle && w.end === 9999) {
+        if (isBlockSingle && w.blockHighlight) {
           el.className = `nw ${w.fmt || ''} current${isChar ? ' char-voice' : ''}`;
         } else if (i < currentIdx) {
           el.className = `nw ${w.fmt || ''} spoken${isChar ? ' char-voice' : ''}`;
@@ -1575,16 +1593,17 @@ function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
   const allWords = [];
 
   segments.forEach((seg, si) => {
-    const meta = segmentMeta[si];
+    const meta    = segmentMeta[si];
     if (!meta) return;
+    const isBlock = !meta.alignment || !meta.alignment.characters;
     const segWords = buildWordTimings(seg.text, meta.alignment);
-    // Offset each word's start time by this segment's timeOffset
     segWords.forEach(w => {
       allWords.push({
         ...w,
-        start: w.start + meta.timeOffset,
-        end:   w.end   + meta.timeOffset,
-        segVoice: seg.voiceId || null,
+        start:          isBlock ? w.start + meta.timeOffset : w.start + meta.timeOffset,
+        end:            isBlock ? 9999 : w.end + meta.timeOffset,
+        segVoice:       seg.voiceId || null,
+        blockHighlight: isBlock,
       });
     });
   });
@@ -1593,10 +1612,19 @@ function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
 }
 
 function buildWordTimings(text, alignment) {
-  // v3 plain endpoint returns no alignment — highlight all words simultaneously.
-  // Every word gets start:0 so they all light up at once when the segment plays.
+  // v3 plain endpoint returns no alignment.
+  // V3_WORD_MODE: 'estimate' = per-word estimated timing, default = block highlight
   if (!alignment || !alignment.characters) {
-    return text.split(/\s+/).filter(Boolean).map(w => ({ text: w, start: 0, end: 9999 }));
+    if (window.V3_WORD_MODE === 'estimate') {
+      let t = 0;
+      return text.split(/\s+/).filter(Boolean).map(w => {
+        const dur = 0.28 + Math.min(w.length * 0.03, 0.25);
+        const entry = { text: w, start: t, end: t + dur };
+        t += dur;
+        return entry;
+      });
+    }
+    return text.split(/\s+/).filter(Boolean).map(w => ({ text: w, start: 0, end: 9999, blockHighlight: true }));
   }
   const chars      = alignment.characters || [];
   const startTimes = alignment.character_start_times_seconds || [];
