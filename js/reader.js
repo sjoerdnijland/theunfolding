@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v140';
+const READER_VERSION = 'v141';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -232,8 +232,14 @@ function toggleV3Mode() {
     btn.querySelector('.nc-lbl').textContent = isEstimate ? ' Block' : ' Words';
     btn.querySelector('.nc-icon').textContent = isEstimate ? '✦' : '≋';
   }
-  // Clear cache so next v3 paragraph re-renders with new mode
+  // Clear cache and re-narrate current paragraph so mode takes effect immediately
   cacheClear();
+  if (narrationActive && narrationIndex >= 0) {
+    if (narrationAudio) { narrationAudio.pause(); narrationAudio = null; }
+    cancelAnimationFrame(narrationRAF);
+    narrationLocked = false;
+    narrationGoTo(narrationIndex);
+  }
 }
 
 // Show V3 mode button when multiVoiceEnabled and v3 characters exist
