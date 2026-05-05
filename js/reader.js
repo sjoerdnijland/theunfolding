@@ -1,6 +1,8 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v143';
+const READER_VERSION = 'v145';
 console.log('[reader.js] loaded', READER_VERSION);
+const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
+
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
 // ── Narration state ──────────────────────────────────────
@@ -244,8 +246,9 @@ function toggleV3Mode() {
 
 // Show V3 mode button when multiVoiceEnabled and v3 characters exist
 function updateV3ModeBtn() {
+  // Button hidden — V3_BLOCK_MODE_ENABLED controls visibility
   const btn = document.getElementById('nc-v3mode-btn');
-  if (btn) btn.style.display = multiVoiceEnabled ? 'flex' : 'none';
+  if (btn) btn.style.display = (V3_BLOCK_MODE_ENABLED && multiVoiceEnabled) ? 'flex' : 'none';
 }
 
 function setAmbientVolume(v) {
@@ -785,6 +788,9 @@ async function narrationGoTo(index) {
 
   const cacheKey   = READER_VERSION + '|' + pid + '|' + segments.map(s => (s.voiceId||'n')+':'+s.text.slice(0,20)).join('|');
 
+  // Check for narrator model override (e.g. "v3" for narrator v3 paragraphs)
+  const narratorModelOverride = document.getElementById(pid)?.dataset.narratorModel || null;
+
   let data = narrationCache[cacheKey];
   if (!data) {
     // Only flash loading text on first load or if fetch takes >400ms.
@@ -827,13 +833,13 @@ async function narrationGoTo(index) {
         // Multiple segments — fetch each and stitch alignment
         const results = await Promise.all(
           segments.map(seg =>
-            narrateFetch(Object.assign({ text: seg.text }, seg.voiceId ? { voiceId: seg.voiceId } : {}))
+            narrateFetch(Object.assign({ text: seg.text }, seg.voiceId ? { voiceId: seg.voiceId } : {}, !seg.voiceId && narratorModelOverride ? { model: narratorModelOverride === 'v3' ? 'eleven_v3' : 'eleven_turbo_v2_5' } : {}))
               .catch(e => ({ error: e.message }))
           )
         );
         const anyFailed = results.some(r => r.error);
         if (anyFailed) {
-          data = await narrateFetch({ text });
+          data = await narrateFetch({ text, ...(narratorModelOverride ? { model: narratorModelOverride === 'v3' ? 'eleven_v3' : 'eleven_turbo_v2_5' } : {}) });
         } else {
           data = stitchSegments(results);
         }
@@ -1610,7 +1616,7 @@ function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
       : meta.alignment;
     const segWords = buildWordTimings(seg.text, alignWithHint);
     // In estimate mode, use real spread timing (no blockHighlight)
-    const useBlock = isBlock && window.V3_WORD_MODE !== 'estimate';
+    const useBlock = isBlock && V3_BLOCK_MODE_ENABLED && window.V3_WORD_MODE !== 'estimate';
     segWords.forEach(w => {
       allWords.push({
         ...w,
@@ -1627,7 +1633,7 @@ function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
 
 function buildWordTimings(text, alignment) {
   // v3 plain endpoint returns no alignment.
-  // V3_WORD_MODE: 'estimate' = per-word estimated timing, default = block highlight
+  // V3_WORD_MODE: 'estimate' = per-word estimated timing (default), 'block' = whole segment
   if (!alignment || !alignment.characters) {
     if (window.V3_WORD_MODE === 'estimate') {
       let t = 0;
@@ -1717,6 +1723,8 @@ let commentCounts    = {};   // paragraphId → count
 
 // ── Chapters — loaded from data/chapters/chapter-N.json ──
 const CHAPTER_COUNT = 4;
+window.V3_WORD_MODE = 'estimate'; // default: word-by-word for v3 voices
+
 const chapterNames  = { 1:'Assembly', 2:'The Startend', 3:'Doubt and Certainty', 4:'The Grid' }; // increment as you add files
 
 async function loadChapter(n) {
@@ -1963,6 +1971,7 @@ function renderChapter(ch) {
         const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker     || null : null;
         const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice  || null : null;
         const pauseBefore   = typeof paraItem === 'object' ? paraItem.pause_before || 0    : 0;
+        const narratorModel = typeof paraItem === 'object' ? (paraItem.narrator || sec.narrator || null) : (sec.narrator || null);
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
@@ -2008,6 +2017,7 @@ function renderChapter(ch) {
              data-inner-voice="${innerVoiceTag || ''}" 
              data-transcript="${isTranscript ? 'true' : ''}"
              ${pauseBefore ? `data-pause-before="${pauseBefore}"` : ''}
+             ${narratorModel ? `data-narrator-model="${narratorModel}"` : ''}
              onclick="selectPara('${pid}', this)">
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
@@ -2039,6 +2049,7 @@ function renderChapter(ch) {
         const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker     || null : null;
         const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice  || null : null;
         const pauseBefore   = typeof paraItem === 'object' ? paraItem.pause_before || 0    : 0;
+        const narratorModel = typeof paraItem === 'object' ? (paraItem.narrator || sec.narrator || null) : (sec.narrator || null);
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
@@ -2054,6 +2065,7 @@ function renderChapter(ch) {
              data-speaker="${speakerTag || ''}" 
              data-inner-voice="${innerVoiceTag || ''}"
              ${pauseBefore ? `data-pause-before="${pauseBefore}"` : ''}
+             ${narratorModel ? `data-narrator-model="${narratorModel}"` : ''}
              onclick="selectPara('${pid}', this)">
             <span class="para-toolbar">
               <button class="pt-btn" onclick="event.stopPropagation();lookupSelection('${pid}')">🔍 Look up</button>
@@ -2076,6 +2088,7 @@ function renderChapter(ch) {
         const speakerTag   = typeof paraItem === 'object' ? paraItem.speaker     || null : null;
         const innerVoiceTag = typeof paraItem === 'object' ? paraItem.inner_voice  || null : null;
         const pauseBefore   = typeof paraItem === 'object' ? paraItem.pause_before || 0    : 0;
+        const narratorModel = typeof paraItem === 'object' ? (paraItem.narrator || sec.narrator || null) : (sec.narrator || null);
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
         paraIndex++;
