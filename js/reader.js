@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v151';
+const READER_VERSION = 'v152';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -1662,14 +1662,26 @@ function buildWordTimings(text, alignment) {
       });
 
       const totalPauseDur = wordEntries.reduce((s, w) => s + w.extraBefore, 0);
-      const speechDur = Math.max((totalDur || wordEntries.length * 0.35) - totalPauseDur, wordEntries.length * 0.22);
-      const durPerWord = speechDur / Math.max(wordEntries.length, 1);
+      const speechDur = Math.max((totalDur || wordEntries.length * 0.38) - totalPauseDur, wordEntries.length * 0.22);
+
+      // Base duration per word (speech only, no punctuation pauses)
+      const baseDur = speechDur / Math.max(wordEntries.length, 1);
+
+      // Punctuation trailing-pause budgets (seconds added after the word)
+      function punctPause(w) {
+        if (/[.!?]$/.test(w))  return 0.30; // sentence end
+        if (/…$/.test(w))      return 0.25; // ellipsis
+        if (/,$/.test(w))      return 0.12; // comma
+        if (/[;:]$/.test(w))   return 0.15; // semicolon/colon
+        return 0;
+      }
 
       let t = 0;
       return wordEntries.map(w => {
         t += w.extraBefore;
-        const entry = { text: w.text, start: t, end: t + durPerWord };
-        t += durPerWord;
+        const pp = punctPause(w.text);
+        const entry = { text: w.text, start: t, end: t + baseDur + pp };
+        t += baseDur + pp;
         return entry;
       });
     }
