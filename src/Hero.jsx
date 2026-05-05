@@ -57,13 +57,13 @@ function Hero({ onBuy }) {
             <em>Something has been expecting them.</em>
           </p>
           <div className="hero-ctas">
-            <button className="btn btn-primary" onClick={onBuy}>Available Now →</button>
-            <a href="#excerpt" className="btn btn-ghost">Read the First Chapter</a>
+            <button className="btn btn-primary" onClick={onBuy}>Available 1 May → <span style={{ fontSize: '1.1em' }}>→</span></button>
+            <a href="reader.html" className="btn btn-ghost">Read the First Chapter</a>
           </div>
           <div className="hero-listen">
             <span className="mono-label muted">A psychedelic space opera</span>
             <span className="divider-dot" />
-            <span className="mono-label muted">Available Now</span>
+            <span className="mono-label muted">Available 1 May 2026</span>
           </div>
         </div>
 
