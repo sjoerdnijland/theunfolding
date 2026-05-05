@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v146';
+const READER_VERSION = 'v147';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -1559,8 +1559,8 @@ async function prefetchNext(index) {
     .replace(/\[#pause2\]/g, ',, ')
     .replace(/\[#pause\]/g,  ', ');
   // Strip all SFX tags
-  text    = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
-  rawText = rawText.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
+  text    = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
+  rawText = rawText.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
   // Strip ALL-CAPS SPEAKER: prefix (same as narrationGoTo) for cache key match
   const _prefixRe = /^[A-Z][A-Z0-9 ]+:\s+/;
   const _pm = text.match(_prefixRe);
@@ -1975,7 +1975,7 @@ function renderChapter(ch) {
         const narratorModel = typeof paraItem === 'object' ? (paraItem.narrator || sec.narrator || null) : (sec.narrator || null);
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
-        const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
+        const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
         const linked = autoLink(parseMarkup(displayText));
         paraIndex++;
 
@@ -2053,7 +2053,7 @@ function renderChapter(ch) {
         const narratorModel = typeof paraItem === 'object' ? (paraItem.narrator || sec.narrator || null) : (sec.narrator || null);
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
-        const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
+        const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
         const linked = autoLink(parseMarkup(displayText));
         paraIndex++;
         return `
@@ -2134,7 +2134,7 @@ function renderChapter(ch) {
       const pid   = `ch${currentChapter}-p${paraIndex}`;
       const count = commentCounts[pid] || 0;
       const isFirst = paraIndex === 0;
-      const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').trim();
+      const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
       const linked  = autoLink(parseMarkup(displayText));
       paraIndex++;
       html += `
