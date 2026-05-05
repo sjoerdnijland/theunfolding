@@ -25,7 +25,7 @@
     "image": "/assets/char/astrid_vilde.png",
     "mj_prompt": "A commanding woman in her fifties in a worn fleet uniform with mission insignia, standing at a holographic comms console in a dim colony command room, expression of controlled authority masking grief, amber emergency lighting casting hard shadows, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "astrid-vilde",
-    "voice_id": "Xb7hH8MSUJpSbSDYk0k2"
+    "voice_id": "wGcFBfKz5yUQqhqr0mVy"
   },
   {
     "name": "Ulre Corbin",
@@ -39,7 +39,7 @@
     "image": "/assets/char/ulre_corbin.png",
     "mj_prompt": "A short bald man in an immaculate matte-black military uniform pulling leather gloves tight finger by finger, standing in a half-lit colony corridor, polished boots catching the only light, cold sharp features, an aura of absolute calculated control, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ulre-corbin",
-    "voice_id": "VR6AewLTigWG4xSOukaG"
+    "voice_id": "A9evEp8yGjv4c3WsIKuY"
   },
   {
     "name": "Benjamin Westhoff",
@@ -95,7 +95,7 @@
     "image": "/assets/char/joana_perera.png",
     "mj_prompt": "A dark-eyed woman in her late thirties in a colonial medical coat studying neural scan data on a holographic display, expression of focused dread, a sleeping child visible behind glass in the room beyond, dim colony hab lighting, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "joana-perera",
-    "voice_id": "ThT5KcBeYPX3keUQqHPh"
+    "voice_id": "rCmVtv8cYU60uhlsOo1M"
   },
   {
     "name": "Ian Perera",
@@ -109,7 +109,7 @@
     "image": "/assets/char/ian_perera.png",
     "mj_prompt": "A quietly built man in his forties with engineer's hands crouched inside an open wall panel of a colonial hab, carefully rerouting atmospheric control circuits by the light of a small torch, expression of calm determination, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ian-perera",
-    "voice_id": "N2lVS1w4EtoT3dr4eOWO"
+    "voice_id": "jXkeB46JcPXXUSxzn3MD"
   },
   {
     "name": "Alistair Hale",
