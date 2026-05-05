@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v138';
+const READER_VERSION = 'v140';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -950,14 +950,16 @@ async function narrationGoTo(index) {
             ? { start: prevTiming.end, end: prevTiming.end }
             : { start: timing.start, end: timing.start };
           tokens.push({ type: 'word', text: word, fmt: getFmt(wordStart, wordStart + word.length),
-                        start: punctTiming.start, end: punctTiming.end, idx: wordIdx });
+                        start: punctTiming.start, end: punctTiming.end, idx: wordIdx,
+                        blockHighlight: timing.blockHighlight || false });
           word = ''; wordStart = -1;
           return; // do NOT increment wordIdx
         }
       }
 
       tokens.push({ type: 'word', text: word, fmt: getFmt(wordStart, wordStart + word.length),
-                    start: timing.start, end: timing.end, idx: usedIdx });
+                    start: timing.start, end: timing.end, idx: usedIdx,
+                    blockHighlight: timing.blockHighlight || false });
       wordIdx++;
       word = ''; wordStart = -1;
     };
@@ -986,7 +988,7 @@ async function narrationGoTo(index) {
 
   const displayTokens     = isCode
     // For code blocks: show raw text as-is, just split into words for timing
-    ? words.map((w, i) => ({ type: 'word', text: w.text, fmt: '', start: w.start, end: w.end, idx: i }))
+    ? words.map((w, i) => ({ type: 'word', text: w.text, fmt: '', start: w.start, end: w.end, idx: i, blockHighlight: w.blockHighlight || false }))
     : buildDisplayTokens(rawText, words);
   narrationCurrentWords   = displayTokens.filter(t => t.type === 'word');
 
@@ -1597,7 +1599,10 @@ function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
     const meta    = segmentMeta[si];
     if (!meta) return;
     const isBlock = !meta.alignment || !meta.alignment.characters;
-    const segWords = buildWordTimings(seg.text, meta.alignment);
+    const alignWithHint = isBlock
+      ? { _audioDur: (meta.byteEnd - meta.byteStart) / 16000 }
+      : meta.alignment;
+    const segWords = buildWordTimings(seg.text, alignWithHint);
     segWords.forEach(w => {
       allWords.push({
         ...w,
