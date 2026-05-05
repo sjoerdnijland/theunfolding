@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v145';
+const READER_VERSION = 'v146';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -790,6 +790,7 @@ async function narrationGoTo(index) {
 
   // Check for narrator model override (e.g. "v3" for narrator v3 paragraphs)
   const narratorModelOverride = document.getElementById(pid)?.dataset.narratorModel || null;
+  console.log('[narrator-model] pid:', pid, 'override:', narratorModelOverride);
 
   let data = narrationCache[cacheKey];
   if (!data) {
