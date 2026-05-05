@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v141';
+const READER_VERSION = 'v142';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -997,6 +997,9 @@ async function narrationGoTo(index) {
     ? words.map((w, i) => ({ type: 'word', text: w.text, fmt: '', start: w.start, end: w.end, idx: i, blockHighlight: w.blockHighlight || false }))
     : buildDisplayTokens(rawText, words);
   narrationCurrentWords   = displayTokens.filter(t => t.type === 'word');
+  if (window.V3_WORD_MODE === 'estimate') {
+    console.log('[v3-estimate] words:', narrationCurrentWords.slice(0,5).map(w => ({t:w.text, s:w.start?.toFixed(2), bh:w.blockHighlight})));
+  }
 
   // Precompute which word indices (in narrationCurrentWords) belong to character segments
   // Key insight: normalise BOTH sides identically — strip all quote chars via norm()
