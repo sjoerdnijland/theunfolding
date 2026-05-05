@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v137';
+const READER_VERSION = 'v138';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -1097,6 +1097,7 @@ async function narrationGoTo(index) {
   narrationLocked = false;
   narrationPlaying = true;
   document.getElementById('nc-play-btn').innerHTML = '<span class="nc-icon">\u23f8</span><span class="nc-lbl">Pause</span>';
+  if (typeof updateV3ModeBtn === 'function') updateV3ModeBtn();
 
   // Guard: only ONE advance per paragraph
   let advanced = false;
