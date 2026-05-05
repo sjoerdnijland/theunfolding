@@ -5,9 +5,9 @@
     {
       "type": "epigraph",
       "paragraphs": [
-        { "text": "There is a song in the stone."},
-        { "text": "And if you listen, you can hear the math starting to fail. ", "pause_before": 1000 },
-        { "text": "To unfold. ", "pause_before": 1000 },
+        { "text": "[mythic]There is a song in the stone.", "narrator":  "v3"},
+        { "text": "[mythic]And if you listen, you can hear the math starting to fail. ", "pause_before": 1000, "narrator":  "v3" },
+        { "text": "[ethereal]To unfold. ", "pause_before": 1000, "narrator":  "v3" },
         { "text": "You weren't there. But you're next. I'm uplinking this to you because if I don't, only the stone will remember.[#pause2] It just sits there, waiting for you, before it can get back to being a rock. ", "pause_before": 1000 },
         { "text": "And if you were going to look away, don't.[#pause] If you turn your head now, you'll miss the moment it decides to notice you. ", "pause_before": 1000 },
         { "text": "My name doesn't matter. Where we start does.[#pause] Not Earth.[#pause2] Not Paradise.[#pause2] You're on the planet Mairee,[#pause] the moment the hum of the station changed.", "pause_before": 1000 }
@@ -20,11 +20,11 @@
          "pause_before": 2000 },
         "She brought her hand to her quivering lip, as if to hold back the words she didn't yet dare to speak. She rested her open palm on the edge of the comms console, which normally felt warm. Now it was as though she were touching a corpse. She'd often reminded her staff that fear and courage walked the same corridor. Now she reminded herself, hoping it would help her steady her hand.",
         {
-          "text": "\"Muro, what do you hear?\" she finally said. She crossed to the holoscreen. It rendered the lieutenant, floating weightless in Orbital Three. His thinning sandy hair was sweaty, clinging to his forehead.",
+          "text": "\"[anxious]Muro, what do you hear?\" she finally said. She crossed to the holoscreen. It rendered the lieutenant, floating weightless in Orbital Three. His thinning sandy hair was sweaty, clinging to his forehead.",
           "speaker": "astrid-vilde"
         },
         {
-          "text": "Muro scratched his temple. \"Nothing, Commander. Total blackout.\" In his nervousness, Muro's brogue accent took over. \"It's like the Fold got flushed. Gone. But the *Brisinger*… she's still there. Sort of.\"",
+          "text": "Muro scratched his temple. \"[nervous]Nothing, Commander. Total blackout.\" In his nervousness, Muro's brogue accent took over. \"It's like the Fold got flushed. Gone. But the *Brisinger*… she's still there. Sort of.\"",
           "speaker": "frank-muro"
         },
         {
