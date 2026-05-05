@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speaker Tester — The Unfolding</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #060f10;
+    --surface:  #0b1a1c;
+    --line:     rgba(255,255,255,0.08);
+    --ivory:    #e8e0d4;
+    --muted:    #7a8a88;
+    --teal:     #4ecdc4;
+    --pink:     #e84393;
+    --mono:     'JetBrains Mono', monospace;
+    --serif:    'Cormorant Garamond', serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ivory);
+    font-family: var(--mono);
+    min-height: 100vh;
+    padding: 40px 24px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  header .label {
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  header h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 300;
+    color: var(--ivory);
+  }
+  header p {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .tester {
+    max-width: 860px;
+    margin: 0 auto;
+    display: grid;
+    gap: 24px;
+  }
+
+  /* Character grid */
+  .cast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 8px;
+  }
+  .cast-btn {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 12px 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s, background 0.15s;
+    color: var(--ivory);
+  }
+  .cast-btn:hover { border-color: rgba(255,255,255,0.2); }
+  .cast-btn.active {
+    border-color: var(--teal);
+    background: rgba(78,205,196,0.07);
+  }
+  .cast-btn .name {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .cast-btn .role {
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .cast-btn .model-tag {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+    border-radius: 2px;
+    background: rgba(78,205,196,0.12);
+    color: var(--teal);
+  }
+  .cast-btn .model-tag.v3 {
+    background: rgba(232,67,147,0.12);
+    color: var(--pink);
+  }
+  .cast-btn .no-id {
+    font-size: 0.55rem;
+    color: #e89843;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Text input area */
+  .input-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 20px;
+    display: grid;
+    gap: 16px;
+  }
+  .input-panel label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 6px;
+  }
+  textarea {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--ivory);
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    padding: 14px;
+    resize: vertical;
+    min-height: 100px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  textarea:focus { border-color: rgba(255,255,255,0.25); }
+
+  .tags-hint {
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+  .tags-hint .tag {
+    color: var(--pink);
+    font-family: var(--mono);
+  }
+
+  /* Model selector */
+  .model-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .model-btn {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 6px 12px;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .model-btn:hover { color: var(--ivory); }
+  .model-btn.active {
+    border-color: var(--pink);
+    color: var(--pink);
+    background: rgba(232,67,147,0.08);
+  }
+
+  /* Generate button */
+  .gen-btn {
+    background: var(--pink);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    width: 100%;
+  }
+  .gen-btn:hover:not(:disabled) { opacity: 0.88; transform: translateY(-1px); }
+  .gen-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  /* Audio output */
+  .output-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 20px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .output-panel .status {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: center;
+  }
+  .output-panel .status.loading { color: var(--teal); }
+  .output-panel .status.error   { color: #e85454; }
+  audio {
+    width: 100%;
+    filter: invert(1) hue-rotate(180deg);
+    opacity: 0.85;
+  }
+
+  .char-info {
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    padding: 8px 0;
+    border-top: 1px solid var(--line);
+  }
+  .char-info span { color: var(--ivory); }
+
+  hr { border: none; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">The Unfolding</div>
+  <h1>Speaker Tester</h1>
+  <p>Test character voices · emotion tags · v2 vs v3 models</p>
+</header>
+
+<div class="tester">
+
+  <!-- Cast grid -->
+  <div>
+    <label style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px">Select character</label>
+    <div class="cast-grid" id="cast-grid"></div>
+  </div>
+
+  <!-- Input panel -->
+  <div class="input-panel">
+    <div>
+      <label>Text to speak</label>
+      <textarea id="text-input" placeholder="Enter text here… try emotion tags like [sigh], [whispers], [nervous], [sorrowful]">"Nothing, Commander. Total blackout."</textarea>
+    </div>
+
+    <div>
+      <label>Emotion tags (v3 only)</label>
+      <div class="tags-hint">
+        Emotional states: <span class="tag">[excited]</span> <span class="tag">[nervous]</span> <span class="tag">[frustrated]</span> <span class="tag">[sorrowful]</span> <span class="tag">[calm]</span><br>
+        Reactions: <span class="tag">[sigh]</span> <span class="tag">[laughs]</span> <span class="tag">[gulps]</span> <span class="tag">[gasps]</span> <span class="tag">[whispers]</span><br>
+        Beats: <span class="tag">[pauses]</span> <span class="tag">[hesitates]</span> <span class="tag">[stammers]</span> <span class="tag">[quietly]</span> <span class="tag">[slowly]</span><br>
+        Tone: <span class="tag">[cheerfully]</span> <span class="tag">[flatly]</span> <span class="tag">[deadpan]</span> <span class="tag">[resigned tone]</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <label>Model</label>
+        <div class="model-row">
+          <button class="model-btn active" data-model="eleven_turbo_v2_5" onclick="selectModel(this)">turbo_v2_5</button>
+          <button class="model-btn" data-model="eleven_v3" onclick="selectModel(this)">v3 (emotion tags)</button>
+        </div>
+      </div>
+      <div>
+        <label>Voice ID override</label>
+        <input id="voice-id-override" type="text" placeholder="paste any voice ID here…"
+          style="width:100%;background:rgba(0,0,0,0.3);border:1px solid var(--line);border-radius:4px;
+                 color:var(--teal);font-family:var(--mono);font-size:0.7rem;padding:8px 10px;outline:none;
+                 transition:border-color 0.15s"
+          oninput="onVoiceIdOverride(this.value)"
+        />
+        <div id="override-note" style="font-size:0.58rem;color:var(--muted);margin-top:4px;letter-spacing:0.05em">
+          Overrides selected character's voice ID
+        </div>
+      </div>
+    </div>
+
+    <div id="char-info" class="char-info" style="display:none"></div>
+
+    <button class="gen-btn" id="gen-btn" onclick="generate()" disabled>
+      ▶ Generate
+    </button>
+  </div>
+
+  <!-- Output -->
+  <div class="output-panel" id="output-panel">
+    <div class="status">Select a character and enter text to generate</div>
+  </div>
+
+</div>
+
+<script>
+const SUPA_URL = 'https://sscpikfblqtmcefegrpv.supabase.co';
+const NARRATE_URL = `${SUPA_URL}/functions/v1/narrate`;
+
+const CAST = [
+  // Narrator
+  { name: 'Narrator',        role: 'Charlotte — default narrator', id: 'narrator', voiceId: null,                     model: 'turbo' },
+  // Characters
+  { name: 'Astrid Vilde',    role: 'Commander',                    id: 'astrid',   voiceId: 'PLACEHOLDER_VETERAN_MATRIARCH', model: 'v3', note: 'Add to My Voices first' },
+  { name: 'Frank Muro',      role: 'Lt. Communications',           id: 'frank',    voiceId: 'eVKQybPTL0poBPxBa8L6',  model: 'turbo' },
+  { name: 'Oliver Savannen', role: 'Colony Director',              id: 'oliver',   voiceId: 'C5GgjTyGQ2aQx8uMiLh9',  model: 'turbo' },
+  { name: 'Ulre Corbin',     role: 'Security Chief',               id: 'ulre',     voiceId: 'PLACEHOLDER_WEATHERED_DETECTIVE', model: 'v3', note: 'Add to My Voices first' },
+  { name: 'Eva Bellamy',     role: 'Navigation Officer',           id: 'eva',      voiceId: 'G4Wh6MqJNTzYtuAeMqv5',  model: 'turbo' },
+  { name: 'Dennis Reed',     role: 'Engineer',                     id: 'dennis',   voiceId: 'Zlb1dXrM653N07WRdFW3',  model: 'turbo' },
+  { name: 'Ionie Jia',       role: 'Medical Officer',              id: 'ionie',    voiceId: 'mrDMz4sYNCz18XYFpmyV',  model: 'turbo' },
+  { name: 'Benjamin Westhoff',role: 'Chief of Staff',              id: 'westhoff', voiceId: 'Tw2LVqLUUWkxqrCfFOpw',  model: 'turbo' },
+  { name: 'Gary / CIX',      role: 'Weaver AI',                    id: 'gary',     voiceId: 'keLVje3aBMuRpxuu0bqO',  model: 'turbo' },
+  { name: 'Joana Perera',    role: 'Neuroscientist',               id: 'joana',    voiceId: 'rCmVtv8cYU60uhlsOo1M',  model: 'v3' },
+  { name: 'Ines Martel',     role: 'The Elegant Minimalist',       id: 'ines',     voiceId: 'PLACEHOLDER_INES_MARTEL', model: 'v3', note: 'Add to My Voices first' },
+];
+
+let selectedChar = null;
+let selectedModel = 'eleven_turbo_v2_5';
+
+function selectModel(btn) {
+  document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedModel = btn.dataset.model;
+}
+
+function selectChar(char) {
+  selectedChar = char;
+  document.querySelectorAll('.cast-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('cast-' + char.id).classList.add('active');
+
+  const info = document.getElementById('char-info');
+  if (char.voiceId && char.voiceId.startsWith('PLACEHOLDER')) {
+    info.innerHTML = `⚠ Voice ID needed — add <span>${char.name.replace(/ .*/, '')} voice</span> to your ElevenLabs My Voices first, then update this file.`;
+    info.style.display = 'block';
+    document.getElementById('gen-btn').disabled = true;
+  } else {
+    const vid = char.voiceId || 'narrator (env var)';
+    info.innerHTML = `Voice ID: <span>${vid}</span> · Default model: <span>${char.model === 'v3' ? 'eleven_v3' : 'turbo_v2_5'}</span>`;
+    info.style.display = 'block';
+    document.getElementById('gen-btn').disabled = false;
+  }
+
+  // Auto-switch model to character default
+  if (char.model === 'v3') {
+    document.querySelectorAll('.model-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.model === 'eleven_v3');
+    });
+    selectedModel = 'eleven_v3';
+  }
+}
+
+// Build cast grid
+const grid = document.getElementById('cast-grid');
+CAST.forEach(char => {
+  const btn = document.createElement('button');
+  btn.className = 'cast-btn';
+  btn.id = 'cast-' + char.id;
+  btn.onclick = () => selectChar(char);
+  const isV3 = char.model === 'v3';
+  const hasId = char.voiceId && !char.voiceId.startsWith('PLACEHOLDER');
+  btn.innerHTML = `
+    <span class="name">${char.name}</span>
+    <span class="role">${char.role}</span>
+    <span class="model-tag ${isV3 ? 'v3' : ''}">${isV3 ? 'v3 ready' : 'turbo v2.5'}</span>
+    ${!hasId && char.voiceId ? `<div class="no-id">⚠ needs voice ID</div>` : ''}
+  `;
+  grid.appendChild(btn);
+});
+
+function onVoiceIdOverride(val) {
+  const note = document.getElementById('override-note');
+  const btn = document.getElementById('gen-btn');
+  if (val.trim()) {
+    note.textContent = '✓ Using override ID — character selection ignored for voice';
+    note.style.color = 'var(--teal)';
+    if (selectedChar) btn.disabled = false;
+  } else {
+    note.textContent = 'Overrides selected character's voice ID';
+    note.style.color = 'var(--muted)';
+  }
+}
+
+async function generate() {
+  if (!selectedChar) return;
+  const text = document.getElementById('text-input').value.trim();
+  if (!text) return;
+
+  const btn = document.getElementById('gen-btn');
+  const out = document.getElementById('output-panel');
+  btn.disabled = true;
+  out.innerHTML = '<div class="status loading">Generating…</div>';
+
+  try {
+    const overrideId = document.getElementById('voice-id-override').value.trim();
+    const body = { text, model: selectedModel };
+    const useVoiceId = overrideId || selectedChar.voiceId;
+    if (useVoiceId) body.voiceId = useVoiceId;
+
+    const res = await fetch(NARRATE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(err);
+    }
+
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+
+    const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
+    const audioUrl = URL.createObjectURL(audioBlob);
+    out.innerHTML = `<audio controls autoplay src="${audioUrl}"></audio>`;
+  } catch(e) {
+    out.innerHTML = `<div class="status error">Error: ${e.message.slice(0, 120)}</div>`;
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function base64ToBlob(b64, type) {
+  const binary = atob(b64);
+  const arr = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) arr[i] = binary.charCodeAt(i);
+  return new Blob([arr], { type });
+}
+
+// Enter to generate
+document.getElementById('text-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) generate();
+});
+</script>
+</body>
+</html>
