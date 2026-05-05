@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v127';
+const READER_VERSION = 'v129';
 console.log('[reader.js] loaded', READER_VERSION);
 const IS_IOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -422,9 +422,10 @@ function showIosTapPrompt() {
     'background:rgba(6,22,25,0.75);backdrop-filter:blur(8px)',
     'cursor:pointer',
   ].join(';');
-  el.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:0 32px">'
+  el.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:0 40px">'
     + '<div style="font-size:2rem">▶</div>'
     + '<div style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ivory)">Tap to continue</div>'
+    + '<div style="font-family:var(--serif);font-size:0.82rem;color:var(--muted);font-style:italic;max-width:260px;line-height:1.6">iOS requires a confirmation tap to keep audio playing.</div>'
     + '</div>';
   el.addEventListener('click', () => {
     el.remove();
