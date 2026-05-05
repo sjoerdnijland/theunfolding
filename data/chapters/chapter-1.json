@@ -6,9 +6,7 @@
       "type": "epigraph",
       "narrator":  "v3",
       "paragraphs": [
-        { "text": "[mythical]There is a song in the stone." },
-        { "text": "[enigmatic]And if you listen, you can hear the math starting to fail. ", "pause_before": 1000 },
-        { "text": "[teasing_intrigue]To unfold. ", "pause_before": 1000 },
+        { "text": "[mythical][slow]There is a song in the stone. [enigmatic]And if you listen, you can hear the math starting to fail. [teasing_intrigue]To unfold. ", "pause_before": 1000 },
         { "text": "You weren't there. But you're next. I'm uplinking this to you because if I don't, only the stone will remember.[#pause2] It just sits there, waiting for you, before it can get back to being a rock. ", "pause_before": 1000 },
         { "text": "And if you were going to look away, don't.[#pause] If you turn your head now, you'll miss the moment it decides to notice you. ", "pause_before": 1000 },
         { "text": "My name doesn't matter. Where we start does.[#pause] Not Earth.[#pause2] Not Paradise.[#pause2] [knowing_playful]You're on the planet Mairee,[#pause] the moment the hum of the station changed.", "pause_before": 1000 }
