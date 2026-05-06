@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v161';
+const READER_VERSION = 'v162';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -1160,6 +1160,26 @@ async function narrationGoTo(index) {
       const url = URL.createObjectURL(new Blob([arr], { type: 'audio/mpeg' }));
       const audio = new Audio(url);
       narrationAudio = audio;
+      // For v3 segments, get real duration from loadedmetadata and update timing
+      if (!meta.alignment || !meta.alignment.characters) {
+        audio.addEventListener('loadedmetadata', () => {
+          if (isFinite(audio.duration) && audio.duration > 0) {
+            meta._realDur = audio.duration;
+            // Rebuild word timings with actual duration
+            const alignHint = { _audioDur: audio.duration };
+            const segWords = buildWordTimings(segments[si]?.text || '', alignHint);
+            // Update only the words for this segment in narrationCurrentWords
+            let segWordIdx = 0;
+            narrationCurrentWords.forEach(w => {
+              if (w.segIdx === si && segWordIdx < segWords.length) {
+                const sw = segWords[segWordIdx++];
+                w.start = sw.start + (meta.timeOffset || 0);
+                w.end   = sw.end   + (meta.timeOffset || 0);
+              }
+            });
+          }
+        }, { once: true });
+      }
 
       const base = segTimeBase;
       const lastSegEnds = segMeta[segMeta.length-1].alignment && segMeta[segMeta.length-1].alignment.character_end_times_seconds;
@@ -1220,6 +1240,27 @@ async function narrationGoTo(index) {
     const audioBlob = base64ToBlob(data.audio, 'audio/mpeg');
     const audioUrl  = URL.createObjectURL(audioBlob);
     narrationAudio  = new Audio(audioUrl);
+    // Get real audio duration for v3 segments and rebuild word timings
+    narrationAudio.addEventListener('loadedmetadata', () => {
+      const realDur = narrationAudio.duration;
+      if (realDur && isFinite(realDur) && data.segmentMeta) {
+        // Rebuild timings for any v3 segments using actual duration
+        let needsRebuild = false;
+        data.segmentMeta.forEach(meta => {
+          if (!meta.alignment || !meta.alignment.characters) {
+            meta._realDur = realDur;
+            needsRebuild = true;
+          }
+        });
+        if (needsRebuild) {
+          const newWords = isStitched
+            ? buildWordTimingsFromSegments(text, segments, data.segmentMeta)
+            : buildWordTimings(text, { _audioDur: realDur });
+          const newTokens = buildDisplayTokens(rawText, newWords);
+          narrationCurrentWords = newTokens.filter(t => t.type === 'word');
+        }
+      }
+    }, { once: true });
     narrationAudio.addEventListener('timeupdate', updateKaraoke);
     narrationAudio.addEventListener('ended', () => { URL.revokeObjectURL(audioUrl); advance(); });
 
@@ -1629,7 +1670,7 @@ function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
     if (!meta) return;
     const isBlock = !meta.alignment || !meta.alignment.characters;
     const alignWithHint = isBlock
-      ? { _audioDur: ((meta.byteEnd - meta.byteStart) / 16000) * 1.35 } // v3 speaks slower than byte estimate
+      ? { _audioDur: (meta.byteEnd - meta.byteStart) / 16000 } // will be overridden by real duration from loadedmetadata
       : meta.alignment;
     const segWords = buildWordTimings(seg.text, alignWithHint);
     // In estimate mode, use real spread timing (no blockHighlight)
