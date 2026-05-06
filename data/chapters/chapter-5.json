@@ -66,7 +66,7 @@
     },
     {
       "paragraphs": [
-        "[beat]A beat later, four officers of the Dáinn gathered around the central holotable in the Tactical Information Center. The table painted their situation in geometric light. Icons for the Dáinn and Brisinger floated in the simulated void. The path between them read 'Two clicks, five thuds, two beats.' The Brisinger's icon flickered red, linked to the Dáinn by a thin green line.",
+        "[#beat]A beat later, four officers of the Dáinn gathered around the central holotable in the Tactical Information Center. The table painted their situation in geometric light. Icons for the Dáinn and Brisinger floated in the simulated void. The path between them read 'Two clicks, five thuds, two beats.' The Brisinger's icon flickered red, linked to the Dáinn by a thin green line.",
         "With gravity momentarily restored, Ben walked uneasily around the table.",
         {
           "text": "\"Alright,\" he began, stopping to look at each of his weary officers. He noted Jia, who, despite the exhaustion, stood ramrod straight. Beltrán slouched in his seat, and Pilot Alistair Hale's flicked his eyes around, clearly surprised to have been summoned.",
@@ -122,7 +122,7 @@
     {
       "paragraphs": [
         {
-          "text": "Ben [handslam]slammed his hand down on the holotable, killing it and snapping everyone's attention back to him. \"Beltrán! Beat that drum. Let them know we're coming. No pulse to lose.\"",
+          "text": "Ben [#handslam]slammed his hand down on the holotable, killing it and snapping everyone's attention back to him. \"Beltrán! Beat that drum. Let them know we're coming. No pulse to lose.\"",
           "speaker": "benjamin-westhoff"
         }
       ]
@@ -158,9 +158,14 @@
         },
         "Alistair's smirk softened for a fraction of a second. He flipped a page. The paper was as thin as skin. He opened a random page and read:",
         {
-          "text": "\"The Fall\n[#pause2]Birds bore the earth, \nBound fast to soil and bone; \nChained to my fleeting being, \nThey climbed with a heart of stone. \nToo high, thought-drowned; \nWings unmade, earth-bound. \nThe fall stretched, endlessly slow. \nAnd in the act of letting go, \nI remembered.\"",
+          "text": "\"The Fall\n[#pause2].\"",
           "speaker": "alistair-hale"
         },
+        {
+          "text": "\"Birds bore the earth, \nBound fast to soil and bone; \nChained to my fleeting being, \nThey climbed with a heart of stone. \nToo high, thought-drowned; \nWings unmade, earth-bound. \nThe fall stretched, endlessly slow. \nAnd in the act of letting go, \nI remembered.\"",
+          "speaker": "alistair-hale","pause_before": 1000
+        },
+
         {
           "text": "He drifted closer and gave the book back. \"I can't say I like that line about wings being unmade.\" He held her arm to steady her. \"Brace up. Here comes the snap-back.\"",
           "speaker": "alistair-hale"
