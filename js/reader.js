@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v171';
+const READER_VERSION = 'v172';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -2037,7 +2037,6 @@ function renderChapter(ch) {
     <div class="ch-hero">
       <div class="ch-eyebrow">Chapter ${currentChapter}</div>
       <h1 class="ch-title">${ch.title}</h1>
-      <p class="ch-subtitle">${ch.subtitle}</p>
       <div class="ch-narrate-wrap">
         <button class="ch-narrate-btn ch-narrate-btn--icon" onclick="startNarration()" id="ch-narrate-btn" aria-label="Start narration">
           <span class="ch-narrate-ring"></span>
