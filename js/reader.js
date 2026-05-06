@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v163';
+const READER_VERSION = 'v167';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -28,7 +28,10 @@ let sfxVolume      = 0.60;
 // Desktop ambient default: 0.18 (was reduced to 0.07 for iOS — iOS ignores audio.volume anyway)
 const AMBIENT_VOL_DEFAULT = IS_IOS ? 0.07 : 0.18;
 
+const SFX_PAUSES = { 'pause': 800, 'pause2': 1600, 'pause3': 2500, 'pause4': 3500 };
+
 function sfxLoad(tag) {
+  if (SFX_PAUSES[tag] !== undefined) return; // pause tags handled by TTS, no MP3 needed
   if (sfxCache[tag] || sfxPreflight.has(tag)) return;
   sfxPreflight.add(tag);
   const a = new Audio(SFX_BASE_URL + tag + '.mp3');
@@ -39,7 +42,6 @@ function sfxLoad(tag) {
 
 let sfxActive = null; // currently playing SFX element
 
-const SFX_PAUSES = { 'pause': 800, 'pause2': 1600, 'pause3': 2500, 'pause4': 3500 };
 
 function sfxPlay(tag) {
   if (sfxActive) { sfxActive.pause(); sfxActive.currentTime = 0; sfxActive = null; }
@@ -650,6 +652,14 @@ async function narrationGoTo(index) {
   let text    = getParaText(pid);
   let rawText = getRawText(pid) || text;
   if (!text) { narrationLocked = false; await narrationGoTo(index + 1); return; }
+
+  // Heading paragraphs: read with natural spacing, stripped of formatting chars
+  const isHeadingPara = document.getElementById(pid)?.dataset.heading === 'true';
+  if (isHeadingPara) {
+    // Clean up heading for TTS: replace · with pause, clean dots
+    text = text.replace(/·/g, ',').replace(/\s+/g, ' ').trim();
+    rawText = rawText.replace(/·/g, ',').replace(/\s+/g, ' ').trim();
+  }
 
   /// Normalise newlines to spaces in TTS text only.
   // ElevenLabs adds unmeasured silence for newlines that the alignment timestamps
@@ -2215,10 +2225,23 @@ function renderChapter(ch) {
     }
     prevSecType = 'prose';
     if (sec.heading) {
+      const hpid = `ch${currentChapter}-p${paraIndex}`;
       const isLocation = sec.heading.includes('·') || /[A-Z]{2,}/.test(sec.heading);
-      html += isLocation
-        ? `<div class="ch-location-head">${sec.heading}</div>`
-        : `<div class="ch-divider"></div><h3 class="ch-section-head">${sec.heading}</h3>`;
+      const hClass = isLocation ? 'ch-location-head' : 'ch-section-head';
+      html += `<p class="para heading-para ${hClass}"
+         id="${hpid}"
+         data-para-id="${hpid}"
+         data-scene="${sceneIndex}"
+         data-raw="${escAttr(sec.heading)}"
+         data-heading="true"
+         data-pause-before="1200"
+         onclick="selectPara('${hpid}', this)">
+        <span class="para-toolbar">
+          <button class="pt-btn pt-narrate" onclick="event.stopPropagation();startNarrationFrom('${hpid}')">▶ Narrate</button>
+        </span>
+        ${sec.heading}
+      </p>`;
+      paraIndex++;
     }
 
     sec.paragraphs.forEach((paraItem, pi) => {
