@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v162';
+const READER_VERSION = 'v163';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -1817,10 +1817,10 @@ let wikiById         = {};   // id → entry  (for speaker tag lookups)
 let commentCounts    = {};   // paragraphId → count
 
 // ── Chapters — loaded from data/chapters/chapter-N.json ──
-const CHAPTER_COUNT = 4;
+const CHAPTER_COUNT = 5;
 window.V3_WORD_MODE = 'estimate'; // default: word-by-word for v3 voices
 
-const chapterNames  = { 1:'Assembly', 2:'The Startend', 3:'Doubt and Certainty', 4:'The Grid' }; // increment as you add files
+const chapterNames  = { 1:'Assembly', 2:'The Startend', 3:'Doubt and Certainty', 4:'The Grid', 5:'Two Courses' }; // increment as you add files
 
 async function loadChapter(n) {
   currentChapter = n;
