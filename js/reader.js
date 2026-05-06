@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v167';
+const READER_VERSION = 'v168';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -1121,10 +1121,16 @@ async function narrationGoTo(index) {
 
   // Apply code-mode now — after any scene pause, so overlay doesn't flicker mid-transition
   document.getElementById('narration-overlay').classList.toggle('code-mode', isCode);
+  document.getElementById('narration-overlay').classList.toggle('heading-mode', isHeadingPara);
 
   if (isCode) {
     textEl.innerHTML = `<div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.35em;color:var(--teal-soft);margin-bottom:28px;text-align:center;opacity:0.7">◉ TRANSMISSION</div>`
       + displayTokens.map(t => `<span class="nw" id="nw-${t.idx}">${escHtml(t.text)}</span> `).join('');
+  } else if (isHeadingPara) {
+    textEl.innerHTML = `<div class="narration-heading">${displayTokens.map(t => {
+      if (t.type === 'br' || t.type === 'space') return ' ';
+      return `<span class="nw ${t.fmt}" id="nw-${t.idx}">${escHtml(t.text)}</span>`;
+    }).join('')}</div>`;
   } else {
     textEl.innerHTML = transcriptLabelHtml + displayTokens.map(t => {
       if (t.type === 'br')    return '<br>';
