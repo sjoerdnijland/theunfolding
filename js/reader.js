@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v152';
+const READER_VERSION = 'v153';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -313,13 +313,17 @@ function unlockAudio() {
       const btCtx = new AC();
       const osc   = btCtx.createOscillator();
       const gain  = btCtx.createGain();
-      gain.gain.value = 0.0001;
+      gain.gain.value = 0.001; // inaudible but above iOS BT sleep threshold
       osc.connect(gain);
       gain.connect(btCtx.destination);
       osc.start();
       btCtx.resume().then(() => { audioUnlocked = true; }).catch(() => {});
+      // Periodic ping to prevent iOS from suspending the AudioContext
+      const keepAliveInterval = setInterval(() => {
+        if (btCtx.state === 'suspended') btCtx.resume().catch(() => {});
+      }, 500);
       // Store minimal interface for stopNarration compatibility
-      persistentAudio = { _btCtx: btCtx, pause() {}, play() { return Promise.resolve(); }, paused: false };
+      persistentAudio = { _btCtx: btCtx, _interval: keepAliveInterval, pause() {}, play() { return Promise.resolve(); }, paused: false };
     }
   } catch(e) {
     // Fallback: silent looping Audio element
@@ -621,6 +625,10 @@ async function narrationGoTo(index) {
   // Clear and force reflow — prevents iOS GPU compositing old content behind new
   textEl.innerHTML = '';
   void textEl.offsetHeight; // forces layout flush, clears iOS composite layer
+  // Keep BT oscillator alive on every paragraph change
+  if (IS_IOS && persistentAudio?._btCtx?.state === 'suspended') {
+    persistentAudio._btCtx.resume().catch(() => {});
+  }
 
   // Pause on scene changes — atmospheric beat.
   // Shorter if audio is already cached (no real wait needed).
