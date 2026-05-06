@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v159';
+const READER_VERSION = 'v160';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -1656,45 +1656,43 @@ function buildWordTimings(text, alignment) {
       const PAUSE_DURS = { 'pause': 0.6, 'pause2': 1.2, 'pause3': 2.0, 'pause4': 3.0 };
       const totalDur = alignment?._audioDur || 0;
 
-      // Split on [#pause] tags first
+      // Split on [#pause] tags
       const parts = text.split(/(\[#pause\d*\])/);
-      const wordEntries = [];
+      const entries = [];
       let pendingPause = 0;
       parts.forEach(part => {
         const m = part.match(/\[#(pause\d*)\]/);
-        if (m) {
-          pendingPause += PAUSE_DURS[m[1]] || 0.6;
-        } else {
-          part.split(/\s+/).filter(Boolean).forEach((w, i) => {
-            wordEntries.push({ text: w, pauseBefore: i === 0 ? pendingPause : 0 });
-            pendingPause = 0;
-          });
-        }
+        if (m) { pendingPause += PAUSE_DURS[m[1]] || 0.6; return; }
+        part.split(/\s+/).filter(Boolean).forEach((w, i) => {
+          entries.push({ text: w, pauseBefore: i === 0 ? pendingPause : 0 });
+          pendingPause = 0;
+        });
       });
-      if (!wordEntries.length) return [];
+      if (!entries.length) return [];
 
-      // Word weight: proportional to syllables + length + punctuation pause
-      function wordWeight(w) {
-        const letters = w.replace(/[^a-zA-Z]/g, '');
-        const syllables = Math.max(1, (w.match(/[aeiouyAEIOUY]+/g) || []).length);
-        const lenFactor = Math.max(0.5, letters.length / 4);
-        let punct = 0;
-        if (/[.!?]["']?$/.test(w))  punct = 0.35;
-        else if (/…$/.test(w))      punct = 0.28;
-        else if (/,["']?$/.test(w)) punct = 0.14;
-        else if (/[;:]$/.test(w))   punct = 0.18;
-        return syllables * 0.4 + lenFactor * 0.3 + punct;
+      // Independent per-word duration based on its own properties
+      // Errors don't compound — each word is estimated on its own merit, then all scaled to fit
+      function wordBaseDur(w) {
+        const syllables = Math.max(1, (w.match(/[aeiouyAEIOUY]+/g)||[]).length);
+        const letters   = w.replace(/[^a-zA-Z]/g, '');
+        let dur = syllables * 0.18 + Math.max(0, letters.length - 4) * 0.02;
+        if (/[.!?]["']?$/.test(w))      dur += 0.32;
+        else if (/…$/.test(w))           dur += 0.25;
+        else if (/,["']?$/.test(w))      dur += 0.13;
+        else if (/[;:]$/.test(w))        dur += 0.18;
+        return dur;
       }
 
-      const totalPauseDur = wordEntries.reduce((s, w) => s + w.pauseBefore, 0);
-      const speechDur = Math.max((totalDur || wordEntries.length * 0.38) - totalPauseDur, wordEntries.length * 0.18);
-      const totalWeight = wordEntries.reduce((s, w) => s + wordWeight(w.text), 0);
+      const totalPause    = entries.reduce((s, e) => s + e.pauseBefore, 0);
+      const rawSpeechDur  = entries.reduce((s, e) => s + wordBaseDur(e.text), 0);
+      const availSpeech   = Math.max((totalDur || rawSpeechDur) - totalPause, entries.length * 0.15);
+      const scale         = availSpeech / rawSpeechDur;
 
       let t = 0;
-      return wordEntries.map(w => {
-        t += w.pauseBefore;
-        const dur = (wordWeight(w.text) / totalWeight) * speechDur;
-        const entry = { text: w.text, start: t, end: t + dur };
+      return entries.map(e => {
+        t += e.pauseBefore;
+        const dur   = wordBaseDur(e.text) * scale;
+        const entry = { text: e.text, start: parseFloat(t.toFixed(3)), end: parseFloat((t + dur).toFixed(3)) };
         t += dur;
         return entry;
       });
