@@ -51,28 +51,33 @@
       .nc-btn .nc-icon { font-size: 1rem; }
     }
 
-    /* Heading paragraphs — location/time stamps with pink glow */
-    .heading-para {
-      font-family: var(--mono) !important;
-      font-size: 0.68rem !important;
-      letter-spacing: 0.28em !important;
-      text-transform: uppercase !important;
-      text-align: center !important;
-      color: var(--pink) !important;
-      opacity: 0.8;
-      margin: 0.5em auto 1.2em !important;
-      padding: 6px 0 !important;
-      border-top: 1px solid rgba(232,67,147,0.2) !important;
-      border-bottom: 1px solid rgba(232,67,147,0.2) !important;
-      font-style: normal !important;
-      text-shadow: 0 0 12px rgba(232,67,147,0.35) !important;
+    /* Heading in narration overlay */
+    .narration-heading {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #e84393;
+      opacity: 0.85;
+      padding: 8px 0;
+      border-top: 1px solid rgba(232,67,147,0.25);
+      border-bottom: 1px solid rgba(232,67,147,0.25);
+      text-shadow: 0 0 14px rgba(232,67,147,0.4);
+      margin-bottom: 8px;
     }
-    .heading-para .nw.current {
+    .narration-heading .nw {
+      color: #e84393;
+      text-shadow: 0 0 14px rgba(232,67,147,0.4);
+    }
+    .narration-heading .nw.current {
       color: #fff !important;
-      text-shadow: 0 0 22px rgba(232,67,147,0.9), 0 0 8px rgba(232,67,147,0.6) !important;
-      opacity: 1 !important;
+      text-shadow: 0 0 24px rgba(232,67,147,1), 0 0 10px rgba(232,67,147,0.7) !important;
     }
-    .heading-para .nw.spoken { opacity: 0.4 !important; color: var(--pink) !important; }
+    .narration-heading .nw.spoken {
+      opacity: 0.35;
+      color: #e84393;
+    }
   </style>
 </head>
 <body class="grain">
