@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v168';
+const READER_VERSION = 'v169';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -656,9 +656,9 @@ async function narrationGoTo(index) {
   // Heading paragraphs: read with natural spacing, stripped of formatting chars
   const isHeadingPara = document.getElementById(pid)?.dataset.heading === 'true';
   if (isHeadingPara) {
-    // Clean up heading for TTS: replace · with pause, clean dots
-    text = text.replace(/·/g, ',').replace(/\s+/g, ' ').trim();
-    rawText = rawText.replace(/·/g, ',').replace(/\s+/g, ' ').trim();
+    // Clean up heading for TTS: replace · and \n with comma pause
+    text = text.replace(/·/g, ',').replace(/\n/g, ', ').replace(/\s+/g, ' ').trim();
+    rawText = rawText.replace(/·/g, ',').replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
   }
 
   /// Normalise newlines to spaces in TTS text only.
@@ -1128,7 +1128,8 @@ async function narrationGoTo(index) {
       + displayTokens.map(t => `<span class="nw" id="nw-${t.idx}">${escHtml(t.text)}</span> `).join('');
   } else if (isHeadingPara) {
     textEl.innerHTML = `<div class="narration-heading">${displayTokens.map(t => {
-      if (t.type === 'br' || t.type === 'space') return ' ';
+      if (t.type === 'br') return '<br>';
+      if (t.type === 'space') return ' ';
       return `<span class="nw ${t.fmt}" id="nw-${t.idx}">${escHtml(t.text)}</span>`;
     }).join('')}</div>`;
   } else {
@@ -2245,7 +2246,7 @@ function renderChapter(ch) {
         <span class="para-toolbar">
           <button class="pt-btn pt-narrate" onclick="event.stopPropagation();startNarrationFrom('${hpid}')">▶ Narrate</button>
         </span>
-        ${sec.heading}
+        ${sec.heading.replace(/\n/g, '<br>')}
       </p>`;
       paraIndex++;
     }
