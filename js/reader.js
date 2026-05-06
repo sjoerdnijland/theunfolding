@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v169';
+const READER_VERSION = 'v171';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -658,7 +658,7 @@ async function narrationGoTo(index) {
   if (isHeadingPara) {
     // Clean up heading for TTS: replace · and \n with comma pause
     text = text.replace(/·/g, ',').replace(/\n/g, ', ').replace(/\s+/g, ' ').trim();
-    rawText = rawText.replace(/·/g, ',').replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+    rawText = rawText.replace(/·/g, ','); // keep \n intact so buildDisplayTokens emits <br> tokens
   }
 
   /// Normalise newlines to spaces in TTS text only.
@@ -2218,7 +2218,7 @@ function renderChapter(ch) {
               <button class="pt-btn" onclick="event.stopPropagation();openThread('${pid}')">💬 Thread${count > 0 ? ` (${count})` : ''}</button>
               <button class="pt-btn pt-narrate" onclick="event.stopPropagation();startNarrationFrom('${pid}')">▶ Narrate</button>
             </span>
-            ${autoLink(parseMarkup(text.replace(/</g,'&lt;').replace(/>/g,'&gt;')))}
+            ${autoLink(parseMarkup(text.replace(/\[#[a-z0-9_-]+\]/g,'').replace(/\[(?!#)[a-zA-Z][a-zA-Z0-9 _-]*\]/gi,'').replace(/</g,'&lt;').replace(/>/g,'&gt;')))}
           </p>`;
       }).join('');
       html += `<div class="code-block">${parasHtml}</div>`;
