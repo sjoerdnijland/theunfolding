@@ -262,6 +262,26 @@ body.wiki-hints-on .para.active .wiki-link {
   width: 24px; height: 1px; background: var(--teal-soft);
 }
 
+/* Heading paragraphs — narrable location/time stamps */
+.heading-para {
+  font-family: var(--mono) !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.28em !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  color: var(--pink) !important;
+  opacity: 0.82;
+  margin: 40px 0 20px !important;
+  padding: 6px 0 !important;
+  border-top: 1px solid rgba(232,67,147,0.22) !important;
+  border-bottom: 1px solid rgba(232,67,147,0.22) !important;
+  font-style: normal !important;
+  text-shadow: 0 0 12px rgba(232,67,147,0.3);
+  display: block !important;
+}
+.heading-para::before { content: none !important; }
+.heading-para:hover { background: rgba(232,67,147,0.04) !important; }
+
 /* ── Uplink interlude ──────────────────────────────────── */
 .uplink-block {
   margin: 56px -10px;
