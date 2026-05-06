@@ -100,7 +100,7 @@
           "speaker": "ian-perera"
         },
         {
-          "text": "\"[frustrated]I can help her through the seizures. It's the only way she'll recover. The Grid isn't helping, Ian. [#pause2][accusatory]You're out there connecting all the habs to a chemical factory.\"",
+          "text": "\"[frustrated]I can help her through the seizures. It's the only way she'll recover. The Grid isn't helping, Ian. [pause][sigh][accusatory]You're out there connecting all the habs to a chemical factory.\"",
           "speaker": "joana-perera"
         },
         {
@@ -112,7 +112,7 @@
           "speaker": "joana-perera"
         },
         {
-          "text": "Ian's eyes were bloodshot, the whites turned to a map of red rivers. \"[angry]Do you really want to risk it?!\" He clenched his fists. They knew that a long seizure could cause brain damage from a lack of oxygen.",
+          "text": "Ian's eyes were bloodshot, the whites turned to a map of red rivers. \"[disbelieving]Do you really want to risk it?!\" He clenched his fists. They knew that a long seizure could cause brain damage from a lack of oxygen.",
           "speaker": "ian-perera"
         }
       ]
@@ -162,7 +162,7 @@
           "speaker": "ian-perera"
         },
         {
-          "text": "\"[crying]I know,\" Joana replied as she checked the cuts on his forearm. \"[groans][under breath]We'll get through this.\"",
+          "text": "\"[crying]I know,\" Joana replied as she checked the cuts on his forearm. \"[groans][under breath]We'll get through this.\"[pause]",
           "speaker": "joana-perera"
         }
       ]
