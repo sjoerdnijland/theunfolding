@@ -54,8 +54,8 @@
     /* Heading in narration overlay */
     .narration-heading {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.28em;
+      font-size: 1.1rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       text-align: center;
       color: #e84393;
@@ -67,16 +67,22 @@
       margin-bottom: 8px;
     }
     .narration-heading .nw {
+      /* Future words: very dim */
       color: #e84393;
-      text-shadow: 0 0 14px rgba(232,67,147,0.4);
+      opacity: 0.25;
+      text-shadow: none;
     }
     .narration-heading .nw.current {
+      /* Active word: bright white with pink glow */
       color: #fff !important;
+      opacity: 1 !important;
       text-shadow: 0 0 24px rgba(232,67,147,1), 0 0 10px rgba(232,67,147,0.7) !important;
     }
     .narration-heading .nw.spoken {
-      opacity: 0.35;
+      /* Spoken words: soft pink, dimmer than current */
       color: #e84393;
+      opacity: 0.45;
+      text-shadow: none;
     }
   </style>
 </head>
