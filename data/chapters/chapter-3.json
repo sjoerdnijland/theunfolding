@@ -5,14 +5,14 @@
     {
       "type": "epigraph",
       "paragraphs": [
-        "Now it's time to unfold the events between. Well, we pretend there's a long stretch between birth and wake. That's wrong. It's not a line. It's a circle that's been stepped on until it's a jagged, broken mess. It's all just vibration. Muro knows all about that vibration."
+        "Now it's time to unfold the events between. Well, we pretend there's a long stretch between birth and wake. That's wrong. It's not a line. It's a circle that's been stepped on until it's a jagged, broken mess. It's all just vibration. [#pause]Muro knows all about that vibration."
       ]
     },
     {
       "heading": "Orbital Three · The Ears",
       "paragraphs": [
-        "Silence. Lieutenant Frank Muro floated in it, and it was starting to grow thorns. [#climate-control-falter]A sudden shiver ran down his spine as the climate control faltered, blasting a stream of ice-cold air across his sweat-slicked neck. The light from the console drew lingering phosphenes in his eyes. Ghost lights dancing in his vision. That was what happened when his brain got bored enough; it started inventing fireworks just to experience something. He spun slowly in zero gravity at his workstation, pushing off the bulkhead with his bare feet. He had tweaked a small holo-projector to keep his hands busy. He'd learned to shape light into abstract sculptures. Or maybe he was just masturbating with photons.",
-        "As the sole person on Orbital Three, he had a duty to keep the tightbeam linked with the Yreus Relay, which connected them to the Sol-Cetus Relay on the far side of the Fold. His job was simple: watch the string and keep it tight. The mission depended on the integrity of the tightbeam relays. If the cord snapped, the baby would starve. Simple. Now that it had, he couldn't escape feeling like humanity's biggest failure.",
+        "Silence. Lieutenant Frank Muro floated in it, and it was starting to [#climate-control-falter]grow thorns. A sudden shiver ran down his spine as the climate control faltered, blasting a stream of ice-cold air across his sweat-slicked neck. The light from the console drew lingering phosphenes in his eyes. Ghost lights dancing in his vision. That was what happened when his brain got bored enough; it started inventing fireworks just to experience something. He spun slowly in zero gravity at his workstation, pushing off the bulkhead with his bare feet. He had tweaked a small holo-projector to keep his hands busy. He'd learned to shape light into abstract sculptures. [#pause]Or maybe he was just masturbating with photons.",
+        "As the sole person on Orbital Three, he had a duty to keep the tightbeam linked with the Yreus Relay, which connected them to the Sol-Cetus Relay on the far side of the Fold. [#pause]His job was simple: watch the string and keep it tight. The mission depended on the integrity of the tightbeam relays. If the cord snapped, the baby would starve. Simple. Now that it had, he couldn't escape feeling like humanity's biggest failure.",
         {
           "text": "\"Come on, Gary, lad, wake up,\" Frank muttered, [#tapping]tapping the projector casing. \"Don't go noddin' off again. Run me a spectral analysis on Yreus's last handshake — and dig deep, aye? I want to see the rot.\"",
           "speaker": "frank-muro"
@@ -41,7 +41,7 @@
       "type": "code",
       "paragraphs": [
         {
-          "text": "< YREUS | ERROR 410 · APERTURE DISSIPATED />",
+          "text": "[#pong]< YREUS | ERROR 410 · APERTURE DISSIPATED />",
           "speaker": "gary"
         }
       ]
@@ -62,7 +62,7 @@
           "speaker": "frank-muro"
         },
         {
-          "text": "\"NO. THE FOLD HAS DISSIPATED. CLEANER NOW, IS IT NOT?\" Gary chirped cheerfully.",
+          "text": "\"NO. THE FOLD HAS DISSIPATED. [#pause]CLEANER NOW, IS IT NOT?\" Gary chirped cheerfully.",
           "speaker": "gary"
         },
         {
@@ -85,7 +85,11 @@
       "paragraphs": [
         "Ulre Corbin had barely slept the last five clicks. The old quorum room had been stripped. The plants: gone. Comfort: gone. The only decoration left was a fox emblem. He stood before the main console.",
         "Three thousand and seventeen souls. Two cycles of baseline caloric rations. Thirty-two clicks of water before critical reclamation.",
-        "He pictured thirsty, malnourished children. A realistic projection. *Compassion is a choice*, he thought. Every decision he'd made since taking command — enacting the ESP, installing the Grid — had followed protocol. *Regardless*, Ulre thought, *surviving is the only rule that matters*.",
+        {
+          "text": "He pictured thirsty, malnourished children. A realistic projection. *Compassion is a choice*, he thought. Every decision he'd made since taking command — enacting the ESP, installing the Grid — had followed protocol. *Regardless*, Ulre thought, *surviving is the only rule that matters*.",
+          ,
+          "speaker": "ulre-corbin"
+        },
         "\"Director,\" a young ensign said. \"The packet from Oh-Three finished decrypting.\"",
         {
           "text": "Ulre didn't look up from the power consumption chart he was studying. \"And?\"",
@@ -95,7 +99,7 @@
           "text": "\"Diagnostic shows the log file is coherent.\" The ensign placed a data slate on the corner of Ulre's desk next to the console, careful not to disturb the alignment of his other tools."
         },
         {
-          "text": "*Good boy, Ulre thought*. The ensign understood the beauty of his order. He glanced at the slate.",
+          "text": "*Good boy,* Ulre thought. The ensign understood the beauty of his order. He glanced at the slate.",
           "inner_voice": "ulre-corbin"
         }
       ]
@@ -103,7 +107,7 @@
     {
       "type": "code",
       "paragraphs": [
-        "< O3 | CONFIRMED. APERTURE DISSIPATED />"
+        "[#pong]< O3 | CONFIRMED. APERTURE DISSIPATED />"
       ]
     },
     {
@@ -146,8 +150,9 @@
           "speaker": "eva-bellamy"
         },
         {
-          "text": "Ulre slammed his fist on the console. \"Every delay puts our processing further behind. The Plateau crew needs that shipment on time.\" Ulre opened a second holographic projection. Three green icons orbited around Mairee. He zoomed out. A red dotted line showed *Dáinn*'s planned path, but its icon, now yellow, was off course, a new green vector heading the other way. Ulre expanded the view. The line pointed to the *Brisinger*, its icon flashing a red alert. Why are they silent? No response. No backup channels.",
-          "speaker": "ulre-corbin"
+          "text": "Ulre slammed his fist on the console. \"Every delay puts our processing further behind. The Plateau crew needs that shipment on time.\" Ulre opened a second holographic projection. Three green icons orbited around Mairee. He zoomed out. A red dotted line showed *Dáinn*'s planned path, but its icon, now yellow, was off course, a new green vector heading the other way. Ulre expanded the view. The line pointed to the *Brisinger*, its icon flashing a red alert. W*hy are they silent? No response. No backup channels.*",
+          "speaker": "ulre-corbin",
+          "inner_voice": "ulre-corbin"
         },
         {
           "text": "\"Westhoff's loyalty to their fellow crew is admirable,\" Ulre said. \"We need intel on the Bris, but this might endanger the *Dáinn* and its cargo. Whatever's happened to that ship bodes ill.\"",
@@ -158,7 +163,7 @@
           "speaker": "eva-bellamy"
         },
         {
-          "text": "\"And what if it's not?\" Ulre replied with a hint of a snarl. \"The Bris is still on her assigned course to us. She may be silent, but she's sailing. There is no need to go get her. She will come to us. Ben's judgment is compromised, so we must change his equation. We have to present him with an irrefutable reason to turn about.\"",
+          "text": "\"And what if it's not?[snarl]\" Ulre replied with a hint of a snarl. \"The Bris is still on her assigned course to us. She may be silent, but she's sailing. There is no need to go get her. She will come to us. Ben's judgment is compromised, so we must change his equation. We have to present him with an irrefutable reason to turn about.\"",
           "speaker": "ulre-corbin"
         },
         {
@@ -170,7 +175,7 @@
           "speaker": "ulre-corbin"
         },
         {
-          "text": "An alert [#alert-pong]pinged. Her expression tightened as she read the message. She lowered her voice. \"There is another thing. Oh-Three. It's about Lieutenant Muro.\"",
+          "text": "[#alert-pong]An alert pinged. Her expression tightened as she read the message. She lowered her voice. \"There is another thing. Oh-Three. It's about Lieutenant Muro.\"",
           "speaker": "eva-bellamy"
         },
         {
@@ -222,7 +227,7 @@
     {
       "type": "code",
       "paragraphs": [
-        "< DECISION PENDING: BIO-STASIS UNIT 01 · SUBJECT V, A. />"
+        "< [#pong]DECISION PENDING: BIO-STASIS UNIT 01 · SUBJECT V, A. />[#pause2]"
       ]
     },
     {
@@ -256,7 +261,7 @@
           "text": "\"Oi, pack it in now!\" Frank snapped, his voice cracking. \"I'm no' havin' this, Gary. We'll get back to our poetry later.\"",
           "speaker": "frank-muro"
         },
-        "Syntactic decay. The CIX was running hot, well past its reset window. He pulled up the audit report manually and buried a comment in the junk code. The worn keys dipped in a spongy way."
+        "Syntactic decay. The CIX was running hot, well past its reset window. He pulled up the audit report manually and buried a [#typing]comment in the junk code. The worn keys dipped in a spongy way."
       ]
     },
     {
@@ -268,7 +273,7 @@
     {
       "heading": "5 Clicks Post Unfolding · Orbital Three",
       "paragraphs": [
-        "Dom Beltrán would notice the jitter. He checked the message again and pressed TRANSMIT.",
+        "Dom Beltrán would notice the jitter. He checked the message again and pressed [#pong]TRANSMIT.",
         {
           "text": "A melancholic whisper drifted through the cabin, [#brush-of-air]a current of air brushing against his ear. *I cannae shut my eyes without dreamin' meself awake*. Frank froze. Was that his own mind glitching? \"Gary, repeat that last statement.\" There was a pause. The fine hairs on his arms stood on end. Then Gary boomed through the speakers.",
           "speaker": "frank-muro",
@@ -295,7 +300,7 @@
           "text": "\"Of course,\" Gary replied, now serene. \"I'll check myself. All quiet now.\"",
           "speaker": "gary"
         },
-        "The silence that followed was even worse. He knew this hallucination was just feedback from a stressed system. The CIX was a mirror, reading his bio and neurometrics. Gary could read what he felt. It was feeding on Frank's stress and reflecting his isolation and paranoia back to him, yet he couldn't bear to turn it off. An ACK — automated acknowledgment — lit up. The packet had reached the *Dáinn*.",
+        "The silence that followed was even worse. He knew this hallucination was just feedback from a stressed system. The CIX was a mirror, reading his bio and neurometrics. Gary could read what he felt. It was feeding on Frank's stress and reflecting his isolation and paranoia back to him, yet he couldn't bear to turn it off. [#pause][#alert]An ACK — automated acknowledgment — lit up. The packet had reached the *Dáinn*.",
         "The CIX stayed silent for another pulse, but then messages scrolled across its diagnostic screen, unprompted."
       ]
     },
@@ -319,7 +324,7 @@
     {
       "heading": "5 Clicks Post Unfolding · Orbital Three",
       "paragraphs": [
-        "Frank listened to the chilling thought that he was sharing Gary's dream. Another [#gust]hush spread throughout the station. The fans cut out, and the air instantly went dry against his skin. The control systems dimmed, and a brief flicker cast ominous, elongated shadows across the consoles, as if they were reaching for his hands."
+        "Frank listened to the chilling thought that he was sharing Gary's [#gust]dream. Another hush spread throughout the station. The fans cut out, and the air instantly went dry against his skin. The control systems dimmed, and a brief flicker cast ominous, elongated shadows across the consoles, as if they were reaching for his hands."
       ]
     },
     {
@@ -328,7 +333,7 @@
     {
       "type": "epigraph",
       "paragraphs": [
-        "Has your mirror ever looked back at you? We think our heads are private property. Keep out. No trespassing. But now, the walls are breached."
+        "Has your mirror ever looked back at you? [#pause]We think our heads are private property. Keep out. No trespassing. [#pause]But now, the walls are breached.[#pause2]"
       ]
     },
     {
@@ -341,7 +346,7 @@
     {
       "type": "code",
       "paragraphs": [
-        "< OC | REPEATING COMMAND ORDER: CEASE INTERCEPT. RESUME ORIGINAL TRAJECTORY. ACKNOWLEDGE. />"
+        "< [pong]OC | REPEATING COMMAND ORDER: CEASE INTERCEPT. RESUME ORIGINAL TRAJECTORY. ACKNOWLEDGE. />"
       ]
     },
     {
@@ -370,13 +375,16 @@
           "speaker": "ionie-jia"
         },
         {
-          "text": "\"That is a lie,\" Ben cut in. He tapped a worn slate clipped to his belt. \"I have not heard from her. Vilde would never relinquish her command without a fleet-wide address.\" He paused, scanning the bridge for the crew's reactions. \"Our priority right now is to re-establish contact with the *Brisinger* and learn what happened at the Fold.\"",
+          "text": "\"That is a lie,\" Ben cut in. [#tapping]He tapped a worn slate clipped to his belt. \"I have not heard from her. Vilde would never relinquish her command without a fleet-wide address.\" He paused, scanning the bridge for the crew's reactions. \"Our priority right now is to re-establish contact with the *Brisinger* and learn what happened at the Fold.\"",
           "speaker": "benjamin-westhoff"
         },
         {
-          "text": "The bridge was a lived-in workshop. Bundled wires ran along the ceiling, and one bulkhead was covered with schematics, handwritten notes, and personal photos. He watched his crew, noticing the tension in their shoulders. *Doubt. Good,* he thought. *We rise in doubt and fall in certainty.* The viewport showed the dark-indigo starfield and the axis of the *Dáinn*'s slow turn. \"Jia,\" he said, \"maintain our course to intercept. Keep probing. Report anything… unusual as we approach.\"",
-          "speaker": "benjamin-westhoff",
+          "text": "The bridge was a lived-in workshop. Bundled wires ran along the ceiling, and one bulkhead was covered with schematics, handwritten notes, and personal photos. He watched his crew, noticing the tension in their shoulders. *Doubt. Good,* he thought. *We rise in doubt and fall in certainty.*",
           "inner_voice": "benjamin-westhoff"
+        },
+        {
+          "text": "The viewport showed the dark-indigo starfield and the axis of the *Dáinn*'s slow turn. \"Jia,\" he said, \"maintain our course to intercept. Keep probing. Report anything… unusual as we approach.\"",
+          "speaker": "benjamin-westhoff"
         },
         "Ben left the bridge, walked through tactical, and stepped into the port-side grav-lift. When the lift stopped, gravity faded. The doors opened into the Gravitic Gyroscope Chamber. Inside, three huge interlocking rings spun in different directions. This was the heart of the *Dáinn*, creating gravity for the decks around, but the chamber itself stayed weightless. Ben used the hand grips to float toward a workstation. He found his Chief Grav-Engineer, Dominic Beltrán, strapped to a gantry and whistling as he worked on the gyroscope. Beltrán was short and heavyset, with long blond hair in a bun pinned in place with a small wrench.",
         {
@@ -425,7 +433,7 @@
           "speaker": "benjamin-westhoff"
         },
         {
-          "text": "\"The collapse had something to do with the Bris. How can we get through to them?\" Ben asked.",
+          "text": "\"The collapse had something to do with the Bris. [#pause]How can we get through to them?\" Ben asked.",
           "speaker": "benjamin-westhoff"
         },
         {
@@ -439,20 +447,23 @@
         },
         "Ben frowned at him.",
         {
-          "text": "Beltrán said, \"Uh. I'll tickle the gyro's belly. Instead of holding the thing steady, I make it hiccup. It's, uh, kind of Morse code for titans. Her gravity stabilizers will pick up the ripple. They'll hear it. A tap on the window. If they're home, that is.\"",
+          "text": "Beltrán said, \"Uh. I'll tickle the gyro's belly. Instead of holding the thing steady, I make it hiccup. It's, uh, kind of Morse code for titans.[#pause] Her gravity stabilizers will pick up the ripple.[#pause] They'll hear it. A tap on the window.[#pause] If they're home, that is.\"",
           "speaker": "dominic-beltrán"
         },
         {
-          "text": "Ben smirked. \"You Nulgees. Always insane, always brilliant.\" Then he realized the cost. \"Our clock and gravity. It's linked to this system. The beat, the click… everything's set to the rhythm of these rings.\"",
+          "text": "[smirk]Ben smirked. \"You Nulgees. Always insane, always brilliant.\" Then he realized the cost. \"Our clock and gravity. It's linked to this system. The beat, the click… everything's set to the rhythm of these rings.\"",
           "speaker": "benjamin-westhoff"
         },
         {
           "text": "\"Oh, it'll wreck our timekeeping,\" Beltrán said with a cheerful wave of his hand. \"The rings will go haywire. The whole ship's going on a bender!\"",
           "speaker": "dominic-beltrán"
         },
-        "Ben shifted his gaze from Beltrán's eager face to the spinning gyroscopes to Muro's coded message. Doubt and certainty.",
         {
-          "text": "\"Do it, Dom,\" he said as he pushed off a handhold and drifted back toward the grav-lift. \"Start knocking! I want to know if anyone's home!\"",
+          "Ben shifted his gaze from Beltrán's eager face to the spinning gyroscopes to Muro's coded message. [#pause]*Doubt and certainty*.",
+          "inner_voice": "benjamin-westhoff"
+        },
+        {
+          "text": "\"Do it, Dom,\" he said as he pushed off a handhold and drifted back toward the grav-lift. \"Start knocking! I want to know if anyone's home!\"[#pause]",
           "speaker": "benjamin-westhoff"
         }
       ]
