@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v154';
+const READER_VERSION = 'v155';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -1653,7 +1653,7 @@ function buildWordTimings(text, alignment) {
       const PAUSE_DURS = { 'pause': 0.6, 'pause2': 1.2, 'pause3': 2.0, 'pause4': 3.0 };
       const totalDur = alignment?._audioDur || 0;
 
-      // Split on [#pause] tags to account for silence in timing
+      // Split on [#pause] tags first
       const parts = text.split(/(\[#pause\d*\])/);
       const wordEntries = [];
       let pendingPause = 0;
@@ -1663,33 +1663,36 @@ function buildWordTimings(text, alignment) {
           pendingPause += PAUSE_DURS[m[1]] || 0.6;
         } else {
           part.split(/\s+/).filter(Boolean).forEach((w, i) => {
-            wordEntries.push({ text: w, extraBefore: i === 0 ? pendingPause : 0 });
+            wordEntries.push({ text: w, pauseBefore: i === 0 ? pendingPause : 0 });
             pendingPause = 0;
           });
         }
       });
+      if (!wordEntries.length) return [];
 
-      const totalPauseDur = wordEntries.reduce((s, w) => s + w.extraBefore, 0);
-      const speechDur = Math.max((totalDur || wordEntries.length * 0.38) - totalPauseDur, wordEntries.length * 0.22);
-
-      // Base duration per word (speech only, no punctuation pauses)
-      const baseDur = speechDur / Math.max(wordEntries.length, 1);
-
-      // Punctuation trailing-pause budgets (seconds added after the word)
-      function punctPause(w) {
-        if (/[.!?]$/.test(w))  return 0.30; // sentence end
-        if (/…$/.test(w))      return 0.25; // ellipsis
-        if (/,$/.test(w))      return 0.12; // comma
-        if (/[;:]$/.test(w))   return 0.15; // semicolon/colon
-        return 0;
+      // Word weight: proportional to syllables + length + punctuation pause
+      function wordWeight(w) {
+        const letters = w.replace(/[^a-zA-Z]/g, '');
+        const syllables = Math.max(1, (w.match(/[aeiouyAEIOUY]+/g) || []).length);
+        const lenFactor = Math.max(0.5, letters.length / 4);
+        let punct = 0;
+        if (/[.!?]["']?$/.test(w))  punct = 0.35;
+        else if (/…$/.test(w))      punct = 0.28;
+        else if (/,["']?$/.test(w)) punct = 0.14;
+        else if (/[;:]$/.test(w))   punct = 0.18;
+        return syllables * 0.4 + lenFactor * 0.3 + punct;
       }
+
+      const totalPauseDur = wordEntries.reduce((s, w) => s + w.pauseBefore, 0);
+      const speechDur = Math.max((totalDur || wordEntries.length * 0.38) - totalPauseDur, wordEntries.length * 0.18);
+      const totalWeight = wordEntries.reduce((s, w) => s + wordWeight(w.text), 0);
 
       let t = 0;
       return wordEntries.map(w => {
-        t += w.extraBefore;
-        const pp = punctPause(w.text);
-        const entry = { text: w.text, start: t, end: t + baseDur + pp };
-        t += baseDur + pp;
+        t += w.pauseBefore;
+        const dur = (wordWeight(w.text) / totalWeight) * speechDur;
+        const entry = { text: w.text, start: t, end: t + dur };
+        t += dur;
         return entry;
       });
     }
