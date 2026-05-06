@@ -459,5 +459,15 @@
     "image": "/assets/items/CIX.png",
     "voice_id": "keLVje3aBMuRpxuu0bqO",
     "id": "gary"
+  },
+  {
+    "id": "marek",
+    "name": "Marek",
+    "voice_id": "hH2PlxWs8rI3FQNdgREU"
+  },
+  {
+    "id": "iren",
+    "name": "Iren",
+    "voice_id": "jAAHNNqlbAX9iWjJPEtE"
   }
 ]
