@@ -551,13 +551,14 @@
           "speaker": "omar-newton"
         },
         "The second surprise was a tray of dark, rich nutri-fudge cubes, each topped with a berry. She took one without a word. Sweetness first. Then the taste turned bitter, catching at the back of the throat. A pang, as if she'd eaten too much. And with it, a quiet guilt. This might be the last time she'd eat like this. Ever.",
-        "A weary silence settled over the group. Omar stood. He did not need to call for attention. He raised his fist and brought it down on the table one last time. THUMP.",
+        "A weary silence settled over the group. Omar stood. He did not need to call for attention. He raised his fist and brought it down on the table one last time.",
+        "[#tablefist]THUMP.",
         {
           "text": "\"What was shared here remains here. This is the sacred rule of the Galley Draw.\"",
           "speaker": "omar-newton"
         },
         {
-          "text": "A twinkle appeared in his eyes, and the lively chef returned. \"Now,\" he boomed, \"with full bellies and happy hearts, go lift others.\" He patted his belly as a goodbye salute.",
+          "text": "A twinkle appeared in his eyes, and the lively chef returned. \"Now,\" he boomed, \"with full bellies and happy hearts, go lift others.\" He patted his belly as a goodbye salute[#pause2].",
           "speaker": "omar-newton"
         }
       ]
