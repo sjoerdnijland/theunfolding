@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v153';
+const READER_VERSION = 'v154';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -660,7 +660,7 @@ async function narrationGoTo(index) {
 
   // Strip v3 emotion tags from display text (e.g. [sigh], [whispers], [excited])
   // These are processed by ElevenLabs v3 but should not appear to the reader.
-  rawText = rawText.replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
+  rawText = rawText.replace(/\[(?!#)[a-zA-Z][a-zA-Z0-9 _-]*\]/gi, '').trim();
 
   // Convert [#pause] tags: strip from rawText (display), convert in text (TTS).
   // rawText drives karaoke display — pause tags must be removed, not replaced.
@@ -1536,7 +1536,7 @@ async function prefetchNext(index) {
 
   // Strip v3 emotion tags from display text (e.g. [sigh], [whispers], [excited])
   // These are processed by ElevenLabs v3 but should not appear to the reader.
-  rawText = rawText.replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
+  rawText = rawText.replace(/\[(?!#)[a-zA-Z][a-zA-Z0-9 _-]*\]/gi, '').trim();
 
   // Convert [#pause] tags: strip from rawText (display), convert in text (TTS).
   // rawText drives karaoke display — pause tags must be removed, not replaced.
@@ -1562,7 +1562,7 @@ async function prefetchNext(index) {
       .replace(/,\s/g,   ',   ');
   }
     // Strip v3 emotion tags from display (rawText) — keep in TTS text for v3 voices
-  rawText = rawText.replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
+  rawText = rawText.replace(/\[(?!#)[a-zA-Z][a-zA-Z0-9 _-]*\]/gi, '').trim();
 
   // Convert [#pause] tags: comma sequences in TTS text (silence), stripped from rawText
   text = text
@@ -1571,8 +1571,8 @@ async function prefetchNext(index) {
     .replace(/\[#pause2\]/g, ',, ')
     .replace(/\[#pause\]/g,  ', ');
   // Strip all SFX tags
-  text    = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
-  rawText = rawText.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
+  text    = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-zA-Z][a-zA-Z0-9 _-]*\]/gi, '').trim();
+  rawText = rawText.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-zA-Z][a-zA-Z0-9 _-]*\]/gi, '').trim();
   // Strip ALL-CAPS SPEAKER: prefix (same as narrationGoTo) for cache key match
   const _prefixRe = /^[A-Z][A-Z0-9 ]+:\s+/;
   const _pm = text.match(_prefixRe);
@@ -2023,7 +2023,7 @@ function renderChapter(ch) {
         const narratorModel = typeof paraItem === 'object' ? (paraItem.narrator || sec.narrator || null) : (sec.narrator || null);
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
-        const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
+        const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-zA-Z][a-zA-Z0-9 _-]*\]/gi, '').trim();
         const linked = autoLink(parseMarkup(displayText));
         paraIndex++;
 
@@ -2101,7 +2101,7 @@ function renderChapter(ch) {
         const narratorModel = typeof paraItem === 'object' ? (paraItem.narrator || sec.narrator || null) : (sec.narrator || null);
         const pid   = `ch${currentChapter}-p${paraIndex}`;
         const count = commentCounts[pid] || 0;
-        const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
+        const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-zA-Z][a-zA-Z0-9 _-]*\]/gi, '').trim();
         const linked = autoLink(parseMarkup(displayText));
         paraIndex++;
         return `
@@ -2182,7 +2182,7 @@ function renderChapter(ch) {
       const pid   = `ch${currentChapter}-p${paraIndex}`;
       const count = commentCounts[pid] || 0;
       const isFirst = paraIndex === 0;
-      const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-z][a-zA-Z0-9 _-]*\]/g, '').trim();
+      const displayText = text.replace(/\[#[a-z0-9_-]+\]/g, '').replace(/\[(?!#)[a-zA-Z][a-zA-Z0-9 _-]*\]/gi, '').trim();
       const linked  = autoLink(parseMarkup(displayText));
       paraIndex++;
       html += `
