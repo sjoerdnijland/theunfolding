@@ -11,13 +11,13 @@
     {
       "paragraphs": [
         "Oliver pressed a palm flat against the bulkhead, waiting. [#wind]A faint wind drifted through the pines. Then he finally felt it. [#seismic-rumble]A seismic thrum so deep it rang right through his shinbones. The *Brisinger*, the last ship to breach the Fold, was coming down. He lifted his gaze to the deep indigo sky, streaked with rivers of phosphor. Against the green glow, he spotted its Brutalist shape.",
-        "[#seismic-rumble]The thrum grew louder. Oliver grabbed a rusted conduit. His boots struggled to find a grip on the smooth plating. He attached a magnetic knob and slid the panel open. With a grunt, he hauled himself upward toward a dark panel above. He hooked his fingers on the ledge, pulled himself through, and landed with a quiet thud in the darkness within.",
+        "[#seismic-rumble]The thrum grew louder. Oliver grabbed a rusted conduit. His boots struggled to find a grip on the smooth plating. He attached a magnetic knob and [#panelslide]slid the panel open. With a [#grunt-haul]grunt, he hauled himself upward toward a dark panel above. He hooked his fingers on the ledge, pulled himself through, and landed with a quiet [#soft-thud-land]thud in the darkness within.",
         "The depot was a dead zone. Still, Oliver was not cleared to be here, in this junkyard. Since the Emergency Directive, everyone was tied to the Grid. It tracked, listened, and watched. It controlled all rations. Without the Grid, the water valves didn't open. The food dispensers didn't dispense. Your hab door stayed locked.",
         "He rolled up his sleeves and dove deeper into the depot. [#scuff] His boots scuffed the floor. *Scritch-scratch*. Each time he passed one of the coils, the statically charged air raised the fine hairs on his arms. As his boots scuffed against the floor, a memory intertwined with his steps. He remembered his late father leaning over a schematic with pride in his eyes. The Compassionate Oversight Grid. Every step Oliver took recalled his father's vision of a real-time health matrix designed to detect signs of systemic fatigue, microbial infection, and psychological distress. By Corbin's edict, the COG was becoming a system for total population control.",
-        "The depot was a high hall; its roof rose in a sequence of great arcs, pulled upward like ribs of a whale. Oliver's boots scraped the mesh floor, echoing as he moved past the storage gantries. He was there for one thing: the COG Egg: a testing device his father had engineered, capable of rewriting personal data — creating a ghost copy in the system and rendering someone as *null*, effectively making them untraceable.",
-        "He located his father's old workstation, which had been relocated there after the *FNS Freya* was repurposed as the Homestead. His memory of the desk was so vivid that he could smell his father's sandalwood cologne. He ran his fingers along the underside of the desk, searching for a familiar seam. He found it. A thin carbon-fiber shim held in place by micro-magnets. He pocketed it and crossed to a decommissioned grav-lift generator that gave him the shivers. Beside it, Oliver reached out to a diagnostic coupling port masked by a common access panel, indistinguishable from a dozen others. He knelt. The panel was sealed. The wrong shim would alert the Grid, but he knew no one was watching this place this night. All eyes were on the *Brisinger*, except his.",
-        "He slid the shim into the slot. There was a soft click [#soft-click], then another[#soft-click], and a quiet hiss[#soft-hiss]. The panel opened. Inside, clamped to a conduit, was a black device, curved like a mussel shell. As the Egg settled into his hand, he released a breath he hadn't realized he was holding. A faint warmth throbbed through his palm, as if the device had a heartbeat of its own. Then he disconnected the Egg from the port. The Egg was as smooth as a polished stone and heavier than its compact size suggested. He slid the access panel shut again.",
-        "The growing thrum of the descending *Brisinger* was like a countdown. Just one more pulse. One last goodbye. Oliver ran his hand over the uniform draped over the chair, similar to his father's. With the *Brisinger*'s rumble, he imagined hearing the hum his father used to make while working.",
+        "The depot was a high hall; its roof rose in a sequence of great arcs, pulled upward like ribs of a whale. [#steps-echo]Oliver's boots scraped the mesh floor, echoing as he moved past the storage gantries. He was there for one thing: the COG Egg: a testing device his father had engineered, capable of rewriting personal data — creating a ghost copy in the system and rendering someone as *null*, effectively making them untraceable.",
+        "He located his father's old workstation, which had been relocated there after the *FNS Freya* was repurposed as the Homestead. His memory of the desk was so vivid that he could smell his father's sandalwood cologne. He ran his [#fingerslide]fingers along the underside of the desk, searching for a familiar seam. He found it. A thin carbon-fiber shim held in place by [softsnap]micro-magnets. He pocketed it and crossed to a decommissioned grav-lift generator that gave him the shivers. Beside it, Oliver reached out to a diagnostic coupling port masked by a common access panel, indistinguishable from a dozen others. He knelt. The panel was sealed. The wrong shim would alert the Grid, but he knew no one was watching this place this night. All eyes were on the *Brisinger*, except his.",
+        "He [#slotslide]slid the shim into the slot. There was a [#soft-click]soft click , [#soft-click]then another, and a [#soft-hiss]quiet hiss. The panel opened. Inside, clamped to a conduit, was a black device, curved like a mussel shell. As the Egg settled into his hand, he released a breath he hadn't realized he was holding. A faint warmth throbbed through his palm, as if the device had a heartbeat of its own. Then he disconnected the Egg from the port. The Egg was as smooth as a polished stone and heavier than its compact size suggested. He [#soft-slide-shut]slid the access panel shut again.",
+        "The growing thrum of the descending *Brisinger* was like a countdown. Just one more pulse. One last goodbye. Oliver ran his [#handslide]hand over the uniform draped over the chair, similar to his father's. With the *Brisinger*'s rumble, he imagined hearing the hum his father used to make while working.",
         "Suddenly, Oliver heard [#distorted-voices]distorted voices, a steady tapping, and a chime flowing down the hall. Instinctively, Oliver dropped, landing behind a stack of insulated hydro-pipes.",
         {
           "text": "*Stupid. Too long. Careless.* ",
@@ -55,13 +55,13 @@
           "text": "*What is happening?*",
           "inner_voice": "oliver-savannen"
         },
-        "He strapped on his pack and scrambled through the depot's open panel. Outside, a bruised purple dawn spilled over the horizon. [#distant-alarm]Distant alarm klaxons and cries emerged from the docks. He spotted the docking towers embracing the *Brisinger*. The towers recoiled as the *Brisinger *tore itself free and lurched upward. A turret fired a lance of white-hot energy, scarring the ship's belly. [#bris-attack] The Bris shuddered but kept rising.",
+        "He strapped on his pack and scrambled through the depot's open panel. Outside, a bruised purple dawn spilled over the horizon. [#distant-alarm]Distant alarm klaxons and cries emerged from the docks. He spotted the docking towers embracing the *Brisinger*. The towers recoiled as the *Brisinger *tore itself free and lurched upward. A [#bris-attack]turret fired a lance of white-hot energy, scarring the ship's belly. The Bris shuddered but kept rising.",
         {
           "text": "\"Come on,\" he whispered, not fully sure why he wanted the ship containing their future to break away now that it had finally arrived. Another blast hit,[#blast] and a shock wave rippled around the ship's drive. The engine sputtered, and the ship veered like a leviathan rolling in its death throes. It plunged toward him. Time seemed to slow as its shadow swallowed the sky like a falling moon. A child's cry escaped his lungs. \"Dad… Mom… Help!\"",
           "speaker": "oliver-savannen"
         },
         "In the middle of his terror, he heard them. Two voices become one, sharp and urgent: *OLLY, MOVE!*",
-        "He reacted without thinking. He dove and scrambled behind the depot's concrete foundation. The *Brisinger *roared overhead[#ship-roar], casting him in total darkness. The ground shook, throwing him against the wall, ramming the breath from his lungs. Burning dust and shrapnel rained down. He crawled to his hands and knees and spat a dark red drop in the dust. In front of him, the *Brisinger'*s smoking wreckage redrew the horizon."
+        "He reacted without thinking. He dove and scrambled behind the depot's concrete foundation. [#ship-roar]The *Brisinger *roared overhead, casting him in total darkness. The ground shook, throwing him against the wall, ramming the breath from his lungs. Burning dust and shrapnel rained down. He crawled to his hands and knees and spat a dark red drop in the dust. In front of him, the *Brisinger'*s smoking wreckage redrew the horizon."
       ]
     },
     {
@@ -105,7 +105,7 @@
           "transcript": true
         },
         {
-          "text": "CIX WEAVER: \"Paradise.\" High biomass and abundant liquid H2O. However, the projection of \"within a decade\" is optimistic by a factor of three. Risk analysis reveals multiple high-threat variables: Competitive Pollination — at least 1,200 species of flora with hyper-aggressive airborne pollen analogs, predicting 97% contamination of Earth-native crops. Mimic Predation — fauna exhibiting chameleonic properties, including a predatory organism designated \"Shimmercat.\" Symbiotic Host Dependence — most abundant flora are obligate symbionts with the Myco-Rhizomic System; removal triggers neurotoxin release. Conclusion: The Delta is not a paradise. It is a complex and lethally integrated ecosystem.",
+          "text": "CIX WEAVER: Paradise. High biomass and abundant liquid H2O. However, the projection of \"within a decade\" is optimistic by a factor of three. Risk analysis reveals multiple high-threat variables: Competitive Pollination — at least 1,200 species of flora with hyper-aggressive airborne pollen analogs, predicting 97% contamination of Earth-native crops. Mimic Predation — fauna exhibiting chameleonic properties, including a predatory organism designated \"Shimmercat.\" Symbiotic Host Dependence — most abundant flora are obligate symbionts with the Myco-Rhizomic System; removal triggers neurotoxin release. Conclusion: The Delta is not a paradise. It is a complex and lethally integrated ecosystem.",
           "speaker": "gary",
           "transcript": true
         },
@@ -130,7 +130,7 @@
           "transcript": true
         },
         {
-          "text": "CIX WEAVER: Confirmed. Beta 2 geology is primarily basaltic shield, over 3.2 billion years old. Atmospheric pressure eight percent lower than Alpha 7. Temperatures range between minus 60 and 18 degrees Celcius. Life-forms are predominantly lithophilic, psychrophilic, and radiotrophic.",
+          "text": "CIX WEAVER: Confirmed. Beta 2 geology is primarily basaltic shield, over 3.2 billion years old. Atmospheric pressure eight percent lower than Alpha 7. Temperatures range between minus 60 and minus 18 degrees Celcius. Life-forms are predominantly lithophilic, psychrophilic, and radiotrophic.",
           "speaker": "gary",
           "transcript": true
         },
@@ -195,7 +195,7 @@
           "transcript": true
         },
         {
-          "text": "PROFESSOR FARLEY: I can't wait to start working on PRECO with this beauty. It's a magnificent challenge, Commander, General.",
+          "text": "PROFESSOR FARLEY: I can't wait to start working on PRECO with this beauty. It's a magnificent challenge, Commander,[#pause] General.",
           "speaker": "adrian-farley",
           "transcript": true
         },
@@ -205,7 +205,7 @@
           "transcript": true
         },
         {
-          "text": "COMMANDER VILDE: It'll be an operational nightmare. It will require convoys along a Sickle–Delta–Plateau corridor to move energy cells, biofuel, food, and processed ore. Ulre Corbin — ",
+          "text": "COMMANDER VILDE: It'll be an operational nightmare. It will require convoys along a Sickle–Delta–Plateau corridor to move energy cells, biofuel, food, and processed ore.[#pause2] Ulre Corbin — ",
           "speaker": "astrid-vilde",
           "transcript": true
         },
@@ -244,7 +244,11 @@
           "speaker": "gary",
           "transcript": true
         },
-        "EXECUTIVE DECISION: The quorum reaches consensus to ratify Mairee's societal model: a dynamic, multi-node migratory civilization. Establishment of Homestead 'Freya' at M-1.g3.m45 (The Sickle), foraging expeditions at M-1.a7.i23 (The Delta), industrial operations at M-1.b2.h88 (The Plateau), and establishing a supply corridor between them with orbital oversight."
+        {
+          "text": "EXECUTIVE DECISION: The quorum reaches consensus to ratify Mairee's societal model: a dynamic, multi-node migratory civilization. Establishment of Homestead 'Freya' at M-1.g3.m45 (The Sickle), foraging expeditions at M-1.a7.i23 (The Delta), industrial operations at M-1.b2.h88 (The Plateau), and establishing a supply corridor between them with orbital oversight.",
+          "speaker": "gary",
+          "transcript": true
+        }
       ]
     },
     {
@@ -259,7 +263,7 @@
     },
     {
       "paragraphs": [
-        "[#tinnitus]It was as if something sharp had learned to sing. A groan followed: [#hull-groan3]the cry of a dying giant. Oliver opened his eyes. The world was a landfill on fire. [#crash-site]A jagged mountain of burned metal and broken windows rose against the dawn. The *Brisinger*'s broken hull formed a steep cliff of twisted metal. Glowing coolant bled from a gash, pooling in a steaming, iridescent lake. He pushed himself up. In the distance, a fuel line caught fire, sending a bright orange bloom against the wreckage. [#hull-groan2]The groaning was the ship's spine settling under its own weight. [#gass]The air hissed with escaping gas. He needed to move, but where? Up meant unstable wreckage. Down meant pools of poison.",
+        "[#tinnitus]It was as if something sharp had learned to sing. A groan followed: [#hull-groan3]the cry of a dying giant. [#pause2]Oliver opened his eyes. [#crash-site]The world was a landfill on fire. A jagged mountain of burned metal and broken windows rose against the dawn. The *Brisinger*'s broken hull formed a steep cliff of twisted metal. Glowing coolant bled from a gash, pooling in a steaming, iridescent lake. He pushed himself up. In the distance, a fuel line caught fire, sending a bright orange bloom against the wreckage. [#hull-groan2]The groaning was the ship's spine settling under its own weight. [#gass]The air hissed with escaping gas. He needed to move, but where? Up meant unstable wreckage. Down meant pools of poison.",
         {
           "text": "A [#giggle]light giggle echoed off the metal walls. He stopped, tense, and moved carefully toward the sound. He circled a huge turbine and saw her. A young woman about his age. It was her hair he noticed first. Her sugarcane-bluish hair. She sat cross-legged on a bent piece of buckled deck plating, finger-painting with some kind of toxic sludge. Her golden jumpsuit was shredded. The fabric across her back was ripped, showing deep, bloody scratches she didn't seem to feel. The left side was also torn open, revealing the curve of her breast. Blood from a cut on her forehead ran down through dirt on her cheek. She looked up as he approached. Her face was peaceful. Her eyes grew wide. Their color matched her hair. \"Hello, Dusty,\" she said playfully. \"You're very dirty.\"",
           "speaker": "læsa"
@@ -286,7 +290,7 @@
           "speaker": "oliver-savannen"
         },
         {
-          "text": "[#barefeet]She followed with a dancing step, bare feet slapping on sharp metal, not flinching once. \"This is fun!\" she shouted, her words echoing through *Brisinger*'s carcass.",
+          "text": "[#barefeet]She followed with a dancing step, bare feet slapping on sharp metal, not flinching once. \"This is fun!\" she shouted, her words echoing through *Brisinger*'s carcass.[#pause2]",
           "speaker": "læsa"
         }
       ]
