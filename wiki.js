@@ -255,8 +255,8 @@ function renderCards(container, items) {
     const bgClass  = (item.image && imagesOn) ? ' has-image' : '';
 
     if (spoiler) {
-      const scrambledPreview = scramble(item.desc.substring(0, 100), i * 13);
-      const scrambledMeta    = scramble(item.role, i * 7);
+      const scrambledPreview = scramble((item.desc || item.appearance || item.name || '').substring(0, 100), i * 13);
+      const scrambledMeta    = scramble(item.role || '', i * 7);
       return `
         <div class="wiki-card is-spoiler${bgClass}" ${bgStyle}>
           <div class="card-inner">
@@ -274,7 +274,7 @@ function renderCards(container, items) {
     }
 
     const safeItem = JSON.stringify(item).replace(/"/g, '&quot;');
-    const preview  = (item.appearance || item.desc).substring(0, 100);
+    const preview  = (item.appearance || item.desc || item.name || '').substring(0, 100);
     return `
       <div class="wiki-card${bgClass}" ${bgStyle} onclick="openModal(${safeItem})">
         <div class="card-inner">
