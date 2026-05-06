@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v155';
+const READER_VERSION = 'v157';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -521,14 +521,13 @@ function buildSegments(plainText, charVoiceId, innerVoiceId) {
   const parts = plainText.split(/([""\u201c\u201d][^""\u201c\u201d]*[""\u201c\u201d]|\*[^*]+\*)/);
   const segs = [];
 
-  const INNER_RE = /\b(is|are|was|were|have|has|had|do|does|did|will|would|could|should|must|need|want|know|think|see|feel|hear|get|go|come|make|take|put|give|look|seem|appear)\b|[?!]/i;
-
   parts.forEach(p => {
     if (!p) return;
     const clean = p.trim();
     if (!clean) return;
     const isQuote = /^[""\u201c\u201d]/.test(clean) && /[""\u201c\u201d]$/.test(clean);
     const isItalic = /^\*[^*]+\*$/.test(clean);
+    const INNER_RE = /\b(is|are|was|were|have|has|had|do|does|did|will|would|could|should|must|need|want|know|think|see|feel|hear|get|go|come|make|take|put|give|look|seem|appear)\b|[?!.]$/i;
     const isInnerDialogue = isItalic && innerVoiceId && INNER_RE.test(clean);
 
     let voice = null;
