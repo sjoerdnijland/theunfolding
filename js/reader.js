@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v160';
+const READER_VERSION = 'v161';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -1629,7 +1629,7 @@ function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
     if (!meta) return;
     const isBlock = !meta.alignment || !meta.alignment.characters;
     const alignWithHint = isBlock
-      ? { _audioDur: ((meta.byteEnd - meta.byteStart) / 16000) * 1.25 } // v3 speaks slower than byte estimate
+      ? { _audioDur: ((meta.byteEnd - meta.byteStart) / 16000) * 1.35 } // v3 speaks slower than byte estimate
       : meta.alignment;
     const segWords = buildWordTimings(seg.text, alignWithHint);
     // In estimate mode, use real spread timing (no blockHighlight)
@@ -1692,8 +1692,9 @@ function buildWordTimings(text, alignment) {
       return entries.map(e => {
         t += e.pauseBefore;
         const dur   = wordBaseDur(e.text) * scale;
+        const GAP = 0.02; // v3 inter-word micro-gap
         const entry = { text: e.text, start: parseFloat(t.toFixed(3)), end: parseFloat((t + dur).toFixed(3)) };
-        t += dur;
+        t += dur + GAP;
         return entry;
       });
     }
