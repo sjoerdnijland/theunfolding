@@ -132,70 +132,6 @@
       "type": "scene-break"
     },
     {
-      "heading": "10 CLICKS POST UNFOLDING · ORBITAL COMMAND",
-      "paragraphs": [
-        "His orbital lift was a necessary fuel expenditure, Ulre Corbin told himself. Some meetings require presence. He sensed the gentle pressure of deceleration as the shuttlelift docked with Orbital Command, Eva Bellamy's station, once the FNS Yggdrasil before it was commissioned into Orbital Command and the three Orbital Relay stations.",
-        "He was summoned to her quarters, a sparse room with a large window that overlooked Mairee, where the clouds swirled like spilled paint in a bucket of oil. Eva held a glass of red wine, her silhouette a jagged shadow against the glowing atmosphere.",
-        {
-          "text": "\"He folded,\" Ulre stated, no preamble. \"The Dáinn retreated. Now it's—\"",
-          "speaker": "ulre-corbin"
-        },
-        {
-          "text": "\"I saw,\" Bellamy said. \"You played it well.\"",
-          "speaker": "eva-bellamy"
-        },
-        {
-          "text": "\"It was necessary,\" he replied. He gazed out, briefly entranced by the complex cloud formations.",
-          "speaker": "ulre-corbin"
-        },
-        "She moved closer, nearly pressing against him. The hardness in her faded, replaced by something more weary, yet more intimate.",
-        {
-          "text": "\"And Vilde? She's still breathing?\"",
-          "speaker": "eva-bellamy"
-        },
-        {
-          "text": "\"Yes. I am not a monster, Eva. But I am a logistician,\" he said with a wry smile.",
-          "speaker": "ulre-corbin"
-        },
-        "She held his gaze, taking a sip of her drink.",
-        {
-          "text": "\"And Westhoff? What's the outcome for him?\"",
-          "speaker": "eva-bellamy"
-        },
-        "Ulre took her glass and smelled it for alcohol. It was, in fact, real wine, to his disgust. It had been a constant companion to his mother. He set it back down. He put his hands on her waist. His fingers traced the line of her spine through the thin fabric of her off-duty jumpsuit.",
-        {
-          "text": "\"Reassignment,\" Ulre answered, his lips close to her ear. \"He needs to be reminded of what true hardship looks like. I'm thinking…Plateau Mining Crew. Let him see the faces of these men and share their hardship.\"",
-          "speaker": "ulre-corbin"
-        },
-        {
-          "text": "\"And the Dáinn?\" she asked, her hands now sliding up his chest.",
-          "speaker": "eva-bellamy"
-        },
-        {
-          "text": "He leaned into her touch. \"I expect the Grid to be fully commissioned at the Plateau before the Dáinn reaches the orbital anchor. Only then can she begin the unloading procedure,\" he said, his own desire for her a controlled, calculated variable in this exchange. \"I want the ore processors and the reactor parts down on the surface within four clicks of docking. Every click we lose, we will make up for with ruthless efficiency.\"",
-          "speaker": "ulre-corbin"
-        },
-        {
-          "text": "\"Ruthless efficiency,\" she repeated as she pulled him closer. \"Is there any other kind?\" She bit his lip.",
-          "speaker": "eva-bellamy"
-        },
-        "He kissed her with aggression and [#windowbang]pressed her against the window. Her hand searched for the seals on his jumpsuit. [#shirt-buttons-pop]She tore them open, and her fingers dug into his uniform. His own hands were as efficient. He went to the [#zipper]zipper of her coveralls, which he pulled down from her shoulders. The stiff fabric fell open, revealing the soft, pale skin beneath. With another decisive [#tug]tug, he pulled it farther down, from throat to navel. It was a purely functional garment, woven with thin, glowing biometric threads that monitored her heart rate and respiration. His gaze lingered on the threads. He could see the rhythm of her heartbeat subtly pulsing through the fibers, quickening under his touch.",
-        "She slid her hand down and drew him closer.",
-        "He stepped back and straightened his uniform. She did not.",
-        {
-          "text": "\"I want to be there when she arrives,\" he said, regaining his composure.",
-          "speaker": "ulre-corbin"
-        },
-        {
-          "text": "Eva turned away from him, placing her hands on the viewport. \"Do what you want. There will be no further delays.\" The condensation of her breath formed a faint haze over the view of the planet below.",
-          "speaker": "eva-bellamy"
-        }
-      ]
-    },
-    {
-      "type": "scene-break"
-    },
-    {
       "type": "scene-break"
     },
     {
@@ -359,6 +295,73 @@
         },
         "Alistair caught a sudden change in her. A stare, distant, as if she wasn't fully here anymore. Her lips parted slightly as she gazed through the screen. Whatever she was seeing wasn't on the display. Something inside that lava lamp hadn't quite let her go. And the longer he watched her, the more it was taking hold of him."
       ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "10 CLICKS POST UNFOLDING · ORBITAL COMMAND",
+      "paragraphs": [
+        "His orbital lift was a necessary fuel expenditure, Ulre Corbin told himself. Some meetings require presence. He sensed the gentle pressure of deceleration as the shuttlelift docked with Orbital Command, Eva Bellamy's station, once the FNS Yggdrasil before it was commissioned into Orbital Command and the three Orbital Relay stations.",
+        "He was summoned to her quarters, a sparse room with a large window that overlooked Mairee, where the clouds swirled like spilled paint in a bucket of oil. Eva held a glass of red wine, her silhouette a jagged shadow against the glowing atmosphere.",
+        {
+          "text": "\"He folded,\" Ulre stated, no preamble. \"The Dáinn retreated. Now it's—\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"I saw,\" Bellamy said. \"You played it well.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"It was necessary,\" he replied. He gazed out, briefly entranced by the complex cloud formations.",
+          "speaker": "ulre-corbin"
+        },
+        "She moved closer, nearly pressing against him. The hardness in her faded, replaced by something more weary, yet more intimate.",
+        {
+          "text": "\"And Vilde? She's still breathing?\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"Yes. I am not a monster, Eva. But I am a logistician,\" he said with a wry smile.",
+          "speaker": "ulre-corbin"
+        },
+        "She held his gaze, taking a sip of her drink.",
+        {
+          "text": "\"And Westhoff? What's the outcome for him?\"",
+          "speaker": "eva-bellamy"
+        },
+        "Ulre took her glass and smelled it for alcohol. It was, in fact, real wine, to his disgust. It had been a constant companion to his mother. He set it back down. He put his hands on her waist. His fingers traced the line of her spine through the thin fabric of her off-duty jumpsuit.",
+        {
+          "text": "\"Reassignment,\" Ulre answered, his lips close to her ear. \"He needs to be reminded of what true hardship looks like. I'm thinking…Plateau Mining Crew. Let him see the faces of these men and share their hardship.\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"And the Dáinn?\" she asked, her hands now sliding up his chest.",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "He leaned into her touch. \"I expect the Grid to be fully commissioned at the Plateau before the Dáinn reaches the orbital anchor. Only then can she begin the unloading procedure,\" he said, his own desire for her a controlled, calculated variable in this exchange. \"I want the ore processors and the reactor parts down on the surface within four clicks of docking. Every click we lose, we will make up for with ruthless efficiency.\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"Ruthless efficiency,\" she repeated as she pulled him closer. \"Is there any other kind?\" She bit his lip.",
+          "speaker": "eva-bellamy"
+        },
+        "He kissed her with aggression and [#windowbang]pressed her against the window. Her hand searched for the seals on his jumpsuit. [#shirt-buttons-pop]She tore them open, and her fingers dug into his uniform. His own hands were as efficient. He went to the [#zipper]zipper of her coveralls, which he pulled down from her shoulders. The stiff fabric fell open, revealing the soft, pale skin beneath. With another decisive [#tug]tug, he pulled it farther down, from throat to navel. It was a purely functional garment, woven with thin, glowing biometric threads that monitored her heart rate and respiration. His gaze lingered on the threads. He could see the rhythm of her heartbeat subtly pulsing through the fibers, quickening under his touch.",
+        "She slid her hand down and drew him closer.",
+        "He stepped back and straightened his uniform. She did not.",
+        {
+          "text": "\"I want to be there when she arrives,\" he said, regaining his composure.",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "Eva turned away from him, placing her hands on the viewport. \"Do what you want. There will be no further delays.\" The condensation of her breath formed a faint haze over the view of the planet below.",
+          "speaker": "eva-bellamy"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
     },
     {
       "heading": "AFT GALLEY · FNS DÁINN",
