@@ -158,12 +158,14 @@
         },
         "Alistair's smirk softened for a fraction of a second. He flipped a page. The paper was as thin as skin. He opened a random page and read:",
         {
-          "text": "\"The Fall\n[#pause2].\"",
-          "speaker": "alistair-hale"
+          "text": "\"The Fall[#pause2].\"",
+          "speaker": "alistair-hale",
+          "pause_before": 1000
         },
         {
           "text": "\"Birds bore the earth, \nBound fast to soil and bone; \nChained to my fleeting being, \nThey climbed with a heart of stone. \nToo high, thought-drowned; \nWings unmade, earth-bound. \nThe fall stretched, endlessly slow. \nAnd in the act of letting go, \nI remembered.\"",
-          "speaker": "alistair-hale","pause_before": 1000
+          "speaker": "alistair-hale",
+          "pause_before": 1000
         },
 
         {
