@@ -12,14 +12,15 @@
       "heading": "FNS DÁINN",
       "paragraphs": [
         "The Dáinn was drunk. But not because of alcohol. For a full click, the crew endured a convulsive nausea caused by gravity surging in irregular waves. Ben weighed twice as much, his blood as heavy as mercury in his veins—then he went weightless. The bridge reeked of sweat and vomit. Emesis bags hung from desks, many of them used. Ben grabbed hold of a railing.",
-        "The hull shuddered with another deafening CLANG as Beltrán hurled a scream into the void. Artificial gravity stuttered. Stomach acid burned at the back of Ben's throat, but his resolve held. Lieutenant Jia, strapped in, winced at her screen. Her face was the color of a dead moon, and her eyes were bloodshot. The holoscreen blinked and added a third 'C.'"
+        "The hull shuddered with another deafening [#click]CLANG as Beltrán hurled a scream into the void. [#thud]Artificial gravity stuttered. Stomach acid burned at the back of Ben's throat, but his resolve held.",
+        "Lieutenant Jia, strapped in, winced at her screen. Her face was the color of a dead moon, and her eyes were bloodshot. The holoscreen blinked and added a third 'C.'"
       ]
     },
     {
       "type": "code",
       "paragraphs": [
         "< FNS DÁINN: CQ CQ C",
-        "FNS BRISINGER: | />"
+        "FNS BRISINGER: [#pause2]  | />"
       ]
     },
     {
@@ -49,7 +50,7 @@
         "Ben's nausea surged, hot and acidic, in his throat.",
         "[claxon]A klaxon blared through the ship-wide intercom, warning them that another grav-surge was coming. He stumbled and braced himself against the bulkhead. Slam. The gravity surged. Ben's knees hit the bulkhead. He barely managed to grab his barf pouch before he retched the bitter coffee.",
         {
-          "text": "Ben made his way back onto the bridge. \"[scrapes throat]Jia. Course change—\" he began, but a [#screetch]grating sound cut through the ship like fingernails dragged across a chalkboard, though with a rhythm to it. Screeetch, screeetch. All eyes shot to the holoscreen.",
+          "text": "Ben made his way back onto the bridge. \"[scrapes throat]Jia. Course change—\" he began, but a [#screetch]grating sound cut through the ship like fingernails dragged across a chalkboard, though with a [#screetch]rhythm to it. Screeetch, screeetch. All eyes shot to the holoscreen.",
           "speaker": "benjamin-westhoff"
         }
       ]
@@ -105,7 +106,7 @@
           "text": "\"Brief her. Go. ASAP,\" Ben said, nodding to Jia.",
           "speaker": "benjamin-westhoff"
         },
-        "Again, a grating sound sliced through the hull.",
+        "[#screetch]Again, a grating sound sliced through the hull.",
         {
           "text": "\"Cap,\" Beltrán stammered, pointing at a secondary holoscreen. \"The transmission…\"",
           "speaker": "dominic-beltrán"
@@ -116,7 +117,7 @@
       "type": "code",
       "paragraphs": [
         "< FNS DÁINN: CQ CQ CQ   ",
-        "FNS BRISINGER:  S O S   />"
+        "FNS BRISINGER:  S[#pause] O [#pause]S   />"
       ]
     },
     {
@@ -178,7 +179,7 @@
           "text": "\"Ruthless efficiency,\" she repeated as she pulled him closer. \"Is there any other kind?\" She bit his lip.",
           "speaker": "eva-bellamy"
         },
-        "He kissed her with aggression and pressed her against the window. Her hand searched for the seals on his jumpsuit. She tore them open, and her fingers dug into his uniform. His own hands were as efficient. He went to the zipper of her coveralls, which he pulled down from her shoulders. The stiff fabric fell open, revealing the soft, pale skin beneath. With another decisive tug, he pulled it farther down, from throat to navel. It was a purely functional garment, woven with thin, glowing biometric threads that monitored her heart rate and respiration. His gaze lingered on the threads. He could see the rhythm of her heartbeat subtly pulsing through the fibers, quickening under his touch.",
+        "He kissed her with aggression and [#windowbang]pressed her against the window. Her hand searched for the seals on his jumpsuit. [#shirt-buttons-pop]She tore them open, and her fingers dug into his uniform. His own hands were as efficient. He went to the [#zipper]zipper of her coveralls, which he pulled down from her shoulders. The stiff fabric fell open, revealing the soft, pale skin beneath. With another decisive [#tug]tug, he pulled it farther down, from throat to navel. It was a purely functional garment, woven with thin, glowing biometric threads that monitored her heart rate and respiration. His gaze lingered on the threads. He could see the rhythm of her heartbeat subtly pulsing through the fibers, quickening under his touch.",
         "She slid her hand down and drew him closer.",
         "He stepped back and straightened his uniform. She did not.",
         {
@@ -205,7 +206,7 @@
           "text": "\"Steady…\" Alistair grunted.",
           "speaker": "alistair-hale"
         },
-        "His mag-boots clamped to the deck plating. A low groan echoed through the ship's frame, the prelude to another gut-wrenching grav-surge. The Dáinn was texting back again. Gravity buckled, dropping from a heavy 1.2 Gs to zero, then dropping to 0 and back to 0.4. Alistair gripped a rail by the Stingray.",
+        "[#magboot]His mag-boots [#magboot]clamped to the deck plating. [#groan-long]A low groan echoed through the ship's frame, the prelude to another gut-wrenching grav-surge. The Dáinn was texting back again. Gravity buckled, dropping from a heavy 1.2 Gs to zero, then dropping to 0 and back to 0.4. Alistair gripped a rail by the Stingray.",
         {
           "text": "\"Whoa, whoa!\" Stacey Kiran yelped from behind.",
           "speaker": "stacey-kiran"
@@ -225,14 +226,14 @@
         },
         "Alistair's smirk softened for a fraction of a second. He flipped a page. The paper was as thin as skin. He opened a random page and read:",
         {
-          "text": "\"The Fall Birds bore the earth, \nBound fast to soil and bone; \nChained to my fleeting being, \nThey climbed with a heart of stone. \nToo high, thought-drowned; \nWings unmade, earth-bound. \nThe fall stretched, endlessly slow. \nAnd in the act of letting go, \nI remembered.\"",
+          "text": "\"The Fall\n[#pause2]Birds bore the earth, \nBound fast to soil and bone; \nChained to my fleeting being, \nThey climbed with a heart of stone. \nToo high, thought-drowned; \nWings unmade, earth-bound. \nThe fall stretched, endlessly slow. \nAnd in the act of letting go, \nI remembered.\"",
           "speaker": "alistair-hale"
         },
         {
           "text": "He drifted closer and gave the book back. \"I can't say I like that line about wings being unmade.\" He held her arm to steady her. \"Brace up. Here comes the snap-back.\"",
           "speaker": "alistair-hale"
         },
-        "A klaxon blared. As he pulled her in, her momentum brought her flush against his chest. They locked eyes: Alistair's amused, Stacey's fierce. Another loud clunk rang through the ship. Gravity returned with the subtlety of a falling anvil. They buckled at the knees in unison.",
+        "A [#claxon]klaxon blared. As he pulled her in, her momentum brought her flush against his chest. They locked eyes: Alistair's amused, Stacey's fierce. Another loud [#click]clunk rang through the ship. Gravity returned with the subtlety of a falling anvil. They buckled at the knees in unison.",
         {
           "text": "Alistair gave a dry chuckle. \"Cozy down here.\"",
           "speaker": "alistair-hale"
@@ -258,7 +259,7 @@
         "Stacey settled into the left-side gel-couch of the Stingray's cramped two-seat cockpit.",
         {
           "text": "\"Stop messing around and stow your contraband. Let's get this show in the void.\"",
-          "speaker": "stacey-kiran"
+          "speaker": "alistair-hale"
         },
         "A waterfall of data cascaded across the screens. She powered up the systems and ran one last check.",
         {
@@ -270,12 +271,12 @@
           "speaker": "stacey-kiran"
         },
         {
-          "text": "Captain Westhoff's low, rough voice crackled in their headsets. \"Kiran. Hale. A few words before you go. Be careful and trust your instincts out there. When I was a junior officer hauling ore, we approached a prospector named the Kessler's Folly. Diagnostics showed her dead in space, no signs of life or power. We prepared to clear it for salvage. But something felt off. Against procedure, we did a cautious fly-by. As we passed by, the instruments spiked. Radiation levels spiked. The Folly's reactor went critical, obliterating itself and a part of the asteroid it clung to. If we had docked, I wouldn't be here.\"",
+          "text": "Captain Westhoff's low, rough voice crackled in their headsets. \"[over comms]Kiran. Hale. A few words before you go. Be careful and trust your instincts out there. When I was a junior officer hauling ore, we approached a prospector named the Kessler's Folly. Diagnostics showed her dead in space, no signs of life or power. We prepared to clear it for salvage. But something felt off. Against procedure, we did a cautious fly-by. As we passed by, the instruments spiked. Radiation levels spiked. The Folly's reactor went critical, obliterating itself and a part of the asteroid it clung to. If we had docked, I wouldn't be here.\"",
           "speaker": "benjamin-westhoff"
         },
         "Alistair and Stacey exchanged a look.",
         {
-          "text": "Westhoff continued, \"I trusted my instincts, and now I'm trusting yours. This is why you're on this mission. Trust your gut, verify your data, and listen to each other out there. Our entire crew is with you. You are not flying alone. The Bris…\" He paused again. \"Save their souls. Westhoff out.\"",
+          "text": "Westhoff continued, \"[over comms]I trusted my instincts, and now I'm trusting yours. This is why you're on this mission. Trust your gut, verify your data, and listen to each other out there. Our entire crew is with you. You are not flying alone. The Bris…\" He paused again. \"Save their souls. Westhoff out.\"",
           "speaker": "benjamin-westhoff"
         },
         "The channel closed.",
@@ -291,11 +292,11 @@
           "text": "\"Feels good,\" Alistair replied.",
           "speaker": "alistair-hale"
         },
-        "Soft hydraulic hisses blew beneath them. Outside, the umbilical connections supplying the Stingray with power and air from the Dáinn retracted into the hangar deck. With a final, resonant thud, the magnetic docking clamps released.",
+        "[#hydraulic-hiss]Soft hydraulic hisses [#hydraulic-hiss]blew beneath them. Outside, the umbilical connections supplying the Stingray with power and air from the Dáinn retracted into the hangar deck. With a final, [#clamps2]resonant thud, the magnetic docking clamps released.",
         "Alistair let the shuttle fall away from the mothership's underbelly. The open maw of the hangar bay receded above, replaced by a striking view of the Dáinn's immense hull, its running lights stretching for hundreds of meters.",
-        "Once clear of the Dáinn's magnetic field, Alistair pulled the yoke. The Stingray's drives fired a blue wisp of thrust into the void. A faint shudder was the only indication they were now moving under their own power. Alistair banked the shuttle hard to port, pivoting the craft on its axis toward the Brisinger.",
+        "Once clear of the Dáinn's magnetic field, Alistair pulled the yoke. The Stingray's drives [#thrurster]fired a blue wisp of thrust into the void. A faint shudder was the only indication they were now moving under their own power. Alistair banked the shuttle hard to port, pivoting the craft on its axis toward the Brisinger.",
         {
-          "text": "Stacey was looking out of the window, watching the Dáinn slip out of view, when she suddenly asked, \"Have you processed it yet? The Fold?\"",
+          "text": "Stacey was looking out of the window, watching the Dáinn slip out of view, when she suddenly asked, \"Have you processed it yet?[#pause] The Fold?\"",
           "speaker": "stacey-kiran"
         },
         {
