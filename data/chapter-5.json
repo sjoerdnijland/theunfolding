@@ -1,0 +1,572 @@
+{
+  "title": "Two Courses",
+  "sections": [
+    {
+      "type": "epigraph",
+      "paragraphs": [
+        "\"We'll get through this.\" [#pause]We say it to the kids and the crew, and we will say it to the mirror until the glass cracks. [#pause]But there is no escaping gravity."
+      ]
+    },
+    {
+      "heading": "8 CLICKS POST UNFOLDING \nFNS DÁINN",
+      "paragraphs": [
+        "The Dáinn was drunk. But not because of alcohol. For a full click, the crew endured a convulsive nausea caused by gravity surging in irregular waves. Ben weighed twice as much, his blood as heavy as mercury in his veins—then he went weightless. The bridge reeked of sweat and vomit. Emesis bags hung from desks, many of them used. Ben grabbed hold of a railing.",
+        "The hull shuddered with another deafening [#click]CLANG as Beltrán hurled a scream into the void. [#thud]Artificial gravity stuttered. Stomach acid burned at the back of Ben's throat, but his resolve held.",
+        "Lieutenant Jia, strapped in, winced at her screen. Her face was the color of a dead moon, and her eyes were bloodshot. The holoscreen blinked and added a third 'C.'"
+      ]
+    },
+    {
+      "type": "code",
+      "paragraphs": [
+        "< FNS DÁINN: CQ CQ C",
+        "FNS BRISINGER: [#pause2]  | />"
+      ]
+    },
+    {
+      "paragraphs": [
+        "It was the product of a slow one-sided conversation.",
+        {
+          "text": "[#pong]Jia grabbed her captain's shoulder. \"[clears throat]Incoming video message. From FreyOps Central. Corbin.\"",
+          "speaker": "ionie-jia"
+        },
+        {
+          "text": "Ben's face hardened. \"[under breath]Send it to the ready room. Jia, you have the conn.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        "He staggered into the small office off the bridge. As soon as the door closed, he [#tap]hit the projector plate in the corner. It flickered on, but instead of Ulre Corbin, it showed a close-up of a woman in a biostasis pod, her face pale and peaceful. Astrid Vilde. Her vitals scrolled in the corner of the screen.",
+        {
+          "text": "Ulre Corbin's voice filled the room. \"Cease your intercept, Westhoff. For every beat you remain off course, her oxygen quota will be reduced by five percent. That is the math. You wouldn't let her suffer the fate of those miners breathing that thin air, waiting on those oxy-packs, Köldur suits, heat-core rods, antifreeze rations, and replacement seals for their cracking domes in the bitter cold. So stop. Turn back to Mairee.\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "Ulre let the threat hang and continued, his voice calm, like a teacher explaining a hard problem. \"Let me paint you the bigger picture. Your delay of the Dáinn has consequences. Every click you are off course is another the Plateau's secondary power grid remains dark. Without the machinery you are hauling, the heavy ore processors remain offline. Ore that yields the iridium we need for all our habitats.\" The mining site feed shifted, zooming in on the miners. \"Also,\" Ulre went on, \"atmospheric processors for lower mining habitats are dead. Air's thin. Miners freezing. Their medics will log hypoxia and frostbite before ten more clicks.\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "Ulre exhaled. \"Her life against two hundred freezing miners. Turn back. Do it for them. For her.\" The video ended.",
+          "speaker": "ulre-corbin"
+        },
+        "Ben's nausea surged, hot and acidic, in his throat.",
+        "[#claxon]A klaxon blared through the ship-wide intercom, warning them that another grav-surge was coming. He stumbled and braced himself against the bulkhead. [#woosh-thud]Slam. The gravity surged. Ben's knees hit the bulkhead. He barely managed to grab his barf pouch before he retched the bitter coffee.",
+        {
+          "text": "Ben made his way back onto the bridge. \"[scrapes throat]Jia. Course change—\" he began, but a [#screetch]grating sound cut through the ship like fingernails dragged across a chalkboard, though with a [#screetch]rhythm to it. Screeetch, screeetch. All eyes shot to the holoscreen.",
+          "speaker": "benjamin-westhoff"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "paragraphs": [
+        "<  FNS DÁINN:  Q CQ CQ",
+        "FNS BRISINGER: S  />"
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "paragraphs": [
+        "[beat]A beat later, four officers of the Dáinn gathered around the central holotable in the Tactical Information Center. The table painted their situation in geometric light. Icons for the Dáinn and Brisinger floated in the simulated void. The path between them read 'Two clicks, five thuds, two beats.' The Brisinger's icon flickered red, linked to the Dáinn by a thin green line.",
+        "With gravity momentarily restored, Ben walked uneasily around the table.",
+        {
+          "text": "\"Alright,\" he began, stopping to look at each of his weary officers. He noted Jia, who, despite the exhaustion, stood ramrod straight. Beltrán slouched in his seat, and Pilot Alistair Hale's flicked his eyes around, clearly surprised to have been summoned.",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"Let's lay it out,\" Ben said, voice low. \"We have a directive from Corbin. Commander Vilde is his hostage. He'll kill her if we don't reverse course. He's right on one thing: our deployment is crucial to the Plateau crew, because nothing else will be coming through the Fold. But he's using the math as a noose.\" He sipped from a heavy ceramic mug stained with black rings.",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"We're turning around for Mairee.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        "The officers murmured in surprise.",
+        {
+          "text": "Ben raised his hand. \"We'll follow Corbin's order, at least in principle.\" A grim smile touched his lips. \"We will alter our trajectory back toward Mairee, but slowly, allowing the Bris to catch up. We'll maintain a one-click reactionary buffer. We are not abandoning them. Hale, it looks like the Stingray will be of use after all. Is she ready?\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "Pilot Alistair Hale grinned and uncrossed his arms. \"Ready to drop in a thud.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"Good.\" Ben nodded. \"Send the Stingray with a two-person crew to set up direct communication. I want eyes and ears on the Brisinger.\" He turned to his XO. \"Jia, this is delicate. I need our best. Who should go with Hale?\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "Jia answered immediately. \"Lieutenant Stacey Kiran, sir. No one else has her finesse, and she knows ship comms inside out. If the Brisinger's comms are repairable, she's the one to fix it.\"",
+          "speaker": "ionie-jia"
+        },
+        {
+          "text": "Hale pushed off the console and leaned in with a spark in his eyes. \"Ah, Stace,\" he mused aloud. \"Great choice.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"Brief her. Go. ASAP,\" Ben said, nodding to Jia.",
+          "speaker": "benjamin-westhoff"
+        },
+        "[#screetch]Again, a grating sound sliced through the hull.",
+        {
+          "text": "\"Cap,\" Beltrán stammered, pointing at a secondary holoscreen. \"The transmission…\"",
+          "speaker": "dominic-beltrán"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "paragraphs": [
+        "< FNS DÁINN: CQ CQ CQ   ",
+        "FNS BRISINGER:  S[#pause] O [#pause]S   />"
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "text": "Ben [handslam]slammed his hand down on the holotable, killing it and snapping everyone's attention back to him. \"Beltrán! Beat that drum. Let them know we're coming. No pulse to lose.\"",
+          "speaker": "benjamin-westhoff"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "STINGRAY, AFT-VENTRAL BAY · FNS DÁINN",
+      "paragraphs": [
+        "The Stingray nestled in the aft-ventral bay. Alistair Hale [#switches]toggled a row of switches, and the bay's light strips blazed to life. The shuttle, a sliver of polished night, occupied the center of the deck. It was a broad-winged plane with a black composite hull built to swallow light, radar, and trouble.",
+        {
+          "text": "\"Steady…\" Alistair grunted.",
+          "speaker": "alistair-hale"
+        },
+        "[#magboot]His mag-boots [#magboot]clamped to the deck plating. [#groan-long]A low groan echoed through the ship's frame, the prelude to another gut-wrenching grav-surge. The Dáinn was texting back again. Gravity buckled, dropping from a heavy 1.2 Gs to zero, then dropping to 0 and back to 0.4. Alistair gripped a rail by the Stingray.",
+        {
+          "text": "\"Whoa, whoa!\" Stacey Kiran yelped from behind.",
+          "speaker": "stacey-kiran"
+        },
+        "She hadn't readied herself. Her hands were still digging in her pack. The surge nudged her forward. Her unsealed pack flew ahead of her, shedding its contents in slow motion, releasing a data slate, a spare battery pack, a protein bar, and a small, worn leather-bound book. Her clumsy attempts to wrangle her gear only accelerated her tumble. Alistair grinned, watching her scramble.",
+        {
+          "text": "\"Gosh, not even a hand,\" Stacey muttered, snagging her pack.",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"What? You expected Prince Charming?\" Alistair pushed off the fuselage and glided to her. He deftly intercepted the tumbling book before it hit the floor. \"What's this? Seriously? We're about to poke a ghost ship at the ass-end of the universe, and you bring a Bible?\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Stacey's face turned red. Of all the things to fall out, it had to be that. \"It was my mom's,\" she said defensively. \"And it's not a Bible!\"",
+          "speaker": "stacey-kiran"
+        },
+        "Alistair's smirk softened for a fraction of a second. He flipped a page. The paper was as thin as skin. He opened a random page and read:",
+        {
+          "text": "\"The Fall\n[#pause2].\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"The Fall\n[#pause2]Birds bore the earth, \nBound fast to soil and bone; \nChained to my fleeting being, \nThey climbed with a heart of stone. \nToo high, thought-drowned; \nWings unmade, earth-bound. \nThe fall stretched, endlessly slow. \nAnd in the act of letting go, \nI remembered.\"",
+          "speaker": "alistair-hale","pause_before": 1000
+        },
+
+        {
+          "text": "He drifted closer and gave the book back. \"I can't say I like that line about wings being unmade.\" He held her arm to steady her. \"Brace up. Here comes the snap-back.\"",
+          "speaker": "alistair-hale"
+        },
+        "A [#claxon]klaxon blared. As he pulled her in, her momentum brought her flush against his chest. They locked eyes: Alistair's amused, Stacey's fierce. Another loud [#click]clunk rang through the ship. Gravity returned with the subtlety of a falling anvil. They buckled at the knees in unison.",
+        {
+          "text": "Alistair gave a dry chuckle. \"Cozy down here.\"",
+          "speaker": "alistair-hale"
+        },
+        "Stacey hauled herself up, snatched the book from his hand, and climbed into the shuttle. As she went under the hatch, she ran her fingers over words carved into the frame.",
+        {
+          "text": "\"Nullum silentium audientibus vere,\" she recited, the Latin rolling off her tongue. \"There is no silence for those who truly listen.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"Means people need to shut up and listen to what I say,\" Alistair jested, grabbing the ladder.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"Poetic,\" Stacey said, her tone dry as she disappeared inside. \"But knowing you, it should read 'Age non iussus.' Do the unbidden.\"",
+          "speaker": "stacey-kiran"
+        },
+        "Alistair followed her through the hatch. He found his gaze lingering on her figure, but shook it off.",
+        {
+          "text": "\"Whatever, Abacus.\"",
+          "speaker": "alistair-hale"
+        },
+        "Stacey settled into the left-side gel-couch of the Stingray's cramped two-seat cockpit.",
+        {
+          "text": "\"Stop messing around and stow your contraband. Let's get this show in the void.\"",
+          "speaker": "alistair-hale"
+        },
+        "A waterfall of data cascaded across the screens. She powered up the systems and ran one last check.",
+        {
+          "text": "\"Flight status, Abacus.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Stacey answered, \"Reactor is stable. Life support is green. All systems nominal. And…\" She paused, surprised, and pressed the comm. \"Captain, this is Hale and Kiran. Stingray is ready for deployment. Waiting for your mark?\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "Captain Westhoff's low, rough voice crackled in their headsets. \"[over comms]Kiran. Hale. A few words before you go. Be careful and trust your instincts out there. When I was a junior officer hauling ore, we approached a prospector named the Kessler's Folly. Diagnostics showed her dead in space, no signs of life or power. We prepared to clear it for salvage. But something felt off. Against procedure, we did a cautious fly-by. As we passed by, the instruments spiked. Radiation levels spiked. The Folly's reactor went critical, obliterating itself and a part of the asteroid it clung to. If we had docked, I wouldn't be here.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        "Alistair and Stacey exchanged a look.",
+        {
+          "text": "Westhoff continued, \"[over comms]I trusted my instincts, and now I'm trusting yours. This is why you're on this mission. Trust your gut, verify your data, and listen to each other out there. Our entire crew is with you. You are not flying alone. The Bris…\" He paused again. \"Save their souls. Westhoff out.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        "The channel closed.",
+        {
+          "text": "\"He knows how to give a pep talk,\" Alistair muttered.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Stacey refocused. \"All green. She's yours again, Heyoka.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"Feels good,\" Alistair replied.",
+          "speaker": "alistair-hale"
+        },
+        "[#hydraulic-hiss]Soft hydraulic hisses [#hydraulic-hiss]blew beneath them. Outside, the umbilical connections supplying the Stingray with power and air from the Dáinn retracted into the hangar deck. With a final, [#clamps2]resonant thud, the magnetic docking clamps released.",
+        "Alistair let the shuttle fall away from the mothership's underbelly. The open maw of the hangar bay receded above, replaced by a striking view of the Dáinn's immense hull, its running lights stretching for hundreds of meters.",
+        "Once clear of the Dáinn's magnetic field, Alistair pulled the yoke. The Stingray's drives [#thrurster]fired a blue wisp of thrust into the void. A faint shudder was the only indication they were now moving under their own power. Alistair banked the shuttle hard to port, pivoting the craft on its axis toward the Brisinger.",
+        {
+          "text": "Stacey was looking out of the window, watching the Dáinn slip out of view, when she suddenly asked, \"Have you processed it yet?[#pause] The Fold?\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "Alistair shrugged. \"Door's closed. We're here; they're there.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"Is it that simple for you?\" she sneered. \"Mandy is on the Mimir. Isn't she one of your, err…?\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"Mistakes?\" Alistair replied, shrugging it off.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Stacey continued, \"My cousin Alex, the one I told you about, is there too. So is Westhoff's daughter. My dad and I may not get along, but now there's no way to reach him. I might never see him again. And that's just us.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "Alistair's jaw tensed as he stared into the darkness. \"It's probably a void-quirk a geek like you will fix. Which is why we can't afford to get spin-sick over it.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Stacey shifted her approach. \"How does a Zaytsev Fold just vanish? Could it have left behind a faint radiation echo or a sensor glitch we can examine? Something we can dig into?\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"Who knows?\" Alistair replied with a dismissive wave. \"Maybe God plugged a cosmic pothole.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Stacey leaned forward. \"And the crossing itself? The… you know. The trip. What was yours like?\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "Alistair laughed, a bit too loudly and forced. \"That trip! It was a real ride. A wild ride through a lava lamp. Maybe I should write a poem about it.\"",
+          "speaker": "alistair-hale"
+        },
+        "An image of a trickster popped up in his mind. He was leaning out of a collapsing fractal doorway, wagging his finger as if to serve as a reminder.",
+        "Stacey turned to her console, hiding her agitation. She blinked hard once, then again. Alistair recognized the signs. He knew exactly which wires he'd brushed and how carefully she was pretending they weren't sparking.",
+        {
+          "text": "Alistair reached up and tapped a small, worn metal charm hanging from a switch on his console—a stylized falcon, its wings swept back. \"Hey, at least your book has a soul. This thing only holds bad memories.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Stacey's lips curled into a wry smile. \"You mean Mandy's bad memories?\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"Ouch.\" Alistair winced, though he was smiling too. \"Low blow. And here I was, about to say I'm glad it's you in this seat, not her. She'd be trying to psychoanalyze me to pulp by now.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"She would have already done it,\" Stacey corrected. \"And she would've beaten your ass at Smashout last week.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"Nobody beats me at Smashout,\" he said, grinning. \"Rematch when we get back.\"",
+          "speaker": "alistair-hale"
+        },
+        "Alistair caught a sudden change in her. A stare, distant, as if she wasn't fully here anymore. Her lips parted slightly as she gazed through the screen. Whatever she was seeing wasn't on the display. Something inside that lava lamp hadn't quite let her go. And the longer he watched her, the more it was taking hold of him."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "10 CLICKS POST UNFOLDING \nORBITAL COMMAND",
+      "paragraphs": [
+        "His orbital lift was a necessary fuel expenditure, Ulre Corbin told himself. Some meetings require presence. He sensed the gentle pressure of deceleration as the shuttlelift docked with Orbital Command, Eva Bellamy's station, once the *FNS Yggdrasil* before it was commissioned into Orbital Command and the three Orbital Relay stations.",
+        "He was summoned to her quarters, a sparse room with a large window that overlooked Mairee, where the clouds swirled like spilled paint in a bucket of oil. [#pause]Eva held a glass of red wine, her silhouette a jagged shadow against the glowing atmosphere.",
+        {
+          "text": "\"He folded,\" Ulre stated, no preamble. \"The Dáinn retreated. Now it's—\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"I saw,\" Bellamy said. \"You played it well.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"It was necessary,\" he replied. He gazed out, briefly entranced by the complex cloud formations.",
+          "speaker": "ulre-corbin"
+        },
+        "She moved closer, nearly pressing against him. The hardness in her faded, replaced by something more weary, yet more intimate.",
+        {
+          "text": "\"And Vilde? She's still breathing?\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"Yes. I am not a monster, Eva. But I am a logistician,\" he said with a wry smile.",
+          "speaker": "ulre-corbin"
+        },
+        "She held his gaze, taking a sip of her drink.",
+        {
+          "text": "\"And Westhoff? What's the outcome for him?\"",
+          "speaker": "eva-bellamy"
+        },
+        "Ulre took her glass and smelled it for alcohol. It was, in fact, real wine, to his disgust. It had been a constant companion to his mother. He set it back down. He put his hands on her waist. His fingers traced the line of her spine through the thin fabric of her off-duty jumpsuit.",
+        {
+          "text": "\"Reassignment,\" Ulre answered, his lips close to her ear. \"He needs to be reminded of what true hardship looks like. I'm thinking…Plateau Mining Crew. Let him see the faces of these men and share their hardship.\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"And the Dáinn?\" she asked, her hands now sliding up his chest.",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "He leaned into her touch. \"I expect the Grid to be fully commissioned at the Plateau before the Dáinn reaches the orbital anchor. Only then can she begin the unloading procedure,\" he said, his own desire for her a controlled, calculated variable in this exchange. \"I want the ore processors and the reactor parts down on the surface within four clicks of docking. Every click we lose, we will make up for with ruthless efficiency.\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"Ruthless efficiency,\" she repeated as she pulled him closer. \"Is there any other kind?\" She bit his lip.",
+          "speaker": "eva-bellamy"
+        },
+        "He kissed her with aggression and [#windowbang]pressed her against the window. Her hand searched for the seals on his jumpsuit. [#shirt-buttons-pop]She tore them open, and her fingers dug into his uniform. His own hands were as efficient. He went to the [#zipper]zipper of her coveralls, which he pulled down from her shoulders. The stiff fabric fell open, revealing the soft, pale skin beneath. With another decisive [#tug]tug, he pulled it farther down, from throat to navel. It was a purely functional garment, woven with thin, glowing biometric threads that monitored her heart rate and respiration. His gaze lingered on the threads. He could see the rhythm of her heartbeat subtly pulsing through the fibers, quickening under his touch.",
+        "She slid her hand down and drew him closer.",
+        "He stepped back and straightened his uniform. She did not.",
+        {
+          "text": "\"I want to be there when she arrives,\" he said, regaining his composure.",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "Eva turned away from him, placing her hands on the viewport. \"Do what you want. There will be no further delays.\" The condensation of her breath formed a faint haze over the view of the planet below.",
+          "speaker": "eva-bellamy"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "AFT GALLEY · FNS DÁINN",
+      "paragraphs": [
+        "Ionie entered the aft galley. [#pause]She smelled fresh-baked bread, herbs, and lime leaves.",
+        {
+          "text": "Chef Omar, a broad, dark man with sleeves rolled up over forearms the size of hams, greeted her with a warm nod as he [#sizzling]stirred a pan of sizzling shiitake. \"[booming]Ionie,\" he said with a booming bass.",
+          "speaker": "omar-newton"
+        },
+        "The use of first names was one of many rules of the ceremony. In the galley, rank was a suit you stripped off at the door. [#pause]Just the meat that eats.",
+        "The Dáinn had a tradition called the Galley Draw. Each Voweday, a ship-wide lottery selected five random crew members, regardless of rank, division, or shift, to cook and share a meal together. This simple ritual helped fight the loneliness of deep space and gave everyone a chance to build trust and boost morale.",
+        "Despite Ionie's protest, Captain Westhoff kept the tradition alive during rationing. Tonight, 'coincidentally,' Ionie's name had been picked.",
+        "She smiled at her dinner companions. She knew their names, but not all their stories. Sachin, a young and fiery engineer from the coolant nexus, was mangling a bulb of garlic with more enthusiasm than skill. Across from him, Iren, the nutritionist from Hydroponics, washed a bundle of bok choy. Next to her was Marek, a pale, nervous data clerk who looked entirely out of place.",
+        {
+          "text": "\"Alright, brothers, sisters,\" Omar began, wiping his chef's knife clean. \"Tonight's menu is the 'Red Planet Stir-fry'.\" He gestured to a bowl of brilliant crimson marinade. \"The 'Red Planet' comes from the gochujang I've been fermenting for the last cycle. We've got marinated soy-protein, shiitake, five-spice, and more.\" He winked. \"Hope your stomachs are stable. I ran out of barf-bags during the grav-surges!\"",
+          "speaker": "omar-newton"
+        },
+        "A ripple of genuine laughter passed through the small group.",
+        {
+          "text": "\"Ionie, you're on protein.\" Omar pointed to a big bowl filled with cubes of protein soaking in red marinade. \"Iren's team finally got the texture right. It's soy-based, but they added a mycoprotein gene so it sears like real chicken.\" He leaned closer to Ionie and whispered, \"The secret is a really hot wok. Don't crowd the pan. Cook in batches. Sear at least two sides for the best flavor.\" He handed her the knife. \"Sachin, keep working on that garlic. Iren, you know your greens. Marek, you're on sauce duty. Don't look so worried; it's only soy sauce and ginger. Try not to blow up the ship.\"",
+          "speaker": "omar-newton"
+        },
+        "Ionie took the knife, focused on one critical task: don't burn the protein.",
+        "At first, the kitchen was a noisy, uncoordinated mess. Marek grated ginger like he was defusing an explosive. Ionie had dumped all the marinated soy-protein into the wok at once, and now the pan had lost its heat.",
+        {
+          "text": "Omar groaned, but in a friendly way. \"[#groan]You're boiling it! Take it out! Remember, cook in batches. Let the pan get hot again. You have to respect the heat.\"",
+          "speaker": "omar-newton"
+        },
+        {
+          "text": "Ionie blushed with embarrassment but quickly laughed. \"Sorry, Chef.\"",
+          "speaker": "ionie-jia"
+        },
+        "That small mistake helped everyone relax. With Omar's gentle help, they started working as a real team. The wok hissed.",
+        {
+          "text": "\"Hotter, Ionie!\" Omar called out. \"Don't be afraid of the heat! Sear it well!\"",
+          "speaker": "omar-newton"
+        },
+        {
+          "text": "Omar laid his large hand over Sachin's, who was holding the knife as if it were a soldering iron. \"You don't cut it—you bruise it.\" He pressed the flat of the [#crunching-garlic]blade down. CRAAACK. \"Hear that? Now the oil's free.\"",
+          "speaker": "omar-newton"
+        },
+        "Sachin stared at the crushed clove as if he'd uncovered a secret of the universe.",
+        {
+          "text": "\"My grandfather used to cook like this,\" Sachin said quietly, scraping the now-minced garlic into a bowl. \"Grew his own veggies, too. Whenever he visited me, he said he'd rather eat his own socks than my 'spacesmudge'.\"",
+          "speaker": "sachin-juyal"
+        },
+        {
+          "text": "\"We left so much behind,\" Marek said as he carefully measured out the soy sauce. \"It's the small things you miss the most.\"",
+          "speaker": "marek"
+        },
+        {
+          "text": "\"Well, we have this,\" Iren countered. She held up a dark green bok choy leaf beaded with water. She sliced it with swift cuts. \"It's Dáinn bok choy. Or, if you'd rather, I'll take those socks you've been wearing for three shifts and braise them for you.\"",
+          "speaker": "iren"
+        },
+        "Sachin blushed.",
+        {
+          "text": "\"I'm thinking,\" Omar cut in, his eyes twinkling, \"you will all cook something today that would make even Sachin's grandfather feel at home.\"",
+          "speaker": "omar-newton"
+        },
+        "Under the sizzle of stir-fry and the clatter of utensils, any remaining discomfort faded. Omar killed the heat and flipped the wok's contents through the air before catching them again.",
+        {
+          "text": "\"Plates!\" he boomed triumphantly.",
+          "speaker": "omar-newton"
+        },
+        "They gathered around the small oval table underneath a fish-shaped lamp. Sitting down together marked the shift from work to relaxation. As was tradition, Omar initiated the communion. He raised his flour-dusted fist and brought it down hard on the thick wooden table.",
+        "[#tablefist]THUMP.",
+        "His eyes met Iren's.",
+        "[#tablefist]THUMP.",
+        "His gaze found Sachin.",
+        "[#tablefist]THUMP.",
+        "He looked at Marek.",
+        "[#tablefist]THUMP.",
+        "Then settled on Ionie.",
+        "When he was done, an entire pulse of silence followed. Then, the others raised their own fists. No command was needed—only the rhythm of their shared breathing.",
+        "[#thumps]THUMP. The fish-lamp above them swung.",
+        {
+          "text": "\"We are here. We are together. We endure,\" they said in unison."
+        },
+        "Only after that did Omar fill the ceramic cups with wine. He took a small loaf of fresh bread with a golden crust and broke it. He handed a piece to Iren, who passed it to Ionie.",
+        "When everyone had their piece, Omar raised his cup but then paused. The thought came: no return. Faces flickered, already thinning at the edges, of people he would never see again. The sting cut all the way through him. He shook it off. He lowered the cup until it was level with the center of his chest.",
+        {
+          "text": "\"To the heart.\"",
+          "speaker": "omar-newton"
+        },
+        "The others followed his example.",
+        {
+          "text": "\"To the hands that plant,\" Omar began, resting his gaze on Iren. \"To the hands that make.\" His eyes met Sachin's. \"And to his grandfather,\" he added, \"may this bring you both home.\"",
+          "speaker": "omar-newton"
+        },
+        "Omar paused as Sachin, overwhelmed, broke into quiet tears. Marek and Ionie each laid a comforting hand on his arm.",
+        {
+          "text": "\"To the hands that sift meaning from the noise\"—Omar nodded to Marek—\"and to the hands that guide and bear the sacred fire.\" He gazed long at Ionie.",
+          "speaker": "omar-newton"
+        },
+        {
+          "text": "Ionie smiled at the chef, her eyes too filled with tears. \"To the hands that nourish,\" she said, \"and stir the warmth of home through the cold void.\"",
+          "speaker": "ionie-jia"
+        },
+        {
+          "text": "\"To the Dáinn,\" Sachin said, his gaze encompassing them all. \"Who carries our future. Our souls.\"",
+          "speaker": "sachin-juyal"
+        },
+        {
+          "text": "\"To the Dáinn!\" they all cheered.",
+          "speaker": "omar-newton"
+        },
+        "Immediately, Omar raised his palm as if to hold them from their drink a moment longer.",
+        {
+          "text": "\"Brothers, sisters, kin of the table. Let's toast to all who are here, to all who are now lost to us, and to all we are yet to meet, a cup of kindness.\"",
+          "speaker": "omar-newton"
+        },
+        "They drank and picked up their forks. For a few pulses, the only sounds were those of clinking utensils. The stir-fry woke up senses that had been dormant for a long time.",
+        {
+          "text": "\"Alright,\" Omar said. \"Proudest moment of the last ten clicks. Real talk. Go.\"",
+          "speaker": "omar-newton"
+        },
+        {
+          "text": "Iren spoke first, a rare smile creasing her eyes. \"I solved Beltrán's last Tesseracta,\" she said with quiet, dogged triumph. \"The one with the rotating hypercubes. Took me three clicks before it clicked.\"",
+          "speaker": "iren"
+        },
+        "A collective groan went around the table.",
+        {
+          "text": "\"No way,\" Sachin scoffed. \"As if those grav-surges weren't enough to make your head spin.\"",
+          "speaker": "sachin-juyal"
+        },
+        {
+          "text": "Iren took a bite, thoroughly enjoying their shared frustration. \"Don't ask me for a tip. You have to earn it.\"",
+          "speaker": "iren"
+        },
+        {
+          "text": "\"I guess I'll go next,\" Sachin said, setting down his fork, his face flushing a deep red. \"I… uh… I figured with everything going on… what's the point in waiting? So I… I asked Nisha out.\"",
+          "speaker": "sachin-juyal"
+        },
+        {
+          "text": "\"And?\" Ionie asked, genuinely curious.",
+          "speaker": "ionie-jia"
+        },
+        {
+          "text": "A slow smile spread across his face. \"She said, 'About fucking time.'\" Everyone chuckled.",
+          "speaker": "sachin-juyal"
+        },
+        {
+          "text": "\"Alright, Marek now,\" Omar prompted gently.",
+          "speaker": "omar-newton"
+        },
+        {
+          "text": "Marek stared into his bowl. \"I think I finished it,\" he whispered. \"The book. Maybe. Almost.\"",
+          "speaker": "marek"
+        },
+        {
+          "text": "\"What book?\" Sachin asked.",
+          "speaker": "sachin-juyal"
+        },
+        {
+          "text": "\"Just… a book,\" Marek replied, avoiding eye contact. \"Dawn Beyond Darkness. I started writing it when we left Sol. And just now I wrote an ending.\" He looked up, his gaze distant, as if seeing the scene in his mind. \"It's a good one. I think.\" His eyes too welled up.",
+          "speaker": "marek"
+        },
+        {
+          "text": "\"Ionie?\"",
+          "speaker": "omar-newton"
+        },
+        {
+          "text": "Ionie took a deep breath. \"This may sound silly. But I slept. A full, uninterrupted six thuds. No alerts. No racing thoughts. No more sickly surges.\" She smiled. \"It was glorious. And now this…\" She turned to Omar. \"Alright, you too.\"",
+          "speaker": "ionie-jia"
+        },
+        {
+          "text": "Omar leaned back in his chair, stroking his black-stubbled chin. \"Well, there was the successful fermentation of the gochujang—\"",
+          "speaker": "omar-newton"
+        },
+        {
+          "text": "\"No shop talk, Chef,\" Ionie interrupted. \"That's the rule.\"",
+          "speaker": "ionie-jia"
+        },
+        {
+          "text": "\"Ah, right you are.\" Omar chuckled, his big frame shaking the table slightly. \"Alright, alright.\" He leaned forward, his eyes twinkling. \"That big, long grav-surge. That one hit me mid-sleep. It caught me and my husband, John, completely by surprise.\" He took a sip of wine, drawing out the story. \"See, we'd forgotten to, err, tuck ourselves in. Now, John… he's a slender man. But me?\" Omar patted his substantial belly. \"I am a blobfish with funny barnacles. And I panicked.\" He flapped his hands in the air. \"So, naked, I started flailing. Which, in zero-g, is a stupid thing to do.\"",
+          "speaker": "omar-newton"
+        },
+        "A ripple of laughter went around the table.",
+        {
+          "text": "\"But here's the thing,\" Omar said, the mischief in his eyes softening into a profound warmth. \"We were both laughing and laughing. We were laughing so hard that I couldn't compose myself during the gravity restoration warning. So while he fell gently back down onto the bed… I smacked down, bottom first, and toppled right over.\" Omar hopped slightly in his chair, making the cutlery and bowls crash together as his knees hit the table. He took it all in with unadulterated love. \"Yeah, in that moment, all the tension, all the fear went out with a smack. And he loves my fat ass. So those are my big wins.\"",
+          "speaker": "omar-newton"
+        },
+        "They cleared the bowls as Omar produced two final surprises. First, a small, unlabeled bottle with a liquor he called \"engine-starter.\" He poured a tiny measure into each of their cups.",
+        "The stuff was as clear as water, but it moved more slowly, oily. The vapor alone scorched Ionie's nose hairs away. It slid down her throat like a glowing ember.",
+        {
+          "text": "\"Holy mother,\" she gasped out. \"Does this start the engine or melt the pipes?\"",
+          "speaker": "ionie-jia"
+        },
+        {
+          "text": "Omar grinned broadly, a gold tooth glinting in the lamplight. \"Both, sweetheart. Both.\"",
+          "speaker": "omar-newton"
+        },
+        "The second surprise was a tray of dark, rich nutri-fudge cubes, each topped with a berry. She took one without a word. Sweetness first. Then the taste turned bitter, catching at the back of the throat. A pang, as if she'd eaten too much. And with it, a quiet guilt. This might be the last time she'd eat like this. Ever.",
+        "A weary silence settled over the group. Omar stood. He did not need to call for attention. He raised his fist and brought it down on the table one last time.",
+        "[#tablefist]THUMP.",
+        {
+          "text": "\"What was shared here remains here. This is the sacred rule of the Galley Draw.\"",
+          "speaker": "omar-newton"
+        },
+        {
+          "text": "A twinkle appeared in his eyes, and the lively chef returned. \"Now,\" he boomed, \"with full bellies and happy hearts, go lift others.\" He patted his belly as a goodbye salute[#pause2].",
+          "speaker": "omar-newton"
+        }
+      ]
+    }
+  ]
+}
