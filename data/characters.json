@@ -65,9 +65,9 @@
     "desc": " Ionie is the highly disciplined and observant second-in-command of the Dáinn. She acts as the \"second conscience\" to Captain Westhoff and is deeply involved in the technical survival of the ship.",
     "chapter": 5,
     "image": "/assets/char/ionie_jia.png",
-    "mj_prompt": "A focused East Asian woman in her thirties in a fleet officer's jacket studying holographic mission logs on a ship bridge, expression of someone piecing together a conspiracy, teal instrument glow on her face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "mj_prompt": "A focused woman in her thirties in a fleet officer's jacket studying holographic mission logs on a ship bridge, expression of someone piecing together a conspiracy, teal instrument glow on her face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ionie-jia",
-    "voice_id": "xNtG3W2oqJs0cJZuTyBc"
+    "voice_id": "pvxGJdhknm00gMyYHtET"
   },
   {
     "name": "Frank Muro",
