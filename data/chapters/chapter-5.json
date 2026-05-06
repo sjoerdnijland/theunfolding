@@ -26,14 +26,14 @@
       "paragraphs": [
         "It was the product of a slow one-sided conversation.",
         {
-          "text": "[pong]Jia grabbed her captain's shoulder. \"[clears throat]Incoming video message. From FreyOps Central. Corbin.\"",
+          "text": "[#pong]Jia grabbed her captain's shoulder. \"[clears throat]Incoming video message. From FreyOps Central. Corbin.\"",
           "speaker": "ionie-jia"
         },
         {
           "text": "Ben's face hardened. \"[under breath]Send it to the ready room. Jia, you have the conn.\"",
           "speaker": "benjamin-westhoff"
         },
-        "He staggered into the small office off the bridge. As soon as the door closed, he [tap]hit the projector plate in the corner. It flickered on, but instead of Ulre Corbin, it showed a close-up of a woman in a biostasis pod, her face pale and peaceful. Astrid Vilde. Her vitals scrolled in the corner of the screen.",
+        "He staggered into the small office off the bridge. As soon as the door closed, he [#tap]hit the projector plate in the corner. It flickered on, but instead of Ulre Corbin, it showed a close-up of a woman in a biostasis pod, her face pale and peaceful. Astrid Vilde. Her vitals scrolled in the corner of the screen.",
         {
           "text": "Ulre Corbin's voice filled the room. \"Cease your intercept, Westhoff. For every beat you remain off course, her oxygen quota will be reduced by five percent. That is the math. You wouldn't let her suffer the fate of those miners breathing that thin air, waiting on those oxy-packs, Köldur suits, heat-core rods, antifreeze rations, and replacement seals for their cracking domes in the bitter cold. So stop. Turn back to Mairee.\"",
           "speaker": "ulre-corbin"
@@ -47,7 +47,7 @@
           "speaker": "ulre-corbin"
         },
         "Ben's nausea surged, hot and acidic, in his throat.",
-        "[claxon]A klaxon blared through the ship-wide intercom, warning them that another grav-surge was coming. He stumbled and braced himself against the bulkhead. Slam. The gravity surged. Ben's knees hit the bulkhead. He barely managed to grab his barf pouch before he retched the bitter coffee.",
+        "[#claxon]A klaxon blared through the ship-wide intercom, warning them that another grav-surge was coming. He stumbled and braced himself against the bulkhead. [#woosh-thud]Slam. The gravity surged. Ben's knees hit the bulkhead. He barely managed to grab his barf pouch before he retched the bitter coffee.",
         {
           "text": "Ben made his way back onto the bridge. \"[scrapes throat]Jia. Course change—\" he began, but a [#screetch]grating sound cut through the ship like fingernails dragged across a chalkboard, though with a [#screetch]rhythm to it. Screeetch, screeetch. All eyes shot to the holoscreen.",
           "speaker": "benjamin-westhoff"
@@ -133,7 +133,7 @@
     {
       "heading": "STINGRAY, AFT-VENTRAL BAY · FNS DÁINN",
       "paragraphs": [
-        "The Stingray nestled in the aft-ventral bay. Alistair Hale toggled a row of switches, and the bay's light strips blazed to life. The shuttle, a sliver of polished night, occupied the center of the deck. It was a broad-winged plane with a black composite hull built to swallow light, radar, and trouble.",
+        "The Stingray nestled in the aft-ventral bay. Alistair Hale [#switches]toggled a row of switches, and the bay's light strips blazed to life. The shuttle, a sliver of polished night, occupied the center of the deck. It was a broad-winged plane with a black composite hull built to swallow light, radar, and trouble.",
         {
           "text": "\"Steady…\" Alistair grunted.",
           "speaker": "alistair-hale"
