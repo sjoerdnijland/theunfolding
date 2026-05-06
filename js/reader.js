@@ -1,5 +1,5 @@
 // ── Version ───────────────────────────────────────────────
-const READER_VERSION = 'v157';
+const READER_VERSION = 'v159';
 console.log('[reader.js] loaded', READER_VERSION);
 const V3_BLOCK_MODE_ENABLED = false; // feature toggle — set true to re-enable block highlight
 
@@ -776,7 +776,11 @@ async function narrationGoTo(index) {
   // force a single segment with their voice, bypassing quote detection.
   let segments;
   if (isTranscriptPara && speakerVoiceId) {
-    segments = [{ text, voiceId: speakerVoiceId }];
+    // Strip embedded curly/smart quotes from transcript TTS text.
+    // ElevenLabs treats "word" mid-sentence as nested dialogue, causing prosody resets.
+    // Straight apostrophe quotes are kept as they're less likely to trigger this.
+    const transcriptText = text.replace(/[“”„‟]/g, '').replace(/  +/g, ' ').trim();
+    segments = [{ text: transcriptText, voiceId: speakerVoiceId }];
   } else {
     // buildSegments needs rawText (has *asterisks* intact) to detect inner-voice
     // italic spans. It already strips asterisks from ttsText before sending to TTS.
@@ -1625,7 +1629,7 @@ function buildWordTimingsFromSegments(fullText, segments, segmentMeta) {
     if (!meta) return;
     const isBlock = !meta.alignment || !meta.alignment.characters;
     const alignWithHint = isBlock
-      ? { _audioDur: (meta.byteEnd - meta.byteStart) / 16000 }
+      ? { _audioDur: ((meta.byteEnd - meta.byteStart) / 16000) * 1.25 } // v3 speaks slower than byte estimate
       : meta.alignment;
     const segWords = buildWordTimings(seg.text, alignWithHint);
     // In estimate mode, use real spread timing (no blockHighlight)
