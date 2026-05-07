@@ -5,7 +5,7 @@
 (function() {
   const SUPA_URL = 'https://sscpikfblqtmcefegrpv.supabase.co';
   const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
-  const PAGE = window.location.pathname.replace(/\/$/, '').split('/').pop() || 'index';
+  const PAGE = window.location.pathname.replace(/\/$/, '').split('/').pop().replace(/\.html$/, '') || 'index';
 
   function track(event, meta) {
     fetch(SUPA_URL + '/rest/v1/analytics_events', {
@@ -23,10 +23,10 @@
   window._track = track;
 
   // ── Page view ─────────────────────────────────────────────
-  track('page_view');
+  track('page_view', { url: window.location.pathname });
 
   // ── Index page — event delegation (works regardless of React timing) ──
-  if (PAGE === 'index' || PAGE === '') {
+  if (PAGE === 'index' || PAGE === '' || PAGE === 'index.html') {
     document.addEventListener('click', function(e) {
       var el = e.target.closest('a, button');
       if (!el) return;
@@ -52,7 +52,7 @@
   }
 
   // ── Reader page ───────────────────────────────────────────
-  if (PAGE === 'reader') {
+  if (PAGE === 'reader' || PAGE === 'reader.html') {
 
     // Discord click — event delegation
     document.addEventListener('click', function(e) {
