@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Unfolding — Mission Control</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #060e10;
+    --surface: #0b1a1c;
+    --border:  rgba(255,255,255,0.07);
+    --pink:    #e84393;
+    --teal:    #4ecdc4;
+    --ivory:   #e8e0d4;
+    --muted:   #6a7a78;
+    --mono:    'JetBrains Mono', monospace;
+    --serif:   'Cormorant Garamond', serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ivory);
+    font-family: var(--mono);
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+
+  /* ── Header ── */
+  header {
+    padding: 48px 48px 36px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .header-left h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  .header-left .sub {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-top: 4px;
+  }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .refresh-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .refresh-btn:hover { color: var(--ivory); border-color: rgba(255,255,255,0.2); }
+  .last-updated {
+    font-size: 0.58rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Range selector ── */
+  .range-bar {
+    padding: 20px 48px;
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .range-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+  .range-btn:hover { color: var(--ivory); }
+  .range-btn.active {
+    border-color: var(--pink);
+    color: var(--pink);
+    background: rgba(232,67,147,0.07);
+  }
+
+  /* ── Grid ── */
+  .grid {
+    padding: 40px 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  /* ── Stat card ── */
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: rgba(255,255,255,0.14); }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent, var(--teal));
+    opacity: 0.7;
+  }
+  .stat-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .stat-value {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ivory);
+  }
+  .stat-delta {
+    font-size: 0.6rem;
+    margin-top: 8px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .stat-delta.up   { color: var(--teal); }
+  .stat-delta.down { color: var(--pink); }
+
+  /* ── Wide card ── */
+  .wide { grid-column: span 2; }
+  @media (max-width: 700px) { .wide { grid-column: span 1; } }
+
+  /* ── Section label ── */
+  .section-label {
+    padding: 32px 48px 0;
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-label .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent, var(--teal));
+    display: inline-block;
+  }
+
+  /* ── Chapter funnel ── */
+  .funnel-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    grid-column: span 2;
+  }
+  @media (max-width: 700px) { .funnel-card { grid-column: span 1; } }
+  .funnel-title {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .chapter-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 60px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .chapter-name {
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .chapter-bar-wrap {
+    height: 6px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .chapter-bar {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--pink));
+    transition: width 0.8s cubic-bezier(0.16,1,0.3,1);
+    width: 0%;
+  }
+  .chapter-count {
+    font-size: 0.68rem;
+    color: var(--ivory);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Depth breakdown ── */
+  .depth-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .depth-cell {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .depth-pct {
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .depth-val {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 300;
+  }
+
+  /* ── Loading / error ── */
+  .loading {
+    padding: 80px;
+    text-align: center;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .pulse { animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+  /* ── SQL note ── */
+  .sql-note {
+    margin: 0 48px;
+    padding: 20px 24px;
+    background: rgba(78,205,196,0.06);
+    border: 1px solid rgba(78,205,196,0.15);
+    border-radius: 4px;
+    font-size: 0.6rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+  .sql-note code {
+    color: var(--teal);
+    font-family: var(--mono);
+    background: rgba(0,0,0,0.3);
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 0.7em;
+  }
+  .sql-note summary {
+    cursor: pointer;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.58rem;
+    margin-bottom: 12px;
+    list-style: none;
+  }
+  .sql-note summary::before { content: '▶ '; font-size: 0.5rem; }
+  details[open] summary::before { content: '▼ '; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="sub">◉ Mission Control</div>
+    <h1>The Unfolding</h1>
+  </div>
+  <div class="header-right">
+    <div class="last-updated" id="last-updated">—</div>
+    <button class="refresh-btn" onclick="load()">↺ Refresh</button>
+  </div>
+</header>
+
+<div class="range-bar">
+  <button class="range-btn active" data-days="7" onclick="setRange(7, this)">7 days</button>
+  <button class="range-btn" data-days="30" onclick="setRange(30, this)">30 days</button>
+  <button class="range-btn" data-days="90" onclick="setRange(90, this)">90 days</button>
+  <button class="range-btn" data-days="0" onclick="setRange(0, this)">All time</button>
+</div>
+
+<div id="main">
+  <div class="loading"><span class="pulse">Loading mission data…</span></div>
+</div>
+
+<script>
+const SUPA_URL = 'https://sscpikfblqtmcefegrpv.supabase.co';
+// Use service role key for dashboard reads — keep this file private/password-protected
+// For now uses anon key; update RLS policy to allow reads from your IP or add basic auth
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
+
+const CHAPTER_NAMES = {
+  1: 'Assembly', 2: 'The Startend', 3: 'Doubt & Certainty',
+  4: 'The Grid', 5: 'Two Courses'
+};
+
+let rangeDays = 7;
+
+function setRange(days, btn) {
+  rangeDays = days;
+  document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  load();
+}
+
+async function query(event, extra = '') {
+  const since = rangeDays > 0
+    ? `&ts=gte.${new Date(Date.now() - rangeDays * 86400000).toISOString()}`
+    : '';
+  const url = `${SUPA_URL}/rest/v1/analytics_events?event=eq.${event}${since}${extra}&select=*`;
+  const res = await fetch(url, {
+    headers: { 'apikey': SUPA_KEY, 'Authorization': `Bearer ${SUPA_KEY}` }
+  });
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+
+async function load() {
+  document.getElementById('main').innerHTML = '<div class="loading"><span class="pulse">Loading…</span></div>';
+
+  try {
+    const [
+      pageViews, readClicks, buys, discordClicks,
+      chapterStarts, depths, narrationStarts
+    ] = await Promise.all([
+      query('page_view'),
+      query('click_read_chapter'),
+      query('click_buy'),
+      query('click_discord'),
+      query('chapter_start'),
+      query('chapter_depth'),
+      query('narration_start'),
+    ]);
+
+    const indexViews  = pageViews.filter(e => e.page === 'index' || e.page === '').length;
+    const readerViews = pageViews.filter(e => e.page === 'reader').length;
+
+    // Buy breakdown
+    const buyByDest = {};
+    buys.forEach(e => {
+      const d = e.meta?.dest || 'unknown';
+      buyByDest[d] = (buyByDest[d] || 0) + 1;
+    });
+
+    // Chapter starts
+    const startsByChapter = {};
+    chapterStarts.forEach(e => {
+      const ch = e.meta?.chapter || 1;
+      startsByChapter[ch] = (startsByChapter[ch] || 0) + 1;
+    });
+
+    // Depth milestones per chapter
+    const depthData = {};
+    depths.forEach(e => {
+      const ch = e.meta?.chapter || 1;
+      const d  = e.meta?.depth || 0;
+      if (!depthData[ch]) depthData[ch] = { 25:0, 50:0, 75:0, 100:0 };
+      if (depthData[ch][d] !== undefined) depthData[ch][d]++;
+    });
+
+    // Overall depth breakdown (all chapters combined)
+    const totalDepth = { 25:0, 50:0, 75:0, 100:0 };
+    depths.forEach(e => {
+      const d = e.meta?.depth;
+      if (totalDepth[d] !== undefined) totalDepth[d]++;
+    });
+
+    const maxStarts = Math.max(1, ...Object.values(startsByChapter));
+    const readToVisit = indexViews > 0 ? ((readClicks.length / indexViews) * 100).toFixed(1) : '—';
+    const buyRate = indexViews > 0 ? ((buys.length / indexViews) * 100).toFixed(1) : '—';
+    const narrationRate = readerViews > 0 ? ((narrationStarts.length / readerViews) * 100).toFixed(1) : '—';
+
+    document.getElementById('last-updated').textContent =
+      'Updated ' + new Date().toLocaleTimeString();
+
+    document.getElementById('main').innerHTML = `
+
+      <!-- ── HOMEPAGE ── -->
+      <div class="section-label">
+        <span class="dot" style="--accent:var(--teal)"></span>
+        Homepage
+      </div>
+      <div class="grid">
+        <div class="stat-card" style="--accent:var(--teal)">
+          <div class="stat-label">Page views</div>
+          <div class="stat-value">${fmt(indexViews)}</div>
+          <div class="stat-delta">Index · ${rangeDays || '∞'} days</div>
+        </div>
+        <div class="stat-card" style="--accent:var(--pink)">
+          <div class="stat-label">Read clicks</div>
+          <div class="stat-value">${fmt(readClicks.length)}</div>
+          <div class="stat-delta ${readToVisit > 10 ? 'up' : ''}">${readToVisit}% of visitors</div>
+        </div>
+        <div class="stat-card" style="--accent:var(--pink)">
+          <div class="stat-label">Buy clicks — total</div>
+          <div class="stat-value">${fmt(buys.length)}</div>
+          <div class="stat-delta ${buyRate > 2 ? 'up' : ''}">${buyRate}% conversion</div>
+        </div>
+        <div class="stat-card wide" style="--accent:rgba(232,67,147,0.5)">
+          <div class="stat-label">Buy breakdown</div>
+          <div class="depth-grid" style="grid-template-columns: repeat(3,1fr)">
+            ${['kobo','bol','bookmundo'].map(dest => `
+              <div class="depth-cell">
+                <div class="depth-pct">${dest}</div>
+                <div class="depth-val" style="font-size:1.6rem">${fmt(buyByDest[dest] || 0)}</div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      <!-- ── READER ── -->
+      <div class="section-label" style="margin-top:8px">
+        <span class="dot" style="--accent:var(--pink)"></span>
+        Reader
+      </div>
+      <div class="grid">
+        <div class="stat-card" style="--accent:var(--teal)">
+          <div class="stat-label">Reader visits</div>
+          <div class="stat-value">${fmt(readerViews)}</div>
+          <div class="stat-delta">Unique sessions</div>
+        </div>
+        <div class="stat-card" style="--accent:var(--pink)">
+          <div class="stat-label">Narration starts</div>
+          <div class="stat-value">${fmt(narrationStarts.length)}</div>
+          <div class="stat-delta ${narrationRate > 20 ? 'up' : ''}">${narrationRate}% of reader visits</div>
+        </div>
+        <div class="stat-card" style="--accent:var(--teal)">
+          <div class="stat-label">Discord clicks</div>
+          <div class="stat-value">${fmt(discordClicks.length)}</div>
+          <div class="stat-delta">From reader</div>
+        </div>
+
+        <!-- Chapter funnel -->
+        <div class="funnel-card">
+          <div class="funnel-title">Chapter reach — readers who started each chapter</div>
+          ${[1,2,3,4,5].map(ch => `
+            <div class="chapter-row">
+              <div class="chapter-name">Ch ${ch} · ${CHAPTER_NAMES[ch]}</div>
+              <div class="chapter-bar-wrap">
+                <div class="chapter-bar" style="width:${Math.round(((startsByChapter[ch]||0)/maxStarts)*100)}%"></div>
+              </div>
+              <div class="chapter-count">${fmt(startsByChapter[ch] || 0)}</div>
+            </div>`).join('')}
+        </div>
+
+        <!-- Read depth overall -->
+        <div class="funnel-card">
+          <div class="funnel-title">Read depth — scroll milestones (all chapters)</div>
+          <div class="depth-grid">
+            ${[25,50,75,100].map(d => `
+              <div class="depth-cell">
+                <div class="depth-pct">${d}%</div>
+                <div class="depth-val">${fmt(totalDepth[d])}</div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      <!-- SQL setup note -->
+      <details class="sql-note">
+        <summary>Setup — Supabase SQL (run once)</summary>
+        <p>Create the events table in your Supabase SQL editor:</p>
+        <br>
+        <code>create table analytics_events (</code><br>
+        <code>&nbsp;&nbsp;id uuid default gen_random_uuid() primary key,</code><br>
+        <code>&nbsp;&nbsp;ts timestamptz default now(),</code><br>
+        <code>&nbsp;&nbsp;event text not null,</code><br>
+        <code>&nbsp;&nbsp;page text,</code><br>
+        <code>&nbsp;&nbsp;meta jsonb</code><br>
+        <code>);</code><br><br>
+        <code>create index on analytics_events(event);</code><br>
+        <code>create index on analytics_events(ts);</code><br>
+        <code>alter table analytics_events enable row level security;</code><br>
+        <code>create policy "insert" on analytics_events for insert with check (true);</code><br>
+        <code>create policy "select all" on analytics_events for select using (true);</code><br><br>
+        Then add <code>&lt;script src="analytics.js"&gt;&lt;/script&gt;</code> to index.html and reader.html.
+      </details>
+    `;
+
+    // Animate bars
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.chapter-bar').forEach(b => {
+        b.style.width = b.style.width; // trigger reflow
+      });
+    });
+
+  } catch(err) {
+    document.getElementById('main').innerHTML = `
+      <div class="loading" style="color:#e84393">
+        Error loading data: ${err.message}<br><br>
+        <small style="opacity:0.5">Make sure the analytics_events table exists in Supabase.</small>
+      </div>`;
+  }
+}
+
+function fmt(n) {
+  return Number(n).toLocaleString();
+}
+
+load();
+</script>
+</body>
+</html>
