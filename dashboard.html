@@ -267,37 +267,6 @@
   }
   .pulse { animation: pulse 1.4s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
-
-  /* ── SQL note ── */
-  .sql-note {
-    margin: 0 48px;
-    padding: 20px 24px;
-    background: rgba(78,205,196,0.06);
-    border: 1px solid rgba(78,205,196,0.15);
-    border-radius: 4px;
-    font-size: 0.6rem;
-    line-height: 1.8;
-    color: var(--muted);
-  }
-  .sql-note code {
-    color: var(--teal);
-    font-family: var(--mono);
-    background: rgba(0,0,0,0.3);
-    padding: 2px 6px;
-    border-radius: 2px;
-    font-size: 0.7em;
-  }
-  .sql-note summary {
-    cursor: pointer;
-    color: var(--teal);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-size: 0.58rem;
-    margin-bottom: 12px;
-    list-style: none;
-  }
-  .sql-note summary::before { content: '▶ '; font-size: 0.5rem; }
-  details[open] summary::before { content: '▼ '; }
 </style>
 </head>
 <body>
@@ -362,7 +331,7 @@ async function load() {
   try {
     const [
       pageViews, readClicks, buys, discordClicks,
-      chapterStarts, depths, narrationStarts
+      chapterStarts, depths, narrationPlays, narrationStops
     ] = await Promise.all([
       query('page_view'),
       query('click_read_chapter'),
@@ -370,7 +339,8 @@ async function load() {
       query('click_discord'),
       query('chapter_start'),
       query('chapter_depth'),
-      query('narration_start'),
+      query('narration_play'),
+      query('narration_stop'),
     ]);
 
     const indexViews  = pageViews.filter(e => e.page === 'index' || e.page === '').length;
@@ -409,7 +379,7 @@ async function load() {
     const maxStarts = Math.max(1, ...Object.values(startsByChapter));
     const readToVisit = indexViews > 0 ? ((readClicks.length / indexViews) * 100).toFixed(1) : '—';
     const buyRate = indexViews > 0 ? ((buys.length / indexViews) * 100).toFixed(1) : '—';
-    const narrationRate = readerViews > 0 ? ((narrationStarts.length / readerViews) * 100).toFixed(1) : '—';
+    const narrationRate = readerViews > 0 ? ((narrationPlays.length / readerViews) * 100).toFixed(1) : '—';
 
     document.getElementById('last-updated').textContent =
       'Updated ' + new Date().toLocaleTimeString();
@@ -462,7 +432,7 @@ async function load() {
         </div>
         <div class="stat-card" style="--accent:var(--pink)">
           <div class="stat-label">Narration starts</div>
-          <div class="stat-value">${fmt(narrationStarts.length)}</div>
+          <div class="stat-value">${fmt(narrationPlays.length)}</div>
           <div class="stat-delta ${narrationRate > 20 ? 'up' : ''}">${narrationRate}% of reader visits</div>
         </div>
         <div class="stat-card" style="--accent:var(--teal)">
@@ -471,7 +441,7 @@ async function load() {
           <div class="stat-delta">From reader</div>
         </div>
 
-        <!-- Chapter funnel -->
+        <!-- Chapter funnel — reads -->
         <div class="funnel-card">
           <div class="funnel-title">Chapter reach — readers who started each chapter</div>
           ${[1,2,3,4,5].map(ch => `
@@ -481,6 +451,22 @@ async function load() {
                 <div class="chapter-bar" style="width:${Math.round(((startsByChapter[ch]||0)/maxStarts)*100)}%"></div>
               </div>
               <div class="chapter-count">${fmt(startsByChapter[ch] || 0)}</div>
+            </div>`).join('')}
+        </div>
+
+        <!-- Chapter funnel — narration -->
+        <div class="funnel-card">
+          <div class="funnel-title">Narration plays per chapter + avg % completed when stopped</div>
+          ${[1,2,3,4,5].map(ch => `
+            <div class="chapter-row">
+              <div class="chapter-name">Ch ${ch} · ${CHAPTER_NAMES[ch]}</div>
+              <div class="chapter-bar-wrap">
+                <div class="chapter-bar" style="width:${Math.round(((playsByChapter[ch]||0)/maxPlays)*100)}%;background:linear-gradient(90deg,var(--pink),rgba(232,67,147,0.4))"></div>
+              </div>
+              <div class="chapter-count" style="font-size:0.58rem;color:var(--muted)">
+                ${fmt(playsByChapter[ch] || 0)} plays
+                ${avgStopByChapter[ch] !== undefined ? `· stopped ${avgStopByChapter[ch]}%` : ''}
+              </div>
             </div>`).join('')}
         </div>
 
@@ -496,26 +482,6 @@ async function load() {
           </div>
         </div>
       </div>
-
-      <!-- SQL setup note -->
-      <details class="sql-note">
-        <summary>Setup — Supabase SQL (run once)</summary>
-        <p>Create the events table in your Supabase SQL editor:</p>
-        <br>
-        <code>create table analytics_events (</code><br>
-        <code>&nbsp;&nbsp;id uuid default gen_random_uuid() primary key,</code><br>
-        <code>&nbsp;&nbsp;ts timestamptz default now(),</code><br>
-        <code>&nbsp;&nbsp;event text not null,</code><br>
-        <code>&nbsp;&nbsp;page text,</code><br>
-        <code>&nbsp;&nbsp;meta jsonb</code><br>
-        <code>);</code><br><br>
-        <code>create index on analytics_events(event);</code><br>
-        <code>create index on analytics_events(ts);</code><br>
-        <code>alter table analytics_events enable row level security;</code><br>
-        <code>create policy "insert" on analytics_events for insert with check (true);</code><br>
-        <code>create policy "select all" on analytics_events for select using (true);</code><br><br>
-        Then add <code>&lt;script src="analytics.js"&gt;&lt;/script&gt;</code> to index.html and reader.html.
-      </details>
     `;
 
     // Animate bars
