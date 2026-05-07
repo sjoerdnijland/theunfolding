@@ -381,6 +381,25 @@ async function load() {
     const buyRate = indexViews > 0 ? ((buys.length / indexViews) * 100).toFixed(1) : '—';
     const narrationRate = readerViews > 0 ? ((narrationPlays.length / readerViews) * 100).toFixed(1) : '—';
 
+    // Narration plays + stop depth per chapter
+    const playsByChapter = {};
+    narrationPlays.forEach(e => {
+      const ch = e.meta?.chapter || 1;
+      playsByChapter[ch] = (playsByChapter[ch] || 0) + 1;
+    });
+    const stopDepthByChapter = {};
+    narrationStops.forEach(e => {
+      const ch = e.meta?.chapter || 1;
+      if (!stopDepthByChapter[ch]) stopDepthByChapter[ch] = [];
+      stopDepthByChapter[ch].push(e.meta?.pct || 0);
+    });
+    const avgStopByChapter = {};
+    Object.keys(stopDepthByChapter).forEach(ch => {
+      const arr = stopDepthByChapter[ch];
+      avgStopByChapter[ch] = Math.round(arr.reduce((a,b) => a+b, 0) / arr.length);
+    });
+    const maxPlays = Math.max(1, ...Object.values(playsByChapter), 1);
+
     document.getElementById('last-updated').textContent =
       'Updated ' + new Date().toLocaleTimeString();
 
