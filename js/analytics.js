@@ -1,120 +1,154 @@
 /**
  * The Unfolding — Analytics Tracker
- * Drop this script in index.html and reader.html
- * It logs events to Supabase: analytics_events table
- * 
- * SQL to create the table (run once in Supabase SQL editor):
- * 
- * create table analytics_events (
- *   id uuid default gen_random_uuid() primary key,
- *   ts timestamptz default now(),
- *   event text not null,
- *   page text,
- *   meta jsonb
- * );
- * create index on analytics_events(event);
- * create index on analytics_events(ts);
- * alter table analytics_events enable row level security;
- * create policy "insert only" on analytics_events for insert with check (true);
- * create policy "read for service role" on analytics_events for select using (false);
+ * <script src="js/analytics.js"></script> in index.html and reader.html
  */
-
 (function() {
   const SUPA_URL = 'https://sscpikfblqtmcefegrpv.supabase.co';
   const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
-  const PAGE    = window.location.pathname.replace(/\/$/, '').split('/').pop() || 'index';
+  const PAGE = window.location.pathname.replace(/\/$/, '').split('/').pop() || 'index';
 
   function track(event, meta) {
-    fetch(`${SUPA_URL}/rest/v1/analytics_events`, {
+    fetch(SUPA_URL + '/rest/v1/analytics_events', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'apikey': SUPA_KEY,
-        'Authorization': `Bearer ${SUPA_KEY}`,
+        'Authorization': 'Bearer ' + SUPA_KEY,
         'Prefer': 'return=minimal',
       },
-      body: JSON.stringify({ event, page: PAGE, meta: meta || null }),
-    }).catch(() => {}); // silent fail
+      body: JSON.stringify({ event: event, page: PAGE, meta: meta || null }),
+    }).catch(function() {});
   }
 
   window._track = track;
 
-  // ── Auto-track page view ───────────────────────────────────
+  // ── Page view ─────────────────────────────────────────────
   track('page_view');
 
-  // ── Index page tracking ───────────────────────────────────
+  // ── Index page — event delegation (works regardless of React timing) ──
   if (PAGE === 'index' || PAGE === '') {
-    // Wait for React to mount
-    setTimeout(() => {
-      // "Read the First Chapter" button
-      document.querySelectorAll('a[href="reader.html"], a[href*="reader"]').forEach(el => {
-        el.addEventListener('click', () => track('click_read_chapter'), { once: true });
-      });
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a, button');
+      if (!el) return;
+      var href = el.href || el.getAttribute('onclick') || el.getAttribute('data-href') || '';
+      var text = (el.textContent || '').toLowerCase().trim();
 
-      // Buy buttons — track by href destination
-      document.querySelectorAll('a[href*="kobo"], a[href*="bol.com"], a[href*="bookmundo"]').forEach(el => {
-        el.addEventListener('click', () => {
-          const dest = el.href.includes('kobo') ? 'kobo'
-                     : el.href.includes('bol.com') ? 'bol'
-                     : 'bookmundo';
-          track('click_buy', { dest });
-        }, { once: true });
-      });
+      // Read chapter button
+      if (href.includes('reader.html') || href.includes('reader') ||
+          text.includes('read') && text.includes('chapter')) {
+        track('click_read_chapter');
+      }
 
-      // Generic buy CTA (if they click the buy section CTA)
-      document.querySelectorAll('[onclick*="buy"], a[href="#buy"]').forEach(el => {
-        el.addEventListener('click', () => track('click_buy_cta'), { once: true });
-      });
-    }, 1500);
+      // Buy buttons by URL
+      if (href.includes('kobo'))       track('click_buy', { dest: 'kobo' });
+      if (href.includes('bol.com'))    track('click_buy', { dest: 'bol' });
+      if (href.includes('bookmundo'))  track('click_buy', { dest: 'bookmundo' });
+
+      // Buy CTA / scroll to buy
+      if (href.includes('#buy') || (text.includes('buy') && text.includes('ebook'))) {
+        track('click_buy_cta');
+      }
+    });
   }
 
-  // ── Reader page tracking ──────────────────────────────────
+  // ── Reader page ───────────────────────────────────────────
   if (PAGE === 'reader') {
-    // Discord sign-in click
-    document.addEventListener('click', e => {
-      const el = e.target.closest('a[href*="discord"], button[onclick*="discord"]');
-      if (el) track('click_discord');
+
+    // Discord click — event delegation
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('a, button');
+      if (!el) return;
+      var href = el.href || '';
+      var text = (el.textContent || '').toLowerCase();
+      if (href.includes('discord') || text.includes('discord')) {
+        track('click_discord');
+      }
     });
 
-    // Chapter read depth — track scroll % per chapter
-    // Fires at 25%, 50%, 75%, 100% depth
-    let lastChapter = null;
-    let firedDepths = {};
+    // Scroll depth — check every 2s, fire milestones once per chapter
+    var lastChapter = null;
+    var firedDepths = {};
 
-    function getReadDepth() {
-      const content = document.getElementById('chapter-content');
-      if (!content) return 0;
-      const rect = content.getBoundingClientRect();
-      const total = content.offsetHeight;
-      const scrolled = window.scrollY + window.innerHeight - rect.top - window.scrollY;
-      return Math.min(100, Math.max(0, Math.round((scrolled / total) * 100)));
+    function getCurrentChapter() {
+      // Read from reader.js global
+      return window.currentChapter || 1;
     }
 
-    function onScroll() {
-      const ch = window._currentChapter || 1;
+    function getScrollDepth() {
+      var content = document.getElementById('chapter-content');
+      if (!content) return 0;
+      var contentBottom = content.getBoundingClientRect().bottom + window.scrollY;
+      var contentTop    = content.getBoundingClientRect().top    + window.scrollY;
+      var contentHeight = contentBottom - contentTop;
+      if (contentHeight <= 0) return 0;
+      var scrolled = window.scrollY + window.innerHeight - contentTop;
+      return Math.min(100, Math.max(0, Math.round((scrolled / contentHeight) * 100)));
+    }
+
+    setInterval(function() {
+      var ch = getCurrentChapter();
       if (ch !== lastChapter) {
         firedDepths = {};
         lastChapter = ch;
         track('chapter_start', { chapter: ch });
       }
-      const depth = getReadDepth();
-      [25, 50, 75, 100].forEach(milestone => {
+      var depth = getScrollDepth();
+      [25, 50, 75, 100].forEach(function(milestone) {
         if (depth >= milestone && !firedDepths[milestone]) {
           firedDepths[milestone] = true;
           track('chapter_depth', { chapter: ch, depth: milestone });
         }
       });
+    }, 2000);
+
+    // Patch narration functions after reader.js loads
+    function patchNarration() {
+      if (window.startNarration && !window.startNarration._tracked) {
+        var origStart = window.startNarration;
+        window.startNarration = function() {
+          track('narration_play', { chapter: getCurrentChapter() });
+          return origStart.apply(this, arguments);
+        };
+        window.startNarration._tracked = true;
+      }
+
+      if (window.stopNarration && !window.stopNarration._tracked) {
+        var origStop = window.stopNarration;
+        window.stopNarration = function() {
+          // Track how far they got (paragraph index out of total)
+          var idx   = window.narrationIndex || 0;
+          var total = window.narrationParaIds ? window.narrationParaIds.length : 0;
+          var pct   = total > 0 ? Math.round((idx / total) * 100) : 0;
+          track('narration_stop', {
+            chapter: getCurrentChapter(),
+            para: idx,
+            total: total,
+            pct: pct
+          });
+          return origStop.apply(this, arguments);
+        };
+        window.stopNarration._tracked = true;
+      }
+
+      if (window.narrationTogglePlay && !window.narrationTogglePlay._tracked) {
+        var origToggle = window.narrationTogglePlay;
+        window.narrationTogglePlay = function() {
+          // Detect if this is a pause or resume
+          var wasPaused = window.narrationPlaying === false;
+          var result = origToggle.apply(this, arguments);
+          track(wasPaused ? 'narration_resume' : 'narration_pause', {
+            chapter: getCurrentChapter(),
+            para: window.narrationIndex || 0
+          });
+          return result;
+        };
+        window.narrationTogglePlay._tracked = true;
+      }
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Narration starts
-    const origStart = window.startNarration;
-    if (typeof origStart === 'function') {
-      window.startNarration = function() {
-        track('narration_start', { chapter: window._currentChapter || 1 });
-        return origStart.apply(this, arguments);
-      };
-    }
+    document.addEventListener('DOMContentLoaded', patchNarration);
+    setTimeout(patchNarration, 500);
+    setTimeout(patchNarration, 1500); // extra safety
   }
+
 })();
