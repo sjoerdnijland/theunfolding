@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<meta name="rating" content="general">
+<meta name="RATING" content="RTA-5042-1996-1400-1577-RTA">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Read — The Unfolding: Mairee</title>
 <meta name="description" content="An interactive reading experience. Click any paragraph to explore wiki entries, leave threads, and listen to the story narrated with full character voices."/>
@@ -10,7 +12,7 @@
 <meta property="og:type"        content="book"/>
 <meta property="og:site_name"   content="The Unfolding: Mairee"/>
 <meta property="og:title"       content="The Unfolding: Mairee — Read"/>
-<meta property="og:description" content="An interactive sci-fi novel. Two systems. One severed connection. Read the first chapters — with wiki links, narration, and AI podcast reviews built in."/>
+<meta property="og:description" content="An interactive sci-fi novel. Humanity's first colony beyond the solar system. Read the first chapters free — with wiki links, character narration, and AI podcast reviews."/>
 <meta property="og:image"       content="https://the-unfolding.net/assets/still-fold.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height"content="630"/>
@@ -19,7 +21,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card"        content="summary_large_image"/>
 <meta name="twitter:title"       content="The Unfolding: Mairee — Read"/>
-<meta name="twitter:description" content="An interactive sci-fi novel. Two systems. One severed connection. Read the first chapters free."/>
+<meta name="twitter:description" content="An interactive sci-fi novel. Humanity's first colony beyond the solar system. Read the first chapters free."/>
 <meta name="twitter:image"       content="https://the-unfolding.net/assets/still-fold.jpg"/>
 
 <!-- LinkedIn reads og: tags — no extra tags needed -->
@@ -30,6 +32,59 @@
 <link rel="stylesheet" href="styles.css"/>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link rel="stylesheet" href="css/reader.css"/>
+
+  <style>
+    /* Mobile controls — icon-only below 600px */
+    @media (max-width: 600px) {
+      .narration-controls {
+        gap: 3px !important;
+        padding: 6px 3px !important;
+      }
+      .nc-btn {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        padding: 10px 4px !important;
+        font-size: 0.7rem !important;
+        letter-spacing: 0 !important;
+      }
+      .nc-btn .nc-lbl { display: none !important; }
+      .nc-btn .nc-icon { font-size: 1rem; }
+    }
+
+    /* Heading in narration overlay */
+    .narration-heading {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #e84393;
+      opacity: 0.85;
+      padding: 8px 0;
+      border-top: 1px solid rgba(232,67,147,0.25);
+      border-bottom: 1px solid rgba(232,67,147,0.25);
+      text-shadow: 0 0 14px rgba(232,67,147,0.4);
+      margin-bottom: 8px;
+    }
+    .narration-heading .nw {
+      /* Future words: very dim */
+      color: #e84393;
+      opacity: 0.25;
+      text-shadow: none;
+    }
+    .narration-heading .nw.current {
+      /* Active word: bright white with pink glow */
+      color: #fff !important;
+      opacity: 1 !important;
+      text-shadow: 0 0 24px rgba(232,67,147,1), 0 0 10px rgba(232,67,147,0.7) !important;
+    }
+    .narration-heading .nw.spoken {
+      /* Spoken words: soft pink, dimmer than current */
+      color: #e84393;
+      opacity: 0.45;
+      text-shadow: none;
+    }
+  </style>
 </head>
 <body class="grain">
 
@@ -133,13 +188,13 @@
 </div>
 
 <div class="narration-controls" id="narration-controls" style="display:none">
-  <button class="nc-btn" onclick="narrationPrev()">← Prev</button>
-  <button class="nc-btn primary" id="nc-play-btn" onclick="narrationTogglePlay()">⏸ Pause</button>
-  <button class="nc-btn" onclick="narrationNext()">Next →</button>
-  <button class="nc-btn" id="nc-thread-btn" onclick="narrationToggleThread()">💬 Thread</button>
-  <button class="nc-btn" id="nc-voices-btn" onclick="toggleMultiVoice()" title="Switch between single narrator and character voices">◎ Narrator</button>
-  <button class="nc-btn" id="nc-music-btn" onclick="toggleAmbient()" title="Toggle background music">♪ Music</button>
-  <button class="nc-btn" onclick="stopNarration()">✕ Exit</button>
+  <button class="nc-btn" onclick="narrationPrev()"><span class="nc-icon">←</span><span class="nc-lbl"> Prev</span></button>
+  <button class="nc-btn primary" id="nc-play-btn" onclick="narrationTogglePlay()"><span class="nc-icon">⏸</span><span class="nc-lbl"> Pause</span></button>
+  <button class="nc-btn" onclick="narrationNext()"><span class="nc-icon">→</span><span class="nc-lbl"> Next</span></button>
+  <button class="nc-btn" id="nc-thread-btn" onclick="narrationToggleThread()"><span class="nc-icon">💬</span><span class="nc-lbl"> Thread</span></button>
+  <button class="nc-btn" id="nc-voices-btn" onclick="toggleMultiVoice()" title="Switch between narrator and character voices"><span class="nc-icon">◎</span><span class="nc-lbl"> Narrator</span></button>
+  <button class="nc-btn" id="nc-music-btn" onclick="toggleAmbient()" title="Toggle background music"><span class="nc-icon">♪</span><span class="nc-lbl"> Music</span></button>
+  <button class="nc-btn" onclick="stopNarration()"><span class="nc-icon">✕</span><span class="nc-lbl"> Exit</span></button>
 </div>
 
 <!-- ── NARRATION THREAD SIDEBAR ──────────────────────────── -->
@@ -155,5 +210,7 @@
 
 <script src="js/reader.js"></script>
 <script src="js/analytics.js"></script>
+  <div id="version-badge" style="position:fixed;bottom:4px;right:6px;font-family:monospace;font-size:9px;color:rgba(255,255,255,0.18);pointer-events:none;z-index:9999;letter-spacing:0.05em"></div>
+  <script>document.getElementById('version-badge').textContent = typeof READER_VERSION !== 'undefined' ? READER_VERSION : '';</script>
 </body>
 </html>
