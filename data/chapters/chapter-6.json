@@ -21,7 +21,7 @@
     },
     {
       "paragraphs": [
-        "The Homestead was nearly done, and the Plateau well underway. Ulre wanted everyone on Mairee connected before the next cycle. Only the Delta outposts and the ships still in transit—the *Dáinn* and the silent *Brisinger*—remained. The Delta was another story. The Grid's infrastructure was fragile, and the Delta's humidity and storms would push it beyond its limit. Engineers were a dwindling resource, overworked and exhausted, trying to maintain a fragile peace in a place that wanted to rot everything they built. Shipping the materials into the Delta was risky. Spore storms and sudden atmospheric shifts made a stable uplink impossible.",
+        "The Homestead was nearly done, and the Plateau well underway. Ulre wanted everyone on Mairee connected before the next cycle. Only the Delta outposts and the ships still in transit—the *Dáinn* and the silent *Brisinger* remained. The Delta was another story. The Grid's infrastructure was fragile, and the Delta's humidity and storms would push it beyond its limit. Engineers were a dwindling resource, overworked and exhausted, trying to maintain a fragile peace in a place that wanted to rot everything they built. Shipping the materials into the Delta was risky. Spore storms and sudden atmospheric shifts made a stable uplink impossible.",
         {
           "text": "\"[matter-of-fact]Let's begin the deficit projection,\" he said.",
           "speaker": "ulre-corbin"
@@ -66,7 +66,7 @@
           "text": "\"[sharp]Stop,\" Jax rumbled. A livid red welt was already visible on the smaller boy's cheek. \"[matter-of-fact]He's stronger than you.\" Jax stated a simple fact. \"The physics don't lie, boy. Mass times acceleration equals a broken face. Your mass ain't gonna cut it. You have to make your weaker hits count. [demanding]Show me where.\"",
           "speaker": "centurion-jax"
         },
-        "The smaller recruit, dark eyes swimming in a concussive fog, just blinked. A few strands of black hair, damp with sweat and training-deck grime, clung to a forehead.",
+        "The smaller recruit, dark eyes swimming in a concussive fog, just blinked. A few strands of black hair, damp with sweat and training-deck grime, clung to his forehead.",
         {
           "text": "Jax let out an [sigh]impatient sigh. He didn't want to explain something so basic. He tapped his throat, pointed to his temple, then just below the ribs, the elbow, and the knuckles. As the recruit followed the finger, Jax lunged and [#punch]drove his knee into the boy's groin. \"[cold]Here,\" he said.",
           "speaker": "centurion-jax"
@@ -101,14 +101,14 @@
           "text": "\"[barked]Good,\" Jax barked, letting go. He stood up and eyed the two boys, both gasping for air. \"[ordering]Get up,\" he ordered. \"Again. Show me you learned.\"",
           "speaker": "centurion-jax"
         },
-        "First Guardian Kirsten Strand stepped onto the training deck. Her solid build made even Jax and the biggest recruit seem small. She wore her dark hair cropped close to the scalp, a jagged, practical cut that left no room for vanity. Daylight fell across her skin in a deep earthen tone, catching in the pale seams of scars along her cheek and brow and along her forearms, as if the ground itself had marked her for its own. She quickly took in the scene: two upset recruits—one shaky with a fresh welt on his face, the other drenched in sweat she could smell from the doorway—and her superior, the Centurion. Kirsten had decided long ago that the only reason he led the Guard instead of her was that she'd been born with the wrong genitalia for the position. For all its progress, mankind still falls backward.",
+        "First Guardian Kirsten Strand stepped onto the training deck. Her solid build made even Jax and the biggest recruit seem small. She wore her dark hair cropped close to the scalp, a jagged, practical cut that left no room for vanity. Daylight fell across her skin in a deep earthen tone, catching in the pale seams of scars along her cheek and brow and along her forearms, as if the ground itself had marked her for its own.", "She quickly took in the scene: two upset recruits—one shaky with a fresh welt on his face, the other drenched in sweat she could smell from the doorway—and her superior, the Centurion. Kirsten had decided long ago that the only reason he led the Guard instead of her was that she'd been born with the wrong genitalia for the position. For all its progress, mankind still falls backward.",
         "She walked straight toward him, close enough to see the burst capillaries in his nose. The two recruits, caught up in their exhausted scuffle, lost focus and glanced at her.",
         {
           "text": "\"[steady]Centurion,\" she said, her voice low and steady, without any hint of softness. \"You summoned me.\"",
           "speaker": "kirsten-strand"
         },
         {
-          "text": "\"[curt]Strand,\" Jax said. \"I have an assignment for you. Delta. You'll handle security for a survey team led by expedition leader Sarah Farley.\"",
+          "text": "\"[curt]Strand,\" Jax said. \"I have an assignment for you. [deep breath]Delta. You'll handle security for a survey team led by expedition leader Sarah Farley.\"",
           "speaker": "centurion-jax"
         },
         {
@@ -116,7 +116,7 @@
           "speaker": "kirsten-strand"
         },
         {
-          "text": "\"And,\" Jax continued, nodding toward the two recruits, who had stopped fighting and now stood tense, \"[smug]you'll bring them.\"",
+          "text": "\"And,\" Jax continued, nodding toward the two recruits, who had stopped fighting and now stood tense, \"[smug]you'll bring *them*.\"",
           "speaker": "centurion-jax"
         },
         {
@@ -145,20 +145,30 @@
     {
       "heading": "THE CORRIDOR \nEN ROUTE TO FREYA HARBOR",
       "paragraphs": [
-        "Corbin's shuttle, the *Depeche*, was in a vibration-free bubble as it fell to the surface. These smooth passages between the Homestead, the Delta, the Plateau, and the orbital stations were enabled by the Corridor. Through the viewport, Ulre Corbin watched the ground-based relay antennas dotting the landscape like luminous buoys in a sea of ochre and rust. Despite the bleak outlook, Ulre felt surprisingly good. The meetings with Bellamy had been a success. The *Dáinn* was being forced back into alignment, like a stubborn dog being hauled by the leash. And the *Bris*, well, it would simply fall into his lap. Now, for the surface.",
+        "Corbin's shuttle, the *Depeche*, was in a vibration-free bubble as it fell to the surface. These smooth passages between the Homestead, the Delta, the Plateau, and the orbital stations were enabled by the Corridor. ",
+        "Through the viewport, Ulre Corbin watched the ground-based relay antennas dotting the landscape like luminous buoys in a sea of ochre and rust. Despite the bleak outlook, Ulre felt surprisingly good. The meetings with Bellamy had been a success. The *Dáinn* was being forced back into alignment, like a stubborn dog being hauled by the leash. And the *Bris*, well, it would simply fall into his lap. Now, for the surface.",
         "On his slate, he pulled up the live feed from the Homestead. It showed the flow of energy from the geothermal taps, the measured distribution of water, and the choreographed movements of personnel between their habs and their duties. It was an elegant system. His system. But he also saw the flaws, the small deviations that grated on him. The spiking cortisol levels in the residential sectors were a statistical scream of communal anxiety.",
         "The solution, however, was already lining up.",
         "The experiments—wherein the first few habs had been connected to the atmospheric neuro-regulators—had shown promising results. The data was undeniable. In the regulated habs, stress-related infractions had plummeted. Anxiety, that most chaotic and human of variables, had thus proven to be a controllable variable after all. It could be managed, smoothed, and optimized, like power or water. He had proof of concept. Now it was time for full implementation.",
         "The *Depeche* decelerated, approaching Freya Harbor with precision. The final buoy of the Corridor guided it in. A smooth yet rapid descent. Systems recalibrated. The course corrected. The landing grid gracefully received him with only a slight shudder.",
-        "They call me cold, he thought, pressing his fingertips together and feeling the texture of his own fingerprints. They want warmth. They want Astrid Vilde to hold their hand and tell them everything will be alright. But warmth is entropy. Warmth is loss of energy. If only they knew. But that would create panic, and that panic would consume them.",
-        "Ulre stepped out into the cool, dry air. Escorted by two guardians, he strode straight to FreyOps Central, FOX. Let them hate me. It's a powerful fuel. It suppresses. And a rare, thin smile curled his lips.",
-        "The route led them under the overhanging 'claws' of the harbor. These claws stood ready to receive the *Brisinger*. Beyond them, the Harbor was a world of gray composite and idle machinery. Above them, unmanned cargo drones slid along magnetic rails, moving from the berths to the storage silos carved into the rock. There was a faint stench. Ulre couldn't quite place it. There seemed to be no spores in the air. Nor was it the dust kicked up by the landing. This was a sweetish compost smell. But the terrain was flat, hard, and clean of flora. That he couldn't place the smell irritated him immensely.",
-        "They emerged onto a wide, open plaza that marked the transition between the Harbor and the Homestead itself. Along the edges of the plaza stood minimalist benches made of polished basalt, each bearing a small, engraved plaque. Ulre had never paid them any mind, but his gaze now fell on the text of the nearest one: a haiku about a city crowned by stars. What drivel.",
+        {
+          "text": "*They call me cold*, he thought, pressing his fingertips together and feeling the texture of his own fingerprints. *They want warmth. They want Astrid Vilde to hold their hand and tell them everything will be alright. But warmth is entropy. Warmth is loss of energy. If only they knew. But that would create panic, and that panic would consume them.*",
+          "inner_voice": "ulre-corbin"
+        },
+        {
+          "text": "Ulre stepped out into the cool, dry air. Escorted by two guardians, he strode straight to FreyOps Central, FOX. *Let them hate me. It's a powerful fuel. It suppresses.* And a rare, thin smile curled his lips.",
+          "inner_voice": "ulre-corbin"
+        },
+        "The route led them under the overhanging claws of the harbor. These claws stood ready to receive the *Brisinger*. Beyond them, the Harbor was a world of gray composite and idle machinery. Above them, unmanned cargo drones slid along magnetic rails, moving from the berths to the storage silos carved into the rock. There was a faint stench. Ulre couldn't quite place it. There seemed to be no spores in the air. Nor was it the dust kicked up by the landing. This was a sweetish compost smell. But the terrain was flat, hard, and clean of flora. That he couldn't place the smell irritated him immensely.",
+        {
+          "text": "They emerged onto a wide, open plaza that marked the transition between the Harbor and the Homestead itself. Along the edges of the plaza stood minimalist benches made of polished basalt, each bearing a small, engraved plaque. Ulre had never paid them any mind, but his gaze now fell on the text of the nearest one: a haiku about a city crowned by stars. *What drivel.*",
+          "inner_voice": "ulre-corbin"
+        },
         "Carefully arranged parterres broke the monotony. They were filled with a collage of different regional stones from Mairee and clusters of hardy, native flora: tough silvery mosses and deep-purple alpine flowers that thrived in the thin air. In the center of the plaza stood an abstract sculpture of twisted ship-metal titled 'The Leap,' symbolizing the journey through the Fold. A failed attempt at culture, he thought.",
         "The modular residential blocks rose up as identical hexagonal structures that fit seamlessly together. Each block was composed of individual habs, compact living units slid into the larger frame. The design was ingenious: each hab was a self-contained survival capsule, connected to the central frame via a series of quick-release locks. The habs could be detached and relocated by specialized Nomad shuttles should the need for migration eventually arise. There were no balconies, no front yards, no form of external personal space whatsoever. The windows were polarized panels that offered a breathtaking view of the valley embraced by the Sickle Mountains.",
         "In the distance, the jagged peaks of the mountain range rose up, their summits often shrouded in the swirling, phosphorescent green mists. That view, however, also offered a constant reminder of how small and fragile their settlement was. Surrounding the settlement, on strategic peaks of the surrounding hills, stood slender communication towers and atmosphere sensors.",
         "FOX was located at the rim of the residential district. It was a nondescript, elevated building distinguished by the large FOX emblem above its entrance and the increased presence of guardians. Behind it, a shimmering soap bubble rose from the ground: the massive Homestead Dome—the heart of the community where assemblies, quorums, and important announcements could take place. Its semi-transparent surface caught the strange light of Mairee, reflecting it in soft, shifting colors.",
-        "[#door-hiss]The weighted doors of FOX slid open with a muffled hiss for Ulre and his escort, closing behind them with a [#door-hiss]heavy thud. The station was stripped of any nonfunctional pretense. The corridors were narrow, lined with dark, shock-absorbent panels and illuminated by white-blue light. Ulre walked past a series of numbered doors and checkpoints before he reached the main entrance to the central control room.",
+        "The weighted doors of FOX [#doorhiss]slid open with a muffled hiss for Ulre and his escort, closing behind them with a [#doorhiss2]heavy thud. The station was stripped of any nonfunctional pretense. The corridors were narrow, lined with dark, shock-absorbent panels and illuminated by white-blue light. Ulre walked past a series of numbered doors and checkpoints before he reached the main entrance to the central control room.",
         "Ulre paused in the doorway, instantly picking up on the subtle interplay of unease around him. The on-duty officers straightened. A young lieutenant adjusted the collar of his uniform, his fingers twitching with barely concealed anxiety.",
         {
           "text": "Ulre cleared his throat. \"[clears throat]The trial is complete. Our next objective is to secure the Plateau. Send the Grid's roll-out specs to Chief Heston.\"",
