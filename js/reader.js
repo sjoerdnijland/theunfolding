@@ -591,6 +591,7 @@ async function narrationGoTo(index) {
   if (index >= narrationParaIds.length) {
     narrationLocked = false;
     // Chapter finished — show end card INSIDE the overlay, don't close it
+    if (window._track) window._track('narration_complete', { chapter: currentChapter });
     showNarrationChapterEnd();
     return;
   }

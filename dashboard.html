@@ -332,7 +332,7 @@ async function load() {
   try {
     const [
       pageViews, readClicks, buys, discordClicks,
-      chapterStarts, depths, narrationPlays, narrationStops
+      chapterStarts, depths, narrationPlays, narrationStops, narrationCompletes
     ] = await Promise.all([
       query('page_view'),
       query('click_read_chapter'),
@@ -342,6 +342,7 @@ async function load() {
       query('chapter_depth'),
       query('narration_play'),
       query('narration_stop'),
+      query('narration_complete'),
     ]);
 
     const indexViews  = pageViews.filter(e => e.page === 'index' || e.page === '').length;
@@ -382,24 +383,31 @@ async function load() {
     const buyRate = indexViews > 0 ? ((buys.length / indexViews) * 100).toFixed(1) : '—';
     const narrationRate = readerViews > 0 ? ((narrationPlays.length / readerViews) * 100).toFixed(1) : '—';
 
-    // Narration plays + stop depth per chapter
+    // Narration plays per chapter (still used for narration-starts stat)
     const playsByChapter = {};
     narrationPlays.forEach(e => {
       const ch = e.meta?.chapter || 1;
       playsByChapter[ch] = (playsByChapter[ch] || 0) + 1;
     });
-    const stopDepthByChapter = {};
-    narrationStops.forEach(e => {
+
+    // Chapter completions: read-to-100% (depth==100) + narration finished
+    const readCompletesByChapter = {};
+    depths.forEach(e => {
+      if (e.meta?.depth !== 100) return;
       const ch = e.meta?.chapter || 1;
-      if (!stopDepthByChapter[ch]) stopDepthByChapter[ch] = [];
-      stopDepthByChapter[ch].push(e.meta?.pct || 0);
+      readCompletesByChapter[ch] = (readCompletesByChapter[ch] || 0) + 1;
     });
-    const avgStopByChapter = {};
-    Object.keys(stopDepthByChapter).forEach(ch => {
-      const arr = stopDepthByChapter[ch];
-      avgStopByChapter[ch] = Math.round(arr.reduce((a,b) => a+b, 0) / arr.length);
+    const narrCompletesByChapter = {};
+    narrationCompletes.forEach(e => {
+      const ch = e.meta?.chapter || 1;
+      narrCompletesByChapter[ch] = (narrCompletesByChapter[ch] || 0) + 1;
     });
-    const maxPlays = Math.max(1, ...Object.values(playsByChapter), 1);
+    const totalCompletesByChapter = {};
+    CHAPTER_NUMBERS.forEach(ch => {
+      totalCompletesByChapter[ch] =
+        (readCompletesByChapter[ch] || 0) + (narrCompletesByChapter[ch] || 0);
+    });
+    const maxCompletes = Math.max(1, ...Object.values(totalCompletesByChapter));
 
     document.getElementById('last-updated').textContent =
       'Updated ' + new Date().toLocaleTimeString();
@@ -474,20 +482,24 @@ async function load() {
             </div>`).join('')}
         </div>
 
-        <!-- Chapter funnel — narration -->
+        <!-- Chapter completions — read 100% or narrated to end -->
         <div class="funnel-card">
-          <div class="funnel-title">Narration plays per chapter + avg % completed when stopped</div>
-          ${CHAPTER_NUMBERS.map(ch => `
+          <div class="funnel-title">Chapter completions — readers who finished (read to 100% or narrated to end)</div>
+          ${CHAPTER_NUMBERS.map(ch => {
+            const total = totalCompletesByChapter[ch] || 0;
+            const read  = readCompletesByChapter[ch]  || 0;
+            const narr  = narrCompletesByChapter[ch]  || 0;
+            return `
             <div class="chapter-row">
               <div class="chapter-name">Ch ${ch} · ${CHAPTER_NAMES[ch]}</div>
               <div class="chapter-bar-wrap">
-                <div class="chapter-bar" style="width:${Math.round(((playsByChapter[ch]||0)/maxPlays)*100)}%;background:linear-gradient(90deg,var(--pink),rgba(232,67,147,0.4))"></div>
+                <div class="chapter-bar" style="width:${Math.round((total/maxCompletes)*100)}%;background:linear-gradient(90deg,var(--teal),var(--pink))"></div>
               </div>
               <div class="chapter-count" style="font-size:0.58rem;color:var(--muted)">
-                ${fmt(playsByChapter[ch] || 0)} plays
-                ${avgStopByChapter[ch] !== undefined ? `· stopped ${avgStopByChapter[ch]}%` : ''}
+                ${fmt(total)}${total > 0 ? ` · ${fmt(read)} read · ${fmt(narr)} narr` : ''}
               </div>
-            </div>`).join('')}
+            </div>`;
+          }).join('')}
         </div>
 
         <!-- Read depth overall -->
