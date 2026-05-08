@@ -16,7 +16,7 @@
         "The ships floated in the darkness, a metropolis suspended in space. Their glowing lines and polished hulls blocked out the starlight. Navigation lights blinked. Oliver watched the tugboats, small and bright like fireflies, guide the massive *FNS Yggdrasil* into position. The *Yggdrasil* was so vast that he had to tilt his head back over his shoulder to see its upper reaches. Across its bow flowed a streak of gold. A shadow with the shape of a manta ray slid past. Nearby, tubular docking cables held the *Dáinn*, the *Brisinger*, and the *Alsvin* in place as they eagerly awaited their leap into a new era.",
         "Someone's gentle hands turned him around.",
         {
-          "text": "\"[gentle]Stay out of trouble, okay?\" His mother gripped his shoulders firmly. She wore the Fleet's fabrication division jumpsuit, with the golden round emblem of the *FNS Alsvin* on her shoulder. The emblem showed two stylized horses pulling a chariot. Underneath, it read \"Haul the New Dawn.\"",
+          "text": "\"Stay out of trouble, okay?\" His mother gripped his shoulders firmly. She wore the Fleet's fabrication division jumpsuit, with the golden round emblem of the *FNS Alsvin* on her shoulder. The emblem showed two stylized horses pulling a chariot. Underneath, it read \"Haul the New Dawn.\"",
           "speaker": "laura-savannen"
         },
         "She pressed her forehead to his. Her skin felt fever-warm.",
@@ -35,7 +35,8 @@
         },
         "His father stepped up and put his hand on his shoulder. He also wore his new uniform. The emblem showed a stylized Valkyrie with braids over her armor and a sword pointing down. Beneath the figure, along the lower arc of the circle, the motto read: \"Heaven Through Hardship.\"",
         {
-          "text": "His mother now turned to his father. \"[urgent]Keep them out, Kaspar. Shield him.\""
+          "text": "His mother now turned to his father. \"[urgent]Keep them out, Kaspar. Shield him.\"",
+          "speaker": "laura-savannen"
         },
         {
           "text": "\"[reassuring]He'll be ready, Laura. You've prepared him better than you think.\"",
