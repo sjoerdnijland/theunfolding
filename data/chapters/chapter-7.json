@@ -1,0 +1,280 @@
+{
+  "title": "Watch the Boy",
+  "sections": [
+    {
+      "type": "epigraph",
+      "paragraphs": [
+        "Solbay Station. [#pause]Before the ribbon was cut. [#pause]Watch the boy.",
+        "Looking back, it's almost cute. A toddler playing with a loaded gun because the chrome is so shiny. [#pause]It's the kind of naivety that makes me want to reach through the glass and scream."
+      ]
+    },
+    {
+      "heading": "2 CYCLES AND 42 CLICKS BEFORE THE UNFOLDING \nBOARDING DECK, SOLBAY STATION",
+      "paragraphs": [
+        "Oliver tiptoed, gripping the railing to get a better look. Outside, there lay giants. They moved like continents drifting. Oliver's knees trembled. The [#cyclers]thrum of thousands of generators keeping Solbay Station alive vibrated beneath his toes. His parents stood close, silent and tense. At first, he noticed only scattered lights, but the scale of it hit him. It was as if Oliver had been lifted from a small tank and dropped into a vast ocean.",
+        "The Freya Fleet assembled.",
+        "The ships floated in the darkness, a metropolis suspended in space. Their glowing lines and polished hulls blocked out the starlight. Navigation lights blinked. Oliver watched the tugboats, small and bright like fireflies, guide the massive *FNS Yggdrasil* into position. The *Yggdrasil* was so vast that he had to tilt his head back over his shoulder to see its upper reaches. Across its bow flowed a streak of gold. A shadow with the shape of a manta ray slid past. Nearby, tubular docking cables held the *Dáinn*, the *Brisinger*, and the *Alsvin* in place as they eagerly awaited their leap into a new era.",
+        "Someone's gentle hands turned him around.",
+        {
+          "text": "\"[gentle]Stay out of trouble, okay?\" His mother gripped his shoulders firmly. She wore the Fleet's fabrication division jumpsuit, with the golden round emblem of the *FNS Alsvin* on her shoulder. The emblem showed two stylized horses pulling a chariot. Underneath, it read \"Haul the New Dawn.\"",
+          "speaker": "laura-savannen"
+        },
+        "She pressed her forehead to his. Her skin felt fever-warm.",
+        {
+          "text": "\"[mumbled]I'll try not to void any warranties,\" Oliver mumbled into her collar, just so he wouldn't have to cry.",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "She laughed against his chest. \"[warm]You're a sly one.\" A tear slid down her cheek. \"[steady]I will shuttle over if something's wrong. But after Keppler, it's straight through to Mairee without me.\"",
+          "speaker": "laura-savannen"
+        },
+        "She held his gaze. Her gray eyes were similar to his own. She drew a shaky breath.",
+        {
+          "text": "\"[whispered]You're a smart kid, Olly,\" she whispered. \"You be safe.\" She pulled him into a desperate hug, pressing her face into his curly black hair.",
+          "speaker": "laura-savannen"
+        },
+        "His father stepped up and put his hand on his shoulder. He also wore his new uniform. The emblem showed a stylized Valkyrie with braids over her armor and a sword pointing down. Beneath the figure, along the lower arc of the circle, the motto read: \"Heaven Through Hardship.\"",
+        {
+          "text": "His mother now turned to his father. \"[urgent]Keep them out, Kaspar. Shield him.\"",
+          "speaker": "laura-savannen"
+        },
+        {
+          "text": "\"[reassuring]He'll be ready, Laura. You've prepared him better than you think.\"",
+          "speaker": "kaspar-savannen"
+        },
+        "His father was the architect of the mission's well-being program. He was assigned to the flagship, the *FNS Freya*. His mother was assigned as Chief of Fabrication to the *Alsvin*, which carried drills, advanced fabricators, and a maintenance platform for orbital components.",
+        "The departure had to be staggered. The *Yggdrasil*, not *Freya* the flagship, would go first to set up the bridgehead on Mairee. The industrial, agricultural, and scientific ships would follow.",
+        {
+          "text": "\"[reassuring]We'll be together again soon,\" his father said, trying to reassure them. He squeezed Oliver's shoulder. \"[hopeful]Come on, Olly. It's our turn. A whole new world is waiting for us beyond the Fold.\"",
+          "speaker": "kaspar-savannen"
+        },
+        "The Zaytsev Aperture was a strange phenomenon. The first unmanned probe to fall into its shimmering waves had found a system with a habitable planet—Mairee—orbiting a G-type star now called Yra. An impossible coincidence, a doorway to a habitable world so close by, but it was real. Not only that: the universe the probe found was not ours. The galaxies were unfamiliar. There was no Andromeda or Magellanic Clouds. No one knew where Mairee was in relation to Earth.",
+        "At first, Mairee appeared like a paradise. It had a breathable atmosphere, liquid water, and three small moons called Skuld, Verdandi, and Urdra. But the planet itself challenged human curiosity. Probes were sent to its surface, but they only returned garbled data. The real treasures of Mairee were underground. But the probes that went down never surfaced.",
+        "There was only one way to claim this new world: to go and live there. Yet this herculean endeavor was anything but utopian. It was a risky bet that pushed human industry beyond its limits. No expense was spared in building the Freya Fleet. Entire economies changed, and resources from around the world were redirected. The strain tore societies apart and formed new ones. As people rushed to build the future, old demons came back even stronger. Corruption spread through the supply chains. Millions waived their humanitarian rights with hopes of gaining a better future for the next generation. But for people like Oliver, these harsh realities were distant and unreal. Many bricks were in the wall between the lives of the fleet and those who had build it. Still, that truth was always present as a quiet passenger.",
+        {
+          "text": "Oliver's father urged him onto the boarding ramp of the *FNS Freya*. Holographic displays showed passenger manifests and baggage routes. His father tapped his chest. \"[warm]Here we go, Olly.\"",
+          "speaker": "kaspar-savannen"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "type": "epigraph",
+      "paragraphs": [
+        "It's a nice place to visit, isn't it? But we're done with the fairy tales. And so is Olly. [#pause]It's time to head back to the one where the giants are coming home to roost. To the humidity, the rust, the smell of rot, and the bland taste of nutripaste. [#pause]Back to the Grid."
+      ]
+    },
+    {
+      "heading": "13 CLICKS POST UNFOLDING \nSECTOR 4 FREYA HOMESTEAD",
+      "paragraphs": [
+        "The nutripaste dispenser squeezed a beige fluid into a capsule that floated by on the conveyor Ian had calibrated. He watched the capsules glide by under a gloomy white light. Ian felt like one of those capsules—crammed full of sedatives. He rubbed his face; his skin felt papery and dry. His eyes burned. The smell of the beige paste—a cloying mix of yeast and vitamin powder—clung to his clothes and seeped into his pores.",
+        {
+          "text": "*Joana was right.* Susana's seizures were happening more often, and her clear moments were getting shorter. If they disconnected their hab from the Grid, that would be flagged right away. *Ian might fake a malfunction one time. But getting Su through the seizures may require several interventions.*",
+          "inner_voice": "ian-perera"
+        },
+        "The Grid regulated everything: food and energy, even medicine, and now moods. He couldn't remember the last time he'd seen a real smile.",
+        "He glanced across the distribution hub. His colleagues worked economically, trying to conserve energy.",
+        "His slate [#chime]chimed."
+      ]
+    },
+    {
+      "type": "code",
+      "paragraphs": [
+        "< [#alert-pong]ANOMALOUS POWER DRAW DETECTED: \nHAB-SAVANNEN 4-IOTA />"
+      ]
+    },
+    {
+      "paragraphs": [
+        {
+          "text": "*It was that boy again. Annoyance was the first real feeling he'd had all shift.*",
+          "inner_voice": "ian-perera"
+        },
+        "He walked to the Iota residential dome through Homestead's arteries, leaving the open distribution hub for narrow, pressurized service corridors. Power conduits lined the walls.",
+        "A curly-haired boy, swimming in an oversized engineering jumpsuit, opened the door. He appeared no older than sixteen.",
+        {
+          "text": "\"[firm]Olly,\" Ian said, \"I'm getting another power-flux alert from your hab.\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "Oliver didn't pretend not to know. \"[#sigh][resigned]It's the visor,\" he sighed and stepped back, inviting Ian to come in.",
+          "speaker": "oliver-savannen"
+        },
+        "The hab was small. Most prominent were a sleep couch, a nutrient dispenser, and a gaming holovisor in the corner. The power conduit was spliced into the main junction box with a clever nest of bypasses. Ian had known the boy's father, Kaspar Savannen, through work. They weren't close, but Ian had respected him. He saw that same spark of ingenuity in the tangle of wires at his feet.",
+        {
+          "text": "\"[matter-of-fact]The Grid throttles nonessential systems to conserve energy,\" Ian explained.",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[sarcastic]Yeah, well, it's got great timing,\" Oliver retorted. \"Final boss shows up, and the frame rate tanks. It knows.\"",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "Ian leveled a stern look. \"[stern]Last time, you bypassed your neuro-regulator to keep the game from shutting down when it detected your anxiety.\" He took in the room and noted how bleak it was. \"[softly]It's that important to you, huh? You could get into real trouble with this,\" he said softly.",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "Oliver shrugged, gazing at the floor. \"[quiet]It's a way out.\"",
+          "speaker": "oliver-savannen"
+        },
+        "Ian studied the boy's makeshift wiring. He thought of Susana, trapped in her mind. He thought of himself, a marionette creating the master of puppets. But the guilt washed away. Ian knelt beside the boy.",
+        {
+          "text": "\"[decisive]Hand me that pair of pliers.\"",
+          "speaker": "ian-perera"
+        },
+        "Oliver tensed, clearly thinking Ian was about to undo his work. When he passed them over, their fingers brushed briefly. Ian located the Grid's main I/O port on the distribution box. With steady hands, he unscrewed the cover, cut the connection, and rerouted the hab's power directly to the visor. He stood up and put the tool away.",
+        {
+          "text": "\"[steady]The Grid won't interfere with it anymore,\" he said, meeting the boy's surprised eyes.",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "Oliver stared at Ian. \"[surprised]Why?\" Oliver asked.",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "\"[thoughtful]Because sometimes,\" Ian said, \"the system is wrong. People made the system. And they must change it when it's no longer right.\" He pointed at the holovisor. \"[curious]What is it playing? Is it a game?\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[enthusiastic]Mechdroid,\" Olly said enthusiastically. \"It's retro. You engineer droids to fight each other.\"",
+          "speaker": "oliver-savannen"
+        },
+        "A sense of nostalgia washed away some of Ian's numbness. He had played the game before.",
+        {
+          "text": "\"[warm]Let me see.\"",
+          "speaker": "ian-perera"
+        },
+        "Olly grabbed the visor and activated the holoprojector hanging from the ceiling. It rendered a swirling nebula. He handed a controller to Ian.",
+        "Once the game was ready, the nebula condensed in the center of the room and a droid materialized. The droid had servos in its legs and was lean, symmetrical—clearly built for speed over armor. For weapons, it had a plasma cannon mounted on both shoulders.",
+        {
+          "text": "\"[proud]This is Scrapper-3,\" Olly said, proud of his creation. He moved the hologram, showing a detailed part near the droid's core. \"It's fast and strong, but the shields are weak. I struggled with powering the plasma cannons. It kept draining the leg servos, so it would stop after each shot. That made it vulnerable. I spent a whole click making a special capacitor bank that works with the shield generator's recharge cycle.\"",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "Ian leaned in, tracing the unconventional power route. \"[impressed]A dedicated capacitor bank,\" Ian murmured, genuinely impressed. \"Clever.\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[eager]Wanna build one from scratch or jump straight into a skirmish?\" Olly asked.",
+          "speaker": "oliver-savannen"
+        },
+        "The offer was hard to resist. Ian squeezed the controller and, with it, gripped a bit of his old self. He glanced at the time, calculating the pulses he could slip away before his foreman would start asking questions.",
+        {
+          "text": "\"[tense]I don't have much time,\" he said, a little tense. \"Let's do a skirmish.\"",
+          "speaker": "ian-perera"
+        },
+        "He scrolled through the standard droid roster and selected a stock model: the \"Juggernaut,\" a heavily armored, sluggish brawler with twin auto-cannons.",
+        "The simulation materialized around them, turning the room into an industrial scrapyard. Olly's Scrapper danced around Ian's lumbering Juggernaut.",
+        {
+          "text": "\"[shouting]Watch your left!\" Olly shouted over the noise, firing a sharp plasma shot that bounced off the Juggernaut's armor.",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "\"[grunted]Not bad,\" Ian grunted, firing back with a burst of auto-cannon shells that the Scrapper dodged gracefully. \"Your father would be impressed.\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[focused]He taught me,\" Olly said, fully focused as he steered the Scrapper through a tricky debris field. \"He always said a good design is about finding balance.\"",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "Ian's Juggernaut took another hit, and its shield light flashed red. *Balance.* The word stuck with him. \"[murmured]It's hard to find balance these days,\" he said, mostly to himself. But for the next two beats, Ian no longer felt the vertigo of being forsaken on the other end of the universe.",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "Ian's Juggernaut got torn apart by a white-hot plasma burst. Scrapper's cannon still glowed and smoked from the shot. With the game over, a numbness washed back over Ian. His fingers instantly grew cold and unsteady. \"[flat]I have to go.\" He stood up and set the controller gently on the [#table-clunk]table.",
+          "speaker": "ian-perera"
+        },
+        "Olly closed the game. The scrapyard folded away.",
+        {
+          "text": "\"[appreciative]Hey,\" Olly called out as Ian reached the door. \"Thanks for this.\"",
+          "speaker": "oliver-savannen"
+        },
+        "Ian nodded as if but half awake.",
+        {
+          "text": "After finishing his shift, Ian walked home through the main transit-way connecting the habitat domes. He watched the colonists move around him, devoid of meaning. *Lost souls abounded. NPCs. Programmed to exist, not to live.*",
+          "inner_voice": "ian-perera"
+        },
+        {
+          "text": "Joana's words echoed in his mind. *You're out there wiring our homes into a chemical factory.* *She was right. He was the one laying the pipes.* As if to prove to himself that he was not just a tool, he began to rethink his options. He didn't need to stop the agent from being distributed to their hab. He only needed to stop it from entering the air. He pictured the atmospheric control unit in their hab. He pictured a simple, elegant bypass, designed to trap the gases with a filtration system. The air singed his nose, prickling, but brought to mind memories of fresh grass.",
+          "inner_voice": "ian-perera"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "HAB-PERERA",
+      "paragraphs": [
+        "While Ian was working, Joana sat at her desk, the blue light from her screen flickering across her face. After Susana's condition worsened, Joana was taken off her job at the Med-Post. She kept working from home, determined to find out why the colony's mental health, especially her daughter's, was declining so fast. She wanted to learn if the two were connected.",
+        "She went through the active dossiers. The first was an engineer from atmospheric controls. He complained about a constant, intrusive buzzing in his head. The diagnosis was tinnitus. The next file was about a hydroponics technician. She said she saw \"flickering static\" at the edge of her vision and had constant migraines. The diagnosis was eye strain. Joana browsed through more files: a pilot, a cook, a sanitation worker. Their complaints varied. The Grid's system marked each case as a separate, routine problem. But Joana saw a deeper pattern. She compared the patient files with their original *Yggdrasil* records. It revealed an interesting pattern. Nearly every patient with these symptoms was among the first landing crews. They were the first to breathe Mairee's unfiltered air and touch its soil.",
+        "She opened the recent deep-level EEG data for three of these patients and compared their results to the colony's baseline, looking for anything unusual. She found something. All three patients had a second, complex brainwave pattern mixed with a strange, repeating pattern.",
+        {
+          "text": "A chill crept over Joana. *She could see the problem spreading across the population, a slow, steady increase in the baseline of neurological stress, but it had gone unnoticed.* The symptoms—vague headaches, a sense of unease, the occasional visual disturbance—were too obscure, too easily dismissed as individual ailments in a stressful environment. *The Grid's sedatives and anxiety drugs were suppressing the warning signs.*",
+          "inner_voice": "joana-perera"
+        },
+        "A soft sound from the other room made her stop. She looked up from her screen, heart pounding. It was only Susana, mumbling in her sleep.",
+        "Joana opened her daughter's EEG file and compared it with the data from the three patients. The patterns were similar. Where the others showed faint signals, Susana's was brighter.",
+        {
+          "text": "*Why?* The question stung. *Why is Susana so sensitive to it?* It seemed her daughter's mind picked up the alien signal more clearly than anyone else. She thought maybe it was because the others were adults. Susana's brain was still growing, so it was more open to new things. But that couldn't be the only reason. Other kids hadn't reacted as strongly. Somehow, Susana's brain processed sensory information in its own way. Brain scans showed that her thalamus, which relayed sensory signals, was more strongly connected to her hearing and attention networks. *Is it possible that Su has synesthesia?*",
+          "inner_voice": "joana-perera"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "type": "epigraph",
+      "paragraphs": [
+        "Synesthesia. [#pause]It's tasting a color and hearing the rot. [#pause]And once the senses start to bleed into each other, you may realize it isn't only happening inside you."
+      ]
+    },
+    {
+      "heading": "HAB-SAVANNEN",
+      "paragraphs": [
+        "A gentle [#chime2]melody chimed Oliver from sleep. Sensors waited for his feet to hit the floor before the melody faded. A waft of tangerine filled his nostrils, the scent marking that today was Liday. He stepped into the steam-scrubber. A red light swept over his skin, checking his weight, hydration, and cellular health. The process ended with a [#brush-of-air]burst of cool air.",
+        "He opened a built-in wardrobe. There was no real choice. After putting on his boxers, he pulled on the standard-issue jumpsuit, which refreshed every night.",
+        "Then came dental care. He set his chin on the U-shaped rest of the hygiene stand. A soft membrane covered his mouth while tiny, sonic-powered bots cleaned his teeth and gums. After fifteen seconds and a mint rinse, the membrane pulled back. His oral and endocrine health were recorded.",
+        "He went to his desk, where the screen automatically loaded his lesson: Module 7.3, Advanced Propulsion Theory. The display showed complex diagrams of a gravitic drive as a flat, synthetic voice began the lecture. Oliver skipped ahead to the test and finished the exercises quickly. 98.7% - PROFICIENT.",
+        "The Civic Duty Roster displayed today's assignment: Atmospheric Particulate Maintenance. Oliver retrieved a small tool kit from the locker by his door. Still half-lost in thought, he stepped out. The sky was breaking to a soft purple. He took a service train up to the turbines and reached a long, cavernous tunnel, the main air intake for the dome. This was the Homestead's circulatory system. A strong [#wind]wind rushed through. Huge spinning [#cyclers]turbines, coated in thick, black gel, lined the tunnel. This thixotropic gel served as a filter. Under the constant pressure of the airflow, it remained fluid, capturing the fine, abrasive particulates and the ubiquitous spores of Mairee before the air entered the Homestead. But over time, the gel would become saturated and crystallize. It turned into a hard, brittle crust that reduced the turbines' efficiency and increased the risk of mechanical failure. Oliver's task, one of the most monotonous jobs available, was to scrape away these hardened remnants, allowing the gel to flow freely once more.",
+        "He pressed a big red [#switches]button to stop the turbines and pulled on an apron, mask, and heavy-duty gloves. He clipped his safety harness to a guide rail, leaned over, and started scraping.",
+        "Scrape. Clear. Swing.",
+        {
+          "text": "*With the dull repetition, his mind drifted to the Mechdroid workshop, sketching out a new design. He'd start with a modified grav-stabilizer, something from a scout drone, maybe.*",
+          "inner_voice": "oliver-savannen"
+        },
+        "Scrape. Clear. Swing.",
+        {
+          "text": "*It would be lighter and faster than Scrapper, but the real innovation would be the energy distribution. He could use a decentralized network of smaller, hyper-efficient capacitors, one linked to each primary servo.*",
+          "inner_voice": "oliver-savannen"
+        },
+        "Deposit. Swing.",
+        {
+          "text": "*It would move like a dancer. No more sluggish movements. With its limbs independently controlled, Oliver could make it move in even more unpredictable ways.*",
+          "inner_voice": "oliver-savannen"
+        },
+        "Scrape. Clear. Swing.",
+        {
+          "text": "*Yes, this one could have an unprecedented level of tactical flexibility. He'd have to share this idea with Ian.*",
+          "inner_voice": "oliver-savannen"
+        },
+        "Deposit. Swing.",
+        {
+          "text": "*He might appreciate it. Like his father would. They could build it together.*",
+          "inner_voice": "oliver-savannen"
+        },
+        "Scrape. Clear. Swing.",
+        {
+          "text": "*They could wire it up, tweak the balance point. Run the tests.*",
+          "inner_voice": "oliver-savannen"
+        },
+        "Deposit. Swing.",
+        "By the time Oliver finished working out the design in his mind, his task was done. Oliver peeled off the mask and the gloves and hung the apron. The [#cyclers]turbines started spinning again. The service train wasn't due yet, so he started walking. He passed a 'Rec-Zone.' A poster displayed a neon list of indoor sports: Smashout, G-Ball, and Thrust-League.",
+        "With his study and duties done early, he had three thuds to spare. He lingered before a window. He saw others his age, clustered together, playing, laughing. He could join them, but even if he wanted to, he wouldn't let himself. His hands curled and uncurled inside his sleeves. Their play felt weightless. Their laughter hurt him. He kept walking, thinking about his new Mechdroid design and looking forward to talking to Ian about it."
+      ]
+    }
+  ]
+}

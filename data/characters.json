@@ -515,5 +515,33 @@
     "mj_prompt": "A sharp-eyed woman captain with a long chin and smooth skin, black hair pulled into a painfully tight bun, leaning into a comms console mid-protest aboard a hauler ship's bridge, expression of fierce defiance, holo-screen text scrolling behind her, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "mei-chezin",
     "voice_id": "1a0nAYA3FcNQcMMfbddY"
+  },
+  {
+    "name": "Laura Savannen",
+    "tag": "char",
+    "role": "Chief of Fabrication, FNS Alsvin",
+    "affil": "FNS Alsvin / The Stragglers",
+    "aliases": "Laura, Mom",
+    "appearance": "A composed woman whose gray eyes are unmistakably Oliver's. At Solbay Station she wears the Fleet's fabrication division jumpsuit, with the golden round emblem of the *FNS Alsvin* on her shoulder — two stylized horses pulling a chariot above the motto \"Haul the New Dawn.\" Her skin is fever-warm; her composure pressed thin around the edges.",
+    "desc": "Oliver Savannen's mother and Chief of Fabrication aboard the *FNS Alsvin*, the vessel carrying the colony's drills, advanced fabricators, and orbital-component maintenance platform. The staggered departure from Sol meant Laura would follow Oliver and Kaspar through the Fold on a later transit — and she was caught on the Sol side when it collapsed. She is one of the \"Stragglers,\" separated from her family across an unreachable distance. Before the fold, she records a secret log for Oliver hinting at the true purpose of the COG.",
+    "chapter": 7,
+    "image": "/assets/char/laura_savannen.png",
+    "mj_prompt": "A composed woman in a fabrication division jumpsuit with golden Alsvin shoulder emblem at a boarding deck on Solbay Station, gray eyes meeting her son's, fleet ships visible through the vast viewport behind her, expression of fierce love masking a private dread, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "laura-savannen",
+    "voice_id": ""
+  },
+  {
+    "name": "Kaspar Savannen",
+    "tag": "char",
+    "role": "Architect, Mission Well-Being Program",
+    "affil": "FNS Freya / Fleet Command",
+    "aliases": "Kaspar, Dad",
+    "appearance": "Kaspar wears the Fleet flagship uniform with the *FNS Freya*'s Valkyrie emblem — braids over her armor and a sword pointing down, beneath the motto \"Heaven Through Hardship.\" A man whose hand on a son's shoulder is steady when his voice cannot be.",
+    "desc": "Oliver Savannen's father and the architect of the colony's Cognitive Matrix (the COG) — designed as a health matrix to help humanity survive first contact. After Ulre Corbin seized the Directorate, the system Kaspar built was repurposed as social control and PAS suppression. Kaspar also engineered the Mussel, a black mussel-shell-shaped device that can rewrite personal data on the Grid network and render its holder untraceable. Ian Perera knew him through work; he saw the same spark of ingenuity in Oliver's tangle of bypassed wires.",
+    "chapter": 7,
+    "image": "/assets/char/kaspar_savannen.png",
+    "mj_prompt": "A thoughtful architect in a flagship Freya uniform with Valkyrie shoulder emblem at a holographic well-being matrix display, fingers paused mid-design, expression of quiet conviction, the COG's blue lattice reflected in his eyes, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "kaspar-savannen",
+    "voice_id": ""
   }
 ]
