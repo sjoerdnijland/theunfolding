@@ -147,16 +147,43 @@ function getSceneForPara(pid) {
   return parseInt(el.dataset.scene || '1', 10);
 }
 
+// Background-music config: chapters[N].scenes[M] / chapters[N].default /
+// top-level default — values are filenames under assets/audio/, so a single
+// file can be reused across scenes without duplication.
+let _audioConfig = null;
+let _audioConfigPromise = null;
+function loadAudioConfig() {
+  if (_audioConfig) return Promise.resolve(_audioConfig);
+  if (_audioConfigPromise) return _audioConfigPromise;
+  _audioConfigPromise = fetch('data/audio-config.json')
+    .then(r => r.ok ? r.json() : {})
+    .catch(() => ({}))
+    .then(cfg => { _audioConfig = cfg || {}; return _audioConfig; });
+  return _audioConfigPromise;
+}
+
 async function resolveAmbientTrack(chapter, scene) {
-  const candidates = [
+  const cfg = await loadAudioConfig();
+  const ch = cfg.chapters && cfg.chapters[chapter];
+  const named = [
+    ch && ch.scenes && ch.scenes[scene],
+    ch && ch.default,
+    cfg.default,
+  ].filter(Boolean).map(name => `assets/audio/${name}`);
+
+  // Legacy filename fallbacks for chapters/scenes not listed in the config.
+  const legacy = [
     `assets/audio/chapter-${chapter}-scene-${scene}.mp3`,
     `assets/audio/chapter-${chapter}.mp3`,
-    `assets/audio/narration-ambient.mp3`,
   ];
-  for (const src of candidates) {
+
+  const seen = new Set();
+  for (const src of [...named, ...legacy]) {
+    if (seen.has(src)) continue;
+    seen.add(src);
     try {
       const res = await fetch(src, { method: 'HEAD' });
-      if (res.ok) { return src; }
+      if (res.ok) return src;
     } catch(_) {}
   }
   return null;
