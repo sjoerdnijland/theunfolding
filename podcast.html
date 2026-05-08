@@ -252,17 +252,23 @@ body::before {
   </div>
 
   <!-- Generate -->
-  <div style="display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap;align-items:center">
+  <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;align-items:center">
     <button class="generate-btn" id="generate-btn" onclick="generatePodcast()" style="margin-bottom:0">
       <span class="gen-icon">◎</span>
       Generate episode
     </button>
+    <button class="generate-btn" onclick="uploadChapterJson()" style="margin-bottom:0;border-color:var(--teal-b);color:var(--teal-b);background:rgba(74,154,170,0.08);box-shadow:none">
+      ↑ Upload chapter.json
+    </button>
     <button class="generate-btn" onclick="loadScript()" style="margin-bottom:0;border-color:var(--teal-b);color:var(--teal-b);background:rgba(74,154,170,0.08);box-shadow:none">
-      📂 Load JSON
+      📂 Load podcast JSON
     </button>
     <button class="generate-btn" id="save-btn" onclick="saveScript()" style="display:none;margin-bottom:0;border-color:var(--amber);color:var(--amber);background:rgba(212,168,67,0.08);box-shadow:none">
       ⬇ Save script
     </button>
+  </div>
+  <div id="upload-status" style="font-size:0.65rem;letter-spacing:0.1em;color:var(--teal-b);margin-bottom:28px;min-height:1.2em;display:none">
+    ✓ <span id="upload-filename"></span> loaded — ready to generate
   </div>
 
   <!-- Status -->
@@ -323,6 +329,7 @@ const CHAPTERS = {
   2: { title: 'The Startend',       subtitle: '33 Clicks Post Unfolding' },
   3: { title: 'Doubt and Certainty',subtitle: '4 Clicks Post Unfolding'  },
   4: { title: 'The Grid',           subtitle: '7 Clicks Post Unfolding'  },
+  5: { title: 'Two Courses',        subtitle: '8 Clicks Post Unfolding'  },
 };
 
 // ── State ────────────────────────────────────────────────
@@ -367,17 +374,42 @@ function resetPlayer() {
 }
 
 // ── Generate ─────────────────────────────────────────────
+// Stores chapter JSON uploaded by user — takes priority over server fetch
+let uploadedChapterData = null;
+
+function uploadChapterJson() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const json = JSON.parse(text);
+      if (!json.sections) throw new Error('Not a valid chapter JSON (missing sections)');
+      uploadedChapterData = json;
+      document.getElementById('upload-status').style.display = 'block';
+      document.getElementById('upload-filename').textContent = file.name;
+      toast('Chapter loaded: ' + (json.title || file.name));
+    } catch(e) {
+      toast('Invalid chapter JSON: ' + e.message);
+    }
+  };
+  input.click();
+}
+
 async function generatePodcast() {
   const btn = document.getElementById('generate-btn');
   btn.disabled = true;
   resetPlayer();
   setStatus('Fetching chapter text…', true);
 
-  // Load chapter JSON
+  // Load chapter JSON — use uploaded file if available, else fetch from server
   let paragraphs = [];
+  let chapterTitle = (uploadedChapterData?.title) || (CHAPTERS[selectedChapter]?.title) || `Chapter ${selectedChapter}`;
   try {
-    const res = await fetch(`data/chapters/chapter-${selectedChapter}.json`);
-    const ch  = await res.json();
+    const ch = uploadedChapterData || await fetch(`data/chapters/chapter-${selectedChapter}.json`).then(r => r.json());
     ch.sections.forEach(sec => {
       if (sec.paragraphs) paragraphs.push(...sec.paragraphs);
     });
@@ -398,7 +430,7 @@ async function generatePodcast() {
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPA_KEY}` },
       body: JSON.stringify({
         chapterNumber: selectedChapter,
-        chapterTitle:  CHAPTERS[selectedChapter].title,
+        chapterTitle:  chapterTitle,
         paragraphs,
       })
     });

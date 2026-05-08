@@ -1,0 +1,18 @@
+# Backup files
+backup/
+*_bu.*
+*_bu[0-9].*
+*-bu.*
+
+# Windows OneDrive metadata
+*:Zone.Identifier
+*Zone.Identifier
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+
+# Local-only working area
+# (uncomment if you don't want generated uploads tracked)
+# uploads/
