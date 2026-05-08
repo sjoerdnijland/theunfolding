@@ -71,7 +71,7 @@
       "paragraphs": [
         "The nutripaste [#smudge]dispenser squeezed a beige fluid into a capsule that floated by on the conveyor Ian had calibrated. He watched the capsules glide by under a gloomy white light. Ian felt like one of those capsules—crammed full of sedatives. He rubbed his face; his skin felt papery and dry. His eyes burned. The smell of the beige paste—a cloying mix of yeast and vitamin powder—clung to his clothes and seeped into his pores.",
         {
-          "text": "*Joana was right.* Susana's seizures were happening more often, and her clear moments were getting shorter. If they disconnected their hab from the Grid, that would be flagged right away. *Ian might fake a malfunction one time. But getting Su through the seizures may require several interventions.*",
+          "text": "Joana was right. Susana's seizures were happening more often, and her clear moments were getting shorter. If they disconnected their hab from the Grid, that would be flagged right away. Ian might fake a malfunction one time. But getting Su through the seizures may require several interventions.",
           "inner_voice": "ian-perera"
         },
         "The Grid regulated everything: food and energy, even medicine, and now moods. He couldn't remember the last time he'd seen a real smile.",
@@ -88,7 +88,7 @@
     {
       "paragraphs": [
         {
-          "text": "*It was that boy again. Annoyance was the first real feeling he'd had all shift.*",
+          "text": "It was that boy again. Annoyance was the first real feeling he'd had all shift.",
           "inner_voice": "ian-perera"
         },
         "He walked to the Iota residential dome through Homestead's arteries, leaving the open distribution hub for narrow, pressurized service corridors. Power conduits lined the walls.",
@@ -183,12 +183,12 @@
           "speaker": "ian-perera"
         },
         {
-          "text": "Ian's Juggernaut got torn apart by a white-hot plasma burst. Scrapper's cannon still glowed and smoked from the shot. With the game over, a numbness washed back over Ian. His fingers instantly grew cold and unsteady. \"[flat]I have to go.\" He stood up and set the controller gently on the [#table-clunk]table.",
+          "text": "Ian's Juggernaut got torn apart by a white-hot plasma burst. Scrapper's cannon still glowed and smoked from the shot. With the game over, a numbness washed back over Ian. His fingers instantly grew cold and unsteady. \"[flat]I have to go.\" He stood up and set the controller gently on the table.",
           "speaker": "ian-perera"
         },
         "Olly closed the game. The scrapyard folded away.",
         {
-          "text": "\"[appreciative]Hey,\" Olly called out as Ian reached the door. \"Thanks for this.\"",
+          "text": "\"[appreciative]Hey,\" Olly called out as Ian reached the door. \"[appreciative]Thanks for [#pause]this.\"",
           "speaker": "oliver-savannen"
         },
         "Ian nodded as if but half awake.",
@@ -197,8 +197,8 @@
           "inner_voice": "ian-perera"
         },
         {
-          "text": "Joana's words echoed in his mind. *You're out there wiring our homes into a chemical factory.* *She was right. He was the one laying the pipes.* As if to prove to himself that he was not just a tool, he began to rethink his options. He didn't need to stop the agent from being distributed to their hab. He only needed to stop it from entering the air. He pictured the atmospheric control unit in their hab. He pictured a simple, elegant bypass, designed to trap the gases with a filtration system. The air singed his nose, prickling, but brought to mind memories of fresh grass.",
-          "inner_voice": "ian-perera"
+          "text": "Joana's words echoed in his mind. *You're out there wiring our homes into a chemical factory.* She was right. He was the one laying the pipes. As if to prove to himself that he was not just a tool, he began to rethink his options. He didn't need to stop the agent from being distributed to their hab. He only needed to stop it from entering the air. He pictured the atmospheric control unit in their hab. He pictured a simple, elegant bypass, designed to trap the gases with a filtration system. The air singed his nose, prickling, but brought to mind memories of fresh grass.",
+          "inner_voice": "joana-perera"
         }
       ]
     },
@@ -213,7 +213,7 @@
         "Joana browsed through more files: a pilot, a cook, a sanitation worker. Their complaints varied. The Grid's system marked each case as a separate, routine problem. But Joana saw a deeper pattern. She compared the patient files with their original *Yggdrasil* records. It revealed an interesting pattern. Nearly every patient with these symptoms was among the first landing crews. They were the first to breathe Mairee's unfiltered air and touch its soil.",
         "She opened the recent deep-level EEG data for three of these patients and compared their results to the colony's baseline, looking for anything unusual. She found something. All three patients had a second, complex brainwave pattern mixed with a strange, repeating pattern.",
         {
-          "text": "A chill crept over Joana. *She could see the problem spreading across the population, a slow, steady increase in the baseline of neurological stress, but it had gone unnoticed.* The symptoms—vague headaches, a sense of unease, the occasional visual disturbance—were too obscure, too easily dismissed as individual ailments in a stressful environment. *The Grid's sedatives and anxiety drugs were suppressing the warning signs.*",
+          "text": "A chill crept over Joana. She could see the problem spreading across the population, a slow, steady increase in the baseline of neurological stress, but it had gone unnoticed. The symptoms—vague headaches, a sense of unease, the occasional visual disturbance—were too obscure, too easily dismissed as individual ailments in a stressful environment. The Grid's sedatives and anxiety drugs were suppressing the warning signs.",
           "inner_voice": "joana-perera"
         },
         "A soft sound from the other room made her stop. She looked up from her screen, heart pounding. It was only Susana, mumbling in her sleep.",
@@ -236,45 +236,48 @@
     {
       "heading": "HAB-SAVANNEN",
       "paragraphs": [
-        "A gentle [#chime2]melody chimed Oliver from sleep. Sensors waited for his feet to hit the floor before the melody faded. A waft of tangerine filled his nostrils, the scent marking that today was Liday. He stepped into the steam-scrubber. A red light swept over his skin, checking his weight, hydration, and cellular health. The process ended with a [#brush-of-air]burst of cool air.",
+        "A gentle [#chime3]melody chimed Oliver from sleep. Sensors waited for his feet to hit the floor before the melody faded. A waft of tangerine filled his nostrils, the scent marking that today was Liday. He stepped into the steam-scrubber. A red light swept over his skin, checking his weight, hydration, and cellular health. The process ended with a [#brush-of-air]burst of cool air.",
         "He opened a built-in wardrobe. There was no real choice. After putting on his boxers, he pulled on the standard-issue jumpsuit, which refreshed every night.",
         "Then came dental care. He set his chin on the U-shaped rest of the hygiene stand. A soft membrane covered his mouth while tiny, sonic-powered bots cleaned his teeth and gums. After fifteen seconds and a mint rinse, the membrane pulled back. His oral and endocrine health were recorded.",
         "He went to his desk, where the screen automatically loaded his lesson: Module 7.3, Advanced Propulsion Theory. The display showed complex diagrams of a gravitic drive as a flat, synthetic voice began the lecture. Oliver skipped ahead to the test and finished the exercises quickly. 98.7% - PROFICIENT.",
-        "The Civic Duty Roster displayed today's assignment: Atmospheric Particulate Maintenance. Oliver retrieved a small tool kit from the locker by his door. Still half-lost in thought, he stepped out. The sky was breaking to a soft purple. He took a service train up to the turbines and reached a long, cavernous tunnel, the main air intake for the dome. This was the Homestead's circulatory system. A strong [#wind]wind rushed through. Huge spinning [#cyclers]turbines, coated in thick, black gel, lined the tunnel. This thixotropic gel served as a filter. Under the constant pressure of the airflow, it remained fluid, capturing the fine, abrasive particulates and the ubiquitous spores of Mairee before the air entered the Homestead. But over time, the gel would become saturated and crystallize. It turned into a hard, brittle crust that reduced the turbines' efficiency and increased the risk of mechanical failure. Oliver's task, one of the most monotonous jobs available, was to scrape away these hardened remnants, allowing the gel to flow freely once more.",
+        "The Civic Duty Roster displayed today's assignment: Atmospheric Particulate Maintenance. Oliver retrieved a small tool kit from the locker by his door. Still half-lost in thought, he stepped out. The sky was breaking to a soft purple.",
+        "He took a service train up to the turbines and reached a long, cavernous tunnel, the main air intake for the dome. This was the Homestead's circulatory system.",
+         "A strong [#wind],wind rushed through. Huge spinning [#cyclers]turbines, coated in thick, black gel, lined the tunnel. This thixotropic gel served as a filter. Under the constant pressure of the airflow, it remained fluid, capturing the fine, abrasive particulates and the ubiquitous spores of Mairee before the air entered the Homestead. But over time, the gel would become saturated and crystallize. It turned into a hard, brittle crust that reduced the turbines' efficiency and increased the risk of mechanical failure.",
+        "Oliver's task, one of the most monotonous jobs available, was to scrape away these hardened remnants, allowing the gel to flow freely once more.",
         "He pressed a big red [#switches]button to stop the turbines and pulled on an apron, mask, and heavy-duty gloves. He clipped his safety harness to a guide rail, leaned over, and started scraping.",
-        "Scrape. Clear. Swing.",
+        "[#scrape]Scrape. Clear. Swing.",
         {
           "text": "*With the dull repetition, his mind drifted to the Mechdroid workshop, sketching out a new design. He'd start with a modified grav-stabilizer, something from a scout drone, maybe.*",
           "inner_voice": "oliver-savannen"
         },
-        "Scrape. Clear. Swing.",
+        "[#scrape]Scrape. Clear. Swing.",
         {
           "text": "*It would be lighter and faster than Scrapper, but the real innovation would be the energy distribution. He could use a decentralized network of smaller, hyper-efficient capacitors, one linked to each primary servo.*",
           "inner_voice": "oliver-savannen"
         },
         "Deposit. Swing.",
         {
-          "text": "*It would move like a dancer. No more sluggish movements. With its limbs independently controlled, Oliver could make it move in even more unpredictable ways.*",
+          "text": "It would move like a dancer. No more sluggish movements. With its limbs independently controlled, Oliver could make it move in even more unpredictable ways.",
           "inner_voice": "oliver-savannen"
         },
         "[#scrape]Scrape. Clear. Swing.",
         {
-          "text": "*Yes, this one could have an unprecedented level of tactical flexibility. He'd have to share this idea with Ian.*",
+          "text": "Yes, this one could have an unprecedented level of tactical flexibility. He'd have to share this idea with Ian.",
           "inner_voice": "oliver-savannen"
         },
         "Deposit. Swing.",
         {
-          "text": "*He might appreciate it. Like his father would. They could build it together.*",
+          "text": "He might appreciate it. Like his father would. They could build it together.",
           "inner_voice": "oliver-savannen"
         },
         "[#scrape]Scrape. Clear. Swing.",
         {
-          "text": "*They could wire it up, tweak the balance point. Run the tests.*",
+          "text": "They could wire it up, tweak the balance point. Run the tests.",
           "inner_voice": "oliver-savannen"
         },
         "Deposit. Swing.",
-        "By the time Oliver finished working out the design in his mind, his task was done. Oliver peeled off the mask and the gloves and hung the apron. The [#cyclers]turbines started spinning again. The service train wasn't due yet, so he started walking. He passed a 'Rec-Zone.' A poster displayed a neon list of indoor sports: Smashout, G-Ball, and Thrust-League.",
-        "With his study and duties done early, he had three thuds to spare. He lingered before a window. He saw others his age, clustered together, playing, laughing. He could join them, but even if he wanted to, he wouldn't let himself. His hands curled and uncurled inside his sleeves. Their play felt weightless. Their laughter hurt him. He kept walking, thinking about his new Mechdroid design and looking forward to talking to Ian about it."
+        "By the time Oliver finished working out the design in his mind, his task was done. Oliver peeled off the mask and the gloves and hung the apron. The [#cyclers]turbines started spinning again. The service train wasn't due yet, so he started walking. He passed a Rec-Zone. A poster displayed a neon list of indoor sports: Smashout, G-Ball, and Thrust-League.",
+        "With his study and duties done early, he had three thuds to spare. He lingered before a window. He saw others his age, clustered together, playing, laughing. He could join them, but even if he wanted to, he wouldn't let himself. His hands curled and uncurled inside his sleeves. Their play felt weightless. Their laughter hurt him. He kept walking, thinking about his new Mechdroid design and looking forward to talking to Ian about it.[#pause2]"
       ]
     }
   ]
