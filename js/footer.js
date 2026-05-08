@@ -4,7 +4,7 @@
   const el = document.getElementById('site-footer');
   if (!el) return;
   el.innerHTML = `
-    <footer>
+    <footer class="footer">
       <div class="container">
         <div class="footer-grid">
           <div>
@@ -26,19 +26,12 @@
           <div>
             <h4>Community</h4>
             <a href="wiki.html">Wiki</a>
-            <a href="reader.html" target="_blank" rel="noopener">Read</a>
-            <a href="https://discord.gg/MWejqk8a" target="_blank" rel="noopener"><img src="meta/discord.png" width="14" height="14" alt="" style="vertical-align:middle;margin-right:4px"/>Discord</a>
-            <span style={{margin: '0 8px', opacity: 0.3}}>·</span>
-            <a href="https://www.instagram.com/theunfoldingbook" target="_blank" rel="noopener" style={{display:'inline-flex',alignItems:'center',gap:'5px'}}>
-              <img src="meta/insta.png" width="14" height="14" alt="Instagram" style="border-radius:3px;vertical-align:middle" />
-              Instagram
-            </a>
+            <a href="https://discord.gg/MWejqk8a" target="_blank" rel="noopener">Discord</a>
           </div>
-
         </div>
         <div class="footer-bottom">
-          <span>© 2026 STUART NYLAND · ALL RIGHTS, QUIETLY, RESERVED.</span>
-          <span>THE-UNFOLDING.NET</span>
+          <span>&copy; 2026 STUART NYLAND &middot; ALL RIGHTS, QUIETLY, RESERVED.</span>
+          <span>UNFOLDING.IO</span>
         </div>
       </div>
     </footer>`;
