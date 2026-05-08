@@ -12,7 +12,7 @@ backup/
 .DS_Store
 Thumbs.db
 .idea/
+.claude/
 
 # Local-only working area
-# (uncomment if you don't want generated uploads tracked)
-# uploads/
+uploads/
