@@ -461,13 +461,59 @@
     "id": "gary"
   },
   {
-    "id": "marek",
     "name": "Marek",
+    "tag": "char",
+    "role": "Data Clerk",
+    "affil": "FNS Dáinn",
+    "aliases": "Marek",
+    "appearance": "A pale, narrow-shouldered man with a nervous bearing. He looks entirely out of place at a galley table.",
+    "desc": "A data clerk on the FNS Dáinn. Marek is shy and quiet, the kind of person who grates ginger like he's defusing an explosive. In private he writes — he began a novel called *Dawn Beyond Darkness* the day the fleet left Sol and finished its ending during the Fold crisis. Chef Omar toasts him as one who \"sifts meaning from the noise.\"",
+    "chapter": 5,
+    "image": "assets/char/marek.png",
+    "mj_prompt": "A pale narrow-shouldered man at a small ship's galley table carefully measuring soy sauce as if defusing an explosive, a battered handwritten notebook tucked beside his plate, expression of shy private intensity, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "marek",
     "voice_id": "hH2PlxWs8rI3FQNdgREU"
   },
   {
-    "id": "iren",
     "name": "Iren",
+    "tag": "char",
+    "role": "Nutritionist",
+    "affil": "FNS Dáinn / Hydroponics",
+    "aliases": "Iren",
+    "appearance": "A woman of quiet, dogged composure. She rarely smiles, but when she does it creases the corners of her eyes — a small, unmistakable warmth she doesn't waste on strangers.",
+    "desc": "A nutritionist from Hydroponics on the FNS Dáinn. Iren helped develop the ship's soy-based mycoprotein that sears like real chicken — the centerpiece of Chef Omar's Galley Draw stir-fry. In her downtime she solves Beltrán's Tesseracta puzzles, including the rotating-hypercube one that took her three clicks before it clicked. Quietly proud.",
+    "chapter": 5,
+    "image": "assets/char/iren.png",
+    "mj_prompt": "A quietly proud woman in a colony hydroponics jumpsuit holding a deep green bok choy leaf beaded with water in a ship's galley, soft warm lamp overhead, the ship's grow-lights visible through a porthole, expression of dogged calm, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "iren",
     "voice_id": "jAAHNNqlbAX9iWjJPEtE"
+  },
+  {
+    "name": "Jin Laris",
+    "tag": "char",
+    "role": "Captain, FNS Bygul",
+    "affil": "FNS Bygul / Fleet Charter",
+    "aliases": "Captain Laris, Laris, Jin",
+    "appearance": "Laris has the weathered, patient face of a farmer — sun-lined and unhurried, with eyes that have spent more time reading skies than screens.",
+    "desc": "Captain of the hauler FNS Bygul, a two-million-ton vessel currently tethered to Orbital Command with a payload that is a living ecosystem. Laris is measured and deliberate, a humanist counterpart to Captain Mei Chezin's open defiance. He sends formal proposals where Chezin shouts demands, and is willing to negotiate with Controller Eva Bellamy when his crewmate is not — though his doubt about the Directorate lingers beneath the diplomacy.",
+    "chapter": 6,
+    "image": "assets/char/jin_laris.png",
+    "mj_prompt": "A weathered captain in his fifties with the patient face of a farmer at the helm of a hauler ship's bridge, holographic Delta Project schedule open in front of him, his crew of botanists visible in the bay beyond, expression of strained but measured frustration, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "jin-laris",
+    "voice_id": "tMvyQtpCVQ0DkixuYm6J"
+  },
+  {
+    "name": "Mei Chezin",
+    "tag": "char",
+    "role": "Captain, FNS Trjegul",
+    "affil": "FNS Trjegul / Fleet Charter",
+    "aliases": "Captain Chezin, Chezin, Mei",
+    "appearance": "Chezin is defined by a long chin, smooth skin, and sharp eyes set above black hair pulled into a bun so tight it looks painful.",
+    "desc": "Captain of the hauler FNS Trjegul. Chezin is sharp-tongued and openly defiant — she invokes the Fleet Charter against the Directorate's authority, calls the new chain of command illegitimate on an open channel, and demands to speak to Commander Vilde. Her urgency contrasts with Captain Jin Laris's measured diplomacy, and Eva Bellamy reads her as a real political threat: a respected leader whose dissent could spread.",
+    "chapter": 6,
+    "image": "assets/char/mei_chezin.png",
+    "mj_prompt": "A sharp-eyed woman captain with a long chin and smooth skin, black hair pulled into a painfully tight bun, leaning into a comms console mid-protest aboard a hauler ship's bridge, expression of fierce defiance, holo-screen text scrolling behind her, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "mei-chezin",
+    "voice_id": "1a0nAYA3FcNQcMMfbddY"
   }
 ]
