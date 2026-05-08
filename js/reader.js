@@ -1928,19 +1928,22 @@ function injectReaderEndCard(n, chapterTitle) {
 
 function renderChapterPills() {
   const el = document.getElementById('chapter-pills');
-  if (CHAPTER_COUNT <= 8) {
-    // Pills for small chapter count
-    el.innerHTML = Array.from({ length: CHAPTER_COUNT }, (_, i) => i + 1).map(n => `
-      <button class="cp-btn ${n === currentChapter ? 'active' : ''}" onclick="loadChapter(${n})">
-        Ch. ${n}
-      </button>`).join('');
-  } else {
-    // Compact dropdown for many chapters
-    const opts = Array.from({ length: CHAPTER_COUNT }, (_, i) => i + 1)
-      .map(n => `<option value="${n}" ${n === currentChapter ? 'selected' : ''}>Chapter ${n}</option>`)
-      .join('');
-    el.innerHTML = `<select class="cp-select" onchange="loadChapter(+this.value)" title="Jump to chapter">${opts}</select>`;
-  }
+  const numbers = Array.from({ length: CHAPTER_COUNT }, (_, i) => i + 1);
+  const pillsHtml = numbers.map(n => `
+    <button class="cp-btn ${n === currentChapter ? 'active' : ''}" onclick="loadChapter(${n})">
+      Ch. ${n}
+    </button>`).join('');
+  const optsHtml = numbers.map(n => {
+    const label = chapterNames[n] ? `Chapter ${n} · ${chapterNames[n]}` : `Chapter ${n}`;
+    return `<option value="${n}" ${n === currentChapter ? 'selected' : ''}>${label}</option>`;
+  }).join('');
+  // Render both — CSS shows pills on desktop, select on mobile.
+  // For >8 chapters, force the dropdown on desktop too.
+  el.classList.toggle('cp-force-dropdown', CHAPTER_COUNT > 8);
+  el.innerHTML = `
+    <div class="cp-pills">${pillsHtml}</div>
+    <select class="cp-select" onchange="loadChapter(+this.value)" title="Jump to chapter">${optsHtml}</select>
+  `;
 }
 
 // ── Wiki index builder ───────────────────────────────────
