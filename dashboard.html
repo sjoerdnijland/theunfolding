@@ -301,8 +301,9 @@ const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsI
 
 const CHAPTER_NAMES = {
   1: 'Assembly', 2: 'The Startend', 3: 'Doubt & Certainty',
-  4: 'The Grid', 5: 'Two Courses'
+  4: 'The Grid', 5: 'Two Courses', 6: 'Levers of Command'
 };
+const CHAPTER_NUMBERS = Object.keys(CHAPTER_NAMES).map(Number);
 
 let rangeDays = 7;
 
@@ -463,7 +464,7 @@ async function load() {
         <!-- Chapter funnel — reads -->
         <div class="funnel-card">
           <div class="funnel-title">Chapter reach — readers who started each chapter</div>
-          ${[1,2,3,4,5].map(ch => `
+          ${CHAPTER_NUMBERS.map(ch => `
             <div class="chapter-row">
               <div class="chapter-name">Ch ${ch} · ${CHAPTER_NAMES[ch]}</div>
               <div class="chapter-bar-wrap">
@@ -476,7 +477,7 @@ async function load() {
         <!-- Chapter funnel — narration -->
         <div class="funnel-card">
           <div class="funnel-title">Narration plays per chapter + avg % completed when stopped</div>
-          ${[1,2,3,4,5].map(ch => `
+          ${CHAPTER_NUMBERS.map(ch => `
             <div class="chapter-row">
               <div class="chapter-name">Ch ${ch} · ${CHAPTER_NAMES[ch]}</div>
               <div class="chapter-bar-wrap">

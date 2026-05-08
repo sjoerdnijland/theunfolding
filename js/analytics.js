@@ -70,8 +70,17 @@
     var firedDepths = {};
 
     function getCurrentChapter() {
-      // Read from reader.js global
-      return window.currentChapter || 1;
+      // reader.js exposes state via getters because its `let` globals
+      // aren't visible on `window`. Fall back to 1 if reader.js hasn't
+      // loaded yet (first tick before init).
+      return (typeof window._readerGetChapter === 'function')
+        ? window._readerGetChapter()
+        : 1;
+    }
+
+    function getContentHeight() {
+      var content = document.getElementById('chapter-content');
+      return content ? content.getBoundingClientRect().height : 0;
     }
 
     function getScrollDepth() {
@@ -92,6 +101,11 @@
         lastChapter = ch;
         track('chapter_start', { chapter: ch });
       }
+      // Gate depth tracking on real rendered content. The initial
+      // `Loading…` placeholder is 50vh, so anything ≤ viewport height
+      // is either still loading or trivially fits and shouldn't count
+      // as scroll progress.
+      if (getContentHeight() <= window.innerHeight) return;
       var depth = getScrollDepth();
       [25, 50, 75, 100].forEach(function(milestone) {
         if (depth >= milestone && !firedDepths[milestone]) {
@@ -116,8 +130,8 @@
         var origStop = window.stopNarration;
         window.stopNarration = function() {
           // Track how far they got (paragraph index out of total)
-          var idx   = window.narrationIndex || 0;
-          var total = window.narrationParaIds ? window.narrationParaIds.length : 0;
+          var idx   = (typeof window._readerGetNarrationIndex === 'function') ? window._readerGetNarrationIndex() : 0;
+          var total = (typeof window._readerGetNarrationTotal === 'function') ? window._readerGetNarrationTotal() : 0;
           var pct   = total > 0 ? Math.round((idx / total) * 100) : 0;
           track('narration_stop', {
             chapter: getCurrentChapter(),
@@ -133,12 +147,14 @@
       if (window.narrationTogglePlay && !window.narrationTogglePlay._tracked) {
         var origToggle = window.narrationTogglePlay;
         window.narrationTogglePlay = function() {
-          // Detect if this is a pause or resume
-          var wasPaused = window.narrationPlaying === false;
+          // Detect if this is a pause or resume by reading the current
+          // playing flag *before* the toggle runs.
+          var playingBefore = (typeof window._readerGetNarrationPlaying === 'function') ? window._readerGetNarrationPlaying() : false;
+          var idx = (typeof window._readerGetNarrationIndex === 'function') ? window._readerGetNarrationIndex() : 0;
           var result = origToggle.apply(this, arguments);
-          track(wasPaused ? 'narration_resume' : 'narration_pause', {
+          track(playingBefore ? 'narration_pause' : 'narration_resume', {
             chapter: getCurrentChapter(),
-            para: window.narrationIndex || 0
+            para: idx
           });
           return result;
         };

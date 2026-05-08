@@ -2833,6 +2833,16 @@ function toast(msg, duration = 3000) {
   setTimeout(() => el.classList.add('hidden'), duration);
 }
 
+// ── Analytics state bridge ───────────────────────────────
+// reader.js declares state with `let`, which lives in the global lexical
+// environment and is invisible as `window.x`. analytics.js runs in a
+// separate script and needs live values, so expose getters that close over
+// the lexical bindings.
+window._readerGetChapter           = () => currentChapter;
+window._readerGetNarrationIndex    = () => narrationIndex;
+window._readerGetNarrationTotal    = () => narrationParaIds.length;
+window._readerGetNarrationPlaying  = () => narrationPlaying;
+
 // ── Init ─────────────────────────────────────────────────
 async function init() {
   applyWikiHints();
