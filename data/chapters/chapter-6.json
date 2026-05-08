@@ -1,0 +1,267 @@
+{
+  "title": "Levers of Command",
+  "sections": [
+    {
+      "type": "epigraph",
+      "paragraphs": [
+        "The chef pats his belly. [#pause]The director? He doesn't believe in surplus. [#pause]He believes in tolerances. [#pause]And the projections are… intolerable."
+      ]
+    },
+    {
+      "heading": "11 CLICKS POST UNFOLDING \nORBITAL COMMAND",
+      "paragraphs": [
+        "Ulre Corbin paused in the doorway, as he always did, quietly taking stock of the room. The bridge had its own presence. He studied the brass plaque on the bulkhead, a leftover from the *FNS Yggdrasil*'s first days: RADIX, TRUNCUS, FROND. The Root, the Trunk, the Leaf. The *Yggdrasil* had come apart as planned. The Root rings were now at Freya Homestead. The Leaf had become the Delta's main encampment. The Trunk had been commissioned into the orbital stations."
+      ]
+    },
+    {
+      "type": "code",
+      "paragraphs": [
+        "< [#pong]CONNECTED: 1,764 / 3,017 />"
+      ]
+    },
+    {
+      "paragraphs": [
+        "The Homestead was nearly done, and the Plateau well underway. Ulre wanted everyone on Mairee connected before the next cycle. Only the Delta outposts and the ships still in transit—the *Dáinn* and the silent *Brisinger*—remained. The Delta was another story. The Grid's infrastructure was fragile, and the Delta's humidity and storms would push it beyond its limit. Engineers were a dwindling resource, overworked and exhausted, trying to maintain a fragile peace in a place that wanted to rot everything they built. Shipping the materials into the Delta was risky. Spore storms and sudden atmospheric shifts made a stable uplink impossible.",
+        {
+          "text": "\"[matter-of-fact]Let's begin the deficit projection,\" he said.",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "Eva Bellamy dismissed two ensigns. As they stepped out, she [#tap]tapped her console. \"[clinical]Projecting loss of Far-Fold Fleet.\"[#holopong]",
+          "speaker": "eva-bellamy"
+        },
+        "Blue vectors showed water reclamation efficiency of only 77.4%. An amber wave tracked caloric production. A violet haze overlaid the population centers, giving an aggregate reading of communal anxiety. A connected grid tracked the distribution of neuro-chemical stabilizers, automatically dispensed through the hab air systems. Order, Ulre thought, will become a matter of chemistry.",
+        {
+          "text": "[#holopong]On the holoscreen, the operational fleet appeared. One by one, Ulre [#tapping]untapped the vessels on the other end of the lost Fold. First, the *FNS Mimir*. The green bar for Strategic Fuel Reserve vaporized. \"[grave]Even if the Fold were to reappear, we could never get through it on our own,\" he stated. \"Without a supply line with Sol, we'll remain bound to Mairee.\"",
+          "speaker": "ulre-corbin"
+        },
+        "A painful memory surged unbidden through his mind. The bright blue planet receding into the depths of space. Everything now irretrievably lost. The regret that flooded him recalled the loneliness of his nineteenth year, when he had abandoned his childhood home in the aftermath of his parents' divorce. The draft crept in beneath the front door, chilling his ankles as he escaped the shouting in the kitchen. His nails bit crescent moons into his palm. The anger and shame ebbed away.",
+        {
+          "text": "He deselected the *FNS Alsvin*. The system populated a backlog of over a hundred critical failure risks for the Plateau. No replacement parts, no extra Grav-Belts, no secondary forge. \"[cold]A single critical failure at Ivaldi base,\" he concluded, \"and we're done for.\"",
+          "speaker": "ulre-corbin"
+        },
+        "Next, he unchecked the *FNS Muninn* and *FNS Hugin*. The prognosis for communal well-being plunged. Without their sensor suites and satellites, they'd remain blind to Mairee's terrible whims and tantrums, unable to properly forecast its chaotic moods, let alone adapt to them in a timely manner. As he pondered this, [#magnetic-flutter]a magnetic flutter shimmered across the sensors. It brought his mind to the last ship that had made it through, yet remained unresponsive: the *FNS Brisinger*.",
+        "It was on course, still comms remained silent. He pulled up her manifest. He assumed the worst. He unflagged her assets: nutrient synthesizers, hydroponic bays, medical centers. They vanished from the projection. Ulre assessed the impact. Another two hundred eighty-nine souls gone from the ledger.",
+        "He stared at the cascade of projected crises. Their survival probability metric had shifted from \"UNSTABLE\" to a single damning word: [#alert-pong]\"TERMINAL.\" The grim weight of their circumstances pressed down. What to sacrifice first?",
+        {
+          "text": "Eva broke the silence. \"[low]The math is brutal. Without the Fold—\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"[firm]The math is pure.\" Ulre stood like a surgeon who had confirmed a terminal diagnosis. With this diagnosis, everything now seemed permissible. His operation could begin in earnest.",
+          "speaker": "ulre-corbin"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "12 CLICKS POST UNFOLDING \nGUARDIAN TRAINING DECK, FREYOPS CENTRAL",
+      "paragraphs": [
+        "Centurion Jax stood with his arms crossed, watching two recruits spar in the middle of the training field.",
+        "This wasn't a clean dojo for clean movements or elegant forms. The deck had been prepared with layers of soil and recycled loam into a slurry that grabbed at boots and refused to let go without a fight. Every step cost something. Balance, mostly. Dignity, often. Shallow trenches crisscrossed the field, some obvious, others disguised beneath a thin skin of standing water. The surface lied constantly. One of the recruits slipped, [#mud-squelch]boot vanishing ankle-deep with a wet, sucking sound. The other lunged too fast to capitalize, overcorrected, and nearly went down with him.",
+        "The electric [#baton-crackle]snap and crackle of their batons was a meditation to Jax. One recruit was bigger and relied on brute strength, while the other was smaller, quicker, and more skilled. The bigger recruit swung with the grace of a wrecking ball. Jax enjoyed watching, as if he were the one delivering the blows, but it agitated him that the bigger boy was clearly holding back. The smaller recruit feinted left, but his foot slipped, throwing off his balance. The bigger recruit's baton, meant for the smaller boy's shoulder, instead [#baton-thwack]smacked his jaw.",
+        {
+          "text": "\"[sharp]Stop,\" Jax rumbled. A livid red welt was already visible on the smaller boy's cheek. \"[matter-of-fact]He's stronger than you.\" Jax stated a simple fact. \"The physics don't lie, boy. Mass times acceleration equals a broken face. Your mass ain't gonna cut it. You have to make your weaker hits count. [demanding]Show me where.\"",
+          "speaker": "centurion-jax"
+        },
+        "The smaller recruit, dark eyes swimming in a concussive fog, just blinked. A few strands of black hair, damp with sweat and training-deck grime, clung to a forehead.",
+        {
+          "text": "Jax let out an [sigh]impatient sigh. He didn't want to explain something so basic. He tapped his throat, pointed to his temple, then just below the ribs, the elbow, and the knuckles. As the recruit followed the finger, Jax lunged and [#punch]drove his knee into the boy's groin. \"[cold]Here,\" he said.",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "The boy [#mud-splash2]fell to his knees, gasping for air. Jax heard his father's words coming out of his own mouth: \"[harsh]This world is hard, boy. You be harder. Or you'll spend your life on the floor.\" Jax pressed his boot on the recruit, pushing him face down into the mud. He pressed harder, feeling the boy's cervical vertebrae under his sole. He poked his baton into his back like he was prodding an insect. Jax's father had often made him feel that way, like an insect, and he loved his father all the more for it—or so he had convinced himself.",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "\"[whispering]The floor is the only place you're safe when you're weak,\" Jax whispered intimately.",
+          "speaker": "centurion-jax"
+        },
+        "Jax turned to the larger recruit. The boy's chest was heaving, and there was unease in his eyes as he watched his squadmate squeal.",
+        {
+          "text": "\"[growling]You won because you have the weight,\" Jax growled. \"[disdainful]A gift you didn't earn, but ate.\" He began to circle the boy like a predator. \"[menacing]Let's see how easy you crack.\"",
+          "speaker": "centurion-jax"
+        },
+        "Jax didn't give him time to prepare. His first blow was an [#punch]open palm strike to the recruit's ear, a disorienting blow. As the big boy staggered, Jax drove the heel of his boot into the back of his knee, buckling the recruit's leg. [#mud-splash2]He went down hard. Jax was on him in an instant, wrapping a forearm around his neck.",
+        {
+          "text": "Jax bent close to the boy's ear. \"[low]Call me daddy.\" He eased up on the boy's neck, and the boy gasped for air. Jax waited, but the boy stayed silent and kept struggling. Jax pressed his arm into the boy's neck again and twisted the boy's wrist behind his back.",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "\"[through teeth]Call. Me. Daddy,\" Jax muttered again through his teeth, then licked the ear. \"[mocking]Daddy. Will. Teach you.\"",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "The boy kept struggling, grimacing in disgust. Jax didn't relent. \"[stammering]Y-yes, d-daddy!\" the boy finally stammered.",
+          "speaker": "nasr"
+        },
+        {
+          "text": "\"[barked]Good,\" Jax barked, letting go. He stood up and eyed the two boys, both gasping for air. \"[ordering]Get up,\" he ordered. \"Again. Show me you learned.\"",
+          "speaker": "centurion-jax"
+        },
+        "First Guardian Kirsten Strand stepped onto the training deck. Her solid build made even Jax and the biggest recruit seem small. She wore her dark hair cropped close to the scalp, a jagged, practical cut that left no room for vanity. Daylight fell across her skin in a deep earthen tone, catching in the pale seams of scars along her cheek and brow and along her forearms, as if the ground itself had marked her for its own. She quickly took in the scene: two upset recruits—one shaky with a fresh welt on his face, the other drenched in sweat she could smell from the doorway—and her superior, the Centurion. Kirsten had decided long ago that the only reason he led the Guard instead of her was that she'd been born with the wrong genitalia for the position. For all its progress, mankind still falls backward.",
+        "She walked straight toward him, close enough to see the burst capillaries in his nose. The two recruits, caught up in their exhausted scuffle, lost focus and glanced at her.",
+        {
+          "text": "\"[steady]Centurion,\" she said, her voice low and steady, without any hint of softness. \"You summoned me.\"",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[curt]Strand,\" Jax said. \"I have an assignment for you. Delta. You'll handle security for a survey team led by expedition leader Sarah Farley.\"",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "\"[disciplined]Understood,\" Kirsten replied, standing straight. The Delta. She kept her face calm, but her mind raced through the details. The Delta meant slow, humid patrols, constant gear maintenance, unreliable comms, and countless ways to get sick, hurt, or worse.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"And,\" Jax continued, nodding toward the two recruits, who had stopped fighting and now stood tense, \"[smug]you'll bring them.\"",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "Kirsten studied the boys, raising an eyebrow. Their legs trembled. \"[firm]Sir, with respect, those boys aren't ready to be deployed there. The Delta is—\"",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[dismissive]It's the perfect training ground. The jungle is the only test that matters,\" Jax replied. He stepped so close she could smell his sour breath. Zups, she knew. A cheap stimulant. \"[cold]Those two have a bond now. The bigger one is Nasr; the other is Jimenez.\"",
+          "speaker": "centurion-jax"
+        },
+        "Kirsten's gaze lingered on Jimenez. Olive skin. Giving off the vibes of some ancient heritage.",
+        {
+          "text": "Jax continued. \"[cold]To make up for their lack of experience, I'll add Axel to your detail. That's it.\" His voice turned cold. \"[grim]The Delta makes strong soldiers, or it weeds out the weak. There is no middle ground. Support the survey teams. Take them and train them. That's your assignment.\"",
+          "speaker": "centurion-jax"
+        },
+        "Kirsten knew Jordan Axel. He was a veteran—steady, reliable, and never rattled. He was also about to retire. Sending him to the Delta was practical. Kirsten's jaw tightened just a bit. She saw what Jax was doing. Jax was getting rid of his problems: the shaken rookies, the retiring veteran, and his rival. The jungle would take care of them.",
+        {
+          "text": "\"[clipped]Right, then. Centurion,\" she said firmly. \"If that's all.\"",
+          "speaker": "kirsten-strand"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "THE CORRIDOR \nEN ROUTE TO FREYA HARBOR",
+      "paragraphs": [
+        "Corbin's shuttle, the *Depeche*, was in a vibration-free bubble as it fell to the surface. These smooth passages between the Homestead, the Delta, the Plateau, and the orbital stations were enabled by the Corridor. Through the viewport, Ulre Corbin watched the ground-based relay antennas dotting the landscape like luminous buoys in a sea of ochre and rust. Despite the bleak outlook, Ulre felt surprisingly good. The meetings with Bellamy had been a success. The *Dáinn* was being forced back into alignment, like a stubborn dog being hauled by the leash. And the *Bris*, well, it would simply fall into his lap. Now, for the surface.",
+        "On his slate, he pulled up the live feed from the Homestead. It showed the flow of energy from the geothermal taps, the measured distribution of water, and the choreographed movements of personnel between their habs and their duties. It was an elegant system. His system. But he also saw the flaws, the small deviations that grated on him. The spiking cortisol levels in the residential sectors were a statistical scream of communal anxiety.",
+        "The solution, however, was already lining up.",
+        "The experiments—wherein the first few habs had been connected to the atmospheric neuro-regulators—had shown promising results. The data was undeniable. In the regulated habs, stress-related infractions had plummeted. Anxiety, that most chaotic and human of variables, had thus proven to be a controllable variable after all. It could be managed, smoothed, and optimized, like power or water. He had proof of concept. Now it was time for full implementation.",
+        "The *Depeche* decelerated, approaching Freya Harbor with precision. The final buoy of the Corridor guided it in. A smooth yet rapid descent. Systems recalibrated. The course corrected. The landing grid gracefully received him with only a slight shudder.",
+        "They call me cold, he thought, pressing his fingertips together and feeling the texture of his own fingerprints. They want warmth. They want Astrid Vilde to hold their hand and tell them everything will be alright. But warmth is entropy. Warmth is loss of energy. If only they knew. But that would create panic, and that panic would consume them.",
+        "Ulre stepped out into the cool, dry air. Escorted by two guardians, he strode straight to FreyOps Central, FOX. Let them hate me. It's a powerful fuel. It suppresses. And a rare, thin smile curled his lips.",
+        "The route led them under the overhanging 'claws' of the harbor. These claws stood ready to receive the *Brisinger*. Beyond them, the Harbor was a world of gray composite and idle machinery. Above them, unmanned cargo drones slid along magnetic rails, moving from the berths to the storage silos carved into the rock. There was a faint stench. Ulre couldn't quite place it. There seemed to be no spores in the air. Nor was it the dust kicked up by the landing. This was a sweetish compost smell. But the terrain was flat, hard, and clean of flora. That he couldn't place the smell irritated him immensely.",
+        "They emerged onto a wide, open plaza that marked the transition between the Harbor and the Homestead itself. Along the edges of the plaza stood minimalist benches made of polished basalt, each bearing a small, engraved plaque. Ulre had never paid them any mind, but his gaze now fell on the text of the nearest one: a haiku about a city crowned by stars. What drivel.",
+        "Carefully arranged parterres broke the monotony. They were filled with a collage of different regional stones from Mairee and clusters of hardy, native flora: tough silvery mosses and deep-purple alpine flowers that thrived in the thin air. In the center of the plaza stood an abstract sculpture of twisted ship-metal titled 'The Leap,' symbolizing the journey through the Fold. A failed attempt at culture, he thought.",
+        "The modular residential blocks rose up as identical hexagonal structures that fit seamlessly together. Each block was composed of individual habs, compact living units slid into the larger frame. The design was ingenious: each hab was a self-contained survival capsule, connected to the central frame via a series of quick-release locks. The habs could be detached and relocated by specialized Nomad shuttles should the need for migration eventually arise. There were no balconies, no front yards, no form of external personal space whatsoever. The windows were polarized panels that offered a breathtaking view of the valley embraced by the Sickle Mountains.",
+        "In the distance, the jagged peaks of the mountain range rose up, their summits often shrouded in the swirling, phosphorescent green mists. That view, however, also offered a constant reminder of how small and fragile their settlement was. Surrounding the settlement, on strategic peaks of the surrounding hills, stood slender communication towers and atmosphere sensors.",
+        "FOX was located at the rim of the residential district. It was a nondescript, elevated building distinguished by the large FOX emblem above its entrance and the increased presence of guardians. Behind it, a shimmering soap bubble rose from the ground: the massive Homestead Dome—the heart of the community where assemblies, quorums, and important announcements could take place. Its semi-transparent surface caught the strange light of Mairee, reflecting it in soft, shifting colors.",
+        "[#door-hiss]The weighted doors of FOX slid open with a muffled hiss for Ulre and his escort, closing behind them with a [#door-hiss]heavy thud. The station was stripped of any nonfunctional pretense. The corridors were narrow, lined with dark, shock-absorbent panels and illuminated by white-blue light. Ulre walked past a series of numbered doors and checkpoints before he reached the main entrance to the central control room.",
+        "Ulre paused in the doorway, instantly picking up on the subtle interplay of unease around him. The on-duty officers straightened. A young lieutenant adjusted the collar of his uniform, his fingers twitching with barely concealed anxiety.",
+        {
+          "text": "Ulre cleared his throat. \"[clears throat]The trial is complete. Our next objective is to secure the Plateau. Send the Grid's roll-out specs to Chief Heston.\"",
+          "speaker": "ulre-corbin"
+        },
+        "The lieutenant [#tapping]tapped fervently at his console.",
+        {
+          "text": "\"[measured]And,\" Corbin continued, moving to the viewport that had a clear panorama of the Homestead, \"[cold]monitor the anxiolytic distribution closely. Flag any individual who does not respond to this 'personal wellness program.' Send them to a guardian post for a check.\" There were, after all, plenty of cryopods in the stasis bay to icebox any potential trouble.",
+          "speaker": "ulre-corbin"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "13 CLICKS POST UNFOLDING \nORBITAL COMMAND",
+      "paragraphs": [
+        "[#alert-pong]A priority call came in with the signatures of the captains of the *FNS Bygul* and *FNS Trjegul*—the haulers, two million tons of dead weight each, currently tethered to Orbital Command. Eva Bellamy opened the holo session from her quarters. The faces of two captains, simmering with frustration, appeared side by side. Captain Jin Laris of the *Bygul* had the weathered, patient face of a farmer, while Captain Mei Chezin of the *Trjegul* was characterized by her long chin, smooth skin, sharp eyes, and black hair in a bun so tight that it looked painful.",
+        {
+          "text": "Captain Laris began deliberately. \"[over comms][measured]Controller Bellamy, our payload is a living ecosystem. I've been proactive and sent you a viable deployment schedule proposal for the Delta Project. We can't keep standing by forever while—\"",
+          "speaker": "jin-laris"
+        },
+        {
+          "text": "Captain Chezin joined in, sharper and less diplomatic. \"[over comms][urgent]The Leaf is losing ground,\" she said, urgency cutting through each word. \"The current water outposts, the DROP sites, are insufficiently supported. They are running out. Laris's schedule looks good. You must approve it right now.\"",
+          "speaker": "mei-chezin"
+        },
+        {
+          "text": "Eva sensed an unspoken threat beneath Chezin's brusque tone. She kept hers calm and neutral. \"[calm][diplomatic]Your concerns and ideas are heard, Captains. The Directorate is focused on managing the resource crisis. We only send down essentials, and only at the last responsible moment.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"[over comms][strained]With respect, Controller,\" Laris countered, his patience also worn thin, \"my botanists are watching their life's work turn to mold. They are eager to get to work down there.\"",
+          "speaker": "jin-laris"
+        },
+        {
+          "text": "\"[firm]No,\" Eva stated unshakably. \"We will not deploy. The Directorate—\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"[over comms][shouting]Is illegitimate!\" Captain Chezin's voice was so loud that the console's audio limiters had to cut in, giving it a metallic, clipped edge. \"We recognize the Fleet Charter! Not this… Directorate. We demand to speak to Commander Vilde!\"",
+          "speaker": "mei-chezin"
+        },
+        "Eva did not change her expression by a single, fractional millimeter.",
+        {
+          "text": "\"[cool]Commander Vilde is in our care, recovering from a mental breakdown. The ESP—\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"[over comms][insistent]Fleet Charter!\" Chezin repeated. \"We will hear it from her!\"",
+          "speaker": "mei-chezin"
+        },
+        "Eva chose not to argue or threaten. [#pong]She simply closed the channel, leaving their frustrated, rebellious faces frozen before the screen returned to the clean lines of the orbital map. The captains of the *Bygul* and *Trjegul* might cause trouble, but she wasn't worried about open mutiny. She couldn't afford one, but she knew it was impossible for them. The two ships couldn't break their orbital anchorage. Their engines were built for slow interstellar travel, not for the quick, precise moves needed to descend into the atmosphere without the Corridor's guidance, which she alone controlled. Even if they tried to haul something down in their cargo shuttles, her *Vanguard*—a patrol craft—could easily intercept them.",
+        "Her real worries were political and much harder to control. Laris and Chezin were respected leaders. If their defiance spread, it could reach the surface or even her own stations. A crew of rebellious, clever scientists could sabotage things in many subtle ways. One \"mistake\" in the nutrient dispenser could be enough to take her out.",
+        "Eva considered the other option. She could side with the captains. With her control of the orbital systems—the Corridor, the *Vanguards*, the comms relays—she could put real pressure on Corbin. Corbin would be stuck on the surface while she controlled the skies. But that would result in catastrophe. In her mind, she played out the scenario: a blockade, a standoff, maybe even a civil war between the ships in orbit and the bases on the ground. The planet itself would be the only winner. She dismissed the option. Without any ground control, siding with the captains was a losing move. And it grated at her that this place, this fragile claim of a future, was already full of conflict. As if the planet was waiting for them to fracture first. And they were. Entropy. The void. Madness.",
+        "Eva was a pragmatist. She hadn't become an Orbit Controller because of ideology or ambition. She came from the Solbay shipyards, where the void was a harsh teacher. Her father, a structural engineer, had talked about tolerances and stress fractures. He'd taught her that space didn't reward good intentions; only a perfect grasp of the numbers did.",
+        "Corbin was a manageable pup. He wanted the colony to survive at any cost, a goal she understood. Eva's loyalty wasn't to Ulre as a person, but to his system, because it was the only one principled on the data. His Grid gave her the numbers. And those numbers told her what was right or wrong. Commander Vilde, though, led by moral code. Great for governance, not survival.",
+        "[#pong]She opened a new call, addressed to a single recipient.",
+        "Captain Jin Laris appeared on her screen again, alone this time. He looked wary, prepared for a reprimand.",
+        {
+          "text": "Eva offered him a smile. \"[warm]Captain,\" she began, her voice that of a reasonable, collaborative fellow officer. \"[reasonable]Let's speak frankly. Captain Chezin has an admirable passion. That, however, distracted us from properly addressing your proposal.\" She pulled up his formal request on the screen between them. \"It's a reasonable plan.\"",
+          "speaker": "eva-bellamy"
+        },
+        "His shoulders dropped a fraction.",
+        {
+          "text": "\"[supportive]I'll endorse it,\" she continued, making it clear they were on the same side against Chezin's impulsiveness. \"I'll do what I can to get it approved by Director Corbin.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "She let that sink in before applying her own gentle pressure. \"[earnest]But you have to see my side, Jin. The director is dealing with many urgent problems on the surface. We need to be patient and avoid fighting among ourselves. Computing your plan might take some time. There will be changes to align with the broader strategy. But I'll support you.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "She leaned in, lowering her voice. \"[low][confiding]You need to talk to her. To Mei. You can get through to her. Convince her to hold back. We can't openly challenge Corbin's Directorate now. We have to be smart. He controls the ground. We need to wait. For the *Dáinn*…\" She hesitated before adding, \"And *Bris*.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "Laris was silent, processing the unexpected alliance, the sudden shift from adversary to partner. He didn't answer right away. When he did, the edge was gone. \"[over comms][cautious]And Commander Vilde?\" he asked, the question a final test of her sincerity.",
+          "speaker": "jin-laris"
+        },
+        {
+          "text": "\"[reassuring]She is alive,\" Eva said. \"And she is healthy. She is being kept in medical stasis. I can personally vouch for that. The ESP is temporary. Corbin vouched that once the *Dáinn* and the *Brisinger* are consolidated and rationing is set, a new governing quorum will be formed. It's all in the Fleet Charter. I will make sure you have a seat at that table. So will Vilde. Maybe all captains. But Mei can't take that seat if she has a record of insubordination.\"",
+          "speaker": "eva-bellamy"
+        },
+        "Despite her assurances, Laris's doubt, however, lingered. His fingers drummed lightly on the surface in front of him. A question he didn't voice was clearly written on his face.",
+        "She had given him everything he wanted: approval of his plan, hope for the future, and a clear, logical way forward. What more is he waiting for? Eva let the silence linger.",
+        {
+          "text": "His question finally came. \"[over comms][troubled]Vilde will not be pleased with him. He must account for this coup. He wouldn't, would he?\"",
+          "speaker": "jin-laris"
+        },
+        {
+          "text": "\"[reassuring]He will,\" Eva reassured. \"And Vilde can be forgiving. She'll be reminding us all that we are on the same team.\"",
+          "speaker": "eva-bellamy"
+        },
+        {
+          "text": "\"[over comms][hesitant]I…\" Laris swallowed away what he was about to say. As if switching gears. He continued, \"I understand, Controller.\" The skepticism vanished from his eyes, replaced by a cautious hope. \"Thank you. I'll talk to Mei.\"",
+          "speaker": "jin-laris"
+        },
+        {
+          "text": "\"[warm]We can count on each other, Captain,\" Eva said, trying to sound warm and reassuring. [#pong]She severed the channel with a satisfied smile and stood up. The room was steady, but the floor felt like it was tilting. Her left hand began to twitch. She gripped her wrist, squeezing until the skin turned white and the pain silenced the tremor.",
+          "speaker": "eva-bellamy"
+        }
+      ]
+    }
+  ]
+}
