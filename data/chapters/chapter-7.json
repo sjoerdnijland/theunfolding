@@ -35,8 +35,7 @@
         },
         "His father stepped up and put his hand on his shoulder. He also wore his new uniform. The emblem showed a stylized Valkyrie with braids over her armor and a sword pointing down. Beneath the figure, along the lower arc of the circle, the motto read: \"Heaven Through Hardship.\"",
         {
-          "text": "His mother now turned to his father. \"[urgent]Keep them out, Kaspar. Shield him.\"",
-          "speaker": "laura-savannen"
+          "text": "His mother now turned to his father. \"[urgent]Keep them out, Kaspar. Shield him.\""
         },
         {
           "text": "\"[reassuring]He'll be ready, Laura. You've prepared him better than you think.\"",
@@ -69,7 +68,7 @@
     {
       "heading": "13 CLICKS POST UNFOLDING \nSECTOR 4 FREYA HOMESTEAD",
       "paragraphs": [
-        "The nutripaste dispenser squeezed a beige fluid into a capsule that floated by on the conveyor Ian had calibrated. He watched the capsules glide by under a gloomy white light. Ian felt like one of those capsules—crammed full of sedatives. He rubbed his face; his skin felt papery and dry. His eyes burned. The smell of the beige paste—a cloying mix of yeast and vitamin powder—clung to his clothes and seeped into his pores.",
+        "The nutripaste [#smudge]dispenser squeezed a beige fluid into a capsule that floated by on the conveyor Ian had calibrated. He watched the capsules glide by under a gloomy white light. Ian felt like one of those capsules—crammed full of sedatives. He rubbed his face; his skin felt papery and dry. His eyes burned. The smell of the beige paste—a cloying mix of yeast and vitamin powder—clung to his clothes and seeped into his pores.",
         {
           "text": "*Joana was right.* Susana's seizures were happening more often, and her clear moments were getting shorter. If they disconnected their hab from the Grid, that would be flagged right away. *Ian might fake a malfunction one time. But getting Su through the seizures may require several interventions.*",
           "inner_voice": "ian-perera"
@@ -82,7 +81,7 @@
     {
       "type": "code",
       "paragraphs": [
-        "< [#alert-pong]ANOMALOUS POWER DRAW DETECTED: \nHAB-SAVANNEN 4-IOTA />"
+        "< ANOMALOUS POWER DRAW DETECTED: \nHAB-SAVANNEN 4-IOTA />"
       ]
     },
     {
@@ -98,7 +97,7 @@
           "speaker": "ian-perera"
         },
         {
-          "text": "Oliver didn't pretend not to know. \"[#sigh][resigned]It's the visor,\" he sighed and stepped back, inviting Ian to come in.",
+          "text": "Oliver didn't pretend not to know. \"[sigh][resigned]It's the visor,\" he sighed and stepped back, inviting Ian to come in.",
           "speaker": "oliver-savannen"
         },
         "The hab was small. Most prominent were a sleep couch, a nutrient dispenser, and a gaming holovisor in the corner. The power conduit was spliced into the main junction box with a clever nest of bypasses. Ian had known the boy's father, Kaspar Savannen, through work. They weren't close, but Ian had respected him. He saw that same spark of ingenuity in the tangle of wires at his feet.",
@@ -209,7 +208,8 @@
       "heading": "HAB-PERERA",
       "paragraphs": [
         "While Ian was working, Joana sat at her desk, the blue light from her screen flickering across her face. After Susana's condition worsened, Joana was taken off her job at the Med-Post. She kept working from home, determined to find out why the colony's mental health, especially her daughter's, was declining so fast. She wanted to learn if the two were connected.",
-        "She went through the active dossiers. The first was an engineer from atmospheric controls. He complained about a constant, intrusive buzzing in his head. The diagnosis was tinnitus. The next file was about a hydroponics technician. She said she saw \"flickering static\" at the edge of her vision and had constant migraines. The diagnosis was eye strain. Joana browsed through more files: a pilot, a cook, a sanitation worker. Their complaints varied. The Grid's system marked each case as a separate, routine problem. But Joana saw a deeper pattern. She compared the patient files with their original *Yggdrasil* records. It revealed an interesting pattern. Nearly every patient with these symptoms was among the first landing crews. They were the first to breathe Mairee's unfiltered air and touch its soil.",
+        "She went through the active dossiers. The first was an engineer from atmospheric controls. He complained about a constant, intrusive buzzing in his head. The diagnosis was tinnitus. The next file was about a hydroponics technician. She said she saw \"flickering static\" at the edge of her vision and had constant migraines. The diagnosis was eye strain.",
+        "Joana browsed through more files: a pilot, a cook, a sanitation worker. Their complaints varied. The Grid's system marked each case as a separate, routine problem. But Joana saw a deeper pattern. She compared the patient files with their original *Yggdrasil* records. It revealed an interesting pattern. Nearly every patient with these symptoms was among the first landing crews. They were the first to breathe Mairee's unfiltered air and touch its soil.",
         "She opened the recent deep-level EEG data for three of these patients and compared their results to the colony's baseline, looking for anything unusual. She found something. All three patients had a second, complex brainwave pattern mixed with a strange, repeating pattern.",
         {
           "text": "A chill crept over Joana. *She could see the problem spreading across the population, a slow, steady increase in the baseline of neurological stress, but it had gone unnoticed.* The symptoms—vague headaches, a sense of unease, the occasional visual disturbance—were too obscure, too easily dismissed as individual ailments in a stressful environment. *The Grid's sedatives and anxiety drugs were suppressing the warning signs.*",
@@ -256,7 +256,7 @@
           "text": "*It would move like a dancer. No more sluggish movements. With its limbs independently controlled, Oliver could make it move in even more unpredictable ways.*",
           "inner_voice": "oliver-savannen"
         },
-        "Scrape. Clear. Swing.",
+        "[#scrape]Scrape. Clear. Swing.",
         {
           "text": "*Yes, this one could have an unprecedented level of tactical flexibility. He'd have to share this idea with Ian.*",
           "inner_voice": "oliver-savannen"
@@ -266,7 +266,7 @@
           "text": "*He might appreciate it. Like his father would. They could build it together.*",
           "inner_voice": "oliver-savannen"
         },
-        "Scrape. Clear. Swing.",
+        "[#scrape]Scrape. Clear. Swing.",
         {
           "text": "*They could wire it up, tweak the balance point. Run the tests.*",
           "inner_voice": "oliver-savannen"
