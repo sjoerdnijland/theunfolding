@@ -1,0 +1,521 @@
+{
+  "title": "Through the Vurnshaft",
+  "sections": [
+    {
+      "type": "epigraph",
+      "paragraphs": [
+        "Daydreaming. That's a luxury you can't afford in the Delta. [#pause]Here, you'd better pay attention to what's paying attention to you. [#pause]Yes, even the plants. Especially the plants."
+      ]
+    },
+    {
+      "heading": "12 CLICKS POST UNFOLDING \nSURVEY CAMP \"THE LEAF,\" MAIREE DELTA",
+      "paragraphs": [
+        "The camp wrestled with the jungle. On its border stood a pressurized tent.",
+        "This was Kirsten's new post. Her squad was performing gear checks.",
+        "They smelled like a swamp and looked like walking thickets. They had meticulously crafted ghillie harnesses—a chameleonic armor—interwoven with waxy leaves, fibrous bark, and dangling mosses.",
+        "Kirsten checked them in turn. To the untrained eye, she resembled an 'Ent:' tall, mythical. She halted behind recruit Alani Jimenez, observing as he tenderly wove phosphorescent moss into the harness on his shoulder.",
+        {
+          "text": "\"[baritone]Are you working on a ghillie suit or a wedding dress, princess?\" Kirsten said with a baritone voice.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[level]Understood, ma'am,\" Jimenez replied without looking up. \"[focused]This species is thermophagic. It feeds on heat. Watched it grow over our thermal conduits. Should blur my signature by a few degrees.\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "Kirsten grunted at his work. \"[dry]Just make sure it doesn't attract anything that wants to pollinate you.\" No need to give him an ego. \"[firm]And just say 'yes.' You don't need to call me 'ma'am.'\"",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[uncertain]Yes… m—\" Jimenez stopped himself, biting his lip.",
+          "speaker": "alani-jimenez"
+        },
+        "Sarah Farley walked in.",
+        "Her hair was a sun-bleached mane. A thick tangle gathered into a rough, salt-crusted braid that hung over her shoulder, bound by simple twine. Her eyes sat in that uncertain range between blue and green. The outdoors had shaped her face into something true, with fine creases at the corners of her eyes and along her cheeks, evidence of a smile that came when it mattered. She was tanned, dressed in light field clothes: a sleeveless utility top dust-ground and washed back to softness, darkened with sweat along the seams, and loose trousers cinched at the ankles. Nothing about her read as temporary.",
+        {
+          "text": "Kirsten gave her a formal nod. \"[formal]Farley, my people are ready. This is Axel, Jimenez, and Nasr.\"",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[scoffing]Ready?\" Farley scoffed. \"[blunt]No one is ever really ready for this place.\" She tossed a bag onto the table and pulled out a mud-caked boot. \"[grim]This is all that's left of Ketura. This morning we lost part of Trail Two. Three times we barely escaped worse. [stern]Assumptions are deadly. Understood?\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "\"[firm]My detail is ready to protect you from tangible threats,\" Kirsten countered firmly.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[snapping]And I'm saying the biggest danger is thinking you're ready!\" Farley snapped back. Then she sighed. \"[sigh][earnest]First Guardian, don't misunderstand me. I'm grateful you're here. Let's start the briefing and go over our goals.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "Kirsten's jaw tightened. As a skilled instructor, she respected Farley's warning. She remembered how to be a student. \"[level]Just tell us where to go, what to shoot, and what to avoid,\" she said.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[quiet]And pray the jungle agrees,\" Farley added quietly as she activated the holotable. [#holopong]A 3D map of their operational area materialized, a web representing their established trails. \"[frustrated]We're trying to set up steady supply routes in a system that keeps changing,\" she said, her voice tight with frustration. \"[demonstrating]This is what happens after one local day.\" She swiped her hand, and the holomap shifted, with whole sections warping the trails, some areas disappearing. \"[weary]Our teams have tried everything.\" She [#tap]tapped her slate, [#holopong]uplinking a fresh data set to the holo.",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "\"[explaining]A LyWyn can sweep the canopy with needle-sharp LIDAR, but its beams fizzle when they graze the loamy ground. Down here, most life exists underground. Ground-penetrating probes give us noise. That's why we survey it with Scitters.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "\"[blunt]Why?\" Kirsten's question was blunt.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[informative]The Myco-Rhizomic System,\" Farley explained. \"[measured]The soil is alive. It's a planetwide fungal network that creates a steady bio-electric field. The key thing to remember is this: the ground moves slowly. And, like an ocean, it has its own ecosystem.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "Jimenez spoke up. \"[curious]Are you related to Adrian Farley?\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[matter-of-fact]Yes. I'm his daughter, in fact.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "Jimenez leaned in, eyes shining. \"[eager]Oh! It's such an honor. I'm a big—\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[sharp]That's enough, Jimenez,\" Kirsten cut in. \"[curt]Mission details only.\"",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[chastened]Aye, ma'am.\" A brief frown tugged at his mouth, irritation at himself flashing before he smoothed it away.",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "Farley brought up an image of a strange creature: a huge, shelled animal resembling a dinosaur with a long neck, sharp beak, and strong, mole-like claws. \"[informative]Exhibit A: Talpochelys serpentina. Part turtle, part serpent. We call it a vurn. Notice the purple-black claws. Our tunneling gear can't match this level of coverage.\" She switched to a shaky helmet-cam video of three team members walking upright through a smooth tunnel. \"[measured]Their tunnels stay stable for a while. They make an underground highway system, but the ways shift. We're sending out Scitters to track the changes, but we can't predict the shifts yet.\" She traced a path on the map. \"[planning]Our expedition will follow one of these newer tunnels. It's our best shot at getting deep into the biome and making it out again.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "Jimenez raised his hand but did not wait to speak. \"[cautious]I heard those tunnels are used by predators.\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "Farley nodded grimly. \"[grim]Which brings us to Exhibit B.\" The vurn blinked away, replaced by a grainy still from a Scitter feed. It rendered a rippling furry patch. \"[ominous]A Shimmercat. Unseen until it's too late. You'll feel its claws before you spot it.\" She paused. \"[wry]Lucky for us, they break off their attacks quickly. We're not on their menu, but they do protect their territory. [matter-of-fact]Still, many here wear their marks. And before long, you will too.\" Farley turned and lifted her shirt a little, revealing a fresh set of claw marks slashed across her back.",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "\"[grim]It's more likely the vegetation will kill you,\" she pressed on. \"[grim]This place is beautiful but deadly. See these?\" She highlighted a delicate, feathery plant. \"[informative]'Burr-vines.' Their seed pods will stick to your armor, clothes, and skin. Microscopic barbs burrow into you, causing a maddening itch that can lead to a nasty infection. We have four people in triage right now because of this plant.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "She showed more images: a sloth-like animal that emitted a paralyzing stench, huge plants shaped like gramophones that shrieked, and tree-branch vipers indistinguishable from ordinary branches. \"[soft]Every day we find something strange,\" Farley said softly. \"[grave]But the real killer is the ground. It liquefies into quicksand or hardens to stone. Don't trust it to stay the same. When it goes soft, you have one pulse to find solid ground or grab onto something. If you get stuck when it hardens, it can hold you for beats. [grim]Pray it doesn't crush your feet.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "Kirsten absorbed it all. \"[focused]And the gear?\"",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[matter-of-fact]Only standard issue plus these,\" Farley said, pointing to a crate of charging Frisbee-shaped drones. \"[informative]These are our Scitters. They zigzag ahead, map the path, and suggest the best routes. They'll warn you about dangers, but they're not perfect. Stay sharp, even if they say it's safe.\" Farley skimmed her finger over a Scitter; [#scitter-whirr]it started spinning and rose from the crate. She handed out earpieces. \"[level]The Scitters send you updates through these.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "Kirsten eyed the drone. Its blue eye stared back into hers. \"[wry]It's not a damn CIX, is it? Can't stand their yapping.\"",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "Farley smiled. \"[reassuring]No. It only speaks when it must.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "\"[firm]Good. But trust the squad's eyes first.\" Kirsten faced her team. \"[commanding]Alright, gear up. We move next pulse.\"",
+          "speaker": "kirsten-strand"
+        },
+        "The air shield [#doorhiss]hissed shut behind them, and a [#jungle]cacophony of clicks and chirps greeted them. The guardians, weighed down by nearly twenty kilos of armor, moved clumsily and loudly through the mossy, spongy ground. Farley moved lightly, instinctively choosing firmer ground. Kirsten watched her with professional respect.",
+        "After four beats of hiking, she noticed the soil yielding more. A low undulation moved through her boots. Like walking on cushions. A Scitter [#scitter-whirr]dashed into the dense forest. Following Farley's lead, Kirsten detached her own Scitter from her backpack mag-plate. It darted ahead, its blip fading in the gloom.",
+        {
+          "text": "\"[low]Jimenez,\" Kirsten growled. \"[demanding]Where are your eyes?\"",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "The rookie, lagging half a step behind, flinched. \"[startled]On the Scitter feed, tracking its telemetry.\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[curt]Wrong answer,\" Kirsten said, stopping the squad with a hand signal. She moved over to him. \"[firm]Look at me.\" He did, eyes wide. Kirsten continued. \"[instructive]That thing's just a sniffer dog. It'll do its thing. Your eyes need to be here. [emphatic]Turn those visuals off. Stop watching the screen. Start reading the scene.\"",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[disciplined]Yes, First Guardian.\" He toggled off his visor; the others followed.",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[probing]Now what do you see?\" she pressed.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "He hesitated, then scanned the ground and trees. Raised by a family of botanists, he noticed what others missed. \"[uncertain]Burr-vines are thicker left,\" he said, unsure. Kirsten watched. \"[reasoning]They prefer moist soil, so right is probably firmer.\" He pointed. \"[observing]That tree's bark is stripped two meters up. Marks look fresh.\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "Kirsten followed his gaze. She hadn't noticed. \"[approving]Not bad,\" she said. \"[recognizing]You're a tracker. I like it.\" She raised her voice for all to hear. \"[ordering]Shift formation. Jimenez, take point.\"",
+          "speaker": "kirsten-strand"
+        },
+        "They moved onto firmer ground. Jimenez stopped, crouched, and pointed at a depression in the moss, tracing small imprints.",
+        {
+          "text": "Farley knelt beside him. \"[wary]Might be a shimmercat track. It's recent.\"",
+          "speaker": "sarah-farley"
+        },
+        "\"NORTH-NORTHWEST IS CLEAR,\" a Scitter chirped in their ears.",
+        "Kirsten ignored it. Her hand gripped her rifle.",
+        {
+          "text": "\"[urgent]Eyes, eyes, eyes! Look for shimmers,\" Kirsten commanded, her voice dropping to a whisper. \"[whisper]Something's out there.\"",
+          "speaker": "kirsten-strand"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "paragraphs": [
+        "Four uneventful beats blipped by. Kirsten was bored. Sarah Farley's warnings proved hollow. No Shimmercats, no hallucinogenic spores. Jimenez spotted some 'screaming' gramophone plants, but they only moaned in the wind. Even the ground, while cushiony, remained steady. A recruit jumped at what he thought was a tree-branch viper, but it was just a branch. They trudged on, hot and sweaty, through a very strange forest.",
+        "The trail stopped. Or rather, it ended violently. The ground veered up at an unnatural angle. Ancient trees stood slanted, roots torn out. Some hung sideways, their leaves brushing the mossy ground.",
+        {
+          "text": "\"[grave]We've reached the vurnshaft.\" Farley gestured at the disturbed terrain. \"[measured]This is what we're here to study. We think their tunnels are the key to a sustainable presence here.\" The air shifted, trading its sweet smell for a chemical rot. \"[focused]Scitter, ground composition scan,\" Farley commanded into her comm.",
+          "speaker": "sarah-farley"
+        },
+        "[#scitter-whirr]The Frisbee veered ahead, its sensors sweeping a grid over the disturbed soil. \"DETECTING SUBSURFACE VOID,\" it chirped along the spine that crossed the trail. \"SOIL DENSITY MINIMAL AT THESE COORDINATES.\"",
+        {
+          "text": "\"[decisive]That's where we need to dig,\" Farley said, pointing to the spot where her Scitter now hovered. At that moment, two other Scitters [#scitter-whirr]zipped back to the squad. One of them docked itself onto Kirsten's mag-lock with a [#soft-click]soft click.",
+          "speaker": "sarah-farley"
+        },
+        "The squad started [#shuv]digging with heated [#burn-hiss]shovels simply called 'shuvs' that cut into the soil like a hot scoop through ice. The soil was a fibrous mat, a mycelium network that occasionally shimmered. The stench grew stronger as they dug deeper. Nasr's probe slid through. He recoiled a step. Axel, the veteran, thrust his hand into the opening and along the smooth, organic inner wall, while the younger Nasr gagged at the stench.",
+        {
+          "text": "\"[gruff]Smell that?\" Axel growled. \"[gruff]That's ammonia. Know what that means?\"",
+          "speaker": "jordan-axel"
+        },
+        "Nasr shook his head, gone green.",
+        {
+          "text": "\"[grim-humor]It means we're rooting around in the world's guts.\" Axel grinned.",
+          "speaker": "jordan-axel"
+        },
+        "After a few minutes, they'd cut an entrance into a vurnshaft. Inside, it was a dark hole, parts of it smeared with an amber-colored resin, strangely warm to the touch.",
+        {
+          "text": "\"[commanding]Alright,\" Kirsten said. \"[ordering]Axel, you stay topside. Keep this hole open at all times. The rest of you, with me. Maintain open comms.\"",
+          "speaker": "kirsten-strand"
+        },
+        "The veteran nodded. The rest climbed down. Their helmet lights beamed into the shaft.",
+        {
+          "text": "\"[focused]Farley, what are we looking at?\" Kirsten asked.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[speculative]Some kind of digestive enzyme, I think,\" Farley answered. \"[wry]The vurn eats and shits its way through.\"",
+          "speaker": "sarah-farley"
+        },
+        "They went deeper into the shaft. Jimenez led the way, scanning everything.",
+        {
+          "text": "He stopped and raised his hand. \"[alert]First Guardian, up ahead.\"",
+          "speaker": "alani-jimenez"
+        },
+        "Kirsten moved to his side, rifle ready. The tunnel wall bulged outward. The bulge was a semi-translucent, pearlescent membrane, and within it, a blue substance flowed. They approached it cautiously. Thick veins, as wide as Kirsten's arm, snaked from the organ's base into the mycelium-laced wall. [#vein-throb]The veins throbbed, as if drawing nourishment from the soil.",
+        {
+          "text": "\"[unnerved]What in the void is that?\" Nasr asked. \"[unsettled]Did the vurn… eat something and not finish?\"",
+          "speaker": "ahmed-nasr"
+        },
+        {
+          "text": "\"[hushed]No,\" Farley whispered. She edged closer, her scanner whirring. \"[fascinated]See the integration? The veins tap directly into the Myco-Rhizomic System.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "\"[demanding]Then what is it?\" Kirsten demanded.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[admitting]I don't know,\" Farley admitted. \"[awed]It's alive. It's a biological pump of some kind.\"",
+          "speaker": "sarah-farley"
+        },
+        "The pulsing blue glow within the organ intensified. Through her comm, Kirsten heard a [#hum-throb]rhythmic humming.",
+        {
+          "text": "\"[sharp]Feedback,\" Kirsten snapped, [#tap]tapping the side of her helmet. As she spoke, the organ reacted. The humming grew louder; the throbbing intensified. The mass began to swell, and the blue light within brightened.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "Farley stepped up to it, so close that it bathed her face in its eerie light. \"[alarmed]It's building to a release!\" she called, then her survival instinct kicked in. \"[shouting]Masks! Masks! Masks!\"",
+          "speaker": "sarah-farley"
+        },
+        "Kirsten's hand shot to her helmet to find the emergency purge strap. She yanked a pouch free, tore it open, and started the steps she knew by heart: unfold, cover her mouth and nose, connect the oxygen. But she was already too late.",
+        "The membrane became violently porous. [#airhiss-2]It puffed a blue gas that surrounded them.",
+        "The gas hit her before she could seal the mask. It tasted and smelled cloyingly sweet but burned her throat, nose, and lungs. She fought the urge to vomit, knowing it would only make her breathe in more gas. With numb hands, she connected the oxygen tube. Clean air rushed in, washing away the burn.",
+        "She blinked, her vision swimming. The gas was everywhere. The roar in her head was relentless. Through the haze, she saw a ballet of failure. Farley was on her knees, coughing. Nasr clawed at his helmet. Only Jimenez, a few meters back, had managed to get his mask on. Kirsten stumbled over to Nasr, who had dropped his pouch. She picked it up and helped him put it on. Dizziness swept over her. Every movement felt slow and heavy as she plugged the tube into the mask.",
+        {
+          "text": "The resin walls inhaled and exhaled with her, flexing in and out. The blue haze filled her vision, forming shifting kaleidoscopic patterns. She moved forward as if wading through syrup. A star violently tore itself into being before her eyes.",
+          "inner_voice": "kirsten-strand"
+        },
+        {
+          "text": "The blinding light resolved, and within, an angel danced in pure radiance. Its wings cascaded into fractals, unfolding, refolding, never quite repeating. He was both terrible and beautiful. The ancient intelligence gazed through her. She felt her memories, her youth, her training, her fears, and her desires laid bare to him. Her whole self was observed and understood in an instant, without judgment. No malice, only warmth.",
+          "inner_voice": "kirsten-strand"
+        },
+        {
+          "text": "He showed her a single word. Each letter was shaped with a heaven within it, as if it held a galaxy of its own. The truth of the word rang deep and absolute. It was as if she'd always known the word and knew who it was.",
+          "inner_voice": "kirsten-strand"
+        },
+        {
+          "text": "*AIA*",
+          "inner_voice": "kirsten-strand"
+        },
+        {
+          "text": "The word cleansed her. *This place is the beginning and the end.*",
+          "inner_voice": "kirsten-strand"
+        },
+        {
+          "text": "The angel's breath moved through her, and with it, another word, adding a new layer of meaning.",
+          "inner_voice": "kirsten-strand"
+        },
+        {
+          "text": "*LYFYA*",
+          "inner_voice": "kirsten-strand"
+        },
+        {
+          "text": "*This is also a place of healing.*",
+          "inner_voice": "kirsten-strand"
+        },
+        {
+          "text": "This awareness settled deep inside her. The warmth grew into a burst of joy. The entity's intent filled her, too big for any one word. She felt perfectly connected to him, completely seen, and welcomed into something greater. She held on to the only human sentence that came close to the feeling. The angel's next exhalation was her own thought: *I love you.*",
+          "inner_voice": "kirsten-strand"
+        },
+        "It ended. Reality hit Kirsten hard. The entity's crystal world vanished. Her mind was silent, and then the frantic, tinny shouts of her squad broke through."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "paragraphs": [
+        "Kirsten went from drifting in a sea of geometric light to finding herself on her hands and knees in the dark, foul-smelling tunnel. Her squad's helmet lights flickered around her, throwing long, twisted shadows.",
+        {
+          "text": "\"[shouting]Ma'am, are you okay?\" Alani Jimenez shouted. \"[urgent]First Guardian Strand, can you hear me?!\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[strained]Status,\" Kirsten said, gritting her teeth as her head throbbed and fractal patterns still danced behind her eyelids.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[reporting]The gas is gone,\" Jimenez reported while pulling her mask off.",
+          "speaker": "alani-jimenez"
+        },
+        "Kirsten sat up. Axel and Nasr were on the ground, groaning. Farley was nearby, kneeling and touching the glittering mycelium with a newfound wonder.",
+        {
+          "text": "Colors flickered in Kirsten's peripheral vision. \"[commanding]Everyone up,\" she ordered. She steadied herself by placing her hand on Jimenez's shoulder. \"[focused]Report. Any injuries?\"",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[reporting]No injuries,\" Jimenez reported, moving to help the last guardian up. \"[shaken]Just disorientation.\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[awed]I have never been clearer.\" Farley did not look up from the glowing mycelium. \"[reverent]Don't you feel it? Didn't you see?\"",
+          "speaker": "sarah-farley"
+        },
+        "[#rumble]A groan slithered through the tunnel.",
+        {
+          "text": "\"[stammering]What w-was that?\" Nasr stammered.",
+          "speaker": "ahmed-nasr"
+        },
+        {
+          "text": "The veteran Axel, who had followed them to see what all the panic was about, turned to Kirsten. \"[low]First Guardian,\" he whispered. \"[urgent]I think we should head back before the opening closes.\"",
+          "speaker": "jordan-axel"
+        },
+        {
+          "text": "\"[barked]Move!\" Kirsten barked. \"[ordering]To the entrance! Go!\"",
+          "speaker": "kirsten-strand"
+        },
+        "The squad stumbled back through the shaft. The smell of decay and ozone grew stronger, and the ground underfoot grew firmer. But as they continued, they found no exit.",
+        {
+          "text": "\"[panicked]W-where is it?\" Nasr asked.",
+          "speaker": "ahmed-nasr"
+        },
+        {
+          "text": "\"[disbelief]It was right around here, surely,\" Axel insisted. \"[stunned]It's closed.\"",
+          "speaker": "jordan-axel"
+        },
+        {
+          "text": "\"[wondering]Or healed,\" Farley posed.",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "\"[shouting]Shuvs out now!\" Kirsten yelled.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "The first shovel bit into the wall with a [#shuv]searing [#burn-hiss]hiss. It cut a few inches deep and stopped. \"[grunting]It's too thick,\" Axel grunted, tugging the shovel back. \"[grim]And it's re-sealing behind the cut.\"",
+          "speaker": "jordan-axel"
+        },
+        {
+          "text": "Kirsten watched as the molten gash oozed shut. \"[firm]Try that patch above it.\"",
+          "speaker": "kirsten-strand"
+        },
+        "Nasr speared his shovel into the fibrous soil above him. It tore through the mycelium-laced soil and struck something with a jarring [#clang]CLANG. The young guardian cried out in pain.",
+        {
+          "text": "\"[urgent]What happened?\" Kirsten demanded, moving to his side.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[shaken]I don't know,\" Nasr replied, massaging his tingling hands. \"[bewildered]The soil… it turned rock solid.\"",
+          "speaker": "ahmed-nasr"
+        },
+        {
+          "text": "Jimenez ran his hand over the spot where the shovel had hit. The soft, fibrous mat was now as hard and dense as granite. \"[alarmed]The ground is hardening all around us.\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[rallying]Everyone, listen!\" Kirsten called, ignoring the lingering patterns in her vision. \"[steady]We have oxygen, rations, and Scitters. We keep moving, and the soil will get softer farther down.\"",
+          "speaker": "kirsten-strand"
+        },
+        "She activated her Scitter, and [#scitter-whirr]it whirred to life. It detached from her pack and zipped away deeper into the vurnshaft.",
+        "After hundreds of meters in the tight space, the soil became wet. They spotted a faint gray light ahead, with a Scitter hovering in front of it.",
+        "[#alert]\"WARNING: UNSTABLE TERRAIN,\" the Scitter announced. The tunnel seemed to end there.",
+        "They emerged one by one into a primordial gloom. It was a swamp. Trees with a thin, pale bark rose from the murky water. A mist clung to the surface, reducing visibility to about thirty meters.",
+        {
+          "text": "\"[gruff]Where the hell are we?\" Axel growled, his boot [#mud-squelch]sinking ankle-deep into the sludge with a sucking sound. \"[disoriented]Doesn't look like any jungle I've seen.\"",
+          "speaker": "jordan-axel"
+        },
+        "Farley took atmospheric readings.",
+        {
+          "text": "Kirsten scanned the terrain. \"[focused]Is there a way around to the Leaf?\"",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[noting]The ground is firmer to the west,\" Jimenez noted. \"[suggesting]If we follow that ridge with water tupelos, we might be able to circle back.\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[ordering]Alright. Jimenez, take point,\" Kirsten commanded. \"[ordering]Axel, you take the rear. Stay close, and help each other keep your footing.\"",
+          "speaker": "kirsten-strand"
+        },
+        "They moved with agonizing caution, worried the mist might disorient them. They reached a raised, soggy mound.",
+        {
+          "text": "\"[commanding]We rest here,\" Kirsten ordered. \"[ordering]Five pulses. Check seals and energy cells. Drink water.\"",
+          "speaker": "kirsten-strand"
+        },
+        "The squad dropped onto the mound, forming a defensive circle. All three Scitters deployed, scouting ahead through the mist.",
+        {
+          "text": "Farley knelt by the hummock and inspected the pale moss on the twisted roots. \"[fascinated]Fascinating,\" she whispered. \"[curious]It's a chemo-synthetic species, feeding on minerals in the water.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "\"[fidgeting]Can we eat it?\" asked Nasr. He was fidgeting.",
+          "speaker": "ahmed-nasr"
+        },
+        {
+          "text": "\"[gruff-humor]You can eat anything once, kid,\" Axel grunted from across the circle.",
+          "speaker": "jordan-axel"
+        },
+        {
+          "text": "\"[dry]I wouldn't recommend it,\" Farley replied, focused on the moss. \"[wry]Unless you want your insides to dissolve. You eat the moss, it eats you.\" She meant it as a joke, but Nasr looked horrified.",
+          "speaker": "sarah-farley"
+        },
+        "[#alert]\"WARNING. ATMOSPHERIC SPORE COUNT RISING,\" a Scitter chirped in their earpieces, its signal already weak and distorted.",
+        {
+          "text": "Kirsten scanned the mist. It was getting thicker, swirling in strange, unnatural eddies. \"[ordering]You heard it. Masks on. And stay put.\"",
+          "speaker": "kirsten-strand"
+        },
+        "After a few Pulses, the spores appeared as pearly shimmers in the air. Even though their filters were working at maximum capacity, the spores' psychoactive effects reached them. The edges of Kirsten's vision blurred again. The steady drip of water from the hidden branches above started to sound like whispers. She shook her head, trying to clear her mind.",
+        "[#alert]\"ALERT.\" The lead Scitter's voice crackled. \"[#static]SPORE STORM IMMINENT. ATMOSPHERIC DENSITY EXCEEDING SAFE LIMITS. PEAK CONCENTRATION IN THREE PULSES. SEEK IMMEDIATE SHELTER.\"",
+        {
+          "text": "\"[panicked]We have to go b-back!\" Nasr stammered in panic.",
+          "speaker": "ahmed-nasr"
+        },
+        {
+          "text": "\"[firm]Negative!\" Kirsten ruled, watching her visor-feed intently. \"[focused]My Scitter is scanning a dense mass a hundred meters west of our position, a geological formation of some kind. A rock outcropping, maybe. It provides cover.\"",
+          "speaker": "kirsten-strand"
+        },
+        "They plunged into the bog. The mist was growing thicker. The whispers grew louder. The ground appeared to swirl, turning to some kind of oil. A [#cacophony]cacophony surged toward them.",
+        {
+          "text": "Jimenez halted. \"[urgent]There!\" he yelled. \"[hopeful]I think it's the shelter!\"",
+          "speaker": "alani-jimenez"
+        },
+        "It wasn't a rock outcropping but a gnarled tangle of petrified roots, each as thick as a torso, forming arches and hollows. Within, a hollow, cave-like dwelling appeared. A [#wind]fierce gale tore through the swamp. Mist whipped into a frantic vortex. Even the moss lashed the bone-white trees. The gramophone plants [#shriek]shrieked. The wind carried a cloud of spores. It slammed into the squad, overwhelming their mask filters. The gnarled roots twisted like living serpents.",
+        "As a particularly violent gust hit, Axel stumbled, his arm caught between two twisting roots. He roared in pain.",
+        {
+          "text": "\"[shouting]Over here!\" Jimenez shouted through the wind, squeezing himself through a gaping maw.",
+          "speaker": "alani-jimenez"
+        },
+        "But in the confusion, Nasr also stumbled and drifted away from the group, taking a few steps off their path.",
+        {
+          "text": "\"[shouting]Nasr, get back here!\" Kirsten yelled, but the wind blew her words away. \"[shouting]Ahmed Nasr! Get back here, now!\"",
+          "speaker": "kirsten-strand"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "paragraphs": [
+        {
+          "text": "Ahmed's boots sank deeper and deeper. His leg blended with the soil, which was warm and welcoming. His mask filled with sweet air. [#plant-melody]The shrieking plants sang a beautiful symphony.",
+          "inner_voice": "ahmed-nasr"
+        },
+        {
+          "text": "The branches of the ancient beings overhead grafted themselves into his pulse. The moss that whipped the pale trees turned into the arms of graceful, lustful dancers, beckoning him forward.",
+          "inner_voice": "ahmed-nasr"
+        },
+        {
+          "text": "He drifted, untethered, through a cascade of images. The veins of leaves became rivers of light, each branching into tributaries of longing and lust. Branches gently stroked his arms as he passed. The [#plant-melody2]singing plants and leaves comforted him with a soft, rustling lullaby, promising peace, rest, and belonging. Every leaf was an eye, and every eye was a window into a history he hadn't lived.",
+          "inner_voice": "ahmed-nasr"
+        },
+        {
+          "text": "A root coiled gently around his waist like a mother's forearm as he sank deeper. This was the embrace he had always craved. The warmth radiated from the loam that dissolved the distinction between skin and soil. His shinbones softened, the marrow leaching out to feed the network. His eardrums became porous enough to receive the sap from the trees. As it entered his brain, a hum slowed and stretched as the forest filled him with memories that were not his own—of roots searching for water, the hush of leaves breathing under moonlight, the joy and ache of seasons turning.",
+          "inner_voice": "ahmed-nasr"
+        },
+        {
+          "text": "The boundary between self and soil faded. His vision burst into a breathtaking kaleidoscope. Then he flowed, a thought-stream, through tunnels or roots swept along by the music of creation. There was no Ahmed Nasr now, only the relentless, rapturous streaming of consciousness, endlessly folding and unfolding beneath the ancient canopy.",
+          "inner_voice": "ahmed-nasr"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "paragraphs": [
+        {
+          "text": "\"[shouting]It's swallowing him!\" Kirsten shouted.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[grim]It's too late!\" Farley replied.",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "\"[defiant]Like hell,\" Kirsten growled. \"[determined]I'll get him!\" She took a step forward to follow him, but as soon as her boot touched the bog, a strange, inviting warmth spread from her foot to her waist. She also heard a beautiful symphony. She wanted nothing more than to lie down and just sleep through the nightmare.",
+          "speaker": "kirsten-strand"
+        },
+        {
+          "text": "\"[shouting]First Guardian, no!\" Axel screamed, clutching his dislocated shoulder. \"[warning]It's a trap!\"",
+          "speaker": "jordan-axel"
+        },
+        "Farley pulled Kirsten backward with all her strength. Kirsten barely moved, but it was just enough to wake her from her slumber. Kirsten swam through the fog. Farley dragged her by the arm toward the gaping maw in the colossal ribcage. Jimenez was already there, guiding them inside.",
+        "They stumbled into the shelter as the spore storm reached its peak. Outside, everything disappeared in a colorful vortex. The last Scitter rushed inside. Kirsten was pressed into a huge curved rib that ebbed and flowed, matching the rhythm of her gasps. She was reeling from the psychic assault and the horror of watching the bog consume her recruit. They huddled together in the tight space.",
+        {
+          "text": "\"[gritted]Shoulder's out,\" Axel grunted through gritted teeth.",
+          "speaker": "jordan-axel"
+        },
+        {
+          "text": "Farley took a firm hold of his arm and gave it a yank. [#pop]His shoulder popped, and Axel [#roar]roared. \"[relieved]Thanks.\" He flexed his fingers.",
+          "speaker": "jordan-axel"
+        },
+        "Kirsten adjusted her eyes to see what the \"shelter\" really was. The ground behind her was covered with broken shells from huge leathery eggs.",
+        {
+          "text": "\"[wary]Farley,\" Kirsten asked, \"[unsettled]what is this place?\"",
+          "speaker": "kirsten-strand"
+        },
+        "Farley wriggled deeper into the shelter, letting her hand trail across the surface. It wasn't fossilized bone either. The \"ribs\" they were bracing themselves against were like old cartilage that still had some give. The floor was strewn with leathery husks and a gelatinous fluid that clung to their boots.",
+        {
+          "text": "\"[panting]This isn't a cave,\" she panted. \"[realizing]Vurn… This might be a hatchery.\"",
+          "speaker": "sarah-farley"
+        }
+      ]
+    }
+  ]
+}
