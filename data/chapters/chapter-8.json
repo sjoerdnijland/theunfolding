@@ -233,7 +233,7 @@
           "text": "\"[admitting]I don't know,\" Farley admitted. \"[awed]It's alive. It's a biological pump of some kind.\"",
           "speaker": "sarah-farley"
         },
-        "The pulsing blue glow within the organ intensified. Through her comm, Kirsten heard a [#hum-throb]rhythmic humming.",
+        "[#hum-throb]The pulsing blue glow within the organ intensified. Through her comm, Kirsten heard a rhythmic humming.",
         {
           "text": "\"[sharp]Feedback,\" Kirsten snapped, [#tap]tapping the side of her helmet. As she spoke, the organ reacted. The humming grew louder; the throbbing intensified. The mass began to swell, and the blue light within brightened.",
           "speaker": "kirsten-strand"
@@ -242,9 +242,9 @@
           "text": "Farley stepped up to it, so close that it bathed her face in its eerie light. \"[alarmed]It's building to a release!\" she called, then her survival instinct kicked in. \"[shouting]Masks! Masks! Masks!\"",
           "speaker": "sarah-farley"
         },
-        "Kirsten's hand shot to her helmet to find the emergency purge strap. She yanked a pouch free, tore it open, and started the steps she knew by heart: unfold, cover her mouth and nose, connect the oxygen. But she was already too late.",
-        "The membrane became violently porous. [#airhiss-2]It puffed a blue gas that surrounded them.",
-        "The gas hit her before she could seal the mask. It tasted and smelled cloyingly sweet but burned her throat, nose, and lungs. She fought the urge to vomit, knowing it would only make her breathe in more gas. With numb hands, she connected the oxygen tube. Clean air rushed in, washing away the burn.",
+        "Kirsten's hand shot to her helmet to find the emergency purge strap. She [#velcro]yanked a pouch free, tore it open, and started the steps she knew by heart: unfold, cover her mouth and nose, connect the oxygen. But she was already too late.",
+        "The membrane became violently porous. [#airhiss2]It puffed a blue gas that surrounded them.",
+        "The gas hit her before she could seal the mask. It tasted and smelled cloyingly sweet but burned her throat, nose, and lungs. She fought the urge to vomit, knowing it would only make her breathe in more gas. With numb hands, she [#plug]connected the oxygen [#panic-breath]tube. Clean air rushed in, washing away the burn.",
         "She blinked, her vision swimming. The gas was everywhere. The roar in her head was relentless. Through the haze, she saw a ballet of failure. Farley was on her knees, coughing. Nasr clawed at his helmet. Only Jimenez, a few meters back, had managed to get his mask on. Kirsten stumbled over to Nasr, who had dropped his pouch. She picked it up and helped him put it on. Dizziness swept over her. Every movement felt slow and heavy as she plugged the tube into the mask.",
         {
           "text": "The resin walls inhaled and exhaled with her, flexing in and out. The blue haze filled her vision, forming shifting kaleidoscopic patterns. She moved forward as if wading through syrup. A star violently tore itself into being before her eyes.",
