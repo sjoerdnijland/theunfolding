@@ -209,6 +209,7 @@
   margin-left: -10px;
   transition: background 0.15s;
   position: relative;
+  text-wrap: pretty;
 }
 .para:hover { background: rgba(233,74,124,0.05); }
 .para.active {
