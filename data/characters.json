@@ -448,6 +448,20 @@
     "voice_id": "Zlb1dXrM653N07WRdFW3"
   },
   {
+    "name": "Ahmed Nasr",
+    "tag": "char",
+    "role": "Guardian Recruit",
+    "affil": "Directorate Guard / Delta Expedition",
+    "aliases": "Nasr, Ahmed",
+    "appearance": "Ahmed is the larger of the two recruits assigned to First Guardian Strand's detail. He has the brawn of a wrecking ball and the bearing of a young man whose body outpaced his confidence. His face is open and easily readable — flushing green at foul smells, going pale under pressure.",
+    "desc": "A rookie Guardian rushed into deployment after being hazed on Centurion Jax's training deck. Despite his physical strength, Ahmed is the most fragile of Strand's squad.",
+    "chapter": 6,
+    "image": "/assets/char/ahmed_nasr.png",
+    "mj_prompt": "A broad-shouldered young guardian recruit in mud-stained chameleonic armor, eyes wide as alien spores drift through the air around him, helmet light cutting through swamp mist, fear and wonder on his face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "ahmed-nasr",
+    "voice_id": "Rn9Yq7uum9irZ6RwppDN"
+  },
+  {
     "name": "Gary",
     "tag": "char",
     "role": "CIX — Contained Intelligence Executor",

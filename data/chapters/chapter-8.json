@@ -129,7 +129,7 @@
           "speaker": "kirsten-strand"
         },
         "The air shield [#doorhiss]hissed shut behind them, and a [#jungle]cacophony of clicks and chirps greeted them. The guardians, weighed down by nearly twenty kilos of armor, moved clumsily and loudly through the mossy, spongy ground. Farley moved lightly, instinctively choosing firmer ground. Kirsten watched her with professional respect.",
-        "After four beats of hiking, she noticed the soil yielding more. A low undulation moved through her boots. Like walking on cushions. A Scitter [#scitter-whirr]dashed into the dense forest. Following Farley's lead, Kirsten detached her own Scitter from her backpack mag-plate. It darted ahead, its blip fading in the gloom.",
+        "After four beats of hiking, she noticed the soil yielding more. A low undulation moved through her boots. Like walking on cushions. A Scitter dashed into the dense forest. Following Farley's lead, Kirsten detached her own Scitter from her [#scitter-whirr]backpack mag-plate. It darted ahead, its blip fading in the gloom.",
         {
           "text": "\"[low]Jimenez,\" Kirsten growled. \"[demanding]Where are your eyes?\"",
           "speaker": "kirsten-strand"
@@ -176,7 +176,7 @@
     },
     {
       "paragraphs": [
-        "Four uneventful beats blipped by. Kirsten was bored. Sarah Farley's warnings proved hollow. No Shimmercats, no hallucinogenic spores. Jimenez spotted some 'screaming' gramophone plants, but they only moaned in the wind. Even the ground, while cushiony, remained steady. A recruit jumped at what he thought was a tree-branch viper, but it was just a branch. They trudged on, hot and sweaty, through a very strange forest.",
+        "Four uneventful beats blipped by. Kirsten was bored. Sarah Farley's warnings proved hollow. No Shimmercats, no hallucinogenic spores. Jimenez spotted some gramophone plants, but they only moaned in the wind. Even the ground, while cushiony, remained steady. A recruit jumped at what he thought was a tree-branch viper, but it was just a branch. They trudged on, hot and sweaty, through a very strange forest.",
         "The trail stopped. Or rather, it ended violently. The ground veered up at an unnatural angle. Ancient trees stood slanted, roots torn out. Some hung sideways, their leaves brushing the mossy ground.",
         {
           "text": "\"[grave]We've reached the vurnshaft.\" Farley gestured at the disturbed terrain. \"[measured]This is what we're here to study. We think their tunnels are the key to a sustainable presence here.\" The air shifted, trading its sweet smell for a chemical rot. \"[focused]Scitter, ground composition scan,\" Farley commanded into her comm.",
@@ -184,10 +184,10 @@
         },
         "[#scitter-whirr]The Frisbee veered ahead, its sensors sweeping a grid over the disturbed soil. \"DETECTING SUBSURFACE VOID,\" it chirped along the spine that crossed the trail. \"SOIL DENSITY MINIMAL AT THESE COORDINATES.\"",
         {
-          "text": "\"[decisive]That's where we need to dig,\" Farley said, pointing to the spot where her Scitter now hovered. At that moment, two other Scitters [#scitter-whirr]zipped back to the squad. One of them docked itself onto Kirsten's mag-lock with a [#soft-click]soft click.",
+          "text": "\"[decisive]That's where we need to dig,\" Farley said, pointing to the spot where her Scitter now hovered. At that moment, two other Scitters zipped back to the squad. One of them [#scitter-whirr]docked itself onto Kirsten's mag-lock with a [#soft-click]soft click.",
           "speaker": "sarah-farley"
         },
-        "The squad started [#shuv]digging with heated [#burn-hiss]shovels simply called 'shuvs' that cut into the soil like a hot scoop through ice. The soil was a fibrous mat, a mycelium network that occasionally shimmered. The stench grew stronger as they dug deeper. Nasr's probe slid through. He recoiled a step. Axel, the veteran, thrust his hand into the opening and along the smooth, organic inner wall, while the younger Nasr gagged at the stench.",
+        "The squad started [#shuv]digging with heated [#burn-hiss]shovels simply called shuvs that cut into the soil like a hot scoop through ice. The soil was a fibrous mat, a mycelium network that occasionally shimmered. The stench grew stronger as they dug deeper. Nasr's probe slid through. He recoiled a step. Axel, the veteran, thrust his hand into the opening and along the smooth, organic inner wall, while the younger Nasr gagged at the stench.",
         {
           "text": "\"[gruff]Smell that?\" Axel growled. \"[gruff]That's ammonia. Know what that means?\"",
           "speaker": "jordan-axel"
