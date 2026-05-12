@@ -114,12 +114,12 @@
           "text": "\"[firm]If this isn't a repair or rescue, we leave,\" Stacey agreed, her expression firm. \"[firm]You see a ghost, you call it. Loud and clear.\"",
           "speaker": "stacey-kiran"
         },
-        "[#soft-chime]A soft chime echoed through the cockpit. The hiss of depressurization faded.",
+        "[#chime]A soft chime echoed through the cockpit. The hiss of depressurization faded.",
         {
           "text": "\"[reporting]Pressure equalized,\" Stacey reported. \"[reporting]We're clear.\" The Stingray lurched forward. The shaft broadened a little. \"[focused]New readings—gravimetric fluctuations ahead. Approaching the gate. It's open.\" She zoomed in on the schematic, frowning. \"[informative]This is an industrial gravlock. It's for cargo containers.\"",
           "speaker": "stacey-kiran"
         },
-        "As the Stingray crossed the threshold, a deep, steady [#hull-vibration]vibration ran through the hull.",
+        "As [#hull-vibration]the Stingray crossed the threshold, a deep, steady vibration ran through the hull.",
         {
           "text": "\"[strained]I-I-I'm d-d-de-p-powering our g-g-grav-f-field. Hold t-tight!\" Stacey shuddered.",
           "speaker": "stacey-kiran"
@@ -156,7 +156,7 @@
           "text": "\"[wary]Yeah, don't jinx it. I don't want to get stuck here,\" Alistair said, looking around at the huge machinery.",
           "speaker": "alistair-hale"
         },
-        "The ride lasted another pulse, and the shuttle decelerated smoothly. Storage racks came into view. The Stingray dropped into one, and, [#clamps2]with a soft clunk, the clamp let go. A green light flashed on Alistair's console. [#landing]With a thump, the Stingray's magnetic clamps locked, stabilizing her on the platform.",
+        "The ride lasted another pulse, and the shuttle decelerated smoothly. Storage racks came into view. The Stingray dropped into one, and, [#clamps2]with a soft clunk, the clamp let go. [#landing]A green light flashed on Alistair's console. With a thump, the Stingray's magnetic clamps locked, stabilizing her on the platform.",
         {
           "text": "\"[level]Okay, then.\" Alistair exhaled, powering down the main drive. \"[level]Let's keep her on standby. A fast exit will be tricky.\"",
           "speaker": "alistair-hale"
@@ -183,7 +183,7 @@
           "speaker": "alistair-hale"
         },
         {
-          "text": "\"[haunted]The Fold.\" Carlson shuddered as if a ghost had passed through him. \"[haunted]It was… well, you've been through it, right? You must know the feeling. The vertigo? The patterns?\" He looked at them, and they slowly nodded. \"[haunted]And the dreams. We were in there for an eternity. We weren't alone. They came along.\"",
+          "text": "\"[haunted]The Fold.\" Carlson shuddered as if a ghost had passed through him. \"[haunted]It was… well, you've been through it, right? You must know the feeling. The vertigo? The patterns?\" He looked at them, and they slowly nodded. \"[haunted]And the dreams. We were in there for an eternity. We weren't alone. *They* came along.\"",
           "speaker": "marcus-carlson"
         },
         {
@@ -237,7 +237,7 @@
           "text": "Carlson rubbed his eyes. \"[weary]We can't explain it with words. But we can show you. Keep comms open. It's a right stooshie out there.\" He moved into the silent corridor. \"[firm]Stick close. Don't engage with the crew unless you absolutely have to. Best to holster so there are no… misunderstandings.\"",
           "speaker": "marcus-carlson"
         },
-        "Alistair reluctantly clipped his weapon to his hip magnet. Stacey flicked a small silver orb from her belt into the air. [#orb]The Eyewyn orb hummed to life, its blue optic glowing as it hovered over her shoulder, quietly watching everything.",
+        "Alistair [#click-clack]reluctantly clipped his weapon to his hip magnet. Stacey flicked a small silver orb from her belt into the air. [#orb]The Eyewyn orb hummed to life, its blue optic glowing as it hovered over her shoulder, quietly watching everything.",
         "They followed Carlson, while Hague and a hesitant Farley came behind, glancing nervously at the walls.",
         {
           "text": "\"[reporting]Captain, the hydroponic plants… they're growing everywhere,\" Stacey reported. \"[focused]It smells like yeast in here. The entire ship is molding. The walls are coated in fluorescent paste. I see… crewman dancing, slowly, like they're underwater. There's a faint music coming from the walls, or the plants, it seems.\"",
@@ -245,7 +245,8 @@
         },
         "A figure detached from the slow-moving dancers and drifted toward them. A young crewman with a blissful, vacant smile. He held out a piece of glowing blue fungus.",
         {
-          "text": "\"[blissful]The song is sweet today,\" he offered softly. \"[blissful]Won't you have a taste?\""
+          "text": "\"[blissful]The song is sweet today,\" he offered softly. \"[blissful]Won't you have a taste?\"",
+          "speaker": "jason-galindo"
         },
         {
           "text": "Alistair shrugged. \"[wry]Sorry, pal. My doc says no glowing space shrooms.\"",
@@ -285,12 +286,14 @@
         },
         "As if in response, the unmoving figures spoke together in a deep, unified voice.",
         {
-          "text": "\"[unified]I cannot see it.\""
+          "text": "\"[unified]I cannot see it.\"",
+          "speaker": "bris-crew"
         },
         "Alistair and Stacey both jumped.",
         "The crew's calm looks gave way to confusion.",
         {
-          "text": "\"[unified]Because of this 'Now'… I can't see the painting anymore.\""
+          "text": "\"[unified]Because of this 'Now'… I can't see the painting anymore.\"",
+          "speaker": "bris-crew"
         },
         "The glowing murals pulsed, and the spirals shimmered across the glass.",
         {
@@ -298,11 +301,13 @@
           "speaker": "adrian-farley"
         },
         {
-          "text": "\"[unified-awed]Yes!\""
+          "text": "\"[unified-awed]Yes!\"",
+          "speaker": "bris-crew"
         },
         "A wave of realization moved through the room. They all sighed together before their expressions revealed a new sadness.",
         {
-          "text": "\"[unified-sad]This is a brushstroke.\""
+          "text": "\"[unified-sad]This is a brushstroke.\"",
+          "speaker": "bris-crew"
         },
         {
           "text": "\"[whispered]Are they sharing one mind?\" Alistair whispered, his hand moving toward his rifle.",
@@ -318,12 +323,14 @@
         },
         "All at once, every head in the room turned toward them. Alistair gasped.",
         {
-          "text": "\"[awed]To be a single point. To feel… this.\""
+          "text": "\"[awed]To be a single point. To feel… this.\"",
+          "speaker": "bris-crew"
         },
         "A young woman raised her hand and touched her cheek as if with deep realization. The others exchanged worried looks, and their unity crumbled.",
         "A crewman spoke from across the room.",
         {
-          "text": "\"[searching]We were the Beholder. Now, the paint. Just a drop. A single thought, a single stroke.\" His eyes landed on Farley. \"[searching]Other I… what is that voice? You call it Thought. Who is Thought? Are we Thought?\""
+          "text": "\"[searching]We were the Beholder. Now, the paint. Just a drop. A single thought, a single stroke.\" His eyes landed on Farley. \"[searching]Other I… what is that voice? You call it Thought. Who is Thought? Are we Thought?\"",
+          "speaker": "bris-crew"
         },
         {
           "text": "Carlson, sweating profusely, grabbed Farley's arm. \"[urgent]Let them be,\" he said. \"[ominous]You've seen nothing yet.\"",
@@ -340,7 +347,8 @@
         "[#door-hiss]The doors to the Med-Bay hissed open to a carnal theater of horror. A mixture of blood, vomit, and antiseptic hit Stacey's nostrils. A table was lit brightly by an operating lamp. Three crew members stood around it. On the table lay a crewman, his chest cavity gaping open as his ribs were retracted by clamps.",
         "But he was not dead. His eyes eagerly tracked the surgeons' movements. One of the surgeons, a young woman, held the patient's still-beating heart in her cupped hands, tilting it gently with the curiosity of a child examining a seashell.",
         {
-          "text": "\"[curious]We're just taking a quick look under the hood,\" she said. \"[curious]The driver's still here—watching along.\""
+          "text": "\"[curious]We're just taking a quick look under the hood,\" she said. \"[curious]The driver's still here—watching along.\"",
+          "speaker": "bris-crew"
         },
         "The patient on the table flashed Stacey a bloody smile.",
         "Another surgeon traced pulmonary arteries with the tip of a diagnostic laser. The third inspected the underlying tissue of the groin area.",
@@ -358,11 +366,13 @@
         },
         "The surgeons set the beating heart on a tray and looked toward them. Her head tilted, pupils dilated, she asked,",
         {
-          "text": "\"[curious]Can we meet the designer?\""
+          "text": "\"[curious]Can we meet the designer?\"",
+          "speaker": "bris-crew"
         },
         "Stacey flinched. Alistair took a half step back, bumping against the wall. Hague, however, leaned forward, transfixed by the scene.",
         {
-          "text": "The surgeon said, \"[reverent]This vessel is not separate from the Great Body. It's just a chord to the song. Can we change the design? We could make such a beautiful melody.\""
+          "text": "The surgeon said, \"[reverent]This vessel is not separate from the Great Body. It's just a chord to the song. Can we change the design? We could make such a beautiful melody.\"",
+          "speaker": "bris-crew"
         },
         {
           "text": "Alistair nudged Carlson. \"[urgent]Shouldn't we put a stop to this?\" He backed away, left hand clamped over his mouth, clearly fighting the bile rising in his throat.",

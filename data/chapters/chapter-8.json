@@ -163,7 +163,10 @@
           "text": "Farley knelt beside him. \"[wary]Might be a shimmercat track. It's recent.\"",
           "speaker": "sarah-farley"
         },
-        "\"NORTH-NORTHWEST IS CLEAR,\" a Scitter chirped in their ears.",
+        {
+          "text": "\"NORTH-NORTHWEST IS CLEAR,\" a Scitter chirped in their ears.",
+          "speaker": "scitter"
+        },
         "Kirsten ignored it. Her hand gripped her rifle.",
         {
           "text": "\"[urgent]Eyes, eyes, eyes! Look for shimmers,\" Kirsten commanded, her voice dropping to a whisper. \"[whisper]Something's out there.\"",
@@ -182,7 +185,10 @@
           "text": "\"[grave]We've reached the vurnshaft.\" Farley gestured at the disturbed terrain. \"[measured]This is what we're here to study. We think their tunnels are the key to a sustainable presence here.\" The air shifted, trading its sweet smell for a chemical rot. \"[focused]Scitter, ground composition scan,\" Farley commanded into her comm.",
           "speaker": "sarah-farley"
         },
-        "[#scitter-whirr]The Frisbee veered ahead, its sensors sweeping a grid over the disturbed soil. \"DETECTING SUBSURFACE VOID,\" it chirped along the spine that crossed the trail. \"SOIL DENSITY MINIMAL AT THESE COORDINATES.\"",
+        {
+          "text": "[#scitter-whirr]The Frisbee veered ahead, its sensors sweeping a grid over the disturbed soil. \"DETECTING SUBSURFACE VOID,\" it chirped along the spine that crossed the trail. \"SOIL DENSITY MINIMAL AT THESE COORDINATES.\"",
+          "speaker": "scitter"
+        },
         {
           "text": "\"[decisive]That's where we need to dig,\" Farley said, pointing to the spot where her Scitter now hovered. At that moment, two other Scitters zipped back to the squad. One of them [#scitter-whirr]docked itself onto Kirsten's mag-lock with a [#soft-click]soft click.",
           "speaker": "sarah-farley"
@@ -373,7 +379,10 @@
         },
         "She activated her Scitter, and [#scitter-whirr]it whirred to life. It detached from her pack and zipped away deeper into the vurnshaft.",
         "After hundreds of meters in the tight space, the soil became wet. They spotted a faint gray light ahead, with a Scitter hovering in front of it.",
-        "[#alert]\"WARNING: UNSTABLE TERRAIN,\" the Scitter announced. The tunnel seemed to end there.",
+        {
+          "text": "[#alert]\"WARNING: UNSTABLE TERRAIN,\" the Scitter announced. The tunnel seemed to end there.",
+          "speaker": "kirsten-strand"
+        },
         "They emerged one by one into a primordial gloom. It was a swamp. Trees with a thin, pale bark rose from the murky water. A mist clung to the surface, reducing visibility to about thirty meters.",
         {
           "text": "\"[gruff]Where the hell are we?\" Axel growled, his boot [#mud-squelch]sinking ankle-deep into the sludge with a sucking sound. \"[disoriented]Doesn't look like any jungle I've seen.\"",
@@ -414,13 +423,20 @@
           "text": "\"[dry]I wouldn't recommend it,\" Farley replied, focused on the moss. \"[wry]Unless you want your insides to dissolve. You eat the moss, it eats you.\" She meant it as a joke, but Nasr looked horrified.",
           "speaker": "sarah-farley"
         },
-        "[#alert]\"WARNING. ATMOSPHERIC SPORE COUNT RISING,\" a Scitter chirped in their earpieces, its signal already weak and distorted.",
+        {
+          "text": "[#alert]\"WARNING. ATMOSPHERIC SPORE COUNT RISING,\" a Scitter chirped in their earpieces, its signal already weak and distorted.",
+          "speaker": "sarah-farley"
+        },
         {
           "text": "Kirsten scanned the mist. It was getting thicker, swirling in strange, unnatural eddies. \"[ordering]You heard it. Masks on. And stay put.\"",
           "speaker": "kirsten-strand"
         },
+
         "After a few Pulses, the spores appeared as pearly shimmers in the air. Even though their filters were working at maximum capacity, the spores' psychoactive effects reached them. The edges of Kirsten's vision blurred again. The steady drip of water from the hidden branches above started to sound like whispers. She shook her head, trying to clear her mind.",
-        "[#alert]\"ALERT.\" The lead Scitter's voice crackled. \"[#static]SPORE STORM IMMINENT. ATMOSPHERIC DENSITY EXCEEDING SAFE LIMITS. PEAK CONCENTRATION IN THREE PULSES. SEEK IMMEDIATE SHELTER.\"",
+        {
+          "text": "[#alert]\"ALERT.\" The lead Scitter's voice crackled. \"[#static]SPORE STORM IMMINENT. ATMOSPHERIC DENSITY EXCEEDING SAFE LIMITS. PEAK CONCENTRATION IN THREE PULSES. SEEK IMMEDIATE SHELTER.\"",
+          "speaker": "kirsten-strand"
+        },
         {
           "text": "\"[panicked]We have to go b-back!\" Nasr stammered in panic.",
           "speaker": "ahmed-nasr"

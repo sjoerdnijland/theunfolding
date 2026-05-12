@@ -1949,7 +1949,8 @@ function renderChapterPills() {
 // ── Wiki index builder ───────────────────────────────────
 const DATA_FILES = [
   'data/characters.json','data/ships.json','data/locations.json',
-  'data/items.json','data/factions.json','data/biology.json','data/lore.json'
+  'data/items.json','data/factions.json','data/biology.json','data/lore.json',
+  'data/voices.json'
 ];
 
 async function buildWikiIndex() {

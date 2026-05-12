@@ -1,0 +1,14 @@
+[
+  {
+    "id": "bris-crew",
+    "name": "Brisinger Crew",
+    "voice_id": "E0GRvlN3xAdsexmIpD4h",
+    "_note": "Voice-only entry for the integrated/unified Bris crew speakers. Not displayed in the wiki."
+  },
+  {
+    "id": "scitter",
+    "name": "Scitter",
+    "voice_id": "WQYMaGG0zMepTYmv7iJ4",
+    "_note": ""
+  }
+]
