@@ -323,7 +323,7 @@
         },
         "All at once, every head in the room turned toward them. Alistair gasped.",
         {
-          "text": "\"[awed]To be a single point. To feel… this.\"",
+          "text": "\"[awed]To be a single point. [#pause2]To feel… *this*.\"",
           "speaker": "bris-crew"
         },
         "A young woman raised her hand and touched her cheek as if with deep realization. The others exchanged worried looks, and their unity crumbled.",
@@ -348,7 +348,7 @@
         "But he was not dead. His eyes eagerly tracked the surgeons' movements. One of the surgeons, a young woman, held the patient's still-beating heart in her cupped hands, tilting it gently with the curiosity of a child examining a seashell.",
         {
           "text": "\"[curious]We're just taking a quick look under the hood,\" she said. \"[curious]The driver's still here—watching along.\"",
-          "speaker": "bris-crew"
+          "speaker": "læsa"
         },
         "The patient on the table flashed Stacey a bloody smile.",
         "Another surgeon traced pulmonary arteries with the tip of a diagnostic laser. The third inspected the underlying tissue of the groin area.",
@@ -367,12 +367,12 @@
         "The surgeons set the beating heart on a tray and looked toward them. Her head tilted, pupils dilated, she asked,",
         {
           "text": "\"[curious]Can we meet the designer?\"",
-          "speaker": "bris-crew"
+          "speaker": "læsa"
         },
         "Stacey flinched. Alistair took a half step back, bumping against the wall. Hague, however, leaned forward, transfixed by the scene.",
         {
           "text": "The surgeon said, \"[reverent]This vessel is not separate from the Great Body. It's just a chord to the song. Can we change the design? We could make such a beautiful melody.\"",
-          "speaker": "bris-crew"
+          "speaker": "læsa"
         },
         {
           "text": "Alistair nudged Carlson. \"[urgent]Shouldn't we put a stop to this?\" He backed away, left hand clamped over his mouth, clearly fighting the bile rising in his throat.",
