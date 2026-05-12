@@ -67,7 +67,7 @@ function Buy() {
               <div className="bl-card-label">Hardcover</div>
               <div className="bl-card-price">June 1st</div>
             </div>
-            <p className="bl-card-note">First edition · Cloth-bound</p>
+            <p className="bl-card-note">First edition</p>
             <div className="bl-soon-badge">Coming 1 June 2026</div>
           </div>
 

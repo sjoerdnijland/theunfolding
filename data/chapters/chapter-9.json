@@ -1,0 +1,533 @@
+{
+  "title": "The Bris",
+  "sections": [
+    {
+      "type": "epigraph",
+      "paragraphs": [
+        "I was beginning to think the green outside my tent had an appetite for me. [#pause]I was right. It made me long to be back on a ship. Clean. Sterile. [#pause]But then this. [#pause]The Bris."
+      ]
+    },
+    {
+      "heading": "13 CLICKS POST UNFOLDING \nSTINGRAY, EN ROUTE TO THE BRISINGER",
+      "paragraphs": [
+        "Stacey gazed out in awe. [#crackle]Captain Ben Westhoff's voice cracked through the headsets.",
+        {
+          "text": "\"[focused]What do you see, Kiran?\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"[reporting]It's strange. Life support checks out. But the power distribution is wild. Gravity fluxes between point-eight and one-point-two Gs. The bridge is dark, but the observation dome and main mess hall are lit.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"[level]Understood. Is there a way in?\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"[focused]Trying, sir,\" Alistair Hale said, joining in. \"[reporting]We're letting them know we're here. But all docks remain dark; none are open for—\"",
+          "speaker": "alistair-hale"
+        },
+        "He was cut off by Stacey's gasp.",
+        {
+          "text": "\"[urgent]Captain, I'm seeing a signal.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"[urgent]From the Brisinger?\" Westhoff's voice was high.",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"[focused]Some kind of light beam.\" Stacey ran her fingers over the console, zooming in on the viewport. \"[focused]From a maintenance shaft, port side.\"",
+          "speaker": "stacey-kiran"
+        },
+        "Alistair calculated an approach.",
+        {
+          "text": "\"[wry]It'll be a squeeze.\"",
+          "speaker": "alistair-hale"
+        },
+        "Stacey bit her lip. A long pause.",
+        {
+          "text": "Ben cleared his throat. \"[measured]Seems like an invitation. But it's your call.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"[resolved]Aye, Captain,\" Alistair said. He turned to Stacey, and they nodded to each other. \"[firm]We're going in.\" He eased the controls forward, and the Stingray moved closer.",
+          "speaker": "alistair-hale"
+        },
+        "The shuttle slid into the narrow shaft with less than a meter to spare on each wingtip. [#scrape2]The Stingray's back scraped the plates above.",
+        {
+          "text": "\"[wry]Barely scratched the paint.\" Alistair grinned.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[dry]Hull integrity sensors disagree,\" Stacey said dryly. \"[focused]Hold on; there's something ahead. A shimmer.\"",
+          "speaker": "stacey-kiran"
+        },
+        "A hexagonal pattern materialized, bathing the cockpit in a grid of blue lines.",
+        {
+          "text": "\"[wary]Don't tell me that's a hard shield…\" Alistair murmured, his hands hovering over the controls.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[reporting]Negative,\" Stacey reported. \"[informative]It's a low-pressure curtain. We can pass through this airlock in two steps.\"",
+          "speaker": "stacey-kiran"
+        },
+        "[#buzz]The hexagonal field flickered as the Stingray slid through. There, they had to wait for two pulses to complete the depressurization cycle. Stacey and Alistair stared into the empty space.",
+        {
+          "text": "Alistair broke the silence. \"[wry]Alright, Abacus. Vibe check.\"",
+          "speaker": "alistair-hale"
+        },
+        "Stacey paused, hovering her fingers over her console to check her hands.",
+        {
+          "text": "\"[uncertain]My biometrics are elevated.\" Her fingers trembled slightly. \"[uncertain]I feel curious.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"[surprised]Curious?!\" Alistair asked, looking surprised. \"[wry]That's what it feels like to fly into a nebula. This…\" He met her eyes as if she could finish describing a feeling he didn't have the words for.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[focused]Let's assess. I can think of three primary scenarios,\" Stacey said, her analytical mind taking over. Her eyes narrowed and fixed somewhere beyond her displays.",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"[analytical]Three,\" she repeated, already discarding the rest. \"[analytical]One: Total system failure. The sort that's never happened before. Two: We're walking into an ambush. Three…\" She trailed off.",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"[prompting]Three?\" Alistair prompted.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[soft]Three is neither of those,\" she said softly. \"[soft]Something… different.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "Something invasive. Something waiting.",
+          "inner_voice": "stacey-kiran"
+        },
+        {
+          "text": "Alistair nodded. \"[firm]Okay. Rules of engagement. We get the story, we get out.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[firm]If this isn't a repair or rescue, we leave,\" Stacey agreed, her expression firm. \"[firm]You see a ghost, you call it. Loud and clear.\"",
+          "speaker": "stacey-kiran"
+        },
+        "[#soft-chime]A soft chime echoed through the cockpit. The hiss of depressurization faded.",
+        {
+          "text": "\"[reporting]Pressure equalized,\" Stacey reported. \"[reporting]We're clear.\" The Stingray lurched forward. The shaft broadened a little. \"[focused]New readings—gravimetric fluctuations ahead. Approaching the gate. It's open.\" She zoomed in on the schematic, frowning. \"[informative]This is an industrial gravlock. It's for cargo containers.\"",
+          "speaker": "stacey-kiran"
+        },
+        "As the Stingray crossed the threshold, a deep, steady [#hull-vibration]vibration ran through the hull.",
+        {
+          "text": "\"[strained]I-I-I'm d-d-de-p-powering our g-g-grav-f-field. Hold t-tight!\" Stacey shuddered.",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"[strained]Whoa,\" Alistair grunted. \"[strained]W-w-we've l-lost in-n-nertial control. S-s-something's g-got us.\"",
+          "speaker": "alistair-hale"
+        },
+        "The vibration stopped.",
+        {
+          "text": "\"[reporting]Gravgrip,\" Stacey confirmed. \"[focused]It's pulling us to the center. I'm cutting power to the thrusters.\"",
+          "speaker": "stacey-kiran"
+        },
+        "A massive clamp descended from the tunnel's ceiling, its jaw opened, [#clamps3]seizing the Stingray with a rough jolt that ran straight through its frame and into hers. Her chest tightened.",
+        "The gravimetric field intensified, pressing them into their gel-couches.",
+        {
+          "text": "\"[strained]We're being swallowed,\" Alistair muttered through gritted teeth.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[reporting]Magglider,\" Stacey reported. \"[focused]We're already on the rail. I slaved all flight controls to the transit system.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"[sardonic]Wonderful,\" Alistair bit out, taking his hands off the useless yoke in a gesture of disgust.",
+          "speaker": "alistair-hale"
+        },
+        "[#rumble3]The shuttle glided forward through the tube. They passed huge pipes, humming cables, and flickering lights.",
+        {
+          "text": "\"[whispered]This is… efficient,\" Stacey whispered, her curiosity taking over. \"[curious]Whatever happened, the ship's main systems are up.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"[wary]Yeah, don't jinx it. I don't want to get stuck here,\" Alistair said, looking around at the huge machinery.",
+          "speaker": "alistair-hale"
+        },
+        "The ride lasted another pulse, and the shuttle decelerated smoothly. Storage racks came into view. The Stingray dropped into one, and, [#clamps2]with a soft clunk, the clamp let go. A green light flashed on Alistair's console. [#landing]With a thump, the Stingray's magnetic clamps locked, stabilizing her on the platform.",
+        {
+          "text": "\"[level]Okay, then.\" Alistair exhaled, powering down the main drive. \"[level]Let's keep her on standby. A fast exit will be tricky.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[dry]I already ran the simulation,\" Stacey said dryly. \"[dry]I don't think it's even possible.\"",
+          "speaker": "stacey-kiran"
+        },
+        "She started the cockpit depressurization. Once it finished, she unstrapped, stood up, and [#hatchs]opened the hatch behind their seats. It led to a silent, dimly lit depot. No docking crew. Alistair unstrapped and joined her, pistol ready.",
+        "They exchanged a grim look.",
+        {
+          "text": "\"[murmured]Well,\" Alistair murmured, \"[wry]the welcoming committee is a little shy.\"",
+          "speaker": "alistair-hale"
+        },
+        "As they looked out of hatch, a beam cut through the darkness from the far end of the depot. It swept across the floor and stopped on them.",
+        {
+          "text": "\"[raspy]Thank science!\" an officer shouted with a raspy voice. He motioned for them to follow. \"[raspy]I'm Marcus Carlson. XO. I wish I could give you a warmer welcome. For now, come this way. And for the love of your own sanity, keep a low profile.\"",
+          "speaker": "marcus-carlson"
+        },
+        "Stacey and Alistair jumped down from the Stingray's hatch onto the deck. As they approached the man standing ahead, his features became clear. He stood with a gaunt face and haunted yet lucid eyes. His uniform was rumpled and stained. He gripped his pistol at low-ready, aimed at the deck.",
+        "He led them through a series of dark, silent corridors. There were no signs of violence or bodies. The walls were covered in strange, swirling patterns made with what appeared to be nutripaste and glowing algae.",
+        {
+          "text": "\"[unsettled]What the hell happened here?\" Alistair murmured, sweeping his pistol briefly through the smudge.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[haunted]The Fold.\" Carlson shuddered as if a ghost had passed through him. \"[haunted]It was… well, you've been through it, right? You must know the feeling. The vertigo? The patterns?\" He looked at them, and they slowly nodded. \"[haunted]And the dreams. We were in there for an eternity. We weren't alone. They came along.\"",
+          "speaker": "marcus-carlson"
+        },
+        {
+          "text": "Alistair leaned closer to Stacey. \"[wry]Well, whoever they are, the Dáinn could use their decorator.\"",
+          "speaker": "alistair-hale"
+        },
+        "Stacey shot him a stern look. Carlson opened a reinforced door to a barricaded storage room and motioned for them to enter. Two people waited inside.",
+        "One was a female medical officer in a tattered white uniform stained with old blood, her blonde hair tied into a short tail. She held a medical pulsor. The other was a man in his late fifties with a scruffy beard. He seemed somber.",
+        {
+          "text": "Alistair stepped forward. \"[formal]Officers Alistair Hale and Stacey Kiran. We're here to assess your situation and restore communications.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Stacey activated her comms. \"[formal]Captain Westhoff, are you receiving?\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "Ben's voice rumbled reassuringly. \"[reassuring]I'm here. The bridge is listening. Proceed.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "Their escort took a deep breath. \"[weary]Glad to hear ya, Ben. Carlson here. We're with Medical Officer Lena Hague and Fleet Science Chief Adrian Farley. I reckon we're the only ones left with our wits. The others… well, we're just tryin' to keep out of their way.\"",
+          "speaker": "marcus-carlson"
+        },
+        {
+          "text": "\"[trembling]T-there was no w-way to call for help.\" Hague's voice trembled before she managed to steady it. \"[steady]Systems are fried. Well, most of them.\"",
+          "speaker": "lena-hague"
+        },
+        {
+          "text": "Adrian Farley sat in the corner, voice low. \"[low]The ship is singing her own song now.\"",
+          "speaker": "adrian-farley"
+        },
+        "He was in his late fifties. His face had settled into a terrain of deep-set weariness, framed by a scruffy beard gone more ash than brown. His dark blue Science Division uniform hung rumpled and stained. Most striking were the wire-rimmed glasses balanced on his nose. An affectation, almost defiant, as sight could be corrected as casually as slapping on a Band-Aid.",
+        {
+          "text": "Hague dipped her chin and went on, \"[measured]A few clicks ago, some of the crew started humming a pattern. They avoided the deep-core sections, especially the Gravitic Gyroscope Chamber. It was making them restless. That's why we hid there. It's how we realized you were knocking. It took us some time, but we found a way to answer. Thank science.\"",
+          "speaker": "lena-hague"
+        },
+        {
+          "text": "Alistair kept his pistol trained on the corridor. \"[firm]What happened to your captain?\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[mumbled]He saw the Great Architecture,\" Carlson mumbled. \"[mumbled]He's in the mess hall, finger-painting it.\" He rubbed the back of his neck to massage the muscles that had forgotten how to release.",
+          "speaker": "marcus-carlson"
+        },
+        {
+          "text": "Alistair pressed on. \"[probing]So, what's with the trippy art gallery vibe?\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Carlson rubbed his eyes. \"[weary]We can't explain it with words. But we can show you. Keep comms open. It's a right stooshie out there.\" He moved into the silent corridor. \"[firm]Stick close. Don't engage with the crew unless you absolutely have to. Best to holster so there are no… misunderstandings.\"",
+          "speaker": "marcus-carlson"
+        },
+        "Alistair reluctantly clipped his weapon to his hip magnet. Stacey flicked a small silver orb from her belt into the air. [#orb]The Eyewyn orb hummed to life, its blue optic glowing as it hovered over her shoulder, quietly watching everything.",
+        "They followed Carlson, while Hague and a hesitant Farley came behind, glancing nervously at the walls.",
+        {
+          "text": "\"[reporting]Captain, the hydroponic plants… they're growing everywhere,\" Stacey reported. \"[focused]It smells like yeast in here. The entire ship is molding. The walls are coated in fluorescent paste. I see… crewman dancing, slowly, like they're underwater. There's a faint music coming from the walls, or the plants, it seems.\"",
+          "speaker": "stacey-kiran"
+        },
+        "A figure detached from the slow-moving dancers and drifted toward them. A young crewman with a blissful, vacant smile. He held out a piece of glowing blue fungus.",
+        {
+          "text": "\"[blissful]The song is sweet today,\" he offered softly. \"[blissful]Won't you have a taste?\""
+        },
+        {
+          "text": "Alistair shrugged. \"[wry]Sorry, pal. My doc says no glowing space shrooms.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[hissed]Ignore them,\" Stacey hissed, pulling his arm.",
+          "speaker": "stacey-kiran"
+        },
+        "The crewman kept smiling as they passed, his hand still extended in a timeless offer."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "OBSERVATION DOME",
+      "paragraphs": [
+        "Their first stop was the Observation Dome. Carlson shoved the door open. Stars spilled across the colossal viewport. Dozens of crew members stood frozen in worship, their faces turned upward.",
+        {
+          "text": "Alistair paused at the entrance, clearly uneasy. \"[disbelief]What the void are they doing?!\" he burst out, eyes wide with disbelief.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[quiet]They call it 'watching the pattern,'\" Farley said quietly from the back. \"[informative]They claim it shows them things. The birth of stars. The illusion of time.\"",
+          "speaker": "adrian-farley"
+        },
+        "Stacey moved closer to a wall with painted murals.",
+        {
+          "text": "\"[focused]Well, would you look at that,\" she muttered and activated her scanner. \"[fascinated]These aren't just doodles. I see repeating clusters. Glyphs. It's syntactic. The patterns are structured. There's some shared meaning. I'm logging this.\"",
+          "speaker": "stacey-kiran"
+        },
+        "[#orb]Stacey's Eyewyn orb pulsed as it swept the murals.",
+        {
+          "text": "Adrian Farley drifted closer to the glowing murals and traced their shapes with his finger. \"[quiet]It's trying to understand time,\" he said quietly to himself.",
+          "speaker": "adrian-farley"
+        },
+        "As if in response, the unmoving figures spoke together in a deep, unified voice.",
+        {
+          "text": "\"[unified]I cannot see it.\""
+        },
+        "Alistair and Stacey both jumped.",
+        "The crew's calm looks gave way to confusion.",
+        {
+          "text": "\"[unified]Because of this 'Now'… I can't see the painting anymore.\""
+        },
+        "The glowing murals pulsed, and the spirals shimmered across the glass.",
+        {
+          "text": "\"[explaining]It's about perspective,\" Farley said, speaking to the figures. \"[explaining]You're inside the brushstroke now. That's why you can't see the whole painting.\"",
+          "speaker": "adrian-farley"
+        },
+        {
+          "text": "\"[unified-awed]Yes!\""
+        },
+        "A wave of realization moved through the room. They all sighed together before their expressions revealed a new sadness.",
+        {
+          "text": "\"[unified-sad]This is a brushstroke.\""
+        },
+        {
+          "text": "\"[whispered]Are they sharing one mind?\" Alistair whispered, his hand moving toward his rifle.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Stacey squinted at her slate. \"[focused]Are their brainwaves synchronized?\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "Hague peered over her shoulder. \"[reporting]They phase in and out.\"",
+          "speaker": "lena-hague"
+        },
+        "All at once, every head in the room turned toward them. Alistair gasped.",
+        {
+          "text": "\"[awed]To be a single point. To feel… this.\""
+        },
+        "A young woman raised her hand and touched her cheek as if with deep realization. The others exchanged worried looks, and their unity crumbled.",
+        "A crewman spoke from across the room.",
+        {
+          "text": "\"[searching]We were the Beholder. Now, the paint. Just a drop. A single thought, a single stroke.\" His eyes landed on Farley. \"[searching]Other I… what is that voice? You call it Thought. Who is Thought? Are we Thought?\""
+        },
+        {
+          "text": "Carlson, sweating profusely, grabbed Farley's arm. \"[urgent]Let them be,\" he said. \"[ominous]You've seen nothing yet.\"",
+          "speaker": "marcus-carlson"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "MED-BAY",
+      "paragraphs": [
+        "[#door-hiss]The doors to the Med-Bay hissed open to a carnal theater of horror. A mixture of blood, vomit, and antiseptic hit Stacey's nostrils. A table was lit brightly by an operating lamp. Three crew members stood around it. On the table lay a crewman, his chest cavity gaping open as his ribs were retracted by clamps.",
+        "But he was not dead. His eyes eagerly tracked the surgeons' movements. One of the surgeons, a young woman, held the patient's still-beating heart in her cupped hands, tilting it gently with the curiosity of a child examining a seashell.",
+        {
+          "text": "\"[curious]We're just taking a quick look under the hood,\" she said. \"[curious]The driver's still here—watching along.\""
+        },
+        "The patient on the table flashed Stacey a bloody smile.",
+        "Another surgeon traced pulmonary arteries with the tip of a diagnostic laser. The third inspected the underlying tissue of the groin area.",
+        {
+          "text": "Stacey's voice choked to a whisper as she pressed her comm. \"[choked]Captain… are you receiving this?\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "Westhoff's delayed reply was strained. \"[strained]We… we are watching the feed. Stay steady.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"[whispered]He doesn't seem to be in pain,\" Hague whispered. \"[clinical]Their nervous systems aren't registering trauma. They call this 'exploring the vessel.' They are trying to understand our blueprint.\"",
+          "speaker": "lena-hague"
+        },
+        "The surgeons set the beating heart on a tray and looked toward them. Her head tilted, pupils dilated, she asked,",
+        {
+          "text": "\"[curious]Can we meet the designer?\""
+        },
+        "Stacey flinched. Alistair took a half step back, bumping against the wall. Hague, however, leaned forward, transfixed by the scene.",
+        {
+          "text": "The surgeon said, \"[reverent]This vessel is not separate from the Great Body. It's just a chord to the song. Can we change the design? We could make such a beautiful melody.\""
+        },
+        {
+          "text": "Alistair nudged Carlson. \"[urgent]Shouldn't we put a stop to this?\" He backed away, left hand clamped over his mouth, clearly fighting the bile rising in his throat.",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Carlson pulled Alistair farther from the doorway. \"[grim]And become their next science project?\" he growled grimly.",
+          "speaker": "marcus-carlson"
+        },
+        "Without waiting, he led the others away down another dark corridor."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "MAIN LEISURE HALL",
+      "paragraphs": [
+        "They headed to the Main Leisure Hall. As the doors opened, a strange music came from a gramophone-like flower. The air reeked of sweat, feces, and something sweet. Around thirty nude crew members filled the room. \nThey laughed maniacally and moaned in ecstatic frenzy.\n",
+        "Stacey fixed her eyes on her feet and squeezed through the crowd, clinging to Carlson. Alistair, though, couldn’t look away. A couple near him clung to each other, kissing aggressively, like they were searching each other from the inside out. A scrape of teeth made his skin crawl. Around him, bodies coiled in slow, serpentine rhythms.",
+        "People moved as if guided by a single tide, hips and shoulders rolling, breath syncing without anyone calling it out.  They were writhing in what could only be described as a Bacchian orgy. He noticed a line of people holding hands, their chests rising and falling as one, building up to a collective orgasm.",
+        "Alistair spotted something at the center of the writhing mass that made his blood run cold. Two children, no older than ten. The boy and girl were led by a large, blissful woman through some kind of ceremony. The woman, with oiled breasts, chanted and anointed their foreheads as their individuality dissolved and they too started swaying along with the others. ",
+        {
+          "text": "His vision blurred, as if his eyes were protesting that he shouldn’t be seeing this. \n“God…” Alistair gasped. “There are children…” He gagged, covering his mouth as he stumbled back. Pure anger rushed through him. He glared at Carlson and Farley, eyes burning, fists tight, a roar rising in his chest. “FUCKING FREAKSHOW!” He reached for his pistol.\n",
+          "speaker": "alistair-hale"
+        },{
+          "text": "Carlson and Farley grabbed his arms right away. “Hale, no!” Carlson said through gritted teeth.",
+          "speaker": "marcus-carlson"
+        },{
+          "text": "But Alistair was strong, driven by raw rage. He fought against their hold. “DEMONS!” he shouted. He fixed his furious gaze on the XO. “WHY ARE YOU LETTING THIS HAPPEN?! DO SOMETHING!”",
+          "speaker": "marcus-carlson"
+        },
+        "Lena Hague injected him. Alistair’s struggle eased as the sedative took immediate effect. His eyes rolled back, and he went limp in their arms."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "MESS HALL",
+      "paragraphs": [
+        "Adrian propped the tranquilized Hale next to the doors entering the mess hall. The man was a heavy sack of meat. He wiped a smudge of Hale's sweat onto his own trousers. Lena Hague snapped her medical kit shut after checking Hale's vitals, though her eyes were darting toward the mess hall doors like she expected something to crawl through the steel.",
+        {
+          "text": "\"[reporting]He won't wake up for at least another beat,\" Hague said.",
+          "speaker": "lena-hague"
+        },
+        {
+          "text": "Adrian shifted his weight. \"[measured]Before we go in, there's something you should know. When we left the Fold, some kind of beings came with us. I don't know if they're guests or parasites. They're inside our crew, wearing them like clothes. They seem just as confused as we are. Most of them are like children. But the one in Captain Gupta is different. It's older.\" Adrian motioned to the bulkheads surrounding them. \"[grave]The ship responds to him. The power, the gravity, the music, it's all tied to his moods. I think the glowing stuff he's painting is connected to him, spreading through the ship like a neural network.\"",
+          "speaker": "adrian-farley"
+        },
+        {
+          "text": "Kiran leaned in. \"[probing]Can you reason with him?\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"[measured]Sometimes,\" Adrian said. \"[reflective]The captain is still in there, but he's also something else now. He's curious, not hostile. Most of the time, he's just painting.\"",
+          "speaker": "adrian-farley"
+        },
+        "He pushed the doors open.",
+        "The mess hall didn't look like a mess hall anymore, but more like the inside of a lung. One man sat on the floor in a pool of soft light. He had a wild black beard, and his uniform was unzipped to the waist, revealing a chest matted with hair and smeared with a luminescent sludge that pulsed in time with the ship's reactor. He was finger-painting spirals on the deck plates.",
+        "Kiran stayed back, her eyes scanning the room with cold calculus. Hague too remained near the door. Carlson's boots made a [#scuff]dull clack-clack until he stopped next to a condiment station.",
+        {
+          "text": "\"[dry]Captain Raj Gupta,\" Adrian said with a hint of dry sarcasm. \"[dry]Decorated leader of the Brisinger.\"",
+          "speaker": "adrian-farley"
+        },
+        "A smile crinkled the corners of the captain's eyes. But his eyes were not human. They shone like golden supernovas, wild and full of a strange, deep joy.",
+        {
+          "text": "\"[booming]Ah!\" he boomed. \"[joyful]Welcome, little Colors. Did you come to see the pattern?\" He pointed to the mural, then to himself, full of wonder. \"[wonder]To have only two eyes! To be stuck behind one face! Now I have to wait for each stroke to show what I've made.\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "\"[probing]Captain Gupta,\" Adrian asked, \"[probing]where did you come from?\"",
+          "speaker": "adrian-farley"
+        },
+        "Gupta dipped his fingers in the paste and painted a new nebula on the floor. He kept his eyes on Farley.",
+        {
+          "text": "\"[gentle]Let's trade. A place is like a cup,\" Gupta said, his voice deep but gentle. \"[gentle]I come from the ocean. Now I am in a cup.\"",
+          "speaker": "rajendra-gupta"
+        },
+        "His glowing hands [#clap]clapped together in a sudden loud motion. It [#impact]shook the whole ship. Carlson nearly buckled to his knees, his rifle clattering against his chest. Kiran grabbed a bolted-down chair. Hague clung to the door and let out a short, sharp gasp as the air pressure spiked. Adrian's ears popped.",
+        {
+          "text": "\"[probing]Now tell me, does your cup feel too small for you?\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "The question struck Adrian. He thought about his own ambition and constant search for knowledge.",
+          "inner_voice": "adrian-farley"
+        },
+        {
+          "text": "\"[honest]All the time,\" he said.",
+          "speaker": "adrian-farley"
+        },
+        "[#clap]Gupta [#impact]laughed and clapped his hands just as loudly.",
+        {
+          "text": "\"[joyful]Now, you ask.\"",
+          "speaker": "rajendra-gupta"
+        },
+        "Adrian paused and asked,",
+        {
+          "text": "\"[probing]Why are you in the cup?\"",
+          "speaker": "adrian-farley"
+        },
+        "The captain plunged his entire hand into a bucket of paste and smeared it across his chest.",
+        {
+          "text": "\"[matter-of-fact]This vessel scooped me up.\" He looked at his hands, then at Farley's, clapped again.",
+          "speaker": "rajendra-gupta"
+        },
+        "[#clap-shock]A violent strike sent droplets of the glowing paste flying like shrapnel. Adrian dropped to his knees as the gravity doubled, turning his limbs to lead. Behind him, he heard Carlson [#cart-crash]smash into the condiment station hard, scattering squeeze packs and canisters across the deck in a clattering burst.",
+        "Adrian steadied himself.",
+        {
+          "text": "\"[careful]This 'scoop,'\" he said, choosing his words carefully. \"[careful]Did it first empty the vessel? The soul?\"",
+          "speaker": "adrian-farley"
+        },
+        {
+          "text": "Gupta's face hardened. \"[firm]No!\" He [#clap]clapped.",
+          "speaker": "rajendra-gupta"
+        },
+        "Adrian glanced at Kiran, now on all fours, Carlson bleeding from a scuffed temple, Hague lying down, clutching her medical kit like a talisman.",
+        {
+          "text": "\"[teaching]The ink isn't washed away by the water. It dances with it,\" Gupta said calmly. \"[teaching]But your soul tries so hard to stay as ink, refusing to mix. It resists this dance. Why resist when the dance brings only love and growth?\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "The question landed in his gut.",
+          "inner_voice": "adrian-farley"
+        },
+        {
+          "text": "\"[honest]Because when it blends, it thinks it will stop existing. It's afraid of changing. Dying.\"",
+          "speaker": "adrian-farley"
+        },
+        {
+          "text": "\"[disgusted]Fear…\" Gupta said, his smile fading with disgust. \"[disgusted]Should the paint be afraid of becoming the painting?\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "\"[urgent]We can't get back—we lost our way home,\" Adrian cut in before Gupta's next clap could land.",
+          "speaker": "adrian-farley"
+        },
+        {
+          "text": "\"[mournful]We are lost too. We lost the Great Gaze that held us. Now we are flowing in many directions, and our spring is running dry.\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "Adrian swallowed. \"[probing]Spring?\"",
+          "speaker": "adrian-farley"
+        },
+        {
+          "text": "Gupta smiled knowingly. \"[knowing]Those who are thirsty seek the Spring. It's where you remember you were once the ocean,\" he answered firmly. \"[knowing]It's where everything returns. You search for it your whole life, Adrian Farley, even if you don't know its name.\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "The captain's words stirred a deep longing in Adrian.",
+          "inner_voice": "adrian-farley"
+        },
+        "Gupta reached out his pasty hand.",
+        {
+          "text": "\"[inviting]Help us find the way. We'll help you quench your thirst.\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "Hague found her voice. \"[warning]Farley, don't.\"",
+          "speaker": "lena-hague"
+        },
+        "Adrian hesitated, heart thundering in his chest, but then he reached out. Their hands met. The captain's grip was electric, almost too alive. As they held hands, the ship seemed to sigh in relief, valves easing open, bulkheads moaning as stored tension drained from the frame. When they let go, Adrian checked his hand. Where the glowing paste came into contact with his skin, a strange light traced his veins."
+      ]
+    }
+  ]
+}
