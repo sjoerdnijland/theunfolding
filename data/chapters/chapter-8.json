@@ -193,7 +193,7 @@
           "text": "\"[decisive]That's where we need to dig,\" Farley said, pointing to the spot where her Scitter now hovered. At that moment, two other Scitters zipped back to the squad. One of them [#scitter-whirr]docked itself onto Kirsten's mag-lock with a [#soft-click]soft click.",
           "speaker": "sarah-farley"
         },
-        "The squad started [#shuv]digging with heated [#burn-hiss]shovels simply called shuvs that cut into the soil like a hot scoop through ice. The soil was a fibrous mat, a mycelium network that occasionally shimmered. The stench grew stronger as they dug deeper. Nasr's probe slid through. He recoiled a step. Axel, the veteran, thrust his hand into the opening and along the smooth, organic inner wall, while the younger Nasr gagged at the stench.",
+        "The squad started [#shuv]digging with heated [#burn-hiss]shovels simply called shuvs that cut into the soil like a hot scoop through ice. The soil was a fibrous mat, a mycelium network that occasionally shimmered. The stench grew stronger as they dug deeper. Nasr's shuv slid through. He recoiled a step. Axel, the veteran, thrust his hand into the opening and along the smooth, organic inner wall, while the younger Nasr gagged at the stench.",
         {
           "text": "\"[gruff]Smell that?\" Axel growled. \"[gruff]That's ammonia. Know what that means?\"",
           "speaker": "jordan-axel"
@@ -265,7 +265,7 @@
           "inner_voice": "kirsten-strand"
         },
         {
-          "text": "*AIA*",
+          "text": "*Aia*",
           "inner_voice": "kirsten-strand"
         },
         {
@@ -277,7 +277,7 @@
           "inner_voice": "kirsten-strand"
         },
         {
-          "text": "*LYFYA*",
+          "text": "*Lyfya*",
           "inner_voice": "kirsten-strand"
         },
         {
@@ -381,7 +381,7 @@
         "After hundreds of meters in the tight space, the soil became wet. They spotted a faint gray light ahead, with a Scitter hovering in front of it.",
         {
           "text": "[#alert]\"WARNING: UNSTABLE TERRAIN,\" the Scitter announced. The tunnel seemed to end there.",
-          "speaker": "kirsten-strand"
+          "speaker": "scitter"
         },
         "They emerged one by one into a primordial gloom. It was a swamp. Trees with a thin, pale bark rose from the murky water. A mist clung to the surface, reducing visibility to about thirty meters.",
         {
@@ -425,7 +425,7 @@
         },
         {
           "text": "[#alert]\"WARNING. ATMOSPHERIC SPORE COUNT RISING,\" a Scitter chirped in their earpieces, its signal already weak and distorted.",
-          "speaker": "sarah-farley"
+          "speaker": "scitter"
         },
         {
           "text": "Kirsten scanned the mist. It was getting thicker, swirling in strange, unnatural eddies. \"[ordering]You heard it. Masks on. And stay put.\"",
@@ -435,7 +435,7 @@
         "After a few Pulses, the spores appeared as pearly shimmers in the air. Even though their filters were working at maximum capacity, the spores' psychoactive effects reached them. The edges of Kirsten's vision blurred again. The steady drip of water from the hidden branches above started to sound like whispers. She shook her head, trying to clear her mind.",
         {
           "text": "[#alert]\"ALERT.\" The lead Scitter's voice crackled. \"[#static]SPORE STORM IMMINENT. ATMOSPHERIC DENSITY EXCEEDING SAFE LIMITS. PEAK CONCENTRATION IN THREE PULSES. SEEK IMMEDIATE SHELTER.\"",
-          "speaker": "kirsten-strand"
+          "speaker": "scitter"
         },
         {
           "text": "\"[panicked]We have to go b-back!\" Nasr stammered in panic.",
