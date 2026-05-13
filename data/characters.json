@@ -557,5 +557,33 @@
     "mj_prompt": "A thoughtful architect in a flagship Freya uniform with Valkyrie shoulder emblem at a holographic well-being matrix display, fingers paused mid-design, expression of quiet conviction, the COG's blue lattice reflected in his eyes, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "kaspar-savannen",
     "voice_id": "tahWrGVL3fokg7ZEUr3o"
+  },
+  {
+    "name": "Marco Thieman",
+    "tag": "char",
+    "role": "Ranger Squad Leader",
+    "affil": "Delta Expedition / The Leaf",
+    "aliases": "Marco, Thieman",
+    "appearance": "Marco is a wiry man who appears permanently tanned. He smells faintly of citrus from the insect-repelling ointment his squad uses before going into the bush. He carries a wristpad.",
+    "desc": "Leader of one of the ranger squads operating out of \"The Leaf\" in the Mairee Delta, running parallel to Kirsten Strand's detail. Thieman pushes his teams into the deep vurnshafts in search of a nexus that could map the Myco-Rhizomic System from below. He is fatalistic in tone — shaped by repeated losses — and speaks of the Delta with the resignation of a man who already knows how the story ends.",
+    "chapter": 10,
+    "image": "/assets/char/marco_thieman.png",
+    "mj_prompt": "A wiry permanently tanned ranger squad leader in mud-streaked Delta field gear at the edge of a freshly cut vurnshaft entrance at dusk, wristpad illuminated in his hand, his squad geared up behind him preparing to descend, expression of weary fatalism — the resignation of a man who already knows how the story ends, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "marco-thieman",
+    "voice_id": "2OcnG4mH3jIMtWz3vKus"
+  },
+  {
+    "name": "Kenji Rojas",
+    "tag": "char",
+    "role": "Hydrology Tech",
+    "affil": "Delta DROP stations / DROP 7",
+    "aliases": "Rojas, Kenji",
+    "appearance": "Kenji is a younger hydrology tech, lean from the demands of fieldwork. When introduced he is pale and immobilized from a compound fracture of the leg, the exposed bone of the fibula visible beneath a makeshift splint. ",
+    "desc": "A junior hydrology technician stationed at DROP 7 under Leon Wittler. ",
+    "chapter": 10,
+    "image": "/assets/char/kenji_rojas.png",
+    "mj_prompt": "A pale young hydrology technician lying on a field cot inside a battered river outpost, makeshift splint cut away to reveal a compound leg fracture, exposed bone glinting under the harsh inspection lamp, jaw clenched against the pain, sweat beading on his forehead, banks of leaking water-purifier conduits behind him, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
+    "id": "kenji-rojas",
+    "voice_id": "HRttR5MBBbw7AvtIFoRq"
   }
 ]

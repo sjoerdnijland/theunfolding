@@ -424,7 +424,7 @@
           "speaker": "sarah-farley"
         },
         {
-          "text": "[#alert]\"WARNING. ATMOSPHERIC SPORE COUNT RISING,\" a Scitter chirped in their earpieces, its signal already weak and distorted.",
+          "text": "[#alert-pong]\"WARNING. ATMOSPHERIC SPORE COUNT RISING,\" a Scitter chirped in their earpieces, its signal already weak and distorted.",
           "speaker": "scitter"
         },
         {
@@ -434,7 +434,7 @@
 
         "After a few Pulses, the spores appeared as pearly shimmers in the air. Even though their filters were working at maximum capacity, the spores' psychoactive effects reached them. The edges of Kirsten's vision blurred again. The steady drip of water from the hidden branches above started to sound like whispers. She shook her head, trying to clear her mind.",
         {
-          "text": "[#alert]\"ALERT.\" The lead Scitter's voice crackled. \"[#static]SPORE STORM IMMINENT. ATMOSPHERIC DENSITY EXCEEDING SAFE LIMITS. PEAK CONCENTRATION IN THREE PULSES. SEEK IMMEDIATE SHELTER.\"",
+          "text": "[#alert-pong][#static]S\"ALERT.\" The lead Scitter's voice crackled. \"PORE STORM IMMINENT. ATMOSPHERIC DENSITY EXCEEDING SAFE LIMITS. PEAK CONCENTRATION IN THREE PULSES. SEEK IMMEDIATE SHELTER.\"",
           "speaker": "scitter"
         },
         {
@@ -445,7 +445,7 @@
           "text": "\"[firm]Negative!\" Kirsten ruled, watching her visor-feed intently. \"[focused]My Scitter is scanning a dense mass a hundred meters west of our position, a geological formation of some kind. A rock outcropping, maybe. It provides cover.\"",
           "speaker": "kirsten-strand"
         },
-        "They plunged into the bog. [#jungle-whispers]The mist was growing thicker. The whispers grew louder. The ground appeared to swirl, turning to some kind of oil. A cacophony surged toward them.",
+        "They [#jungle-whispers]plunged into the bog. The mist was growing thicker. The whispers grew louder. The ground appeared to swirl, turning to some kind of oil. A cacophony surged toward them.",
         {
           "text": "Jimenez halted. \"[urgent]There!\" he yelled. \"[hopeful]I think it's the shelter!\"",
           "speaker": "alani-jimenez"
