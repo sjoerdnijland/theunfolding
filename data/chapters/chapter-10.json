@@ -15,7 +15,8 @@
           "speaker": "kirsten-strand"
         },
         "The spore storm was over, and the jungle appeared peaceful again. They were a man short. A boy. The space where Nasr should have been was a gaping wound in their formation.",
-        "Once inside the air shield, the squad scattered. Jordan Axel gave Kirsten Strand a weary look of shared grief before turning away. Kirsten didn't stop at the washing station. [#muddy-boots]She marched straight through camp, her heavy boots muddying the deck plates. She entered her post and [#doorslam]slammed the door, and for a moment, it was quiet. Then [#crash]a crash, followed by another [#roar-female2]roar from within.",
+        "Once inside the air shield, the squad scattered. Jordan Axel gave Kirsten Strand a weary look of shared grief before turning away.",
+        "Kirsten didn't stop at the washing station. [#muddy-boots]She marched straight through camp, her heavy boots muddying the deck plates. She entered her post and [#doorslam]slammed the door, and for a moment, it was quiet. Then [#crash]a crash, [#roar-female2]followed by another roar from within.",
         "A pulse later, Sarah followed her in. The station was already a mess. A supply crate lay thrown against the far wall.",
         {
           "text": "\"[soft]Kirsten, please,\" Sarah said softly. \"[soft]This is not your fault.\"",
@@ -42,7 +43,7 @@
           "speaker": "kirsten-strand"
         },
         {
-          "text": "\"[steady]And how would you have it?\" Sarah asked, chin up.",
+          "text": "\"[steady]And how would *you* have it?\" Sarah asked, chin up.",
           "speaker": "sarah-farley"
         },
         {
@@ -51,7 +52,7 @@
         },
         "The anger left Kirsten's eyes. It had burned her out. Kirsten slumped onto the overturned crate. Sarah moved beside her, and, after a pause, put an arm around Kirsten's armored shoulders. She seemed much smaller now. She rested her head against Sarah's, their tears touching, sealing a peace words couldn't have brokered.",
         {
-          "text": "Sarah took Kirsten's trembling hand and pressed it flat against her own chest. \"[soft]Do you feel that?\" Sarah said softly. \"[soft]My heart is racing. I'm scared. I need you.\"",
+          "text": "Sarah took Kirsten's trembling hand and pressed it flat against her own chest. \"[soft]Do you feel that?\" Sarah said softly. \"[soft]My heart is racing.[#pause]I'm scared. [#pause2]I need you.\"",
           "speaker": "sarah-farley"
         }
       ]
@@ -166,7 +167,7 @@
     {
       "paragraphs": [
         "The Hopper was a flying flatbed truck. It was a square, armored platform, five meters on each side, powered by gravitic thrusters. There was no sleek hull or cockpit, only a compact control console, two fold-out seats with harnesses, magnetic clamps, and a cargo net. It was designed for emergency jumps from one place to another.",
-        "Once the medical crates were secured, Kirsten strapped herself in and locked her magboots to the deck. Sarah took the seat beside her and started up the controls. [#alarm-groan]The Hopper's power cells kicked in with a low [#shuddering-plates]groan, making the deck plates shake. The [#thruster]gravitic thrusters' coils glowed blue-white. [#klaxon]A klaxon sounded twice, warning of an imminent grav-lift departure. The air around the platform shimmered.",
+        "Once the medical crates were secured, Kirsten strapped herself in and locked her magboots to the deck. Sarah took the seat beside her and started up the controls. [#alarm-groan]The Hopper's power cells kicked in with a low [#shuddering-plates]groan, making the deck plates shake. The [#thruster]gravitic thrusters' coils glowed blue-white. [#claxon]A klaxon sounded twice, warning of an imminent grav-lift departure. The air around the platform shimmered.",
         {
           "text": "\"[yelling]Here we go!\" Sarah yelled over the noise, gripping the controls.",
           "speaker": "sarah-farley"
@@ -203,7 +204,7 @@
           "text": "\"[sharp]'Ma'am'?! That's two shit-clicks!\"",
           "speaker": "kirsten-strand"
         },
-        "Then they fell. The main thruster fell silent, but the smaller [#thruster-burst]maneuvering thrusters fired in rough, rattling bursts, keeping the platform mostly steady. They began a nerve-wracking glide toward the river.",
+        "Then they fell. The main thruster fell silent, but the smaller [#thruster-burst]maneuvering thrusters fired in rough, [#thruster-burst]rattling bursts, keeping the platform mostly steady. They began a nerve-wracking glide toward the river.",
         {
           "text": "\"[shouting]Brace!\" Sarah yelled.",
           "speaker": "sarah-farley"
@@ -359,7 +360,7 @@
           "speaker": "kenji-rojas"
         },
         {
-          "text": "Kirsten checked her wristband. \"[quiet]Steady signal though O3; it can momentarily route us through to FOX,\" she suggested quietly.",
+          "text": "Kirsten checked her wristband. \"[quiet]Steady signal through O3; it can momentarily route us through to FOX,\" she suggested quietly.",
           "speaker": "kirsten-strand"
         },
         {
