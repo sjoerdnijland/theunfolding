@@ -210,7 +210,9 @@
           "text": "\"[furious]Cut this nonsense!\" he snapped, echoing in the silent chamber. \"[arrogant]I'm the director. I speak because I command![#pause] Now move aside.\"",
           "speaker": "ulre-corbin"
         },
-        "The guardian swung aside. Ulre surged past him and strode straight onto the main floor. There, on a raised platform, loomed an altar—broad and severe, cut from a single slab of pale stone veined with darker threads carved into it with geometric precision. The shallow grooves converged toward a central depression, as if designed to guide liquid or light. Along the perimeter, unfamiliar etchings caught the illumination at certain angles. Next to it rested a stone sarcophagus. Massive. Lid seamless, edges exact to the point of arrogance. No tool marks. No join lines. It sat slightly elevated on a plinth that mirrored the altar's proportions. The chamber itself seemed as if hewn around it. Walls pulled back, ceiling rising just enough to grant them dominance, every line of sight leading here. Ulre's jaw tightened. All that theater. All that waste.",
+        "The guardian swung aside. Ulre surged past him and strode straight onto the main floor. There, on a raised platform, loomed an altar—broad and severe, cut from a single slab of pale stone veined with darker threads carved into it with geometric precision. The shallow grooves converged toward a central depression, as if designed to guide liquid or light. Along the perimeter, unfamiliar etchings caught the illumination at certain angles.",
+        "Next to it rested a stone sarcophagus. Massive. Lid seamless, edges exact to the point of arrogance. No tool marks. No join lines. It sat slightly elevated on a plinth that mirrored the altar's proportions. The chamber itself seemed as if hewn around it. Walls pulled back, ceiling rising just enough to grant them dominance, every line of sight leading here.",
+        "Ulre's jaw tightened. *All that theater. All that waste.",
         "The three Masons and two guardians fanned out to the cardinal points of the chamber. A new figure then stepped from a shadowed corner in the eastern wall. He was an older man, clad in a different style of suit. He did not wear a Köldur but a heavy robe flecked with silver stars across his shoulders. His nose and mouth were masked, but despite the freezing cold, he wore no visor. His face was gray. On his chest swung a detailed jewel: a cross wreathed in rays of light. He radiated the authority of a Magician.",
         "He halted before Ulre, pinning him with a stare.",
         {
@@ -268,13 +270,13 @@
         "The brutal cold of the Plateau's deep rock did not seem to affect her, but it cut Ulre sharply, even through his Köldur. He shivered as he watched her so exposed.",
         "Behind her, a golden hexagonal grid appeared and resolved into a honeycomb structure. The light traversed her figure, and her form merged with the hive, her limbs elongating. The geometry behind her unfolded into wings. She transformed into a human-queen bee hybrid.",
         {
-          "text": "She spoke solemnly. \"[judgment]All my bees shall work honestly so that they may live peacefully.[#pause] This is our virtue. You've condemned them to an endless night.[#pause] How can we feed their heads when you starve their hearts and grind their bodies to dust?\"",
+          "text": "She spoke solemnly. \"[judgment]All my bees shall work honestly so that they may live peacefully.[#pause] This is our virtue. [#pause2]You've condemned them to an endless night.[#pause] How can we feed their heads when you starve their hearts and grind their bodies to dust?\"",
           "speaker": "queen"
         },
         "It was a judgment.",
         {
           "text": "\"[decree]You will provide relief,\" the Magician said. \"[decree]Restore full rations and rest cycles.[#pause] Our work is sacred. You will treat it with its due reverence.\"",
-          "speaker": "queen"
+          "speaker": "magician"
         },
         {
           "text": "The Queen raised her hand. \"[decree]No virtue, no labor, no home.\"",
