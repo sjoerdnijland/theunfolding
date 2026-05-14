@@ -1823,10 +1823,14 @@ function buildWordTimings(text, alignment) {
 
   // Merge tokens that start with an apostrophe into the preceding word.
   // ElevenLabs occasionally splits contractions: ["let", "'s"] or ["don", "'t"].
-  // Merging keeps word count in sync with the display text.
+  // Restrict to known English contraction tails — otherwise an opening
+  // single-quote in nested dialogue (e.g. 'maybe next time.') merges into
+  // the previous word and drifts the karaoke highlight by one for every
+  // word that follows.
+  const CONTRACTION_TAIL = /^['‘’ʼ](s|t|d|ll|re|ve|m|em)[.,!?:;)\]"'’”]*$/i;
   const merged = [];
   for (const w of words) {
-    if (/^['‘’ʼ]/.test(w.text) && merged.length > 0) {
+    if (CONTRACTION_TAIL.test(w.text) && merged.length > 0) {
       const prev = merged[merged.length - 1];
       prev.text += w.text;
       prev.end   = w.end;
