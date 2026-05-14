@@ -10,5 +10,11 @@
     "name": "Scitter",
     "voice_id": "WQYMaGG0zMepTYmv7iJ4",
     "_note": ""
+  },
+  {
+    "id": "guardian",
+    "name": "Guardian",
+    "voice_id": "MbrxCIK2KCrGGqsm5dEq",
+    "_note": "Voice-only entry for Ivaldi/Plateau guardians (Order of Magicians enforcers). First speaks in chapter 13 — ritual questions at the chamber steps, and short directives. Fill in the ElevenLabs voice_id."
   }
 ]
