@@ -67,7 +67,7 @@
         },
         "Dr. Martel's silver eyes fixed on him.",
         {
-          "text": "\"[steady]I don't have a name for this yet, Captain.[#pause] It's a new science.\"",
+          "text": "\"[steady]I don't have a name for this yet, Captain.[#pause] It's a new science.[#pause2]\"",
           "speaker": "ines-martel"
         }
       ]
@@ -154,7 +154,7 @@
         },
         "But it appeared Gupta did not know the answer, even as he feverishly searched for it.",
         {
-          "text": "*Cogito, ergo sum*, Adrian thought.",
+          "text": "*Cogito, ergo sum,* Adrian thought.",
           "inner_voice": "adrian-farley"
         },
         "But another thought followed that did not recognize its predecessor.",
@@ -163,8 +163,14 @@
           "inner_voice": "adrian-farley"
         },
         "Adrian reached into his pocket, desperate to grasp onto something solid. He clutched a fragment of ancient rock found near his family's old homestead in Peru. Multiple scans had confirmed it: the internal molecular structure was too orderly, as if the stone had been \"worked\" by a lost technology. But as he turned it over, his thumb traced the unnaturally smooth, almost polished surface. He had kept it on him for that reason. As evidence that whatever had shaped it had slipped out of history.",
-        "*A stone exists*, he reasoned. And in that moment, Adrian was no longer certain whether he was thinking about the stone…[#pause] or whether the stone was trying to understand itself through him.",
-        "*A stone that thinks it is a stone is not just a stone.*"
+        {
+          "text": "*A stone exists,* he reasoned. And in that moment, Adrian was no longer certain whether he was thinking about the stone…[#pause] or whether the stone was trying to understand itself through him.",
+          "inner_voice": "adrian-farley"
+        },
+        {
+          "text": "*A stone that thinks it is a stone is not just a stone.*",
+          "inner_voice": "adrian-farley"
+        }
       ]
     },
     {
@@ -200,7 +206,7 @@
           "text": "\"[encouraging]Try now,\" Adrian urged Stacey.",
           "speaker": "adrian-farley"
         },
-        "Stacey scoffed, knowing that smearing paint would have no effect, but walked back to the messy station. Her fingers followed the odd, flowing shape Gupta had drawn. Nothing happened at first. Then [#click-clack]a series of relays clicked on, and their lights changed from dull red to bright green. The algae brightened in response. [#chime]\"UPLINK ESTABLISHED,\" her console chirped.",
+        "Stacey scoffed, knowing that smearing paint would have no effect, but walked back to the messy station. Her fingers followed the odd, flowing shape Gupta had drawn. Nothing happened at first. Then [#clickclack]a series of relays clicked on, and their lights changed from dull red to bright green. The algae brightened in response. [#chime]\"UPLINK ESTABLISHED,\" her console chirped.",
         {
           "text": "Stacey stared at her screen, completely surprised. \"[astonished]It…[#pause] it works.\"",
           "speaker": "stacey-kiran"
@@ -211,7 +217,7 @@
         },
         "He pointed his dripping finger at the mural on the main viewport.",
         {
-          "text": "\"[booming]And, Professor,\" Gupta boomed, \"[booming]do you still think that window ever looked out?\"",
+          "text": "\"[booming]And, Professor,\" Gupta boomed, \"[booming]do you still think that window ever looked out?\"[#pause2]",
           "speaker": "rajendra-gupta"
         }
       ]
@@ -224,7 +230,11 @@
       "paragraphs": [
         "Lena Hague finally relaxed in the cramped cockpit of the *Stingray*. For hours, she'd been a data courier, sending the *Brisinger*'s medical and science logs through the *Stingray*'s tight-beam link to the *Dáinn*. Her job was almost done.",
         {
-          "text": "\"[#static][playful]Alright, Doc.\" Hale's voice crackled in her headset. \"[playful]You look like you could use a breath of fresh air.[#pause] Strap tight. I'm taking you for a spin.\"",
+          "text": "\"[#static][playful]Alright, Doc.\" Hale's voice crackled in her headset. \"[playful]You look like you could use a breath of fresh air.[#pause]\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"Strap tight. I'm taking you for a spin.\"",
           "speaker": "alistair-hale"
         },
         {
@@ -304,7 +314,7 @@
           "text": "\"[calm]Alright,\" Hale said. \"[calm]That's enough sightseeing.\"",
           "speaker": "alistair-hale"
         },
-        "Hale leveled the shuttle and [#hard-landing]landed it lightly on the docking bay floor. [#clamps]The magnetic clamps locked in place with a CLUNK. [#airhiss]The cockpit stayed quiet while they waited for the pressurization to finish.",
+        "#landing]Hale leveled the shuttle and [landed it lightly on the docking bay floor. The magnetic clamps locked in place with a [#clamps]CLUNK. The cockpit stayed quiet while they waited for the [#airhiss]pressurization to finish.",
         {
           "text": "\"[curious]Hale, can I ask you something?\"",
           "speaker": "lena-hague"
@@ -329,7 +339,7 @@
         },
         "Hale turned away, now staring at the docking bay lights. For once, he sounded vulnerable.",
         {
-          "text": "\"[vulnerable]She's the one I want to keep around.[#pause] And that terrifies me.\"",
+          "text": "\"[vulnerable]She's the one I want to keep around.[#pause] And that terrifies me...[#pause2]\"",
           "speaker": "alistair-hale"
         }
       ]
