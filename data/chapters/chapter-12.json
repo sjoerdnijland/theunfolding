@@ -12,7 +12,8 @@
     {
       "heading": "16 CLICKS POST UNFOLDING \nORBITAL THREE \"THE EARS\"",
       "paragraphs": [
-        "Frank lived in a tangle of fiber-optic cables. Wires snaked out from diagnostic panels and powered the custom holo-projector. [#holopong]It spun a colorful display of fractal light. The bulkheads were covered with scribbled notes from signal analyses. Between them, the photos told a different story. One showed his late husband, George, smiling so brightly it was painful. The picture had been taken a year before he'd died. Another showed their adopted son, Mo, looking proud in his new FNS *Alsvin* uniform. One photo showed him, still young and hopeful, with his parents on Sol Academy graduation day. Another was a silly shot of him and his Academy friends giving a thumbs-up in a cramped shuttle. The last showed his mission colleagues, now spread out at different listening posts.",
+        "Frank lived in a tangle of fiber-optic cables. Wires snaked out from diagnostic panels and powered the custom holo-projector. [#holopong]It spun a colorful display of fractal light. The bulkheads were covered with scribbled notes from signal analyses. Between them, the photos told a different story.",
+        "One showed his late husband, George, smiling so brightly it was painful. The picture had been taken a year before he'd died. Another showed their adopted son, Mo, looking proud in his new FNS *Alsvin* uniform. One photo showed him, still young and hopeful, with his parents on Sol Academy graduation day. Another was a silly shot of him and his Academy friends giving a thumbs-up in a cramped shuttle. The last showed his mission colleagues, now spread out at different listening posts.",
         {
           "text": "\"[soft]Query,\" Gary said softly. \"[soft]Heart rate has increased by twelve percent.[#pause] Cortisol levels are rising. Is this a negative stimulus?\"",
           "speaker": "gary"
@@ -141,7 +142,7 @@
         },
         "Only now, as the outburst faded and the silence pressed in, did Frank feel the sting of isolation. A soft, synthesized voice came from the main speakers. It wasn't Gary's usual cheerful tone. It wasn't the sad whisper, either. It almost sounded like his own.",
         {
-          "text": "\"[eerie]The upshot o' the downshot is this:[#pause] she won't bother us anymore.\"",
+          "text": "\"[slow]The upshot o' the downshot is this:[#pause] she won't bother us anymore.\"",
           "speaker": "gary"
         },
         "Frank stopped spinning. The CIX had spoken with his own turn of phrase."
@@ -187,7 +188,7 @@
         },
         "The clonic phase began, the rhythmic convulsions less violent than before.",
         {
-          "text": "\"[grounding]Your name is Susana. You are safe. I am here.[#pause] This will pass.\"",
+          "text": "\"[grounding]Your name is Susana.[#pause2] You are safe.[#pause2]I am here.[#pause2] This will pass.\"",
           "speaker": "joana-perera"
         },
         "Planetary Acclimatization Syndrome. PAS, as she had come to call her daughter's condition. The Grid could stop the attack. But in doing so, it also shut down the very part of her brain that was trying to attune itself to this new world. Each suppressed attack slowed the adaptation. The attacks would grow more severe. Left unguided, they could lead to oxygen deprivation. To permanent brain damage. So she chose to break the pattern—to guide her daughter through it, convulsion by convulsion. The die was cast.",
@@ -199,7 +200,7 @@
         },
         "followed by a repetitive,",
         {
-          "text": "\"[trembling]You are safe. I am here. This will pass.\"",
+          "text": "\"[trembling]You are safe.[#pause2] I am here.[#pause2] This will pass.\"",
           "speaker": "joana-perera"
         },
         "The chronometer ticked past the second pulse marker. Every second beyond it increased the risk of brain damage. Ian broke into sobs, while Joana trembled, clinging to the litany.",
@@ -227,7 +228,7 @@
         "After a while, the hab grew quiet, finally letting go of a day that almost refused to end. A rhythmic purring of Joana and Susana filled the small space. Ian lay there for a thud, staring at the shadows of the overhead pipes until they started to look like veins.",
         "Unable to sleep, he quietly put on his jumpsuit and slipped out toward 4-Iota.",
         "Ian peered through the window. The curtains hadn't been drawn, and through the thick glass, Oliver looked like a broadcast. The boy was a ghost bathing in the harsh blue of a schematic projection. His face was a pale, skin drawn tight over his cheekbones, his eyes bloodshot and tracking lines of code with a frantic, mechanical speed. His hands were moving, fingers twitching in the air as if he were trying to grab the data and pull it apart, weaving through an interface only he could see.",
-        "[#tap]Ian tapped the window gently, a soft clack of knuckles on reinforced plex. One heartbeat. Two. Five. Oliver's hands dropped to his sides like dead weights. He turned his head and sluggishly raised himself from the chair. [#doorhiss]The door cycled open with a hiss. Ian stepped into the room, which smelled of unwashed clothes and overclocked hardware.",
+        "[#tapping]Ian tapped the window gently, a soft clack of knuckles on reinforced plex. One heartbeat. Two. Five. Oliver's hands dropped to his sides like dead weights. He turned his head and sluggishly raised himself from the chair. [#doorhiss]The door cycled open with a hiss. Ian stepped into the room, which smelled of unwashed clothes and overclocked hardware.",
         {
           "text": "\"[soft]I thought you'd still be up,\" Ian said softly.",
           "speaker": "ian-perera"
