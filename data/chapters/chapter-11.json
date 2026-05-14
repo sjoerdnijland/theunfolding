@@ -1,0 +1,428 @@
+{
+  "title": "A New Science",
+  "sections": [
+    {
+      "type": "epigraph",
+      "paragraphs": [
+        "It obviously doesn't make sense. [#pause]But you'll figure this out.[#pause] This new science.",
+        "Smile. Nod. Take notes.[#pause] Or pretend to. [#pause]That's what I did. And here we are.[#pause2] Here's what I got."
+      ]
+    },
+    {
+      "heading": "A BEAT LATER \nTIC, FNS DÁINN",
+      "paragraphs": [
+        "The meeting broke up. Lieutenant Ionie Jia stepped up beside her captain. Her eyes darted nervously.",
+        {
+          "text": "\"[nervous]What about the *Bris*, Cap?[#pause] Shouldn't this have been on the table?\"",
+          "speaker": "ionie-jia"
+        },
+        "Ben tightened his jaw and gave her a slight tilt of his head as a silent command to follow. He led her away from the command decks and down quiet corridors to a rarely visited part of the *Dáinn*. Though not a science vessel, the *Dáinn* housed an Astrometrics & Cartography lab called the Orrery. [#doorhiss]The room was circular and dim, [#hum-throb]lined with humming server racks. In the center, a complex holographic model of the Yreus system was spinning.",
+        "Yra was a bright G-type star, a little smaller than Sol. The closest planet was Muspel, a scorched, iron-rich world. Next came Mairee. Beyond Mairee lay Ysk, a cold desert with a thin carbon dioxide atmosphere and polar ice caps of frozen water. It might serve as a future outpost, though it would be a difficult one. After that was the Ginnunga Gap, a wide, dense asteroid belt much larger than Sol's. Beyond the belt were two giant planets. First was Ymir, dark and majestic with charcoal rings. Farthest out was Nefir, a smaller ice giant that glowed deep blue in the distant twilight.",
+        "A woman stood before the hologram, her back to them. She was tall and rail-thin, with white hair cut in a severe, asymmetrical style. She wore the dark blue uniform of the Science division.",
+        {
+          "text": "\"[introducing]Ines Martel,\" Ben introduced.",
+          "speaker": "benjamin-westhoff"
+        },
+        "She turned, and Ionie immediately noticed her eyes. They were artificial, mercury-bright spheres. Ionie had heard that Martel lost her original eyes to a genetic disease, so they had been replaced with bio-engineered optics.",
+        {
+          "text": "\"[dry]Captain. Lieutenant,\" she said in a quiet voice. \"[dry]Here I was, hoping to find a little peace in this sanctuary for the rest of the ride.[#pause] Now I'll guess I have to find another place to hide.\"",
+          "speaker": "ines-martel"
+        },
+        {
+          "text": "\"[firm]Not before you share what you've been brooding on, Ines,\" Ben said.",
+          "speaker": "benjamin-westhoff"
+        },
+        "A smile appeared on Martel's lips. She gestured toward the main display, where a series of complex brain-scan schematics and neurochemical graphs materialized.",
+        {
+          "text": "\"[explaining]This is our crew's standard biometric log from the transit,\" she explained. \"[explaining]Notice the spikes. The brain attempts to process a non-Euclidean event by generating a controlled hallucination. Symptoms such as vertigo and unusual visual patterns are common experiences among the crew, even after the Fold passage.\"",
+          "speaker": "ines-martel"
+        },
+        "She swiped her hand, and a new set of data appeared, a chaotic explosion of color, its graphs spiking off the chart.",
+        {
+          "text": "\"[focused]This,\" she said, her silver eyes swirling, \"[focused]comes from the *Brisinger*'s logs, which I accessed through the *Stingray* uplink. When I analyzed the data, I found something unusual. Their transit was different.\" She fidgeted with her fingers. \"[hesitant]They got…[#pause] entangled.\"",
+          "speaker": "ines-martel"
+        },
+        {
+          "text": "Ionie folded her hands behind her back. \"[puzzled]Help me make sense of that.\"",
+          "speaker": "ionie-jia"
+        },
+        "Martel paused and stared at the swirling hologram.",
+        {
+          "text": "\"[measured]The Fold alters both space and consciousness. Consider our perception of reality as a net. As we live our lives, we pull this net through the universe, and our perception of reality is determined by the structure of the net and what it captures, such as what we can measure, name, and categorize. However, the net contains holes, allowing most of the universe to pass through unnoticed by our consciousness.\"",
+          "speaker": "ines-martel"
+        },
+        "She glanced from Ionie to Ben.",
+        {
+          "text": "\"[explaining]When we enter the Fold, the controlled inversion of spacetime temporarily alters the structure of our perceptual net, enabling us to perceive these phenomena.\" As she spoke, her hands traced the motion of unfolding a pair of socks.",
+          "speaker": "ines-martel"
+        },
+        "Ionie's brow furrowed as she tried to follow the logic. Martel pointed at the *Brisinger*'s chaotic data.",
+        {
+          "text": "\"[grave]Because they were exposed for so long, their perceptual net was torn open and caught something huge and strange. They still carry it with them.[#pause] I believe their nets became entangled with another one from another dimension. The Fold did not simply collapse, Captain.[#pause] They are now dragging it with them.\" She folded the fingers of both her hands together.",
+          "speaker": "ines-martel"
+        },
+        {
+          "text": "\"[pressing]So, you're absolutely positive?\" Ben pressed.",
+          "speaker": "benjamin-westhoff"
+        },
+        "Dr. Martel's silver eyes fixed on him.",
+        {
+          "text": "\"[steady]I don't have a name for this yet, Captain.[#pause] It's a new science.\"",
+          "speaker": "ines-martel"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "BRIDGE, FNS BRISINGER",
+      "paragraphs": [
+        "Stroke by stroke, Captain Raj Gupta repurposed the bridge of the FNS *Brisinger* into a cathedral. The entire viewport was now fully covered in nutrient paste and glowing algae.",
+        "Gupta sat cross-legged on the floor before the captain's chair, methodically painting symbols on the deck plates. Adrian Farley observed from the captain's chair, Carlson kept an eye on the consoles, and Stacey Kiran worked at the comms station, trying to restore the uplink.",
+        {
+          "text": "\"[reflective]Captain,\" Adrian Farley said, \"[reflective]the problem is the separation. Some see the mind as separate from the body. Others do not.[#pause] But that dualism still shapes how we understand ourselves.\"",
+          "speaker": "adrian-farley"
+        },
+        "Gupta paused his work. His golden eyes found Farley's.",
+        {
+          "text": "\"[amused]A human thing to think,\" he said. \"[musing]You look at a shadow on the wall and call it the Self.[#pause] You believe sacred thought and Soul could not have risen from the mundane mud, from lowly matter. So they must be visitors.[#pause] But from where?[#pause] You wonder.\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "\"[countering]But that separation may be justified,\" Adrian countered. \"[countering]The body is a biological process. Life emerges from amino acids, light, and water.[#pause] But consciousness—intelligence, thought, dreams—what are those made of?\"",
+          "speaker": "adrian-farley"
+        },
+        {
+          "text": "\"[musing]What you do is make distinctions because otherwise you cannot sense it. You scoop with little cups and stick labels on them.[#pause] Useful inventions.\"",
+          "speaker": "rajendra-gupta"
+        },
+        "Gupta glanced around, past the consoles, the deck, the arc of the bridge window.",
+        {
+          "text": "\"[knowing]The brain creates and labels: me here, you there. Only afterward does it remember:[#pause] ah… we, together.[#pause] Without this and that, there is no world for you. Only for us.[#pause2] Even matter is not a fixed thing. What you experience as solid is slowed,[#pause] because you can't keep up, can you?\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "Adrian could not keep up but nodded anyway. \"[uncertain]I don't think so.[#pause] But you can, right?[#pause] You can grasp it yourself?\"",
+          "speaker": "adrian-farley"
+        },
+        {
+          "text": "\"[slow]My existence,\" Gupta said slowly, \"[slow]was a canvas without frame.[#pause] Color blending without preference. Frequencies flowing without will.[#pause] I gave it form.\" He smiled crookedly. \"[intrigued]Now the paint has a will of its own. It splashes in every direction.[#pause] It shapes itself without knowing what it is doing. That's where it clashes.\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "Adrian rubbed his face. \"[searching]Why aren't the others like you?\"",
+          "speaker": "adrian-farley"
+        },
+        {
+          "text": "Gupta opened his palms. \"[confiding]Because I had to choose.[#pause] Not everything fits inside this captain.\" His gaze slid briefly, accusingly, toward Adrian. \"[matter-of-fact]Your existence folded into ours.[#pause] And voilà.\" He spread his hands, indicating the rest of the *Bris*.",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "Adrian frowned. \"[apprehensive]And now?\"",
+          "speaker": "adrian-farley"
+        },
+        {
+          "text": "\"[booming]Now we paint on your canvas,\" Gupta boomed, \"[booming]and together we swim against the Great Current!\"",
+          "speaker": "rajendra-gupta"
+        },
+        "As he spoke, a wave of dizziness swept through Adrian, as if he were falling backward. A realization flashed through him: he was not falling backward—everything was flowing through him too fast.",
+        "Gupta chuckled, as if recalling a private joke to temper his mood.",
+        {
+          "text": "\"[joyful]The flow is in a rush. More than you are.[#pause] Ah, this life is a beautiful rebellion!\"",
+          "speaker": "rajendra-gupta"
+        },
+        "Gupta's expression shifted, as though he were retrieving the posture of the old captain.",
+        {
+          "text": "\"[soft]So you believe your body is made of matter,\" he said softly, \"[soft]but your soul is not.[#pause] And so you asked yourself how something non-physical could ever be held inside something physical.[#pause] You think of it as a mechanism, but it is only rhythm.\"",
+          "speaker": "rajendra-gupta"
+        },
+        "His gaze did not leave Adrian.",
+        {
+          "text": "\"[reverent]The body only appears solid from our subjective experience.[#pause] In truth, it is a slow and beautiful thought, unfolding steadily—like a song, or a painting.[#pause] And within that unfolding, the self emerges. And like every thought, it will fade, making space for the next.\"",
+          "speaker": "rajendra-gupta"
+        },
+        "Gupta looked at Adrian with brief surprise, as though gazing into a mirror.",
+        {
+          "text": "\"[wondering]One thought does not recognize itself in the other.\"",
+          "speaker": "rajendra-gupta"
+        },
+        "The falling accelerated, and he spun. There was no more center to hold on to.",
+        {
+          "text": "\"[whispering]So…[#pause] who thought me?\" he whispered toward Gupta, toward himself, toward whatever still felt real.",
+          "speaker": "adrian-farley"
+        },
+        "But it appeared Gupta did not know the answer, even as he feverishly searched for it.",
+        {
+          "text": "*Cogito, ergo sum*, Adrian thought.",
+          "inner_voice": "adrian-farley"
+        },
+        "But another thought followed that did not recognize its predecessor.",
+        {
+          "text": "*Do I exist when I am not thinking?*",
+          "inner_voice": "adrian-farley"
+        },
+        "Adrian reached into his pocket, desperate to grasp onto something solid. He clutched a fragment of ancient rock found near his family's old homestead in Peru. Multiple scans had confirmed it: the internal molecular structure was too orderly, as if the stone had been \"worked\" by a lost technology. But as he turned it over, his thumb traced the unnaturally smooth, almost polished surface. He had kept it on him for that reason. As evidence that whatever had shaped it had slipped out of history.",
+        "*A stone exists*, he reasoned. And in that moment, Adrian was no longer certain whether he was thinking about the stone…[#pause] or whether the stone was trying to understand itself through him.",
+        "*A stone that thinks it is a stone is not just a stone.*"
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "paragraphs": [
+        "At the comms station, Stacey let out a frustrated sigh. Bypass cables were scattered across the floor, showing how long she'd been working without success.",
+        {
+          "text": "\"[frustrated]It's no good, Carlson,\" she said.",
+          "speaker": "stacey-kiran"
+        },
+        "Marcus merely shrugged.",
+        {
+          "text": "Stacey muttered, \"[muttering]The main comms relays aren't even broken. How am I supposed to fix something that isn't broken?\" She looked at Gupta, her lips pressed into a thin, angry line. She rolled her eyes and walked over to him. \"[firm]Captain, I need access to restore comms.\"",
+          "speaker": "stacey-kiran"
+        },
+        "Gupta looked up, eyes twinkling.",
+        {
+          "text": "\"[playful]Little Color, speak less. Paint more.\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "\"[exasperated]Paint?! Right.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "\"[coaxing]You have to teach her,\" Adrian said. \"[coaxing]Draw her the shape of your song.\"",
+          "speaker": "adrian-farley"
+        },
+        "Gupta veered up and walked barefoot to the comms station. He used his smudged finger to draw a wavy line across the console's dark screen. He sat back down, cross-legged.",
+        {
+          "text": "\"[encouraging]Try now,\" Adrian urged Stacey.",
+          "speaker": "adrian-farley"
+        },
+        "Stacey scoffed, knowing that smearing paint would have no effect, but walked back to the messy station. Her fingers followed the odd, flowing shape Gupta had drawn. Nothing happened at first. Then [#click-clack]a series of relays clicked on, and their lights changed from dull red to bright green. The algae brightened in response. [#chime]\"UPLINK ESTABLISHED,\" her console chirped.",
+        {
+          "text": "Stacey stared at her screen, completely surprised. \"[astonished]It…[#pause] it works.\"",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "Gupta laughed. \"[triumphant]You see! Nature opens its eyes to those who paint!\"",
+          "speaker": "rajendra-gupta"
+        },
+        "He pointed his dripping finger at the mural on the main viewport.",
+        {
+          "text": "\"[booming]And, Professor,\" Gupta boomed, \"[booming]do you still think that window ever looked out?\"",
+          "speaker": "rajendra-gupta"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "STINGRAY",
+      "paragraphs": [
+        "Lena Hague finally relaxed in the cramped cockpit of the *Stingray*. For hours, she'd been a data courier, sending the *Brisinger*'s medical and science logs through the *Stingray*'s tight-beam link to the *Dáinn*. Her job was almost done.",
+        {
+          "text": "\"[#static][playful]Alright, Doc.\" Hale's voice crackled in her headset. \"[playful]You look like you could use a breath of fresh air.[#pause] Strap tight. I'm taking you for a spin.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[excited]A spin?\" Lena replied with unmasked excitement.",
+          "speaker": "lena-hague"
+        },
+        "Hale grinned. [#clamps]The *Stingray*'s magnetic clamps released from the docking bay floor.",
+        "Stacey had managed to power up the main docking bay, giving them a proper place to dock. As far as Lena knew, Hale still hadn't figured out how to get out of the maintenance shaft. But that didn't stop him.",
+        {
+          "text": "\"[nervous]You're sure this is a good idea?\" Lena wrapped her fingers along the console rail as the shuttle veered backward.",
+          "speaker": "lena-hague"
+        },
+        {
+          "text": "\"[purring]Most definitely,\" Hale purred. \"[purring]Going in was easy.[#pause] Now we get to do the fun part.\"",
+          "speaker": "alistair-hale"
+        },
+        "The *Stingray* slid out of the scaffold, moving backward into the shaft. A huge Gravgrip swung toward them.",
+        "[#alert-pong]Proximity alerts blared on Lena's console.",
+        {
+          "text": "\"[alarmed]Hale, you're going to—\"",
+          "speaker": "lena-hague"
+        },
+        "At the last possible moment, Hale [#thruster-burst]yanked the yoke and slammed the lateral thruster. The *Stingray* jerked, dodging the Gravgrip by inches.",
+        {
+          "text": "\"[gasping]What are you doing?!\" Lena gasped.",
+          "speaker": "lena-hague"
+        },
+        {
+          "text": "\"[grunting]Reversing,\" Hale grunted, keeping his eyes fixed ahead.",
+          "speaker": "alistair-hale"
+        },
+        "The *Stingray* flipped, a flat spin that put their belly through a gut-wrenching G-force, pressing them deep into their gel-couches. The Gravgrip grabbed them with a [#clamps2]clunk. Hale let the controls go as the *Stingray* swept into the Magglider, which carried them through the industrial gravlock. After they slid through the locks, Hale was eager to take back the controls. The space was so tight that Lena had to mute the constant collision warnings.",
+        "For an exhilarating ten seconds, they sailed like a dragonfly through a canyon.",
+        {
+          "text": "\"[focused]A little to port,\" she urged, eyes locked on the telemetry. \"[focused]You're a half-meter off-center.\"",
+          "speaker": "lena-hague"
+        },
+        {
+          "text": "\"[terse]I'm not off-center,\" Hale bit out, his focus absolute. \"[terse]The shaft's warped.\"",
+          "speaker": "alistair-hale"
+        },
+        "He wasn't looking at his instruments. Instead, he kept his eyes ahead, making quick corrections. She could feel the ship drifting.",
+        "[#screetch]A loud, violent SCREEEEE of metal against metal ripped through the cockpit as the *Stingray*'s port wingtip scraped the wall. The whole shuttle [#shuddering-plates]shuddered. A shower of sparks burst outside Lena's window.",
+        {
+          "text": "\"[yelling]Too close!\" she yelled.",
+          "speaker": "lena-hague"
+        },
+        {
+          "text": "\"[calm]Just perfect,\" Hale noted, never taking his eyes off the tunnel. [#thruster-burst]He fired a micro-burst from a starboard thruster. The darkness of the shaft gave way to a star field.",
+          "speaker": "alistair-hale"
+        },
+        "She glanced at Hale, who casually stretched his fingers like he had just finished a simple parking maneuver.",
+        {
+          "text": "\"[wry]You,\" she exhaled, \"[wry]are an absolute menace.\"",
+          "speaker": "lena-hague"
+        },
+        {
+          "text": "\"[grinning]Yeah,\" Hale replied, turning to her with a wide, infectious grin. \"[grinning]A jab for a jab.[#pause] But you feel better now, don't you?\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "\"[dry]Next time,\" Lena said, \"[dry]I'm taking the stairs.\"",
+          "speaker": "lena-hague"
+        },
+        "They flew around the giant ship in a lap of honor. She was impressive.",
+        "The *Brisinger* was one of the fleet's older and more reliable ships, a super-freighter from the Sol system's expansion era that had been repurposed many times. She was bulky. Her windows and lights were scattered and uneven. Some windows were completely dark, but others glowed in a spectrum of hues.",
+        {
+          "text": "\"[whispering]She's a stark beauty, isn't she?\" Lena whispered.",
+          "speaker": "lena-hague"
+        },
+        {
+          "text": "Hale gazed out with a sad respect. \"[reverent]Yes,\" he agreed, \"[reverent]she is.\"",
+          "speaker": "alistair-hale"
+        },
+        "The *Stingray* dove, spiraling down toward a large, brightly lit docking bay.",
+        {
+          "text": "\"[calm]Alright,\" Hale said. \"[calm]That's enough sightseeing.\"",
+          "speaker": "alistair-hale"
+        },
+        "Hale leveled the shuttle and [#hard-landing]landed it lightly on the docking bay floor. [#clamps]The magnetic clamps locked in place with a CLUNK. [#airhiss]The cockpit stayed quiet while they waited for the pressurization to finish.",
+        {
+          "text": "\"[curious]Hale, can I ask you something?\"",
+          "speaker": "lena-hague"
+        },
+        "He glanced at her, one eyebrow raised.",
+        {
+          "text": "\"[wry]You just did.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Lena rolled her eyes. \"[pressing]No, seriously.[#pause] You and Stacey Kiran, you two go way back, right?\"",
+          "speaker": "lena-hague"
+        },
+        "Hale's eyes flickered. Lena braced for the joke. The dodge. Instead, he let out a slow breath.",
+        {
+          "text": "\"[vulnerable]A little.[#pause] But I'm just now starting to really get to know her.[#pause] And she's getting to know me, too.[#pause] That scares me.\"",
+          "speaker": "alistair-hale"
+        },
+        {
+          "text": "Lena's curiosity was getting the better of her. \"[curious]So, is there more between you two?\"",
+          "speaker": "lena-hague"
+        },
+        "Hale turned away, now staring at the docking bay lights. For once, he sounded vulnerable.",
+        {
+          "text": "\"[vulnerable]She's the one I want to keep around.[#pause] And that terrifies me.\"",
+          "speaker": "alistair-hale"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "CAPTAIN'S READY ROOM, FNS DÁINN",
+      "paragraphs": [
+        "Ben adjusted the projector's hue by a slight degree. Kiran had appeared too greenish.",
+        {
+          "text": "\"[#static2][efficient]Captain Gupta has agreed to talk,\" Kiran said.",
+          "speaker": "stacey-kiran"
+        },
+        {
+          "text": "Ben nodded. \"[calm]Patch him through.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        "[#holopong]His image came to life, cross-legged on the floor of his painted cathedral. Too orangey.",
+        {
+          "text": "\"[warm]Raj,\" Ben began, captain to captain. \"[warm]It's good to see you.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"[joyful]Ah, Ben![#pause] You've been knocking a long time.\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "\"[urgent]Raj, listen.[#pause] The Fold is gone. Corbin has taken control of Mairee and is holding Vilde in biostasis.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        "Gupta kept smiling. He tilted his head, looking curious and pitying.",
+        {
+          "text": "\"[pitying]No, no.[#pause] The bird is not in her cage. The cage is in her.\" He gestured around his bridge as if that would explain everything.",
+          "speaker": "rajendra-gupta"
+        },
+        "Ben realized he wasn't getting through.",
+        {
+          "text": "\"[careful]Her life is at risk, Raj.[#pause] And your crew…[#pause] Our people. The integrity of their bodies and minds must be respected.[#pause] We have a duty to them.\" He spoke carefully.",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"[delighted]Ah, their vessels!\" [#clap]Gupta clapped his hands, a joyful boom that no longer shuddered the ship. \"[delighted]Of course! We are only exploring them, learning the sound of their music and their colors so we can sing and paint together.\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "\"[firm]Integrity, Raj![#pause] Their bodies and minds are sacred to us.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        "Gupta kept smiling and tilted his head again.",
+        {
+          "text": "\"[musing]Ah.[#pause] You mean…[#pause] to be a single, perfect being.\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "\"[measured]Yes. Something like that.[#pause] Not violated.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        {
+          "text": "\"[pleased]A beautiful idea!\" Gupta said, [#clap]clapping his hands again. He leaned forward. \"[earnest]However, a seed does not have integrity like a stone.[#pause] Its purpose is to break open and become something greater.[#pause] The seed must give up its form to grow, just as we must.\"",
+          "speaker": "rajendra-gupta"
+        },
+        "Ben had already found this conversation to be deeply tiring.",
+        {
+          "text": "\"[pleading]At least…[#pause] promise me this.[#pause] Let those who are still…[#pause] seeds…[#pause] remain as they choose.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        "Gupta went quiet. He glanced at the signs on his floor, then back at the flickering image of his old friend.",
+        {
+          "text": "\"[soft]The little Colors…\" he said in a soft, strange whisper. \"[soft]I will let them splash as they please and mingle as they wish.[#pause] They already do.[#pause] But… I have no idea what will appear on the canvas.\" He raised his voice back to its booming volume. \"[booming]But let's see!\"",
+          "speaker": "rajendra-gupta"
+        },
+        "It passed as the smallest reassurance to Ben. And for now, it would have to be enough.",
+        {
+          "text": "\"[grave]There is a threat,\" Ben said. \"[grave]The ESP.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        "Gupta's expression changed. His joyful smile faded.",
+        {
+          "text": "\"[defiant]The ocean cannot be contained in a jar.\"",
+          "speaker": "rajendra-gupta"
+        },
+        {
+          "text": "\"[warning]Yes, Raj,\" Ben said. \"[warning]It cannot scoop the ocean, but it can scoop you.\"",
+          "speaker": "benjamin-westhoff"
+        },
+        "Gupta's smile returned as he tapped his temple.",
+        {
+          "text": "\"[playful]No, Ben.[#pause] I have a bigger jar!\"",
+          "speaker": "rajendra-gupta"
+        }
+      ]
+    }
+  ]
+}
