@@ -16,5 +16,21 @@
     "name": "Guardian",
     "voice_id": "MbrxCIK2KCrGGqsm5dEq",
     "_note": "Voice-only entry for Ivaldi/Plateau guardians (Order of Magicians enforcers). First speaks in chapter 13 — ritual questions at the chamber steps, and short directives. Fill in the ElevenLabs voice_id."
-  }
+  },
+  {
+    "id": "mason",
+    "name": "Mason",
+    "voice_id": "jCQ8uWWBzw3HoBe23v4N",
+    "_note": "Voice-only entry for Ivaldi/Plateau guardians (Order of Magicians enforcers). First speaks in chapter 13 — ritual questions at the chamber steps, and short directives. Fill in the ElevenLabs voice_id."
+  },{
+  "id": "magician",
+  "name": "The Magician",
+  "voice_id": "ljo9gAlSqKOvF6D8sOsX",
+  "_note": "Voice-only entry for Ivaldi/Plateau guardians (Order of Magicians enforcers). First speaks in chapter 13 — ritual questions at the chamber steps, and short directives. Fill in the ElevenLabs voice_id."
+  },{
+  "id": "queen",
+  "name": "Queen Bee",
+  "voice_id": "GSq0NPB1I3yKJdQ0rvzP",
+  "_note": "Voice-only entry for Ivaldi/Plateau guardians (Order of Magicians enforcers). First speaks in chapter 13 — ritual questions at the chamber steps, and short directives. Fill in the ElevenLabs voice_id."
+}
 ]

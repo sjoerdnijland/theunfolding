@@ -149,35 +149,62 @@
         },
         "Ulre wanted to refuse, to assert authority. He checked his wrist-slate on the Köldur. A red icon blinked: LOCAL GRID CONNECTION: SEVERED. The explosion's power surge had cut this sector off from the main network. The Grid itself wasn't down, just this pocket.",
         "The guardian was as broad as a prow and built to withstand storms. His black armor fit tightly over a body that looked carved from stone, not grown. He gave a short nod.",
-        "\"This way, Director,\" he said, gesturing to a corridor behind them.",
+        {
+          "text": "\"This way, Director,\" he said, gesturing to a corridor behind them.",
+          "speaker": "guardian"
+        },
         "Ulre hesitated. He felt control slipping away as the chaos spread. Heston was right, however; his presence was a liability. He followed the guardian into the rock-carved corridor.",
-        "\"Here, Director,\" the guardian said, his voice muffled by his helmet. \"It's quicker this way.\"",
+        {
+          "text": "\"Here, Director,\" the guardian said, his voice muffled by his helmet. \"It's quicker this way.\"",
+          "speaker": "guardian"
+        },
         "They walked through a dark tunnel. As they turned a corner, three figures appeared. They wore aprons with a plumb symbol over their Köldur. Masons. [#baton-crackle]One of them raised an industrial plasma cutter.",
         "Ulre stopped abruptly, realizing immediately that this wasn't a shortcut but an ambush. His hand went straight to the emergency trigger on his wrist-slate, which connected directly to the guardian command network. He pressed it.",
         "Nothing happened. The indicator light on the interface was dead. Of course, the connection to the Grid was lost. Besides, he was too deep inside the rock for a signal to go out.",
-        "One of the Masons stepped forward, his shadow stretched by a distant emergency light. \"Our glorious Director,\" he growled. \"Come down from your shiny throne to see what it's like down here in hell? We're going to give you a guided tour.\" He lifted the plasma cutter, its tip glowing blue-white. \"We've been running the numbers, too. And you know what? We think there's one more 'inefficiency' to cut.\"",
+        {
+          "text": "One of the Masons stepped forward, his shadow stretched by a distant emergency light.\"Our glorious Director,\" he growled. \"Come down from your shiny throne to see what it's like down here in hell? We're going to give you a guided tour.\" He lifted the plasma cutter, its tip glowing blue-white. \"We've been running the numbers, too. And you know what? We think there's one more 'inefficiency' to cut.\"",
+          "speaker": "mason"
+        },
         "[#burn-hiss]The plasma cutter hissed, heat blazing across Ulre's face, and he pulled back instinctively. At the same time, out of the corner of his eye, Ulre observed the traitor guardian's stance and calculated his chances of getting away.",
-        "The guardian prodded Ulre forward. \"Keep moving, Director.\"",
+        {
+          "text": "The guardian prodded Ulre forward. \"Keep moving, Director.\"",
+          "speaker": "guardian"
+        },
         "Ulre obeyed.",
-        "The Mason fell in beside him. \"Be professional and don't piss yourself.[#pause] We're just taking you off your ledger.\"",
+        {
+          "text": "The Mason fell in beside him. \"Be professional and don't piss yourself.[#pause] We're just taking you off your ledger.\"",
+          "speaker": "mason"
+        },
         "They marched him to a blank expanse of the basaltic wall. A Mason pressed his hand to the rock. [#scrape]The wall slid open to a hidden passage. The hidden door blended perfectly into the wall.",
-        "\"Not on your Grid,\" he said, motioning Ulre to go ahead.",
+        {
+          "text": "\"Not on your Grid,\" he said, motioning Ulre to go ahead.",
+          "speaker": "mason"
+        },
         "They slipped through a tunnel carved with surgical precision. After about a hundred meters, they stopped at a square door, which gleamed with a silver inlay: an ark and anchor. Another guardian stood sentry, silent and unmoving. Ulre spotted a symbol on his apron: a square plate with a trumpet and crossed swords. The guardian yielded and simply stepped aside as they entered.",
-        "[#doorhiss]The doors opened, unveiling a perfectly proportioned chamber that, despite the circumstances, took his breath away. The floor was patterned in a checkerboard of white marble and black basalt. The domed ceiling glittered with a star chart so detailed it resembled a real window into space. Six long white satin banners draped the eastern wall: FAITH, HOPE, CHARITY, WISDOM, STRENGTH, BEAUTY.",
+        "The doors opened, unveiling a perfectly proportioned chamber that, despite the circumstances, took his breath away. The floor was patterned in a checkerboard of white marble and black basalt. The domed ceiling glittered with a star chart so detailed it resembled a real window into space. Six long white satin banners draped the eastern wall: FAITH, HOPE, CHARITY, WISDOM, STRENGTH, BEAUTY.",
         "Ulre was shoved forward again and halted at the base of three broad steps. The guardian who had brought him wheeled in front of him. A Mason presented a plain white apron to the guardian, who donned it. A battleaxe was stitched on it.",
-        "\"[ritual]Before you ascend,\" rumbled the guardian in a suddenly formal tone, \"answer: what is the foundation of all work?\"",
+        {
+          "text": "\"[ritual]Before you ascend,\" rumbled the guardian in a suddenly formal tone, \"answer: what is the foundation of all work?\"",
+          "speaker": "guardian"
+        },
         "Ulre's mind spun. He had no context at all for this ritual.",
         {
           "text": "\"[barking]Order!\" he barked, his eyes darting around the chamber.",
           "speaker": "ulre-corbin"
         },
         "A strong hand clamped down on his shoulder and thrust him up the first step.",
-        "\"[ritual]What is the purpose of all labor?\"",
+        {
+          "text": "\"[ritual]What is the purpose of all labor?\"",
+          "speaker": "guardian"
+        },
         {
           "text": "Ulre grunted, feeling insulted. \"[spat]Survival,\" he spat.",
           "speaker": "ulre-corbin"
         },
-        "The guardian pointed to the next step. \"[ritual]Why do you speak?\"",
+        {
+          "text": "The guardian pointed to the next step. \"[ritual]Why do you speak?\"",
+          "speaker": "guardian"
+        },
         "The question jarred him.",
         {
           "text": "\"[furious]Cut this nonsense!\" he snapped, echoing in the silent chamber. \"[arrogant]I'm the director. I speak because I command![#pause] Now move aside.\"",
@@ -186,23 +213,38 @@
         "The guardian swung aside. Ulre surged past him and strode straight onto the main floor. There, on a raised platform, loomed an altar—broad and severe, cut from a single slab of pale stone veined with darker threads carved into it with geometric precision. The shallow grooves converged toward a central depression, as if designed to guide liquid or light. Along the perimeter, unfamiliar etchings caught the illumination at certain angles. Next to it rested a stone sarcophagus. Massive. Lid seamless, edges exact to the point of arrogance. No tool marks. No join lines. It sat slightly elevated on a plinth that mirrored the altar's proportions. The chamber itself seemed as if hewn around it. Walls pulled back, ceiling rising just enough to grant them dominance, every line of sight leading here. Ulre's jaw tightened. All that theater. All that waste.",
         "The three Masons and two guardians fanned out to the cardinal points of the chamber. A new figure then stepped from a shadowed corner in the eastern wall. He was an older man, clad in a different style of suit. He did not wear a Köldur but a heavy robe flecked with silver stars across his shoulders. His nose and mouth were masked, but despite the freezing cold, he wore no visor. His face was gray. On his chest swung a detailed jewel: a cross wreathed in rays of light. He radiated the authority of a Magician.",
         "He halted before Ulre, pinning him with a stare.",
-        "\"[solemn]Director Corbin,\" said the Magician sternly. \"You've answered with command, logic, and force. Yet you stand here rough-hewn and unpolished.[#pause] Now, step before the Trestle Board.\"",
+        {
+          "text": "\"[solemn]Director Corbin,\" said the Magician sternly. \"You've answered with command, logic, and force. Yet you stand here rough-hewn and unpolished.[#pause] Now, step before the Trestle Board.\"",
+          "speaker": "magician"
+        },
         "Two Masons came forward, carrying a large rectangular slab of shiny black stone. They placed it upright on two silver brackets before the altar, facing Ulre. He realized it wasn't stone, but a kind of dark glass. Faint constellations and geometries glowed within its depths, similar to the wall he'd been shown earlier.",
-        "The Magician motioned for Ulre to come closer. \"[ceremonial]Meaningful work starts with true sight.\"",
+        {
+          "text": "The Magician motioned for Ulre to come closer. \"[ceremonial]Meaningful work starts with true sight.\"",
+          "speaker": "magician"
+        },
         "Ulre stepped in front of the board, his reflection warped. The stars moved, shifting and changing, giving him the chilling sensation of having his soul mapped.",
-        "\"[solemn]Now, Director, seal your fate.[#pause] Remove your glove and place your hand on the glass.\"",
+        {
+          "text": "\"[solemn]Now, Director, seal your fate.[#pause] Remove your glove and place your hand on the glass.\"",
+          "speaker": "magician"
+        },
         "Ulre's mouth became even drier as he removed his glove, uncertain as to why he felt compelled. The cold crept underneath his fingernails. He reached out and placed his palm on the glass. It was warm. Alive. [#pulse]Lights flared beneath his fingers. The constellations inside the glass rearranged into new patterns. They surfaced an old memory, bearing a forgotten truth that demanded acknowledgment.",
         "Neither his mother nor his stepfather looked up when he came downstairs with his backpack on. He stood there waiting for one of them to say something to him. His mother was sitting at the kitchen table, looking at a mug of coffee she had not even touched. His stepfather was walking down the hallway, muttering to himself about being late for work and all the things he had to do. More days of tense silence, slammed doors, half-heard arguments. Promises would be forgotten before dark. It would be better for him if he left the house. Leaving would be cleaner.",
         "He walked out and realized: nobody had ever really waited for him. He did not cry. He did not look back. He took one step at a time, and instead of being railroaded into other people's destinies, he would start laying down his own tracks. At the first stop, a woman who would be his wife was waiting for him with her arms open even though he had never met her before. At the second, a daughter he had never held jumped into his arms. At the third, a queen stood radiant, as if she had been expecting him all along.",
         "As the vision faded, he tried to pull his hand away, but something invisible held it in place. The symbols inside the Trestle Board shifted, forming unfamiliar constellations and ancient sigils. Ulre noticed an interlaced triangle, a spiral, and a crossed circle. Each shape pulsed its own lost meaning.",
-        "The Magician spoke. \"[probing]What do you build that lasts, Director?\"",
+        {
+          "text": "The Magician spoke. \"[probing]What do you build that lasts, Director?\"",
+          "speaker": "magician"
+        },
         "Ulre tried to answer, but 'the Grid' got stuck in his throat. Pressure built behind his eyes. Traces of the Trestle Board light branched from his palm throughout the board.",
         "It showed him a city from above, cradled in a basin, embedded within a jungle. The crowned city contained a cluster of gardens. Sunlight glided along a golden ring that kept the wilderness outside at bay. He experienced the quiet peace of turning soil in a garden and the scent of fertile earth clinging to his fingers.",
         "A boy crouched in a clearing, watching a cluster of stalks tilt toward his shadow. Their caps were translucent, veined with slow-moving light, and when he shifted his weight, they leaned with him, adjusting as if testing the idea of his presence. The boy reached out, then slowly pulled his hand back, as if unsure whether touch counted as harm.",
         "Nearby, a girl knelt near the grit, carefully sketching a creature that refused to stay in one shape long enough to be drawn. It rippled between forms—shell, frond, even lattice—each version leaving behind a faint outline of the last, like an afterimage burned into the air. She erased, frowned, and started again.",
         "Around Ulre, plants exhaled when approached. A patch of moss retreated from a dropped pebble and crept back in, closing the gap as if it had never been disturbed. The children moved carefully, reverently naming what they could, inventing words, unaware that the world they were cataloging was already moving on.",
         "Ulre was now walking across a market square humming with life. His hands brushed the rough reed of baskets. The weave rasped under his palms. He picked a fruit and noticed it was warm, exhaling a blend of sweetness and rot that made his mouth water. The air was also thick with the smell of freshly baked bread. He heard laughter, the splash and murmur of water in streams and public baths. Musicians played on improvised stages, while young and old danced freely across the square.",
-        "From outside the vision, Ulre felt the Magician step closer and heard him whisper, \"[whispered]Speak it.[#pause] Speak her name.\"",
+        {
+          "text": "From outside the vision, Ulre felt the Magician step closer and heard him whisper, \"[whispered]Speak it.[#pause] Speak her name.\"",
+          "speaker": "magician"
+        },
         {
           "text": "\"[compelled]Væra,\" Ulre said, and it was as if the Magician spoke the words through him.",
           "speaker": "ulre-corbin"
@@ -212,21 +254,42 @@
           "text": "Ulre lost his patience. \"[furious]Enough with this pointless theater![#pause] You will address me with the respect that I deserve.\"",
           "speaker": "ulre-corbin"
         },
-        "The Magician shook his head. \"[calm]This theater is all you, Director.\"",
+        {
+          "text": "The Magician shook his head. \"[calm]This theater is all you, Director.\"",
+          "speaker": "magician"
+        },
         "Ulre's retort died in his throat. A dry heat filled the chamber, a warmth that had no logical source in this frozen, subterranean space. Smoke seeped from the seams of the sarcophagus, curling through the air.",
-        "\"[commanding]Step over here,\" the Magician commanded.",
+        {
+          "text": "\"[commanding]Step over here,\" the Magician commanded.",
+          "speaker": "magician"
+        },
         "[#hull-groan]A grinding sound came from the box. Ulre felt drawn to move to his designated spot. His mind was racing through countless threat response scenarios.",
         "The figure rose. Her skin looked pale and shiny, like she had stepped out of an oiled bath. She stood straight and tall, like a statue. Her golden-blonde hair fell in waves to her knees. Her face looked ageless above a long, graceful neck. Her body was unblemished, spotless from her breasts and belly to her legs and feet. He studied her face again and realized that she was the queen from his dream.",
         "The brutal cold of the Plateau's deep rock did not seem to affect her, but it cut Ulre sharply, even through his Köldur. He shivered as he watched her so exposed.",
         "Behind her, a golden hexagonal grid appeared and resolved into a honeycomb structure. The light traversed her figure, and her form merged with the hive, her limbs elongating. The geometry behind her unfolded into wings. She transformed into a human-queen bee hybrid.",
-        "She spoke solemnly. \"[judgment]All my bees shall work honestly so that they may live peacefully.[#pause] This is our virtue. You've condemned them to an endless night.[#pause] How can we feed their heads when you starve their hearts and grind their bodies to dust?\"",
+        {
+          "text": "She spoke solemnly. \"[judgment]All my bees shall work honestly so that they may live peacefully.[#pause] This is our virtue. You've condemned them to an endless night.[#pause] How can we feed their heads when you starve their hearts and grind their bodies to dust?\"",
+          "speaker": "queen"
+        },
         "It was a judgment.",
-        "\"[decree]You will provide relief,\" the Magician said. \"[decree]Restore full rations and rest cycles.[#pause] Our work is sacred. You will treat it with its due reverence.\"",
-        "The Queen raised her hand. \"[decree]No virtue, no labor, no home.\"",
-        "The Magician went on, \"[ceremonial]This place is called the Anchor; it moors us in a peaceful harbor, where the wicked cease their troublemaking so the weary can find their rest.\"",
+        {
+          "text": "\"[decree]You will provide relief,\" the Magician said. \"[decree]Restore full rations and rest cycles.[#pause] Our work is sacred. You will treat it with its due reverence.\"",
+          "speaker": "queen"
+        },
+        {
+          "text": "The Queen raised her hand. \"[decree]No virtue, no labor, no home.\"",
+          "speaker": "queen"
+        },
+        {
+          "text": "The Magician went on, \"[ceremonial]This place is called the Anchor; it moors us in a peaceful harbor, where the wicked cease their troublemaking so the weary can find their rest.\"",
+          "speaker": "magician"
+        },
         "When he said \"rest,\" the glowing patterns faded into tiny golden lights. The woman, now simply herself again, knelt and sank back into the stone.",
         "The Magician stepped forward. Ulre noticed that his gray appearance was not a trick of the light; his skin was actually gray and looked a little rough to the touch. He pushed Ulre's visor up so they could see eye to eye, but the cold bit Ulre hard and blinded him.",
-        "The Magician's words struck even deeper. \"[grave]She is the soul of this place.[#pause] Her hive is our hive. Do not disturb her nest again.[#pause] You will yield to her benevolent plea, or else this will become your tomb.\"",
+        {
+          "text": "The Magician's words struck even deeper. \"[grave]She is the soul of this place.[#pause] Her hive is our hive. Do not disturb her nest again.[#pause] You will yield to her benevolent plea, or else this will become your tomb.\"",
+          "speaker": "magician"
+        },
         "Ulre scrabbled hurriedly to pull his visor down. He blinked, but his sight remained blurry.",
         "The Magician gave a small, barely noticeable nod. A guardian stepped forward and crossed the room. He took off his ceremonial apron with practiced ease, set it aside, and stood ready as an enforcer again. He motioned for Ulre to get up and follow. The audience was over.",
         "The guardian led him out through the black doors back into the tunnel. When he entered the main halls of the *Ivaldi* base, Chief Heston was already there, standing beside a primary conduit. It was as if the explosion had never occurred. The light was a steady white. The emergency strobes were dark. Business as usual, as far as usual went in a place like this.",
