@@ -1,0 +1,478 @@
+{
+  "title": "Undercurrents",
+  "sections": [
+    {
+      "type": "epigraph",
+      "paragraphs": [
+        "As it is above, so it is below.[#pause] Makes sense now that you're in between.[#pause2] But don't be fooled by the symmetry. The universe can't keep it straight.",
+        "There's only recursion.[#pause] You're being reduced to only what carries forward. Code.[#pause] Yeah. I'm vibing with DNA. I suck at programming, though. Lucky you.",
+        "But yeah. I'm weaving a thread here and there.[#pause] Stories and songs.[#pause] The rest? Excrement.[#pause] Don't mourn it. You were always going to shit weight in your passage."
+      ]
+    },
+    {
+      "heading": "19 CLICKS POST UNFOLDING \nORBITAL THREE \"THE EARS\"",
+      "paragraphs": [
+        "Frank Muro blinked, his cheek against the emergency airlock. Mairee swirled below him. The release console for the airlock gleamed in the dim emergency light, a red-eyed invitation to the other side.",
+        "He felt a hand on his shoulder, then a warm embrace. Mo. They had mourned George together. The kind of grief that left a permanent layer of ash in the back of the throat. The memory was so clear it felt like he had just woken up, and all this was but a bad dream.",
+        "No. Not the airlock. George had gone through one, and he'd never come back. He'd become part of the vacuum, a smear of frozen molecules in the black. Frank couldn't have Mo go through that again. He pushed away from the viewport.",
+        "[#hum-throb]A noise started in the back of his skull, a grit-sand whisper that made his teeth ache.",
+        {
+          "text": "*I don't want to wake up*, it hissed.",
+          "inner_voice": "frank-muro"
+        },
+        "Then it spiked into a distorted, cheerful roar.",
+        {
+          "text": "\"[#glitching][bright]I CANNAE CLOSE MY EYES WITHOUT WAKIN' UP!\"",
+          "speaker": "gary"
+        },
+        "He moved to his bunk and pulled the rigged holo-projector from its hidden housing. Gary's avatar flickered as a glitchy eye before it rendered into a shivering, pixelated caricature of Frank himself. Through Gary and his rigged holo-projector, he accessed the civilian network. Networking a Contained Intelligence Executor was a crime, but he was already a prisoner. Laws felt like suggestions when the universe itself was breaking them.",
+        "The social hub buzzed with monitored chatter.",
+        "Frank wiped off a whiteboard and grabbed a static marker. For a full beat, his hand blurred, scribbling lines, erasing, restructuring verses.",
+        {
+          "text": "\"[muttering]Simple, risky, inconsistent, aye, but it'll do,\" he said.",
+          "speaker": "frank-muro"
+        },
+        "He let the marker float.",
+        {
+          "text": "\"[focused]Gary,\" he rasped. \"[focused]We need a few more friends. I ken a couple who can read my poetry. Record me. Pong it to my diary stream.\"",
+          "speaker": "frank-muro"
+        },
+        {
+          "text": "\"[bright]PREPARING STREAM!\" Gary boomed cheerfully. And then slow, soft, and gloomy: \"[gloomy]Streaming.\"",
+          "speaker": "gary"
+        },
+        "Frank straightened and peered into the hololens.",
+        {
+          "text": "\"[reciting]I woke with a song in my head. Each verse followed the next, and the emphasis hit the second note. Did ye hear it?\"",
+          "speaker": "frank-muro"
+        },
+        "He paused, then recited the poem.",
+        {
+          "text": "\"[poetic]Are you there, in earth and star, above me night folds in its seam. Still I climb the stalk, deep-hummed river of a dream. Beyond my orbit, bleak light swirls below.\"",
+          "speaker": "frank-muro"
+        },
+        "He coughed, clearing his throat in the dry air.",
+        {
+          "text": "\"[poetic]Beyond my orbit, bleak light swirls below. Under horizons and the mornin', barrows hum where starfires glow. Beyond my orbit, across the echoes, soft they flare. Call to me, o come to me, lift me gently from despair. Are you there for me? Back where starfires glow. 'm Aidez, Mairee, Aidez-moi. Come call me home, to sow.\"",
+          "speaker": "frank-muro"
+        },
+        "Frank tapped his pad, finishing the recital and ending the stream. He waited. A pulse and another lost to the void.",
+        "[#alert-pong]PONG."
+      ]
+    },
+    {
+      "type": "code",
+      "paragraphs": [
+        "< Anonymous | Good morning. \nWe share your orbit. />"
+      ]
+    },
+    {
+      "paragraphs": [
+        "Below that, another reply."
+      ]
+    },
+    {
+      "type": "code",
+      "paragraphs": [
+        "< Anonymous | The flowers are singing a new song. \nLouder than before. />"
+      ]
+    },
+    {
+      "paragraphs": [
+        "Below, another."
+      ]
+    },
+    {
+      "type": "code",
+      "paragraphs": [
+        "< Anonymous | The stone below remembers. \nWe were here before. />"
+      ]
+    },
+    {
+      "paragraphs": [
+        "Frank stared at the screen as a slow, amazed smile spread across his face. It had worked. They were listening. The replies proved he was not screaming into a void.",
+        {
+          "text": "\"[bright]THEY ARE AWAKE,\" said a bright voice.",
+          "speaker": "gary"
+        },
+        {
+          "text": "\"[soft]Yes,\" another voice replied. \"[soft]Aye… they are.\"",
+          "speaker": "frank-muro"
+        },
+        "For the first time, he wasn't sure if it was Gary or himself who had spoken."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "SECTOR 4, FREYA HOMESTEAD",
+      "paragraphs": [
+        "Oliver rested his hand on the conduit.",
+        {
+          "text": "\"[focused]Here.\" He pointed at a line on his slate. \"[focused]Tertiary Med-Bay. Persistent draw, point-zero-three over baseline. Constant.\"",
+          "speaker": "oliver-savannen"
+        },
+        "Ian leaned in. The boy was sharp. He had an intuition for the flow of things, an eye for the single drop of water moving against the current.",
+        {
+          "text": "\"[tracing]It's routed to the stasis bay,\" Oliver said, tracing the schematic.",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "\"[skeptical]The stasis bay's inert. Power draw should be null,\" Ian replied.",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[insistent]It's not,\" Oliver insisted. \"[insistent]Look. Signature matches minimal life-support protocol.\"",
+          "speaker": "oliver-savannen"
+        },
+        "He met Ian's eyes, questioning.",
+        {
+          "text": "Ian scanned the data. \"[pragmatic]They wouldn't waste power on life support. Every Watt counts.\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[low]Unless\" — Oliver's voice dropped — \"[low]it's no longer vacant.\"",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "Ian frowned. \"[puzzled]Cryopods… What for?\"",
+          "speaker": "ian-perera"
+        },
+        "Oliver ran a hand through his hair, thinking.",
+        {
+          "text": "\"[thinking]Critical patients?\"",
+          "speaker": "oliver-savannen"
+        },
+        "Ian shook his head. Joana would know about it.",
+        {
+          "text": "\"[speculating]Maybe they're taking platinum relays from the cryopumps.\" Oliver's eyes narrowed. \"[ominous]Or maybe it's being used as a prison.\"",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "*Vilde.*",
+          "inner_voice": "ian-perera"
+        },
+        "The name came to Ian's mind.",
+        {
+          "text": "\"[muttering]Dissidents,\" Ian muttered and shook his head again. \"[dismissing]No, that's just being paranoid. More likely is that they're repurposing it.\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[pressing]How can we find out more without drawing eyes?\" Oliver pressed.",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "\"[firm]We don't,\" Ian said. \"[firm]Log it as a sensor glitch. We've seen enough.\"",
+          "speaker": "ian-perera"
+        },
+        "[#steps-echo]A footstep made them both jump.",
+        {
+          "text": "\"[startled]Lysanne,\" Ian said.",
+          "speaker": "ian-perera"
+        },
+        "The young hydro-tech emerged from the shadows of a connecting tunnel. The overhead lamp ignited her hair, a messy bun of fiery red, and her pale face, dusted with freckles. She clutched a spent catalytic converter in her hand.",
+        {
+          "text": "\"[whispered]Ian… my mother,\" Lysanne whispered. \"[grateful]She asked me what day it was this morning. She hasn't done that in clicks. She was… clear.\"",
+          "speaker": "lysanne-sutherland"
+        },
+        "Her eyes were filled with gratitude. Her hands trembled as she returned the spent filter to Ian.",
+        {
+          "text": "\"[murmured]Make sure you purge the saturated ones on time,\" Ian murmured, passing her a clean one.",
+          "speaker": "ian-perera"
+        },
+        "Lysanne unzipped the top of her coveralls just enough to slip the converter inside. She headed back into the dark corridor.",
+        "The number of families he was secretly helping was growing. For once, he was grateful the Grid kept his anxiety in check. Otherwise, he couldn't bear the risk.",
+        {
+          "text": "\"[low]Her mother is doing better,\" Ian said to Oliver. He held up the spent filter. \"[low]They're saturating quickly. I can't get enough new ones without getting flagged.\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[urgent]Only the COG Egg solves this,\" Oliver said. \"[urgent]We're taking risks. With the Egg, we'd be less exposed.\"",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "Ian shook his head. \"[firm]No. The Maintenance Depot is on the far side of the dome. It's a dead zone, but to get there, you'd have to cross two monitored sectors.\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[hard]How long until Lysanne or someone else slips up? Or betrays us for extra ration credits?\"",
+          "speaker": "oliver-savannen"
+        },
+        "They stood in silence.",
+        {
+          "text": "\"[quiet]I wouldn't.\"",
+          "speaker": "lysanne-sutherland"
+        },
+        "They jumped again. It was Lysanne, stepping back from the shadows.",
+        {
+          "text": "\"[apologetic]I'm sorry,\" she stammered, raising her hands. \"[apologetic]I didn't mean to eavesdrop. I just heard you talking about the depot…\" She paused. \"[wry]So yeah, well, I guess I did mean to.\"",
+          "speaker": "lysanne-sutherland"
+        },
+        {
+          "text": "Ian's face hardened. \"[stern]How much did you hear?\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[direct]Something about an egg,\" she said, with bright green eyes. \"[direct]You want to get into the maintenance depot?\"",
+          "speaker": "lysanne-sutherland"
+        },
+        {
+          "text": "\"[flat]That sector is off-limits,\" Ian stated flatly.",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[reasoning]Not if you're supposed to be there,\" Lysanne replied. \"[reasoning]I'm on the reclamation crew.\"",
+          "speaker": "lysanne-sutherland"
+        },
+        "She looked at Oliver again.",
+        {
+          "text": "\"[offering]We're set to do a parts salvage run in that sector tomorrow.\"",
+          "speaker": "lysanne-sutherland"
+        },
+        {
+          "text": "\"[eager]That's perfect!\" Oliver said, a little too loud, his voice echoing.",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "\"[explaining]We use a transporter. We log the inventory by hand at the end of the shift.\" She kept looking at him. \"[suggestive]The cart is big. There are tarps.\"",
+          "speaker": "lysanne-sutherland"
+        },
+        {
+          "text": "\"[realist]The Grid tracks movement between sectors. A tarp won't hide anyone,\" Ian said.",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[whispered]What do you need?\" Lysanne whispered. \"[determined]I'll get it.\"",
+          "speaker": "lysanne-sutherland"
+        },
+        {
+          "text": "\"[focused]Can you get inside the depot?\" Oliver asked.",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "Lysanne hesitated. \"[uncertain]I don't know for sure. We get a work order with the parts to salvage, but I won't see the list until tomorrow. What are you looking for?[#pause] An egg?\"",
+          "speaker": "lysanne-sutherland"
+        },
+        {
+          "text": "Oliver sighed. \"[explaining]Yeah. Something that belonged to my father. A diagnostic tool with which we can override and rewrite the Grid's software. It's stored somewhere, but I don't know where exactly. I have a hunch, but I need to get there myself.\"",
+          "speaker": "oliver-savannen"
+        },
+        {
+          "text": "\"[soft]Oh.\"",
+          "speaker": "lysanne-sutherland"
+        },
+        "Lysanne worried at the seam of her sleeve with her thumb.",
+        {
+          "text": "Oliver went on. \"[planning]When you're there, find a ventilation panel. Disable its maglock and mark it. I may be able to get to it later.\"",
+          "speaker": "oliver-savannen"
+        },
+        "Lysanne's eyes widened as she realized what he meant. Ian stepped between them and looked Oliver straight in the eye.",
+        {
+          "text": "\"[firm]I'm not letting you risk it, kid. Not you or anyone else. They'll put you in one of those pods.\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[puzzled]Pods?\" Lysanne asked.",
+          "speaker": "lysanne-sutherland"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "HAB-PERERA",
+      "paragraphs": [
+        "Joana rubbed her burning eyes. Gritty, as if sand had gotten trapped behind her eyelids. Her work had become an obsession. It had grown into a colony-wide comparative analysis as she pulled every pre-transit neurological baseline scan from Yggdrasil's archives and ran them against the new data she was collecting daily. She was following the pattern.",
+        "[#chime]A program she'd coded finished its run and showed her the results.",
+        "Her stomach churned. She found more anomalies in her daughter's brain within the diencephalon, at the thalamic reticular nucleus. It lit up almost like a bonfire. She also observed atypically elevated metabolic demand and a measurable increase in regional gray-matter volume across multiple cortical sites. A further anomaly emerged: hyperexcitability in the lingual gyrus and other visual-processing centers. This suggested a broader disruption of occipital network stability. Joana put the clues together. She guessed her daughter's brain was changing way faster than it should be, and it couldn't keep up.",
+        {
+          "text": "*Everyone who went through the Fold had been affected by it. Me too.*",
+          "inner_voice": "joana-perera"
+        },
+        "She began formulating the hypothesis. A mass trauma response? Heavy with worry, she glanced from the troubling data to her sleeping daughter. She spent the next ten beats feverishly coding another analysis from scratch. She fed it the COG biometric data: sleep patterns, cortisol levels, heart rate variability, and cognitive performance metrics. The results cascaded across her screen. The evidence was clear. The whole colony had REM sleep problems. Baseline cortisol levels were higher, symptoms hidden by the Grid but obvious in the data.",
+        "She added a probabilistic forecast to her program. It projected a decrease in cognitive efficiency and a rise in psychological and neurological disorders.",
+        "Her fight for Susana was no longer a personal battle. It was the leading edge of a pandemic. She checked the time. Ian's shift would end soon. She had no idea how to break the news to him. Or even if she should.",
+        "Ian had been difficult to read lately, spending time with Oliver. The boy was now becoming a part of their community.",
+        {
+          "text": "*Family? Community.*",
+          "inner_voice": "joana-perera"
+        },
+        "The word summoned memories of the recruitment posters: families holding hands beneath a purple sky. In truth, on Mairee, they were living in solitary hexagons.",
+        "There was social care. Of course there was. Psychological check-ins. On paper, no one was alone. In practice, many were. Joana recognized the pattern because she lived it. She and Ian were not settlers in the romantic sense. They were functional. Reserved. Efficient. If it hadn't been for her insistence on shared meals and nightly debriefs, Ian could have gone days without speaking beyond operational necessity. That was a pattern that existed even before this alien planet. He never shared much about his past. When he did, it came in fragments. References without context. Names without stories. There were gaps. Big ones. Perhaps that was why he gravitated toward Oliver. Out of recognition. Introverts tended to recognize their own.",
+        "On impulse, she opened another file. Oliver's. She told herself it was procedural. Control comparison. He had been restless, irritable, grieving in ways that blurred the clinical picture. Emotional instability skewed his biometrics.",
+        "His baseline aligned on the screen. Pre-transit overlay. Post-transit overlay. She waited for the divergence. None appeared. She frowned and adjusted the sensitivity threshold. Still no deviation. No abnormal thalamic activation. No cortical thickening. No occipital hyperexcitability. Joana sat back slowly.",
+        "With the absence of change, he was the outlier. But grief could mask everything. Trauma suppressed. Still. She closed the screen because she didn't want to think too long about what it meant."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "HAB-SAVANNEN",
+      "paragraphs": [
+        "[#airhiss]The hab door slid shut. Oliver dropped his case. His muscles ached from the ten-hour engineering shift. He binged his ration paste and depleted his daily drinking quota. He stared at the holovisor. He had been looking forward to playing Mechdroid all day, but now it was a mountain he didn't have the energy to climb. Instead, he undressed. The engineering jumpsuit, stiff with sweat and grime, peeled away, exposing a body still more boy than man.",
+        "He stepped into the cylindrical steam-scrubber. [#airhiss2]Superheated, ionized steam blasted from wall nozzles. He stood, arms raised, eyes closed, as steam stripped away the day's filth. The ionic field tingled as it lifted grease. A vapor ran down his chest and back. Sensors scanned his body, analyzing his biometrics and logging his water and weight loss to calculate his next nutrient and electrolyte supplement. The cycle ended with a brisk blast of air. Not a single drop of water was used in the process.",
+        "Naked, he slumped onto his sleep couch and grabbed his personal slate. He pulled up the civilian feed. He scrolled. There were the official news updates. A cheerful report from the Plateau claimed a temporary relief allowance. A broadcast from the FNS Bygul, one of the two haulers in orbit, showed cargo containers being loaded onto grav-lifts, indicating additional supplies were being released to the surface. But real life at the Homestead could be read through the cracks in an obscure thread called The Commons. It was also fast becoming a black market. He read a post from a botanist in Ag-Dome 6: *Willing to trade surplus nutrient supplements for coffee.* Another post offered to trade real fruit for FabricFresh™ DryCycle Powder.",
+        "He scrolled past the memes, mostly gallows humor about the (lack) of flavor of the nutrient paste.",
+        "*When the nutrient paste has a slightly different shade of beige today.*",
+        "*My favorite flavor of nutrient paste is 'Floday.'*",
+        "*Texture is not for plebs.*",
+        "And his favorite for today: *Nutripaste: now with 3% more existential dread.*",
+        "Trending was the poetry thread started by Frank Muro on Orbital Three. The top comment nailed the vibe: *Woke up to a poem that rhymed 'nebula' with 'regular.' Yeah… It's gonna be another long day.*",
+        "[#chime]The hub speaker chimed."
+      ]
+    },
+    {
+      "type": "code",
+      "paragraphs": [
+        "< WELLNESS INITIATIVE: \nNighttime Atmosphere. \nTime to rest and recharge \nfor a productive tomorrow. />"
+      ]
+    },
+    {
+      "paragraphs": [
+        "The lights dimmed from sterile white to gentle amber. From the wall speaker, a meditative tone cycled to stimulate delta wave production. [#airhiss]The vent above his bed dispersed aerosolized melatonin and mild GABA-agonists. A beat later, his thumb slipped from the slate, which slid from his chest onto the carpet. It glowed a poem by Muro before fading to black."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "HAB-PERERA",
+      "paragraphs": [
+        {
+          "text": "\"[strained]It's getting worse, Jo,\" Ian said after he came home from his shift, his voice strained. \"[strained]Oliver's set on getting that Egg. He's not letting it go.\"",
+          "speaker": "ian-perera"
+        },
+        "Joana listened. She knew it was risky to trust a grieving, impulsive teenager.",
+        {
+          "text": "\"[rasping]You were gone a long time,\" she said, her voice a rasp.",
+          "speaker": "joana-perera"
+        },
+        {
+          "text": "\"[worried]I'm not sure I can keep him steady. He might do something rash, without—\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[sharp]No. Not that boy again, Ian! Su. The episodes are clustering.\" Joana crossed her arms. \"[concerned]Closer together. Shorter recovery windows. Su's last one… I don't think she came back clean. Not all the way.\"",
+          "speaker": "joana-perera"
+        },
+        "Ian dragged a hand over his face, then faced Joana. Measuring. She stood up and grabbed her jacket.",
+        {
+          "text": "\"[surprised]Where are you going?\" Ian asked, surprised.",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[laconic]Med-Post,\" she explained laconically as she exited the hab.",
+          "speaker": "joana-perera"
+        },
+        "She had an impulsive idea of her own and wasn't ready to share it with Ian yet. She walked to the brightly lit post between a distribution node and the public commons area.",
+        "A nurse looked up from her console. Her dark eyes were a stark contrast to her white coat.",
+        {
+          "text": "\"[warm]Joana!\" she greeted with a genuine smile. \"[warm]How's Su?\"",
+          "speaker": "fatima"
+        },
+        {
+          "text": "Joana smiled back. \"[warm]Fatima, good to see you in person again. Su's improving; the episodes have… subsided.\"",
+          "speaker": "joana-perera"
+        },
+        {
+          "text": "Fatima's eyebrows raised in surprise. \"[surprised]Subsided? As in gone?\"",
+          "speaker": "fatima"
+        },
+        "Joana nodded but carefully avoided explaining further.",
+        {
+          "text": "\"[probing]Fatima, I was wondering,\" she said, leaning against the counter and lowering her voice, \"[probing]have you seen other cases? Brain fog, migraines, tinnitus?\"",
+          "speaker": "joana-perera"
+        },
+        "Fatima peeked over her shoulder and then back, staring deep into Joana's eyes.",
+        {
+          "text": "\"[hushed]It's funny you ask. I have three who say they hear a humming. And I think I hear it too. One of them also sees noise, like flickering static in her vision. They also have headaches and dizziness. Do you think it's related to…\"",
+          "speaker": "fatima"
+        },
+        "This was the opening Joana was waiting for. She leaned in, close enough to catch the scent of Fatima's mint tea.",
+        {
+          "text": "\"[low]I know it is,\" she said. \"[urgent]I'm close to something, Fatima. It's a neurological condition that started during the transit. It's getting worse here. It can progress into epilepsy, or worse. I've developed an experimental treatment.\"",
+          "speaker": "joana-perera"
+        },
+        "She glanced around.",
+        {
+          "text": "\"[whispered]The stasis bay. We could use a cryopod to trigger and control the neuroadaptation process without risking status epilepticus.\"",
+          "speaker": "joana-perera"
+        },
+        {
+          "text": "Fatima gave a short, bitter laugh of disbelief. \"[disbelief]Joana, that's imp—\"",
+          "speaker": "fatima"
+        },
+        {
+          "text": "\"[pressing]Lifesaving,\" Joana pressed. \"[pressing]I want to prove it's possible.\"",
+          "speaker": "joana-perera"
+        },
+        {
+          "text": "\"[skeptical]There's no way to get anything like that approved,\" Fatima countered.",
+          "speaker": "fatima"
+        },
+        "She met Joana's pleading eyes, then shook her head.",
+        {
+          "text": "\"[muttering]I don't know why I'm doing this,\" she muttered, typing quickly. \"[muttering]There's no way.\"",
+          "speaker": "fatima"
+        },
+        "She opened a file on her slate and gestured for Joana to take it.",
+        {
+          "text": "\"[bureaucratic]It's a requisition form for a 'Diagnostic Review of Under-Utilized Capital Hardware.' They will at least review it.\"",
+          "speaker": "fatima"
+        },
+        "Joana tapped her wristband to it. [#chime]Both the slate and wristband chimed in unison, confirming the transfer.",
+        {
+          "text": "Fatima looked up. \"[uncertain]I'm not sure they'll appreciate it.\"",
+          "speaker": "fatima"
+        },
+        "Joana thanked Fatima and gave her a hug.",
+        {
+          "text": "\"[whispered]Will you come back to us?\" Fatima whispered. \"[gentle]Once Su's condition is completely stable, I mean. We really need you here.\"",
+          "speaker": "fatima"
+        },
+        "Joana blinked and nodded, then returned to her hab.",
+        "She found Ian in the living room, standing over Oliver, who was asleep on the couch under a blanket. Oliver looked younger while he slept.",
+        {
+          "text": "\"[murmured]He just showed up,\" Ian murmured. \"[murmured]Said nothing, just cried and cried. Couldn't get a word out of him. He fell asleep a beat ago.\"",
+          "speaker": "ian-perera"
+        },
+        "Joana's gaze settled on the boy's face, then drifted to the faint twitch at the corner of Oliver's mouth.",
+        {
+          "text": "\"[low]It's finally catching up to him,\" she said.",
+          "speaker": "joana-perera"
+        },
+        "Ian rubbed the back of his neck, his joints popping.",
+        {
+          "text": "\"[guilty]The work? Yeah. I shouldn't have let him pull those long shifts.\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[clinical]Not the work, Ian. It's the end of the denial,\" she continued. \"[soft]He's out of runway. The grief is catching up.\"",
+          "speaker": "joana-perera"
+        },
+        "Ian looked down at the boy, his expression softening into something pained.",
+        {
+          "text": "\"[careful]So what do we do? Wake him up?\"",
+          "speaker": "ian-perera"
+        },
+        {
+          "text": "\"[quiet]You can't wake someone up from this kind of fall,\" Joana said.",
+          "speaker": "joana-perera"
+        },
+        "The twitch in Oliver's lip happened again, more pronounced this time.",
+        {
+          "text": "\"[fearful]He's twitching. Will it be like Su?\" Ian whispered, the fear creeping into his tone. \"[fearful]Is it the same thing? Is he sick?\"",
+          "speaker": "ian-perera"
+        },
+        "She reached out and touched the boy's forehead. His skin was unnaturally cool.",
+        {
+          "text": "\"[soft]I don't think so.\"",
+          "speaker": "joana-perera"
+        }
+      ]
+    }
+  ]
+}
