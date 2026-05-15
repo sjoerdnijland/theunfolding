@@ -69,7 +69,7 @@ function Hero({ onBuy }) {
 
         <div className="hero-right" style={{ transform: `translateY(${parallax * 0.1}px) rotate(${-2 + scrollY * 0.005}deg)` }}>
           <div className="cover-wrap">
-            <img src="assets/hardcover.png" alt="The Unfolding — Part I: Mairee, by S. Nyland" className="cover-img" />
+            <img src="assets/cover.png" alt="The Unfolding — Part I: Mairee, by S. Nyland" className="cover-img" />
             <div className="cover-shadow" />
           </div>
           <div className="cover-caption">
