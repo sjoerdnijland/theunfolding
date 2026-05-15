@@ -408,7 +408,6 @@ function openModal(item) {
 
   const audioHtml = item.narration ? `
         <div class="modal-narration">
-          <span class="modal-section-label">◉ Narrator intro</span>
           <div class="ma-player">
             <button class="ma-play" id="ma-play" onclick="toggleModalAudio()" aria-label="Play narration">▶</button>
             <div class="ma-progress" onclick="seekModalAudio(event)">
