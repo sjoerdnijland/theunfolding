@@ -15,14 +15,14 @@
         "Frank Muro blinked, his cheek against the emergency airlock. Mairee swirled below him. The release console for the airlock gleamed in the dim emergency light, a red-eyed invitation to the other side.",
         "He felt a hand on his shoulder, then a warm embrace. Mo. They had mourned George together. The kind of grief that left a permanent layer of ash in the back of the throat. The memory was so clear it felt like he had just woken up, and all this was but a bad dream.",
         "No. Not the airlock. George had gone through one, and he'd never come back. He'd become part of the vacuum, a smear of frozen molecules in the black. Frank couldn't have Mo go through that again. He pushed away from the viewport.",
-        "[#hum-throb]A noise started in the back of his skull, a grit-sand whisper that made his teeth ache.",
+        "[#git-sand-whispers]A noise started in the back of his skull, a grit-sand whisper that made his teeth ache.",
         {
-          "text": "*I don't want to wake up*, it hissed.",
+          "text": "[#git-sand-whispers]*I don't want to wake up*, it hissed.",
           "inner_voice": "frank-muro"
         },
         "Then it spiked into a distorted, cheerful roar.",
         {
-          "text": "\"[#glitching][bright]I CANNAE CLOSE MY EYES WITHOUT WAKIN' UP!\"",
+          "text": "\"[#git-sand-whispers][#glitch][bright]I CANNAE CLOSE MY EYES WITHOUT WAKIN' UP!\"",
           "speaker": "gary"
         },
         "He moved to his bunk and pulled the rigged holo-projector from its hidden housing. Gary's avatar flickered as a glitchy eye before it rendered into a shivering, pixelated caricature of Frank himself. Through Gary and his rigged holo-projector, he accessed the civilian network. Networking a Contained Intelligence Executor was a crime, but he was already a prisoner. Laws felt like suggestions when the universe itself was breaking them.",
@@ -74,7 +74,7 @@
     {
       "type": "code",
       "paragraphs": [
-        "< Anonymous | The flowers are singing a new song. \nLouder than before. />"
+        "[pong]< Anonymous | The flowers are singing a new song. \nLouder than before. />"
       ]
     },
     {
@@ -85,7 +85,7 @@
     {
       "type": "code",
       "paragraphs": [
-        "< Anonymous | The stone below remembers. \nWe were here before. />"
+        "[pong]< Anonymous | The stone below remembers. \nWe were here before. />"
       ]
     },
     {
@@ -286,7 +286,8 @@
       "paragraphs": [
         "Joana rubbed her burning eyes. Gritty, as if sand had gotten trapped behind her eyelids. Her work had become an obsession. It had grown into a colony-wide comparative analysis as she pulled every pre-transit neurological baseline scan from Yggdrasil's archives and ran them against the new data she was collecting daily. She was following the pattern.",
         "[#chime]A program she'd coded finished its run and showed her the results.",
-        "Her stomach churned. She found more anomalies in her daughter's brain within the diencephalon, at the thalamic reticular nucleus. It lit up almost like a bonfire. She also observed atypically elevated metabolic demand and a measurable increase in regional gray-matter volume across multiple cortical sites. A further anomaly emerged: hyperexcitability in the lingual gyrus and other visual-processing centers. This suggested a broader disruption of occipital network stability. Joana put the clues together. She guessed her daughter's brain was changing way faster than it should be, and it couldn't keep up.",
+        "Her stomach churned. She found more anomalies in her daughter's brain within the diencephalon, at the thalamic reticular nucleus. It lit up almost like a bonfire. She also observed atypically elevated metabolic demand and a measurable increase in regional gray-matter volume across multiple cortical sites.",
+        "A further anomaly emerged: hyperexcitability in the lingual gyrus and other visual-processing centers. This suggested a broader disruption of occipital network stability. Joana put the clues together. She guessed her daughter's brain was changing way faster than it should be, and it couldn't keep up.",
         {
           "text": "*Everyone who went through the Fold had been affected by it. Me too.*",
           "inner_voice": "joana-perera"
@@ -300,7 +301,8 @@
           "inner_voice": "joana-perera"
         },
         "The word summoned memories of the recruitment posters: families holding hands beneath a purple sky. In truth, on Mairee, they were living in solitary hexagons.",
-        "There was social care. Of course there was. Psychological check-ins. On paper, no one was alone. In practice, many were. Joana recognized the pattern because she lived it. She and Ian were not settlers in the romantic sense. They were functional. Reserved. Efficient. If it hadn't been for her insistence on shared meals and nightly debriefs, Ian could have gone days without speaking beyond operational necessity. That was a pattern that existed even before this alien planet. He never shared much about his past. When he did, it came in fragments. References without context. Names without stories. There were gaps. Big ones. Perhaps that was why he gravitated toward Oliver. Out of recognition. Introverts tended to recognize their own.",
+        "There was social care. Of course there was. Psychological check-ins. On paper, no one was alone. In practice, many were. Joana recognized the pattern because she lived it. She and Ian were not settlers in the romantic sense. They were functional. Reserved. Efficient. If it hadn't been for her insistence on shared meals and nightly debriefs, Ian could have gone days without speaking beyond operational necessity. That was a pattern that existed even before this alien planet.",
+        "He never shared much about his past. When he did, it came in fragments. References without context. Names without stories. There were gaps. Big ones. Perhaps that was why he gravitated toward Oliver. Out of recognition. Introverts tended to recognize their own.",
         "On impulse, she opened another file. Oliver's. She told herself it was procedural. Control comparison. He had been restless, irritable, grieving in ways that blurred the clinical picture. Emotional instability skewed his biometrics.",
         "His baseline aligned on the screen. Pre-transit overlay. Post-transit overlay. She waited for the divergence. None appeared. She frowned and adjusted the sensitivity threshold. Still no deviation. No abnormal thalamic activation. No cortical thickening. No occipital hyperexcitability. Joana sat back slowly.",
         "With the absence of change, he was the outlier. But grief could mask everything. Trauma suppressed. Still. She closed the screen because she didn't want to think too long about what it meant."
@@ -314,7 +316,8 @@
       "paragraphs": [
         "[#airhiss]The hab door slid shut. Oliver dropped his case. His muscles ached from the ten-hour engineering shift. He binged his ration paste and depleted his daily drinking quota. He stared at the holovisor. He had been looking forward to playing Mechdroid all day, but now it was a mountain he didn't have the energy to climb. Instead, he undressed. The engineering jumpsuit, stiff with sweat and grime, peeled away, exposing a body still more boy than man.",
         "He stepped into the cylindrical steam-scrubber. [#airhiss2]Superheated, ionized steam blasted from wall nozzles. He stood, arms raised, eyes closed, as steam stripped away the day's filth. The ionic field tingled as it lifted grease. A vapor ran down his chest and back. Sensors scanned his body, analyzing his biometrics and logging his water and weight loss to calculate his next nutrient and electrolyte supplement. The cycle ended with a brisk blast of air. Not a single drop of water was used in the process.",
-        "Naked, he slumped onto his sleep couch and grabbed his personal slate. He pulled up the civilian feed. He scrolled. There were the official news updates. A cheerful report from the Plateau claimed a temporary relief allowance. A broadcast from the FNS Bygul, one of the two haulers in orbit, showed cargo containers being loaded onto grav-lifts, indicating additional supplies were being released to the surface. But real life at the Homestead could be read through the cracks in an obscure thread called The Commons. It was also fast becoming a black market. He read a post from a botanist in Ag-Dome 6: *Willing to trade surplus nutrient supplements for coffee.* Another post offered to trade real fruit for FabricFresh™ DryCycle Powder.",
+        "Naked, he slumped onto his sleep couch and grabbed his personal slate. He pulled up the civilian feed. He scrolled. There were the official news updates. A cheerful report from the Plateau claimed a temporary relief allowance. A broadcast from the FNS Bygul, one of the two haulers in orbit, showed cargo containers being loaded onto grav-lifts, indicating additional supplies were being released to the surface.",
+        "But real life at the Homestead could be read through the cracks in an obscure thread called The Commons. It was also fast becoming a black market. He read a post from a botanist in Ag-Dome 6: *Willing to trade surplus nutrient supplements for coffee.* Another post offered to trade real fruit for FabricFresh™ DryCycle Powder.",
         "He scrolled past the memes, mostly gallows humor about the (lack) of flavor of the nutrient paste.",
         "*When the nutrient paste has a slightly different shade of beige today.*",
         "*My favorite flavor of nutrient paste is 'Floday.'*",
@@ -355,7 +358,7 @@
           "speaker": "ian-perera"
         },
         {
-          "text": "\"[sharp]No. Not that boy again, Ian! Su. The episodes are clustering.\" Joana crossed her arms. \"[concerned]Closer together. Shorter recovery windows. Su's last one… I don't think she came back clean. Not all the way.\"",
+          "text": "\"[accusing]No. Not that boy again, Ian! [#pause]Su... The episodes are clustering.\" Joana crossed her arms. \"[concerned]Closer together. Shorter recovery windows. Su's last one… I don't think she came back clean. Not all the way.\"",
           "speaker": "joana-perera"
         },
         "Ian dragged a hand over his face, then faced Joana. Measuring. She stood up and grabbed her jacket.",

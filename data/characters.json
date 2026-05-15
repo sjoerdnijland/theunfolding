@@ -586,5 +586,19 @@
     "id": "kenji-rojas",
     "voice_id": "HRttR5MBBbw7AvtIFoRq",
     "narration": "We're never going to meet the water quota under these conditions. There's no way we should be responsible for twenty percent of potable water replenishment."
+  },
+  {
+    "name": "Fatima Bouanani",
+    "tag": "char",
+    "role": "Med-Post Nurse",
+    "affil": "Freya Homestead Med-Post",
+    "aliases": "Fatima, Bouanani",
+    "appearance": "Dark-eyed and unhurried, her face a quiet counterpoint to the bleached white of her med-coat. She carries the small steadying gestures of a long-time nurse — the half-glance over the shoulder before saying anything that matters, the hand that lands gently on a counter when she leans in. She loves mint tea.",
+    "desc": "A nurse at the Med-Post between Distribution Node 4 and the public commons. Fatima worked alongside Joana Perera before Susana's condition pulled Joana into private research.",
+    "chapter": 16,
+    "image": "/assets/char/fatima.png",
+    "id": "fatima",
+    "voice_id": "ZXZq039skp0kfF9gO7Au",
+    "narration": "I have three who say they hear a humming. And I think I hear it too."
   }
 ]
