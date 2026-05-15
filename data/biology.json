@@ -9,6 +9,8 @@
     "desc": "A sleek, low-slung quadruped roughly the size of a large domestic cat. Bioluminescent patches along the spine pulse faintly in cool blues and greens, particularly when hunting or distressed. Its fur is fine and dark, absorbing ambient light. ",
     "chapter": 3,
     "image": "/assets/bio/shimmercat.png",
+    "audio": "assets/audio/wiki/shimmercat.mp3",
+    "narration": "You won't see it coming. That's the first thing.[#pause] You'll feel it. A line of cold along the back of your neck. A breath that wasn't yours.[#pause2] By then the calculation has already been made — yours, theirs.[#pause] Maybe a faint pulse along its spine. Cool blue. Cool green. Just enough to mark the moment your luck ran out.[#pause2] The new arrivals call it the Shimmercat. The older hands call it the Ghost-cat.[#pause] Same animal. Both names accurate.[#pause2] No bigger than the housecat back home. That part is the joke. The rest is that it survived a world that ate its competition for breakfast.[#pause] You're not on its menu. You're just on its land.[#pause] It only wants you to know you weren't invited.",
     "mj_prompt": "A sleek low-slung alien quadruped with bioluminescent blue-green patches along its spine, crouched motionless in dense alien jungle undergrowth, its eyes reflecting faint light, barely visible, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7"
   },
   {

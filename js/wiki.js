@@ -406,6 +406,12 @@ function openModal(item) {
     ? `<div class="modal-img-hero" style="background-image:url('${item.image}')"></div>`
     : '';
 
+  const audioHtml = item.audio ? `
+        <div class="modal-narration">
+          <span class="modal-section-label">◉ Narrator intro</span>
+          <audio class="modal-audio" controls preload="none" src="${item.audio}"></audio>
+        </div>` : '';
+
   content.innerHTML = `
     ${imgHtml}
     <div class="modal-body">
@@ -416,6 +422,7 @@ function openModal(item) {
         <dt>Affiliation</dt> <dd>${item.affil ?? '—'}</dd>
         ${item.aliases ? `<dt>Also known as</dt><dd>${item.aliases}</dd>` : ''}
       </dl>
+      ${audioHtml}
       ${item.appearance ? `
         <div class="modal-appearance">
           <span class="modal-section-label">Appearance</span>
