@@ -139,7 +139,7 @@
     "aliases": "",
     "desc": "A sleek black composite shuttle home to theFNS Dáinn, broad-winged, built to absorb light and radar. Used to probe the Brisinger. Piloted by Alistair Hale.",
     "chapter": 6,
-    "image": "assets/fleet/stingray.png",
+    "image": "/assets/fleet/stingray.png",
     "id": "stingray",
     "narration": "Stingray. Built to absorb light and questions. When somebody needs to look at something nobody is supposed to look at, this is what they take out."
   },
@@ -151,7 +151,7 @@
     "aliases": "",
     "desc": "Corbin's personal executive shuttle capable of crossing the Corridor.",
     "chapter": 6,
-    "image": "assets/fleet/depeche.png",
+    "image": "/assets/fleet/depeche.png",
     "id": "depeche",
     "narration": "Depeche. Corbin's ride. Black. Quiet. Punctual. Her arrival is never good news."
   },
@@ -163,7 +163,7 @@
     "aliases": "",
     "desc": "Light-class shuttle piloted by Nabiha Al-Fahim. Capable of scouting terrain.",
     "chapter": 7,
-    "image": "assets/fleet/beetle.png",
+    "image": "/assets/fleet/beetle.png",
     "id": "beetle",
     "narration": "Beetle. Nabiha's shuttle. Small. Ugly. Indestructible. Pilots love her. Engineers do not."
   },
@@ -175,7 +175,7 @@
     "aliases": "",
     "desc": "Escort-class shuttle stationed on Orbital Command.",
     "chapter": 7,
-    "image": "assets/fleet/vanguard.png",
+    "image": "/assets/fleet/vanguard.png",
     "id": "vanguard",
     "narration": "Vanguard. Bellamy's gun. A small escort with teeth, parked on Orbital Command. Brought out when the Directorate has run out of polite words."
   }
