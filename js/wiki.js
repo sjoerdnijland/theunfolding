@@ -406,10 +406,16 @@ function openModal(item) {
     ? `<div class="modal-img-hero" style="background-image:url('${item.image}')"></div>`
     : '';
 
-  const audioHtml = item.audio ? `
+  const audioHtml = item.narration ? `
         <div class="modal-narration">
           <span class="modal-section-label">◉ Narrator intro</span>
-          <audio class="modal-audio" controls preload="none" src="${item.audio}"></audio>
+          <div class="ma-player">
+            <button class="ma-play" id="ma-play" onclick="toggleModalAudio()" aria-label="Play narration">▶</button>
+            <div class="ma-progress" onclick="seekModalAudio(event)">
+              <div class="ma-progress-fill" id="ma-fill"></div>
+            </div>
+            <div class="ma-times"><span id="ma-cur">0:00</span><span class="ma-sep">/</span><span id="ma-tot">0:00</span></div>
+          </div>
         </div>` : '';
 
   content.innerHTML = `
@@ -433,9 +439,144 @@ function openModal(item) {
   `;
   document.getElementById('detail-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  if (item.narration) initModalAudio(item.narration, item.id);
+}
+
+// ── Narrator intro audio (synthesised via Supabase narrate) ────
+const NARRATE_URL = 'https://sscpikfblqtmcefegrpv.supabase.co/functions/v1/narrate';
+const NARRATE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
+const narrationBlobCache = {}; // id → blob URL
+
+let modalAudio = null;
+let modalAudioRAF = null;
+let modalAudioText = '';
+let modalAudioId = '';
+let modalAudioLoading = false;
+
+function fmtTime(s) {
+  if (!isFinite(s) || s < 0) s = 0;
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60).toString().padStart(2, '0');
+  return `${m}:${sec}`;
+}
+
+function b64ToBlob(b64, mime) {
+  const bin = atob(b64);
+  const arr = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+  return new Blob([arr], { type: mime });
+}
+
+function initModalAudio(text, id) {
+  stopModalAudio();
+  modalAudioText = text;
+  modalAudioId = id || text.slice(0, 32);
+  // If we've synthesised this entry before, restore from cache
+  if (narrationBlobCache[modalAudioId]) {
+    attachModalAudio(narrationBlobCache[modalAudioId]);
+  }
+}
+
+function attachModalAudio(url) {
+  modalAudio = new Audio(url);
+  modalAudio.preload = 'metadata';
+  modalAudio.addEventListener('loadedmetadata', () => {
+    const tot = document.getElementById('ma-tot');
+    if (tot) tot.textContent = fmtTime(modalAudio.duration);
+  });
+  modalAudio.addEventListener('ended', () => {
+    const btn = document.getElementById('ma-play');
+    if (btn) btn.textContent = '▶';
+    cancelAnimationFrame(modalAudioRAF);
+  });
+}
+
+async function synthModalAudio() {
+  if (modalAudioLoading) return;
+  modalAudioLoading = true;
+  const reqId   = modalAudioId;
+  const reqText = modalAudioText;
+  const btn = document.getElementById('ma-play');
+  if (btn) { btn.textContent = '◌'; btn.classList.add('loading'); }
+  try {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 30000);
+    const res = await fetch(NARRATE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + NARRATE_KEY },
+      body: JSON.stringify({ text: reqText }),
+      signal: ctrl.signal,
+    });
+    clearTimeout(t);
+    const data = await res.json();
+    if (!data || !data.audio) throw new Error(data && data.error || 'no audio');
+    const blob = b64ToBlob(data.audio, 'audio/mpeg');
+    const url  = URL.createObjectURL(blob);
+    narrationBlobCache[reqId] = url;
+    // Only attach + autoplay if user is still on the same entry
+    if (reqId === modalAudioId) {
+      attachModalAudio(url);
+      if (btn) { btn.textContent = '⏸'; btn.classList.remove('loading'); }
+      modalAudio.play().then(trackModalAudio).catch(() => {
+        if (btn) btn.textContent = '▶';
+      });
+    }
+  } catch (e) {
+    console.warn('[wiki narrate]', e.message);
+    if (btn && reqId === modalAudioId) { btn.textContent = '▶'; btn.classList.remove('loading'); }
+    const tot = document.getElementById('ma-tot');
+    if (tot && reqId === modalAudioId) tot.textContent = 'error';
+  } finally {
+    modalAudioLoading = false;
+  }
+}
+
+function toggleModalAudio() {
+  if (!modalAudio) {
+    synthModalAudio();
+    return;
+  }
+  const btn = document.getElementById('ma-play');
+  if (modalAudio.paused) {
+    modalAudio.play().then(() => {
+      btn.textContent = '⏸';
+      trackModalAudio();
+    }).catch(() => {});
+  } else {
+    modalAudio.pause();
+    btn.textContent = '▶';
+    cancelAnimationFrame(modalAudioRAF);
+  }
+}
+
+function trackModalAudio() {
+  if (!modalAudio || modalAudio.paused) return;
+  const fill = document.getElementById('ma-fill');
+  const cur  = document.getElementById('ma-cur');
+  if (fill && modalAudio.duration) {
+    fill.style.width = (modalAudio.currentTime / modalAudio.duration * 100) + '%';
+  }
+  if (cur) cur.textContent = fmtTime(modalAudio.currentTime);
+  modalAudioRAF = requestAnimationFrame(trackModalAudio);
+}
+
+function seekModalAudio(e) {
+  if (!modalAudio?.duration) return;
+  const track = e.currentTarget;
+  const rect  = track.getBoundingClientRect();
+  modalAudio.currentTime = ((e.clientX - rect.left) / rect.width) * modalAudio.duration;
+  const fill = document.getElementById('ma-fill');
+  if (fill) fill.style.width = (modalAudio.currentTime / modalAudio.duration * 100) + '%';
+}
+
+function stopModalAudio() {
+  if (modalAudio) { modalAudio.pause(); modalAudio = null; }
+  cancelAnimationFrame(modalAudioRAF);
 }
 
 function closeModal() {
+  stopModalAudio();
   document.getElementById('detail-overlay').classList.remove('open');
   document.body.style.overflow = '';
 }

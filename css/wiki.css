@@ -454,16 +454,61 @@
   background: rgba(45,91,102,0.08);
   border-left: 2px solid var(--rose);
 }
-.modal-audio {
-  width: 100%;
-  height: 36px;
-  margin-top: 6px;
-  filter: invert(0.85) hue-rotate(180deg);
+.ma-player {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+.ma-play {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--rose);
+  color: var(--ink, #060810);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.1s;
+  padding: 0 0 0 2px; /* nudge ▶ glyph optically centered */
+}
+.ma-play:hover  { background: #c72f63; }
+.ma-play:active { transform: scale(0.95); }
+.ma-play.loading {
+  cursor: wait;
+  animation: maSpin 1.2s linear infinite;
+}
+@keyframes maSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.ma-progress {
+  flex: 1;
+  height: 3px;
+  background: rgba(74,154,170,0.18);
+  cursor: pointer;
   border-radius: 2px;
+  overflow: hidden;
+  position: relative;
 }
-.modal-audio::-webkit-media-controls-panel {
-  background: rgba(6,22,25,0.6);
+.ma-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, var(--teal-soft, #4a9aaa), var(--rose));
+  transition: width 0.1s linear;
 }
+.ma-times {
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.ma-times .ma-sep { margin: 0 4px; opacity: 0.5; }
 
 /* Appearance block */
 .modal-appearance {
