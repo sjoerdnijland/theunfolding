@@ -45,7 +45,7 @@
     "chapter": 1,
     "image": "/assets/items/eyewyn.png",
     "id": "eyewyn-orbs",
-    "narration": "Floating eyes with dilating lenses. They broadcast the leader's face onto the dome. They also remember yours."
+    "narration": "Floating eyes with dilating lenses. They broadcast the leader's face. They also remember yours."
   },
   {
     "name": "Scitter",
@@ -81,7 +81,7 @@
     "chapter": 6,
     "image": "",
     "id": "zups",
-    "narration": "Zenith Uppers. Small wafers that dissolve under the tongue. The Directorate hands them out. The Guard pretends they're for the cold."
+    "narration": "Zenith Uppers. Small wafers that dissolve under the tongue. The Directorate hands them out like candy. The Guard pretends they're for the cold."
   },
   {
     "name": "Gravitic Suppressor",
@@ -93,7 +93,7 @@
     "chapter": 2,
     "image": "",
     "id": "gravitic-suppressor",
-    "narration": "A heavy-grade weapon that bends gravity around your body until you cannot lift your own arms. Crowd control. There is no crowd left after."
+    "narration": "A heavy-grade weapon that bends gravity around your body until you cannot lift your own arms. Crowd control."
   },
   {
     "name": "Smashout",
@@ -105,7 +105,7 @@
     "chapter": 7,
     "image": "",
     "id": "smashout",
-    "narration": "A racket game in three dimensions. Two players. Glowing panels. A net. The truth gets told between rallies. The kiss usually comes after."
+    "narration": "A racket game in three dimensions. Two players. Glowing panels. A net. The truth gets told between rallies. "
   },
   {
     "name": "Nutrient paste (Nutripaste)",

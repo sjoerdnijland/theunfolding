@@ -9,7 +9,7 @@
     "chapter": 2,
     "image": "/assets/char/ulre_corbin.png",
     "id": "the-directorate",
-    "narration": "The emergency government that did not end with the emergency. Controls food. Water. Medicine. Shelter. The air. Tells you that everything is going to be okay, and waits for you to believe it."
+    "narration": "The emergency government. Controls food. Water. Medicine. Shelter. The air. Your neurochemistry. That's right. Tells you that everything is going to be okay, and waits for you to believe it."
   },
   {
     "name": "The Seiðr",
@@ -21,7 +21,7 @@
     "chapter": 8,
     "image": "/assets/char/raj_gupta.png",
     "id": "the-seiðr",
-    "narration": "The visitors that came back with the Brisinger. They live in consciousness, not bodies, and they wear our crew like clothes. Not a single faction. Æzal wants to spread. Gabræl wants to preserve. They disagree on us politely."
+    "narration": "The visitors is what we called them. And it is what they called us. They wear our crew like clothes. They are not united. Neither are we. Æzal wants to spread. Gabræl wants to preserve. They disagree on us politely."
   },
   {
     "name": "Guild of Masons & Order of Magicians",
@@ -33,7 +33,7 @@
     "chapter": 10,
     "image": "/assets/factions/masons.png",
     "id": "guild-of-masons-order-of-magicians",
-    "narration": "A brotherhood hiding inside a mining crew. Masons swing the hammers. Magicians read the maps. They have ritual. They have a sarcophagus. They have decided what happens on the Plateau, and the Director will be the last to find out."
+    "narration": "A brotherhood hiding inside a mining crew. Masons swing the hammers. Magicians read the stars. They have ritual. They have a sarcophagus. They have decided what happens on the Plateau."
   },
   {
     "name": "SMILE",

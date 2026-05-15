@@ -296,12 +296,11 @@
   border: none;
   background: var(--rose);
   color: var(--ink, #060810);
-  font-size: 0.65rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding-left: 1px;
+  padding: 0;
   transition: background 0.15s, transform 0.1s;
 }
 .lore-play:hover  { background: #c72f63; }
@@ -500,14 +499,10 @@
   transition: background 0.15s, transform 0.1s;
   padding: 0;
 }
-/* Optical nudge for the play triangle only — pause/loading glyphs center on their own */
-.ma-play.is-play { padding-left: 2px; }
 .ma-play:hover  { background: #c72f63; }
 .ma-play:active { transform: scale(0.95); }
-.ma-play.loading {
-  cursor: wait;
-  animation: maSpin 1.2s linear infinite;
-}
+.ma-play.loading { cursor: wait; }
+.ma-spin { transform-origin: 50% 50%; animation: maSpin 1.1s linear infinite; }
 @keyframes maSpin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
@@ -650,6 +645,13 @@
 }
 .ts-row:last-child { border-bottom: none; }
 .ts-row:hover { background: rgba(74,154,170,0.05); }
+.ts-row.ts-sound { cursor: pointer; }
+.ts-row.ts-sound:hover .ts-symbol { color: var(--rose); opacity: 1; }
+.ts-row.ts-row-active {
+  background: rgba(233,74,124,0.10) !important;
+  transition: background 0.05s;
+}
+.ts-row.ts-row-active .ts-symbol { color: var(--rose); opacity: 1; }
 
 /* Alternating subtle tint for Maya/Cycle (larger units) */
 .ts-row:nth-child(n+6) { background: rgba(233,74,124,0.03); }

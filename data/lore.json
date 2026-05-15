@@ -11,56 +11,64 @@
         "symbol": "P",
         "duration": "2 min",
         "ratio": "—",
-        "note": "A hitch in the hum"
+        "note": "A hitch in the hum",
+        "sound": "assets/sfx/pulse.mp3"
       },
       {
         "name": "Beat",
         "symbol": "B",
         "duration": "12 min",
         "ratio": "6 Pulses",
-        "note": "A skipped heartbeat"
+        "note": "A skipped heartbeat",
+        "sound": "assets/sfx/beat.mp3"
       },
       {
         "name": "Thud",
         "symbol": "T",
         "duration": "72 min",
         "ratio": "6 Beats",
-        "note": "Deck plates shudder"
+        "note": "Deck plates shudder",
+        "sound": "assets/sfx/thud.mp3"
       },
       {
         "name": "Click",
         "symbol": "CL",
         "duration": "21.6 hrs",
         "ratio": "18 Thuds",
-        "note": "A bolt slamming home"
+        "note": "A bolt slamming home",
+        "sound": "assets/sfx/click.mp3"
       },
       {
         "name": "Emwic",
         "symbol": "EW",
         "duration": "5.4 Earth days",
         "ratio": "6 Clicks",
-        "note": "The Mairee week"
+        "note": "The Mairee week",
+        "sound": "assets/sfx/cyclers.mp3"
       },
       {
         "name": "Maryon",
         "symbol": "MR",
         "duration": "27 Earth days",
         "ratio": "5 Emwics",
-        "note": "Half a Cycle"
+        "note": "Half a Cycle",
+        "sound": "assets/sfx/chime.mp3"
       },
       {
         "name": "Cycle",
         "symbol": "CY",
         "duration": "54 Earth days",
         "ratio": "60 Clicks",
-        "note": "Shipwide zero-g turnover"
+        "note": "Shipwide zero-g turnover",
+        "sound": "assets/sfx/cycle.mp3"
       },
       {
         "name": "Maya",
         "symbol": "MY",
         "duration": "324 Earth days",
         "ratio": "6 Cycles",
-        "note": "The Mairee year"
+        "note": "The Mairee year",
+        "sound": "assets/sfx/hum-throb.mp3"
       }
     ],
     "narration": "Time on Mairee is felt, not read. The cyclers hum. The ships pulse. A pulse is two minutes. A beat is twelve. A click is most of a day. A cycle is the seasons turning. Learn it or learn it the hard way."

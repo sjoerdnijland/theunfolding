@@ -315,8 +315,11 @@ function renderLore(container, items) {
     if (item.id === 'time-system' && item.units) {
       const rows = item.units.map((u, idx) => {
         const barW = Math.round(4 + (idx / (item.units.length - 1)) * 96);
+        const soundAttr = u.sound
+          ? ` class="ts-row ts-sound" onclick="playTimeSfx('${u.sound}', this)" title="Hear ${u.name}"`
+          : ' class="ts-row"';
         return `
-          <div class="ts-row">
+          <div${soundAttr}>
             <div class="ts-symbol">${u.symbol}</div>
             <div class="ts-bar-wrap">
               <div class="ts-bar" style="width:${barW}%"></div>
@@ -348,7 +351,7 @@ function renderLore(container, items) {
 
     const safeItem = JSON.stringify(item).replace(/"/g, '&quot;');
     const playBtn = item.narration
-      ? `<button class="lore-play" onclick="event.stopPropagation(); openModal(${safeItem})" aria-label="Play narration">▶</button>`
+      ? `<button class="lore-play" onclick="event.stopPropagation(); openModal(${safeItem})" aria-label="Play narration">${PLAY_SVG}</button>`
       : '';
     return `
       <div class="lore-block${item.narration ? ' lore-clickable' : ''}"${item.narration ? ` onclick="openModal(${safeItem})"` : ''}>
@@ -413,7 +416,7 @@ function openModal(item) {
   const audioHtml = item.narration ? `
         <div class="modal-narration">
           <div class="ma-player">
-            <button class="ma-play is-play" id="ma-play" onclick="toggleModalAudio()" aria-label="Play narration">▶</button>
+            <button class="ma-play" id="ma-play" onclick="toggleModalAudio()" aria-label="Play narration">${PLAY_SVG}</button>
             <div class="ma-progress" onclick="seekModalAudio(event)">
               <div class="ma-progress-fill" id="ma-fill"></div>
             </div>
@@ -452,6 +455,19 @@ function openModal(item) {
   if (item.narration) initModalAudio(item.narration, item.id, item.voice_id);
 }
 
+// ── Time-system soundbits (subtle row sfx in the lore card) ────
+let timeSfxAudio = null;
+function playTimeSfx(src, rowEl) {
+  if (timeSfxAudio) { timeSfxAudio.pause(); timeSfxAudio = null; }
+  timeSfxAudio = new Audio(src);
+  timeSfxAudio.volume = 0.7;
+  timeSfxAudio.play().catch(() => {});
+  if (rowEl) {
+    rowEl.classList.add('ts-row-active');
+    setTimeout(() => rowEl.classList.remove('ts-row-active'), 600);
+  }
+}
+
 // ── Narrator intro audio (synthesised via Supabase narrate) ────
 const NARRATE_URL = 'https://sscpikfblqtmcefegrpv.supabase.co/functions/v1/narrate';
 const NARRATE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
@@ -471,14 +487,19 @@ function fmtTime(s) {
   return `${m}:${sec}`;
 }
 
+// SVG icons centred to a 16×16 viewBox — perfectly aligned regardless of font.
+const PLAY_SVG    = '<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M4.5 2.5 L4.5 13.5 L13.5 8 Z" fill="currentColor"/></svg>';
+const PAUSE_SVG   = '<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><rect x="4" y="3" width="2.5" height="10" fill="currentColor"/><rect x="9.5" y="3" width="2.5" height="10" fill="currentColor"/></svg>';
+const LOADING_SVG = '<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" class="ma-spin"><circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 18" stroke-linecap="round"/></svg>';
+
 function setPlayBtn(state) {
   // state: 'play' | 'pause' | 'loading'
   const btn = document.getElementById('ma-play');
   if (!btn) return;
-  btn.classList.remove('is-play', 'loading');
-  if (state === 'play')    { btn.textContent = '▶'; btn.classList.add('is-play'); }
-  if (state === 'pause')   { btn.textContent = '⏸'; }
-  if (state === 'loading') { btn.textContent = '◌'; btn.classList.add('loading'); }
+  btn.classList.remove('loading');
+  if (state === 'play')    btn.innerHTML = PLAY_SVG;
+  if (state === 'pause')   btn.innerHTML = PAUSE_SVG;
+  if (state === 'loading') { btn.innerHTML = LOADING_SVG; btn.classList.add('loading'); }
 }
 
 function b64ToBlob(b64, mime) {

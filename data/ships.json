@@ -9,7 +9,7 @@
     "chapter": 1,
     "image": "/assets/fleet/freya.png",
     "id": "fns-freya",
-    "narration": "The flagship. Repurposed as a village. Three thousand people now call her home. Nobody chose her. She chose them."
+    "narration": "FNS Freya. The flagship. Named for the Norse goddess of fertility and struggle. Settled down on Mairee. Surrounded by a mountain range called the Sickle. Repurposed as a village. The Homestead."
   },
   {
     "name": "FNS Brisinger",
@@ -21,7 +21,7 @@
     "chapter": 2,
     "image": "/assets/fleet/brisinger.png",
     "id": "fns-brisinger",
-    "narration": "The last ship through the door before it slammed shut. Came out the other side wearing flowers. Do not ask. Do not board."
+    "narration": "FNS Brisinger. The last ship through the door before it slammed shut. Came out the other side wearing flowers. Do not ask. Do not board."
   },
   {
     "name": "FNS Dáinn",
@@ -33,7 +33,7 @@
     "chapter": 3,
     "image": "/assets/fleet/dainn.png",
     "id": "fns-dáinn",
-    "narration": "The toolbox. Reactors. Ore processors. The engines of the next century. Without her, we are extremely well-organized cavemen."
+    "narration": "FNS Dáinn. The toolbox. Reactors. Ore processors. The engines of the next century. Without her, we are extremely well-organized cavemen."
   },
   {
     "name": "FNS Yggdrasil",
@@ -45,7 +45,7 @@
     "chapter": 2,
     "image": "/assets/fleet/yggdrasil.png",
     "id": "fns-yggdrasil",
-    "narration": "The Tree. Cut into pieces to prop up the ceiling. Her roots became the Homestead. Her leaf became the Delta camp. Her trunk became Orbital Command. Whoever named her was an optimist."
+    "narration": "FNS Yggdrasil. The Tree. Cut into pieces to prop up the ceiling. Her roots became the Homestead. Her leaf became the Delta camp. Her trunk became Orbital Command. Whoever named her was an optimist."
   },
   {
     "name": "FNS Ivaldi",
@@ -57,7 +57,7 @@
     "chapter": 3,
     "image": "/assets/fleet/ivaldi.png",
     "id": "fns-ivaldi",
-    "narration": "The Anvil. Dropped onto the Plateau and told to stay there. The Masons live in her belly now. They built a temple in the basement. Of course they did."
+    "narration": "FNS Ivaldi. The Anvil. Dropped onto the Plateau and told to stay there. The Masons live in her belly now. They built a temple in the basement. Of course they did."
   },
   {
     "name": "FNS Bygul",
@@ -69,7 +69,7 @@
     "chapter": 5,
     "image": "/assets/fleet/bygul-trjegul.png",
     "id": "fns-bygul",
-    "narration": "Two million tons of cargo, tethered in orbit, waiting patiently to be unloaded. Patiently is generous. Her captain is not."
+    "narration": "FNS Bygul. Two million tons of cargo, tethered in orbit, waiting patiently to be unloaded. Patiently is generous. Her captain is not."
   },
   {
     "name": "FNS Trjegul",
@@ -81,7 +81,7 @@
     "chapter": 5,
     "image": "/assets/fleet/bygul-trjegul.png",
     "id": "fns-trjegul",
-    "narration": "Bygul's twin. Same cargo. Different captain — the one who reads the Fleet Charter at the Directorate on an open channel. Patience ran out about a click ago."
+    "narration": "FNS Trjegul. Bygul's twin. Same cargo. Different captain — the one who reads the Fleet Charter at the Directorate on an open channel. Patience ran out about a click ago."
   },
   {
     "name": "FNS Mimir",
@@ -93,7 +93,7 @@
     "chapter": 4,
     "image": "",
     "id": "fns-mimir",
-    "narration": "Sol side. We sing for her in the dark. She does not hear us. Frank's son is aboard. He still writes."
+    "narration": "FNS Mimir. Sol side. We sing for her in the dark. She does not hear us. Frank's son is aboard. He still writes."
   },
   {
     "name": "FNS Alsvin",
@@ -105,7 +105,7 @@
     "chapter": 4,
     "image": "",
     "id": "fns-alsvin",
-    "narration": "The fabrication ship. Oliver's mother boarded her for the next transit. There was no next transit. She is still aboard. Probably."
+    "narration": "FNS Alsvin. The fabrication ship. Oliver's mother boarded her for the next transit. There was no next transit. She is still aboard. Probably."
   },
   {
     "name": "FNS Muninn",
@@ -117,7 +117,7 @@
     "chapter": 4,
     "image": "",
     "id": "fns-muninn",
-    "narration": "The eyes we don't have. Lost to the Fold. The reason we don't know what the spore storms are going to do until they are already doing it."
+    "narration": "FNS Muninn. The eyes we don't have. Lost to the Fold. The reason we don't know what the spore storms are going to do until they are already doing it."
   },
   {
     "name": "FNS Hugin",
@@ -129,7 +129,7 @@
     "chapter": 4,
     "image": "",
     "id": "fns-hugin",
-    "narration": "Muninn's twin. Also lost. We are now a colony of very thoughtful guesses."
+    "narration": "FNS Hugin. Muninn's twin. Also lost. We are now a colony of very thoughtful guesses."
   },
   {
     "name": "Stingray",
@@ -141,7 +141,7 @@
     "chapter": 6,
     "image": "assets/fleet/stingray.png",
     "id": "stingray",
-    "narration": "Built to absorb light and questions. When somebody needs to look at something nobody is supposed to look at, this is what they take out."
+    "narration": "Stingray. Built to absorb light and questions. When somebody needs to look at something nobody is supposed to look at, this is what they take out."
   },
   {
     "name": "Depeche",
@@ -153,7 +153,7 @@
     "chapter": 6,
     "image": "assets/fleet/depeche.png",
     "id": "depeche",
-    "narration": "Corbin's ride. Black. Quiet. Punctual. Her arrival is never good news."
+    "narration": "Depeche. Corbin's ride. Black. Quiet. Punctual. Her arrival is never good news."
   },
   {
     "name": "Beetle",
@@ -165,7 +165,7 @@
     "chapter": 7,
     "image": "assets/fleet/beetle.png",
     "id": "beetle",
-    "narration": "Nabiha's shuttle. Small. Ugly. Indestructible. Pilots love her. Engineers do not."
+    "narration": "Beetle. Nabiha's shuttle. Small. Ugly. Indestructible. Pilots love her. Engineers do not."
   },
   {
     "name": "Vanguard",
@@ -177,6 +177,6 @@
     "chapter": 7,
     "image": "assets/fleet/vanguard.png",
     "id": "vanguard",
-    "narration": "Bellamy's gun. A small escort with teeth, parked on Orbital Command. Brought out when the Directorate has run out of polite words."
+    "narration": "Vanguard. Bellamy's gun. A small escort with teeth, parked on Orbital Command. Brought out when the Directorate has run out of polite words."
   }
 ]
