@@ -9,7 +9,6 @@
     "desc": "The teenage son of the mission's chief technical architect. Oliver is a brilliant but grieving tinkerer. He struggles with the guilt of his father’s death and his mother’s absence, often isolating himself with his technology. Takes on an engineering apprenticeship under Ian Perera.",
     "chapter": 1,
     "image": "/assets/char/oliver_savannen.png",
-    "mj_prompt": "A lean fifteen-year-old boy with curly black hair and intense blue eyes, wearing an oversized grey colony jumpsuit, crouched in a dim industrial corridor surrounded by exposed wiring and faint blue Grid terminal light, expression of quiet grief and fierce focus, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "oliver-savannen",
     "voice_id": "C5GgjTyGQ2aQx8uMiLh9",
     "narration": "They're calling the Fold closure a persistent systemic anomaly. That's what they call it when the universe wipes your whole past and future from the map."
@@ -24,7 +23,6 @@
     "desc": "As the long-standing leader of the colony, Vilde is the moral anchor for the 3,000 settlers on Mairee. She carries the weight of those lost during the transit, having delivered their eulogies, and is the primary defender of the original Fleet Charter. Astrid is a woman of significant presence with a voice that has been honed into a tool of command over many years.",
     "chapter": 1,
     "image": "/assets/char/astrid_vilde.png",
-    "mj_prompt": "A commanding woman in her fifties in a worn fleet uniform with mission insignia, standing at a holographic comms console in a dim colony command room, expression of controlled authority masking grief, amber emergency lighting casting hard shadows, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "astrid-vilde",
     "voice_id": "wGcFBfKz5yUQqhqr0mVy",
     "narration": "[clarion]Our strength is not in our stockpiles. It is in these hands. [pause]Our hands, our minds, and our hearts are what makes us strong. [pause][RESONANT]As a first step, share your water with those who have less, and check on your neighbors to ensure no one is without essentials."
@@ -39,7 +37,6 @@
     "desc": "Head of Logistics who seizes power under the Emergency Suppression Protocol after the Fold collapses. Driven by a childhood defined by a fractured home, Corbin rose to power through a singular focus on logistics and resource management. He views the survival of the colony as a mathematical equation and chemistry rather than a human endeavor.",
     "chapter": 1,
     "image": "/assets/char/ulre_corbin.png",
-    "mj_prompt": "A short bald man in an immaculate matte-black military uniform pulling leather gloves tight finger by finger, standing in a half-lit colony corridor, polished boots catching the only light, cold sharp features, an aura of absolute calculated control, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ulre-corbin",
     "voice_id": "A9evEp8yGjv4c3WsIKuY",
     "narration": "Your job is to keep them productive — and that means alive. If they're dying, you're not doing your job."
@@ -54,7 +51,6 @@
     "desc": "Veteran captain of the FNS Dáinn. Westhoff is a humanist leader who values doubt as a survival tool, famously believing that people \"rise in doubt and fall in certainty.\" He is deeply protective of his crew and maintains a calm, gravelly authority even when facing extreme political pressure or physical illness.",
     "chapter": 4,
     "image": "/assets/char/benjamin_westhoff.png",
-    "mj_prompt": "A weathered veteran spaceship captain nearing retirement, white hair and beard, in a worn fleet jacket at the helm of an industrial hauler bridge, staring at a star map with quiet fierce resolve, banks of muted instrument lights, deep space through the viewport, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "benjamin-westhoff",
     "voice_id": "Tw2LVqLUUWkxqrCfFOpw",
     "narration": "We rise in doubt and fall in certainty."
@@ -69,7 +65,6 @@
     "desc": " Ionie is the highly disciplined and observant second-in-command of the Dáinn. She acts as the \"second conscience\" to Captain Westhoff and is deeply involved in the technical survival of the ship.",
     "chapter": 5,
     "image": "/assets/char/ionie_jia.png",
-    "mj_prompt": "A focused woman in her thirties in a fleet officer's jacket studying holographic mission logs on a ship bridge, expression of someone piecing together a conspiracy, teal instrument glow on her face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ionie-jia",
     "voice_id": "pvxGJdhknm00gMyYHtET",
     "narration": "To the hands that nourish — and stir the warmth of home through the cold void."
@@ -84,7 +79,6 @@
     "desc": "Muro is the lone operator of the fleet’s tertiary communications satellite, \"The Ears.\" He has been isolated in zero-gravity for an entire cycle. His only companion is a malfunctioning artificial intelligence. A CIX named Gary.",
     "chapter": 2,
     "image": "/assets/char/frank_muro.png",
-    "mj_prompt": "A dishevelled man with thinning sandy hair and sleep-starved eyes floating in a cramped orbital listening post surrounded by static-filled screens and tangled cables, emergency red lighting, desperate isolation, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "frank-muro",
     "voice_id": "eVKQybPTL0poBPxBa8L6",
     "narration": "I cannae shut my eyes without dreamin' meself awake."
@@ -99,7 +93,6 @@
     "desc": "Joana is a woman who carries the visible weight of her daughter's illness. She is a neurologist who uncovers the colony's neurological decline linked to Fold transit.",
     "chapter": 3,
     "image": "/assets/char/joana_perera.png",
-    "mj_prompt": "A dark-eyed woman in her late thirties in a colonial medical coat studying neural scan data on a holographic display, expression of focused dread, a sleeping child visible behind glass in the room beyond, dim colony hab lighting, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "joana-perera",
     "voice_id": "kdmDKE6EkgrWrrykO9Qt",
     "narration": "Steady. I am here. The floor is beneath you. My hand is on your arm. You can hear my voice. This is my voice. This is real."
@@ -114,7 +107,6 @@
     "desc": "Ian is the husband of Joana and the father of Susana. He works in the distribution hubs of the colony, physically installing the pipes and conduits that deliver the Grid’s neuro-regulators to the settlers' homes. He secretly uses his position to help struggling families by providing them with clean filters and supplies. Ian is a man of few words, characterized by a quiet, reserved efficiency. He suffers from a deep internal conflict, feeling like a \"tool\" of the Directorate because his job involves wiring the colony into a system of chemical control.",
     "chapter": 3,
     "image": "/assets/char/ian_perera.png",
-    "mj_prompt": "A quietly built man in his forties with engineer's hands crouched inside an open wall panel of a colonial hab, carefully rerouting atmospheric control circuits by the light of a small torch, expression of calm determination, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ian-perera",
     "voice_id": "jXkeB46JcPXXUSxzn3MD",
     "narration": "You're right. It's wrong. And you have every reason to hate me for it. But if you want to be useful — I want you to learn how it's built. You can't fix an engine by staring at the casing."
@@ -129,7 +121,6 @@
     "desc": "A talented but \"erratic\" pilot. Hale often masks his vulnerabilities with bravado, bad jokes, and a cocky attitude. ",
     "chapter": 6,
     "image": "/assets/char/alistair_hale.png",
-    "mj_prompt": "A athletic cruffy-haired man (that he frequently runs his hair through) in a black flight suit settled low in a sleek shuttle cockpit, grinning as he threads the craft through teal-lit docking infrastructure, the dark hull of the Brisinger filling the viewport ahead, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "alistair-hale",
     "voice_id": "3sfGn775ryaDXhFWHwBg",
     "narration": "You wound me, Abacus. My play is always creative. You're already staging excuses."
@@ -144,7 +135,6 @@
     "desc": "Stacey is an expert in ship communications. Stacey is fierce and competitive. She is an expert in math, geometry and tactical analysis.",
     "chapter": 6,
     "image": "/assets/char/stacey_kiran.png",
-    "mj_prompt": "A composed brown-eyed woman in a black Stingray crew jacket at a communications console inside the bioluminescent-lit corridors of the Brisinger, pressed close to a cracked screen, decoding alien signal patterns, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "stacey-kiran",
     "voice_id": "MClEFoImJXBTgLwdLI5n",
     "narration": "The addiction. Sleep-cycle boosters, stress suppressors — anything to keep the edge. Even Zups. I would've lost my slot if it wasn't for Westhoff."
@@ -159,7 +149,6 @@
     "desc": "Gupta is the captain of the fleet’s most reliable super-freighter. Known as a family man who loved his daughter and appreciated the finer things like good scotch, he was a pillar of the original mission leadership.",
     "chapter": 8,
     "image": "/assets/char/raj_gupta.png",
-    "mj_prompt": "An Indian man in an immaculate fleet captain's uniform standing at the centre of a ship bridge whose walls are covered in luminous fractal murals painted by hand, his eyes lit from within with alien light, bioluminescent vines threading the bulkheads, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "rajendra-gupta",
     "voice_id": "NwTfmofvvKEZRJsUayUt",
     "narration": "My existence was a canvas without frame. Color blending without preference. Frequencies flowing without will. I gave it form. Now the paint has a will of its own."
@@ -174,7 +163,6 @@
     "desc": " Born and raised in the Solbay shipyards, Eva was taught by her father, a structural engineer, that space is a harsh teacher where only numbers and tolerances matter. She oversees the entire orbital network from her station, the FNS Yggdrasil (now Orbital Command), and controls the movement of all vessels via the \"Corridor.\" Eva is a strict pragmatist. ",
     "chapter": 5,
     "image": "/assets/char/eva_bellamy.png",
-    "mj_prompt": "A sharp-featured woman in her mid-forties at the central command console of an orbital station, calmly watching a crisis unfold on multiple screens, planet Mairee curving below through panoramic viewports, amber alert light, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "eva-bellamy",
     "voice_id": "xNtG3W2oqJs0cJZuTyBc",
     "narration": "We have to be smart. He controls the ground. We need to wait — for the right moment."
@@ -189,7 +177,6 @@
     "desc": "The daughter of the mission’s chief scientist, Sarah chose the dangerous life of a field surveyor in the Delta. She is a gritty survivalist who has grown cynical toward the Directorate's distant and clinical leadership style.",
     "chapter": 6,
     "image": "/assets/char/sarah_farley.png",
-    "mj_prompt": "",
     "id": "sarah-farley",
     "voice_id": "dAlhI9qAHVIjXuVppzhW",
     "narration": "Every day we find something strange. We're trying to set up steady supply routes in a system that keeps rewriting its own map."
@@ -204,7 +191,6 @@
     "desc": "Instructor and the operational rival to Centurion Jax. Strand is a life-trained soldier. She is driven by a protective code to bring every member of her squad home alive.",
     "chapter": 6,
     "image": "/assets/char/kirsten_strand.png",
-    "mj_prompt": "A tall broad-shouldered woman with hair cropped to the scalp wearing chameleonic guardian armor that mirrors the alien jungle around her, crouched in the undergrowth of the Delta at dusk, one hand raised to halt the team behind her, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "kirsten-strand",
     "voice_id": "wa4sQVgbDDzUDEzJwch3",
     "narration": "Rule one. My job is to bring my people home. All of them."
@@ -219,7 +205,6 @@
     "desc": "As the primary scientific mind of the mission, Adrian was responsible for the final review of Mairee’s prospects. He is the father of Sarah Farley, the expedition leader at the Leaf. Adrian is a somber and deeply philosophical man who often balances clinical data with poetic insight. He is a realist who prefers the \"honesty\" of a brutal environment over a deceptive paradise. He is one of the few individuals aboard the Brisinger who manages to retain his logic and \"wits\" as the ship’s systems fail, though he speaks in a low, burdened voice that suggests a man who has looked too deeply into the \"Great Architecture.\"",
     "chapter": 8,
     "image": "/assets/char/adrian_farley.png",
-    "mj_prompt": "",
     "id": "adrian-farley",
     "voice_id": "JBFqnCBsd6RMkjVDRZzb",
     "narration": "I prefer the honesty of the Plateau's brutality over the treachery of the Delta. It is frozen rock — but the rock at least admits what it is."
@@ -234,7 +219,6 @@
     "desc": "A striking young worker at the Freya Homestead. Lysanne is responsible for salvaging parts and maintaining the water systems. She is the daughter of a woman suffering from the colony’s neurological decline and relies on Ian Perera’s secret help to keep her mother stable. She is courageous and observant, with a willingness to take risks to help her family and friends. She is a loyal teammate who is not easily intimidated by authority figures.",
     "chapter": 10,
     "image": "/assets/char/lysanne_sutherland.png",
-    "mj_prompt": "A red-haired woman at the wheel of a colony transporter vehicle speeding through a dimly lit underground cargo corridor, knuckles white, an amber alarm flashing behind her, expression of total committed resolve, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "lysanne-sutherland",
     "voice_id": "uYXf8XasLslADfZ2MB4u",
     "narration": "I salvage what they throw away. Sometimes that's a part. Sometimes that's a person."
@@ -249,7 +233,6 @@
     "desc": "Læsa is a mysterious figure discovered by Oliver Savannen within the smoldering wreckage of the FNS Brisinger. She possesses no memory of a life before the crash. Læsa is a playful, almost bird-like innocence and a penchant for melodic giggling. She views the world with a sense of \"distant curiosity\" often finding beauty in things humans find horrifying, such as decay or consumption. While she displays a deep and unconditional affection for those she chooses to guide—specifically Oliver—her demeanor is fundamentally alien. ",
     "chapter": 11,
     "image": "/assets/char/læsa.png",
-    "mj_prompt": "A luminous young woman with unearthly sugarcane-blue hair standing at the edge of a bioluminescent jungle clearing at night, skin faintly glowing, expression of serene inhuman calm, alien flowers turning toward her, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "læsa",
     "voice_id": "thfYL0Elyru2qqTtNQsE",
     "narration": "It's settling. It was so quiet in the space between, but now everything is crunchy. And these colors — the colors are rough."
@@ -264,7 +247,6 @@
     "desc": "Lena is a senior member of the medical staff aboard the Brisinger. Along with Adrian Farley and Marcus Carlson, she is one of the very few crew members who managed to retain her \"wits\" and human perspective following the ship's traumatic and extended transit through the Fold. She serves as the primary medic for the small group of survivors, managing both physical injuries and the psychological fallout of the mission. Lena is characterized by a mix of high-stress vulnerability and clinical detachment.",
     "chapter": 8,
     "image": "/assets/char/lena_hague.png",
-    "mj_prompt": "A composed woman medic in a ship medical uniform with faint bioluminescent traces at her temples preparing an injection in a softly glowing Brisinger medbay, surrounded by alien organic growth on the walls, her expression calm and knowing, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "lena-hague",
     "voice_id": "vLJ3S0wrNWpUWyZRba1r",
     "narration": "Their nervous systems aren't registering trauma. They call this 'exploring the vessel.' They are trying to understand our blueprint."
@@ -279,7 +261,6 @@
     "desc": "As the second-in-command of the Brisinger, Carlson endured the ship’s extended and \"entangled\" transit through the Fold. Along with Adrian Farley and Lena Hague, he is one of the three core officers who managed to retain their human \"wits\" while the rest of the three-hundred-person crew underwent a radical psychological and biological transformation. He serves as the primary guide and protector for the survivors hiding within the ship's deep-core sections. Carlson is presented as a man living on the edge of his own sanity. He speaks in a raspy whisper and is prone to sweating profusely when moving through the ship's transformed corridors. He is deeply cautious, constantly warning others to keep a low profile and avoid engaging with the integrated crew. He carries a heavy burden of stress, frequently seen rubbing the back of his neck to massage muscles that have forgotten how to release. O",
     "chapter": 8,
     "image": "/assets/char/marcus_carlson.png",
-    "mj_prompt": "A solidly built XO in a ship uniform standing in a Brisinger corridor overgrown with bioluminescent vines, his eyes slightly unfocused as if hearing a voice no one else can, a half-second pause before he turns to face the camera, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "marcus-carlson",
     "voice_id": "onwK4e9ZLuTAKqWW03F9",
     "narration": "I reckon we're the only ones left with our wits. The others — we're just tryin' to keep out of their way."
@@ -294,7 +275,6 @@
     "desc": "Dominic is a short and heavyset man. He has long blond hair which he keeps in a practical bun, often pinned in place with a small metal wrench. He is frequently seen whistling while he works, and he possesses a wide, infectious grin that contrasts with the ship's high-pressure environment.",
     "chapter": 4,
     "image": "/assets/char/dom_beltran.png",
-    "mj_prompt": "A rotund cheerful engineer with nimble hands working at a grav-tech console in the bowels of an industrial freighter, surrounded by gyroscopic equipment, a grin of sudden breakthrough on his face, warm amber workshop light, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "dominic-beltrán",
     "voice_id": "yoZ06aMxZJJ28mfd3POQ",
     "narration": "I'll tickle the gyro's belly. Make it hiccup. It's, uh — kind of Morse code for titans."
@@ -309,7 +289,6 @@
     "desc": "Gail is intelligent and somewhat sardonic and enjoys playing \"devil's advocate.\" He possesses a dry wit and a faint, recurring smirk. He prefers to view himself as an observer in the \"audience\" of a poorly written play rather than a participant in the mission's drama.",
     "chapter": 5,
     "image": "/assets/char/steven_gail.png",
-    "mj_prompt": "A lean sardonic man in a quartermaster's uniform leaning against a cargo manifest display on a freighter bridge, arms folded, watching events unfold with the calm of someone who has already planned three moves ahead, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "steven-gail",
     "voice_id": "qbkH1EDealYs8PUoNNuB",
     "narration": "Just give humans a pacifier already. Most of them aren't asking for freedom. They're asking to be told it's going to be okay."
@@ -324,7 +303,6 @@
     "desc": "Jax is the Directorate’s primary enforcer, a man who believes that survival is only for the hard and the strong. He uses his position to instill fear and discipline, mirroring the harsh lessons he learned from his own father.",
     "chapter": 6,
     "image": "/assets/char/centurion_jax.png",
-    "mj_prompt": "A large menacing guard commander in polished black directorate armour with dilated pupils and a rigid jaw, standing in a colony corridor under harsh overhead light, one hand resting on a weapon holster, raw physical intimidation radiating off him, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "centurion-jax",
     "voice_id": "INDKfphIpZiLCUiXae4o",
     "narration": "This world is hard, boy. You be harder. Or you'll spend your life on the floor."
@@ -339,7 +317,6 @@
     "desc": "Reed is a veteran strategist and one of the highest-ranking within the mission. He shares a long and complex history with Captain Ben Westhoff, having spent years debating the application of computational ethics to first-contact scenarios. Reed is a man who frequently employs metaphorical and anthropomorphic language, such as referring to planetary locations as \"treacherous divas\" or \"cold brutes.\" This intellectualized approach often creates friction with literal-minded military staff. He is leading the mission from the shadows.",
     "chapter": 12,
     "image": "/assets/char/dennis_reed.png",
-    "mj_prompt": "An older grey-templed general in a worn military jacket standing in the observation dome of a covert space station, planet Mairee visible below, his back half-turned, expression of someone carrying the weight of a fifteen-year secret, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "dennis-reed",
     "voice_id": "Zlb1dXrM653N07WRdFW3",
     "narration": "Mairee appeared to be a paradise. How is it that we are left choosing between a treacherous diva and a cold brute?"
@@ -354,7 +331,6 @@
     "desc": "Alani is a rookie who recently joined the Guardian Guard. He was raised by a family of botanists, a background that distinguishes him from his peers. Because of his upbringing, he possesses an intuitive understanding of plant life and soil conditions, leading to his assignment to the high-risk survey teams in the Mairee Delta. He is initially part of a detail under First Guardian Kirsten Strand, where he is tasked with navigating the shifting and hazardous terrain of \"The Leaf.\" Alani is characterized by a mix of youthful eagerness and deep-seated vulnerability. He is highly observant, possessing \"botanist’s eyes\" that allow him to read a natural scene. He displays a resilient and \"adrenaline-fueled\" bravery during emergencies. He is a deeply empathetic teammate, yet aims to maintain a military seriousness and a willingness to follow orders even when his physical and mental limits are reached.",
     "chapter": 7,
     "image": "/assets/char/alani_jimenez.png",
-    "mj_prompt": "A young woman in guardian recruit armour kneeling in an alien jungle, reading the ground for tracks, alien undergrowth pressing in from all sides, her expression focused and present rather than afraid, green-gold jungle light filtering through, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "alani-jimenez",
     "voice_id": "BHhU6fTKdSX6bN7T1tpz",
     "narration": "Burr-vines are thicker left. They prefer moist soil — so right is probably firmer."
@@ -369,7 +345,6 @@
     "desc": "Chef Omar is the heart of the ship’s social life, maintaining the \"Galley Draw\" tradition to boost crew morale. He is a warm, fatherly figure who uses real food and communal cooking to fight the loneliness of deep space.",
     "chapter": 5,
     "image": "/assets/char/chef_omar.png",
-    "mj_prompt": "A large warm-faced man in a chef's apron in a deep-space galley kitchen, placing food on a table around which a crew of five very different people are sitting and laughing, steam rising, the most human moment on a cold metal ship, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "omar-newton",
     "voice_id": "Z7HhYXzYeRsQk3RnXqiG",
     "narration": "Tonight's menu is the Red Planet Stir-fry. Real food. Real fire. We eat together, or we drift apart."
@@ -384,7 +359,6 @@
     "desc": "Ines Martel is an astro-scientist on the Dáinn. She lost her original eyes to a genetic disease and now views the universe through prosthetic analytical lenses.",
     "chapter": 9,
     "image": "/assets/char/ines_martel.png",
-    "mj_prompt": "An angular rail-thin woman scientist with startling silver mercury-coloured eyes studying a holographic model of perceptual entanglement in a ship research lab, the model's blue light reflected in her inhuman eyes, utterly focused, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ines-martel",
     "voice_id": "LcfcDJNUP1GQjkzn1xUU",
     "narration": "Their perceptual net was torn open and caught something huge and strange. They still carry it with them. It's a new science."
@@ -399,7 +373,6 @@
     "desc": "Sachin possesses an earnest and enthusiastic nature. He is a sensitive young man. While he may display a certain \"habitual bravado,\" he is also vulnerable to the immense psychological pressure of deep-space transit and the physical toll of gravity surges. Following a period of \"extensive duress\" and witnessing a traumatic event, his personality undergoes a significant shift.",
     "chapter": 9,
     "image": "/assets/char/sachin_juyal.png",
-    "mj_prompt": "A young dark-eyed engineer sitting alone in a ship therapy room called the Tank, staring at a small metal shim in the palm of his hand, emergency lighting outside the viewport, the weight of witnessed death on his face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "sachin-juyal",
     "voice_id": "iLrek0aeAREetkK9NhwJ",
     "narration": "My grandfather used to cook like this. Grew his own veggies, too. Whenever he visited me, he said he'd rather eat his own socks than my spacesmudge."
@@ -414,7 +387,6 @@
     "desc": "Jason is a junior crew member on the Brisinger who, prior to the ship’s crisis, was known for hosting creative performances. He is one of the hundreds of individuals who underwent a total psychological and biological transition during the ship's extended stay in the Fold.",
     "chapter": 8,
     "image": "/assets/char/jason_galindo.png",
-    "mj_prompt": "A young man walking a ship corridor with bioluminescent flowering plants growing from his shoulders and the back of his skull, arms spread wide in quiet ecstasy, his body a living garden, the ship around him equally overgrown and glowing, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "jason-galindo",
     "voice_id": "SOYHLrjzK2X1ezoPC6cr",
     "narration": "She is waking up. The other Colors are blending. Mommy."
@@ -429,7 +401,6 @@
     "desc": "Chief Heston was the commander who led the FNS Ivaldi during its descent to the Plateau. He successfully executed a \"suicide burn\" landing, anchoring the ship into the rock to form the colony's industrial heart. He now manages the brutal mining operations on the frozen Plateau. Heston is a rugged, straightforward leader who is fiercely loyal to his crew of \"Masons\" and \"Magicians.\" He is deeply frustrated by the Directorate's lack of resources and the toll the harsh environment takes on his men, often clashing with Director Corbin over ration quotas.",
     "chapter": 10,
     "image": "/assets/char/mateo_heston.png",
-    "mj_prompt": "A massive grease-stained industrial foreman in a heavy Köldur cold-weather coat standing in a sub-zero mining base hangar, arms crossed, waiting with absolute unreadable patience, ore machinery the size of buildings behind him, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "mateo-heston",
     "voice_id": "Uo9SxBmutmSnfiiXtEVq",
     "narration": "My people are tough — but if their backs don't break, their skulls will. And we're only getting started."
@@ -444,7 +415,6 @@
     "desc": "Nabiha is a highly skilled and respected pilot within the fleet. She has extensive family connections; her father and brother serve on the hauler FNS Trjegul. Her career and her shuttle, \"The Beetle,\" are the central pillars of her identity. Nabiha is characterized as \"quiet but firm.\" She is a disciplined professional who takes her orders seriously.",
     "chapter": 7,
     "image": "/assets/char/nabiha_al_fahim.png",
-    "mj_prompt": "A dark-haired woman pilot in a light colony flight suit at the controls of a small shuttle flying into a wall of alien spores over the Delta jungle, pink sky turning grey ahead, her face illuminated by instrument light, a decision already made, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "nabiha-al-fahim",
     "voice_id": "OB0Jj6v9DGLLgz8dD57i",
     "narration": "My father's hauler is the third light from the left at dusk. He waves at me, I'm told. I wave back. Neither of us can see."
@@ -459,7 +429,6 @@
     "desc": "Leon is a senior engineer and the technician responsible for a water extraction outpost in the Mairee Delta: DROP 7, a precarious outpost tasked with contributing twenty percent of the colony's potable water. He has a daughter who he believes would have appreciated the planet's beauty.",
     "chapter": 7,
     "image": "/assets/char/leon_wittler.png",
-    "mj_prompt": "A lanky mud-caked technician in a colony suit operating a sonic emitter array in a jungle clearing at dusk, alien clacker creatures circling at the treeline, fear and determination in equal measure on his earnest face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "leon-wittler",
     "voice_id": "cymHWdiF8WjUCg6vvFxx",
     "narration": "The clackers. We could disrupt them with the pump's sonic emitters. Drive them off for a while."
@@ -474,7 +443,6 @@
     "desc": "Jordan is a career soldier who is \"about to retire.\" Known throughout the Guard as a \"steady, reliable\" veteran who is \"never rattled,\" he was specifically added to First Guardian Kirsten Strand’s detail to provide much-needed experience to a squad of shaken rookies. He is a survivor of many years of service and is focused on completing his final assignment in the Delta to reach his retirement. Axel possesses a dry, grizzled sense of humor, often seen \"grinning\" or \"grunting\" as he makes observations like, \"You can eat anything once, kid.\" He is a practical man with a \"bellowing\" voice who remains calm under pressure. He is a firm believer in military discipline, arguing that the crew must \"respect the chain of command\" even in times of crisis. However, as the mission's toll increases, he displays a \"weary look of shared grief\" and an \"ashen silence,\" reflecting the heavy burden of his long career.",
     "chapter": 7,
     "image": "/assets/char/jordan_axel.png",
-    "mj_prompt": "A grey-templed veteran guardian in worn field armour covering a retreat through alien jungle undergrowth, moving with the complete economy of an old soldier, not looking back, face set and unafraid, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "jordan-axel",
     "voice_id": "Zlb1dXrM653N07WRdFW3",
     "narration": "You can eat anything once, kid."
@@ -489,7 +457,6 @@
     "desc": "A rookie Guardian rushed into deployment after being hazed on Centurion Jax's training deck. Despite his physical strength, Ahmed is the most fragile of Strand's squad.",
     "chapter": 6,
     "image": "/assets/char/ahmed_nasr.png",
-    "mj_prompt": "A broad-shouldered young guardian recruit in mud-stained chameleonic armor, eyes wide as alien spores drift through the air around him, helmet light cutting through swamp mist, fear and wonder on his face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ahmed-nasr",
     "voice_id": "Rn9Yq7uum9irZ6RwppDN",
     "narration": "What in the void is that? Did the vurn — eat something and not finish?"
@@ -518,7 +485,6 @@
     "desc": "A data clerk on the FNS Dáinn. Marek is shy and quiet, the kind of person who grates ginger like he's defusing an explosive. In private he writes — he began a novel called *Dawn Beyond Darkness* the day the fleet left Sol and finished its ending during the Fold crisis. Chef Omar toasts him as one who \"sifts meaning from the noise.\"",
     "chapter": 5,
     "image": "/assets/char/marek.png",
-    "mj_prompt": "A pale narrow-shouldered man at a small ship's galley table carefully measuring soy sauce as if defusing an explosive, a battered handwritten notebook tucked beside his plate, expression of shy private intensity, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "marek",
     "voice_id": "hH2PlxWs8rI3FQNdgREU",
     "narration": "I started writing it when we left Sol. And just now I wrote an ending. It's a good one. I think."
@@ -533,7 +499,6 @@
     "desc": "A nutritionist from Hydroponics on the FNS Dáinn. Iren helped develop the ship's soy-based mycoprotein that sears like real chicken — the centerpiece of Chef Omar's Galley Draw stir-fry. In her downtime she solves Beltrán's Tesseracta puzzles, including the rotating-hypercube one that took her three clicks before it clicked. Quietly proud.",
     "chapter": 5,
     "image": "/assets/char/iren.png",
-    "mj_prompt": "A quietly proud woman in a colony hydroponics jumpsuit holding a deep green bok choy leaf beaded with water in a ship's galley, soft warm lamp overhead, the ship's grow-lights visible through a porthole, expression of dogged calm, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "iren",
     "voice_id": "jAAHNNqlbAX9iWjJPEtE",
     "narration": "I solved Beltrán's last Tesseracta. The one with the rotating hypercubes. Took me three clicks before it clicked."
@@ -548,7 +513,6 @@
     "desc": "Captain of the hauler FNS Bygul, a two-million-ton vessel currently tethered to Orbital Command with a payload that is a living ecosystem. Laris is measured and deliberate, a humanist counterpart to Captain Mei Chezin's open defiance. He sends formal proposals where Chezin shouts demands, and is willing to negotiate with Controller Eva Bellamy when his crewmate is not — though his doubt about the Directorate lingers beneath the diplomacy.",
     "chapter": 6,
     "image": "/assets/char/jin_laris.png",
-    "mj_prompt": "A weathered captain in his fifties with the patient face of a farmer at the helm of a hauler ship's bridge, holographic Delta Project schedule open in front of him, his crew of botanists visible in the bay beyond, expression of strained but measured frustration, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "jin-laris",
     "voice_id": "tMvyQtpCVQ0DkixuYm6J",
     "narration": "My botanists are watching their life's work turn to mold. They are eager to get to work down there."
@@ -563,7 +527,6 @@
     "desc": "Captain of the hauler FNS Trjegul. Chezin is sharp-tongued and openly defiant — she invokes the Fleet Charter against the Directorate's authority, calls the new chain of command illegitimate on an open channel, and demands to speak to Commander Vilde. Her urgency contrasts with Captain Jin Laris's measured diplomacy, and Eva Bellamy reads her as a real political threat: a respected leader whose dissent could spread.",
     "chapter": 6,
     "image": "/assets/char/mei_chezin.png",
-    "mj_prompt": "A sharp-eyed woman captain with a long chin and smooth skin, black hair pulled into a painfully tight bun, leaning into a comms console mid-protest aboard a hauler ship's bridge, expression of fierce defiance, holo-screen text scrolling behind her, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "mei-chezin",
     "voice_id": "1a0nAYA3FcNQcMMfbddY",
     "narration": "Fleet Charter. "
@@ -578,7 +541,6 @@
     "desc": "Oliver Savannen's mother and Chief of Fabrication aboard the *FNS Alsvin*, the vessel carrying the colony's drills, advanced fabricators, and orbital-component maintenance platform. The staggered departure from Sol meant Laura would follow Oliver and Kaspar through the Fold on a later transit — and she was caught on the Sol side when it collapsed. She is one of the \"Stragglers,\" separated from her family across an unreachable distance.",
     "chapter": 7,
     "image": "/assets/char/laura_savannen.png",
-    "mj_prompt": "A composed woman in a fabrication division jumpsuit with golden Alsvin shoulder emblem at a boarding deck on Solbay Station, gray eyes meeting her son's, fleet ships visible through the vast viewport behind her, expression of fierce love masking a private dread, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "laura-savannen",
     "voice_id": "oVXQ3H21hRI9OtM4YH5K",
     "narration": "You're a smart kid, Olly. You be safe."
@@ -593,7 +555,6 @@
     "desc": "Oliver Savannen's father and the architect of the colony's Cognitive Matrix (the Compassionate Oversight Grid). After Ulre Corbin seized the Directorate, the system Kaspar built was repurposed as social control and Planetary Acclimatization Syndrome (PAS) suppression. Kaspar also engineered the COG Egg, a black mussel-shell-shaped device that can rewrite personal data on the Grid network and render its holder untraceable.",
     "chapter": 7,
     "image": "/assets/char/kaspar_savannen.png",
-    "mj_prompt": "A thoughtful architect in a flagship Freya uniform with Valkyrie shoulder emblem at a holographic well-being matrix display, fingers paused mid-design, expression of quiet conviction, the COG's blue lattice reflected in his eyes, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "kaspar-savannen",
     "voice_id": "tahWrGVL3fokg7ZEUr3o",
     "narration": "Here we go, Olly. A whole new world is waiting for us beyond the Fold."
@@ -608,7 +569,6 @@
     "desc": "Leader of one of the ranger squads operating out of \"The Leaf\" in the Mairee Delta, running parallel to Kirsten Strand's detail. Thieman pushes his teams into the deep vurnshafts in search of a nexus that could map the Myco-Rhizomic System from below. He is fatalistic in tone — shaped by repeated losses — and speaks of the Delta with the resignation of a man who already knows how the story ends.",
     "chapter": 10,
     "image": "/assets/char/marco_thieman.png",
-    "mj_prompt": "A wiry permanently tanned ranger squad leader in mud-streaked Delta field gear at the edge of a freshly cut vurnshaft entrance at dusk, wristpad illuminated in his hand, his squad geared up behind him preparing to descend, expression of weary fatalism — the resignation of a man who already knows how the story ends, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "marco-thieman",
     "voice_id": "2OcnG4mH3jIMtWz3vKus",
     "narration": "Before long, she will eat us all."
@@ -623,7 +583,6 @@
     "desc": "A junior hydrology technician stationed at DROP 7 under Leon Wittler. ",
     "chapter": 10,
     "image": "/assets/char/kenji_rojas.png",
-    "mj_prompt": "A pale young hydrology technician lying on a field cot inside a battered river outpost, makeshift splint cut away to reveal a compound leg fracture, exposed bone glinting under the harsh inspection lamp, jaw clenched against the pain, sweat beading on his forehead, banks of leaking water-purifier conduits behind him, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "kenji-rojas",
     "voice_id": "HRttR5MBBbw7AvtIFoRq",
     "narration": "We're never going to meet the water quota under these conditions. There's no way we should be responsible for twenty percent of potable water replenishment."

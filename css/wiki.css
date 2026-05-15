@@ -276,10 +276,36 @@
   position: relative;
 }
 .lore-block.is-spoiler { cursor: default; }
+.lore-block.lore-clickable {
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.lore-block.lore-clickable:hover {
+  border-color: var(--rose);
+  background: rgba(11,34,39,0.7);
+}
 .lore-block h3 {
   font-family: var(--serif); font-size: 1.4rem;
   font-weight: 400; color: var(--ivory); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 12px;
 }
+.lore-play {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: var(--rose);
+  color: var(--ink, #060810);
+  font-size: 0.65rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1px;
+  transition: background 0.15s, transform 0.1s;
+}
+.lore-play:hover  { background: #c72f63; }
+.lore-play:active { transform: scale(0.92); }
 .lore-block p {
   font-family: var(--serif); font-size: 1.05rem;
   color: var(--ivory-2); line-height: 1.7; margin: 0;

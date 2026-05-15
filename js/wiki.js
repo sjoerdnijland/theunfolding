@@ -346,11 +346,15 @@ function renderLore(container, items) {
         </div>`;
     }
 
+    const safeItem = JSON.stringify(item).replace(/"/g, '&quot;');
+    const playBtn = item.narration
+      ? `<button class="lore-play" onclick="event.stopPropagation(); openModal(${safeItem})" aria-label="Play narration">▶</button>`
+      : '';
     return `
-      <div class="lore-block">
-        <h3>${item.title}</h3>
+      <div class="lore-block${item.narration ? ' lore-clickable' : ''}"${item.narration ? ` onclick="openModal(${safeItem})"` : ''}>
+        <h3>${item.title}${playBtn}</h3>
         <p>${item.content}</p>
-        ${item.link ? `<a href="${item.link}" class="lore-link-btn" target="_blank" rel="noopener">${item.linkLabel || 'Open →'}</a>` : ''}
+        ${item.link ? `<a href="${item.link}" class="lore-link-btn" target="_blank" rel="noopener" onclick="event.stopPropagation()">${item.linkLabel || 'Open →'}</a>` : ''}
       </div>`;
   }).join('');
 }
@@ -417,23 +421,29 @@ function openModal(item) {
           </div>
         </div>` : '';
 
+  // Lore entries use {title, content} instead of {name, role, affil, desc}; fall back gracefully.
+  const isLore = !item.role && !item.affil && (item.content || !item.desc);
+  const tagLabel = TAG_LABELS[item.tag] || item.tag || (isLore ? 'Lore' : '');
+  const body = item.desc ?? item.content ?? '';
+
   content.innerHTML = `
     ${imgHtml}
     <div class="modal-body">
-      <span class="card-tag tag-${item.tag}">${TAG_LABELS[item.tag] || item.tag}</span>
+      ${tagLabel ? `<span class="card-tag tag-${item.tag || 'lore'}">${tagLabel}</span>` : ''}
       <h2 class="modal-title">${item.name ?? item.title}</h2>
+      ${isLore ? '' : `
       <dl class="modal-dl">
-        <dt>Role</dt>        <dd>${item.role}</dd>
+        <dt>Role</dt>        <dd>${item.role || '—'}</dd>
         <dt>Affiliation</dt> <dd>${item.affil ?? '—'}</dd>
         ${item.aliases ? `<dt>Also known as</dt><dd>${item.aliases}</dd>` : ''}
-      </dl>
+      </dl>`}
       ${audioHtml}
       ${item.appearance ? `
         <div class="modal-appearance">
           <span class="modal-section-label">Appearance</span>
           <p>${item.appearance}</p>
         </div>` : ''}
-      <div class="modal-desc">${item.desc}</div>
+      <div class="modal-desc">${body}</div>
     </div>
   `;
   document.getElementById('detail-overlay').classList.add('open');
