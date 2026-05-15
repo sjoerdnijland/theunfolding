@@ -13,7 +13,7 @@
       "heading": "18 CLICKS POST UNFOLDING \nDROP 7",
       "paragraphs": [
         {
-          "text": "\"[shouting]Status!\" Kirsten Strand shouted above the relentless [#dartswarm-door]whir of the dartswarm.",
+          "text": "\"[#insects2][shouting]Status!\" Kirsten Strand shouted above the relentless whir of the dartswarm.",
           "speaker": "kirsten-strand"
         },
         "From her vantage point, she was watching the outpost fall apart. The air glimmered with the movement of razor wings while the muddy river tore away the foundations.",
@@ -23,14 +23,14 @@
         },
         "Strand heard the whine of the returning Hopper as it descended through the shimmering haze. With the last jump, carrying Jordan Axel back to the Leaf, they had now evacuated the last equipment and remaining supplies. Now, only the core team was left: Strand, Farley, Jimenez, Wittler, and the injured Rojas.",
         "The Hopper landed with its [#thruster2]grav-coils groaning and thrusters hissing.",
-        "[#crash]The pumphouse wall buckled inward with a splintering crack, its foundation shearing apart under the snap of a clacker's colossal beak. Chunks of the building sloughed off and vanished into the churning water. The tremor surged through the soles of her boots. The canal looked like it was boiling. A blunt carapace rolled once, then vanished. Another beak surfaced. Shadows circled the collapsing pumphouse.",
+        "[#woodcrack]The pumphouse wall buckled inward with a splintering crack, its foundation shearing apart under the snap of a clacker's colossal beak. [#churning-river]Chunks of the building sloughed off and vanished into the churning water. The tremor surged through the soles of her boots. The canal looked like it was boiling. A blunt carapace rolled once, then vanished. Another beak surfaced. Shadows circled the collapsing pumphouse.",
         "More of them. Their time had run out.",
         {
           "text": "\"[commanding]To the Hopper! Now!\" Kirsten roared into the comm.",
           "speaker": "kirsten-strand"
         },
-        "From the lookout, she tossed a flare onto a hut roof. [#crackle]The thermite burst into a white-hot blaze, pushing the dartswarm back. Below, Alani and Sarah carried Kenji to the Hopper.",
-        "Kirsten jumped from the tower, her boots [#mud-splash]sinking into the thick mud. The mud held her so tightly that she had to pull her boots off to get free. In socks, she ran to the pad and grabbed the last medical crate. As she did, a shudder ran through the whole outpost. The mud flood scoured away the last of the tower's foundations. [#wood-groan-river]With a shriek, it toppled, and its antenna disappeared beneath the churning brown water.",
+        "From the lookout, she tossed a flare onto a hut roof. The thermite burst into a white-hot blaze, pushing the dartswarm back. Below, Alani and Sarah carried Kenji to the Hopper.",
+        "Kirsten jumped from the tower, her boots [#mud-splash]sinking into the thick mud. The mud held her so tightly that she had to pull her boots off to get free. In socks, she ran to the pad and grabbed the last medical crate. As she did, a [#shuddering-plates]shudder ran through the whole outpost. The mud flood scoured away the last of the tower's foundations. With a shriek, it toppled, [#wood-groan-river]and its antenna disappeared beneath the churning brown water.",
         "The evacuation was frantic. The Hopper could only hold two people strapped into its emergency seats. The deck was packed under a cargo net with three water purification cores, one solar capacitor, and now the medical crate Kirsten brought. There was no room for a third passenger, even if someone tried to ride unstrapped on the open deck. Two at a time was the only option.",
         {
           "text": "\"[commanding]Rojas and Farley next!\" Kirsten commanded as she reached the landing pad.",
@@ -52,15 +52,15 @@
           "text": "\"[refusing]I won't leave you behind,\" Alani replied.",
           "speaker": "alani-jimenez"
         },
-        "Kirsten grabbed him by the chest plate and shoved him into the seat. She slammed the buckle of his harness shut. [#click]Click.",
+        "Kirsten grabbed him by the chest plate and shoved him into the seat. She slammed the buckle of his harness shut. [#clickclack]Click.",
         {
           "text": "\"[firm]Send him back fast.[#pause] I'll see you on the other side.\"",
           "speaker": "kirsten-strand"
         },
         "And as the Hopper roared for the next jump, the dartswarm surged. It was an all-out assault. For a brief moment, Kirsten considered squeezing herself into the Hopper to escape the attack. There was simply no room for her.",
-        "[#dartswarm-door]The swarm enveloped the vehicle as it shot into the air. [#gravitic-discharge]The port grav-coil sputtered, spitting a gout of blue flame, roasting a few darts. The Hopper carrying Jimenez and Wittler shuddered and veered wildly. It spun, trailing black smoke from one of its thrusters, and [#beetle-crashed]crashed into the jungle canopy on the far side of the river.",
+        "[#dartswarm-door]The swarm enveloped the vehicle as it shot into the air. [#gravitic-discharge]The port grav-coil sputtered, spitting a gout of blue flame, roasting a few darts. The Hopper carrying Jimenez and Wittler shuddered and veered wildly. It spun, trailing black smoke from one of its thrusters, and crashed into the jungle canopy on the far side of the river.",
         "Kirsten now stood alone on the sinking landing pad, her rifle hanging at her side. Around her, the clackers were tearing apart the last vestiges of the outpost. The river washed her feet. She was the last one left as the flood swept in.",
-        "The dartswarm, only briefly dispersed, re-formed, chittering loudly. There was nowhere to run for cover. Kirsten closed her eyes and clutched her jaw. She fired blind. [#pistol-whine]The rifle kicked against her palm, her wrist, her shoulder. But then the wings found her fingers, prying them from the rifle until it dropped. The wings and stingers cut cold. Like ice. They found weaknesses in her collar, her wrist seal, and the soft junction at the back of her knee. Even her left elbow stung, like they had hit her funny bone.",
+        "[#insects2]The dartswarm, only briefly dispersed, re-formed, chittering loudly. There was nowhere to run for cover. Kirsten closed her eyes and clutched her jaw. [#pistol-whine]She fired blind. [#burst-fire]The rifle kicked against her palm, her wrist, her shoulder. But then the wings found her fingers, prying them from the rifle until it dropped. The wings and stingers cut cold. Like ice. They found weaknesses in her collar, her wrist seal, and the soft junction at the back of her knee. Even her left elbow stung, like they had hit her funny bone.",
         {
           "text": "*Sharp. Noted.*",
           "inner_voice": "kirsten-strand"
@@ -98,7 +98,14 @@
           "speaker": "sarah-farley"
         },
         "[#chime]The main comms unit beeped. A priority message from FreyOps Central came through. Jordan accepted it, and a pre-recorded message from a Directorate official played in the tent.",
-        "*…effective immediately, the Leaf will be integrated into the Grid for full rationing governance. Directorate engineering teams will be arriving next click with hardware to install the necessary infrastructure.*",
+        {
+          "text": "*…effective immediately, the Leaf will be integrated into the Grid for full rationing governance. Directorate engineering teams will be arriving next click with hardware to install the necessary infrastructure.*",
+          "speaker": "guardian"
+        },
+        {
+          "text": "Sarah shrugged. \"[hollow]We'll lose them all.\"",
+          "speaker": "sarah-farley"
+        },
         {
           "text": "\"[disbelief]They can't be serious,\" Sarah said. \"[furious]We're on a knife-edge. We're asking for medevacs and reinforcements, and they're sending us IT support. We don't need more hardware and software!\"",
           "speaker": "sarah-farley"
@@ -141,7 +148,7 @@
           "speaker": "jordan-axel"
         },
         "They waited. The mission timer on the wall clicked over another beat. Then another. Sarah refreshed the tracking log. She looked at Jordan. Her expression hardened.",
-        "The short Maireean night felt longer than any night Sarah remembered from Earth. Jordan left the tent at the crack of dawn. With every click, Sarah sent another urgent request to FreyOps Central. She grew more desperate each time. *IMMEDIATE MEDEVAC REQUESTED… LIVES AT RISK… HOPPER LOST.* Each message brought the same automated reply: *ACK. REQUEST RECEIVED.* She kept trying the local comms channels.",
+        "The short Maireean night felt longer than any night Sarah remembered from Earth. Jordan left the tent at the crack of dawn. With every thud, Sarah sent another urgent request to FreyOps Central. She grew more desperate each time. *IMMEDIATE MEDEVAC REQUESTED… LIVES AT RISK… HOPPER LOST.* Each message brought the same automated reply: *ACK. REQUEST RECEIVED.* She kept trying the local comms channels.",
         {
           "text": "\"[pleading]Strand, do you copy? Strand?\"",
           "speaker": "sarah-farley"
@@ -180,9 +187,9 @@
     },
     {
       "paragraphs": [
-        "Later that morning, a unit returned from a reconnaissance sweep. Sarah's heart skipped when she saw the team leader's hollowed look. His clothes were stiff with dried mud and sticky fluff. As he shrugged off his pack, Sarah heard his joints crack. He set several strange crystalline objects down on the holotable. The moment the crystals touched the surface, the holotable's image distorted.",
+        "Later that morning, a unit returned from a reconnaissance sweep. Sarah's heart skipped when she saw the team leader's hollowed look. His clothes were stiff with dried mud and sticky fluff. As he shrugged off his pack, Sarah heard his joints crack. He set several strange crystalline objects down on the holotable. The moment the crystals touched the surface, [#holopong]the holotable's image distorted.",
         {
-          "text": "\"[puzzled]What is that?\" she said. \"[puzzled]The table's glitching.\"",
+          "text": "\"[puzzled]What is that?\" she said. \"[#glitch][puzzled]The table's glitching.\"",
           "speaker": "sarah-farley"
         },
         {
@@ -256,7 +263,7 @@
           "speaker": "marco-thieman"
         },
         "Sarah helped them. She used her authority as camp leader to sign out \"decommissioned\" supplies such as water purifiers, nutrient packs, and a portable geo-scanner, all under the guise of clearing inventory. Marco and his associates each slipped out of the camp with some fraction of the goods, one by one.",
-        "As dusk began to settle, [#landing]the lighter-class shuttle arrived. Sarah immediately strode toward the landing pad. Its pilot, a dark-skinned woman with a curly shag, was running her final pre-flight checks.",
+        "As dusk began to settle, [#landing]the lighter-class shuttle arrived. Sarah immediately strode toward the landing pad. Its pilot, a dark-skinned woman with a curly shag, was running her flight checks.",
         {
           "text": "\"[professional]Welcome aboard the *Beetle*.\"",
           "speaker": "nabiha-al-fahim"
@@ -290,7 +297,7 @@
         },
         "The shuttle's searchlight scanned the dense canopy as they circled the area.",
         {
-          "text": "\"[final]There's nothing we can do now. We have to go back,\" the pilot declared.",
+          "text": "\"[final]We have to go back. There's nothing we can do now,\" the pilot declared.",
           "speaker": "nabiha-al-fahim"
         },
         {
@@ -310,7 +317,7 @@
     {
       "heading": "HOPPER",
       "paragraphs": [
-        "The first thing he felt was a burning sensation in his ribs. Alani opened his eyes. It took a moment to realize he was upside down. They were caught by a giant tree, fifty meters above the jungle floor. [#hull-groan]The Hopper groaned.",
+        "The first thing he felt was a burning sensation in his ribs. Alani opened his eyes. It took a moment to realize he was upside down. They were caught by a giant tree, [#hull-groan]fifty meters above the jungle floor. The Hopper groaned.",
         {
           "text": "\"[rasping]Wittler,\" he grunted in a painful rasp. \"[rasping]You alive?\"",
           "speaker": "alani-jimenez"
@@ -357,7 +364,7 @@
           "text": "\"[reflective]As an engineer\" — Leon winced — \"[reflective]I mostly just tried to keep things from breaking down, to fight the entropy. But here we are.[#pause] Everything eventually falls to its natural place.\"",
           "speaker": "leon-wittler"
         },
-        "Alani closed his eyes. This place didn't feel natural to him. He thought about his old home back on Earth. As he drifted off, [#insects2]the insects chittered a lullaby his mother used to sing. He was that boy again, safe in his own bed. The ceiling opened and the night sky poured in, pooling on the floor. From his bed, he spotted Nasr standing up to his ankles in the pool. Nasr smiled calmly and motioned for Alani to come closer.",
+        "Alani closed his eyes. This place didn't feel natural to him. He thought about his old home back on Earth. As he drifted off, [#insects2][plant-melody2]the insects chittered a lullaby his mother used to sing. He was that boy again, safe in his own bed. The ceiling opened and the night sky poured in, pooling on the floor. From his bed, he spotted Nasr standing up to his ankles in the pool. Nasr smiled calmly and motioned for Alani to come closer.",
         {
           "text": "\"[peaceful]It's so peaceful here. It's a paradise.\"",
           "speaker": "ahmed-nasr"
@@ -367,7 +374,7 @@
           "text": "\"[kind]It's okay, princess,\" she whispered kindly. \"[kind]Stay here. Listen to the song around you.\"",
           "speaker": "kirsten-strand"
         },
-        "He woke up to a jingle. He blinked. A swarm of moth-like insects drifted by like a million tiny pearls carried by a river. At last, daylight broke through.",
+        "[#jungle-jingle]He woke up to a jingle. He blinked. A swarm of moth-like insects drifted by like a million tiny pearls carried by a river. At last, daylight broke through.",
         "They were stiff and still hurting, yet they were alive despite all of it."
       ]
     }
