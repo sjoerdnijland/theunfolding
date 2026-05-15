@@ -409,7 +409,7 @@ function openModal(item) {
   const audioHtml = item.narration ? `
         <div class="modal-narration">
           <div class="ma-player">
-            <button class="ma-play" id="ma-play" onclick="toggleModalAudio()" aria-label="Play narration">▶</button>
+            <button class="ma-play is-play" id="ma-play" onclick="toggleModalAudio()" aria-label="Play narration">▶</button>
             <div class="ma-progress" onclick="seekModalAudio(event)">
               <div class="ma-progress-fill" id="ma-fill"></div>
             </div>
@@ -439,7 +439,7 @@ function openModal(item) {
   document.getElementById('detail-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 
-  if (item.narration) initModalAudio(item.narration, item.id);
+  if (item.narration) initModalAudio(item.narration, item.id, item.voice_id);
 }
 
 // ── Narrator intro audio (synthesised via Supabase narrate) ────
@@ -451,6 +451,7 @@ let modalAudio = null;
 let modalAudioRAF = null;
 let modalAudioText = '';
 let modalAudioId = '';
+let modalAudioVoice = null;
 let modalAudioLoading = false;
 
 function fmtTime(s) {
@@ -460,6 +461,16 @@ function fmtTime(s) {
   return `${m}:${sec}`;
 }
 
+function setPlayBtn(state) {
+  // state: 'play' | 'pause' | 'loading'
+  const btn = document.getElementById('ma-play');
+  if (!btn) return;
+  btn.classList.remove('is-play', 'loading');
+  if (state === 'play')    { btn.textContent = '▶'; btn.classList.add('is-play'); }
+  if (state === 'pause')   { btn.textContent = '⏸'; }
+  if (state === 'loading') { btn.textContent = '◌'; btn.classList.add('loading'); }
+}
+
 function b64ToBlob(b64, mime) {
   const bin = atob(b64);
   const arr = new Uint8Array(bin.length);
@@ -467,10 +478,11 @@ function b64ToBlob(b64, mime) {
   return new Blob([arr], { type: mime });
 }
 
-function initModalAudio(text, id) {
+function initModalAudio(text, id, voiceId) {
   stopModalAudio();
   modalAudioText = text;
   modalAudioId = id || text.slice(0, 32);
+  modalAudioVoice = voiceId || null;
   // If we've synthesised this entry before, restore from cache
   if (narrationBlobCache[modalAudioId]) {
     attachModalAudio(narrationBlobCache[modalAudioId]);
@@ -485,8 +497,7 @@ function attachModalAudio(url) {
     if (tot) tot.textContent = fmtTime(modalAudio.duration);
   });
   modalAudio.addEventListener('ended', () => {
-    const btn = document.getElementById('ma-play');
-    if (btn) btn.textContent = '▶';
+    setPlayBtn('play');
     cancelAnimationFrame(modalAudioRAF);
   });
 }
@@ -494,17 +505,18 @@ function attachModalAudio(url) {
 async function synthModalAudio() {
   if (modalAudioLoading) return;
   modalAudioLoading = true;
-  const reqId   = modalAudioId;
-  const reqText = modalAudioText;
-  const btn = document.getElementById('ma-play');
-  if (btn) { btn.textContent = '◌'; btn.classList.add('loading'); }
+  const reqId    = modalAudioId;
+  const reqText  = modalAudioText;
+  const reqVoice = modalAudioVoice;
+  setPlayBtn('loading');
   try {
     const ctrl = new AbortController();
     const t = setTimeout(() => ctrl.abort(), 30000);
+    const body = reqVoice ? { text: reqText, voiceId: reqVoice } : { text: reqText };
     const res = await fetch(NARRATE_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + NARRATE_KEY },
-      body: JSON.stringify({ text: reqText }),
+      body: JSON.stringify(body),
       signal: ctrl.signal,
     });
     clearTimeout(t);
@@ -516,14 +528,12 @@ async function synthModalAudio() {
     // Only attach + autoplay if user is still on the same entry
     if (reqId === modalAudioId) {
       attachModalAudio(url);
-      if (btn) { btn.textContent = '⏸'; btn.classList.remove('loading'); }
-      modalAudio.play().then(trackModalAudio).catch(() => {
-        if (btn) btn.textContent = '▶';
-      });
+      setPlayBtn('pause');
+      modalAudio.play().then(trackModalAudio).catch(() => setPlayBtn('play'));
     }
   } catch (e) {
     console.warn('[wiki narrate]', e.message);
-    if (btn && reqId === modalAudioId) { btn.textContent = '▶'; btn.classList.remove('loading'); }
+    if (reqId === modalAudioId) setPlayBtn('play');
     const tot = document.getElementById('ma-tot');
     if (tot && reqId === modalAudioId) tot.textContent = 'error';
   } finally {
@@ -536,15 +546,14 @@ function toggleModalAudio() {
     synthModalAudio();
     return;
   }
-  const btn = document.getElementById('ma-play');
   if (modalAudio.paused) {
     modalAudio.play().then(() => {
-      btn.textContent = '⏸';
+      setPlayBtn('pause');
       trackModalAudio();
     }).catch(() => {});
   } else {
     modalAudio.pause();
-    btn.textContent = '▶';
+    setPlayBtn('play');
     cancelAnimationFrame(modalAudioRAF);
   }
 }

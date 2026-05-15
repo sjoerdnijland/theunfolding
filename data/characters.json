@@ -11,7 +11,8 @@
     "image": "/assets/char/oliver_savannen.png",
     "mj_prompt": "A lean fifteen-year-old boy with curly black hair and intense blue eyes, wearing an oversized grey colony jumpsuit, crouched in a dim industrial corridor surrounded by exposed wiring and faint blue Grid terminal light, expression of quiet grief and fierce focus, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "oliver-savannen",
-    "voice_id": "C5GgjTyGQ2aQx8uMiLh9"
+    "voice_id": "C5GgjTyGQ2aQx8uMiLh9",
+    "narration": "They're calling the Fold closure a persistent systemic anomaly. That's what they call it when the universe wipes your whole past and future from the map."
   },
   {
     "name": "Astrid Vilde",
@@ -25,7 +26,8 @@
     "image": "/assets/char/astrid_vilde.png",
     "mj_prompt": "A commanding woman in her fifties in a worn fleet uniform with mission insignia, standing at a holographic comms console in a dim colony command room, expression of controlled authority masking grief, amber emergency lighting casting hard shadows, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "astrid-vilde",
-    "voice_id": "wGcFBfKz5yUQqhqr0mVy"
+    "voice_id": "wGcFBfKz5yUQqhqr0mVy",
+    "narration": "[clarion]Our strength is not in our stockpiles. It is in these hands. [pause]Our hands, our minds, and our hearts are what makes us strong. [pause][RESONANT]As a first step, share your water with those who have less, and check on your neighbors to ensure no one is without essentials."
   },
   {
     "name": "Ulre Corbin",
@@ -39,7 +41,8 @@
     "image": "/assets/char/ulre_corbin.png",
     "mj_prompt": "A short bald man in an immaculate matte-black military uniform pulling leather gloves tight finger by finger, standing in a half-lit colony corridor, polished boots catching the only light, cold sharp features, an aura of absolute calculated control, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ulre-corbin",
-    "voice_id": "A9evEp8yGjv4c3WsIKuY"
+    "voice_id": "A9evEp8yGjv4c3WsIKuY",
+    "narration": "Your job is to keep them productive — and that means alive. If they're dying, you're not doing your job."
   },
   {
     "name": "Benjamin Westhoff",
@@ -53,7 +56,8 @@
     "image": "/assets/char/benjamin_westhoff.png",
     "mj_prompt": "A weathered veteran spaceship captain nearing retirement, white hair and beard, in a worn fleet jacket at the helm of an industrial hauler bridge, staring at a star map with quiet fierce resolve, banks of muted instrument lights, deep space through the viewport, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "benjamin-westhoff",
-    "voice_id": "Tw2LVqLUUWkxqrCfFOpw"
+    "voice_id": "Tw2LVqLUUWkxqrCfFOpw",
+    "narration": "We rise in doubt and fall in certainty."
   },
   {
     "name": "Ionie Jia",
@@ -67,7 +71,8 @@
     "image": "/assets/char/ionie_jia.png",
     "mj_prompt": "A focused woman in her thirties in a fleet officer's jacket studying holographic mission logs on a ship bridge, expression of someone piecing together a conspiracy, teal instrument glow on her face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ionie-jia",
-    "voice_id": "pvxGJdhknm00gMyYHtET"
+    "voice_id": "pvxGJdhknm00gMyYHtET",
+    "narration": "To the hands that nourish — and stir the warmth of home through the cold void."
   },
   {
     "name": "Frank Muro",
@@ -81,7 +86,8 @@
     "image": "/assets/char/frank_muro.png",
     "mj_prompt": "A dishevelled man with thinning sandy hair and sleep-starved eyes floating in a cramped orbital listening post surrounded by static-filled screens and tangled cables, emergency red lighting, desperate isolation, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "frank-muro",
-    "voice_id": "eVKQybPTL0poBPxBa8L6"
+    "voice_id": "eVKQybPTL0poBPxBa8L6",
+    "narration": "I cannae shut my eyes without dreamin' meself awake."
   },
   {
     "name": "Joana Perera",
@@ -95,7 +101,8 @@
     "image": "/assets/char/joana_perera.png",
     "mj_prompt": "A dark-eyed woman in her late thirties in a colonial medical coat studying neural scan data on a holographic display, expression of focused dread, a sleeping child visible behind glass in the room beyond, dim colony hab lighting, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "joana-perera",
-    "voice_id": "kdmDKE6EkgrWrrykO9Qt"
+    "voice_id": "kdmDKE6EkgrWrrykO9Qt",
+    "narration": "Steady. I am here. The floor is beneath you. My hand is on your arm. You can hear my voice. This is my voice. This is real."
   },
   {
     "name": "Ian Perera",
@@ -109,7 +116,8 @@
     "image": "/assets/char/ian_perera.png",
     "mj_prompt": "A quietly built man in his forties with engineer's hands crouched inside an open wall panel of a colonial hab, carefully rerouting atmospheric control circuits by the light of a small torch, expression of calm determination, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ian-perera",
-    "voice_id": "jXkeB46JcPXXUSxzn3MD"
+    "voice_id": "jXkeB46JcPXXUSxzn3MD",
+    "narration": "You're right. It's wrong. And you have every reason to hate me for it. But if you want to be useful — I want you to learn how it's built. You can't fix an engine by staring at the casing."
   },
   {
     "name": "Alistair Hale",
@@ -123,7 +131,8 @@
     "image": "/assets/char/alistair_hale.png",
     "mj_prompt": "A athletic cruffy-haired man (that he frequently runs his hair through) in a black flight suit settled low in a sleek shuttle cockpit, grinning as he threads the craft through teal-lit docking infrastructure, the dark hull of the Brisinger filling the viewport ahead, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "alistair-hale",
-    "voice_id": "3sfGn775ryaDXhFWHwBg"
+    "voice_id": "3sfGn775ryaDXhFWHwBg",
+    "narration": "You wound me, Abacus. My play is always creative. You're already staging excuses."
   },
   {
     "name": "Stacey Kiran",
@@ -137,7 +146,8 @@
     "image": "/assets/char/stacey_kiran.png",
     "mj_prompt": "A composed brown-eyed woman in a black Stingray crew jacket at a communications console inside the bioluminescent-lit corridors of the Brisinger, pressed close to a cracked screen, decoding alien signal patterns, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "stacey-kiran",
-    "voice_id": "MClEFoImJXBTgLwdLI5n"
+    "voice_id": "MClEFoImJXBTgLwdLI5n",
+    "narration": "The addiction. Sleep-cycle boosters, stress suppressors — anything to keep the edge. Even Zups. I would've lost my slot if it wasn't for Westhoff."
   },
   {
     "name": "Rajendra Gupta",
@@ -151,7 +161,8 @@
     "image": "/assets/char/raj_gupta.png",
     "mj_prompt": "An Indian man in an immaculate fleet captain's uniform standing at the centre of a ship bridge whose walls are covered in luminous fractal murals painted by hand, his eyes lit from within with alien light, bioluminescent vines threading the bulkheads, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "rajendra-gupta",
-    "voice_id": "NwTfmofvvKEZRJsUayUt"
+    "voice_id": "NwTfmofvvKEZRJsUayUt",
+    "narration": "My existence was a canvas without frame. Color blending without preference. Frequencies flowing without will. I gave it form. Now the paint has a will of its own."
   },
   {
     "name": "Eva Bellamy",
@@ -165,7 +176,8 @@
     "image": "/assets/char/eva_bellamy.png",
     "mj_prompt": "A sharp-featured woman in her mid-forties at the central command console of an orbital station, calmly watching a crisis unfold on multiple screens, planet Mairee curving below through panoramic viewports, amber alert light, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "eva-bellamy",
-    "voice_id": "xNtG3W2oqJs0cJZuTyBc"
+    "voice_id": "xNtG3W2oqJs0cJZuTyBc",
+    "narration": "We have to be smart. He controls the ground. We need to wait — for the right moment."
   },
   {
     "name": "Sarah Farley",
@@ -179,7 +191,8 @@
     "image": "/assets/char/sarah_farley.png",
     "mj_prompt": "",
     "id": "sarah-farley",
-    "voice_id": "dAlhI9qAHVIjXuVppzhW"
+    "voice_id": "dAlhI9qAHVIjXuVppzhW",
+    "narration": "Every day we find something strange. We're trying to set up steady supply routes in a system that keeps rewriting its own map."
   },
   {
     "name": "Kirsten Strand",
@@ -193,7 +206,8 @@
     "image": "/assets/char/kirsten_strand.png",
     "mj_prompt": "A tall broad-shouldered woman with hair cropped to the scalp wearing chameleonic guardian armor that mirrors the alien jungle around her, crouched in the undergrowth of the Delta at dusk, one hand raised to halt the team behind her, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "kirsten-strand",
-    "voice_id": "wa4sQVgbDDzUDEzJwch3"
+    "voice_id": "wa4sQVgbDDzUDEzJwch3",
+    "narration": "Rule one. My job is to bring my people home. All of them."
   },
   {
     "name": "Adrian Farley",
@@ -207,7 +221,8 @@
     "image": "/assets/char/adrian_farley.png",
     "mj_prompt": "",
     "id": "adrian-farley",
-    "voice_id": "JBFqnCBsd6RMkjVDRZzb"
+    "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+    "narration": "I prefer the honesty of the Plateau's brutality over the treachery of the Delta. It is frozen rock — but the rock at least admits what it is."
   },
   {
     "name": "Lysanne Sutherland",
@@ -221,7 +236,8 @@
     "image": "/assets/char/lysanne_sutherland.png",
     "mj_prompt": "A red-haired woman at the wheel of a colony transporter vehicle speeding through a dimly lit underground cargo corridor, knuckles white, an amber alarm flashing behind her, expression of total committed resolve, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "lysanne-sutherland",
-    "voice_id": "uYXf8XasLslADfZ2MB4u"
+    "voice_id": "uYXf8XasLslADfZ2MB4u",
+    "narration": "I salvage what they throw away. Sometimes that's a part. Sometimes that's a person."
   },
   {
     "name": "Læsa",
@@ -235,7 +251,8 @@
     "image": "/assets/char/læsa.png",
     "mj_prompt": "A luminous young woman with unearthly sugarcane-blue hair standing at the edge of a bioluminescent jungle clearing at night, skin faintly glowing, expression of serene inhuman calm, alien flowers turning toward her, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "læsa",
-    "voice_id": "thfYL0Elyru2qqTtNQsE"
+    "voice_id": "thfYL0Elyru2qqTtNQsE",
+    "narration": "It's settling. It was so quiet in the space between, but now everything is crunchy. And these colors — the colors are rough."
   },
   {
     "name": "Lena Hague",
@@ -249,7 +266,8 @@
     "image": "/assets/char/lena_hague.png",
     "mj_prompt": "A composed woman medic in a ship medical uniform with faint bioluminescent traces at her temples preparing an injection in a softly glowing Brisinger medbay, surrounded by alien organic growth on the walls, her expression calm and knowing, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "lena-hague",
-    "voice_id": "vLJ3S0wrNWpUWyZRba1r"
+    "voice_id": "vLJ3S0wrNWpUWyZRba1r",
+    "narration": "Their nervous systems aren't registering trauma. They call this 'exploring the vessel.' They are trying to understand our blueprint."
   },
   {
     "name": "Marcus Carlson",
@@ -263,7 +281,8 @@
     "image": "/assets/char/marcus_carlson.png",
     "mj_prompt": "A solidly built XO in a ship uniform standing in a Brisinger corridor overgrown with bioluminescent vines, his eyes slightly unfocused as if hearing a voice no one else can, a half-second pause before he turns to face the camera, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "marcus-carlson",
-    "voice_id": "onwK4e9ZLuTAKqWW03F9"
+    "voice_id": "onwK4e9ZLuTAKqWW03F9",
+    "narration": "I reckon we're the only ones left with our wits. The others — we're just tryin' to keep out of their way."
   },
   {
     "name": "Dominic Beltrán",
@@ -277,7 +296,8 @@
     "image": "/assets/char/dom_beltran.png",
     "mj_prompt": "A rotund cheerful engineer with nimble hands working at a grav-tech console in the bowels of an industrial freighter, surrounded by gyroscopic equipment, a grin of sudden breakthrough on his face, warm amber workshop light, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "dominic-beltrán",
-    "voice_id": "yoZ06aMxZJJ28mfd3POQ"
+    "voice_id": "yoZ06aMxZJJ28mfd3POQ",
+    "narration": "I'll tickle the gyro's belly. Make it hiccup. It's, uh — kind of Morse code for titans."
   },
   {
     "name": "Steven Gail",
@@ -291,7 +311,8 @@
     "image": "/assets/char/steven_gail.png",
     "mj_prompt": "A lean sardonic man in a quartermaster's uniform leaning against a cargo manifest display on a freighter bridge, arms folded, watching events unfold with the calm of someone who has already planned three moves ahead, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "steven-gail",
-    "voice_id": "qbkH1EDealYs8PUoNNuB"
+    "voice_id": "qbkH1EDealYs8PUoNNuB",
+    "narration": "Just give humans a pacifier already. Most of them aren't asking for freedom. They're asking to be told it's going to be okay."
   },
   {
     "name": "Centurion Jax",
@@ -305,7 +326,8 @@
     "image": "/assets/char/centurion_jax.png",
     "mj_prompt": "A large menacing guard commander in polished black directorate armour with dilated pupils and a rigid jaw, standing in a colony corridor under harsh overhead light, one hand resting on a weapon holster, raw physical intimidation radiating off him, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "centurion-jax",
-    "voice_id": "INDKfphIpZiLCUiXae4o"
+    "voice_id": "INDKfphIpZiLCUiXae4o",
+    "narration": "This world is hard, boy. You be harder. Or you'll spend your life on the floor."
   },
   {
     "name": "Dennis Reed",
@@ -319,7 +341,8 @@
     "image": "/assets/char/dennis_reed.png",
     "mj_prompt": "An older grey-templed general in a worn military jacket standing in the observation dome of a covert space station, planet Mairee visible below, his back half-turned, expression of someone carrying the weight of a fifteen-year secret, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "dennis-reed",
-    "voice_id": "Zlb1dXrM653N07WRdFW3"
+    "voice_id": "Zlb1dXrM653N07WRdFW3",
+    "narration": "Mairee appeared to be a paradise. How is it that we are left choosing between a treacherous diva and a cold brute?"
   },
   {
     "name": "Alani Jimenez",
@@ -333,7 +356,8 @@
     "image": "/assets/char/alani_jimenez.png",
     "mj_prompt": "A young woman in guardian recruit armour kneeling in an alien jungle, reading the ground for tracks, alien undergrowth pressing in from all sides, her expression focused and present rather than afraid, green-gold jungle light filtering through, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "alani-jimenez",
-    "voice_id": "BHhU6fTKdSX6bN7T1tpz"
+    "voice_id": "BHhU6fTKdSX6bN7T1tpz",
+    "narration": "Burr-vines are thicker left. They prefer moist soil — so right is probably firmer."
   },
   {
     "name": "Omar Newton",
@@ -347,7 +371,8 @@
     "image": "/assets/char/chef_omar.png",
     "mj_prompt": "A large warm-faced man in a chef's apron in a deep-space galley kitchen, placing food on a table around which a crew of five very different people are sitting and laughing, steam rising, the most human moment on a cold metal ship, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "omar-newton",
-    "voice_id": "Z7HhYXzYeRsQk3RnXqiG"
+    "voice_id": "Z7HhYXzYeRsQk3RnXqiG",
+    "narration": "Tonight's menu is the Red Planet Stir-fry. Real food. Real fire. We eat together, or we drift apart."
   },
   {
     "name": "Ines Martel",
@@ -361,7 +386,8 @@
     "image": "/assets/char/ines_martel.png",
     "mj_prompt": "An angular rail-thin woman scientist with startling silver mercury-coloured eyes studying a holographic model of perceptual entanglement in a ship research lab, the model's blue light reflected in her inhuman eyes, utterly focused, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ines-martel",
-    "voice_id": "LcfcDJNUP1GQjkzn1xUU"
+    "voice_id": "LcfcDJNUP1GQjkzn1xUU",
+    "narration": "Their perceptual net was torn open and caught something huge and strange. They still carry it with them. It's a new science."
   },
   {
     "name": "Sachin Juyal",
@@ -375,7 +401,8 @@
     "image": "/assets/char/sachin_juyal.png",
     "mj_prompt": "A young dark-eyed engineer sitting alone in a ship therapy room called the Tank, staring at a small metal shim in the palm of his hand, emergency lighting outside the viewport, the weight of witnessed death on his face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "sachin-juyal",
-    "voice_id": "iLrek0aeAREetkK9NhwJ"
+    "voice_id": "iLrek0aeAREetkK9NhwJ",
+    "narration": "My grandfather used to cook like this. Grew his own veggies, too. Whenever he visited me, he said he'd rather eat his own socks than my spacesmudge."
   },
   {
     "name": "Jason Galindo",
@@ -389,7 +416,8 @@
     "image": "/assets/char/jason_galindo.png",
     "mj_prompt": "A young man walking a ship corridor with bioluminescent flowering plants growing from his shoulders and the back of his skull, arms spread wide in quiet ecstasy, his body a living garden, the ship around him equally overgrown and glowing, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "jason-galindo",
-    "voice_id": "SOYHLrjzK2X1ezoPC6cr"
+    "voice_id": "SOYHLrjzK2X1ezoPC6cr",
+    "narration": "She is waking up. The other Colors are blending. Mommy."
   },
   {
     "name": "Mateo Heston",
@@ -403,7 +431,8 @@
     "image": "/assets/char/mateo_heston.png",
     "mj_prompt": "A massive grease-stained industrial foreman in a heavy Köldur cold-weather coat standing in a sub-zero mining base hangar, arms crossed, waiting with absolute unreadable patience, ore machinery the size of buildings behind him, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "mateo-heston",
-    "voice_id": "Uo9SxBmutmSnfiiXtEVq"
+    "voice_id": "Uo9SxBmutmSnfiiXtEVq",
+    "narration": "My people are tough — but if their backs don't break, their skulls will. And we're only getting started."
   },
   {
     "name": "Nabiha Al-Fahim",
@@ -417,7 +446,8 @@
     "image": "/assets/char/nabiha_al_fahim.png",
     "mj_prompt": "A dark-haired woman pilot in a light colony flight suit at the controls of a small shuttle flying into a wall of alien spores over the Delta jungle, pink sky turning grey ahead, her face illuminated by instrument light, a decision already made, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "nabiha-al-fahim",
-    "voice_id": "OB0Jj6v9DGLLgz8dD57i"
+    "voice_id": "OB0Jj6v9DGLLgz8dD57i",
+    "narration": "My father's hauler is the third light from the left at dusk. He waves at me, I'm told. I wave back. Neither of us can see."
   },
   {
     "name": "Leon Wittler",
@@ -431,7 +461,8 @@
     "image": "/assets/char/leon_wittler.png",
     "mj_prompt": "A lanky mud-caked technician in a colony suit operating a sonic emitter array in a jungle clearing at dusk, alien clacker creatures circling at the treeline, fear and determination in equal measure on his earnest face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "leon-wittler",
-    "voice_id": "cymHWdiF8WjUCg6vvFxx"
+    "voice_id": "cymHWdiF8WjUCg6vvFxx",
+    "narration": "The clackers. We could disrupt them with the pump's sonic emitters. Drive them off for a while."
   },
   {
     "name": "Jordan Axel",
@@ -445,7 +476,8 @@
     "image": "/assets/char/jordan_axel.png",
     "mj_prompt": "A grey-templed veteran guardian in worn field armour covering a retreat through alien jungle undergrowth, moving with the complete economy of an old soldier, not looking back, face set and unafraid, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "jordan-axel",
-    "voice_id": "Zlb1dXrM653N07WRdFW3"
+    "voice_id": "Zlb1dXrM653N07WRdFW3",
+    "narration": "You can eat anything once, kid."
   },
   {
     "name": "Ahmed Nasr",
@@ -459,7 +491,8 @@
     "image": "/assets/char/ahmed_nasr.png",
     "mj_prompt": "A broad-shouldered young guardian recruit in mud-stained chameleonic armor, eyes wide as alien spores drift through the air around him, helmet light cutting through swamp mist, fear and wonder on his face, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "ahmed-nasr",
-    "voice_id": "Rn9Yq7uum9irZ6RwppDN"
+    "voice_id": "Rn9Yq7uum9irZ6RwppDN",
+    "narration": "What in the void is that? Did the vurn — eat something and not finish?"
   },
   {
     "name": "Gary",
@@ -472,7 +505,8 @@
     "chapter": 1,
     "image": "/assets/items/CIX.png",
     "voice_id": "keLVje3aBMuRpxuu0bqO",
-    "id": "gary"
+    "id": "gary",
+    "narration": "Cross-referencing signal architecture. Match with the bio-electric field patterns recorded from Mairee's Myco-Rhizomic System. The waveform is analogous to melodic syntax. So — she's singing at us."
   },
   {
     "name": "Marek",
@@ -486,7 +520,8 @@
     "image": "/assets/char/marek.png",
     "mj_prompt": "A pale narrow-shouldered man at a small ship's galley table carefully measuring soy sauce as if defusing an explosive, a battered handwritten notebook tucked beside his plate, expression of shy private intensity, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "marek",
-    "voice_id": "hH2PlxWs8rI3FQNdgREU"
+    "voice_id": "hH2PlxWs8rI3FQNdgREU",
+    "narration": "I started writing it when we left Sol. And just now I wrote an ending. It's a good one. I think."
   },
   {
     "name": "Iren",
@@ -500,7 +535,8 @@
     "image": "/assets/char/iren.png",
     "mj_prompt": "A quietly proud woman in a colony hydroponics jumpsuit holding a deep green bok choy leaf beaded with water in a ship's galley, soft warm lamp overhead, the ship's grow-lights visible through a porthole, expression of dogged calm, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "iren",
-    "voice_id": "jAAHNNqlbAX9iWjJPEtE"
+    "voice_id": "jAAHNNqlbAX9iWjJPEtE",
+    "narration": "I solved Beltrán's last Tesseracta. The one with the rotating hypercubes. Took me three clicks before it clicked."
   },
   {
     "name": "Jin Laris",
@@ -514,7 +550,8 @@
     "image": "/assets/char/jin_laris.png",
     "mj_prompt": "A weathered captain in his fifties with the patient face of a farmer at the helm of a hauler ship's bridge, holographic Delta Project schedule open in front of him, his crew of botanists visible in the bay beyond, expression of strained but measured frustration, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "jin-laris",
-    "voice_id": "tMvyQtpCVQ0DkixuYm6J"
+    "voice_id": "tMvyQtpCVQ0DkixuYm6J",
+    "narration": "My botanists are watching their life's work turn to mold. They are eager to get to work down there."
   },
   {
     "name": "Mei Chezin",
@@ -528,7 +565,8 @@
     "image": "/assets/char/mei_chezin.png",
     "mj_prompt": "A sharp-eyed woman captain with a long chin and smooth skin, black hair pulled into a painfully tight bun, leaning into a comms console mid-protest aboard a hauler ship's bridge, expression of fierce defiance, holo-screen text scrolling behind her, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "mei-chezin",
-    "voice_id": "1a0nAYA3FcNQcMMfbddY"
+    "voice_id": "1a0nAYA3FcNQcMMfbddY",
+    "narration": "Fleet Charter. "
   },
   {
     "name": "Laura Savannen",
@@ -542,7 +580,8 @@
     "image": "/assets/char/laura_savannen.png",
     "mj_prompt": "A composed woman in a fabrication division jumpsuit with golden Alsvin shoulder emblem at a boarding deck on Solbay Station, gray eyes meeting her son's, fleet ships visible through the vast viewport behind her, expression of fierce love masking a private dread, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "laura-savannen",
-    "voice_id": "oVXQ3H21hRI9OtM4YH5K"
+    "voice_id": "oVXQ3H21hRI9OtM4YH5K",
+    "narration": "You're a smart kid, Olly. You be safe."
   },
   {
     "name": "Kaspar Savannen (†)",
@@ -556,7 +595,8 @@
     "image": "/assets/char/kaspar_savannen.png",
     "mj_prompt": "A thoughtful architect in a flagship Freya uniform with Valkyrie shoulder emblem at a holographic well-being matrix display, fingers paused mid-design, expression of quiet conviction, the COG's blue lattice reflected in his eyes, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "kaspar-savannen",
-    "voice_id": "tahWrGVL3fokg7ZEUr3o"
+    "voice_id": "tahWrGVL3fokg7ZEUr3o",
+    "narration": "Here we go, Olly. A whole new world is waiting for us beyond the Fold."
   },
   {
     "name": "Marco Thieman",
@@ -570,7 +610,8 @@
     "image": "/assets/char/marco_thieman.png",
     "mj_prompt": "A wiry permanently tanned ranger squad leader in mud-streaked Delta field gear at the edge of a freshly cut vurnshaft entrance at dusk, wristpad illuminated in his hand, his squad geared up behind him preparing to descend, expression of weary fatalism — the resignation of a man who already knows how the story ends, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "marco-thieman",
-    "voice_id": "2OcnG4mH3jIMtWz3vKus"
+    "voice_id": "2OcnG4mH3jIMtWz3vKus",
+    "narration": "Before long, she will eat us all."
   },
   {
     "name": "Kenji Rojas",
@@ -584,6 +625,7 @@
     "image": "/assets/char/kenji_rojas.png",
     "mj_prompt": "A pale young hydrology technician lying on a field cot inside a battered river outpost, makeshift splint cut away to reveal a compound leg fracture, exposed bone glinting under the harsh inspection lamp, jaw clenched against the pain, sweat beading on his forehead, banks of leaking water-purifier conduits behind him, cinematic 16:9, photorealistic, anamorphic lens, shallow depth of field, dramatic chiaroscuro lighting, desaturated teal-and-amber palette, gritty sci-fi atmosphere, film grain, ultra-detailed, --ar 16:9 --style raw --v 7",
     "id": "kenji-rojas",
-    "voice_id": "HRttR5MBBbw7AvtIFoRq"
+    "voice_id": "HRttR5MBBbw7AvtIFoRq",
+    "narration": "We're never going to meet the water quota under these conditions. There's no way we should be responsible for twenty percent of potable water replenishment."
   }
 ]

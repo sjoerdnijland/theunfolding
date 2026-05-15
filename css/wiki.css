@@ -472,8 +472,10 @@
   align-items: center;
   justify-content: center;
   transition: background 0.15s, transform 0.1s;
-  padding: 0 0 0 2px; /* nudge ▶ glyph optically centered */
+  padding: 0;
 }
+/* Optical nudge for the play triangle only — pause/loading glyphs center on their own */
+.ma-play.is-play { padding-left: 2px; }
 .ma-play:hover  { background: #c72f63; }
 .ma-play:active { transform: scale(0.95); }
 .ma-play.loading {
