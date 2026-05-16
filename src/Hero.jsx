@@ -52,7 +52,7 @@ function Hero({ onBuy }) {
             <span className="hero-title-main glow-rose">Unfolding</span>
           </h1>
           <p className="hero-tagline">
-            Three thousand souls arrive expecting a paradise.
+            <span className="hero-tagline-line1">Three thousand souls arrive expecting a paradise.</span>
             <br />
             <em>Something has been expecting them.</em>
           </p>
@@ -110,7 +110,11 @@ function Hero({ onBuy }) {
         .hero-title { display: flex; flex-direction: column; margin-bottom: 36px; font-family: var(--serif); }
         .hero-title-the { font-size: clamp(1.6rem, 3vw, 2.5rem); letter-spacing: 0.4em; text-transform: uppercase; color: var(--rose); opacity: 0.9; font-weight: 300; margin-bottom: 8px; }
         .hero-title-main { font-size: clamp(4rem, 11vw, 9.5rem); line-height: 0.9; font-weight: 400; letter-spacing: -0.02em; color: var(--ivory); }
-        .hero-tagline { font-family: var(--serif); font-size: clamp(1.3rem, 2.2vw, 1.8rem); line-height: 1.35; color: var(--ivory-2); max-width: 520px; margin: 0 0 48px; font-weight: 300; }
+        .hero-tagline { font-family: var(--serif); font-size: clamp(1rem, 2.4vw, 1.65rem); line-height: 1.4; color: var(--ivory-2); max-width: 600px; margin: 0 0 48px; font-weight: 300; }
+        .hero-tagline-line1 { white-space: nowrap; }
+        @media (max-width: 380px) {
+          .hero-tagline-line1 { white-space: normal; }
+        }
         .hero-tagline em { color: var(--rose-soft); font-style: italic; }
         .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
         .hero-listen { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }

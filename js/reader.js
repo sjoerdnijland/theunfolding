@@ -368,7 +368,41 @@ function unlockAudio() {
   sfxAudio.play().then(() => { sfxAudio.pause(); sfxAudio.currentTime = 0; }).catch(() => {});
 }
 
+// ── Narration disclaimer gate (first-time AI audio consent) ───
+const NARRATION_CONSENT_KEY = 'unfolding_narration_consent_v1';
+let _pendingNarrationAction = null;
+
+function narrationHasConsent() {
+  try { return localStorage.getItem(NARRATION_CONSENT_KEY) === 'accepted'; }
+  catch (_) { return false; }
+}
+
+function showNarrationDisclaimer(onAccept) {
+  _pendingNarrationAction = onAccept;
+  const m = document.getElementById('narration-disclaimer');
+  if (m) m.classList.add('open');
+}
+
+function acceptNarrationDisclaimer() {
+  try { localStorage.setItem(NARRATION_CONSENT_KEY, 'accepted'); } catch (_) {}
+  const m = document.getElementById('narration-disclaimer');
+  if (m) m.classList.remove('open');
+  const fn = _pendingNarrationAction;
+  _pendingNarrationAction = null;
+  if (fn) fn();
+}
+
+function dismissNarrationDisclaimer() {
+  const m = document.getElementById('narration-disclaimer');
+  if (m) m.classList.remove('open');
+  _pendingNarrationAction = null;
+}
+
 async function startNarration() {
+  if (!narrationHasConsent()) {
+    showNarrationDisclaimer(() => startNarration());
+    return;
+  }
   unlockAudio(); // must be called within user gesture, before any await
 
   // Force-reset any stuck state from a previous attempt (e.g. iOS suspended fetch)
@@ -1510,6 +1544,10 @@ function narrationNext() {
 }
 
 async function startNarrationFrom(pid) {
+  if (!narrationHasConsent()) {
+    showNarrationDisclaimer(() => startNarrationFrom(pid));
+    return;
+  }
   unlockAudio(); // must be within user gesture
   narrationLocked = false; // reset any stuck state
   narrationParaIds = getNarrableParagraphs();
@@ -1866,10 +1904,10 @@ let wikiById         = {};   // id → entry  (for speaker tag lookups)
 let commentCounts    = {};   // paragraphId → count
 
 // ── Chapters — loaded from data/chapters/chapter-N.json ──
-const CHAPTER_COUNT = 16;
+const CHAPTER_COUNT = 17;
 window.V3_WORD_MODE = 'estimate'; // default: word-by-word for v3 voices
 
-const chapterNames  = { 1:'Assembly', 2:'The Startend', 3:'Doubt and Certainty', 4:'The Grid', 5:'Two Courses', 6:'Levers of Command', 7:'Scrapper vs. Juggernaut', 8:'Through the Vurnshaft', 9:'The Bris', 10:'Rebound', 11:'A New Science', 12:'The Walls have Ears', 13:'Ex Nihilo', 14:'The Jester', 15:'Wings', 16:'Undercurrents' }; // increment as you add files
+const chapterNames  = { 1:'Assembly', 2:'The Startend', 3:'Doubt and Certainty', 4:'The Grid', 5:'Two Courses', 6:'Levers of Command', 7:'Scrapper vs. Juggernaut', 8:'Through the Vurnshaft', 9:'The Bris', 10:'Rebound', 11:'A New Science', 12:'The Walls have Ears', 13:'Ex Nihilo', 14:'The Jester', 15:'Wings', 16:'Undercurrents', 17:'It’s Raining Below' }; // increment as you add files
 
 async function loadChapter(n) {
   currentChapter = n;

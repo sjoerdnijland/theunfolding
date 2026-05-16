@@ -137,7 +137,19 @@ function Buy() {
           border-color: rgba(233,74,124,0.45);
           box-shadow: 0 0 28px rgba(233,74,124,0.08);
         }
-        .bl-card--soon { opacity: 0.6; border-style: dashed; }
+        .bl-card--soon {
+          border-style: dashed;
+          overflow: hidden;
+          background:
+            linear-gradient(180deg, rgba(6,22,25,0.82), rgba(6,22,25,0.92)),
+            url('assets/hardcover-stack.png') center / cover no-repeat;
+          transition: background 0.4s ease, border-color 0.25s;
+        }
+        .bl-card--soon:hover {
+          background:
+            linear-gradient(180deg, rgba(6,22,25,0.65), rgba(6,22,25,0.82)),
+            url('assets/hardcover-stack.png') center / cover no-repeat;
+        }
 
         .bl-card-top {
           display: flex; align-items: baseline;

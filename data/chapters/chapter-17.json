@@ -1,0 +1,443 @@
+{
+  "title": "It's Raining Below",
+  "sections": [
+    {
+      "type": "epigraph",
+      "paragraphs": [
+        "It is raining.[#pause] And what it seeks is seeking it.[#pause] You are seeking it too, of course.[#pause2] And as the sought seeks back, you realize you're getting wet.",
+        "A raincoat helps, but you're still only a drop in the exchange."
+      ]
+    },
+    {
+      "heading": "19 CLICKS POST UNFOLDING \nHOPPER CRASH SITE",
+      "paragraphs": [
+        "Sarah circled the crash site once more. The searchlight traced a bright arc over the jungle canopy, but it couldn't cut through. The Hopper hung in the branches ten meters below. She'd snapped some branches lowering the shuttle as far as she could. She couldn't reach them.",
+        "She needed something that could slip down. Her eyes settled on her field pack. She steadied the shuttle and grabbed her Scitter from the pack.",
+        {
+          "text": "\"[focused]Okay, little guy,\" she said to the Scitter. \"[focused]Find my friends.\"",
+          "speaker": "sarah-farley"
+        },
+        "She opened a hatch and threw the Scitter through it. She knew it couldn't fly back up there by itself.",
+        {
+          "text": "\"[robotic]SEARCHING FOR FRIENDLIES,\" the Scitter chirped over the comms.",
+          "speaker": "scitter"
+        },
+        "[#scitter-whirr]The drone dropped and steadied itself above the canopy. It darted down, weaving its way through the branches.",
+        "On the main screen, Sarah's eyes tried unsuccessfully to follow the Scitter's dizzying descent. Then the drone's camera feed steadied to show a huge mossy branch twenty meters below the upper canopy.",
+        {
+          "text": "\"[robotic]FRIENDLIES FOUND! ALANI JIMENEZ AND LEON WITTLER.\"",
+          "speaker": "scitter"
+        },
+        "Relief washed over Sarah.",
+        {
+          "text": "\"[urgent]Can you wake them?\" she said into her comm. \"[urgent]As loud as you can.\"",
+          "speaker": "sarah-farley"
+        },
+        "The drone hovered around a meter from their faces. First, it shined its bright searchlight into their eyes, and when that didn't work, [#alert-pong]it blasted a deafening alarm.",
+        "Alani and Leon jolted awake, shielding their eyes from the bright light.",
+        {
+          "text": "\"[over comms][relieved]Jimenez! Wittler! It's Sarah; do you copy?\" Sarah's voice crackled through the Scitter's external speaker as the Scitter dimmed its light.",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "Alani, still dazed, eyed the Scitter. \"[rasping]Sarah…?\" he rasped.",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[relieved]Yes,\" she said, relieved. \"[urgent]Can you move?\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "\"[strained]We're banged up,\" he said, \"[strained]but we can move.\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[guiding]Good,\" she said. \"[guiding]I can't get down to you. The canopy's too thick. If you can get down, the Scitter will guide you to a clearing less than a kilometer east.\"",
+          "speaker": "sarah-farley"
+        },
+        "She paused.",
+        {
+          "text": "\"[cautious]Where's Strand?\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "Alani coughed in pain. \"[broken]She's not… with us. She's still… at the DROP.\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[grim]No, she isn't,\" Sarah said. \"[grim]The DROP's completely gone. All of it. She's not there.\"",
+          "speaker": "sarah-farley"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "\"THE LEAF\"",
+      "paragraphs": [
+        "Ulre had already dismissed the Masonic ritual as an amateurish holo-trick. A cheap, theatrical display designed to awe the easily fooled, not him.",
+        {
+          "text": "*Stupid tricksters. Jokers in robes, thinking their parlor tricks could impress me.*",
+          "inner_voice": "ulre-corbin"
+        },
+        "He had yielded to their demands for now. He would return to the Plateau. He would show Heston and his costumed fraternity the undeniable logic of a hundred guardians reinstating the Grid at its highest utility. But he needed them elsewhere first: the Delta.",
+        "[#airhiss]As the ramp lowered, Ulre Corbin was hit by a smell that instantly made him nauseous. It was a humid chlorophyll, mixed with compost and burned flora. He stepped out from the cool interior of the *Depeche* onto the landing pad where Centurion Jax was waiting for him.",
+        {
+          "text": "\"[deep]Director,\" Jax rumbled. \"[deep]The network nodes are online. The camp is secured.\"",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "\"[barking]Secured?!\" Ulre barked. He held up his slate, the discrepancies in the personnel manifest glowing red. \"[furious]Ninety-four souls at this outpost. The Grid is only tracking sixty-two. Explain, Centurion.\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"[blunt]Deserters,\" Jax stated bluntly. \"[blunt]Taken off into the jungle.\"",
+          "speaker": "centurion-jax"
+        },
+        "Ulre's jaw tightened. A third of his people at this site were simply gone. He couldn't accept that.",
+        {
+          "text": "\"[cold]And the expedition leader? Farley?\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"[reporting]Also rogue,\" Jax confirmed. \"[reporting]Took a light shuttle for a 'rescue' operation yesterday. Has not returned. She is ignoring all hails. With the *Depeche*, I can chase her down.\"",
+          "speaker": "centurion-jax"
+        },
+        "Ulre glanced around the camp. Sweat already ran down his temple. Guardians stood guard over the miserable scientists, technicians, and engineers as they were administered a Grid-ID. He had held back resources, not wanting to waste supplies on a disorganized camp; it would be like pouring water into a leaking bucket. Now, with the Grid in place, he could supply them.",
+        "Jax escorted him to the command tent. Ulre was glad for the cleaner air inside. He stepped up to the holotable and examined the map.",
+        {
+          "text": "\"[commanding]Let's start reinforcing these DROP zones and bring some order to this swamp,\" Ulre said. \"[commanding]And find these deserters, or let them rot out there.\"",
+          "speaker": "ulre-corbin"
+        },
+        "He then hesitated.",
+        {
+          "text": "\"[hard]Farley. Find her. Take the *Depeche*.\"",
+          "speaker": "ulre-corbin"
+        },
+        "Ulre fixed Jax with a hard stare. Jax left instantly.",
+        "Ulre expanded the strategic map. He had composed a practical deployment. The first supplies from the haulers in orbit would not be food or medicine but prefabricated barricades and powerful sonic emitters. He marked a new perimeter around the Leaf: a hexagon. He assigned squads to the other DROP sites. Heavy cargo shuttles from *Bygul* and *Trjegul* would bring 'DROP Expansion Packs' containing modular struts to repair weak pump housings. They would also haul sonic emitters to keep clackers at bay, and automated micro-pulse turrets. He approved water reclamation units and a new Hopper station.",
+        "From now on, the outposts would become strongholds. He approved the distribution of Zups to the weary local guardians. Atmospheric regulators would be connected to the grid, so the management of the bivouac and hab tents would be centrally controlled. Now, the Grid could enforce productivity quotas, linking rations and life support directly to biometrics and productivity. He leaned back. Despite the desertions, he felt a grim satisfaction. From this point on, the Delta would run as a tightly controlled operation with all materials accounted for."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "DELTA JUNGLE",
+      "paragraphs": [
+        "The jungle floor was in twilight. Alani and Leon climbed down using the vines. Their feet sank halfway into spongy moss, cushioning their landing.",
+        "Colossal trees rose like pillars of a forgotten temple. On the ground, luminescent fungi cast a blue-green glow from the hollows. The fungi illuminated the ferns, which furled outwards in fractal spirals. Strange bell-shaped flowers hung from thick vines.",
+        "Alani's ankle ached terribly, but he gritted his teeth and limped along, leaning on his makeshift cane. Leon took short, painful gasps beside him.",
+        "They followed the Scitter along a shallow stream. The water moved quietly over smooth pebbles. Sometimes, they had to push through tall reeds by the water. As they moved, the reeds made soft, almost musical sounds that followed after them.",
+        "The terrain began to change. The pale trees gave way to a sparser, more familiar kind of foliage. The ground became harder, sloping upward, culminating in a limestone ridge, which they managed to clamber up. When they reached the crest of the ridge, they climbed back down again and found a small, circular sheltered spot. In that spot was a basin that looked like a polished liquid-black mirror with cracked edges. The pool lay within a circle of obsidian-dark stones that stepped downward in concentric rings like a staircase for something that didn't use feet. The slate was slick, glistening with a cold, oily sheen that caught the meager light filtering through the canopy. Moss bled into the crevices of the masonry, reclaiming the geometry. A phalanx of ferns bowed their fronds to it.",
+        "In the center of the rings, the pool itself was as dark as ink. It didn't splash so much as absorb the rain that came from below, not up. As Alani hovered over it, drops landed on his cheeks, splashing up from the pool, against gravity.",
+        "Leon lifted a hand. Droplets gathered in his palm.",
+        {
+          "text": "\"[hushed]Tell me you see that,\" he said.",
+          "speaker": "leon-wittler"
+        },
+        {
+          "text": "Alani wiped his cheek, watching the drops rise past his fingers. \"[awed]It's… raining wrong.\"",
+          "speaker": "alani-jimenez"
+        },
+        "They pushed through glossy-leaved plants and stepped into a different rocky clearing. The climate was slightly warmer. Fragments of split stone littered the ground, their edges too straight to be natural. Short blocks and half-buried slabs protruded from the thick moss in a loose, uneven ring. The stones seemed weary, bowed for so long as if they no longer remembered why.",
+        "At its center stood a lonely fat tree.",
+        "As the Scitter darted ahead to scout the terrain, Alani looked backward to where Leon had stopped a few meters behind him, gasping for breath in short, shallow pulls.",
+        {
+          "text": "\"[urgent]Leon,\" Alani said, clutching his own ankle. \"[urgent]We're almost there. I can hear the river.\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "\"[peaceful]It's okay, kid,\" Leon wheezed.",
+          "speaker": "leon-wittler"
+        },
+        "A serene smile touched his lips. He sank into the soft moss at the fat tree's base.",
+        {
+          "text": "\"[peaceful]I'm… so tired. I think I'll rest here for a bit.\"",
+          "speaker": "leon-wittler"
+        },
+        {
+          "text": "\"[panicked]No!\" Alani snapped with sudden dread. \"[panicked]No, you're not. Get up. Don't stop now.\"",
+          "speaker": "alani-jimenez"
+        },
+        "Leon stared blankly at something above. The leaves and the fungi on the tree glowed, casting blue-green light on his face. The moss at his feet pulsed, matching his slowing heartbeat.",
+        {
+          "text": "\"[whispered]It's so wonderful here,\" Leon Wittler whispered. \"[wonder]Can you hear it? The song… It's not in my head anymore. It's everywhere.\"",
+          "speaker": "leon-wittler"
+        },
+        "He reached out a trembling hand to a tendril growing from a branch toward him. With wonder, he touched it, and it wrapped gently around his finger.",
+        {
+          "text": "\"[murmured]I think… I think I'll just stay,\" he murmured. His eyes fluttered, then closed. \"[soft]And listen.\"",
+          "speaker": "leon-wittler"
+        },
+        "He sighed.",
+        "Alani hobbled forward and grabbed Leon's arm. He tried desperately to pull him away from the tree, but Leon's body was glued to the moss. And where his back touched the trunk, it had blended with him, right through his jumpsuit.",
+        {
+          "text": "\"[pleading]Leon, please! Snap out of it!\" Alani pleaded.",
+          "speaker": "alani-jimenez"
+        },
+        "He pulled as hard as he could.",
+        "Leon's eyes opened, looking inhuman. They glowed blue-green like the fungi. Alani recoiled, letting go. He watched, helpless, as tendrils wormed from his nostrils and ears. Leon's eyes popped; a black liquid flowed from them. His mouth gaped open. [#crackle]From it a black flower bloomed, shrieking as it unfolded. Alani fled with that horrifying, disturbing shriek ringing in his ears."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "paragraphs": [
+        "Sarah had no experience flying this type of shuttle, but the basic principles were universal. [#hard-landing]She set the *Beetle* down hard on a riverbank, the coils sputtering on the muddy ground. She stayed inside, following the Scitter stream until it lost connection. Sarah checked the pilot, who was still out. [#airhiss]She opened the hatch and heard a mix of clicks, chirps, and melodic whistles. The sounds were beautiful but also unsettling. [#river-short]The river rushed beside her.",
+        "Her Scitter burst out of the foliage, followed by a figure gripped by mortal terror.",
+        {
+          "text": "\"[shouting]Jimenez!\" Sarah screamed through the humid night air. \"[shouting]Alani! It's me!\"",
+          "speaker": "sarah-farley"
+        },
+        "He stopped, wild-eyed, and collapsed onto the rocky bank. He shook and sobbed.",
+        "Sarah ran to him with boots splashing.",
+        {
+          "text": "\"[shattered]He's dead,\" Jimenez said. \"[broken]Wittler. It took him.\"",
+          "speaker": "alani-jimenez"
+        },
+        "He grabbed her leg firmly. Sarah looked from the terrified guardian at her feet to where he'd come from, but she couldn't see anything chasing him through the growth. She helped the shivering Jimenez to his feet and guided him into the *Beetle*, strapping him into a passenger seat. He passed out before she had even clicked his buckle.",
+        "She checked his pulse then returned to her seat. The pilot mumbled something inaudible but didn't wake up.",
+        {
+          "text": "*Wittler's dead. The Drop's gone, but Strand must still be out there. Somewhere.*",
+          "inner_voice": "sarah-farley"
+        },
+        "She powered up the *Beetle* and made another sweep over the flooded outpost. There was nothing. No one. They flew low along the river. She sent out her Scitter again, telling it to search the riverbanks for any sign, any trace of Strand. The drone returned defeated.",
+        "Beside her, the pilot groaned softly and touched her head.",
+        {
+          "text": "\"[groggy]What… what happened?\" she mumbled as she opened her eyes.",
+          "speaker": "nabiha-al-fahim"
+        },
+        "She blinked to focus on Sarah, who was now sitting in her seat.",
+        {
+          "text": "\"[suspicious]What are you doing?\"",
+          "speaker": "nabiha-al-fahim"
+        },
+        {
+          "text": "\"[flat]Flying,\" Sarah replied.",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "*Would she remember the jab?*",
+          "inner_voice": "sarah-farley"
+        },
+        "The pilot sat up.",
+        {
+          "text": "\"[disoriented]I must have passed out.\"",
+          "speaker": "nabiha-al-fahim"
+        },
+        "But she touched her neck and shoulder. Sarah stayed silent. [#chime]Her screen chimed an urgent hail from the Leaf.",
+        {
+          "text": "\"[reporting]We have incoming hails,\" the pilot said. She pointed to the navigation console. \"[urgent]And company on our six.\"",
+          "speaker": "nabiha-al-fahim"
+        },
+        "Sarah's time was up. They were coming to get her. She'd retrieved Jimenez, at least.",
+        {
+          "text": "\"[insistent]Ma'am, they're hailing,\" the pilot said, now even louder, reaching for the comms.",
+          "speaker": "nabiha-al-fahim"
+        },
+        {
+          "text": "\"[shouting]Don't!\" Sarah yelled.",
+          "speaker": "sarah-farley"
+        },
+        "She noted the readings of the atmospheric display. A new weather pattern was forming in a nearby sector. The spore count was increasing rapidly. She sized up the swelling storm on her screen, then banked the shuttle hard, aiming it directly toward the storm's swirling eye.",
+        {
+          "text": "\"[shouting]WHAT IN THE VOID ARE YOU DOING?!\" the pilot yelled, hands flying to her console, trying to regain command. \"[demanding]EXPLAIN!\"",
+          "speaker": "nabiha-al-fahim"
+        },
+        "Sarah's eyes blazed. Grief, rage, and exhaustion collided in her stare.",
+        {
+          "text": "\"[seething]They left us out here to die, pilot. Even their own First Guardian. She died begging for their help. Look back there.\" Her voice broke, pain clear in her words. \"[broken]That boy? His name is Alani Jimenez. He's barely twenty. He just watched a man die in the jungle. His name was Leon Wittler.\"",
+          "speaker": "sarah-farley"
+        },
+        "The pilot's gaze flickered from the monitor to Jimenez, pale and still in the passenger seat. The hard lines on her face softened.",
+        {
+          "text": "Sarah leaned forward, pleading. \"[pleading]The Directorate is not coming to help.\"",
+          "speaker": "sarah-farley"
+        },
+        "The pilot was silent for a long, tense moment.",
+        {
+          "text": "\"[quiet]My name is Nabiha Al-Fahim,\" she said, quiet but firm. \"[firm]And I have a father and brother on the *Trjegul*. Mother and three sisters back on Earth. I understand your… disagreement… with the Directorate. I do.\"",
+          "speaker": "nabiha-al-fahim"
+        },
+        "Her eyes revealed she was preparing her own desperate plea.",
+        {
+          "text": "\"[pleading]But flying into a spore storm is suicide. Please, don't throw our lives away. I don't want this.\"",
+          "speaker": "nabiha-al-fahim"
+        },
+        "An icon on the console flashed. It was labeled *Depeche*, and it was closing fast. Sarah remembered the storm, the psychic assault. She had no idea what such a storm would do to a shuttle's systems. But surrender was not an option.",
+        "She looked at Nabiha.",
+        {
+          "text": "\"[urgent]Can you fly along the storm's edge, close enough to drop me down there?\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "Nabiha stared, aghast but awed. \"[disbelief]I'm supposed to return you. But your life, your choice. It sure looks hopeless out there to me!\"",
+          "speaker": "nabiha-al-fahim"
+        },
+        "Sarah uplinked coordinates from her slate to the shuttle's navigation console.",
+        {
+          "text": "\"[resolute]I've made it through and I will again,\" she said.",
+          "speaker": "sarah-farley"
+        },
+        "They exchanged seats.",
+        {
+          "text": "\"[pleading]My fate is in your hands, Nabiha. But I'm asking you, as one free person to another, please don't take me to the Leaf.\"",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "Nabiha nodded. \"[grim]I'll drop you on the periphery, near your mark, and that's it. This plane can't last long in those conditions.\"",
+          "speaker": "nabiha-al-fahim"
+        },
+        "[#wind]Outside, everything became a swirling, pearly mess. [#alarm-groan]Alarms blared in the cockpit as the shuttle shook in the crosswinds. In the back, Alani Jimenez jolted awake. He cried out in pain and confusion. The shuttle descended rapidly toward Sarah's indicated coordinates, the *Depeche* on its tail. Every light died. Thrusters went quiet.",
+        {
+          "text": "\"[shouting]EMP!\" Nabiha yelled, pulling a cord, trying to initiate a manual reboot. \"[shouting]They fired an EMP!\"",
+          "speaker": "nabiha-al-fahim"
+        },
+        "The *Beetle* dove down through the swirling, psychoactive fog. Its wings expanded fully. Nabiha managed to deploy the emergency chutes just in time to keep them from crashing full speed into the swamp. [#beetle-crashed]A brutal impact sent them skidding through mud, tearing a deep scar in the soil before they halted violently.",
+        {
+          "text": "\"[gasping]Everyone… okay?\" Sarah gasped, her head throbbing.",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "Nabiha looked simultaneously furious and incredulous. \"[furious]They shot us down!\"",
+          "speaker": "nabiha-al-fahim"
+        },
+        "Outside the cracked window, the spore-filled winds shimmered and howled. Sarah ignored her pain and unstrapped herself, moving to the back of the small cabin.",
+        {
+          "text": "Alani groaned, his face pale but eyes clear. \"[wry]Ugh… another crash to add to the collection,\" he muttered, putting a hand on his bruised ribs.",
+          "speaker": "alani-jimenez"
+        },
+        "He tore the Velcro loose and hurled the Directorate's FOX insignia onto the floor.",
+        "Sarah grabbed her field pack. She pulled out the rebreather masks and a set of filtration cartridges.",
+        {
+          "text": "\"[incredulous]You're not seriously thinking of going out there,\" Nabiha said with disbelief.",
+          "speaker": "nabiha-al-fahim"
+        },
+        {
+          "text": "\"[urgent]No good staying here. Don't you feel it?\" Sarah shot back, checking the seals on a mask as she fitted the filters. \"[urgent]We're sinking. You can hear it too. And the hull is breached. Look.\"",
+          "speaker": "sarah-farley"
+        },
+        "She pointed to several hairline cracks, where the shimmering spores were seeping in. Sarah checked a map on her slate.",
+        {
+          "text": "\"[firm]There's a tunnel system nearby. Stay or come. In any case, put this on.\"",
+          "speaker": "sarah-farley"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "DEPECHE \nONE BEAT EARLIER",
+      "paragraphs": [
+        "Jax piloted the *Depeche*. The *Beetle* flashed before him on his tactical display.",
+        {
+          "text": "\"[reporting]Target is descending, Centurion,\" his co-pilot said. \"[reporting]She's banking hard, skirting the spore storm.\"",
+          "speaker": "guardian"
+        },
+        {
+          "text": "\"[contemptuous]Amateur,\" Jax said contemptuously. \"[contemptuous]She thinks the storm's sensor interference will mask her.\"",
+          "speaker": "centurion-jax"
+        },
+        "He watched the *Beetle* dip and weave.",
+        {
+          "text": "\"[asking]Shall we follow her into the storm?\" the co-pilot asked.",
+          "speaker": "guardian"
+        },
+        {
+          "text": "\"[flat]No.\"",
+          "speaker": "centurion-jax"
+        },
+        "Jax had no patience for games. He preferred a simple, permanent solution. He accessed the weapons system and armed the EMP blaster. When it was charged, [#pistol-whine]Jax squeezed the firing stud. There was no flash or explosion.",
+        "On his screen, the *Beetle* sputtered, lost power, and dropped in a long arc straight into the jungle. It confused the co-pilot.",
+        {
+          "text": "\"[stunned]Jax. Nabiha. She's a great pilot, and the *Beetle* is a fine bird.\"",
+          "speaker": "guardian"
+        },
+        {
+          "text": "\"[cold]Those who disobey must be taught by blows.\"",
+          "speaker": "centurion-jax"
+        },
+        "Jax's tone left no room for sympathy.",
+        {
+          "text": "\"[urgent]We can still fetch them! The storm's getting worse. We have to hurry,\" the co-pilot urged.",
+          "speaker": "guardian"
+        },
+        {
+          "text": "\"[final]No. We're heading back. Storm took 'em. That's all you write in the log. We'll pick up Corbin and return to FOX.\"",
+          "speaker": "centurion-jax"
+        },
+        "As the *Depeche* rose, satisfaction settled in Jax. His world was getting simpler. Cleaner. Sarah Farley, who kept giving him attitude, sending irritating medevac requests all night, had gotten what she deserved. He thought of First Guardian Strand. She wouldn't challenge him again. He glanced at his co-pilot, who stared at the console in silence, mouth open.",
+        {
+          "text": "*Another lesson given. The boy would quickly learn the new reality. Soon they all would.*",
+          "inner_voice": "centurion-jax"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "paragraphs": [
+        "[#scitter-whirr]With the Scitter in front, they moved in a triangle, Sarah taking point, Nabiha and the limping Alani close behind. The jungle floor was a treacherous mix of grasping roots and slick mud. [#muddy-boots]Every step was a struggle. The only sound was their own ragged breathing inside their masks. The soles of their boots vibrated more strongly with every step.",
+        {
+          "text": "\"[anxious]What is that?\" Nabiha asked, her voice tinny through the mask's comm.",
+          "speaker": "nabiha-al-fahim"
+        },
+        {
+          "text": "\"[urgent]Keep moving!\" Sarah commanded, but she knew.",
+          "speaker": "sarah-farley"
+        },
+        {
+          "text": "*Vurn.*",
+          "inner_voice": "sarah-farley"
+        },
+        "The ground ahead of them began to swell upward. The Scitter chirped alerts. They stopped as the ground before them peeled back. Two immense mole-like claws, tipped with shards of obsidian, ripped through the surface as if it were pudding. [#burn-hiss]A beak rose into the air and opened, splitting down the center. From within, a dark purple tongue emerged. A whip-like appendage unfurled, flicking out into the spore-thick air. It tasted the storm for the shuttle's ionized trail. The tongue remained extended, like a living sensor array sampling the air. The tongue retracted, and the great beak ground shut. A golden eye opened. It scanned the surface, its gaze sweeping over the three tiny frozen figures. [#crash]It lunged at the *Beetle* and tore through it as if it were made of wet paper.",
+        {
+          "text": "\"[screaming]Run!\" Sarah screamed.",
+          "speaker": "sarah-farley"
+        },
+        "The others didn't need to be told again.",
+        "They scrambled past the carnage into the fresh shaft the vurn had left in its wake. They ran an adrenaline-fueled flight, chasing the Scitter's small guiding light. They passed biological pumps, veins, and throbbing membranes embedded in the tunnel walls, making sure to give them a wide berth. The tunnel spiraled downward a little. The air grew damp, smelling of fresh rain on hot stone. The tunnel opened up. They emerged into a geode the size of a cathedral dome. The walls were lined with the same glowing crystalline structures Marco had shown Sarah, illuminating the space with a holy glow.",
+        "This was a vurn node — a temple at the heart of its network.",
+        {
+          "text": "\"[whispered]Scitter,\" Sarah whispered into her comm. \"[whispered]Scout the shafts. Find the caldera.\"",
+          "speaker": "sarah-farley"
+        },
+        "[#scitter-whirr]The small drone chirped in acknowledgment and zipped away, blipping down one of the three tunnels. They waited, and for a long time, no one spoke.",
+        {
+          "text": "\"[hollow]My Beetle,\" Nabiha said, her voice a hollow whisper.",
+          "speaker": "nabiha-al-fahim"
+        },
+        "She was staring at the ground.",
+        {
+          "text": "\"[grieving]My career, my life…\"",
+          "speaker": "nabiha-al-fahim"
+        },
+        "Her eyes went dark with a grief that went beyond the loss of a vehicle.",
+        {
+          "text": "\"[broken]What a nightmare,\" Alani murmured. \"[haunted]Nasr… Wittler… I keep seeing their smiling faces.\"",
+          "speaker": "alani-jimenez"
+        },
+        "His youthful confidence had shattered.",
+        {
+          "text": "\"[shattered]Why did we ever come here?\"",
+          "speaker": "alani-jimenez"
+        },
+        {
+          "text": "Sarah met Alani's gaze. \"[grave]The only way to heaven is through hell.\"",
+          "speaker": "sarah-farley"
+        },
+        "She didn't know if she believed her own words. From the tunnel the Scitter had taken, two blue lights emerged. Their Scitter returned. And it was flying in formation with another identical drone.",
+        {
+          "text": "A tinny voice spoke from the second Scitter. \"[warm]Welcome, Sarah,\" it said. \"[warm]I knew you would join us.\"",
+          "speaker": "marco-thieman"
+        },
+        "It was Marco Thieman's."
+      ]
+    }
+  ]
+}

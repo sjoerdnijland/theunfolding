@@ -197,6 +197,29 @@
   <button class="nc-btn" onclick="stopNarration()"><span class="nc-icon">✕</span><span class="nc-lbl"> Exit</span></button>
 </div>
 
+<!-- ── NARRATION DISCLAIMER (first-time AI audio consent) ─── -->
+<div class="narration-disclaimer" id="narration-disclaimer" role="dialog" aria-modal="true" aria-labelledby="nd-title">
+  <div class="nd-card">
+    <h2 class="nd-title" id="nd-title">Before you press play</h2>
+    <p class="nd-body">
+      This is an <em>experimental, AI-empowered</em> audio experience —
+      synthesised voices reading the chapter aloud. It exists to make
+      <em>The Unfolding</em> more accessible for readers who prefer or need
+      audio (dyslexia, low vision, long commutes, tired eyes).
+    </p>
+    <p class="nd-body">
+      The author's ambition is to produce a proper audiobook with a
+      professional human cast. This isn't that, yet. Voices will sometimes
+      pause oddly, emphasise the wrong word, or mispronounce the small
+      invented vocabulary of Mairee. Forgive them; they're trying.
+    </p>
+    <div class="nd-actions">
+      <button class="nd-accept" onclick="acceptNarrationDisclaimer()">I understand</button>
+      <button class="nd-cancel" onclick="dismissNarrationDisclaimer()">Not now</button>
+    </div>
+  </div>
+</div>
+
 <!-- ── NARRATION THREAD SIDEBAR ──────────────────────────── -->
 <aside class="narration-thread" id="narration-thread">
   <div class="nt-head">
