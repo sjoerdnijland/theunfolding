@@ -718,6 +718,7 @@ async function narrationGoTo(index) {
 
   // Heading paragraphs: read with natural spacing, stripped of formatting chars
   const isHeadingPara = document.getElementById(pid)?.dataset.heading === 'true';
+  const isPoemParaEl  = document.getElementById(pid)?.dataset.poem === 'true';
   if (isHeadingPara) {
     // Clean up heading for TTS: replace · and \n with comma pause
     text = text.replace(/·/g, ',').replace(/\n/g, ', ').replace(/\s+/g, ' ').trim();
@@ -761,6 +762,7 @@ async function narrationGoTo(index) {
     // Declare isTranscriptPara early — used by SFX parser and prefix strip below
   const paraEl2 = document.getElementById(pid);
   const isTranscriptPara = paraEl2?.dataset.transcript === 'true';
+  const isPoemPara       = paraEl2?.dataset.poem === 'true';
 
   // ── Parse and strip SFX tags [#tag-name] ─────────────────
   // Record position (afterWordIdx) and remove from both text and rawText
@@ -854,6 +856,11 @@ async function narrationGoTo(index) {
     // Straight apostrophe quotes are kept as they're less likely to trigger this.
     const transcriptText = text.replace(/[“”„‟]/g, '').replace(/  +/g, ' ').trim();
     segments = [{ text: transcriptText, voiceId: speakerVoiceId }];
+  } else if (isPoemPara && speakerVoiceId) {
+    // Poems: the whole stanza is spoken/sung by the assigned speaker —
+    // not split on quotes (there are none in a verse). Single segment, full prosody preserved.
+    const poemText = text.replace(/[“”„‟]/g, '').replace(/  +/g, ' ').trim();
+    segments = [{ text: poemText, voiceId: speakerVoiceId }];
   } else {
     // buildSegments needs rawText (has *asterisks* intact) to detect inner-voice
     // italic spans. It already strips asterisks from ttsText before sending to TTS.
@@ -1184,6 +1191,7 @@ async function narrationGoTo(index) {
   // Apply code-mode now — after any scene pause, so overlay doesn't flicker mid-transition
   document.getElementById('narration-overlay').classList.toggle('code-mode', isCode);
   document.getElementById('narration-overlay').classList.toggle('heading-mode', isHeadingPara);
+  document.getElementById('narration-overlay').classList.toggle('poem-mode', isPoemParaEl);
 
   if (isCode) {
     textEl.innerHTML = `<div style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.35em;color:var(--teal-soft);margin-bottom:28px;text-align:center;opacity:0.7">◉ TRANSMISSION</div>`
@@ -1194,6 +1202,41 @@ async function narrationGoTo(index) {
       if (t.type === 'space') return ' ';
       return `<span class="nw ${t.fmt}" id="nw-${t.idx}">${escHtml(t.text)}</span>`;
     }).join('')}</div>`;
+  } else if (isPoemParaEl) {
+    // Poem stanza — rebuild the visual structure from the DOM (each line is its own span.poem-line)
+    // and pair words inside each line with their TTS token ids so karaoke still works,
+    // but render each line as its own flow-block. Words fade-in via CSS staggered transition.
+    const sourceLines = (document.getElementById(pid)?.querySelectorAll('.poem-line') || []);
+    const linesText = Array.from(sourceLines).map(el => el.textContent.trim()).filter(Boolean);
+    // If the para uses .poem-line spans, render line-by-line; otherwise fall back to token stream.
+    if (linesText.length) {
+      let tokenCursor = 0;
+      const tokensByLine = linesText.map(lineText => {
+        const words = lineText.split(/\s+/).filter(Boolean);
+        const tokenSlice = [];
+        for (const w of words) {
+          while (tokenCursor < displayTokens.length && displayTokens[tokenCursor].type !== 'word') tokenCursor++;
+          if (tokenCursor < displayTokens.length) {
+            tokenSlice.push(displayTokens[tokenCursor]);
+            tokenCursor++;
+          }
+        }
+        return tokenSlice;
+      });
+      const eyebrow = `<div class="narration-poem-eyebrow">◌ VERSE</div>`;
+      const linesHtml = tokensByLine.map((toks, i) => `
+        <div class="narration-poem-line" style="--line-i:${i}">
+          ${toks.map(t => `<span class="nw ${t.fmt || ''}" id="nw-${t.idx}">${escHtml(t.text)}</span>`).join(' ')}
+        </div>`).join('');
+      textEl.innerHTML = eyebrow + `<div class="narration-poem">${linesHtml}</div>`;
+    } else {
+      // Fallback — same as regular paragraph
+      textEl.innerHTML = displayTokens.map(t => {
+        if (t.type === 'br')    return '<br>';
+        if (t.type === 'space') return ' ';
+        return `<span class="nw ${t.fmt}" id="nw-${t.idx}">${escHtml(t.text)}</span>`;
+      }).join('');
+    }
   } else {
     textEl.innerHTML = transcriptLabelHtml + displayTokens.map(t => {
       if (t.type === 'br')    return '<br>';
@@ -2312,10 +2355,11 @@ function renderChapter(ch) {
         const count = commentCounts[pid] || 0;
         paraIndex++;
 
-        // For narration: tone-tag prefixed, lines joined into a single TTS block (preserves prosody)
+        // For narration: tone-tag prefixed, lines joined into a single TTS block (preserves prosody).
+        // In-line tone hints (e.g. [deep breath]) are kept for ElevenLabs but stripped from display.
         const rawForNarration = toneTag + lines.join(' ');
-        // For display: each line on its own visible line
-        const linesHtml = lines.map(l => `<span class="poem-line">${parseMarkup(l)}</span>`).join('');
+        const stripTone = (s) => s.replace(/\[(?!#)[a-zA-Z][a-zA-Z0-9 _-]*\]/gi, '').replace(/\[#[a-z0-9_-]+\]/g, '').trim();
+        const linesHtml = lines.map(l => `<span class="poem-line">${parseMarkup(stripTone(l))}</span>`).join('');
 
         return `
           <p class="para poem-stanza-para${count > 0 ? ' has-comments' : ''}"

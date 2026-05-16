@@ -161,13 +161,40 @@
           "text": "\"The Fall.[#pause2]\"",
           "speaker": "alistair-hale",
           "pause_before": 1000
+        }
+      ]
+    },
+    {
+      "type": "poem",
+      "title": "The Fall",
+      "speaker": "alistair-hale",
+      "tone": "poetic",
+      "stanzas": [
+        {
+          "lines": [
+            "Birds bore the earth,",
+            "Bound fast to soil and bone;",
+            "Chained to my fleeting being,",
+            "They climbed with a heart of stone."
+          ]
         },
         {
-          "text": "\"[poetic]Birds bore the earth,\nBound fast to soil and bone; \nChained to my fleeting being, \nThey climbed with a heart of stone. \nToo high, thought-drowned; \nWings unmade, earth-bound. \nThe fall stretched, endlessly slow. \n[deep breath]And in the act of letting go, \nI remembered.\"",
-          "speaker": "alistair-hale",
-          "pause_before": 1000
+          "lines": [
+            "Too high, thought-drowned;",
+            "Wings unmade, earth-bound.",
+            "The fall stretched, endlessly slow."
+          ]
         },
-
+        {
+          "lines": [
+            "[deep breath]And in the act of letting go,",
+            "I remembered."
+          ]
+        }
+      ]
+    },
+    {
+      "paragraphs": [
         {
           "text": "He drifted closer and gave the book back. \"I can't say I like that line about wings being unmade.\" He held her arm to steady her. \"Brace up. Here comes the snap-back.\"",
           "speaker": "alistair-hale"

@@ -46,16 +46,68 @@
           "text": "\"[reciting]I woke with a song in my head. Each verse followed the next, and the emphasis hit the second note. Did ye hear it?\"",
           "speaker": "frank-muro"
         },
-        "He paused, then recited the poem.",
+        "He paused, then recited the poem."
+      ]
+    },
+    {
+      "type": "poem",
+      "speaker": "frank-muro",
+      "tone": "poetic",
+      "stanzas": [
         {
-          "text": "\"[poetic]Are you there, in earth and star, above me night folds in its seam. Still I climb the stalk, deep-hummed river of a dream. Beyond my orbit, bleak light swirls below.\"",
-          "speaker": "frank-muro"
+          "lines": [
+            "Are you there, in earth and star,",
+            "above me night folds in its seam.",
+            "Still I climb the stalk,",
+            "deep-hummed river of a dream."
+          ]
         },
-        "He coughed, clearing his throat in the dry air.",
         {
-          "text": "\"[poetic]Beyond my orbit, bleak light swirls below. Under horizons and the mornin', barrows hum where starfires glow. Beyond my orbit, across the echoes, soft they flare. Call to me, o come to me, lift me gently from despair. Are you there for me? Back where starfires glow. 'm Aidez, Mairee, Aidez-moi. Come call me home, to sow.\"",
-          "speaker": "frank-muro"
+          "lines": [
+            "Beyond my orbit,",
+            "bleak light swirls below."
+          ]
+        }
+      ]
+    },
+    {
+      "paragraphs": [
+        "He coughed, clearing his throat in the dry air."
+      ]
+    },
+    {
+      "type": "poem",
+      "speaker": "frank-muro",
+      "tone": "poetic",
+      "stanzas": [
+        {
+          "lines": [
+            "Beyond my orbit,",
+            "bleak light swirls below.",
+            "Under horizons and the mornin',",
+            "barrows hum where starfires glow."
+          ]
         },
+        {
+          "lines": [
+            "Beyond my orbit,",
+            "across the echoes, soft they flare.",
+            "Call to me, o come to me,",
+            "lift me gently from despair."
+          ]
+        },
+        {
+          "lines": [
+            "Are you there for me?",
+            "Back where starfires glow.",
+            "'m Aidez, Mairee, Aidez-moi.",
+            "Come call me home, to sow."
+          ]
+        }
+      ]
+    },
+    {
+      "paragraphs": [
         "Frank tapped his pad, finishing the recital and ending the stream. He waited. A pulse and another lost to the void.",
         "[#alert-pong]PONG."
       ]

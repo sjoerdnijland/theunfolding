@@ -1090,6 +1090,67 @@ body.wiki-hints-on .para.active .wiki-link {
 }
 @keyframes nPulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
 
+/* ── Poem mode (dreamlike, line-fade narration overlay) ─── */
+.narration-overlay.poem-mode {
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(233,74,124,0.10), transparent 55%),
+    linear-gradient(180deg, rgba(6,22,25,0.96), rgba(6,22,25,0.99));
+}
+.narration-overlay.poem-mode .narration-text {
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 2.0;
+  letter-spacing: 0.015em;
+  color: var(--ivory);
+  max-width: 760px;
+  filter: drop-shadow(0 0 22px rgba(233,74,124,0.18));
+}
+.narration-poem-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  color: var(--rose);
+  opacity: 0.6;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  text-align: center;
+  animation: nPoemEyebrowIn 1.4s ease-out 0.1s both;
+}
+@keyframes nPoemEyebrowIn {
+  from { opacity: 0; letter-spacing: 0.2em; }
+  to   { opacity: 0.6; letter-spacing: 0.35em; }
+}
+.narration-poem {
+  display: flex; flex-direction: column; gap: 4px;
+  align-items: center;
+}
+.narration-poem-line {
+  display: block;
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(6px);
+  animation: nPoemLineIn 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(0.35s + (var(--line-i, 0) * 0.55s));
+}
+@keyframes nPoemLineIn {
+  from { opacity: 0; filter: blur(4px); transform: translateY(6px); }
+  to   { opacity: 1; filter: blur(0);   transform: translateY(0);   }
+}
+/* Karaoke word states inside a poem — softer than the default, breath-like */
+.narration-overlay.poem-mode .nw         { color: rgba(255,243,235,0.45); transition: color 0.5s ease, text-shadow 0.5s ease; }
+.narration-overlay.poem-mode .nw.spoken  { color: rgba(255,243,235,0.85); }
+.narration-overlay.poem-mode .nw.current {
+  color: var(--rose);
+  text-shadow: 0 0 26px rgba(233,74,124,0.55);
+}
+@media (max-width: 900px) {
+  .narration-overlay.poem-mode .narration-text { font-size: 1.2rem; line-height: 1.85; }
+  .narration-poem-line { animation-delay: calc(0.2s + (var(--line-i, 0) * 0.45s)); }
+}
+
 @media (max-width: 900px) {
   .narration-overlay { padding: 80px 24px 100px; }
   .narration-text { font-size: 1.2rem; }
