@@ -94,5 +94,17 @@
     "chapter": 6,
     "image": "/assets/bio/shrieker.png",
     "narration": "The plants on Mairee are louder. Sit with them long enough and you'll start asking the wrong questions. The Gramophone Plant is a funnel a meter across — sometimes two — sitting in deep clearings where the wind has somewhere to go. It moans. It shrieks. It whispers occasionally, on still days, like it's letting you in on something it heard down the line. Shriekers, the survey teams call them. Wind instruments grown by a world that wanted to sound like itself. Some claim it sings. Some claim it whispers. Some claims it sucks your soul from you. "
+  },
+  {
+    "id": "scrudgar",
+    "name": "Scrudgar",
+    "tag": "biology",
+    "role": "Fauna · Semi-aquatic herbivore",
+    "affil": "Valley wetlands",
+    "aliases": "Mud-barrel, Valley grunter",
+    "desc": "A tusked, blubbery herbivore native to the slow rivers and valleys of the Sickle mountain range. Roughly the size and shape of a mud-caked barrel set on four stout legs. Scrudgars spend most of their days and nights submerged up to their small, beady eyes, lazily munching on submerged roots. At dusk they emerge to bask and grunt — a low, carrying call that echoes for kilometers through the Delta valleys. Despite the impressive tusks, scrudgars are placid and have shown no recorded aggression toward colonists or scitter drones. Among the first Mairee creatures to be widely adopted as a colony mascot; plushie versions are a common nursery fixture at the Freya Homestead.",
+    "chapter": 18,
+    "image": "/assets/bio/scrudgar.png",
+    "narration": "Mud-caked. Blubbery. Mostly submerged. Tusks it almost never uses. The scrudgar spends its days and nights up to its small beady eyes in a muddy pool, munching on roots and — as best we can tell — thinking about more roots. At dusk they grunt. The sound carries for kilometers down the valleys. On Mairee, almost everything that wants to kill you announces itself differently. The scrudgar's grunt is, mostly, the sound of a creature being content. The crew loves them. Nobody looks too closely at the tusks."
   }
 ]

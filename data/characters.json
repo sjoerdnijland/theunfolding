@@ -600,5 +600,19 @@
     "id": "fatima",
     "voice_id": "ZXZq039skp0kfF9gO7Au",
     "narration": "I have three who say they hear a humming. And I think I hear it too."
+  },
+  {
+    "name": "Zoë Eleftheriou",
+    "tag": "char",
+    "role": "Nursery Carer",
+    "affil": "Freya Homestead Nursery",
+    "aliases": "Zoe, Zoë",
+    "appearance": "A young woman with a warm, easily-given smile. Wears the soft pastel layers of a nursery carer, frequently smudged with paint or formula. Speaks in the slightly-too-quiet register of someone who has learned not to wake sleeping toddlers.",
+    "desc": "Carer at the Freya Homestead's nursery, looking after the colony's youngest under conditions that have grown dangerous — recycled water that breaks the toddlers out in rashes, a new nutrient paste they refuse to eat, persistent supply shortages the Grid's accounting will not acknowledge. Her Greek name means *life* and *resurrection*. ",
+    "chapter": 18,
+    "image": "/assets/char/zoe_eleftheriou.png",
+    "id": "zoë",
+    "voice_id": "1gkXJMvrzBWAwt0XqBaa",
+    "narration": "The recycled water is loaded with chlorine. They keep breaking out in rashes that won't go away. They scratch them open in their sleep."
   }
 ]
