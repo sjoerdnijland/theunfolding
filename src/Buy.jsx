@@ -11,6 +11,32 @@ function Buy() {
   const BOOKMUNDO = 'https://publishnl.bookmundo.com/books/22065296';
   const GOODREADS = 'https://www.goodreads.com/book/show/251501817-the-unfolding';
 
+  // Amazon Kindle — region-aware via ASIN (same book ID across all Amazon TLDs)
+  const AMAZON_ASIN = 'B0GX32VNTY';
+  const AMAZON_TLD_BY_REGION = {
+    NL: 'nl', BE: 'nl',
+    GB: 'co.uk', UK: 'co.uk', IE: 'co.uk',
+    DE: 'de', AT: 'de', CH: 'de',
+    FR: 'fr', LU: 'fr',
+    IT: 'it',
+    ES: 'es',
+    SE: 'se',
+    PL: 'pl',
+    CA: 'ca',
+    AU: 'com.au', NZ: 'com.au',
+    JP: 'co.jp',
+    IN: 'in',
+    MX: 'com.mx',
+    BR: 'com.br',
+    AE: 'ae', SA: 'sa',
+    SG: 'sg',
+    TR: 'com.tr',
+  };
+  const amazonTld = AMAZON_TLD_BY_REGION[countryHint] || 'com';
+  const AMAZON_URL = amazonTld === 'com'
+    ? `https://www.amazon.com/dp/${AMAZON_ASIN}`
+    : `https://www.amazon.${amazonTld}/-/en/dp/${AMAZON_ASIN}`;
+
   useEffect_B(() => {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.15 });
     if (ref.current) obs.observe(ref.current);
@@ -49,6 +75,9 @@ function Buy() {
             <div className="bl-store-list">
               <a href={KOBO_UNIVERSAL} className="bl-store-btn" target="_blank" rel="noopener">
                 <span className="bl-store-arrow">→</span>Kobo <span className="bl-store-note">190+ countries</span>
+              </a>
+              <a href={AMAZON_URL} className="bl-store-btn" target="_blank" rel="noopener">
+                <span className="bl-store-arrow">→</span>Amazon Kindle <span className="bl-store-note">amazon.{amazonTld}</span>
               </a>
               {isNL && (
                 <a href={BOL_NL} className="bl-store-btn" target="_blank" rel="noopener">

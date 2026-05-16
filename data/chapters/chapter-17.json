@@ -30,13 +30,13 @@
         },
         "Relief washed over Sarah.",
         {
-          "text": "\"[urgent]Can you wake them?\" she said into her comm. \"[urgent]As loud as you can.\"",
+          "text": "\"[#static][urgent]Can you wake them?\" she said into her comm. \"[urgent]As loud as you can.\"",
           "speaker": "sarah-farley"
         },
         "The drone hovered around a meter from their faces. First, it shined its bright searchlight into their eyes, and when that didn't work, [#alert-pong]it blasted a deafening alarm.",
         "Alani and Leon jolted awake, shielding their eyes from the bright light.",
         {
-          "text": "\"[over comms][relieved]Jimenez! Wittler! It's Sarah; do you copy?\" Sarah's voice crackled through the Scitter's external speaker as the Scitter dimmed its light.",
+          "text": "\"[#static][over comms][relieved]Jimenez! Wittler! It's Sarah; do you copy?\" Sarah's voice crackled through the Scitter's external speaker as the Scitter dimmed its light.",
           "speaker": "sarah-farley"
         },
         {
@@ -81,7 +81,7 @@
           "text": "*Stupid tricksters. Jokers in robes, thinking their parlor tricks could impress me.*",
           "inner_voice": "ulre-corbin"
         },
-        "He had yielded to their demands for now. He would return to the Plateau. He would show Heston and his costumed fraternity the undeniable logic of a hundred guardians reinstating the Grid at its highest utility. But he needed them elsewhere first: the Delta.",
+        "He had yielded to their demands for now. He would return to the Plateau. He would show Heston and his costumed fraternity the undeniable logic of a hundred guardians reinstating the Grid at its highest utility. But he needed them elsewhere first:[#pause] the Delta.",
         "[#airhiss]As the ramp lowered, Ulre Corbin was hit by a smell that instantly made him nauseous. It was a humid chlorophyll, mixed with compost and burned flora. He stepped out from the cool interior of the *Depeche* onto the landing pad where Centurion Jax was waiting for him.",
         {
           "text": "\"[deep]Director,\" Jax rumbled. \"[deep]The network nodes are online. The camp is secured.\"",
@@ -116,7 +116,8 @@
           "speaker": "ulre-corbin"
         },
         "Ulre fixed Jax with a hard stare. Jax left instantly.",
-        "Ulre expanded the strategic map. He had composed a practical deployment. The first supplies from the haulers in orbit would not be food or medicine but prefabricated barricades and powerful sonic emitters. He marked a new perimeter around the Leaf: a hexagon. He assigned squads to the other DROP sites. Heavy cargo shuttles from *Bygul* and *Trjegul* would bring 'DROP Expansion Packs' containing modular struts to repair weak pump housings. They would also haul sonic emitters to keep clackers at bay, and automated micro-pulse turrets. He approved water reclamation units and a new Hopper station.",
+        "Ulre expanded the strategic map. He had composed a practical deployment. The first supplies from the haulers in orbit would not be food or medicine but prefabricated barricades and powerful sonic emitters. He marked a new perimeter around the Leaf: a hexagon.",
+        "He assigned squads to the other DROP sites. Heavy cargo shuttles from *Bygul* and *Trjegul* would bring 'DROP Expansion Packs' containing modular struts to repair weak pump housings. They would also haul sonic emitters to keep clackers at bay, and automated micro-pulse turrets. He approved water reclamation units and a new Hopper station.",
         "From now on, the outposts would become strongholds. He approved the distribution of Zups to the weary local guardians. Atmospheric regulators would be connected to the grid, so the management of the bivouac and hab tents would be centrally controlled. Now, the Grid could enforce productivity quotas, linking rations and life support directly to biometrics and productivity. He leaned back. Despite the desertions, he felt a grim satisfaction. From this point on, the Delta would run as a tightly controlled operation with all materials accounted for."
       ]
     },
@@ -130,7 +131,9 @@
         "Colossal trees rose like pillars of a forgotten temple. On the ground, luminescent fungi cast a blue-green glow from the hollows. The fungi illuminated the ferns, which furled outwards in fractal spirals. Strange bell-shaped flowers hung from thick vines.",
         "Alani's ankle ached terribly, but he gritted his teeth and limped along, leaning on his makeshift cane. Leon took short, painful gasps beside him.",
         "They followed the Scitter along a shallow stream. The water moved quietly over smooth pebbles. Sometimes, they had to push through tall reeds by the water. As they moved, the reeds made soft, almost musical sounds that followed after them.",
-        "The terrain began to change. The pale trees gave way to a sparser, more familiar kind of foliage. The ground became harder, sloping upward, culminating in a limestone ridge, which they managed to clamber up. When they reached the crest of the ridge, they climbed back down again and found a small, circular sheltered spot. In that spot was a basin that looked like a polished liquid-black mirror with cracked edges. The pool lay within a circle of obsidian-dark stones that stepped downward in concentric rings like a staircase for something that didn't use feet. The slate was slick, glistening with a cold, oily sheen that caught the meager light filtering through the canopy. Moss bled into the crevices of the masonry, reclaiming the geometry. A phalanx of ferns bowed their fronds to it.",
+        "The terrain began to change. The pale trees gave way to a sparser, more familiar kind of foliage. The ground became harder, sloping upward, culminating in a limestone ridge, which they managed to clamber up.",
+        "When they reached the crest of the ridge, they climbed back down again and found a small, circular sheltered spot. In that spot was a basin that looked like a polished liquid-black mirror with cracked edges. The pool lay within a circle of obsidian-dark stones that stepped downward in concentric rings like a staircase for something that didn't use feet.",
+        "The slate was slick, glistening with a cold, oily sheen that caught the meager light filtering through the canopy. Moss bled into the crevices of the masonry, reclaiming the geometry. A phalanx of ferns bowed their fronds to it.",
         "In the center of the rings, the pool itself was as dark as ink. It didn't splash so much as absorb the rain that came from below, not up. As Alani hovered over it, drops landed on his cheeks, splashing up from the pool, against gravity.",
         "Leon lifted a hand. Droplets gathered in his palm.",
         {
@@ -178,7 +181,7 @@
           "speaker": "alani-jimenez"
         },
         "He pulled as hard as he could.",
-        "Leon's eyes opened, looking inhuman. They glowed blue-green like the fungi. Alani recoiled, letting go. He watched, helpless, as tendrils wormed from his nostrils and ears. Leon's eyes popped; a black liquid flowed from them. His mouth gaped open. [#crackle]From it a black flower bloomed, shrieking as it unfolded. Alani fled with that horrifying, disturbing shriek ringing in his ears."
+        "Leon's eyes opened, looking inhuman. They glowed blue-green like the fungi. Alani recoiled, letting go. He watched, helpless, as tendrils wormed from his nostrils and ears. Leon's eyes popped; a black liquid flowed from them. His mouth gaped open. [#plant-shriek]From it a black flower bloomed, shrieking as it unfolded. Alani fled with that horrifying, disturbing shriek ringing in his ears."
       ]
     },
     {
@@ -186,7 +189,7 @@
     },
     {
       "paragraphs": [
-        "Sarah had no experience flying this type of shuttle, but the basic principles were universal. [#hard-landing]She set the *Beetle* down hard on a riverbank, the coils sputtering on the muddy ground. She stayed inside, following the Scitter stream until it lost connection. Sarah checked the pilot, who was still out. [#airhiss]She opened the hatch and heard a mix of clicks, chirps, and melodic whistles. The sounds were beautiful but also unsettling. [#river-short]The river rushed beside her.",
+        "Sarah had no experience flying this type of shuttle, but the basic principles were universal. [#landing]She set the *Beetle* down hard on a riverbank, the coils sputtering on the muddy ground. She stayed inside, following the Scitter stream until it lost connection. Sarah checked the pilot, who was still out. [#hatch]She opened the hatch and heard a mix of clicks, chirps, and melodic whistles. The sounds were beautiful but also unsettling. [#river-short]The river rushed beside her.",
         "Her Scitter burst out of the foliage, followed by a figure gripped by mortal terror.",
         {
           "text": "\"[shouting]Jimenez!\" Sarah screamed through the humid night air. \"[shouting]Alani! It's me!\"",
@@ -198,7 +201,7 @@
           "text": "\"[shattered]He's dead,\" Jimenez said. \"[broken]Wittler. It took him.\"",
           "speaker": "alani-jimenez"
         },
-        "He grabbed her leg firmly. Sarah looked from the terrified guardian at her feet to where he'd come from, but she couldn't see anything chasing him through the growth. She helped the shivering Jimenez to his feet and guided him into the *Beetle*, strapping him into a passenger seat. He passed out before she had even clicked his buckle.",
+        "He grabbed her leg firmly. Sarah looked from the terrified guardian at her feet to where he'd come from, but she couldn't see anything chasing him through the growth. She helped the shivering Jimenez to his feet and guided him into the *Beetle*, [#clickclack]strapping him into a passenger seat. He passed out before she had even clicked his buckle.",
         "She checked his pulse then returned to her seat. The pilot mumbled something inaudible but didn't wake up.",
         {
           "text": "*Wittler's dead. The Drop's gone, but Strand must still be out there. Somewhere.*",
@@ -296,7 +299,7 @@
           "text": "\"[shouting]EMP!\" Nabiha yelled, pulling a cord, trying to initiate a manual reboot. \"[shouting]They fired an EMP!\"",
           "speaker": "nabiha-al-fahim"
         },
-        "The *Beetle* dove down through the swirling, psychoactive fog. Its wings expanded fully. Nabiha managed to deploy the emergency chutes just in time to keep them from crashing full speed into the swamp. [#beetle-crashed]A brutal impact sent them skidding through mud, tearing a deep scar in the soil before they halted violently.",
+        "The *Beetle* dove down through the swirling, psychoactive fog. Its wings expanded fully. Nabiha managed to deploy the emergency chutes just in time to keep them from crashing full speed into the swamp. A [#blast2]brutal impact sent them skidding through mud, tearing a deep scar in the soil before they halted violently.",
         {
           "text": "\"[gasping]Everyone… okay?\" Sarah gasped, her head throbbing.",
           "speaker": "sarah-farley"
@@ -305,7 +308,7 @@
           "text": "Nabiha looked simultaneously furious and incredulous. \"[furious]They shot us down!\"",
           "speaker": "nabiha-al-fahim"
         },
-        "Outside the cracked window, the spore-filled winds shimmered and howled. Sarah ignored her pain and unstrapped herself, moving to the back of the small cabin.",
+        "[#beetle-crashed]Outside the cracked window, the spore-filled winds shimmered and howled. Sarah ignored her pain and unstrapped herself, moving to the back of the small cabin.",
         {
           "text": "Alani groaned, his face pale but eyes clear. \"[wry]Ugh… another crash to add to the collection,\" he muttered, putting a hand on his bruised ribs.",
           "speaker": "alani-jimenez"
@@ -395,13 +398,16 @@
           "text": "*Vurn.*",
           "inner_voice": "sarah-farley"
         },
-        "The ground ahead of them began to swell upward. The Scitter chirped alerts. They stopped as the ground before them peeled back. Two immense mole-like claws, tipped with shards of obsidian, ripped through the surface as if it were pudding. [#burn-hiss]A beak rose into the air and opened, splitting down the center. From within, a dark purple tongue emerged. A whip-like appendage unfurled, flicking out into the spore-thick air. It tasted the storm for the shuttle's ionized trail. The tongue remained extended, like a living sensor array sampling the air. The tongue retracted, and the great beak ground shut. A golden eye opened. It scanned the surface, its gaze sweeping over the three tiny frozen figures. [#crash]It lunged at the *Beetle* and tore through it as if it were made of wet paper.",
+        "The ground ahead of them began to swell upward. The Scitter chirped alerts. They stopped as the ground before them peeled back. Two immense mole-like claws, tipped with shards of obsidian, ripped through the surface as if it were pudding.",
+        "[#vurn],A beak rose into the air and opened, splitting down the center. From within, a dark purple tongue emerged. A whip-like appendage unfurled, flicking out into the spore-thick air. It tasted the storm for the shuttle's ionized trail. The tongue remained extended, like a living sensor array sampling the air. The tongue retracted, and the great beak ground shut.",
+        "A golden eye opened. It scanned the surface, its gaze sweeping over the three tiny frozen figures. [#vurn-crunch]It lunged at the *Beetle* and tore through it as if it were made of wet paper.",
         {
           "text": "\"[screaming]Run!\" Sarah screamed.",
           "speaker": "sarah-farley"
         },
         "The others didn't need to be told again.",
-        "They scrambled past the carnage into the fresh shaft the vurn had left in its wake. They ran an adrenaline-fueled flight, chasing the Scitter's small guiding light. They passed biological pumps, veins, and throbbing membranes embedded in the tunnel walls, making sure to give them a wide berth. The tunnel spiraled downward a little. The air grew damp, smelling of fresh rain on hot stone. The tunnel opened up. They emerged into a geode the size of a cathedral dome. The walls were lined with the same glowing crystalline structures Marco had shown Sarah, illuminating the space with a holy glow.",
+        "They scrambled past the carnage into the fresh shaft the vurn had left in its wake. They ran an adrenaline-fueled flight, chasing the Scitter's small guiding light. They passed biological pumps, veins, and throbbing membranes embedded in the tunnel walls, making sure to give them a wide berth.",4
+        "The tunnel spiraled downward a little. The air grew damp, smelling of fresh rain on hot stone. The tunnel opened up. They emerged into a geode the size of a cathedral dome. The walls were lined with the same glowing crystalline structures Marco had shown Sarah, illuminating the space with a holy glow.",
         "This was a vurn node — a temple at the heart of its network.",
         {
           "text": "\"[whispered]Scitter,\" Sarah whispered into her comm. \"[whispered]Scout the shafts. Find the caldera.\"",
@@ -433,7 +439,7 @@
         },
         "She didn't know if she believed her own words. From the tunnel the Scitter had taken, two blue lights emerged. Their Scitter returned. And it was flying in formation with another identical drone.",
         {
-          "text": "A tinny voice spoke from the second Scitter. \"[warm]Welcome, Sarah,\" it said. \"[warm]I knew you would join us.\"",
+          "text": "A tinny voice spoke from the second Scitter.[#crackle] \"[warm]Welcome, Sarah,\" it said. \"[warm]I knew you would join us.\"",
           "speaker": "marco-thieman"
         },
         "It was Marco Thieman's."
