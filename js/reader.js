@@ -1904,10 +1904,10 @@ let wikiById         = {};   // id → entry  (for speaker tag lookups)
 let commentCounts    = {};   // paragraphId → count
 
 // ── Chapters — loaded from data/chapters/chapter-N.json ──
-const CHAPTER_COUNT = 17;
+const CHAPTER_COUNT = 18;
 window.V3_WORD_MODE = 'estimate'; // default: word-by-word for v3 voices
 
-const chapterNames  = { 1:'Assembly', 2:'The Startend', 3:'Doubt and Certainty', 4:'The Grid', 5:'Two Courses', 6:'Levers of Command', 7:'Scrapper vs. Juggernaut', 8:'Through the Vurnshaft', 9:'The Bris', 10:'Rebound', 11:'A New Science', 12:'The Walls have Ears', 13:'Ex Nihilo', 14:'The Jester', 15:'Wings', 16:'Undercurrents', 17:'It’s Raining Below' }; // increment as you add files
+const chapterNames  = { 1:'Assembly', 2:'The Startend', 3:'Doubt and Certainty', 4:'The Grid', 5:'Two Courses', 6:'Levers of Command', 7:'Scrapper vs. Juggernaut', 8:'Through the Vurnshaft', 9:'The Bris', 10:'Rebound', 11:'A New Science', 12:'The Walls have Ears', 13:'Ex Nihilo', 14:'The Jester', 15:'Wings', 16:'Undercurrents', 17:'It’s Raining Below', 18:'Song that Silence Mothers' }; // increment as you add files
 
 async function loadChapter(n) {
   currentChapter = n;

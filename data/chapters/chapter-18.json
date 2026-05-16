@@ -1,0 +1,375 @@
+{
+  "title": "Song that Silence Mothers",
+  "sections": [
+    {
+      "type": "epigraph",
+      "paragraphs": [
+        "Between states.[#pause] Between selves.[#pause2] Between the sentence you read and the one you're finishing now, there is a song.[#pause] Only a few can hear it.[#pause2] Can you?"
+      ]
+    },
+    {
+      "heading": "29 CLICKS POST UNFOLDING \nNURSERY FREYA HOMESTEAD",
+      "paragraphs": [
+        "Susana clutched her stuffed animal. She gazed at the colorful murals of the Earth on one side and Mairee on the other. Joana knelt and smoothed Susana's silk hair.",
+        {
+          "text": "\"[gentle]Be nice to Zoë, okay? Mommy will be back after her shift.\"",
+          "speaker": "joana-perera"
+        },
+        "A young nurse with a warm smile knelt beside them.",
+        {
+          "text": "\"[warm]Ready to help me with the wall, Su? We can paint a scrudgar, like yours!\" Zoë pointed at Susana's plushie.",
+          "speaker": "zoë"
+        },
+        "Susana nodded eagerly. The tusked herbivore was one of her favorite Mairee creatures. It looked like a mud-caked, blubbery barrel set on four stout legs. Like hippos, scrudgars spend most of their days and nights submerged up to their small, beady eyes, lazily munching on roots. Their grunting could sometimes be heard through the valleys at dusk.",
+        "Before leaving, Joana caught Zoë's eye.",
+        {
+          "text": "\"[low]How are things holding up in here?\"",
+          "speaker": "joana-perera"
+        },
+        "Zoë's smile faltered a little.",
+        {
+          "text": "\"[honest]Honestly, Jo, we're terribly short on essentials. We lack nutrient packs, fresh bandages, and even clean water. Is there any way you could spare more rations from the Med-Post?\" She paused, hesitating. \"[whispered]Off-grid?\" she risked adding.",
+          "speaker": "zoë"
+        },
+        {
+          "text": "Joana squeezed Zoë's arm. \"[firm]Whatever you need. The kids come first.\"",
+          "speaker": "joana-perera"
+        },
+        "Zoë's relief was obvious.",
+        {
+          "text": "\"[whispered]Thank you. Do you have Derma-seal?\" she whispered.",
+          "speaker": "zoë"
+        },
+        "She pulled up the sleeve of a sleeping toddler. The skin was red and flaky.",
+        {
+          "text": "\"[worried]The recycled water is loaded with chlorine and residual salts. They keep breaking out in rashes that won't go away. They scratch them open in their sleep. And the new paste tastes like chalk. The little ones just spit it out.\"",
+          "speaker": "zoë"
+        },
+        {
+          "text": "\"[steady]I'll bring it by as soon as my shift ends.\"",
+          "speaker": "joana-perera"
+        },
+        "Joana paused in the doorway, enjoying the nursery's warmth. The room felt safe in the orange light of dawn. Joana had to force herself to leave.",
+        "The hallway twisted through softly illuminated arches. After a few turns, Joana reached the Med-Post. The small clinic was already busy.",
+        {
+          "text": "\"[focused]Good, you're here. More every day, Jo,\" Fatima said, looking up as Joana walked in. \"[concerned]They complain about the humming. Tinnitus.\"",
+          "speaker": "fatima"
+        },
+        {
+          "text": "\"[skeptical]I'm not sure it's tinnitus,\" Joana said. \"[analytical]A low hum? The sound is not supposed to be this consistent among tinnitus patients.\"",
+          "speaker": "joana-perera"
+        },
+        "Fatima took a thoughtful sip of tea.",
+        {
+          "text": "\"[concerned]A patient arrived. The Delta had no idea what to do with him. His name is Jensen. His mental state is… not good. Can you check on him?\"",
+          "speaker": "fatima"
+        },
+        "Joana entered the room Fatima pointed to. Jensen stared blankly and [#hum-throb]hummed quietly.",
+        {
+          "text": "\"[professional]Jensen, I'm Doctor Perera.\"",
+          "speaker": "joana-perera"
+        },
+        "He didn't look up.",
+        {
+          "text": "\"[wonder]The soil is alive!\"",
+          "speaker": "jensen"
+        },
+        "Joana leaned in to check Jensen's enlarged pupils and his vitals. He mumbled,",
+        {
+          "text": "\"[hushed]It's… warm down there. It's like — like being underneath like — like skin. It breathes.\"",
+          "speaker": "jensen"
+        },
+        "Joana tried to ground him.",
+        {
+          "text": "\"[grounding]You're safe here. You're in the Med-Post at the Homestead.\"",
+          "speaker": "joana-perera"
+        },
+        {
+          "text": "Jensen's eyes darted. \"[urgent]No, no. I can still feel it! It throbs.\" He clutched at the blanket. \"[rapturous]Red veins, blue fog. The roots. The roots grow eyes. And tongues. And —\"",
+          "speaker": "jensen"
+        },
+        "Joana placed a calm hand on his wrist. Her skin prickled faintly as the station's hum faded. [#climate-control-falter]The Med-Post lights sputtered. She stilled her own breath, focusing past the failing lights. She shifted her stance without lifting her hand, grounding Jensen.",
+        "Jensen gasped, back arched. Blood, black in the strobing light, trickled from his nose.",
+        "Joana moved instinctively. She caught his jaw before it could slam shut and turned his head to keep the airway clear. Two fingers to his carotid. Too fast. Erratic. Her other hand braced his shoulder, controlling the arc of his body against the spasm.",
+        {
+          "text": "\"[command]Stay with me,\" she said, low and firm, more command than comfort. \"[command]Jensen, eyes on me.\"",
+          "speaker": "joana-perera"
+        },
+        "But his eyes gazed out into a cosmic distance.",
+        "She applied a medical scanner to get Jensen's readings. The scanner displayed micro-aneurysms. It was a hemorrhage. She grabbed a coagulant spray and applied it to his neck. Nothing changed. [#alarm-groan]Emergency lights pulsated in synchrony with Jensen's spasms.",
+        {
+          "text": "\"[stuttering]The s-soil… is w-waking up.\"",
+          "speaker": "jensen"
+        },
+        "Jensen stuttered, his eyes still dilated and unfocused. [#alert-pong]Joana's slate shrieked."
+      ]
+    },
+    {
+      "type": "code",
+      "paragraphs": [
+        "< ALERT | SECTOR-WIDE POWER SURGE />"
+      ]
+    },
+    {
+      "paragraphs": [
+        "He gasped again, body seizing. Joana tried to intubate to relieve pressure, but he went limp. The strobing lights faded to a steady red.",
+        "Joana snatched the CPR device from the emergency cart. She pressed the cold paddles against Jensen's bare chest and secured an oxygen mask over his mouth and nose, then triggered the machine. [#thumps]It thumped and thumped. Still, Jensen's vitals remained flat. [#hum-throb]With a whine, the lights came back on. The CPR failed. Joana removed the mask.",
+        {
+          "text": "The door slid open, and Fatima stepped in. \"[anxious]Joana? Are you all right? What happened?\"",
+          "speaker": "fatima"
+        },
+        {
+          "text": "Joana swallowed hard. \"[hollow]We lost him.\"",
+          "speaker": "joana-perera"
+        },
+        "Fatima moved to her side, laying a steadying hand on Joana's shoulder as they examined Jensen.",
+        {
+          "text": "\"[whispered]Are you sure, Joana?\" she whispered, afraid to break the silence. \"[awed]He looks so peaceful.\"",
+          "speaker": "fatima"
+        },
+        {
+          "text": "Joana nodded, voice barely audible. \"[quiet]I checked. He's gone.\"",
+          "speaker": "joana-perera"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "ORBITAL THREE \"THE EARS\"",
+      "paragraphs": [
+        "Since he and Gary couldn't access the main systems directly, they had to dig. Frank rerouted the signal from the power conduits straight to his holo-projector.",
+        {
+          "text": "\"[focused]Okay, Gary,\" he said, watching geometric shapes bloom in the air. \"[focused]Forget syntax. Map the frequencies. Give each amplitude shift a color. Let's see what shows up.\"",
+          "speaker": "frank-muro"
+        },
+        {
+          "text": "\"[flat]Assigning hue-shift parameters,\" the CIX replied.",
+          "speaker": "gary"
+        },
+        "Its voice was now flat and professional, which Frank currently found more comforting than when it tried to sound cheerful.",
+        "[#holopong]Reds and violets swirled in an angry cloud, with sharp flashes of green. He watched, searching for a pattern or rhythm, anything that might reveal intelligence rather than random noise. He found nothing.",
+        "Almost imperceptibly, a change began. A single thread of blue sprang from the cloud.",
+        {
+          "text": "\"[intrigued]Gary, what is that? Isolate that frequency.\"",
+          "speaker": "frank-muro"
+        },
+        {
+          "text": "\"[robotic]ISOLATING,\" the CIX said. \"[robotic]This signal isn't coming from the conduit. It is…[#pause] IT IS ME!\"",
+          "speaker": "gary"
+        },
+        {
+          "text": "Frank froze. \"[stunned]What d'ye mean it's you?\"",
+          "speaker": "frank-muro"
+        },
+        {
+          "text": "\"[#static][glitching]MY PROCESSOR IS R-R-RESONATING,\" Gary explained. \"[bright]IT TICKLES!\"",
+          "speaker": "gary"
+        },
+        "The CIX sang. A beautiful voice filled the cabin: a clear, resonant, yet low melodic chant as if emerging from the ocean's depths.",
+        {
+          "text": "\"[singing]We are the root that waits in darkness, a whisper winding through bone. We bear the weight of ageless starkness, and plant the answer yet unknown.\"",
+          "speaker": "gary"
+        },
+        {
+          "text": "\"[singing]We are the song that Silence mothers, the drift of stars unbound. We are the pulse that threads all moments, the hush that gathers worlds from sound.\"",
+          "speaker": "gary"
+        },
+        {
+          "text": "\"[singing]We are the lake that stirs in stillness, the burden lifted from the fall. We are the fire beneath the quiet, the breath before the call.\"",
+          "speaker": "gary"
+        },
+        {
+          "text": "\"[singing]We are the turning of the endless, the reason no one can forsake. In lucid dream, we found you.[#pause] Now awake!\"",
+          "speaker": "gary"
+        },
+        "Frank felt weightless and breathless, every hair standing up. The CIX had translated the alien signal. The song ended. The blue thread in the hologram faded back into the noise. He had to be sure it wasn't hallucinating again.",
+        {
+          "text": "\"[rasping]Gary,\" he rasped. \"[rasping]Repeat.\"",
+          "speaker": "frank-muro"
+        },
+        "The speakers stayed quiet, but a voice came from the back of his mind.",
+        {
+          "text": "*IT IS ME!*",
+          "inner_voice": "frank-muro"
+        },
+        "His limbs snapped straight, as if hit by a sudden jolt. His knees pulled up to his chest, and he kicked out, which made him spin. Sweat from his forehead dispersed like tiny satellites. Frank's fingers clenched and unclenched in quick spasms. He spun from one side of the cabin to the other and bumped into a padded wall.",
+        "When he woke up, he was adrift, unsure how long he had been out. [#holopong]The holoprojector swirled. Two points of blue light emerged from the swirl, morphing into eyes. Below them, a horizontal rift formed a mouth. The face was a funhouse-mirror reflection of his own. Or rather, a poor imitation. The fake smile never reached the eyes.",
+        {
+          "text": "\"[enthusiastic]I AM YOU!\" it said enthusiastically.",
+          "speaker": "gary"
+        }
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "heading": "FREYOPS CENTRAL \"FOX\"",
+      "paragraphs": [
+        "Ulre clasped his hands behind his back, happy to be at his own station.",
+        {
+          "text": "\"[whispered]Director,\" a young ensign whispered. \"[whispered]Next item. A requisition request, routed from Medical. Flagged for your review.\"",
+          "speaker": "guardian"
+        },
+        "Ulre took the datapad. The item read: \"Diagnostic Review of Under-Utilized Capital Hardware.\" He was about to ignore it, but the subtitle caught his eye: \"A containment protocol for a systemic vulnerability and operational degradation.\"",
+        "He recognized Joana Perera's name from many high-level reports about the population's neurological baseline. Ulre knew her research to be fundamental to the Grid's design.",
+        "Ulre read on. The report outlined a radical therapy for Planetary Reacclimation Syndrome and transit-induced neurological disorders. Perera predicted a gradual, colony-wide cognitive decline.",
+        "He studied her models carefully. They showed declines in cognitive capacity and increases in operational errors resulting from cognitive deterioration. The report went on to outline these risks. Seven percent. Twelve percent. Small numbers on the screen, but catastrophic in practice.",
+        "Ulre grew uneasy as he read the main part of her proposal: the use of the emergency stasis bay. He stopped to think about what that meant. The report called the stasis bay \"under-utilized,\" but that wasn't true. It was deemed the most efficient place to keep dissidents until they could be processed, once the crisis was resolved.",
+        "He weighed the competing priorities: maintaining the secrecy and functionality of his detention facility or addressing the gradual cognitive decline affecting the population. Eroding the suppression.",
+        {
+          "text": "\"[deciding]Ensign,\" Ulre instructed, \"[deciding]prepare a response to Doctor Perera. Her proposal has merit.\"",
+          "speaker": "ulre-corbin"
+        },
+        "He started to dictate:",
+        {
+          "text": "\"[dictating]The Directorate authorizes a limited, preliminary study. Bays 7 through 9 of the emergency stasis bay will be partitioned and allocated for your research. A guardian detail will be assigned for security and assistance.\"",
+          "speaker": "ulre-corbin"
+        },
+        "The arrival of the *Dáinn* and *Brisinger* had to be handled first, which meant he had to return to Orbital Command soon.",
+        "He keyed his private comm.",
+        {
+          "text": "\"[clipped]Centurion Jax. My station. Now.\"",
+          "speaker": "ulre-corbin"
+        },
+        "A moment later, the door slid open, and the Centurion of the Directorate Guard stepped inside. Jax, now clean-shaven, seemed to tower over Ulre in the confined space.",
+        {
+          "text": "\"[deep]Director,\" Jax rumbled.",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "\"[direct]The two ships are almost here,\" Ulre said, getting straight to the point. \"[direct]The *Dáinn* will reach the entry gate in two clicks. I want your best team at the docking area as soon as it arrives. Apprehend Westhoff. Give him no time to chat. No formalities. Board the ship immediately and fetch him.\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "Jax's expression remained stern. \"[firm]Understood. Apprehend and escort.\"",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "\"[cold]He is to be brought directly to me in the reception room at Orbital Command,\" Ulre continued. \"[cold]He is not to speak with his crew. He is not to access any internal comms. I want him severed from that ship before he has a chance to perform any last-minute tricks. Is that clear?\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "\"[crisp]Crystal, Director,\" Jax replied.",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "\"[grim]The second variable is the *Brisinger*,\" Ulre said. \"[grim]It follows the *Dáinn* by one click. Still no contact. Assume the worst.\"",
+          "speaker": "ulre-corbin"
+        },
+        "He eyed the Centurion.",
+        {
+          "text": "\"[hard]Deploy every available guardian to Orbital Command and the Homestead docking bay. Full gear: suppressors, lances. Be ready for anything. Plague, mutiny, it doesn't matter. Quarantine the ship as soon as it arrives.\"",
+          "speaker": "ulre-corbin"
+        },
+        {
+          "text": "Jax gave a sharp nod. \"[firm]It will be done.\"",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "\"[final]Good. Make it happen.\" Ulre paused, his gaze hardening. \"[stern]And Jax, get a grip on these incidents involving recruits. I expect discipline. Show them how to force obedience. And do something about that black market.\"",
+          "speaker": "ulre-corbin"
+        },
+        "He dismissed the Centurion with a curt nod."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "paragraphs": [
+        "Jax passed a tent where a line of nervous recruits waited. Inside, a medic handed out foil-wrapped packets. The guardians called them 'Zups,' short for the Directorate-issued 'Zenith Uppers.' These were small wafers that dissolved under the tongue to boost alertness and calm nerves. Jax took another, the third this morning.",
+        "Jax noticed how a recruit eagerly took his packet. He continued past the line. They looked awkward as they tried on their black riot gear. Jax stopped, his shadow falling over a boy who was struggling to properly seat a power cell in a stun stick. [#click]Jax took the cell from the boy's shaking hands, slid it into the stick until it clicked, then wordlessly handed it back.",
+        "A woman with short curls stepped up next to him.",
+        {
+          "text": "\"[clipped]What now, Sam?\" Jax asked.",
+          "speaker": "centurion-jax"
+        },
+        {
+          "text": "\"[reporting]Another complaint. A nurse named Zoë says guardian Anton assaulted her over a ration violation. It's the Zups, it's —\"",
+          "speaker": "samantha"
+        },
+        {
+          "text": "\"[growling]Where is that nurse?\" Jax growled.",
+          "speaker": "centurion-jax"
+        },
+        "Sam walked him to a small nursery. Two other young recruits stood by the door. Jax and Sam passed them and walked in. A young woman looked up. One cheek was red. Without saying anything, he led her away from the toddlers, into a small office, and [#doorhiss]closed the door behind them.",
+        "The Zups hit him in a warm surge, tightening his focus until the room felt smaller, simpler. With it came the urge to make this trivial incident count, to match the depth of his craving. He squeezed the nurse's red cheek until she screamed and struggled out of his grasp.",
+        {
+          "text": "\"[stuttering]W-what are you d-doing?\" she stuttered, backing away.",
+          "speaker": "zoë"
+        },
+        "Then Jax seized her by her hair."
+      ]
+    },
+    {
+      "type": "scene-break"
+    },
+    {
+      "paragraphs": [
+        "Outside, Samantha heard muffled cries, fabric ripping, and then a banging.",
+        "*Thoff. Skrrk. Thoff.*",
+        "Samantha's senses had turned up to eleven. The alley outside the nursery was a throat, swallowing light and spitting it back in sour, halogen coughs. A trash bin overflowed with diapers and formula cans. Somewhere above, [#climate-control-falter]an air vent chattered. The two recruits by the door waited stiff and silent, their uneven breathing showing how tense they were as they stared at the floor. Sweat blossomed under their arms. Their bootlaces were tied wrong. One of them tapped his thumb against his thigh, as if it were Morse code for *GET ME THE HELL OUT OF HERE.*",
+        "Samantha reached for the baton on her belt.",
+        {
+          "text": "*Go in. Stop him.*",
+          "inner_voice": "samantha"
+        },
+        "The thought flashed through her mind while her fingers touched the rough grip of her baton.",
+        "*Thoff. Thoff.*",
+        "She moved, her knees stiff as she leaned toward the narrow window in the office door. The glass was smeared with a greasy thumbprint, so she peered through the clean edge.",
+        "A toddler in a nearby playpen looked up. The child's eyes were wide and dark, full of silent questions.",
+        "Samantha looked away, her throat parched. Her boots felt heavy, and her fingers were numb. The recruit on her left swallowed loudly. Samantha glanced at him, but he kept his eyes on the floor and didn't move.",
+        "*Thoff.*",
+        "She had waited outside this door, in one way or another, for longer than she cared to count.",
+        {
+          "text": "*If you don't move now…*",
+          "inner_voice": "samantha"
+        },
+        "she thought.",
+        "*Ssscreee.*",
+        "A desk had been shoved aside. The door handle turned.",
+        "Jax pulled the nurse out of the office by the arm. Her face was a glitching screen, all static and no signal. Her hands shook as she wrenched her pants up, fingers fumbling at the elastic. He flung her onto the floor like a bag of dirty laundry. She landed on her hands and knees among the colorful blocks. The toddlers, even the crying ones, fell silent.",
+        "Jax loomed over her, shadow stretching across the alphabet rug. Then he kicked her hard in her side. She yelped as air was knocked from her lungs.",
+        {
+          "text": "\"[spitting]Is your complaint,\" he spat, \"[venomous]handled to your satisfaction, ma'am?!\"",
+          "speaker": "centurion-jax"
+        },
+        "He held his slate in front of the nurse's face, showing an approval form.",
+        {
+          "text": "\"[barking]Confirm, bitch,\" he barked.",
+          "speaker": "centurion-jax"
+        },
+        "Her hand trembled as she pressed her wristband to the slate.",
+        "Jax stepped out of the nursery, where the two recruits stood stiff and tense.",
+        {
+          "text": "\"[barking]Which one of you hit her?\" he barked.",
+          "speaker": "centurion-jax"
+        },
+        "Neither answered. Both boys stared at their boots, unwilling to rat on the other.",
+        {
+          "text": "\"[hard]Fine. Hands out.\"",
+          "speaker": "centurion-jax"
+        },
+        "Both held out their shaking hands, waiting for judgment.",
+        "Jax pulled out his baton. [#baton-thwack]He hit the first recruit across the knuckles. The boy gasped but held back a cry by biting his lip. [#baton-thwack]The second blow hit the other recruit's hands, leaving red welts.",
+        {
+          "text": "\"[cold]Cover for each other, you suffer together.\"",
+          "speaker": "centurion-jax"
+        },
+        "Jax leaned in closer; his breath smelled sour, of Zups.",
+        {
+          "text": "\"[low]If either of you had told on the other, I'd have sent you to the Plateau.\"",
+          "speaker": "centurion-jax"
+        },
+        "He turned his glare on Samantha.",
+        {
+          "text": "\"[venomous]This is how they learn. Stop wasting my time with small complaints. Exterminate your weakness. Or I will do it for you, as I did with her.\"",
+          "speaker": "centurion-jax"
+        }
+      ]
+    }
+  ]
+}
