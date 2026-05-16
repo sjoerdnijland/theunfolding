@@ -167,23 +167,50 @@
           "text": "\"[glitching]MY PROCESSOR IS R-R-RESONATING,\" Gary explained. \"[bright]IT TICKLES!\"",
           "speaker": "gary"
         },
-        "The CIX sang. A beautiful voice filled the cabin: a clear, resonant, yet low melodic chant as if emerging from the ocean's depths.",
+        "The CIX sang. A beautiful voice filled the cabin: a clear, resonant, yet low melodic chant as if emerging from the ocean's depths."
+      ]
+    },
+    {
+      "type": "poem",
+      "speaker": "song",
+      "tone": "singing",
+      "stanzas": [
         {
-          "text": "\"[singing]We are the root that waits in darkness, a whisper winding through bone. We bear the weight of ageless starkness, and plant the answer yet unknown.\"",
-          "speaker": "song"
+          "lines": [
+            "We are the root that waits in darkness,",
+            "a whisper winding through bone.",
+            "We bear the weight of ageless starkness,",
+            "and plant the answer yet unknown."
+          ]
         },
         {
-          "text": "\"[singing]We are the song that Silence mothers, the drift of stars unbound. We are the pulse that threads all moments, the hush that gathers worlds from sound.\"",
-          "speaker": "song"
+          "lines": [
+            "We are the song that Silence mothers,",
+            "the drift of stars unbound.",
+            "We are the pulse that threads all moments,",
+            "the hush that gathers worlds from sound."
+          ]
         },
         {
-          "text": "\"[singing]We are the lake that stirs in stillness, the burden lifted from the fall. We are the fire beneath the quiet, the breath before the call.\"",
-          "speaker": "song"
+          "lines": [
+            "We are the lake that stirs in stillness,",
+            "the burden lifted from the fall.",
+            "We are the fire beneath the quiet,",
+            "the breath before the call."
+          ]
         },
         {
-          "text": "\"[singing]We are the turning of the endless, the reason no one can forsake. In lucid dream, we found you.[#pause] Now awake!\"",
-          "speaker": "song"
-        },
+          "lines": [
+            "We are the turning of the endless,",
+            "the reason no one can forsake.",
+            "In lucid dream, we found you.",
+            "Now awake!"
+          ]
+        }
+      ]
+    },
+    {
+      "paragraphs": [
         "Frank felt weightless and breathless, every hair standing up. The CIX had translated the alien signal. The song ended. The blue thread in the hologram faded back into the noise. He had to be sure it wasn't hallucinating again.",
         {
           "text": "\"[rasping]Gary,\" he rasped. \"[rasping]Repeat.\"",

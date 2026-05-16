@@ -466,6 +466,62 @@ body.wiki-hints-on .para.active .wiki-link {
 }
 .code-block .para:hover  { background: rgba(74,154,170,0.06) !important; }
 .code-block .para.active { background: rgba(74,154,170,0.12) !important; border-left-color: var(--teal-bright) !important; }
+
+/* ── Poem / verse block ────────────────────────────────── */
+.poem-block {
+  margin: 48px auto;
+  padding: 28px 36px 24px;
+  max-width: 620px;
+  border-left: 2px solid var(--rose);
+  background: linear-gradient(90deg, rgba(233,74,124,0.04), transparent 70%);
+  position: relative;
+}
+.poem-block::before {
+  content: '◌ VERSE';
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--rose);
+  opacity: 0.55;
+  margin-bottom: 16px;
+}
+.poem-block .para.poem-stanza-para {
+  font-family: var(--serif) !important;
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: var(--ivory);
+  letter-spacing: 0.01em;
+  margin: 0 0 28px;
+  padding: 6px 10px;
+  border-left: none !important;
+  text-indent: 0;
+}
+.poem-block .para.poem-stanza-para:last-child { margin-bottom: 0; }
+.poem-block .para.poem-stanza-para .poem-line {
+  display: block;
+}
+.poem-block .para.poem-stanza-para .poem-line + .poem-line {
+  /* second and later lines slightly indented to suggest enjambment */
+  text-indent: 0;
+}
+.poem-block .para.poem-stanza-para:hover  { background: rgba(233,74,124,0.06); }
+.poem-block .para.poem-stanza-para.active {
+  background: rgba(233,74,124,0.10);
+  border-left: 2px solid var(--rose) !important;
+  padding-left: 14px;
+  margin-left: -16px;
+}
+.poem-block .para.poem-stanza-para .poem-line.active-word {
+  color: var(--rose);
+}
+
+@media (max-width: 720px) {
+  .poem-block { padding: 22px 22px 18px; margin: 36px 0; }
+  .poem-block .para.poem-stanza-para { font-size: 1rem; line-height: 1.8; }
+}
+
 .para.drop-cap::first-letter {
   font-family: var(--serif);
   font-size: 4.2em; float: left; line-height: 0.82;

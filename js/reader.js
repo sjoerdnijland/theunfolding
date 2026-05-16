@@ -2298,6 +2298,48 @@ function renderChapter(ch) {
       html += `<div class="code-block">${parasHtml}</div>`;
       return;
     }
+
+    // ── Poem / verse block — visually distinct, stanza-per-paragraph narration ──
+    if (sec.type === 'poem') {
+      const speakerTag = sec.speaker || '';
+      const toneTag    = sec.tone ? `[${sec.tone}]` : '';
+      const stanzas    = sec.stanzas || [];
+
+      const stanzasHtml = stanzas.map(stanza => {
+        const lines = Array.isArray(stanza) ? stanza : (stanza.lines || []);
+        if (!lines.length) return '';
+        const pid   = `ch${currentChapter}-p${paraIndex}`;
+        const count = commentCounts[pid] || 0;
+        paraIndex++;
+
+        // For narration: tone-tag prefixed, lines joined into a single TTS block (preserves prosody)
+        const rawForNarration = toneTag + lines.join(' ');
+        // For display: each line on its own visible line
+        const linesHtml = lines.map(l => `<span class="poem-line">${parseMarkup(l)}</span>`).join('');
+
+        return `
+          <p class="para poem-stanza-para${count > 0 ? ' has-comments' : ''}"
+             id="${pid}"
+             data-para-id="${pid}"
+             data-comment-count="${count}"
+             data-scene="${sceneIndex}"
+             data-raw="${escAttr(rawForNarration)}"
+             data-speaker="${speakerTag}"
+             data-poem="true"
+             onclick="selectPara('${pid}', this)">
+            <span class="para-toolbar">
+              <button class="pt-btn" onclick="event.stopPropagation();openThread('${pid}')">💬 Thread${count > 0 ? ` (${count})` : ''}</button>
+              <button class="pt-btn pt-narrate" onclick="event.stopPropagation();startNarrationFrom('${pid}')">▶ Narrate</button>
+            </span>
+            ${linesHtml}
+          </p>`;
+      }).join('');
+
+      html += `<div class="poem-block"${sec.title ? ` data-poem-title="${escAttr(sec.title)}"` : ''}>${stanzasHtml}</div>`;
+      prevSecType = 'poem';
+      return;
+    }
+
     // If coming from an uplink, that already incremented sceneIndex on entry.
     // The prose after it is a new scene — but epigraph already incremented on exit,
     // so only increment when transitioning FROM an uplink.
