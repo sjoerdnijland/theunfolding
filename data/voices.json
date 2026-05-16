@@ -32,5 +32,10 @@
   "name": "Queen Bee",
   "voice_id": "GSq0NPB1I3yKJdQ0rvzP",
   "_note": "Voice-only entry for Ivaldi/Plateau guardians (Order of Magicians enforcers). First speaks in chapter 13 — ritual questions at the chamber steps, and short directives. Fill in the ElevenLabs voice_id."
+  },{
+  "id": "song",
+  "name": "The Song",
+  "voice_id": "PB6BdkFkZLbI39GHdnbQ",
+  "_note": "Voice-only entry for the melodic 'beautiful voice' that emerges through Gary the CIX when the alien signal first translates into chant (Chapter 18 — 'Song that Silence Mothers'). A clear, resonant, low melodic voice — 'as if emerging from the ocean's depths.' Distinct from Gary's regular CIX voice; this is what Mairee sings *through* the CIX. Fill in an ElevenLabs voice tuned for singing/chant, ideally with multilingual_v2 stability low for melodic delivery."
 }
 ]
