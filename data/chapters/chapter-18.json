@@ -96,24 +96,24 @@
           "speaker": "joana-perera"
         },
         "But his eyes gazed out into a cosmic distance.",
-        "She applied a medical scanner to get Jensen's readings. The scanner displayed micro-aneurysms. It was a hemorrhage. She grabbed a coagulant spray and applied it to his neck. Nothing changed. [#alarm-groan]Emergency lights pulsated in synchrony with Jensen's spasms.",
+        "She applied a medical scanner to get Jensen's readings. The scanner displayed micro-aneurysms. It was a hemorrhage. She grabbed a coagulant spray and applied it to his neck. Nothing changed. Emergency lights pulsated in synchrony with Jensen's spasms.",
         {
           "text": "\"[stuttering]The s-soil… is w-waking up.\"",
           "speaker": "jensen"
         },
-        "Jensen stuttered, his eyes still dilated and unfocused. [#alert-pong]Joana's slate shrieked."
+        "Jensen stuttered, his eyes still dilated and unfocused. Joana's slate shrieked."
       ]
     },
     {
       "type": "code",
       "paragraphs": [
-        "< ALERT | SECTOR-WIDE POWER SURGE />"
+        "< [#alert-pong]ALERT | SECTOR-WIDE POWER SURGE />"
       ]
     },
     {
       "paragraphs": [
         "He gasped again, body seizing. Joana tried to intubate to relieve pressure, but he went limp. The strobing lights faded to a steady red.",
-        "Joana snatched the CPR device from the emergency cart. She pressed the cold paddles against Jensen's bare chest and secured an oxygen mask over his mouth and nose, then triggered the machine. [#thumps]It thumped and thumped. Still, Jensen's vitals remained flat. [#hum-throb]With a whine, the lights came back on. The CPR failed. Joana removed the mask.",
+        "Joana snatched the CPR device from the emergency cart. She pressed the cold paddles against Jensen's bare chest and secured an oxygen mask over his mouth and nose, then triggered the machine. [#cpr]It thumped and thumped. Still, Jensen's vitals remained flat. [#pistol-whine]With a whine, the lights came back on. The CPR failed. Joana removed the mask.",
         {
           "text": "The door slid open, and Fatima stepped in. \"[anxious]Joana? Are you all right? What happened?\"",
           "speaker": "fatima"
@@ -128,7 +128,7 @@
           "speaker": "fatima"
         },
         {
-          "text": "Joana nodded, voice barely audible. \"[quiet]I checked. He's gone.\"",
+          "text": "Joana nodded, voice barely audible. \"[softly]I checked.[#pause] He's gone.\"",
           "speaker": "joana-perera"
         }
       ]

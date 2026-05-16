@@ -25,8 +25,9 @@ const sfxPreflight = new Set();
 let sfxTriggers    = [];
 let sfxFired       = new Set();
 let sfxVolume      = 0.60;
-// Desktop ambient default: 0.18 (was reduced to 0.07 for iOS — iOS ignores audio.volume anyway)
-const AMBIENT_VOL_DEFAULT = IS_IOS ? 0.07 : 0.18;
+// Desktop ambient default: 0.135 (was 0.18, dialled down −25% per author preference;
+// iOS still 0.07 because iOS ignores audio.volume anyway)
+const AMBIENT_VOL_DEFAULT = IS_IOS ? 0.07 : 0.135;
 
 const SFX_PAUSES = { 'pause': 800, 'pause2': 1600, 'pause3': 2500, 'pause4': 3500 };
 
