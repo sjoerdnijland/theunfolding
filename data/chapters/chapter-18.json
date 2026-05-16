@@ -52,19 +52,19 @@
         "Joana paused in the doorway, enjoying the nursery's warmth. The room felt safe in the orange light of dawn. Joana had to force herself to leave.",
         "The hallway twisted through softly illuminated arches. After a few turns, Joana reached the Med-Post. The small clinic was already busy.",
         {
-          "text": "\"[focused]Good, you're here. More every day, Jo,\" Fatima said, looking up as Joana walked in. \"[concerned]They complain about the humming. Tinnitus.\"",
+          "text": "\"[focused]Good, you're here. [#pause]More every day, Jo,\" Fatima said, looking up as Joana walked in. \"[concerned]They complain about the humming. Tinnitus.\"",
           "speaker": "fatima"
         },
         {
-          "text": "\"[skeptical]I'm not sure it's tinnitus,\" Joana said. \"[analytical]A low hum? The sound is not supposed to be this consistent among tinnitus patients.\"",
+          "text": "\"I'm not sure it's tinnitus,\" Joana said. \"[analytical]A low hum? [#pause]The sound is not supposed to be this consistent among tinnitus patients.\"",
           "speaker": "joana-perera"
         },
         "Fatima took a thoughtful sip of tea.",
         {
-          "text": "\"[concerned]A patient arrived. The Delta had no idea what to do with him. His name is Jensen. His mental state is… not good. Can you check on him?\"",
+          "text": "\"[concerned]A patient arrived. The Delta had no idea what to do with him. [#pause]His name is Jensen. His mental state is… not good. [#pause]Can you check on him?\"",
           "speaker": "fatima"
         },
-        "Joana entered the room Fatima pointed to. Jensen stared blankly and [#hum-throb]hummed quietly.",
+        "Joana entered the room Fatima pointed to. Jensen stared blankly and hummed quietly.",
         {
           "text": "\"[professional]Jensen, I'm Doctor Perera.\"",
           "speaker": "joana-perera"

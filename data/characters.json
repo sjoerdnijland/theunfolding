@@ -614,5 +614,19 @@
     "id": "zoë",
     "voice_id": "1gkXJMvrzBWAwt0XqBaa",
     "narration": "The recycled water is loaded with chlorine. They keep breaking out in rashes that won't go away. They scratch them open in their sleep."
+  },
+  {
+    "name": "Jensen Oesterbeek",
+    "tag": "char",
+    "role": "Surveyor — Delta Reconnaissance",
+    "affil": "Delta Expedition / Thieman's squad",
+    "aliases": "Jensen",
+    "appearance": "A man somewhere in his thirties, no longer entirely present. Pupils blown wide and dark, dilated past any clinical normal. The blank, faintly smiling stare of someone listening to a frequency only he can hear. Hums a low repetitive tune without seeming to notice he is doing it.",
+    "desc": "A member of Marco Thieman's Delta reconnaissance squad. Jensen accompanied the survey that mapped the first vurn node and came back changed. Thieman found him sitting at the base of a tree, smiling, barely responsive, talking in riddles, humming. Thieman sent him to the infirmary for a psych eval.",
+    "chapter": 17,
+    "image": "/assets/char/jensen_oesterbeek.png",
+    "id": "jensen",
+    "voice_id": "nrdaHyh0J0bEyUi50LUg",
+    "narration": "The soil is alive. It's warm down there. Like being underneath skin. It breathes."
   }
 ]
