@@ -579,6 +579,15 @@ function buildSegments(plainText, charVoiceId, innerVoiceId) {
     return [{ text: plainText, voiceId: null }];
   }
 
+  // Fast-path: whole paragraph is one italic block with an explicit inner_voice tag.
+  // Author's tag beats the verb/punctuation heuristic below — needed for whispers,
+  // fragments, ellipsis-trailing lines like "*…never trust an atom…*" that don't
+  // match the sentence-verb regex.
+  const _trimmed = plainText.trim();
+  if (innerVoiceId && /^\*[^*]+\*$/.test(_trimmed)) {
+    return [{ text: _trimmed.slice(1, -1).trim(), voiceId: innerVoiceId }];
+  }
+
   // Split on quoted dialogue AND italic inner-dialogue spans
   // Quote: "..." or \u201c...\u201d
   // Inner: *complete sentence* — detected by having a verb or ?/!
