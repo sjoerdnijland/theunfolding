@@ -10,7 +10,7 @@
     {
       "heading": "30 CLICKS POST UNFOLDING \nCAPTAIN'S READY ROOM, FNS DÁINN",
       "paragraphs": [
-        "[#high-pitched-whine]Eeeeeeeeeeeeeeeeeeeeee.",
+        "[#high-pitched-whine]Screeeeee.",
         "A shriek spiked through the speakers. A needle-thin feedback pinching through the eardrum directly to the jaw.",
         "Stacey yelped. The captain flinched.",
         {
@@ -45,7 +45,7 @@
         },
         "Ben heard Hale's plea in Kiran's words.",
         {
-          "text": "\"[gentle]Is that your choice?\"",
+          "text": "\"[gentle]Is that *your* choice?\"",
           "speaker": "benjamin-westhoff"
         },
         {
@@ -118,18 +118,18 @@
       "paragraphs": [
         "Ben stood quietly for a while. He thought about the crew he was leaving behind and the bleak future that waited for him on the Plateau. He opened a cabinet drawer and took out a plaque and a framed holo-photo. In the photo, a young woman with his stubborn eyes and a fearless smile stood next to him, her arm around his. Ben sat down and placed the frame on the table. He rubbed his tired face as if to shake the memory.",
         "She was gone, somewhere beyond the Fold. At least she was far away from this forsaken hole in the universe. She was with her mother, his ex-wife. That thought was a dark comfort. He remembered her laugh and their last hug at the transit gate. He had promised they would meet again. A warm tear ran down his cheek.",
-        "He pressed his comm.",
+        "[#tap]He pressed his comm.",
         {
           "text": "\"[steady]Jia. My ready room.\"",
           "speaker": "benjamin-westhoff"
         },
-        "She arrived soon after, looking expectant.",
+        "[#doorhiss]She arrived soon after, looking expectant.",
         {
           "text": "\"[grave]Our path is grim,\" Ben began, his voice regaining command. \"[grave]I will hand over this ship. I'm relieving myself of its command, but not of my duty. This ship is yours now, Ionie. I am promoting you to captain.\"",
           "speaker": "benjamin-westhoff"
         },
         "She lost her steady composure, eyes wide.",
-        "He flipped the heavy plaque, showing the engraved ship's motto: *PORTAMUS FUTURUM.*",
+        "[#soft-thud-land]He flipped the heavy plaque, showing the engraved ship's motto: *PORTAMUS FUTURUM.*",
         {
           "text": "\"[quiet]We carry the future. I had this made before we left Sol,\" he said quietly. \"[soft]I wanted to give it to you after we arrived, in a better ceremony. But now is the time.\"",
           "speaker": "benjamin-westhoff"
@@ -182,7 +182,7 @@
           "text": "\"[gentle]Just be you. You'll do fine.\"",
           "speaker": "benjamin-westhoff"
         },
-        "And with the photo frame tucked under his arm, he left the captain's ready room."
+        "And with the photo frame tucked under his arm, [#doorhiss]he left the captain's ready room."
       ]
     },
     {
@@ -229,7 +229,7 @@
           "text": "\"[satisfied]Now that we're close enough, Jia has agreed to tight-beam our whispers through Orbital Three into the Homestead's civilian network. Hard times seem to bring back an appreciation for poetry,\" Steven said with a wry smile.",
           "speaker": "steven-gail"
         },
-        "His fingers moved over his console like a pianist.",
+        "[#tapping]His fingers moved over his console like a pianist.",
         {
           "text": "\"[showing]Here. This is the clue Muro left for us.\"",
           "speaker": "steven-gail"
@@ -282,7 +282,7 @@
           "text": "\"[explaining]The Directorate's techos will scan this. They'll see a standard calibration sequence, a set of commands that tells the gyroscope how to spin, how to balance, how to keep our cycle in sync with theirs. All down, yeah? All heavy.\"",
           "speaker": "dominic-beltrán"
         },
-        "He tapped a block of commented code titled: *//REDUNDANT ACOUSTIC BUFFER - DEPRECATED.*",
+        "[#tap]He tapped a block of commented code titled: *//REDUNDANT ACOUSTIC BUFFER - DEPRECATED.*",
         {
           "text": "\"[low]But they won't check this part. It's old code from the ship's first test run, a buffer meant to handle sonic vibrations from the core. It's out of use.\"",
           "speaker": "dominic-beltrán"
@@ -295,7 +295,7 @@
           "text": "\"[grinning]Reactivated and taught it a new trick,\" Dom said, his grin widening.",
           "speaker": "dominic-beltrán"
         },
-        "He made a few adjustments on the console.",
+        "[#tapping]He made a few adjustments on the console.",
         {
           "text": "\"[mischievous]The grav-cycler doesn't just make gravity. It can sing. A subsonic hum that no one consciously hears. I've embedded a new set of commands in this old buffer.\"",
           "speaker": "dominic-beltrán"
@@ -308,7 +308,7 @@
           "text": "\"[demonstrating]To this,\" Dom answered, tapping his slate.",
           "speaker": "dominic-beltrán"
         },
-        "He finished his drink in one gulp, pressed the glass to the wall, and put his ear to it.",
+        "He finished his drink in one gulp, [#tap]pressed the glass to the wall, and put his ear to it.",
         {
           "text": "\"[inviting]Yes, go ahead. Try it.\"",
           "speaker": "dominic-beltrán"
@@ -317,14 +317,14 @@
         "At first, he thought it was noise — an ocean in a seashell. Then he could decipher a whisper, repeating the same phrase over and over.",
         {
           "text": "*…never trust an atom… never trust an atom…*",
-          "inner_voice": "dominic-beltrán"
+          "inner_voice": "whisper"
         },
         "Steven jerked his head from the glass. Dominic grinned ear to ear.",
         {
           "text": "\"[proud]That's our private party line,\" Dom said. \"[explaining]I'm using the grav-cycler's resonance to make the hull vibrate. A whisper in the walls.\"",
           "speaker": "dominic-beltrán"
         },
-        "He tapped his slate again.",
+        "[#tap]He tapped his slate again.",
         {
           "text": "\"[inviting]Go on. Try it again.\"",
           "speaker": "dominic-beltrán"
@@ -358,7 +358,8 @@
         "She opened it. The archive unfolded into fragments. Mission outlines and ship registries she did not recognize. Dispatched a decade earlier into the Yreus system. An expedition. The Yreus Relay Station appeared again and again.",
         "Ionie already knew the station predated their arrival on Mairee. What arrested her was the detail that followed its construction. It had remained manned.",
         "The logs spoke sideways about the station's function. Contact. Persistent presence. Whatever the station was for, it required people to stay. It did not surprise her that others had passed through the Fold before the fleet. Someone had to build the thing. Someone had to scout. Reconnaissance had always come first. What surprised her was how many had never returned. And, even now, the station was not unmanned.",
-        "She scrolled. Timelines thinned. Some ended mid-report. Others resumed months later. Calibration cycles that did not correspond to any known sensor array. Habitation quotas adjusted for crew fatigue and exposure. Rotations measured in thresholds rather than shifts. In several entries, the relay was described as a *buffer.* There were protocols for events the logs refused to name. Directives to delay transmissions in communication between both sides of the Fold. To change them even. She noticed how often the word *interface* appeared. Then she read reports detailing the repurposing of cryopods. Into what, she could not decipher.",
+        "She scrolled. Timelines thinned. Some ended mid-report. Others resumed months later. Calibration cycles that did not correspond to any known sensor array. Habitation quotas adjusted for crew fatigue and exposure. Rotations measured in thresholds rather than shifts. In several entries, the relay was described as a *buffer.*",
+        "There were protocols for events the logs refused to name. Directives to delay transmissions in communication between both sides of the Fold. To change them even. She noticed how often the word *interface* appeared. Then she read reports detailing the repurposing of cryopods. Into what, she could not decipher.",
         "She paused. The next entry did not need interpretation. It confirmed contact had occurred. Reports followed detailing interactions.",
         "Ben had known all along. And he had not been alone. Vilde's name appeared again and again, threaded through the margins. Farley, Reed, Heston, Savannen, Corbin.",
         {
@@ -374,7 +375,7 @@
     {
       "heading": "31 CLICKS POST UNFOLDING \nORBITAL COMMAND",
       "paragraphs": [
-        "The *Dáinn* slid into its docking position at the high-orbital anchor with Orbital Command. Ulre watched the procedure, feeling quietly satisfied. Commander Bellamy's calm voice guided the vessel smoothly into the station's clamps.",
+        "The *Dáinn* slid into its docking position at the high-orbital anchor with Orbital Command. Ulre watched the procedure, feeling quietly satisfied. Commander Bellamy's calm voice guided the vessel smoothly into the station's [#clamps]clamps.",
         "[#chime]Ulre turned from the viewport when the confirmation chimed.",
         {
           "text": "\"[brisk]Are they ready?\" he asked the guardian posted by the door.",
@@ -384,7 +385,7 @@
           "text": "\"[firm]Yes. The captain will be escorted to the reception room,\" the guardian replied.",
           "speaker": "guardian"
         },
-        "Ulre entered the reception room, which was small and unwelcoming despite its purpose. Ben Westhoff was brought in soon after, his hands behind his back. He wore his old, worn flight jacket as a small act of defiance.",
+        "[#doorhiss]Ulre entered the reception room, which was small and unwelcoming despite its purpose. Ben Westhoff was brought in soon after, his hands behind his back. He wore his old, worn flight jacket as a small act of defiance.",
         {
           "text": "\"[cold]Westhoff,\" Ulre said, dropping any formality as the door closed behind him. \"[cold]Your ship is now under the jurisdiction of the Directorate. As such, a change of command is in effect. You are hereby relieved of your duties as captain of the *Dáinn*.\"",
           "speaker": "ulre-corbin"
@@ -410,7 +411,7 @@
           "text": "\"[brisk]Shuttle leaves in two beats,\" Ulre said, heading for the door. \"[dismissive]No time for goodbyes. Dismissed.\"",
           "speaker": "ulre-corbin"
         },
-        "Westhoff left the room without a word, and that unwelcome touch of doubt returned, seeping into Ulre.",
+        "[#doorhiss]Westhoff left the room without a word, and that unwelcome touch of doubt returned, seeping into Ulre.",
         "Returning to the viewport, Ulre watched as the first heavy cargo shuttles disembarked, his gaze inevitably drawn to the one unresolved variable. The *Brisinger*.",
         "To Ulre, the ship was still a ghost, moving silently toward him. Ulre anticipated that the ship would simply glide into its designated slot. Because of this predictable trajectory, there was no need to risk another vessel or attempt a complex interception. All he had to do was wait for it to fall into his lap.",
         "Even with such certainties, the waiting was unbearable. He could not allow a variable of this magnitude to remain unmanaged, so he keyed his console.",
