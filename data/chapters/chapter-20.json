@@ -719,18 +719,18 @@
         "Frank felt an inner tearing. His 'Self' split apart. His body tumbled before him.",
         {
           "text": "*Gary?* The thought was a whimper. *Gary…[#pause] where did I go? It's dark. Please…[#pause] please…[#pause] where am I?!*",
-          "inner_voice": "gary"
+          "inner_voice": "frank-muro"
         },
         "He watched a man in a voidsuit being pulled into the Stingray's belly. The hatch closed, sealing the man inside.",
         {
           "text": "*Wait…[#pause] that's no' me. I'm still here!*",
-          "inner_voice": "gary"
+          "inner_voice": "frank-muro"
         },
         "The Stingray veered off, accelerating toward the planet below.",
         "A cube spun in the void. Just a little box. Below, the horizon of Mairee turned — a staircase infinitely winding down.",
         {
           "text": "*What a downshot, Gary.*",
-          "inner_voice": "gary"
+          "inner_voice": "frank-muro"
         },
         "That was the box's thought as it blipped into oblivion."
       ]
@@ -777,7 +777,6 @@
     },
     {
       "type": "poem",
-      "speaker": "whisper",
       "tone": "childlike",
       "stanzas": [
         {
