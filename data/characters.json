@@ -628,5 +628,19 @@
     "id": "jensen",
     "voice_id": "nrdaHyh0J0bEyUi50LUg",
     "narration": "The soil is alive. It's warm down there. Like being underneath skin. It breathes."
+  },
+  {
+    "name": "Tom Keller",
+    "tag": "char",
+    "role": "Vanguard Pilot",
+    "affil": "Orbital Command · Northern Alliance Vanguard",
+    "aliases": "Rattle",
+    "appearance": "Smooth hair, smoother uniform, smoothest mouth in the wing. Carries himself like a man who has never once mislaid a comb. The fitted flight jacket of an OC interceptor pilot, slightly too tailored to be regulation. A pilot's call-sign — *Rattle* — bestowed early in his career and never quite shaken: he is the man you cannot make flinch on comms.",
+    "desc": "Pilot of the Vanguard, the Northern Alliance's lead orbital interceptor. Old colleague of Alistair Hale's from the Solac flight academy. Trained to escalate by half-tones — he opens friendly, leans technical, and threatens last. First appears in Chapter 20, tasked with intercepting the unauthorized Stingray near Orbital Three and hailing Heyoka on the open channel.",
+    "chapter": 20,
+    "image": "/assets/char/tom_keller.png",
+    "id": "tom-keller",
+    "voice_id": "",
+    "narration": "Stingray. That you, Heyoka? Rattle on your tail here. Let's keep it friendly between us."
   }
 ]
