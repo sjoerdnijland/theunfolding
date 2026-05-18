@@ -310,11 +310,11 @@
         },
         "He tilted his head.",
         {
-          "text": "\"[calculating]Do the math. Three thousand of us. Most men. You know how many women your age?\"",
+          "text": "\"[calculating]Do the math. Three thousand of us. [#pause]Most men. [#pause2]You know how many women your age?\"",
           "speaker": "older-guardian"
         },
         "He gestured at Lysanne with the beam of his torch, moving up and down, slowly.",
-        "Lysanne said nothing. Her jaw was set.",
+        "Her jaw was set.",
         {
           "text": "\"[answering himself]Not many,\" he answered himself.",
           "speaker": "older-guardian"
@@ -356,8 +356,8 @@
           "speaker": "older-guardian"
         },
         "Ian pulled the trigger, but the pistol didn't fire. Instead, he swung it at the older guardian's head, trying to use it as a club. The guardian caught Ian's wrist, twisted it, and [#baton-thwack]drove the stick into Ian's side.",
-        "Oliver jumped off the flatbed and swung his rucksack hard into the younger guardian's back. The guardian staggered. Lysanne followed right behind and kicked the back of the guardian's knee.",
-        "Oliver grabbed his multi-tool from his pocket and snapped out the blade. The younger guardian got back up and charged at Lysanne. Oliver darted forward and stabbed the guardian in the thigh. The guardian [#scream]screamed, but Lysanne cut him off with a sharp elbow to his throat. He fell to the ground, choking.",
+        "Oliver jumped off the flatbed and swung his rucksack [#tug]hard into the younger guardian's back. The guardian staggered. Lysanne followed right behind and [#punch]kicked the back of the guardian's knee.",
+        "Oliver grabbed his multi-tool from his pocket and snapped out the blade. The younger guardian got back up and charged at Lysanne. Oliver darted forward and stabbed the guardian in the thigh. The guardian screamed, but Lysanne cut him off with a [#punch2]sharp elbow to his throat. [#gutteral]He fell to the ground, choking.",
         {
           "text": "\"[shouting]Go!\" Ian shouted as he dropped to his knees, wincing while the elder guardian tried to grab the pistol back from him. \"[shouting]Go! Now!\"",
           "speaker": "ian-perera"
@@ -366,11 +366,11 @@
           "text": "Lysanne grabbed Oliver's arm, pulling him toward the cockpit of the transporter. \"[urgent]He said go!\"",
           "speaker": "lysanne-sutherland"
         },
-        "Oliver tossed his rucksack inside and climbed into the passenger seat. Lysanne climbed behind the wheel. The transporter [#engine-whine]groaned, and its coils whined as they came to life. She leaned out of the window to watch the fight behind her.",
-        "Ian lunged at the guardian, who had pulled his own gun. The [#gunshot]gun went off, and both men dropped to the ground.",
+        "Oliver tossed his rucksack inside and climbed into the passenger seat. Lysanne climbed behind the wheel. The transporter [#engine-whirr]groaned, and its coils whined as they came to life. She leaned out of the window to watch the fight behind her.",
+        "The guardian grappled with the half-stunned Ian, both men locked in a desperate struggle for the gun. It discharged with a [#gunshot]deafening crack, and they [#fall]crashed to the ground together.",
         "For a heartbeat, neither moved. Oliver's hand was on the door latch.",
         "The guardian got up, staggering to one knee. He still held the pistol, his arm covered in blood. He raised the weapon, the red targeting laser shaking, and started moving toward Ian to finish him off. Lysanne didn't hesitate. She [#scream]screamed with primal rage and slammed the throttle full reverse.",
-        "The guardian [#gunshot2]fired wildly as the transporter [#impact]slammed into him. There was a thud, and he disappeared beneath the vehicle.",
+        "The guardian [#gunshot2]fired wildly as the [#full-reverse]transporter slammed into him. There was a thud, and he disappeared beneath the vehicle.",
         "Lysanne slammed the brake, and the transporter [#brake-screech]screeched to a stop.",
         {
           "text": "\"[shouting]Ian!\" Oliver shouted as he jumped out.",
