@@ -47,5 +47,10 @@
   "name": "Hull Whisper",
   "voice_id": "NNlPuk2Pv2RnraA6G8yp",
   "_note": "Voice-only entry for the subsonic whisper Dominic Beltrán transmits through the FNS Dáinn's grav-cycler resonance into the hull (Chapter 19 — 'Portamus Futurum'). Heard only when an ear is pressed against the bulkhead through a drinking glass. ElevenLabs voice should be tuned for soft, intimate, near-inaudible whisper delivery — low stability, low style, minimal projection. Distinct from Beltrán's regular voice. Reused for any subsequent covert hull-vibration whispers the resistance sends along the same channel."
+  },{
+  "id": "older-guardian",
+  "name": "Older Guardian",
+  "voice_id": "1BfrkuYXmEwp8AWqSLWk",
+  "_note": "Voice-only entry for the older, predatory perimeter guardian who intercepts Lysanne and Oliver at the industrial loading gate in Chapter 21 ('Full Reverse'). A canyon of cynical wrinkles, leering, quoting the Centurion's 'every able body is a colony asset' doctrine. Lower, rougher, slower delivery than the standard 'guardian' voice — the menace of long service, casual cruelty earned from rank. Distinct from the cryo-bay guardian (kept on the default 'guardian' voice)."
 }
 ]

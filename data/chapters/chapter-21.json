@@ -4,7 +4,9 @@
     {
       "type": "epigraph",
       "paragraphs": [
-        "Collapse. That's what'll happen to the Northern Alliance on Sol. A structural failure. One day, they were the gatekeepers to humanity's next dawn.[#pause] The next, they were like three billion insects, realizing the lid closed. They were, once again, trapped in their jar. The watch.[#pause2] Composure requires integrity. That, Bellamy understood. She, at least, had stayed on her feet in the moment of her contact. Her First Contact.[#pause] I did not. First Contact rearranges you. Your brain. Literally. Ask Joana. Ask Su."
+        "Collapse. That's what'll happen to the Northern Alliance on Sol. A structural failure. One day, they were the gatekeepers to humanity's next dawn.[#pause] The next, they were like three billion insects, realizing the lid closed. They were, once again, trapped in their jar. The watch.[#pause2]",
+        "Composure requires integrity. That, Bellamy understood. She, at least, had stayed on her feet in the moment of her contact. Her First Contact.[#pause], I did not. ",
+        "First Contact rearranges you. Your brain. Literally. Ask Joana. Ask Su."
       ]
     },
     {
@@ -35,7 +37,7 @@
         },
         "Lysanne looked at him.",
         {
-          "text": "*When had it become* our*?*",
+          "text": "*When had it become our?*",
           "inner_voice": "lysanne-sutherland"
         },
         {
@@ -169,7 +171,7 @@
           "text": "\"[concerned]But the boy,\" Joana began, feigning professional concern. \"[concerned]The boy can't be left unattended. I'm in the middle of a treatment!\"",
           "speaker": "joana-perera"
         },
-        "The guardian froze, his hand halfway to the door panel. He was torn between the urgent summons and his duty to guard Joana. His slate [#chime2]beeped again, even more urgently. He looked from Joana's steady gaze to the boy in the cryo-gel, clearly weighing his options.",
+        "The guardian froze, his hand halfway to the door panel. He was torn between the urgent summons and his duty to guard Joana. His slate [#alert-pong]beeped again, even more urgently. He looked from Joana's steady gaze to the boy in the cryo-gel, clearly weighing his options.",
         {
           "text": "\"[firm]Your work is restricted to this bay. Don't touch anything or go anywhere until I get back,\" he said.",
           "speaker": "guardian"
@@ -252,12 +254,12 @@
         "They walked through the yard that held charging stations and parked vehicles. Their target was a flatbed transporter. They were twenty meters from it when a [#beam]white beam fell on them.",
         {
           "text": "\"[barking]Don't move!\" a harsh voice barked.",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "Two guardians stepped out from behind the transporter.",
         {
           "text": "\"[barking]Identify yourselves.\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         {
           "text": "*What are they still doing here? Did someone betray us?*",
@@ -270,7 +272,7 @@
         },
         {
           "text": "\"[interrupting]You're not on any roster for this sector. No one is,\" the guardian interrupted.",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "He was older, his face a canyon of cynical wrinkles. The second guardian, not much older than Oliver, twitched.",
         {
@@ -279,64 +281,64 @@
         },
         {
           "text": "The older guardian gave a short, harsh laugh. \"[harsh]A date. Cute.\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "He stepped closer, his eyes lingering on Lysanne. He glanced at his twitchy teenage sidekick, who was clearly high on Zups.",
         {
           "text": "\"[leering]It's been a long shift, eh? Maybe we deserve a little fun too.\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "He turned back to the two of them.",
         {
           "text": "\"[ordering]Get in the back. Both of you. We'll figure out what to do with you while we get this donkey to the docks.\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "They had no choice. The younger guardian shoved Oliver toward the flatbed. He and Lysanne were pushed onto the cold metal deck. The older guardian threw a heavy, greasy tarp over the rails to cover them.",
         {
           "text": "\"[snarling]Stay quiet.\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "They crawled into the dark. Oliver expected them to get into the cab and start driving, but the older man wasn't done yet.",
         {
           "text": "\"[idle]You know what's funny,\" he said, as if they had asked.",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "His eyes were on Lysanne.",
         {
           "text": "\"[idle]Not one new face will come through that Fold. Not one.\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "He tilted his head.",
         {
           "text": "\"[calculating]Do the math. Three thousand of us. Most men. You know how many women your age?\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "He gestured at Lysanne with the beam of his torch, moving up and down, slowly.",
         "Lysanne said nothing. Her jaw was set.",
         {
           "text": "\"[answering himself]Not many,\" he answered himself.",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "He leaned forward.",
         {
           "text": "\"[predatory]No resupply. So, you can't waste a chance like this. More precious than water. More precious than fuel.\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "His eyes moved over her with the flat assessment of a man pricing something at auction.",
         "He nudged the younger one.",
         {
           "text": "\"[oily]Didn't the Centurion say so? Every able body is a colony asset. And isn't she a fine one.\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "The younger guardian said nothing. His eyes went somewhere above the tarp. Somewhere far away. The older man rolled his shoulders. Cracked his neck.",
         {
           "text": "\"[purring]Now, about that date,\" he said, his voice a low, menacing purr. \"[purring]Let's make it a memorable one. Suits. Off.\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "Oliver shot Lysanne a look; her face was pale, but her eyes were fierce.",
         {
           "text": "\"[barking]Clothes!\" the older guardian barked impatiently.",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         {
           "text": "\"[urgent]Let them go,\" a voice cut in.",
@@ -346,12 +348,12 @@
         "The older guardian stepped back, a wicked smile spreading across his wrinkled face.",
         {
           "text": "\"[smug]Well, well. Another stray dog.\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "He reached for his stun stick.",
         {
           "text": "\"[smug]That pistol is print-protected, Engineer.\"",
-          "speaker": "guardian"
+          "speaker": "older-guardian"
         },
         "Ian pulled the trigger, but the pistol didn't fire. Instead, he swung it at the older guardian's head, trying to use it as a club. The guardian caught Ian's wrist, twisted it, and drove the stick into Ian's side.",
         "Oliver jumped off the flatbed and swung his rucksack hard into the younger guardian's back. The guardian staggered. Lysanne followed right behind and kicked the back of the guardian's knee.",
