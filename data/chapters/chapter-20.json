@@ -210,7 +210,7 @@
         "She pressed the pen to the girl's inner arm until it [#hypohiss]hissed. The girl did not flinch.",
         "She accepted Lena's blessing. Her blue irises swirled with a new light. They met with Lena's, and she received her thoughts.",
         {
-          "text": "*You carry the seed. Find the boy. The stream flows with you.*",
+          "text": "*You carry the seed.[#pause] Find the boy.[#pause] The stream flows with you.*",
           "inner_voice": "lena-hague"
         },
         "Her eyes fluttered as the inoculant took effect.",
@@ -237,7 +237,7 @@
         },
         "Adrian nodded, his eyes closed as if in prayer. He opened them. The irises swirled like a galaxy in miniature. An understanding passed between them.",
         {
-          "text": "\"[melodic]But your little Color must guide them down,\" Marcus continued, his voice dropping, becoming more intense. \"[melodic]Deep down, when the time is right.\"",
+          "text": "\"[melodic]But *your* little Color must guide them down,\" Marcus continued, his voice dropping, becoming more intense. \"[melodic]Deep down, when the time is right.\"",
           "speaker": "marcus-carlson"
         },
         {
@@ -301,13 +301,13 @@
           "text": "\"[focused]Course plotted. First stop: Orbital Three.\"",
           "speaker": "stacey-kiran"
         },
-        "The Stingray's drive started with a [#thrust]rising whine, pushing the crew into their seats as the ship fell forward into the dark.",
+        "The Stingray's drive started with a [#launch]rising whine, pushing the crew into their seats as the ship fell forward into the dark.",
         {
           "text": "\"[easy]So,\" Alistair said once they were clear, \"[easy]weirdest Solac story. Go.\"",
           "speaker": "alistair-hale"
         },
         {
-          "text": "Stacey snorted, a small, unexpected sound. \"[incredulous]Seriously? That's your icebreaker?\"",
+          "text": "Stacey snorted. \"[incredulous]Seriously? That's your icebreaker?\"",
           "speaker": "stacey-kiran"
         },
         {
@@ -419,7 +419,7 @@
         },
         "He fixed his gaze on Stacey and winked.",
         {
-          "text": "Stacey punched him amicably. \"[laughing]Shit, no. That was you!\"",
+          "text": "Stacey punched him amicably. \"[laughing]Shit, no. That *was* you!\"",
           "speaker": "stacey-kiran"
         }
       ]
@@ -437,8 +437,7 @@
         "On the holoscreen, the interceptor probe's feed sharpened: the FNS *Brisinger*.",
         "Eva Bellamy recognized the moment for what it was — a reset of the board. She loosened her stance. Ulre stood beside her, rigid at the console, hands clasped. Behind the tactical display, the compact man looked even smaller than he had a moment before.",
         {
-          "text": "\"[reporting]Probing,\" an officer reported.",
-          "speaker": "guardian"
+          "text": "\"[reporting][#pong]Probing,\" an officer reported."
         },
         "The image became clearer. The probe's floodlights moved over the ship, and everyone [#gasp]gasped. Glowing, organic matter was smeared across the viewports. Beautiful, alien, and unreal.",
         {
@@ -450,16 +449,14 @@
           "speaker": "eva-bellamy"
         },
         {
-          "text": "\"[reporting]Probe is relaying short-range hails on all spectra,\" the officer replied. \"[reporting]No response.\"",
-          "speaker": "guardian"
+          "text": "\"[reporting]Probe is relaying short-range hails on all spectra,\" the officer replied. \"[reporting]No response.\""
         },
         {
           "text": "\"[pressing]Still nothing?\"",
           "speaker": "eva-bellamy"
         },
         {
-          "text": "\"[reporting]Nothing but static,\" the officer said, adjusting the filters. \"[reporting]A low-frequency hum.\"",
-          "speaker": "guardian"
+          "text": "\"[reporting]Nothing but static,\" the officer said, adjusting the filters. \"[reporting]A low-frequency hum.\""
         },
         "A flicker of unease passed between Eva and Ulre.",
         {
@@ -467,8 +464,7 @@
           "speaker": "eva-bellamy"
         },
         {
-          "text": "\"[reporting]Vanguard reports all bays are unresponsive. They are locked out.\"",
-          "speaker": "guardian"
+          "text": "\"[reporting]Vanguard reports all bays are unresponsive. They are locked out.\""
         },
         "Ulre slammed his fist on the console.",
         {
@@ -516,13 +512,11 @@
           "speaker": "eva-bellamy"
         },
         {
-          "text": "\"[reporting]Heat shielding is angled perfectly,\" the officer replied. \"[reporting]Someone is flying her.\"",
-          "speaker": "guardian"
+          "text": "\"[reporting]Heat shielding is angled perfectly,\" the officer replied. \"[reporting]Someone is flying her.\""
         },
         "He brought up the projected flight path, a red line plunging toward the planet.",
         {
-          "text": "\"[reporting]Direct descent to Freya Port.\"",
-          "speaker": "guardian"
+          "text": "\"[reporting]Direct descent to Freya Port.\""
         },
         {
           "text": "\"[murmuring]She's bypassing orbital audit,\" Eva murmured. \"[low]Full speed. Hot entry.\"",
@@ -753,8 +747,7 @@
           "speaker": "eva-bellamy"
         },
         {
-          "text": "Her comms officer gasped. \"[disbelieving]Controller!\" he yelled with disbelief. \"[disbelieving]Contact! I have contact! Brisinger. It's the Brisinger!\"",
-          "speaker": "guardian"
+          "text": "Her comms officer gasped. \"[disbelieving]Controller!\" he yelled with disbelief. \"[disbelieving]Contact! I have contact! Brisinger. It's the Brisinger!\""
         },
         {
           "text": "\"[urgent]On screen. Now!\"",
@@ -847,8 +840,7 @@
         "Gupta's image shifted. As the *Brisinger* struck the thermosphere, friction lit the viewport, illuminating Gupta and his mural. His skin turned pearlescent.",
         "The projector died. A prickle climbed her wrist, light and deliberate. She jerked her hand, but the sensation followed up the tendon, over the vein, beneath the sleeve. Tiny points catching, releasing. Climbing. Eva gazed down at the open watch and noticed the escaping insects crawling on her forearm. Gooseflesh rose in a spreading wave. She brushed at it, sharp and frantic. Still, the crawling continued. Up. Inward.",
         {
-          "text": "\"[shouting]Controller!\"",
-          "speaker": "guardian"
+          "text": "\"[shouting]Controller!\""
         },
         "The voice slapped her awake.",
         "She gasped. Her fingers closed around her wrist. The watch and insects were gone. Her other hand found her belly, and she held it there. She could tell she was still on the bridge as a wave of vertigo and nausea overtook her. She felt the supporting grip of her comms officer as she fought not to collapse."
