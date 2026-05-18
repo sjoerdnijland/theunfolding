@@ -350,12 +350,12 @@
           "text": "\"[smug]Well, well. Another stray dog.\"",
           "speaker": "older-guardian"
         },
-        "He reached for his stun stick.",
+        "He reached [#baton-crackle]for his stun stick.",
         {
           "text": "\"[smug]That pistol is print-protected, Engineer.\"",
           "speaker": "older-guardian"
         },
-        "Ian pulled the trigger, but the pistol didn't fire. Instead, he swung it at the older guardian's head, trying to use it as a club. The guardian caught Ian's wrist, twisted it, and drove the stick into Ian's side.",
+        "Ian pulled the trigger, but the pistol didn't fire. Instead, he swung it at the older guardian's head, trying to use it as a club. The guardian caught Ian's wrist, twisted it, and [#baton-thwack]drove the stick into Ian's side.",
         "Oliver jumped off the flatbed and swung his rucksack hard into the younger guardian's back. The guardian staggered. Lysanne followed right behind and kicked the back of the guardian's knee.",
         "Oliver grabbed his multi-tool from his pocket and snapped out the blade. The younger guardian got back up and charged at Lysanne. Oliver darted forward and stabbed the guardian in the thigh. The guardian [#scream]screamed, but Lysanne cut him off with a sharp elbow to his throat. He fell to the ground, choking.",
         {
