@@ -642,5 +642,19 @@
     "id": "tom-keller",
     "voice_id": "EaCGZNIZYoLgxVzmLOPI",
     "narration": "Rattle on your tail here. Let's keep it friendly between us."
+  },
+  {
+    "name": "Samantha",
+    "tag": "char",
+    "role": "Guardian Officer",
+    "affil": "The Directorate Guard",
+    "aliases": "Sam",
+    "appearance": "A woman with short, dark curls that fall against the high collar of her armor. Wears the chameleonic black tactical armor of the Directorate Guard, though in quieter moments she's seen with the collar unfastened and her helmet on the floor beside her. Younger than the senior guardians around Jax, and visibly carries the strain of being one of the few women in a male-dominated unit.",
+    "desc": "A guardian officer working directly under Centurion Jax. Samantha is the bystander of chapter 18 — Jax's aide who reports a nurse's complaint about a fellow guardian's assault, then stands outside the nursery office while Jax himself does worse to the nurse inside. The chapter writes her conscience in italics — *Go in. Stop him. If you don't move now…* — while her body refuses to obey. She does not move. A toddler in a nearby playpen watches her through the wire mesh with silent questions. When Jax finally emerges, bloody-knuckled, and walks away with the two other recruits trailing behind him, the chapter ends her arc with a single sentence: *Samantha did not.*",
+    "chapter": 18,
+    "image": "/assets/char/samantha.png",
+    "id": "samantha",
+    "voice_id": "6u6JbqKdaQy89ENzLSju",
+    "narration": "Go in. Stop him. If you don't move now…"
   }
 ]

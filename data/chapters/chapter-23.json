@@ -60,7 +60,8 @@
           "text": "\"[gentle]Look this way,\" she said, smiling.",
           "speaker": "læsa"
         },
-        "She gently turned his head toward a dark maintenance shaft behind damaged machinery. Without waiting for him to regain his breath, she scrambled in, humming. Coughing and grunting, Oliver dragged himself to his knees and slowly crawled after her, following the sound of her humming.",
+        "She gently turned his head toward a dark maintenance shaft behind damaged machinery. Without waiting for him to regain his breath, she scrambled in, humming.",
+        "Coughing and grunting, Oliver dragged himself to his knees and slowly crawled after her, following the sound of her humming.",
         "The shaft was narrow and sloped downward. The air was stale but still breathable. After a steep climb, they exited through a [#hatch-open]pressure hatch onto an exterior catwalk on Brisinger's port side. From there, Oliver could see the disaster. Yra was higher now, and the wreckage cast a long shadow across the plain. A thin ochre haze covered the ruined land.",
         "When Oliver caught up to her, Læsa was sitting on the edge of the catwalk, legs dangling over the edge. She gazed out with a distant curiosity.",
         {
@@ -80,8 +81,8 @@
           "text": "\"[soothing]Don't be scared,\" she whispered. \"[soothing]Even inside the storm, it's all rainbows.\"",
           "speaker": "læsa"
         },
-        "The moment was interrupted by the [#thrusters]whine of maneuvering thrusters high above. A shadow dropped through the turquoise sky like a slice of polished night.",
-        "Oliver jumped up, as if stirred from a dream. With trembling hands, he fumbled inside his rucksack. He pulled out a small device and activated it. Læsa watched with wonder. The shimmering shadow above them reacted, dropping lower, and from it, a blade of white searchlight cut through the ochre haze. The device in Oliver's hand [#device-ping]pinged.",
+        "The moment was interrupted by the [#thruster]whine of maneuvering thrusters high above. A shadow dropped through the turquoise sky like a slice of polished night.",
+        "Oliver jumped up, as if stirred from a dream. With trembling hands, he fumbled inside his rucksack. He pulled out a small device and activated it. Læsa watched with wonder. The shimmering shadow above them reacted, dropping lower, and from it, a blade of white searchlight cut through the ochre haze. The device in Oliver's hand [#pong]pinged.",
         "The Stingray's searchlight scanned the wreckage, lingering over the sacred gathering below until it landed on Oliver and Læsa. A brilliant white circle made them the center of the world. A [#winch]winch whined, and a harness descended, twisting around its cable.",
         "Oliver gently secured the harness around Læsa, then himself. She did not let go of him. He wrapped his free arm around her as the Stingray lifted them from the wreckage and the strange new world born within it.",
         "As they ascended, Oliver looked down. The glowing flock paid their departure no mind. In their embrace, Læsa pressed her lips into Oliver's ears.",
@@ -97,9 +98,11 @@
     {
       "heading": "CRYO-BAY · FREYA HOMESTEAD",
       "paragraphs": [
-        "Supported by Joana, Astrid Vilde took slow, small steps toward the cryo-bay exit. Each one was an act of will. Joana had managed to dress her in a gray-weave shirt from the boy patient. The shirt clung to her damp frame. Over it, Joana's utility jacket hung unzipped, the heavy mustard-colored canvas a shield against the bay's artificial frost. The sleeves were rolled back into thick cuffs, exposing Vilde's pale arms and the faint blue-violet map of her veins. A pair of loose pants was pulled onto her as well, cinched tight at the waist to keep them from slipping. There was no time for anything else. Her bare feet dragged against the deck.",
+        "Supported by Joana, Astrid Vilde took slow, small steps toward the cryo-bay exit. Each one was an act of will.",
+        "Joana had managed to dress her in a gray-weave shirt from the boy patient. The shirt clung to her damp frame. Over it, Joana's utility jacket hung unzipped, the heavy mustard-colored canvas a shield against the bay's artificial frost. The sleeves were rolled back into thick cuffs, exposing Vilde's pale arms and the faint blue-violet map of her veins. A pair of loose pants was pulled onto her as well, cinched tight at the waist to keep them from slipping.",
+        "There was no time for anything else. Her bare feet dragged against the deck.",
         "Vilde [#cough]coughed, her body still fighting the violent shock of revival.",
-        "A flatbed transporter [#skid]skidded sideways and slammed to a halt directly in front of them, a red-haired girl at the wheel.",
+        "A flatbed transporter [#screetching-halt]skidded sideways and slammed to a halt directly in front of them, a red-haired girl at the wheel.",
         {
           "text": "\"[shouting]Joana! In the back!\" Lysanne screamed.",
           "speaker": "lysanne-sutherland"
@@ -123,7 +126,7 @@
           "text": "\"[urgent]Friends,\" Joana replied.",
           "speaker": "joana-perera"
         },
-        "She [#cab-bang]banged on the back of the cab.",
+        "She [#clamps3]banged on the back of the cab.",
         {
           "text": "\"[shouting]Go!\"",
           "speaker": "joana-perera"
@@ -131,7 +134,7 @@
         "The transporter moved. Ian's teeth gritted against the pain as Joana worked to keep her husband from bleeding out. She did the best she could with what was at hand, just trying to hold on to him until they reached the place where more could be done.",
         "The Med-Post [#doors-peel]doors peeled apart, and a bright white light spilled out. Inside, hands took Ian without ceremony, and Joana followed anxiously behind him.",
         {
-          "text": "\"[yelling]Emergency room,\" Fatima yelled.",
+          "text": "\"[yelling]Emergency room!\" Fatima yelled.",
           "speaker": "fatima"
         },
         "As more hands took Ian as he vanished through [#er-doors]swinging doors, Fatima stepped in front of Joana with hands gently raised, preventing her passage.",
@@ -164,7 +167,8 @@
           "speaker": "fatima"
         },
         "Joana nodded once.",
-        "Vilde rested her head against the bulkhead and looked through a half-drawn curtain. She saw a small girl sleeping on a cot. Next to her, a young woman with bruises along her cheek was also asleep. A guardian sat in the chair between them, wearing armor that was unfastened at the collar. Her helmet rested on the floor, and her short, dark curls looked a little damp. The girl didn't look like a guardian on duty at all. She did not look up when Vilde looked at her. She looked defeated. Her shoulders curled forward inside the armor. Her eyes were on the floor between her boots. One hand rested on the young woman's wrist. She did not seem to know she was still holding it."
+        "Vilde rested her head against the bulkhead and looked through a half-drawn curtain. She saw a small girl sleeping on a cot. Next to her, a young woman with bruises along her cheek was also asleep.",
+        "A guardian sat in the chair between them, wearing armor that was unfastened at the collar. Her helmet rested on the floor, and her short, dark curls looked a little damp. The girl didn't look like a guardian on duty at all. She did not look up when Vilde looked at her. She looked defeated. Her shoulders curled forward inside the armor. Her eyes were on the floor between her boots. One hand rested on the young woman's wrist. She did not seem to know she was still holding it."
       ]
     }
   ]
