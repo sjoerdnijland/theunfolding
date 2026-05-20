@@ -1,5 +1,11 @@
 [
   {
+    "id": "narrator",
+    "name": "Kirsten Strand (Narrator)",
+    "voice_id": "wa4sQVgbDDzUDEzJwch3",
+    "_note": "First-person narrator voice for every chapter epigraph and the chapter 24 cube transcript. Same voice as the kirsten-strand character entry — Strand is both a character inside the story and the voice addressing 'Next' from beyond it. Used by the audio renderer for unattributed paragraphs in epigraph sections."
+  },
+  {
     "id": "bris-crew",
     "name": "Brisinger Crew",
     "voice_id": "E0GRvlN3xAdsexmIpD4h",
