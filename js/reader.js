@@ -2015,16 +2015,22 @@ async function injectReaderEndCard(n, chapterTitle) {
   const hasNext = n < CHAPTER_COUNT;
   const reachedPaywall = hasNext && n >= FREE_CHAPTERS_LIMIT;
 
+  const paid = currentUser ? await hasPaid() : false;
+  const epubBtnHtml = paid
+    ? `<button class="cec-btn secondary" onclick="downloadEpub(event)">📖 Download EPUB</button>`
+    : '';
+
   let primaryActionsHtml;
   let paywallNote = '';
   if (!hasNext) {
-    primaryActionsHtml = `
-      <a href="index.html#buy" class="cec-btn primary">Buy the eBook →</a>
-      <a href="https://www.goodreads.com/book/show/251501817-the-unfolding" class="cec-btn secondary" target="_blank" rel="noopener">★ Add on Goodreads</a>`;
+    primaryActionsHtml = paid
+      ? `<button class="cec-btn primary" onclick="downloadEpub(event)">📖 Download EPUB</button>
+         <a href="https://www.goodreads.com/book/show/251501817-the-unfolding" class="cec-btn secondary" target="_blank" rel="noopener">★ Add on Goodreads</a>`
+      : `<a href="index.html#buy" class="cec-btn primary">Buy the eBook →</a>
+         <a href="https://www.goodreads.com/book/show/251501817-the-unfolding" class="cec-btn secondary" target="_blank" rel="noopener">★ Add on Goodreads</a>`;
   } else if (reachedPaywall) {
-    const paid = await hasPaid();
     if (paid) {
-      primaryActionsHtml = `<button class="cec-btn continue" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>`;
+      primaryActionsHtml = `<button class="cec-btn continue" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>${epubBtnHtml}`;
     } else if (currentUser) {
       primaryActionsHtml = `<a href="${buyLinkForUser()}" class="cec-btn continue">Continue — €12.50</a>`;
       paywallNote = `
@@ -2041,7 +2047,7 @@ async function injectReaderEndCard(n, chapterTitle) {
         </div>`;
     }
   } else {
-    primaryActionsHtml = `<button class="cec-btn primary" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>`;
+    primaryActionsHtml = `<button class="cec-btn primary" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>${n > FREE_CHAPTERS_LIMIT ? epubBtnHtml : ''}`;
   }
 
   const card = document.createElement('div');
@@ -2208,6 +2214,31 @@ function buyLinkForUser() {
   return `${STRIPE_PAYMENT_LINK}?${params}`;
 }
 
+const EPUB_BUCKET = 'ebooks';
+const EPUB_OBJECT = 'the-unfolding.epub';
+let epubDownloading = false;
+
+async function downloadEpub(evt) {
+  if (evt) evt.preventDefault();
+  if (epubDownloading) return;
+  if (!currentUser) { signIn(); return; }
+  epubDownloading = true;
+  try {
+    const { data, error } = await db.storage
+      .from(EPUB_BUCKET)
+      .createSignedUrl(EPUB_OBJECT, 600, { download: 'the-unfolding.epub' });
+    if (error || !data?.signedUrl) {
+      console.warn('EPUB signed-url failed:', error);
+      alert('Could not generate the download link. Please refresh and try again, or contact support if this persists.');
+      return;
+    }
+    // Open in same tab as a direct download (signed URL forces attachment via the `download` param)
+    window.location.href = data.signedUrl;
+  } finally {
+    setTimeout(() => { epubDownloading = false; }, 1500);
+  }
+}
+
 async function handlePaymentSuccessRedirect() {
   const params = new URLSearchParams(window.location.search);
   if (params.get('paid') !== 'success') return;
@@ -2221,12 +2252,14 @@ async function handlePaymentSuccessRedirect() {
     if (paid) break;
     await new Promise(r => setTimeout(r, 1500));
   }
-  // Show a one-shot toast
+  // Show a one-shot toast with a quick EPUB download CTA
   const toast = document.createElement('div');
-  toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--rose);color:var(--ink);padding:14px 24px;border-radius:4px;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,0.4)';
-  toast.textContent = '✓ Purchase complete — all chapters unlocked';
+  toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#7fb289;color:#0a1f15;padding:14px 22px;border-radius:4px;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:flex;align-items:center;gap:14px';
+  toast.innerHTML = `
+    <span>✓ Purchase complete — all chapters unlocked</span>
+    <button style="background:transparent;border:1px solid #0a1f15;color:#0a1f15;padding:6px 12px;font-family:inherit;font-size:0.66rem;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;border-radius:2px" onclick="downloadEpub(event)">📖 EPUB</button>`;
   document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 4500);
+  setTimeout(() => toast.remove(), 8000);
 }
 
 function renderLockedChapter(n) {

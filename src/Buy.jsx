@@ -1,3 +1,164 @@
+// ── Shared Supabase client for the homepage ──────────────
+const SUPA_URL = 'https://sscpikfblqtmcefegrpv.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
+const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/3cIdRagb87TygHedtP4ko0B';
+const EPUB_BUCKET_NAME = 'ebooks';
+const EPUB_OBJECT_NAME = 'the-unfolding.epub';
+
+// Initialise once, share across components on the homepage
+if (!window._homepageDb && window.supabase) {
+  window._homepageDb = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+}
+
+// ── Direct-buy card (Discord sign-in + Stripe + EPUB download) ──
+function DirectBuyCard() {
+  const { useState: useState_DB, useEffect: useEffect_DB } = React;
+  const [user, setUser]       = useState_DB(null);
+  const [paid, setPaid]       = useState_DB(false);
+  const [loading, setLoading] = useState_DB(true);
+
+  const db = window._homepageDb;
+
+  async function refreshPaid(u) {
+    if (!u || !db) { setPaid(false); return; }
+    const { count, error } = await db.from('purchases')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'paid');
+    if (error) { console.warn('paid check failed:', error); setPaid(false); return; }
+    setPaid((count || 0) > 0);
+  }
+
+  useEffect_DB(() => {
+    if (!db) { setLoading(false); return; }
+    let sub;
+    db.auth.getSession().then(async ({ data: { session } }) => {
+      const u = session?.user ?? null;
+      setUser(u);
+      await refreshPaid(u);
+      setLoading(false);
+    });
+    const { data } = db.auth.onAuthStateChange(async (_evt, session) => {
+      const u = session?.user ?? null;
+      setUser(u);
+      await refreshPaid(u);
+    });
+    sub = data?.subscription;
+    return () => sub?.unsubscribe?.();
+  }, []);
+
+  async function signIn(provider = 'discord') {
+    if (!db) return;
+    await db.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: window.location.origin + window.location.pathname,
+        scopes: provider === 'discord' ? 'identify email guilds.join' : undefined,
+      },
+    });
+  }
+
+  async function signOut() {
+    if (!db) return;
+    await db.auth.signOut();
+    setPaid(false);
+  }
+
+  function buyLink() {
+    if (!user) return '#';
+    const params = new URLSearchParams({ client_reference_id: user.id });
+    if (user.email) params.set('prefilled_email', user.email);
+    return `${STRIPE_PAYMENT_LINK}?${params}`;
+  }
+
+  async function downloadEpub(e) {
+    if (e) e.preventDefault();
+    if (!db || !user) return;
+    const { data, error } = await db.storage
+      .from(EPUB_BUCKET_NAME)
+      .createSignedUrl(EPUB_OBJECT_NAME, 600, { download: 'the-unfolding.epub' });
+    if (error || !data?.signedUrl) {
+      console.warn('EPUB signed-url failed:', error);
+      alert('Could not generate the download link. Please refresh and try again.');
+      return;
+    }
+    window.location.href = data.signedUrl;
+  }
+
+  if (loading) {
+    return (
+      <div className="bl-card bl-card--direct">
+        <div className="bl-card-top">
+          <div className="bl-card-label">Direct — author</div>
+          <div className="bl-card-price">€12.50</div>
+        </div>
+        <div className="bl-direct-note" style={{ opacity: 0.6 }}>Loading…</div>
+      </div>
+    );
+  }
+
+  // ── State: signed in + paid ──
+  if (user && paid) {
+    const name = user.user_metadata?.full_name || user.user_metadata?.name || user.user_metadata?.custom_claims?.global_name || 'you';
+    return (
+      <div className="bl-card bl-card--direct bl-card--owned">
+        <div className="bl-card-top">
+          <div className="bl-card-label">You own this</div>
+          <div className="bl-card-price" style={{ color: '#7fb289' }}>✓</div>
+        </div>
+        <p className="bl-card-note" style={{ color: 'var(--ivory)', textTransform: 'none', letterSpacing: 0, fontSize: '0.9rem', fontFamily: 'var(--serif)' }}>
+          Welcome back, {name}.
+        </p>
+        <div className="bl-direct-actions">
+          <a href="reader.html" className="bl-direct-btn bl-direct-btn--primary">→ Open Reader</a>
+          <button type="button" onClick={downloadEpub} className="bl-direct-btn">📖 Download EPUB</button>
+        </div>
+        <button type="button" onClick={signOut} className="bl-direct-signout">Sign out</button>
+      </div>
+    );
+  }
+
+  // ── State: signed in + not paid ──
+  if (user && !paid) {
+    const name = user.user_metadata?.full_name || user.user_metadata?.name || user.user_metadata?.custom_claims?.global_name || 'reader';
+    return (
+      <div className="bl-card bl-card--direct">
+        <div className="bl-card-top">
+          <div className="bl-card-label">Direct — author</div>
+          <div className="bl-card-price">€12.50</div>
+        </div>
+        <p className="bl-direct-note">
+          Hi <strong>{name}</strong> — one-time purchase, instant online access + EPUB download.
+        </p>
+        <div className="bl-direct-actions">
+          <a href={buyLink()} className="bl-direct-btn bl-direct-btn--primary">→ Buy direct — €12.50</a>
+        </div>
+        <div className="bl-direct-tag">Best margin for the author · no retailer cut</div>
+        <button type="button" onClick={signOut} className="bl-direct-signout">Not you? Sign out</button>
+      </div>
+    );
+  }
+
+  // ── State: anonymous ──
+  return (
+    <div className="bl-card bl-card--direct">
+      <div className="bl-card-top">
+        <div className="bl-card-label">Direct — author</div>
+        <div className="bl-card-price">€12.50</div>
+      </div>
+      <p className="bl-direct-note">
+        Sign in once, then buy direct. Includes <strong>online reading access</strong> for all 24 chapters and the <strong>EPUB download</strong>.
+      </p>
+      <div className="bl-direct-actions">
+        <button type="button" onClick={() => signIn('discord')} className="bl-direct-btn bl-direct-btn--primary">
+          ◎ Sign in with Discord
+        </button>
+      </div>
+      <div className="bl-direct-tag">Best margin for the author · no retailer cut</div>
+      <div className="bl-direct-providers-soon">Google &amp; Microsoft sign-in coming soon</div>
+    </div>
+  );
+}
+
 // Buy section — Live launch with smart store routing
 function Buy() {
   const { useState: useState_B, useRef: useRef_B, useEffect: useEffect_B } = React;
@@ -64,14 +225,16 @@ function Buy() {
 
         <div className="bl-formats">
 
-          {/* eBook card */}
-          <div className="bl-card" style={{ animationDelay: '0s' }}>
+          {/* Direct-buy card — sign in + Stripe + EPUB download */}
+          <DirectBuyCard />
+
+          {/* Retailers card */}
+          <div className="bl-card" style={{ animationDelay: '0.06s' }}>
             <div className="bl-card-top">
-              <div className="bl-card-label">eBook</div>
+              <div className="bl-card-label">Via retailers</div>
               <div className="bl-card-price">€12.50</div>
             </div>
 
-{/* All stores — always visible, Bol only for NL/BE */}
             <div className="bl-store-list">
               <a href={KOBO_UNIVERSAL} className="bl-store-btn" target="_blank" rel="noopener">
                 <span className="bl-store-arrow">→</span>Kobo <span className="bl-store-note">190+ countries</span>
@@ -91,7 +254,7 @@ function Buy() {
           </div>
 
           {/* Hardcover card */}
-          <div className="bl-card bl-card--soon" style={{ animationDelay: '0.12s' }}>
+          <div className="bl-card bl-card--soon" style={{ animationDelay: '0.12s', gridColumn: '1 / -1' }}>
             <div className="bl-card-top">
               <div className="bl-card-label">Hardcover</div>
               <div className="bl-card-price">June 1st</div>
@@ -307,6 +470,79 @@ function Buy() {
           .bl-actions { gap: 10px; }
           .bl-sep { display: none; }
         }
+
+        /* ── Direct-buy card ─────────────────────────────── */
+        .bl-card--direct {
+          border-color: rgba(127,178,137,0.45);
+          background:
+            linear-gradient(180deg, rgba(127,178,137,0.05), rgba(127,178,137,0.02)),
+            rgba(6,22,25,0.55);
+        }
+        .bl-card--direct:hover {
+          border-color: rgba(127,178,137,0.7);
+          box-shadow: 0 0 28px rgba(127,178,137,0.10);
+        }
+        .bl-card--owned {
+          border-color: rgba(127,178,137,0.7);
+          background:
+            linear-gradient(180deg, rgba(127,178,137,0.10), rgba(127,178,137,0.04)),
+            rgba(6,22,25,0.6);
+        }
+        .bl-direct-note {
+          font-family: var(--serif);
+          font-size: 0.95rem;
+          color: var(--ivory);
+          line-height: 1.5;
+          margin: 4px 0 8px;
+        }
+        .bl-direct-actions {
+          display: flex; flex-direction: column; gap: 8px;
+          margin-top: 6px;
+        }
+        .bl-direct-btn {
+          display: inline-flex; align-items: center; justify-content: center;
+          gap: 8px;
+          padding: 12px 16px;
+          border: 1px solid rgba(127,178,137,0.45);
+          background: rgba(127,178,137,0.06);
+          color: var(--ivory);
+          font-family: var(--mono); font-size: 0.7rem;
+          letter-spacing: 0.18em; text-transform: uppercase;
+          text-decoration: none; border-radius: 2px; cursor: pointer;
+          transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.15s;
+        }
+        .bl-direct-btn:hover {
+          background: rgba(127,178,137,0.18);
+          border-color: rgba(127,178,137,0.85);
+        }
+        .bl-direct-btn--primary {
+          background: #7fb289;
+          border-color: #7fb289;
+          color: #0a1f15;
+        }
+        .bl-direct-btn--primary:hover {
+          background: #6ba17a;
+          border-color: #6ba17a;
+        }
+        .bl-direct-tag {
+          font-family: var(--mono); font-size: 0.58rem;
+          letter-spacing: 0.16em; text-transform: uppercase;
+          color: var(--muted); margin-top: 6px;
+        }
+        .bl-direct-providers-soon {
+          font-family: var(--mono); font-size: 0.56rem;
+          letter-spacing: 0.14em; color: var(--muted);
+          margin-top: 4px; opacity: 0.7;
+        }
+        .bl-direct-signout {
+          background: transparent; border: none; padding: 4px 0;
+          margin-top: 10px;
+          font-family: var(--mono); font-size: 0.56rem;
+          letter-spacing: 0.14em; text-transform: uppercase;
+          color: var(--muted); cursor: pointer; text-align: left;
+          transition: color 0.2s;
+        }
+        .bl-direct-signout:hover { color: var(--ivory); }
       `}</style>
     </section>
   );
