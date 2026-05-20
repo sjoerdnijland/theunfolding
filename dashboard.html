@@ -339,7 +339,8 @@ async function load() {
   try {
     const [
       pageViews, readClicks, buys, discordClicks,
-      chapterStarts, depths, narrationPlays, narrationStops, narrationCompletes
+      chapterStarts, depths, narrationPlays, narrationStops, narrationCompletes,
+      paywallShown, paywallSigninClick, paywallCheckoutClick, purchaseCompleted, epubDownload
     ] = await Promise.all([
       query('page_view'),
       query('click_read_chapter'),
@@ -350,6 +351,11 @@ async function load() {
       query('narration_play'),
       query('narration_stop'),
       query('narration_complete'),
+      query('paywall_shown'),
+      query('paywall_signin_click'),
+      query('paywall_checkout_click'),
+      query('purchase_completed'),
+      query('epub_download'),
     ]);
 
     const indexViews  = pageViews.filter(e => e.page === 'index' || e.page === '').length;
@@ -520,6 +526,100 @@ async function load() {
               </div>`).join('')}
           </div>
         </div>
+      </div>
+
+      <!-- ── PAYWALL FUNNEL ── -->
+      <div class="section-label" style="margin-top:8px">
+        <span class="dot" style="--accent:#7fb289"></span>
+        Paywall Conversion
+      </div>
+      <div class="grid">
+        ${(() => {
+          // Funnel counts
+          const fShown      = paywallShown.length;
+          const fSignin     = paywallSigninClick.length;
+          const fCheckout   = paywallCheckoutClick.length;
+          const fPurchased  = purchaseCompleted.length;
+          const fEpub       = epubDownload.length;
+
+          // Conversion percentages between adjacent funnel steps
+          const pctSigninFromShown    = fShown    > 0 ? ((fSignin    / fShown)    * 100).toFixed(1) : '—';
+          const pctCheckoutFromShown  = fShown    > 0 ? ((fCheckout  / fShown)    * 100).toFixed(1) : '—';
+          const pctPurchaseFromCheckout = fCheckout > 0 ? ((fPurchased / fCheckout) * 100).toFixed(1) : '—';
+          const pctPurchaseFromShown  = fShown    > 0 ? ((fPurchased / fShown)    * 100).toFixed(1) : '—';
+
+          // Breakdown by paywall variant
+          const variantCounts = {};
+          paywallShown.forEach(e => {
+            const v = e.meta?.variant || 'unknown';
+            variantCounts[v] = (variantCounts[v] || 0) + 1;
+          });
+
+          return `
+            <div class="stat-card" style="--accent:#7fb289">
+              <div class="stat-label">Paywall shown</div>
+              <div class="stat-value">${fmt(fShown)}</div>
+              <div class="stat-delta">Unique impressions</div>
+            </div>
+            <div class="stat-card" style="--accent:#7fb289">
+              <div class="stat-label">Sign-in clicks</div>
+              <div class="stat-value">${fmt(fSignin)}</div>
+              <div class="stat-delta">${pctSigninFromShown}% of shown</div>
+            </div>
+            <div class="stat-card" style="--accent:#7fb289">
+              <div class="stat-label">Checkout clicks</div>
+              <div class="stat-value">${fmt(fCheckout)}</div>
+              <div class="stat-delta">${pctCheckoutFromShown}% of shown</div>
+            </div>
+            <div class="stat-card" style="--accent:var(--pink)">
+              <div class="stat-label">Purchases</div>
+              <div class="stat-value">${fmt(fPurchased)}</div>
+              <div class="stat-delta ${pctPurchaseFromShown !== '—' && parseFloat(pctPurchaseFromShown) > 5 ? 'up' : ''}">${pctPurchaseFromShown}% of shown · ${pctPurchaseFromCheckout}% of checkout clicks</div>
+            </div>
+
+            <!-- Funnel summary card -->
+            <div class="funnel-card">
+              <div class="funnel-title">Paywall conversion funnel</div>
+              ${[
+                { label: 'Paywall shown',    count: fShown,     base: fShown },
+                { label: 'Sign-in clicked',  count: fSignin,    base: fShown },
+                { label: 'Checkout clicked', count: fCheckout,  base: fShown },
+                { label: 'Purchase complete', count: fPurchased, base: fShown },
+                { label: 'EPUB downloaded',  count: fEpub,      base: fPurchased },
+              ].map(row => {
+                const base = Math.max(1, row.base);
+                const pct  = Math.round((row.count / base) * 100);
+                const pctLabel = base > 0 ? `${pct}%` : '—';
+                return `
+                  <div class="chapter-row">
+                    <div class="chapter-name">${row.label}</div>
+                    <div class="chapter-bar-wrap">
+                      <div class="chapter-bar" style="width:${Math.min(100, pct)}%;background:linear-gradient(90deg,#7fb289,var(--pink))"></div>
+                    </div>
+                    <div class="chapter-count">${fmt(row.count)} · <span style="color:var(--muted);font-size:0.58rem;letter-spacing:0.08em">${pctLabel}</span></div>
+                  </div>`;
+              }).join('')}
+            </div>
+
+            <!-- Variant breakdown -->
+            <div class="funnel-card">
+              <div class="funnel-title">Paywall-shown — by variant</div>
+              ${Object.keys(variantCounts).length === 0
+                ? `<div style="color:var(--muted);font-size:0.62rem;letter-spacing:0.1em;text-align:center;padding:18px 0">No paywall events yet</div>`
+                : Object.entries(variantCounts).sort((a,b) => b[1]-a[1]).map(([variant, count]) => {
+                    const max = Math.max(1, ...Object.values(variantCounts));
+                    return `
+                      <div class="chapter-row">
+                        <div class="chapter-name" style="font-family:var(--mono);text-transform:none;letter-spacing:0">${variant}</div>
+                        <div class="chapter-bar-wrap">
+                          <div class="chapter-bar" style="width:${Math.round((count/max)*100)}%"></div>
+                        </div>
+                        <div class="chapter-count">${fmt(count)}</div>
+                      </div>`;
+                  }).join('')}
+            </div>
+          `;
+        })()}
       </div>
     `;
 

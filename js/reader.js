@@ -2026,19 +2026,21 @@ async function injectReaderEndCard(n, chapterTitle) {
     if (paid) {
       primaryActionsHtml = `<button class="cec-btn continue" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>`;
     } else if (currentUser) {
-      primaryActionsHtml = `<a href="${buyLinkForUser()}" class="cec-btn continue">Continue — €12.50</a>`;
+      primaryActionsHtml = `<a href="${buyLinkForUser()}" class="cec-btn continue" onclick="window._track&&window._track('paywall_checkout_click',{source:'end_card',user_id:currentUser?.id||null})">Continue — €12.50</a>`;
       paywallNote = `
         <div class="cec-paywall-note">
           You've finished the free preview. To keep reading, a one-time fee of <span class="price">€12.50</span> unlocks chapters 9–${CHAPTER_COUNT} + the full eBook (EPUB) download.
           <span class="sub">Buying direct supports the author — same price, no retailer cut.</span>
         </div>`;
+      if (window._track) window._track('paywall_shown', { variant: 'end_card_signed_in', chapter: n });
     } else {
-      primaryActionsHtml = `<button class="cec-btn continue" onclick="signIn()">◎ Sign in with Discord to continue</button>`;
+      primaryActionsHtml = `<button class="cec-btn continue" onclick="window._track&&window._track('paywall_signin_click',{source:'end_card'});signIn()">◎ Sign in with Discord to continue</button>`;
       paywallNote = `
         <div class="cec-paywall-note">
           You've finished the free preview. To keep reading, a one-time fee of <span class="price">€12.50</span> unlocks chapters 9–${CHAPTER_COUNT} + the full eBook (EPUB) download.
           <span class="sub">Sign in first so we can link the purchase to your account.</span>
         </div>`;
+      if (window._track) window._track('paywall_shown', { variant: 'end_card_anonymous', chapter: n });
     }
   } else {
     primaryActionsHtml = `<button class="cec-btn primary" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>`;
@@ -2239,6 +2241,7 @@ async function downloadEpub(evt) {
       alert('Could not generate the download link. Please refresh and try again, or contact support if this persists.');
       return;
     }
+    if (window._track) window._track('epub_download', { user_id: currentUser?.id || null });
     // Open in same tab as a direct download (signed URL forces attachment via the `download` param)
     window.location.href = data.signedUrl;
   } finally {
@@ -2261,6 +2264,7 @@ async function handlePaymentSuccessRedirect() {
   }
   // Reveal the EPUB button in the top bar once payment is confirmed
   renderAuthArea();
+  if (window._track) window._track('purchase_completed', { user_id: currentUser?.id || null });
   // Show a one-shot toast with a quick EPUB download CTA
   const toast = document.createElement('div');
   toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#7fb289;color:#0a1f15;padding:14px 22px;border-radius:4px;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:flex;align-items:center;gap:14px';
@@ -2276,11 +2280,12 @@ function renderLockedChapter(n) {
   if (!el) return;
   const title = chapterNames[n] || '';
   const ctaHtml = currentUser
-    ? `<a href="${buyLinkForUser()}" class="cec-btn continue">Continue — €12.50</a>`
-    : `<button class="cec-btn continue" onclick="signIn()">◎ Sign in with Discord to continue</button>`;
+    ? `<a href="${buyLinkForUser()}" class="cec-btn continue" onclick="window._track&&window._track('paywall_checkout_click',{source:'locked_chapter',chapter:${n},user_id:currentUser?.id||null})">Continue — €12.50</a>`
+    : `<button class="cec-btn continue" onclick="window._track&&window._track('paywall_signin_click',{source:'locked_chapter',chapter:${n}});signIn()">◎ Sign in with Discord to continue</button>`;
   const subNote = currentUser
     ? `<span class="sub">Buying direct supports the author — same price, no retailer cut.</span>`
     : `<span class="sub">Sign in first so we can link the purchase to your account.</span>`;
+  if (window._track) window._track('paywall_shown', { variant: currentUser ? 'locked_chapter_signed_in' : 'locked_chapter_anonymous', chapter: n });
   el.innerHTML = `
     <div class="ch-hero">
       <div class="ch-eyebrow">Chapter ${n}</div>

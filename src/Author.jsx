@@ -189,7 +189,10 @@ function SiteFooter() {
         </div>
         <div className="footer-bottom">
           <span>© 2026 STUART NYLAND · ALL RIGHTS, QUIETLY, RESERVED.</span>
-          <span>UNFOLDING.IO</span>
+          <span>
+            <a href="legal.html" style={{ color: 'var(--muted)', textDecoration: 'none', marginRight: 14 }}>Privacy &amp; Terms</a>
+            UNFOLDING.IO
+          </span>
         </div>
       </div>
     </footer>

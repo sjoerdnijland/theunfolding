@@ -31,7 +31,10 @@
         </div>
         <div class="footer-bottom">
           <span>&copy; 2026 STUART NYLAND &middot; ALL RIGHTS, QUIETLY, RESERVED.</span>
-          <span>UNFOLDING.IO</span>
+          <span>
+            <a href="legal.html" style="color:var(--muted);text-decoration:none;margin-right:14px">Privacy &amp; Terms</a>
+            UNFOLDING.IO
+          </span>
         </div>
       </div>
     </footer>`;

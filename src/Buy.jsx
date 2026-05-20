@@ -48,6 +48,7 @@ function DirectBuyItem() {
 
   async function signIn(provider = 'discord') {
     if (!db) return;
+    if (window._track) window._track('paywall_signin_click', { source: 'homepage_buy' });
     await db.auth.signInWithOAuth({
       provider,
       options: {
@@ -64,6 +65,10 @@ function DirectBuyItem() {
     return `${STRIPE_PAYMENT_LINK}?${params}`;
   }
 
+  function trackCheckoutClick() {
+    if (window._track) window._track('paywall_checkout_click', { source: 'homepage_buy', user_id: user?.id || null });
+  }
+
   async function downloadEpub(e) {
     if (e) e.preventDefault();
     if (!db || !user) return;
@@ -75,6 +80,7 @@ function DirectBuyItem() {
       alert('Could not generate the download link. Please refresh and try again.');
       return;
     }
+    if (window._track) window._track('epub_download', { source: 'homepage_buy', user_id: user.id });
     window.location.href = data.signedUrl;
   }
 
@@ -93,7 +99,7 @@ function DirectBuyItem() {
   // ── State: signed in + not paid ──
   if (user && !paid) {
     return (
-      <a href={buyLink()} className="bl-store-btn bl-store-direct bl-store-featured">
+      <a href={buyLink()} onClick={trackCheckoutClick} className="bl-store-btn bl-store-direct bl-store-featured">
         <span className="bl-store-arrow">→</span>
         Direct from author <span className="bl-store-note">author's best margin · no retailer cut</span>
       </a>
