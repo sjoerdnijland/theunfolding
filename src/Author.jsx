@@ -191,7 +191,7 @@ function SiteFooter() {
           <span>© 2026 STUART NYLAND · ALL RIGHTS, QUIETLY, RESERVED.</span>
           <span>
             <a href="legal.html" style={{ color: 'var(--muted)', textDecoration: 'none', marginRight: 14 }}>Privacy &amp; Terms</a>
-            UNFOLDING.IO
+            THE-UNFOLDING.NET
           </span>
         </div>
       </div>
