@@ -66,6 +66,23 @@
 .auth-btn:hover { border-color: var(--rose); color: var(--rose); }
 .auth-avatar { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line-strong); }
 .auth-name { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--ivory-2); }
+/* EPUB download button in the top bar (paid users only) */
+.auth-btn.auth-epub {
+  border-color: rgba(127,178,137,0.55);
+  color: #7fb289;
+  background: rgba(127,178,137,0.06);
+}
+.auth-btn.auth-epub:hover {
+  border-color: #7fb289;
+  background: rgba(127,178,137,0.18);
+  color: #cfe8d4;
+}
+.auth-epub-icon { font-size: 0.95rem; line-height: 1; }
+@media (max-width: 640px) {
+  .auth-epub-label { display: none; }
+  .auth-btn.auth-epub { padding: 6px 10px; }
+  .auth-name { display: none; }
+}
 
 /* ── Font size controls ────────────────────────────────── */
 .font-size-controls { display: flex; gap: 4px; align-items: center; }
