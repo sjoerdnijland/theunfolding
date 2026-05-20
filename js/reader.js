@@ -2382,30 +2382,18 @@ function openReviewModal() {
       <button class="gift-close" onclick="this.closest('.gift-modal-overlay').remove()" aria-label="Close">×</button>
       <div class="gift-header">
         <div class="gift-header-title">Leave a review</div>
-        <div class="gift-header-sub">Bumps your shop reward to 50% off. Pick one path — write it here, or link a Goodreads review you've left elsewhere.</div>
-      </div>
-
-      <div class="review-tabs">
-        <button class="review-tab review-tab--active" data-tab="write" onclick="switchReviewTab('write')">✍ Write a review</button>
-        <button class="review-tab" data-tab="link" onclick="switchReviewTab('link')">🔗 Link a Goodreads review</button>
+        <div class="gift-header-sub">Bumps your shop reward to 50% off — and helps other readers find the book.</div>
       </div>
 
       <div class="review-pane review-pane--write" data-pane="write">
         <label class="review-label">Your rating</label>
         <div class="review-stars" id="review-stars">
-          ${[1,2,3,4,5].map(n => `<button type="button" class="review-star" data-rating="${n}" onclick="setReviewRating(${n})">★</button>`).join('')}
+          ${[1,2,3,4,5].map(n => `<button type="button" class="review-star" data-rating="${n}" data-pane="write" onclick="setReviewRating(${n}, 'write')">★</button>`).join('')}
         </div>
         <label class="review-label">Your review</label>
         <textarea id="review-body" class="review-textarea" rows="6" maxlength="2000" placeholder="What did The Unfolding do to you?"></textarea>
         <div class="review-counter"><span id="review-counter">0</span> / 2000</div>
         <button class="gift-cta-primary" onclick="submitReview('write')">Submit review · earn 50% off</button>
-      </div>
-
-      <div class="review-pane review-pane--link" data-pane="link" style="display:none">
-        <label class="review-label">Goodreads review URL</label>
-        <input type="url" id="review-url" class="review-input" placeholder="https://www.goodreads.com/review/show/...">
-        <div class="review-hint">Find your review on <a href="https://www.goodreads.com/book/show/251501817-the-unfolding" target="_blank" rel="noopener">the book's Goodreads page</a> and paste its URL here.</div>
-        <button class="gift-cta-primary" onclick="submitReview('link')">Submit link · earn 50% off</button>
       </div>
 
       <div id="review-status" class="review-status"></div>
@@ -2427,33 +2415,30 @@ function setReviewRating(n) {
   });
 }
 
-function switchReviewTab(tab) {
-  document.querySelectorAll('.review-tab').forEach(b => b.classList.toggle('review-tab--active', b.dataset.tab === tab));
-  document.querySelectorAll('.review-pane').forEach(p => { p.style.display = p.dataset.pane === tab ? '' : 'none'; });
-}
-
-async function submitReview(mode) {
+async function submitReview() {
   const statusEl = document.getElementById('review-status');
   if (!currentUser) { signIn(); return; }
+  const body = document.getElementById('review-body').value.trim();
+  if (!body) {
+    statusEl.textContent = 'Please write a few words first.';
+    statusEl.className = 'review-status review-status--err';
+    return;
+  }
+  if (!_reviewRating) {
+    statusEl.textContent = 'Please pick a rating.';
+    statusEl.className = 'review-status review-status--err';
+    return;
+  }
   const meta = currentUser.user_metadata || {};
   const displayName = meta.custom_claims?.global_name || meta.full_name || meta.name || 'Reader';
-  let payload = {
+  const payload = {
     user_id: currentUser.id,
     display_name: displayName,
     avatar_url: getAvatarUrl(meta),
     source: 'site',
+    body,
+    rating: _reviewRating,
   };
-  if (mode === 'write') {
-    const body = document.getElementById('review-body').value.trim();
-    if (!body) { statusEl.textContent = 'Please write a few words first.'; statusEl.className = 'review-status review-status--err'; return; }
-    if (!_reviewRating) { statusEl.textContent = 'Please pick a rating.'; statusEl.className = 'review-status review-status--err'; return; }
-    payload.body = body;
-    payload.rating = _reviewRating;
-  } else {
-    const url = document.getElementById('review-url').value.trim();
-    if (!/^https?:\/\/.+goodreads\.com/i.test(url)) { statusEl.textContent = 'Paste a valid Goodreads URL.'; statusEl.className = 'review-status review-status--err'; return; }
-    payload.goodreads_url = url;
-  }
   statusEl.textContent = 'Submitting…';
   statusEl.className = 'review-status';
   const { error } = await db.from('reviews').insert(payload);
@@ -2468,14 +2453,37 @@ async function submitReview(mode) {
     return;
   }
   rewardTierCache = undefined;
-  statusEl.textContent = '✓ Thank you! Your 50% off code is now active. Click the 🎁 to apply it.';
-  statusEl.className = 'review-status review-status--ok';
-  if (window._track) window._track('review_submitted', { mode });
-  // Close after a beat and re-open the gift modal to show the upgrade
-  setTimeout(() => {
-    document.querySelectorAll('.gift-modal-overlay').forEach(o => o.remove());
-    openGiftModal();
-  }, 1800);
+  if (window._track) window._track('review_submitted', { source: 'site' });
+  showReviewThanksPane(_reviewRating);
+}
+
+function showReviewThanksPane(rating) {
+  const modal = document.querySelector('.gift-modal.review-modal');
+  if (!modal) return;
+  const stars = '★'.repeat(rating) + '<span style="color:rgba(255,255,255,0.15)">' + '★'.repeat(5 - rating) + '</span>';
+  modal.innerHTML = `
+    <button class="gift-close" onclick="document.querySelectorAll('.gift-modal-overlay').forEach(o=>o.remove()); openGiftModal();" aria-label="Close">×</button>
+    <div class="gift-header">
+      <div class="gift-header-icon">🌿</div>
+      <div class="gift-header-title">Thank you.</div>
+      <div class="gift-header-sub">Your review is filed. Your <strong style="color:#7fb289">50% off</strong> shop code is now unlocked — click the 🎁 in the top bar any time.</div>
+    </div>
+
+    <div class="review-thanks-rating">${stars}</div>
+
+    <div class="review-thanks-goodreads">
+      <div class="review-thanks-eyebrow">One more thing — if you can spare 60 seconds</div>
+      <p class="review-thanks-body">
+        Would you also post your review on <strong>Goodreads</strong>? For a self-published novel, Goodreads reviews are the single biggest thing that helps new readers find the book. Even copy-pasting the same words you just wrote here makes a real difference — and means a lot to me personally.
+      </p>
+      <a href="https://www.goodreads.com/book/show/251501817-the-unfolding"
+         target="_blank" rel="noopener"
+         class="gift-cta-primary"
+         onclick="window._track&&window._track('goodreads_cta_click',{source:'review_thanks'})">★ Open Goodreads to share →</a>
+      <div class="review-thanks-skip">
+        <button type="button" onclick="document.querySelectorAll('.gift-modal-overlay').forEach(o=>o.remove()); openGiftModal();">Maybe later — show me my code</button>
+      </div>
+    </div>`;
 }
 
 async function downloadEpub(evt) {
@@ -3422,6 +3430,18 @@ async function init() {
   await Promise.all([buildWikiIndex(), initAuth()]);
   await handlePaymentSuccessRedirect();
   await loadChapter(1);
+  handleReviewIntent();
+}
+
+// If the user arrives via ?review=open (e.g. from reviews.html), drop them
+// straight into the review modal. If they're not signed in, the modal's own
+// guard triggers the Discord sign-in flow.
+function handleReviewIntent() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('review') !== 'open') return;
+  history.replaceState(null, '', window.location.pathname);
+  if (!currentUser) { signIn(); return; }
+  openReviewModal();
 }
 
 init();

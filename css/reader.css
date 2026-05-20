@@ -234,23 +234,42 @@
 
 /* Review modal */
 .review-modal { max-width: 540px; }
-.review-tabs {
-  display: flex; gap: 0;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 22px;
+
+.review-thanks-rating {
+  text-align: center;
+  font-size: 1.6rem;
+  letter-spacing: 4px;
+  color: #f4ce74;
+  margin: 6px 0 28px;
 }
-.review-tab {
-  flex: 1;
+.review-thanks-goodreads {
+  border: 1px solid rgba(127,178,137,0.3);
+  background: rgba(127,178,137,0.05);
+  border-radius: 4px;
+  padding: 24px 22px;
+  text-align: center;
+}
+.review-thanks-eyebrow {
+  font-family: var(--mono); font-size: 0.6rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 14px;
+}
+.review-thanks-body {
+  font-family: var(--serif); font-size: 1.05rem;
+  line-height: 1.6; color: var(--ivory);
+  margin: 0 0 22px;
+  text-align: left;
+}
+.review-thanks-skip { margin-top: 16px; }
+.review-thanks-skip button {
   background: transparent; border: none;
-  padding: 12px 8px;
-  font-family: var(--mono); font-size: 0.66rem;
+  font-family: var(--mono); font-size: 0.58rem;
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--muted); cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
+  padding: 6px 12px;
+  transition: color 0.2s;
 }
-.review-tab:hover { color: var(--ivory); }
-.review-tab--active { color: var(--ivory); border-bottom-color: #7fb289; }
+.review-thanks-skip button:hover { color: var(--ivory); }
 
 .review-pane { display: flex; flex-direction: column; gap: 6px; }
 .review-label {
