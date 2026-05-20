@@ -1969,6 +1969,15 @@ async function loadChapter(n) {
   renderChapterPills();
   closeSidebar();
 
+  // Paywall gate — chapters 9+ require a paid purchase
+  if (n > FREE_CHAPTERS_LIMIT) {
+    const paid = await hasPaid();
+    if (!paid) {
+      renderLockedChapter(n);
+      return;
+    }
+  }
+
   const el = document.getElementById('chapter-content');
   el.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:50vh;font-family:var(--serif);font-style:italic;color:var(--muted)">Loading…</div>`;
 
@@ -1984,8 +1993,7 @@ async function loadChapter(n) {
   await loadCommentCounts(n);
   preloadChapterSfx(ch);
   renderChapter(ch);
-  // Inject end card into reader (reading mode — narration has its own)
-  injectReaderEndCard(n, ch.title);
+  // renderChapter() already calls injectReaderEndCard()
 }
 
 function continueToNextChapter(n) {
@@ -1999,12 +2007,38 @@ function continueToNextChapter(n) {
   }
 }
 
-function injectReaderEndCard(n, chapterTitle) {
+async function injectReaderEndCard(n, chapterTitle) {
   const el = document.getElementById('chapter-content');
   if (!el) return;
   // Remove any existing end card first (narration may have added one already)
   el.querySelectorAll('.chapter-end-card').forEach(c => c.remove());
   const hasNext = n < CHAPTER_COUNT;
+  const reachedPaywall = hasNext && n >= FREE_CHAPTERS_LIMIT;
+
+  let primaryActionsHtml;
+  if (!hasNext) {
+    primaryActionsHtml = `
+      <a href="index.html#buy" class="cec-btn primary">Buy the eBook →</a>
+      <a href="https://www.goodreads.com/book/show/251501817-the-unfolding" class="cec-btn secondary" target="_blank" rel="noopener">★ Add on Goodreads</a>`;
+  } else if (reachedPaywall) {
+    const paid = await hasPaid();
+    if (paid) {
+      primaryActionsHtml = `<button class="cec-btn primary" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>`;
+    } else if (currentUser) {
+      primaryActionsHtml = `<a href="${buyLinkForUser()}" class="cec-btn primary">📖 Unlock all chapters — €12.50</a>`;
+    } else {
+      primaryActionsHtml = `<button class="cec-btn primary" onclick="signIn()">◎ Sign in with Discord to unlock</button>`;
+    }
+  } else {
+    primaryActionsHtml = `<button class="cec-btn primary" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>`;
+  }
+
+  const paywallNote = reachedPaywall ? `
+    <div style="margin-top:18px;font-size:0.62rem;color:var(--muted);letter-spacing:0.05em;line-height:1.6">
+      You've reached the end of the free preview.<br>
+      One unlock covers chapters 9–${CHAPTER_COUNT} + the full eBook (EPUB) download.
+    </div>` : '';
+
   const card = document.createElement('div');
   card.className = 'chapter-end-card visible';
   card.style.cssText = 'margin: 80px auto 40px; text-align:center;';
@@ -2014,10 +2048,9 @@ function injectReaderEndCard(n, chapterTitle) {
     <div class="cec-sub">Vera and Milo are ready to discuss it.</div>
     <div class="cec-actions">
       <button class="cec-btn secondary" onclick="openPodcastPanel()">🎙 Decoded — AI podcast review</button>
-      ${hasNext ? `<button class="cec-btn primary" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>` : `
-      <a href="index.html#buy" class="cec-btn primary">Buy the eBook →</a>
-      <a href="https://www.goodreads.com/book/show/251501817-the-unfolding" class="cec-btn secondary" target="_blank" rel="noopener">★ Add on Goodreads</a>`}
-    </div>`;
+      ${primaryActionsHtml}
+    </div>
+    ${paywallNote}`;
   el.appendChild(card);
 }
 
@@ -2086,6 +2119,7 @@ async function initAuth() {
 
   db.auth.onAuthStateChange(async (_event, session) => {
     currentUser = session?.user ?? null;
+    paidCache = null;
     renderAuthArea();
     if (currentParaId) renderCommentForm();
 
@@ -2138,6 +2172,80 @@ async function signIn() {
 
 async function signOut() {
   await db.auth.signOut();
+  paidCache = null;
+}
+
+// ── Paywall ──────────────────────────────────────────────
+const FREE_CHAPTERS_LIMIT = 8;
+const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/3cIdRagb87TygHedtP4ko0B';
+let paidCache = null;
+
+async function hasPaid() {
+  if (!currentUser) return false;
+  if (paidCache !== null) return paidCache;
+  try {
+    const { count, error } = await db.from('purchases')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'paid');
+    if (error) { console.warn('hasPaid error:', error); return false; }
+    paidCache = (count || 0) > 0;
+    return paidCache;
+  } catch (e) {
+    console.warn('hasPaid exception:', e);
+    return false;
+  }
+}
+
+function buyLinkForUser() {
+  if (!currentUser) return STRIPE_PAYMENT_LINK;
+  const params = new URLSearchParams({ client_reference_id: currentUser.id });
+  if (currentUser.email) params.set('prefilled_email', currentUser.email);
+  return `${STRIPE_PAYMENT_LINK}?${params}`;
+}
+
+async function handlePaymentSuccessRedirect() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('paid') !== 'success') return;
+  // Clear ?paid=success&session_id=... from the URL
+  history.replaceState(null, '', window.location.pathname);
+  // Invalidate and poll briefly — Stripe webhook usually lands within 1–3s
+  paidCache = null;
+  for (let i = 0; i < 8; i++) {
+    paidCache = null;
+    const paid = await hasPaid();
+    if (paid) break;
+    await new Promise(r => setTimeout(r, 1500));
+  }
+  // Show a one-shot toast
+  const toast = document.createElement('div');
+  toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--rose);color:var(--ink);padding:14px 24px;border-radius:4px;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,0.4)';
+  toast.textContent = '✓ Purchase complete — all chapters unlocked';
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 4500);
+}
+
+function renderLockedChapter(n) {
+  const el = document.getElementById('chapter-content');
+  if (!el) return;
+  const title = chapterNames[n] || '';
+  const ctaHtml = currentUser
+    ? `<a href="${buyLinkForUser()}" class="cec-btn primary">📖 Unlock — €12.50</a>`
+    : `<button class="cec-btn primary" onclick="signIn()">◎ Sign in with Discord to unlock</button>`;
+  el.innerHTML = `
+    <div class="ch-hero">
+      <div class="ch-eyebrow">Chapter ${n}</div>
+      <h1 class="ch-title" style="opacity:0.35">${title}</h1>
+    </div>
+    <div class="chapter-end-card visible" style="margin: 80px auto 40px; text-align:center;">
+      <div class="cec-label">Locked</div>
+      <div class="cec-title">Continue The Unfolding</div>
+      <div class="cec-sub">You've finished the free preview. Chapters 9–${CHAPTER_COUNT} require a one-time unlock.</div>
+      <div class="cec-actions">${ctaHtml}</div>
+      <div style="margin-top:18px;font-size:0.62rem;color:var(--muted);letter-spacing:0.05em;line-height:1.6">
+        Includes the full eBook (EPUB) download.<br>
+        Buying direct supports the author — same price, no retailer cut.
+      </div>
+    </div>`;
 }
 
 function preloadChapterSfx(ch) {
@@ -2453,21 +2561,10 @@ function renderChapter(ch) {
   el.innerHTML = html;
   applyFontSize();
 
-  // Chapter-end card with podcast invite
-  const endCard = document.createElement('div');
-  endCard.className = 'chapter-end-card visible';
-  const hasNext = currentChapter < CHAPTER_COUNT;
-  endCard.innerHTML = `
-    <div class="cec-label">Chapter ${currentChapter} complete</div>
-    <div class="cec-title">${ch.title}</div>
-    <div class="cec-sub">Vera and Milo are ready to discuss it.</div>
-    <div class="cec-actions">
-      <button class="cec-btn secondary" onclick="openPodcastPanel()">🎙 Decoded — AI podcast review</button>
-      ${hasNext ? `<button class="cec-btn primary" onclick="loadChapter(${currentChapter + 1})">Continue to Chapter ${currentChapter + 1} →</button>` : ''}
-    </div>`;
-  // Remove any existing reader end card to avoid duplicates
+  // Chapter-end card with podcast invite — defer to injectReaderEndCard()
+  // for unified paywall logic.
   document.getElementById('chapter-content')?.querySelectorAll('.chapter-end-card').forEach(c => c.remove());
-  el.appendChild(endCard);
+  injectReaderEndCard(currentChapter, ch.title);
 
   // Show the FAB
   document.getElementById('podcast-fab').classList.add('visible');
@@ -3017,6 +3114,7 @@ window._readerGetNarrationPlaying  = () => narrationPlaying;
 async function init() {
   applyWikiHints();
   await Promise.all([buildWikiIndex(), initAuth()]);
+  await handlePaymentSuccessRedirect();
   await loadChapter(1);
 }
 
