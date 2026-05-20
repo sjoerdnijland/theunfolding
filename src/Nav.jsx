@@ -38,6 +38,7 @@ function Nav({ onOpenTweaks, tweaksOn }) {
       <div className="nav-links">
         <a href="index.html#synopsis">Story</a>
         <a href="wiki.html">Wiki</a>
+        <a href="reviews.html">Reviews</a>
         <a href="reader.html" target="_blank" rel="noopener">Read</a>
         <a href="map.html" target="unfolding-map" rel="noopener">Map</a>
         <a href="index.html#author">Author</a>
