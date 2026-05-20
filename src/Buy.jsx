@@ -5,9 +5,13 @@ const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/3cIdRagb87TygHedtP4ko0B';
 const EPUB_BUCKET_NAME = 'ebooks';
 const EPUB_OBJECT_NAME = 'the-unfolding.epub';
 
-// Initialise once, share across components on the homepage
+// Initialise once, share across components on the homepage.
+// Disable navigator.locks coordination on the auth client — without this,
+// a stale lock from a crashed tab can hang getSession() indefinitely.
 if (!window._homepageDb && window.supabase) {
-  window._homepageDb = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+  window._homepageDb = window.supabase.createClient(SUPA_URL, SUPA_KEY, {
+    auth: { lock: (_name, _ttl, fn) => fn() },
+  });
 }
 
 // ── Direct-buy list item (sits inside the existing eBook card's store list) ──

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Reviews — The Unfolding</title>
+<meta name="description" content="What readers are saying about The Unfolding, a novel by S. Nyland."/>
+<link rel="icon" href="favicon.ico" sizes="any"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="favicon-180.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css"/>
+<style>
+  .rv-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 28px 120px;
+    color: var(--ivory);
+  }
+  .rv-back {
+    display: inline-flex; gap: 8px; align-items: center;
+    font-family: var(--mono); font-size: 0.66rem;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    margin-bottom: 40px;
+    transition: color 0.2s;
+  }
+  .rv-back:hover { color: var(--ivory); }
+  .rv-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .rv-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.05;
+    color: var(--ivory);
+    margin: 0 0 10px;
+  }
+  .rv-title em { color: var(--rose); font-style: italic; }
+  .rv-subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0 0 56px;
+  }
+
+  .rv-loading {
+    text-align: center;
+    padding: 60px 0;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--muted);
+  }
+  .rv-empty {
+    text-align: center;
+    padding: 60px 24px;
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.6;
+    border: 1px dashed var(--line);
+    border-radius: 4px;
+  }
+  .rv-empty em { color: var(--ivory-2, var(--ivory)); font-style: italic; }
+
+  .rv-list { display: flex; flex-direction: column; gap: 28px; }
+
+  .rv-card {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px 26px;
+    background: rgba(6,22,25,0.5);
+    transition: border-color 0.2s;
+  }
+  .rv-card:hover { border-color: rgba(255,255,255,0.14); }
+
+  .rv-card-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .rv-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--line-strong);
+    background: rgba(255,255,255,0.04);
+    flex-shrink: 0;
+  }
+  .rv-avatar--placeholder {
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--muted);
+  }
+  .rv-meta { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+  .rv-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ivory);
+  }
+  .rv-sub {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .rv-source {
+    border: 1px solid var(--line);
+    padding: 1px 8px;
+    border-radius: 2px;
+    font-size: 0.55rem;
+    letter-spacing: 0.16em;
+  }
+  .rv-source--goodreads { color: #d6b87a; border-color: rgba(214,184,122,0.35); }
+  .rv-source--curated   { color: var(--muted); }
+  .rv-source--site      { color: #7fb289;  border-color: rgba(127,178,137,0.35); }
+
+  .rv-stars { font-size: 1rem; letter-spacing: 1px; color: #f4ce74; line-height: 1; }
+  .rv-stars .empty { color: rgba(255,255,255,0.15); }
+
+  .rv-body {
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: var(--ivory);
+    margin: 0;
+    white-space: pre-line;
+  }
+  .rv-body--quote::before { content: '“'; opacity: 0.5; }
+  .rv-body--quote::after  { content: '”'; opacity: 0.5; }
+
+  .rv-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rose);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .rv-link:hover { opacity: 0.75; }
+
+  .rv-cta {
+    margin-top: 64px;
+    padding: 32px 26px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    text-align: center;
+    background: rgba(127,178,137,0.04);
+  }
+  .rv-cta-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--ivory);
+    margin: 0 0 8px;
+  }
+  .rv-cta-sub {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1rem;
+    margin: 0 0 18px;
+    line-height: 1.5;
+  }
+  .rv-cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px;
+    background: #7fb289; border: 1px solid #7fb289; color: #0a1f15;
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em;
+    text-transform: uppercase; text-decoration: none; border-radius: 2px;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .rv-cta-btn:hover { background: #6ba17a; border-color: #6ba17a; }
+
+  @media (max-width: 520px) {
+    .rv-wrap { padding: 60px 16px 80px; }
+    .rv-card { padding: 22px 18px; }
+    .rv-body { font-size: 1.04rem; }
+  }
+</style>
+</head>
+<body class="grain">
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="dot"></span>
+    <span>THE UNFOLDING</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-back-link">
+      <span class="nav-back-arrow">←</span> Back to the book
+    </a>
+  </div>
+</nav>
+
+<div class="rv-wrap">
+  <a href="index.html" class="rv-back">← Back to the book</a>
+
+  <div class="rv-eyebrow">Readers · Volume I</div>
+  <h1 class="rv-title">What readers <em>say</em>.</h1>
+  <p class="rv-subtitle">A wall of reviews. From here, from Goodreads, from inboxes that were not ready.</p>
+
+  <div id="rv-content">
+    <div class="rv-loading">Loading reviews…</div>
+  </div>
+
+  <div class="rv-cta">
+    <div class="rv-cta-title">Read the book first.</div>
+    <div class="rv-cta-sub">Then leave your own review from the 🎁 in the reader top bar.</div>
+    <a href="reader.html" class="rv-cta-btn">▶ Open the Reader</a>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="js/footer.js"></script>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(async function () {
+  const SUPA_URL = 'https://sscpikfblqtmcefegrpv.supabase.co';
+  const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
+  const db = window.supabase.createClient(SUPA_URL, SUPA_KEY, {
+    auth: { lock: (_name, _ttl, fn) => fn() },
+  });
+
+  const container = document.getElementById('rv-content');
+
+  const { data, error } = await db
+    .from('reviews')
+    .select('id, rating, body, goodreads_url, display_name, avatar_url, source, created_at')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    container.innerHTML = `<div class="rv-empty"><em>Couldn't load reviews right now.</em><br/>${error.message || ''}</div>`;
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    container.innerHTML = `
+      <div class="rv-empty">
+        <em>Reviews coming soon.</em><br/>
+        The book just landed, and the early readers are still reading.
+      </div>`;
+    return;
+  }
+
+  function stars(rating) {
+    const r = rating || 0;
+    let out = '';
+    for (let i = 1; i <= 5; i++) {
+      out += i <= r ? '★' : '<span class="empty">★</span>';
+    }
+    return out;
+  }
+
+  function initial(name) {
+    if (!name) return '?';
+    return name.trim().charAt(0).toUpperCase();
+  }
+
+  function formatDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'long' });
+  }
+
+  function sourceBadge(src) {
+    if (!src || src === 'site') return '<span class="rv-source rv-source--site">Site</span>';
+    if (src === 'goodreads')    return '<span class="rv-source rv-source--goodreads">Goodreads</span>';
+    if (src === 'curated')      return '<span class="rv-source rv-source--curated">Curated</span>';
+    return `<span class="rv-source">${src}</span>`;
+  }
+
+  function escapeHtml(s) {
+    return String(s || '').replace(/[&<>"']/g, c => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[c]));
+  }
+
+  container.innerHTML = `<div class="rv-list">` + data.map(r => {
+    const name = escapeHtml(r.display_name || 'Anonymous reader');
+    const av = r.avatar_url
+      ? `<img class="rv-avatar" src="${escapeHtml(r.avatar_url)}" alt="${name}" referrerpolicy="no-referrer" onerror="this.outerHTML='<div class=&quot;rv-avatar rv-avatar--placeholder&quot;>${initial(name)}</div>'"/>`
+      : `<div class="rv-avatar rv-avatar--placeholder">${initial(name)}</div>`;
+    const date = formatDate(r.created_at);
+    const bodyHtml = r.body
+      ? `<p class="rv-body rv-body--quote">${escapeHtml(r.body)}</p>`
+      : (r.goodreads_url
+          ? `<p class="rv-body" style="font-style:italic;color:var(--muted)">Linked review on Goodreads.</p>`
+          : '');
+    const grLink = r.goodreads_url
+      ? `<a class="rv-link" href="${escapeHtml(r.goodreads_url)}" target="_blank" rel="noopener">Read on Goodreads →</a>`
+      : '';
+    return `
+      <div class="rv-card">
+        <div class="rv-card-head">
+          ${av}
+          <div class="rv-meta">
+            <div class="rv-name">${name}</div>
+            <div class="rv-sub">
+              ${date ? `<span>${date}</span>` : ''}
+              ${sourceBadge(r.source)}
+            </div>
+          </div>
+          ${r.rating ? `<div class="rv-stars" aria-label="${r.rating} out of 5">${stars(r.rating)}</div>` : ''}
+        </div>
+        ${bodyHtml}
+        ${grLink}
+      </div>`;
+  }).join('') + `</div>`;
+})();
+</script>
+</body>
+</html>

@@ -1947,7 +1947,28 @@ function base64ToBlob(base64, mimeType) {
 const SUPA_URL = 'https://sscpikfblqtmcefegrpv.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3Bpa2ZibHF0bWNlZmVncnB2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzUzMzgsImV4cCI6MjA5Mjk1MTMzOH0.I9qzVnzmiYxwZ6RPLV7KWva8P9L0Q1MHFqgmlmr3g0g';
 const { createClient } = supabase;
-const db = createClient(SUPA_URL, SUPA_KEY);
+// Disable navigator.locks coordination on the auth client.
+// Without this, a tab that crashed mid-auth (or a stale lock from any cause)
+// can hang db.auth.getSession() indefinitely on every subsequent load.
+// The tradeoff: cross-tab auth events are no longer strictly serialized,
+// which is fine for a read-mostly app.
+const db = createClient(SUPA_URL, SUPA_KEY, {
+  auth: {
+    lock: (_name, _ttl, fn) => fn(),
+  },
+});
+
+// Safety wrapper around db.auth.getSession() — falls back to anonymous after
+// a timeout so the page can never be blocked forever by auth state.
+async function getSessionSafe(timeoutMs = 5000) {
+  return Promise.race([
+    db.auth.getSession(),
+    new Promise(resolve => setTimeout(() => {
+      console.warn('[auth] getSession() timed out — proceeding as anonymous');
+      resolve({ data: { session: null } });
+    }, timeoutMs)),
+  ]);
+}
 
 // ── State ────────────────────────────────────────────────
 let currentChapter   = 1;
@@ -1964,19 +1985,15 @@ window.V3_WORD_MODE = 'estimate'; // default: word-by-word for v3 voices
 const chapterNames  = { 1:'Assembly', 2:'The Startend', 3:'Doubt and Certainty', 4:'The Grid', 5:'Two Courses', 6:'Levers of Command', 7:'Scrapper vs. Juggernaut', 8:'Through the Vurnshaft', 9:'The Bris', 10:'Rebound', 11:'A New Science', 12:'The Walls have Ears', 13:'Ex Nihilo', 14:'The Jester', 15:'Wings', 16:'Undercurrents', 17:'It’s Raining Below', 18:'Song that Silence Mothers', 19:'Portamus Futurum', 20:'At the Edge of Everything', 21:'Full Reverse', 22:'The Bridge', 23:'The Endstart', 24:'Next' }; // increment as you add files
 
 async function loadChapter(n) {
-  console.log('[diag] loadChapter start', n);
   currentChapter = n;
   currentParaId  = null;
   cacheClear();
   renderChapterPills();
   closeSidebar();
-  console.log('[diag] loadChapter after pills');
 
   // Paywall gate — chapters 9+ require a paid purchase
   if (n > FREE_CHAPTERS_LIMIT) {
-    console.log('[diag] loadChapter awaiting hasPaid (paywall gate)');
     const paid = await hasPaid();
-    console.log('[diag] loadChapter hasPaid returned', paid);
     if (!paid) {
       renderLockedChapter(n);
       return;
@@ -1985,31 +2002,20 @@ async function loadChapter(n) {
 
   const el = document.getElementById('chapter-content');
   el.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:50vh;font-family:var(--serif);font-style:italic;color:var(--muted)">Loading…</div>`;
-  console.log('[diag] loadChapter spinner set, starting fetch');
 
   let ch;
   try {
     const res = await fetch(`data/chapters/chapter-${n}.json`);
-    console.log('[diag] loadChapter fetch returned, status:', res.status);
     ch = await res.json();
-    console.log('[diag] loadChapter JSON parsed, title:', ch.title);
   } catch(e) {
-    console.error('[diag] loadChapter fetch FAILED:', e);
     el.innerHTML = `<div style="text-align:center;padding:80px;font-family:var(--serif);font-style:italic;color:var(--muted)">Chapter not found.</div>`;
     return;
   }
 
-  console.log('[diag] loadChapter awaiting loadCommentCounts');
   await loadCommentCounts(n);
-  console.log('[diag] loadChapter loadCommentCounts done');
-
-  console.log('[diag] loadChapter calling preloadChapterSfx');
   preloadChapterSfx(ch);
-  console.log('[diag] loadChapter preloadChapterSfx done');
-
-  console.log('[diag] loadChapter calling renderChapter');
   renderChapter(ch);
-  console.log('[diag] loadChapter renderChapter done');
+  // renderChapter() already calls injectReaderEndCard()
 }
 
 function continueToNextChapter(n) {
@@ -2118,10 +2124,8 @@ async function buildWikiIndex() {
 
 // ── Auth ─────────────────────────────────────────────────
 async function initAuth() {
-  console.log('[diag] initAuth start');
   // First try to get session from URL hash (OAuth callback)
-  const { data: { session: hashSession } } = await db.auth.getSession();
-  console.log('[diag] initAuth getSession done, hashSession:', !!hashSession);
+  const { data: { session: hashSession } } = await getSessionSafe();
 
   // If no session yet, try exchanging the hash params manually
   if (!hashSession && window.location.hash.includes('access_token')) {
@@ -2129,11 +2133,18 @@ async function initAuth() {
     const access_token  = params.get('access_token');
     const refresh_token = params.get('refresh_token');
     if (access_token && refresh_token) {
-      await db.auth.setSession({ access_token, refresh_token });
+      try {
+        await Promise.race([
+          db.auth.setSession({ access_token, refresh_token }),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('setSession timeout')), 5000)),
+        ]);
+      } catch (e) {
+        console.warn('[auth] setSession failed:', e.message);
+      }
     }
   }
 
-  const { data: { session } } = await db.auth.getSession();
+  const { data: { session } } = await getSessionSafe();
   currentUser = session?.user ?? null;
   renderAuthArea();
   refreshPaidAndRender(); // fire-and-forget; will re-render top bar once paid state is known
@@ -2424,7 +2435,14 @@ function switchReviewTab(tab) {
 async function submitReview(mode) {
   const statusEl = document.getElementById('review-status');
   if (!currentUser) { signIn(); return; }
-  let payload = { user_id: currentUser.id };
+  const meta = currentUser.user_metadata || {};
+  const displayName = meta.custom_claims?.global_name || meta.full_name || meta.name || 'Reader';
+  let payload = {
+    user_id: currentUser.id,
+    display_name: displayName,
+    avatar_url: getAvatarUrl(meta),
+    source: 'site',
+  };
   if (mode === 'write') {
     const body = document.getElementById('review-body').value.trim();
     if (!body) { statusEl.textContent = 'Please write a few words first.'; statusEl.className = 'review-status review-status--err'; return; }
@@ -2927,12 +2945,9 @@ function closeSidebar() {
 
 // ── Comments ─────────────────────────────────────────────
 async function loadCommentCounts(chapter) {
-  console.log('[diag] loadCommentCounts querying Supabase for chapter', chapter);
-  const t0 = Date.now();
-  const { data, error } = await db.from('comments')
+  const { data } = await db.from('comments')
     .select('paragraph_id')
     .eq('chapter', chapter);
-  console.log('[diag] loadCommentCounts Supabase responded in', Date.now() - t0, 'ms · rows:', data?.length, 'error:', error);
   commentCounts = {};
   (data || []).forEach(r => {
     commentCounts[r.paragraph_id] = (commentCounts[r.paragraph_id] || 0) + 1;
@@ -3403,15 +3418,10 @@ window._readerGetNarrationPlaying  = () => narrationPlaying;
 
 // ── Init ─────────────────────────────────────────────────
 async function init() {
-  console.log('[diag] init() start');
   applyWikiHints();
-  console.log('[diag] init() applyWikiHints done, awaiting buildWikiIndex + initAuth');
   await Promise.all([buildWikiIndex(), initAuth()]);
-  console.log('[diag] init() wiki + auth done, calling handlePaymentSuccessRedirect');
   await handlePaymentSuccessRedirect();
-  console.log('[diag] init() handlePaymentSuccessRedirect done, calling loadChapter(1)');
   await loadChapter(1);
-  console.log('[diag] init() DONE');
 }
 
 init();
