@@ -1,9 +1,9 @@
 [
   {
     "id": "narrator",
-    "name": "Kirsten Strand (Narrator)",
-    "voice_id": "wa4sQVgbDDzUDEzJwch3",
-    "_note": "First-person narrator voice for every chapter epigraph and the chapter 24 cube transcript. Same voice as the kirsten-strand character entry — Strand is both a character inside the story and the voice addressing 'Next' from beyond it. Used by the audio renderer for unattributed paragraphs in epigraph sections."
+    "name": "Charlotte (Narrator)",
+    "voice_id": "XB0fDUnXU5powFXDhCwa",
+    "_note": "Default narrator voice (ElevenLabs preset 'Charlotte') used for all unattributed prose and chapter epigraphs. The narrator is canonically Kirsten Strand — but she is *read* in Charlotte's voice, intentionally distinct from Strand's in-scene voice (see characters.json → kirsten-strand). The audible split mirrors the book's premise: Strand-the-character speaks in chapters 23 and 24, while Strand-the-narrator-from-beyond addresses 'Next' in a different register entirely. This entry mirrors the default narrator voice configured in the Edge Function at functions/v1/narrate — keep them in sync if you change one."
   },
   {
     "id": "bris-crew",

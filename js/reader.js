@@ -663,6 +663,7 @@ async function narrationGoTo(index) {
     narrationLocked = false;
     // Chapter finished — show end card INSIDE the overlay, don't close it
     if (window._track) window._track('narration_complete', { chapter: currentChapter });
+    recordChapterCompletion(currentChapter);
     showNarrationChapterEnd();
     return;
   }
@@ -1963,15 +1964,19 @@ window.V3_WORD_MODE = 'estimate'; // default: word-by-word for v3 voices
 const chapterNames  = { 1:'Assembly', 2:'The Startend', 3:'Doubt and Certainty', 4:'The Grid', 5:'Two Courses', 6:'Levers of Command', 7:'Scrapper vs. Juggernaut', 8:'Through the Vurnshaft', 9:'The Bris', 10:'Rebound', 11:'A New Science', 12:'The Walls have Ears', 13:'Ex Nihilo', 14:'The Jester', 15:'Wings', 16:'Undercurrents', 17:'It’s Raining Below', 18:'Song that Silence Mothers', 19:'Portamus Futurum', 20:'At the Edge of Everything', 21:'Full Reverse', 22:'The Bridge', 23:'The Endstart', 24:'Next' }; // increment as you add files
 
 async function loadChapter(n) {
+  console.log('[diag] loadChapter start', n);
   currentChapter = n;
   currentParaId  = null;
   cacheClear();
   renderChapterPills();
   closeSidebar();
+  console.log('[diag] loadChapter after pills');
 
   // Paywall gate — chapters 9+ require a paid purchase
   if (n > FREE_CHAPTERS_LIMIT) {
+    console.log('[diag] loadChapter awaiting hasPaid (paywall gate)');
     const paid = await hasPaid();
+    console.log('[diag] loadChapter hasPaid returned', paid);
     if (!paid) {
       renderLockedChapter(n);
       return;
@@ -1980,20 +1985,31 @@ async function loadChapter(n) {
 
   const el = document.getElementById('chapter-content');
   el.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:50vh;font-family:var(--serif);font-style:italic;color:var(--muted)">Loading…</div>`;
+  console.log('[diag] loadChapter spinner set, starting fetch');
 
   let ch;
   try {
     const res = await fetch(`data/chapters/chapter-${n}.json`);
+    console.log('[diag] loadChapter fetch returned, status:', res.status);
     ch = await res.json();
+    console.log('[diag] loadChapter JSON parsed, title:', ch.title);
   } catch(e) {
+    console.error('[diag] loadChapter fetch FAILED:', e);
     el.innerHTML = `<div style="text-align:center;padding:80px;font-family:var(--serif);font-style:italic;color:var(--muted)">Chapter not found.</div>`;
     return;
   }
 
+  console.log('[diag] loadChapter awaiting loadCommentCounts');
   await loadCommentCounts(n);
+  console.log('[diag] loadChapter loadCommentCounts done');
+
+  console.log('[diag] loadChapter calling preloadChapterSfx');
   preloadChapterSfx(ch);
+  console.log('[diag] loadChapter preloadChapterSfx done');
+
+  console.log('[diag] loadChapter calling renderChapter');
   renderChapter(ch);
-  // renderChapter() already calls injectReaderEndCard()
+  console.log('[diag] loadChapter renderChapter done');
 }
 
 function continueToNextChapter(n) {
@@ -2102,8 +2118,10 @@ async function buildWikiIndex() {
 
 // ── Auth ─────────────────────────────────────────────────
 async function initAuth() {
+  console.log('[diag] initAuth start');
   // First try to get session from URL hash (OAuth callback)
   const { data: { session: hashSession } } = await db.auth.getSession();
+  console.log('[diag] initAuth getSession done, hashSession:', !!hashSession);
 
   // If no session yet, try exchanging the hash params manually
   if (!hashSession && window.location.hash.includes('access_token')) {
@@ -2128,6 +2146,7 @@ async function initAuth() {
   db.auth.onAuthStateChange(async (_event, session) => {
     currentUser = session?.user ?? null;
     paidCache = null;
+    rewardTierCache = undefined;
     renderAuthArea();
     refreshPaidAndRender();
     if (currentParaId) renderCommentForm();
@@ -2163,7 +2182,9 @@ function renderAuthArea() {
     const epubHtml = paidCache === true
       ? `<button class="auth-btn auth-epub" onclick="downloadEpub(event)" title="Download EPUB" aria-label="Download EPUB"><span class="auth-epub-icon">📖</span><span class="auth-epub-label">EPUB</span></button>`
       : '';
+    const giftHtml = `<button class="auth-btn auth-gift" onclick="openGiftModal()" title="Your shop reward" aria-label="Your shop reward"><span class="auth-gift-icon">🎁</span></button>`;
     el.innerHTML = `
+      ${giftHtml}
       ${epubHtml}
       ${avatar ? `<img class="auth-avatar" src="${avatar}" alt="${name}"/>` : ''}
       <span class="auth-name">${name}</span>
@@ -2193,6 +2214,7 @@ async function signIn() {
 async function signOut() {
   await db.auth.signOut();
   paidCache = null;
+  rewardTierCache = undefined;
 }
 
 // ── Paywall ──────────────────────────────────────────────
@@ -2226,6 +2248,217 @@ function buyLinkForUser() {
 const EPUB_BUCKET = 'ebooks';
 const EPUB_OBJECT = 'the-unfolding.epub';
 let epubDownloading = false;
+
+// ── Fourthwall promo links (rewards) ──
+const PROMO_URL_25 = 'https://nyland-shop.fourthwall.com/promo/BLIPS';
+const PROMO_URL_50 = 'https://nyland-shop.fourthwall.com/promo/SCRUDGAR';
+let rewardTierCache = undefined; // '25_off' | '50_off' | null
+
+async function getRewardTier() {
+  if (!currentUser) return null;
+  if (rewardTierCache !== undefined) return rewardTierCache;
+  try {
+    // 50% off if user has any review on record
+    const { count: reviewCount } = await db.from('reviews')
+      .select('*', { count: 'exact', head: true });
+    if ((reviewCount || 0) > 0) { rewardTierCache = '50_off'; return rewardTierCache; }
+    // 50% off if user has completed all 24 chapters via narration
+    const { count: completionCount } = await db.from('user_chapter_completions')
+      .select('*', { count: 'exact', head: true });
+    if ((completionCount || 0) >= CHAPTER_COUNT) { rewardTierCache = '50_off'; return rewardTierCache; }
+    // Otherwise signed-in users get the 25% baseline
+    rewardTierCache = '25_off';
+    return rewardTierCache;
+  } catch (e) {
+    console.warn('getRewardTier error:', e);
+    return null;
+  }
+}
+
+async function recordChapterCompletion(chapter) {
+  if (!currentUser || !chapter) return;
+  try {
+    await db.from('user_chapter_completions')
+      .upsert({ user_id: currentUser.id, chapter }, { onConflict: 'user_id,chapter' });
+    // Invalidate reward cache so the gift modal reflects the new state next open
+    rewardTierCache = undefined;
+    // Re-render auth area in case the user just hit the 24/24 threshold
+    renderAuthArea();
+  } catch (e) {
+    console.warn('recordChapterCompletion error:', e);
+  }
+}
+
+async function openGiftModal() {
+  if (!currentUser) { signIn(); return; }
+  const tier = await getRewardTier();
+  const completionsRes = await db.from('user_chapter_completions').select('chapter');
+  const completedCount = completionsRes?.data?.length || 0;
+  const reviewRes = await db.from('reviews').select('id').limit(1);
+  const hasReview = (reviewRes?.data?.length || 0) > 0;
+
+  // Build modal
+  const overlay = document.createElement('div');
+  overlay.className = 'gift-modal-overlay';
+  overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+
+  const at50 = tier === '50_off';
+  const earnedHtml = at50
+    ? `<div class="gift-tier-card gift-tier-card--unlocked">
+         <div class="gift-tier-eyebrow">Your reward — unlocked</div>
+         <div class="gift-tier-value">50% off</div>
+         <div class="gift-tier-sub">Applies automatically when you visit:</div>
+         <a class="gift-cta-primary" href="${PROMO_URL_50}" target="_blank" rel="noopener">→ Shop with 50% off</a>
+       </div>`
+    : `<div class="gift-tier-card gift-tier-card--unlocked">
+         <div class="gift-tier-eyebrow">Your reward — unlocked</div>
+         <div class="gift-tier-value">25% off</div>
+         <div class="gift-tier-sub">Applies automatically when you visit:</div>
+         <a class="gift-cta-primary" href="${PROMO_URL_25}" target="_blank" rel="noopener">→ Shop with 25% off</a>
+       </div>`;
+
+  const upgradeHtml = at50 ? '' : `
+    <div class="gift-upgrade">
+      <div class="gift-upgrade-eyebrow">Bump it to <span class="price">50% off</span> — either path works</div>
+      <div class="gift-paths">
+        <button class="gift-path-btn" onclick="openReviewModal();">
+          <div class="gift-path-icon">✍</div>
+          <div class="gift-path-body">
+            <div class="gift-path-title">Leave a review</div>
+            <div class="gift-path-sub">${hasReview ? '✓ Done' : 'Write a few lines, or paste a Goodreads link'}</div>
+          </div>
+        </button>
+        <div class="gift-path-btn gift-path-btn--passive">
+          <div class="gift-path-icon">🎧</div>
+          <div class="gift-path-body">
+            <div class="gift-path-title">Listen to all 24 chapters</div>
+            <div class="gift-path-sub">
+              <span class="gift-progress-bar"><span class="gift-progress-fill" style="width:${Math.round((completedCount / CHAPTER_COUNT) * 100)}%"></span></span>
+              <span class="gift-progress-text">${completedCount} / ${CHAPTER_COUNT} chapters narrated</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+  overlay.innerHTML = `
+    <div class="gift-modal">
+      <button class="gift-close" onclick="this.closest('.gift-modal-overlay').remove()" aria-label="Close">×</button>
+      <div class="gift-header">
+        <div class="gift-header-icon">🎁</div>
+        <div class="gift-header-title">Your reward at the shop</div>
+        <div class="gift-header-sub">For signing in to the Fold.</div>
+      </div>
+      ${earnedHtml}
+      ${upgradeHtml}
+      <div class="gift-footer">
+        <a href="https://nyland-shop.fourthwall.com" target="_blank" rel="noopener">Browse the full shop →</a>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+
+function openReviewModal() {
+  // Close gift modal if open
+  document.querySelectorAll('.gift-modal-overlay').forEach(o => o.remove());
+
+  const overlay = document.createElement('div');
+  overlay.className = 'gift-modal-overlay';
+  overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+
+  overlay.innerHTML = `
+    <div class="gift-modal review-modal">
+      <button class="gift-close" onclick="this.closest('.gift-modal-overlay').remove()" aria-label="Close">×</button>
+      <div class="gift-header">
+        <div class="gift-header-title">Leave a review</div>
+        <div class="gift-header-sub">Bumps your shop reward to 50% off. Pick one path — write it here, or link a Goodreads review you've left elsewhere.</div>
+      </div>
+
+      <div class="review-tabs">
+        <button class="review-tab review-tab--active" data-tab="write" onclick="switchReviewTab('write')">✍ Write a review</button>
+        <button class="review-tab" data-tab="link" onclick="switchReviewTab('link')">🔗 Link a Goodreads review</button>
+      </div>
+
+      <div class="review-pane review-pane--write" data-pane="write">
+        <label class="review-label">Your rating</label>
+        <div class="review-stars" id="review-stars">
+          ${[1,2,3,4,5].map(n => `<button type="button" class="review-star" data-rating="${n}" onclick="setReviewRating(${n})">★</button>`).join('')}
+        </div>
+        <label class="review-label">Your review</label>
+        <textarea id="review-body" class="review-textarea" rows="6" maxlength="2000" placeholder="What did The Unfolding do to you?"></textarea>
+        <div class="review-counter"><span id="review-counter">0</span> / 2000</div>
+        <button class="gift-cta-primary" onclick="submitReview('write')">Submit review · earn 50% off</button>
+      </div>
+
+      <div class="review-pane review-pane--link" data-pane="link" style="display:none">
+        <label class="review-label">Goodreads review URL</label>
+        <input type="url" id="review-url" class="review-input" placeholder="https://www.goodreads.com/review/show/...">
+        <div class="review-hint">Find your review on <a href="https://www.goodreads.com/book/show/251501817-the-unfolding" target="_blank" rel="noopener">the book's Goodreads page</a> and paste its URL here.</div>
+        <button class="gift-cta-primary" onclick="submitReview('link')">Submit link · earn 50% off</button>
+      </div>
+
+      <div id="review-status" class="review-status"></div>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  // Auto-count textarea
+  const ta = document.getElementById('review-body');
+  if (ta) ta.addEventListener('input', () => {
+    document.getElementById('review-counter').textContent = ta.value.length;
+  });
+}
+
+let _reviewRating = 0;
+function setReviewRating(n) {
+  _reviewRating = n;
+  document.querySelectorAll('.review-star').forEach(s => {
+    s.classList.toggle('review-star--filled', parseInt(s.dataset.rating) <= n);
+  });
+}
+
+function switchReviewTab(tab) {
+  document.querySelectorAll('.review-tab').forEach(b => b.classList.toggle('review-tab--active', b.dataset.tab === tab));
+  document.querySelectorAll('.review-pane').forEach(p => { p.style.display = p.dataset.pane === tab ? '' : 'none'; });
+}
+
+async function submitReview(mode) {
+  const statusEl = document.getElementById('review-status');
+  if (!currentUser) { signIn(); return; }
+  let payload = { user_id: currentUser.id };
+  if (mode === 'write') {
+    const body = document.getElementById('review-body').value.trim();
+    if (!body) { statusEl.textContent = 'Please write a few words first.'; statusEl.className = 'review-status review-status--err'; return; }
+    if (!_reviewRating) { statusEl.textContent = 'Please pick a rating.'; statusEl.className = 'review-status review-status--err'; return; }
+    payload.body = body;
+    payload.rating = _reviewRating;
+  } else {
+    const url = document.getElementById('review-url').value.trim();
+    if (!/^https?:\/\/.+goodreads\.com/i.test(url)) { statusEl.textContent = 'Paste a valid Goodreads URL.'; statusEl.className = 'review-status review-status--err'; return; }
+    payload.goodreads_url = url;
+  }
+  statusEl.textContent = 'Submitting…';
+  statusEl.className = 'review-status';
+  const { error } = await db.from('reviews').insert(payload);
+  if (error) {
+    if (String(error.message || '').match(/duplicate|unique/i)) {
+      statusEl.textContent = '✓ You already have a review on file — your 50% off code is already active.';
+      statusEl.className = 'review-status review-status--ok';
+    } else {
+      statusEl.textContent = 'Sorry, could not save: ' + error.message;
+      statusEl.className = 'review-status review-status--err';
+    }
+    return;
+  }
+  rewardTierCache = undefined;
+  statusEl.textContent = '✓ Thank you! Your 50% off code is now active. Click the 🎁 to apply it.';
+  statusEl.className = 'review-status review-status--ok';
+  if (window._track) window._track('review_submitted', { mode });
+  // Close after a beat and re-open the gift modal to show the upgrade
+  setTimeout(() => {
+    document.querySelectorAll('.gift-modal-overlay').forEach(o => o.remove());
+    openGiftModal();
+  }, 1800);
+}
 
 async function downloadEpub(evt) {
   if (evt) evt.preventDefault();
@@ -2694,9 +2927,12 @@ function closeSidebar() {
 
 // ── Comments ─────────────────────────────────────────────
 async function loadCommentCounts(chapter) {
-  const { data } = await db.from('comments')
+  console.log('[diag] loadCommentCounts querying Supabase for chapter', chapter);
+  const t0 = Date.now();
+  const { data, error } = await db.from('comments')
     .select('paragraph_id')
     .eq('chapter', chapter);
+  console.log('[diag] loadCommentCounts Supabase responded in', Date.now() - t0, 'ms · rows:', data?.length, 'error:', error);
   commentCounts = {};
   (data || []).forEach(r => {
     commentCounts[r.paragraph_id] = (commentCounts[r.paragraph_id] || 0) + 1;
@@ -3167,10 +3403,15 @@ window._readerGetNarrationPlaying  = () => narrationPlaying;
 
 // ── Init ─────────────────────────────────────────────────
 async function init() {
+  console.log('[diag] init() start');
   applyWikiHints();
+  console.log('[diag] init() applyWikiHints done, awaiting buildWikiIndex + initAuth');
   await Promise.all([buildWikiIndex(), initAuth()]);
+  console.log('[diag] init() wiki + auth done, calling handlePaymentSuccessRedirect');
   await handlePaymentSuccessRedirect();
+  console.log('[diag] init() handlePaymentSuccessRedirect done, calling loadChapter(1)');
   await loadChapter(1);
+  console.log('[diag] init() DONE');
 }
 
 init();
