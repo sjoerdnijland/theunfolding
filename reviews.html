@@ -188,14 +188,61 @@
     background: #7fb289; border: 1px solid #7fb289; color: #0a1f15;
     font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em;
     text-transform: uppercase; text-decoration: none; border-radius: 2px;
-    transition: background 0.15s, border-color 0.15s;
+    transition: background 0.15s, border-color 0.15s, transform 0.15s;
   }
   .rv-cta-btn:hover { background: #6ba17a; border-color: #6ba17a; }
+
+  /* Top CTA — sits between subtitle and the reviews list */
+  .rv-top-cta {
+    display: flex; align-items: center; gap: 16px;
+    margin: 0 0 48px;
+    padding: 18px 22px;
+    border: 1px solid rgba(127,178,137,0.25);
+    background: rgba(127,178,137,0.04);
+    border-radius: 4px;
+    flex-wrap: wrap;
+  }
+  .rv-top-cta-note {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.14em; color: var(--muted);
+    text-transform: uppercase;
+    flex: 1; min-width: 200px;
+  }
+
+  /* Sticky floating button — visible after scrolling past the top CTA */
+  .rv-sticky {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px;
+    background: #7fb289; border: 1px solid #7fb289; color: #0a1f15;
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em;
+    text-transform: uppercase; text-decoration: none; border-radius: 30px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px);
+    transition: opacity 0.25s ease, transform 0.25s ease, background 0.15s, border-color 0.15s;
+  }
+  .rv-sticky.rv-sticky--visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .rv-sticky:hover { background: #6ba17a; border-color: #6ba17a; }
+  .rv-sticky-icon { font-size: 1rem; line-height: 1; }
 
   @media (max-width: 520px) {
     .rv-wrap { padding: 60px 16px 80px; }
     .rv-card { padding: 22px 18px; }
     .rv-body { font-size: 1.04rem; }
+    .rv-top-cta { flex-direction: column; align-items: stretch; text-align: center; }
+    .rv-top-cta-note { text-align: center; }
+    .rv-sticky { right: 16px; bottom: 16px; padding: 12px 16px; font-size: 0.62rem; border-radius: 26px; }
+    .rv-sticky-label { display: none; } /* icon-only on small screens */
+    .rv-sticky-icon { font-size: 1.2rem; }
   }
 </style>
 </head>
@@ -220,9 +267,20 @@
   <h1 class="rv-title">What readers <em>say</em>.</h1>
   <p class="rv-subtitle">A wall of reviews. From here, from Goodreads, from inboxes that were not ready.</p>
 
+  <div class="rv-top-cta">
+    <a href="reader.html?review=open" class="rv-cta-btn">✍ Share your review</a>
+    <span class="rv-top-cta-note">Unlocks 50% off the shop · helps other readers find the book</span>
+  </div>
+
   <div id="rv-content">
     <div class="rv-loading">Loading reviews…</div>
   </div>
+
+  <!-- Sticky floating share button (appears on scroll) -->
+  <a href="reader.html?review=open" id="rv-sticky" class="rv-sticky" aria-label="Share your review">
+    <span class="rv-sticky-icon">✍</span>
+    <span class="rv-sticky-label">Share your review</span>
+  </a>
 
   <div class="rv-cta">
     <div class="rv-cta-title">Share your review.</div>
@@ -296,6 +354,21 @@
       '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
     }[c]));
   }
+
+  // Show the sticky button once the user has scrolled past the top CTA
+  (function setupStickyToggle() {
+    const sticky = document.getElementById('rv-sticky');
+    const topCta = document.querySelector('.rv-top-cta');
+    if (!sticky || !topCta || !('IntersectionObserver' in window)) {
+      sticky?.classList.add('rv-sticky--visible'); // fallback: always show
+      return;
+    }
+    const io = new IntersectionObserver(([entry]) => {
+      // If the top CTA is OUT of view, show the sticky button
+      sticky.classList.toggle('rv-sticky--visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    io.observe(topCta);
+  })();
 
   container.innerHTML = `<div class="rv-list">` + data.map(r => {
     const name = escapeHtml(r.display_name || 'Anonymous reader');
