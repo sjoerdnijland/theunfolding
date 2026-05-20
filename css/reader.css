@@ -784,6 +784,23 @@ body.wiki-hints-on .para.active .wiki-link {
   background: var(--rose); border-color: var(--rose); color: var(--ink);
 }
 .cec-btn.primary:hover { background: #c72f63; border-color: #c72f63; }
+.cec-btn.continue {
+  background: #7fb289; border-color: #7fb289; color: #0a1f15;
+  font-size: 0.78rem; padding: 14px 30px;
+}
+.cec-btn.continue:hover { background: #6ba17a; border-color: #6ba17a; }
+.cec-paywall-note {
+  margin-top: 22px;
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  color: var(--ivory);
+  line-height: 1.55;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cec-paywall-note .price { color: #7fb289; font-weight: 600; }
+.cec-paywall-note .sub { display:block; margin-top:8px; font-size: 0.88rem; color: var(--muted); font-style: italic; }
 /* ── Decoded podcast button ────────────────────────────── */
 .decoded-btn {
   display: flex; align-items: center; gap: 7px;

@@ -2016,6 +2016,7 @@ async function injectReaderEndCard(n, chapterTitle) {
   const reachedPaywall = hasNext && n >= FREE_CHAPTERS_LIMIT;
 
   let primaryActionsHtml;
+  let paywallNote = '';
   if (!hasNext) {
     primaryActionsHtml = `
       <a href="index.html#buy" class="cec-btn primary">Buy the eBook →</a>
@@ -2023,21 +2024,25 @@ async function injectReaderEndCard(n, chapterTitle) {
   } else if (reachedPaywall) {
     const paid = await hasPaid();
     if (paid) {
-      primaryActionsHtml = `<button class="cec-btn primary" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>`;
+      primaryActionsHtml = `<button class="cec-btn continue" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>`;
     } else if (currentUser) {
-      primaryActionsHtml = `<a href="${buyLinkForUser()}" class="cec-btn primary">📖 Unlock all chapters — €12.50</a>`;
+      primaryActionsHtml = `<a href="${buyLinkForUser()}" class="cec-btn continue">Continue — €12.50</a>`;
+      paywallNote = `
+        <div class="cec-paywall-note">
+          You've finished the free preview. To keep reading, a one-time fee of <span class="price">€12.50</span> unlocks chapters 9–${CHAPTER_COUNT} + the full eBook (EPUB) download.
+          <span class="sub">Buying direct supports the author — same price, no retailer cut.</span>
+        </div>`;
     } else {
-      primaryActionsHtml = `<button class="cec-btn primary" onclick="signIn()">◎ Sign in with Discord to unlock</button>`;
+      primaryActionsHtml = `<button class="cec-btn continue" onclick="signIn()">◎ Sign in with Discord to continue</button>`;
+      paywallNote = `
+        <div class="cec-paywall-note">
+          You've finished the free preview. To keep reading, a one-time fee of <span class="price">€12.50</span> unlocks chapters 9–${CHAPTER_COUNT} + the full eBook (EPUB) download.
+          <span class="sub">Sign in first so we can link the purchase to your account.</span>
+        </div>`;
     }
   } else {
     primaryActionsHtml = `<button class="cec-btn primary" onclick="continueToNextChapter(${n + 1})">Continue to Chapter ${n + 1} →</button>`;
   }
-
-  const paywallNote = reachedPaywall ? `
-    <div style="margin-top:18px;font-size:0.62rem;color:var(--muted);letter-spacing:0.05em;line-height:1.6">
-      You've reached the end of the free preview.<br>
-      One unlock covers chapters 9–${CHAPTER_COUNT} + the full eBook (EPUB) download.
-    </div>` : '';
 
   const card = document.createElement('div');
   card.className = 'chapter-end-card visible';
@@ -2229,8 +2234,11 @@ function renderLockedChapter(n) {
   if (!el) return;
   const title = chapterNames[n] || '';
   const ctaHtml = currentUser
-    ? `<a href="${buyLinkForUser()}" class="cec-btn primary">📖 Unlock — €12.50</a>`
-    : `<button class="cec-btn primary" onclick="signIn()">◎ Sign in with Discord to unlock</button>`;
+    ? `<a href="${buyLinkForUser()}" class="cec-btn continue">Continue — €12.50</a>`
+    : `<button class="cec-btn continue" onclick="signIn()">◎ Sign in with Discord to continue</button>`;
+  const subNote = currentUser
+    ? `<span class="sub">Buying direct supports the author — same price, no retailer cut.</span>`
+    : `<span class="sub">Sign in first so we can link the purchase to your account.</span>`;
   el.innerHTML = `
     <div class="ch-hero">
       <div class="ch-eyebrow">Chapter ${n}</div>
@@ -2239,11 +2247,11 @@ function renderLockedChapter(n) {
     <div class="chapter-end-card visible" style="margin: 80px auto 40px; text-align:center;">
       <div class="cec-label">Locked</div>
       <div class="cec-title">Continue The Unfolding</div>
-      <div class="cec-sub">You've finished the free preview. Chapters 9–${CHAPTER_COUNT} require a one-time unlock.</div>
+      <div class="cec-sub">You've finished the free preview.</div>
       <div class="cec-actions">${ctaHtml}</div>
-      <div style="margin-top:18px;font-size:0.62rem;color:var(--muted);letter-spacing:0.05em;line-height:1.6">
-        Includes the full eBook (EPUB) download.<br>
-        Buying direct supports the author — same price, no retailer cut.
+      <div class="cec-paywall-note">
+        A one-time fee of <span class="price">€12.50</span> unlocks chapters 9–${CHAPTER_COUNT} + the full eBook (EPUB) download.
+        ${subNote}
       </div>
     </div>`;
 }
