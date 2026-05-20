@@ -80,19 +80,13 @@ function DirectBuyItem() {
 
   if (loading) return null;
 
-  // ── State: signed in + paid → "You own this" + EPUB download ──
+  // ── State: signed in + paid → EPUB download replaces the direct-buy slot ──
   if (user && paid) {
     return (
-      <>
-        <a href="reader.html" className="bl-store-btn bl-store-direct bl-store-owned">
-          <span className="bl-store-arrow">✓</span>
-          You own this — Open Reader
-        </a>
-        <button type="button" onClick={downloadEpub} className="bl-store-btn bl-store-direct">
-          <span className="bl-store-arrow">📖</span>
-          Download EPUB
-        </button>
-      </>
+      <button type="button" onClick={downloadEpub} className="bl-store-btn bl-store-direct bl-store-owned">
+        <span className="bl-store-arrow">📖</span>
+        Download EPUB <span className="bl-store-note">you own this</span>
+      </button>
     );
   }
 
@@ -101,7 +95,7 @@ function DirectBuyItem() {
     return (
       <a href={buyLink()} className="bl-store-btn bl-store-direct bl-store-featured">
         <span className="bl-store-arrow">→</span>
-        Direct from author <span className="bl-store-note">best margin · no retailer cut</span>
+        Direct from author <span className="bl-store-note">author's best margin · no retailer cut</span>
       </a>
     );
   }
@@ -110,7 +104,7 @@ function DirectBuyItem() {
   return (
     <button type="button" onClick={() => signIn('discord')} className="bl-store-btn bl-store-direct bl-store-featured">
       <span className="bl-store-arrow">→</span>
-      Direct — Sign in with Discord <span className="bl-store-note">best margin · no retailer cut</span>
+      Direct — Sign in with Discord <span className="bl-store-note">author's best margin · no retailer cut</span>
     </button>
   );
 }
